@@ -2,31 +2,50 @@
 //  XenophobeAppDelegate.m
 //  Xenophobe
 //
-//  Created by Alexander on 10/16/10.
-//  Copyright 2010 __MyCompanyName__. All rights reserved.
+//  Created by Alexander on 10/20/10.
+//  Copyright 2010 Alexander Nabavi-Noori, XanderNet Inc. All rights reserved.
+//  
+//  Team:
+//  Alexander Nabavi-Noori - Software Engineer, Game Architect
+//	James Linnell - Software Engineer, Creative Design, Art Producer
+//	Tyler Newcomb - Creative Design, Art Producer
 //
+//	Last Updated - 10/20/2010 @ 6PM - Alexander
+//	- Initial Project Creation
 
 #import "XenophobeAppDelegate.h"
-#import "XenophobeViewController.h"
 
 @implementation XenophobeAppDelegate
 
-@synthesize window;
-@synthesize viewController;
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+	// Not using any NIB files anymore, we are creating the window and the
+    // EAGLView manually.
+    window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+	[window setUserInteractionEnabled:YES];
+	[window setMultipleTouchEnabled:YES];
+	
+	glView = [[EAGLView alloc] initWithFrame:[UIScreen mainScreen].bounds];
+	
+    // Add the glView to the window which has been defined
+	[window addSubview:glView];
+	[window makeKeyAndVisible];
+    
+    [glView performSelectorOnMainThread:@selector(mainGameLoop) withObject:nil waitUntilDone:NO]; 
+}
 
 - (void)applicationWillResignActive:(UIApplication *)application
 {
-    [viewController stopAnimation];
+
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
-    [viewController startAnimation];
+
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application
 {
-    [viewController stopAnimation];
+
 }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application
@@ -41,7 +60,7 @@
 
 - (void)dealloc
 {
-    [viewController release];
+    [glView release];
     [window release];
     
     [super dealloc];

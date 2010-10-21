@@ -2,7 +2,7 @@
 //  main.m
 //  Xenophobe
 //
-//  Created by Alexander on 10/16/10.
+//  Created by Alexander on 10/20/10.
 //  Copyright 2010 __MyCompanyName__. All rights reserved.
 //
 

@@ -1,5 +1,5 @@
 //
-//  XenophobeAppDelegate.h
+//  Frame.h
 //  Xenophobe
 //
 //  Created by Alexander on 10/20/10.
@@ -13,15 +13,22 @@
 //	Last Updated - 10/20/2010 @ 6PM - Alexander
 //	- Initial Project Creation
 
-#import <UIKit/UIKit.h>
-#import "EAGLView.h"
 
-@class XenophobeViewController;
+#import <Foundation/Foundation.h>
+#import "Image.h"
 
-@interface XenophobeAppDelegate : NSObject <UIApplicationDelegate> {
-	UIWindow *window;
-    EAGLView *glView;
+@interface Frame : NSObject {
+	
+	// The image this frame of animation will display
+	Image *frameImage;
+	// How long the frame should be displayed for
+	float frameDelay;
+	
 }
 
-@end
+@property(nonatomic, assign)float frameDelay;
+@property(nonatomic, retain)Image *frameImage;
 
+- (id)initWithImage:(Image*)image delay:(float)delay;
+
+@end

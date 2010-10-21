@@ -1,5 +1,5 @@
 //
-//  XenophobeAppDelegate.h
+//  Transforms.h
 //  Xenophobe
 //
 //  Created by Alexander on 10/20/10.
@@ -13,15 +13,11 @@
 //	Last Updated - 10/20/2010 @ 6PM - Alexander
 //	- Initial Project Creation
 
-#import <UIKit/UIKit.h>
-#import "EAGLView.h"
+#import <Foundation/Foundation.h>
 
-@class XenophobeViewController;
 
-@interface XenophobeAppDelegate : NSObject <UIApplicationDelegate> {
-	UIWindow *window;
-    EAGLView *glView;
+@interface Transforms : NSObject {
+	
 }
 
 @end
-

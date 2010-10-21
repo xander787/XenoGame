@@ -2,152 +2,224 @@
 //  EAGLView.m
 //  Xenophobe
 //
-//  Created by Alexander on 10/16/10.
-//  Copyright 2010 __MyCompanyName__. All rights reserved.
+//  Created by Alexander on 10/20/10.
+//  Copyright 2010 Alexander Nabavi-Noori, XanderNet Inc. All rights reserved.
+//  
+//  Team:
+//  Alexander Nabavi-Noori - Software Engineer, Game Architect
+//	James Linnell - Software Engineer, Creative Design, Art Producer
+//	Tyler Newcomb - Creative Design, Art Producer
 //
+//	Last Updated - 10/20/2010 @ 6PM - Alexander
+//	- Initial Project Creation
 
 #import <QuartzCore/QuartzCore.h>
+#import <OpenGLES/EAGLDrawable.h>
+#import <mach/mach.h>
+#import <mach/mach_time.h>
 
 #import "EAGLView.h"
 
-@interface EAGLView (PrivateMethods)
-- (void)createFramebuffer;
-- (void)deleteFramebuffer;
+#define USE_DEPTH_BUFFER 0
+
+// A class extension to declare private methods
+@interface EAGLView ()
+
+@property (nonatomic, retain) EAGLContext *context;
+- (BOOL) createFramebuffer;
+- (void) destroyFramebuffer;
+- (void) drawView;
 @end
+
 
 @implementation EAGLView
 
-@dynamic context;
+@synthesize context;
 
-// You must implement this method
-+ (Class)layerClass
-{
-    return [CAEAGLLayer class];
-}
-
-//The EAGL view is stored in the nib file. When it's unarchived it's sent -initWithCoder:.
-- (id)initWithCoder:(NSCoder*)coder
-{
-    self = [super initWithCoder:coder];
-	if (self)
-    {
-        CAEAGLLayer *eaglLayer = (CAEAGLLayer *)self.layer;
-        
-        eaglLayer.opaque = TRUE;
-        eaglLayer.drawableProperties = [NSDictionary dictionaryWithObjectsAndKeys:
-                                        [NSNumber numberWithBool:FALSE], kEAGLDrawablePropertyRetainedBacking,
-                                        kEAGLColorFormatRGBA8, kEAGLDrawablePropertyColorFormat,
-                                        nil];
+- (void)dealloc {
+    
+	[gameController release];
+    if ([EAGLContext currentContext] == context) {
+        [EAGLContext setCurrentContext:nil];
     }
     
-    return self;
-}
-
-- (void)dealloc
-{
-    [self deleteFramebuffer];    
-    [context release];
-    
+    [context release];  
     [super dealloc];
 }
 
-- (EAGLContext *)context
-{
-    return context;
+// You must implement this method
++ (Class)layerClass {
+    return [CAEAGLLayer class];
 }
 
-- (void)setContext:(EAGLContext *)newContext
-{
-    if (context != newContext)
-    {
-        [self deleteFramebuffer];
-        
-        [context release];
-        context = [newContext retain];
-        
-        [EAGLContext setCurrentContext:nil];
-    }
-}
 
-- (void)createFramebuffer
-{
-    if (context && !defaultFramebuffer)
-    {
-        [EAGLContext setCurrentContext:context];
-        
-        // Create default framebuffer object.
-        glGenFramebuffers(1, &defaultFramebuffer);
-        glBindFramebuffer(GL_FRAMEBUFFER, defaultFramebuffer);
-        
-        // Create color render buffer and allocate backing store.
-        glGenRenderbuffers(1, &colorRenderbuffer);
-        glBindRenderbuffer(GL_RENDERBUFFER, colorRenderbuffer);
-        [context renderbufferStorage:GL_RENDERBUFFER fromDrawable:(CAEAGLLayer *)self.layer];
-        glGetRenderbufferParameteriv(GL_RENDERBUFFER, GL_RENDERBUFFER_WIDTH, &framebufferWidth);
-        glGetRenderbufferParameteriv(GL_RENDERBUFFER, GL_RENDERBUFFER_HEIGHT, &framebufferHeight);
-        
-        glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_RENDERBUFFER, colorRenderbuffer);
-        
-        if (glCheckFramebufferStatus(GL_FRAMEBUFFER) != GL_FRAMEBUFFER_COMPLETE)
-            NSLog(@"Failed to make complete framebuffer object %x", glCheckFramebufferStatus(GL_FRAMEBUFFER));
-    }
-}
-
-- (void)deleteFramebuffer
-{
-    if (context)
-    {
-        [EAGLContext setCurrentContext:context];
-        
-        if (defaultFramebuffer)
-        {
-            glDeleteFramebuffers(1, &defaultFramebuffer);
-            defaultFramebuffer = 0;
-        }
-        
-        if (colorRenderbuffer)
-        {
-            glDeleteRenderbuffers(1, &colorRenderbuffer);
-            colorRenderbuffer = 0;
-        }
-    }
-}
-
-- (void)setFramebuffer
-{
-    if (context)
-    {
-        [EAGLContext setCurrentContext:context];
-        
-        if (!defaultFramebuffer)
-            [self createFramebuffer];
-        
-        glBindFramebuffer(GL_FRAMEBUFFER, defaultFramebuffer);
-        
-        glViewport(0, 0, framebufferWidth, framebufferHeight);
-    }
-}
-
-- (BOOL)presentFramebuffer
-{
-    BOOL success = FALSE;
+- (id)initWithFrame:(CGRect)frame {
     
-    if (context)
-    {
-        [EAGLContext setCurrentContext:context];
+    if ((self = [super initWithFrame:frame])) {
         
-        glBindRenderbuffer(GL_RENDERBUFFER, colorRenderbuffer);
+        _sharedDirector = [Director sharedDirector];
         
-        success = [context presentRenderbuffer:GL_RENDERBUFFER];
+        // Get the layer
+        CAEAGLLayer *eaglLayer = (CAEAGLLayer *)self.layer;
+        
+        eaglLayer.opaque = YES;
+        eaglLayer.drawableProperties = [NSDictionary dictionaryWithObjectsAndKeys:
+                                        [NSNumber numberWithBool:NO], kEAGLDrawablePropertyRetainedBacking, kEAGLColorFormatRGBA8, kEAGLDrawablePropertyColorFormat, nil];
+        
+        context = [[EAGLContext alloc] initWithAPI:kEAGLRenderingAPIOpenGLES1];
+        
+        if (!context || ![EAGLContext setCurrentContext:context]) {
+            [self release];
+            return nil;
+        }
+		
+		// Init the gameController
+		gameController = [[XenophobeGameController alloc] init];
+		
+		lastTime = CFAbsoluteTimeGetCurrent();
+		
+		// Configure and start accelerometer delegating the game controller to take the input
+		[[UIAccelerometer sharedAccelerometer] setUpdateInterval:(1.0 / 100)];
+		[[UIAccelerometer sharedAccelerometer] setDelegate:gameController];
     }
-    
-    return success;
+    return self;
 }
 
-- (void)layoutSubviews
-{
-    // The framebuffer will be re-created at the beginning of the next setFramebuffer method call.
-    [self deleteFramebuffer];
+
+#pragma mark -
+#pragma mark Main game loop
+
+- (void)startGameTimer {
+    gameLoopTimer = [NSTimer scheduledTimerWithTimeInterval:1.0/60 target:self selector:@selector(mainGameLoop) userInfo:nil repeats:YES];
+}
+
+- (void)mainGameLoop {
+	// Create variables to hold the current time and calculated delta
+	CFTimeInterval		time;
+	float				delta;
+	
+	// This is the heart of the game loop and will keep on looping until it is told otherwise
+    while(true) {
+		
+        // Create an autorelease pool which can be used within this tight loop.  This is a memory
+        // leak when using NSString stringWithFormat in the renderScene method.  Adding a specific
+        // autorelease pool stops the memory leak
+        NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+        
+        // I found this trick on iDevGames.com.  The command below pumps events which take place
+        // such as screen touches etc so they are handled and then runs our code.  This means
+        // that we are always in sync with VBL rather than an NSTimer and VBL being out of sync
+        while(CFRunLoopRunInMode(kCFRunLoopDefaultMode, 0.002, TRUE) == kCFRunLoopRunHandledSource);
+        
+        // Get the current time and calculate the delta between the lasttime and now
+        time = CFAbsoluteTimeGetCurrent();
+        delta = (time - lastTime);
+        
+        // Go and update the game logic and then render the scene
+        [gameController updateScene:delta];
+        [self drawView];
+        
+        // Calculate the FPS
+        _FPSCounter += delta;
+        if(_FPSCounter > 0.25f) {
+            _FPSCounter = 0;
+            float _fps = (1.0f / (time - lastTime));
+            // Set the FPS in the director
+            [_sharedDirector setFramesPerSecond:_fps];
+        }
+		
+        // Set the lasttime to the current time ready for the next pass
+        lastTime = time;
+        
+        // Release the autorelease pool so that it is drained
+        [pool release];
+    }
+}
+
+
+- (void)drawView {
+    
+	// Set the current EAGLContext and bind to the framebuffer.  This will direct all OGL commands to the
+	// framebuffer and the associated renderbuffer attachment which is where our scene will be rendered
+	[EAGLContext setCurrentContext:context];
+    glBindFramebufferOES(GL_FRAMEBUFFER_OES, viewFramebuffer);
+    
+	// Get the game controller to render our scene
+	[gameController renderScene];
+	
+	// Bind to the renderbuffer and then present this image to the current context
+	glBindRenderbufferOES(GL_RENDERBUFFER_OES, viewRenderbuffer);
+    [context presentRenderbuffer:GL_RENDERBUFFER_OES];
+}
+
+#pragma mark -
+#pragma mark Touches
+
+// Pass on all touch events to the game controller including a reference to this view so we can get data
+// about this view if necessary
+- (void)touchesBegan:(NSSet*)touches withEvent:(UIEvent*)event {
+	[gameController touchesBegan:touches withEvent:event view:self];
+}
+
+
+- (void)touchesMoved:(NSSet*)touches withEvent:(UIEvent*)event {
+	[gameController touchesMoved:touches withEvent:event view:self];
+}
+
+
+- (void)touchesEnded:(NSSet*)touches withEvent:(UIEvent*)event {
+	[gameController touchesEnded:touches withEvent:event view:self];
+}
+
+
+- (void)layoutSubviews {
+    [EAGLContext setCurrentContext:context];
+    [self destroyFramebuffer];
+    [self createFramebuffer];
+    [self drawView];
+}
+
+
+- (BOOL)createFramebuffer {
+    
+    glGenFramebuffersOES(1, &viewFramebuffer);
+    glGenRenderbuffersOES(1, &viewRenderbuffer);
+    
+    glBindFramebufferOES(GL_FRAMEBUFFER_OES, viewFramebuffer);
+    glBindRenderbufferOES(GL_RENDERBUFFER_OES, viewRenderbuffer);
+    [context renderbufferStorage:GL_RENDERBUFFER_OES fromDrawable:(CAEAGLLayer*)self.layer];
+    glFramebufferRenderbufferOES(GL_FRAMEBUFFER_OES, GL_COLOR_ATTACHMENT0_OES, GL_RENDERBUFFER_OES, viewRenderbuffer);
+    
+    glGetRenderbufferParameterivOES(GL_RENDERBUFFER_OES, GL_RENDERBUFFER_WIDTH_OES, &backingWidth);
+    glGetRenderbufferParameterivOES(GL_RENDERBUFFER_OES, GL_RENDERBUFFER_HEIGHT_OES, &backingHeight);
+    
+    if (USE_DEPTH_BUFFER) {
+        glGenRenderbuffersOES(1, &depthRenderbuffer);
+        glBindRenderbufferOES(GL_RENDERBUFFER_OES, depthRenderbuffer);
+        glRenderbufferStorageOES(GL_RENDERBUFFER_OES, GL_DEPTH_COMPONENT16_OES, backingWidth, backingHeight);
+        glFramebufferRenderbufferOES(GL_FRAMEBUFFER_OES, GL_DEPTH_ATTACHMENT_OES, GL_RENDERBUFFER_OES, depthRenderbuffer);
+    }
+    
+    if(glCheckFramebufferStatusOES(GL_FRAMEBUFFER_OES) != GL_FRAMEBUFFER_COMPLETE_OES) {
+        if(DEBUG) NSLog(@"failed to make complete framebuffer object %x", glCheckFramebufferStatusOES(GL_FRAMEBUFFER_OES));
+        return NO;
+    }
+    
+    return YES;
+}
+
+
+- (void)destroyFramebuffer {
+    
+    glDeleteFramebuffersOES(1, &viewFramebuffer);
+    viewFramebuffer = 0;
+    glDeleteRenderbuffersOES(1, &viewRenderbuffer);
+    viewRenderbuffer = 0;
+    
+    if(depthRenderbuffer) {
+        glDeleteRenderbuffersOES(1, &depthRenderbuffer);
+        depthRenderbuffer = 0;
+    }
 }
 
 @end
