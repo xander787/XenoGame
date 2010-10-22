@@ -43,9 +43,9 @@
 	};
 	1170EBE9126ED1CE00721CF4 /* Common.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {558, 1859}}";
-			sepNavSelRange = "{492, 0}";
-			sepNavVisRange = "{423, 249}";
+			sepNavIntBoundsRect = "{{0, 0}, {1171, 1859}}";
+			sepNavSelRange = "{371, 0}";
+			sepNavVisRange = "{0, 950}";
 		};
 	};
 	1170EBEA126ED1E000721CF4 /* Transforms.h */ = {
@@ -340,7 +340,7 @@
 		fRef = 1D3623250D0F684500981E51 /* XenophobeAppDelegate.m */;
 		name = "XenophobeAppDelegate.m: 32";
 		rLen = 0;
-		rLoc = 1246;
+		rLoc = 1260;
 		rType = 0;
 		vrLen = 1162;
 		vrLoc = 220;
@@ -820,7 +820,7 @@
 		fRef = 1D3623250D0F684500981E51 /* XenophobeAppDelegate.m */;
 		name = "XenophobeAppDelegate.m: 32";
 		rLen = 0;
-		rLoc = 1246;
+		rLoc = 1260;
 		rType = 0;
 		vrLen = 1086;
 		vrLoc = 220;
@@ -980,9 +980,9 @@
 	};
 	1170ED0012700EE900721CF4 /* Director.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1171, 728}}";
-			sepNavSelRange = "{76, 0}";
-			sepNavVisRange = "{0, 973}";
+			sepNavIntBoundsRect = "{{0, 0}, {558, 728}}";
+			sepNavSelRange = "{481, 0}";
+			sepNavVisRange = "{347, 317}";
 		};
 	};
 	1170ED0112700EE900721CF4 /* Director.m */ = {
@@ -1016,7 +1016,7 @@
 		isa = PBXTextBookmark;
 		fRef = 1170ED0012700EE900721CF4 /* Director.h */;
 		rLen = 0;
-		rLoc = 9223372036854777856;
+		rLoc = 1417;
 		rType = 0;
 	};
 	1170ED0612700EEC00721CF4 /* PBXTextBookmark */ = {
@@ -1159,7 +1159,7 @@
 	};
 	1170ED1812700F9800721CF4 /* SoundManager.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1171, 1287}}";
+			sepNavIntBoundsRect = "{{0, 0}, {1171, 1391}}";
 			sepNavSelRange = "{430, 0}";
 			sepNavVisRange = "{0, 1279}";
 		};
@@ -1339,9 +1339,9 @@
 	};
 	1170ED2F127010DD00721CF4 /* AbstractScene.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1171, 1183}}";
+			sepNavIntBoundsRect = "{{0, 0}, {1171, 1092}}";
 			sepNavSelRange = "{765, 0}";
-			sepNavVisRange = "{0, 1329}";
+			sepNavVisRange = "{402, 1271}";
 		};
 	};
 	1170ED30127010DD00721CF4 /* AbstractScene.m */ = {
@@ -1478,15 +1478,15 @@
 	1170ED43127012DD00721CF4 /* XenophobeGameController.h */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {1171, 754}}";
-			sepNavSelRange = "{260, 0}";
-			sepNavVisRange = "{50, 889}";
+			sepNavSelRange = "{404, 0}";
+			sepNavVisRange = "{47, 858}";
 		};
 	};
 	1170ED44127012DD00721CF4 /* XenophobeGameController.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1171, 2171}}";
-			sepNavSelRange = "{183, 0}";
-			sepNavVisRange = "{0, 862}";
+			sepNavIntBoundsRect = "{{0, 0}, {1171, 2314}}";
+			sepNavSelRange = "{1396, 0}";
+			sepNavVisRange = "{488, 1218}";
 		};
 	};
 	1170ED46127012E100721CF4 /* PBXTextBookmark */ = {
@@ -1954,7 +1954,7 @@
 		fRef = 1170ED2F127010DD00721CF4 /* AbstractScene.h */;
 		name = "AbstractScene.h: 29";
 		rLen = 0;
-		rLoc = 765;
+		rLoc = 767;
 		rType = 0;
 		vrLen = 1329;
 		vrLoc = 0;
@@ -1972,7 +1972,7 @@
 		fRef = 1170ED2F127010DD00721CF4 /* AbstractScene.h */;
 		name = "AbstractScene.h: 29";
 		rLen = 0;
-		rLoc = 765;
+		rLoc = 767;
 		rType = 0;
 		vrLen = 480;
 		vrLoc = 573;
@@ -1982,7 +1982,7 @@
 		fRef = 1170ED2F127010DD00721CF4 /* AbstractScene.h */;
 		name = "AbstractScene.h: 29";
 		rLen = 0;
-		rLoc = 765;
+		rLoc = 767;
 		rType = 0;
 		vrLen = 1329;
 		vrLoc = 0;
@@ -1992,7 +1992,7 @@
 		fRef = 1170ED2F127010DD00721CF4 /* AbstractScene.h */;
 		name = "AbstractScene.h: 29";
 		rLen = 0;
-		rLoc = 765;
+		rLoc = 767;
 		rType = 0;
 		vrLen = 480;
 		vrLoc = 573;
@@ -2028,7 +2028,7 @@
 		fRef = 1170ED2F127010DD00721CF4 /* AbstractScene.h */;
 		name = "AbstractScene.h: 29";
 		rLen = 0;
-		rLoc = 765;
+		rLoc = 767;
 		rType = 0;
 		vrLen = 1329;
 		vrLoc = 0;
@@ -2046,7 +2046,7 @@
 		fRef = 1170ED2F127010DD00721CF4 /* AbstractScene.h */;
 		name = "AbstractScene.h: 29";
 		rLen = 0;
-		rLoc = 765;
+		rLoc = 767;
 		rType = 0;
 		vrLen = 480;
 		vrLoc = 573;
@@ -2064,7 +2064,7 @@
 		fRef = 1170ED2F127010DD00721CF4 /* AbstractScene.h */;
 		name = "AbstractScene.h: 29";
 		rLen = 0;
-		rLoc = 765;
+		rLoc = 767;
 		rType = 0;
 		vrLen = 1329;
 		vrLoc = 0;
@@ -2088,7 +2088,7 @@
 		fRef = 1170ED2F127010DD00721CF4 /* AbstractScene.h */;
 		name = "AbstractScene.h: 29";
 		rLen = 0;
-		rLoc = 765;
+		rLoc = 767;
 		rType = 0;
 		vrLen = 1329;
 		vrLoc = 0;
@@ -2133,18 +2133,459 @@
 		vrLen = 516;
 		vrLoc = 0;
 	};
+	1170EDE612710DF000721CF4 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1170ED2F127010DD00721CF4 /* AbstractScene.h */;
+		name = "AbstractScene.h: 29";
+		rLen = 0;
+		rLoc = 767;
+		rType = 0;
+		vrLen = 558;
+		vrLoc = 552;
+	};
+	1170EDE712710DF000721CF4 /* XCBuildMessageTextBookmark */ = {
+		isa = PBXTextBookmark;
+		comments = "GameScene.h: No such file or directory";
+		fRef = 1170ED43127012DD00721CF4 /* XenophobeGameController.h */;
+		fallbackIsa = XCBuildMessageTextBookmark;
+		rLen = 1;
+		rLoc = 19;
+		rType = 1;
+	};
+	1170EDE812710DF000721CF4 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1170ED43127012DD00721CF4 /* XenophobeGameController.h */;
+		name = "XenophobeGameController.h: 19";
+		rLen = 0;
+		rLoc = 422;
+		rType = 0;
+		vrLen = 384;
+		vrLoc = 260;
+	};
+	1170EDE912710E0300721CF4 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1170ED2F127010DD00721CF4 /* AbstractScene.h */;
+		name = "AbstractScene.h: 29";
+		rLen = 0;
+		rLoc = 767;
+		rType = 0;
+		vrLen = 496;
+		vrLoc = 172;
+	};
+	1170EDEA12710E0300721CF4 /* XCBuildMessageTextBookmark */ = {
+		isa = PBXTextBookmark;
+		comments = "SettingsScene.h: No such file or directory";
+		fRef = 1170ED43127012DD00721CF4 /* XenophobeGameController.h */;
+		fallbackIsa = XCBuildMessageTextBookmark;
+		rLen = 0;
+		rLoc = 19;
+		rType = 1;
+	};
+	1170EDEB12710E0300721CF4 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1170ED43127012DD00721CF4 /* XenophobeGameController.h */;
+		name = "XenophobeGameController.h: 21";
+		rLen = 0;
+		rLoc = 426;
+		rType = 0;
+		vrLen = 384;
+		vrLoc = 260;
+	};
+	1170EDEC12710E2100721CF4 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1D3623250D0F684500981E51 /* XenophobeAppDelegate.m */;
+		name = "XenophobeAppDelegate.m: 16";
+		rLen = 33;
+		rLoc = 440;
+		rType = 0;
+		vrLen = 618;
+		vrLoc = 179;
+	};
+	1170EDED12710E2100721CF4 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1170ED43127012DD00721CF4 /* XenophobeGameController.h */;
+		name = "XenophobeGameController.h: 19";
+		rLen = 0;
+		rLoc = 404;
+		rType = 0;
+		vrLen = 384;
+		vrLoc = 260;
+	};
+	1170EDEE12710E2100721CF4 /* XCBuildMessageTextBookmark */ = {
+		isa = PBXTextBookmark;
+		comments = "MenuControl.h: No such file or directory";
+		fRef = 1170ED2F127010DD00721CF4 /* AbstractScene.h */;
+		fallbackIsa = XCBuildMessageTextBookmark;
+		rLen = 1;
+		rLoc = 28;
+		rType = 1;
+	};
+	1170EDEF12710E2100721CF4 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1170ED2F127010DD00721CF4 /* AbstractScene.h */;
+		name = "AbstractScene.h: 29";
+		rLen = 0;
+		rLoc = 767;
+		rType = 0;
+		vrLen = 540;
+		vrLoc = 573;
+	};
+	1170EDF012710E3A00721CF4 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1170ED2F127010DD00721CF4 /* AbstractScene.h */;
+		name = "AbstractScene.h: 29";
+		rLen = 0;
+		rLoc = 765;
+		rType = 0;
+		vrLen = 542;
+		vrLoc = 573;
+	};
+	1170EDF112710E3A00721CF4 /* XCBuildMessageTextBookmark */ = {
+		isa = PBXTextBookmark;
+		comments = "MenuScene.h: No such file or directory";
+		fRef = 1170ED43127012DD00721CF4 /* XenophobeGameController.h */;
+		fallbackIsa = XCBuildMessageTextBookmark;
+		rLen = 1;
+		rLoc = 18;
+		rType = 1;
+	};
+	1170EDF212710E3A00721CF4 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1170ED43127012DD00721CF4 /* XenophobeGameController.h */;
+		name = "XenophobeGameController.h: 19";
+		rLen = 0;
+		rLoc = 404;
+		rType = 0;
+		vrLen = 384;
+		vrLoc = 260;
+	};
+	1170EDF512710E4D00721CF4 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1170ED43127012DD00721CF4 /* XenophobeGameController.h */;
+		name = "XenophobeGameController.h: 19";
+		rLen = 0;
+		rLoc = 404;
+		rType = 0;
+		vrLen = 374;
+		vrLoc = 260;
+	};
+	1170EDF612710E4D00721CF4 /* XCBuildMessageTextBookmark */ = {
+		isa = PBXTextBookmark;
+		comments = "'MenuScene' undeclared (first use in this function)";
+		fRef = 1170ED44127012DD00721CF4 /* XenophobeGameController.m */;
+		fallbackIsa = XCBuildMessageTextBookmark;
+		rLen = 1;
+		rLoc = 46;
+		rType = 1;
+	};
+	1170EDF712710E4D00721CF4 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1170ED44127012DD00721CF4 /* XenophobeGameController.m */;
+		name = "XenophobeGameController.m: 47";
+		rLen = 0;
+		rLoc = 1032;
+		rType = 0;
+		vrLen = 506;
+		vrLoc = 759;
+	};
+	1170EDFA12710E5D00721CF4 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1170EDB71270160000721CF4 /* MainMenuScene.h */;
+		name = "MainMenuScene.h: 7";
+		rLen = 0;
+		rLoc = 161;
+		rType = 0;
+		vrLen = 516;
+		vrLoc = 0;
+	};
+	1170EDFB12710E5D00721CF4 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1170ED1812700F9800721CF4 /* SoundManager.h */;
+		name = "SoundManager.h: 14";
+		rLen = 0;
+		rLoc = 430;
+		rType = 0;
+		vrLen = 1279;
+		vrLoc = 0;
+	};
+	1170EDFC12710E5D00721CF4 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1170ED1912700F9800721CF4 /* SoundManager.m */;
+		name = "SoundManager.m: 14";
+		rLen = 0;
+		rLoc = 430;
+		rType = 0;
+		vrLen = 1551;
+		vrLoc = 0;
+	};
+	1170EDFD12710E5D00721CF4 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 28FD14FC0DC6FC130079059D /* EAGLView.h */;
+		name = "EAGLView.h: 50";
+		rLen = 0;
+		rLoc = 1510;
+		rType = 0;
+		vrLen = 1284;
+		vrLoc = 152;
+	};
+	1170EDFE12710E5D00721CF4 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 28FD14FD0DC6FC130079059D /* EAGLView.m */;
+		name = "EAGLView.m: 226";
+		rLen = 0;
+		rLoc = 7317;
+		rType = 0;
+		vrLen = 874;
+		vrLoc = 0;
+	};
+	1170EDFF12710E5D00721CF4 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1D3623240D0F684500981E51 /* XenophobeAppDelegate.h */;
+		name = "XenophobeAppDelegate.h: 14";
+		rLen = 0;
+		rLoc = 438;
+		rType = 0;
+		vrLen = 638;
+		vrLoc = 0;
+	};
+	1170EE0012710E5D00721CF4 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1D3623250D0F684500981E51 /* XenophobeAppDelegate.m */;
+		name = "XenophobeAppDelegate.m: 16";
+		rLen = 0;
+		rLoc = 458;
+		rType = 0;
+		vrLen = 1260;
+		vrLoc = 0;
+	};
+	1170EE0112710E5D00721CF4 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1170ED30127010DD00721CF4 /* AbstractScene.m */;
+		name = "AbstractScene.m: 14";
+		rLen = 0;
+		rLoc = 431;
+		rType = 0;
+		vrLen = 1018;
+		vrLoc = 0;
+	};
+	1170EE0212710E5D00721CF4 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1170ED2F127010DD00721CF4 /* AbstractScene.h */;
+		name = "AbstractScene.h: 29";
+		rLen = 0;
+		rLoc = 765;
+		rType = 0;
+		vrLen = 1271;
+		vrLoc = 402;
+	};
+	1170EE0312710E5D00721CF4 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1170ED43127012DD00721CF4 /* XenophobeGameController.h */;
+		name = "XenophobeGameController.h: 19";
+		rLen = 0;
+		rLoc = 404;
+		rType = 0;
+		vrLen = 858;
+		vrLoc = 47;
+	};
+	1170EE0412710E5D00721CF4 /* XCBuildMessageTextBookmark */ = {
+		isa = PBXTextBookmark;
+		comments = "'MenuScene' undeclared (first use in this function)";
+		fRef = 1170ED44127012DD00721CF4 /* XenophobeGameController.m */;
+		fallbackIsa = XCBuildMessageTextBookmark;
+		rLen = 1;
+		rLoc = 46;
+		rType = 1;
+	};
+	1170EE0512710E5D00721CF4 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1170ED44127012DD00721CF4 /* XenophobeGameController.m */;
+		name = "XenophobeGameController.m: 55";
+		rLen = 21;
+		rLoc = 1376;
+		rType = 0;
+		vrLen = 1233;
+		vrLoc = 488;
+	};
+	1170EE0C12710E6000721CF4 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1170ED44127012DD00721CF4 /* XenophobeGameController.m */;
+		name = "XenophobeGameController.m: 55";
+		rLen = 0;
+		rLoc = 1396;
+		rType = 0;
+		vrLen = 1233;
+		vrLoc = 488;
+	};
+	1170EE0F12710E6A00721CF4 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1170ED44127012DD00721CF4 /* XenophobeGameController.m */;
+		name = "XenophobeGameController.m: 56";
+		rLen = 0;
+		rLoc = 1397;
+		rType = 0;
+		vrLen = 560;
+		vrLoc = 759;
+	};
+	1170EE1012710E6A00721CF4 /* XCBuildMessageTextBookmark */ = {
+		isa = PBXTextBookmark;
+		comments = "\"DEBUG\" redefined";
+		fRef = 1170EBE9126ED1CE00721CF4 /* Common.h */;
+		fallbackIsa = XCBuildMessageTextBookmark;
+		rLen = 1;
+		rLoc = 22;
+		rType = 1;
+	};
+	1170EE1112710E6A00721CF4 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1170EBE9126ED1CE00721CF4 /* Common.h */;
+		name = "Common.h: 24";
+		rLen = 0;
+		rLoc = 508;
+		rType = 0;
+		vrLen = 252;
+		vrLoc = 420;
+	};
+	1170EE1212710E6A00721CF4 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1170ED44127012DD00721CF4 /* XenophobeGameController.m */;
+		name = "XenophobeGameController.m: 55";
+		rLen = 0;
+		rLoc = 1396;
+		rType = 0;
+		vrLen = 1233;
+		vrLoc = 488;
+	};
+	1170EE1312710E6A00721CF4 /* XCBuildMessageTextBookmark */ = {
+		isa = PBXTextBookmark;
+		comments = "\"DEBUG\" redefined";
+		fRef = 1170EBE9126ED1CE00721CF4 /* Common.h */;
+		fallbackIsa = XCBuildMessageTextBookmark;
+		rLen = 1;
+		rLoc = 22;
+		rType = 1;
+	};
+	1170EE1412710E6A00721CF4 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1170EBE9126ED1CE00721CF4 /* Common.h */;
+		name = "Common.h: 23";
+		rLen = 0;
+		rLoc = 492;
+		rType = 0;
+		vrLen = 950;
+		vrLoc = 0;
+	};
+	1170EE151271112A00721CF4 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1170ED44127012DD00721CF4 /* XenophobeGameController.m */;
+		name = "XenophobeGameController.m: 9";
+		rLen = 36;
+		rLoc = 151;
+		rType = 0;
+		vrLen = 279;
+		vrLoc = 0;
+	};
+	1170EE161271112A00721CF4 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1170ED43127012DD00721CF4 /* XenophobeGameController.h */;
+		name = "XenophobeGameController.h: 13";
+		rLen = 21;
+		rLoc = 260;
+		rType = 0;
+		vrLen = 334;
+		vrLoc = 0;
+	};
+	1170EE171271112A00721CF4 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1170EBE9126ED1CE00721CF4 /* Common.h */;
+		name = "Common.h: 23";
+		rLen = 0;
+		rLoc = 492;
+		rType = 0;
+		vrLen = 251;
+		vrLoc = 420;
+	};
+	1170EE181271112A00721CF4 /* XCBuildMessageTextBookmark */ = {
+		isa = PBXTextBookmark;
+		comments = "In file included from /Users/alexander/Desktop/Projects/Game Project/The Game/Xenophobe/Director.h";
+		fRef = 1170ED0012700EE900721CF4 /* Director.h */;
+		fallbackIsa = XCBuildMessageTextBookmark;
+		rLen = 1;
+		rLoc = 18;
+		rType = 1;
+	};
+	1170EE191271112A00721CF4 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1170ED0012700EE900721CF4 /* Director.h */;
+		name = "Director.h: 17";
+		rLen = 0;
+		rLoc = 481;
+		rType = 0;
+		vrLen = 317;
+		vrLoc = 347;
+	};
+	1170EE1A1271113400721CF4 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1170EBE9126ED1CE00721CF4 /* Common.h */;
+		name = "Common.h: 13";
+		rLen = 0;
+		rLoc = 371;
+		rType = 0;
+		vrLen = 950;
+		vrLoc = 0;
+	};
+	1170EE1B1271113400721CF4 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1170ED44127012DD00721CF4 /* XenophobeGameController.m */;
+		name = "XenophobeGameController.m: 55";
+		rLen = 0;
+		rLoc = 1396;
+		rType = 0;
+		vrLen = 1218;
+		vrLoc = 488;
+	};
+	1170EE1C1271113400721CF4 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1170ED43127012DD00721CF4 /* XenophobeGameController.h */;
+		name = "XenophobeGameController.h: 19";
+		rLen = 0;
+		rLoc = 404;
+		rType = 0;
+		vrLen = 858;
+		vrLoc = 47;
+	};
+	1170EE1D1271113400721CF4 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 28FD14FD0DC6FC130079059D /* EAGLView.m */;
+		name = "EAGLView.m: 226";
+		rLen = 0;
+		rLoc = 7317;
+		rType = 0;
+		vrLen = 874;
+		vrLoc = 0;
+	};
+	1170EE1E1271113400721CF4 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 28FD14FC0DC6FC130079059D /* EAGLView.h */;
+		name = "EAGLView.h: 50";
+		rLen = 0;
+		rLoc = 1510;
+		rType = 0;
+		vrLen = 1284;
+		vrLoc = 152;
+	};
 	1D3623240D0F684500981E51 /* XenophobeAppDelegate.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1171, 469}}";
+			sepNavIntBoundsRect = "{{0, 0}, {1171, 512}}";
 			sepNavSelRange = "{438, 0}";
 			sepNavVisRange = "{0, 638}";
 		};
 	};
 	1D3623250D0F684500981E51 /* XenophobeAppDelegate.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1171, 819}}";
-			sepNavSelRange = "{439, 0}";
-			sepNavVisRange = "{0, 1249}";
+			sepNavIntBoundsRect = "{{0, 0}, {782, 806}}";
+			sepNavSelRange = "{440, 33}";
+			sepNavVisRange = "{179, 618}";
 		};
 	};
 	1D6058900D05DD3D006BFB54 /* Xenophobe */ = {
@@ -2162,9 +2603,9 @@
 	};
 	28FD14FD0DC6FC130079059D /* EAGLView.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {663, 3029}}";
-			sepNavSelRange = "{1977, 0}";
-			sepNavVisRange = "{1787, 499}";
+			sepNavIntBoundsRect = "{{0, 0}, {1171, 3172}}";
+			sepNavSelRange = "{7317, 0}";
+			sepNavVisRange = "{0, 874}";
 		};
 	};
 	29B97313FDCFA39411CA2CEA /* Project object */ = {
@@ -2422,6 +2863,51 @@
 			1170EDBE1270160F00721CF4 = 1170EDBE1270160F00721CF4 /* PBXTextBookmark */;
 			1170EDBF1270160F00721CF4 = 1170EDBF1270160F00721CF4 /* PBXTextBookmark */;
 			1170EDC71270163B00721CF4 /* PBXTextBookmark */ = 1170EDC71270163B00721CF4 /* PBXTextBookmark */;
+			1170EDE612710DF000721CF4 /* PBXTextBookmark */ = 1170EDE612710DF000721CF4 /* PBXTextBookmark */;
+			1170EDE712710DF000721CF4 /* XCBuildMessageTextBookmark */ = 1170EDE712710DF000721CF4 /* XCBuildMessageTextBookmark */;
+			1170EDE812710DF000721CF4 /* PBXTextBookmark */ = 1170EDE812710DF000721CF4 /* PBXTextBookmark */;
+			1170EDE912710E0300721CF4 /* PBXTextBookmark */ = 1170EDE912710E0300721CF4 /* PBXTextBookmark */;
+			1170EDEA12710E0300721CF4 /* XCBuildMessageTextBookmark */ = 1170EDEA12710E0300721CF4 /* XCBuildMessageTextBookmark */;
+			1170EDEB12710E0300721CF4 /* PBXTextBookmark */ = 1170EDEB12710E0300721CF4 /* PBXTextBookmark */;
+			1170EDEC12710E2100721CF4 /* PBXTextBookmark */ = 1170EDEC12710E2100721CF4 /* PBXTextBookmark */;
+			1170EDED12710E2100721CF4 /* PBXTextBookmark */ = 1170EDED12710E2100721CF4 /* PBXTextBookmark */;
+			1170EDEE12710E2100721CF4 /* XCBuildMessageTextBookmark */ = 1170EDEE12710E2100721CF4 /* XCBuildMessageTextBookmark */;
+			1170EDEF12710E2100721CF4 /* PBXTextBookmark */ = 1170EDEF12710E2100721CF4 /* PBXTextBookmark */;
+			1170EDF012710E3A00721CF4 /* PBXTextBookmark */ = 1170EDF012710E3A00721CF4 /* PBXTextBookmark */;
+			1170EDF112710E3A00721CF4 /* XCBuildMessageTextBookmark */ = 1170EDF112710E3A00721CF4 /* XCBuildMessageTextBookmark */;
+			1170EDF212710E3A00721CF4 /* PBXTextBookmark */ = 1170EDF212710E3A00721CF4 /* PBXTextBookmark */;
+			1170EDF512710E4D00721CF4 /* PBXTextBookmark */ = 1170EDF512710E4D00721CF4 /* PBXTextBookmark */;
+			1170EDF612710E4D00721CF4 /* XCBuildMessageTextBookmark */ = 1170EDF612710E4D00721CF4 /* XCBuildMessageTextBookmark */;
+			1170EDF712710E4D00721CF4 /* PBXTextBookmark */ = 1170EDF712710E4D00721CF4 /* PBXTextBookmark */;
+			1170EDFA12710E5D00721CF4 /* PBXTextBookmark */ = 1170EDFA12710E5D00721CF4 /* PBXTextBookmark */;
+			1170EDFB12710E5D00721CF4 /* PBXTextBookmark */ = 1170EDFB12710E5D00721CF4 /* PBXTextBookmark */;
+			1170EDFC12710E5D00721CF4 /* PBXTextBookmark */ = 1170EDFC12710E5D00721CF4 /* PBXTextBookmark */;
+			1170EDFD12710E5D00721CF4 /* PBXTextBookmark */ = 1170EDFD12710E5D00721CF4 /* PBXTextBookmark */;
+			1170EDFE12710E5D00721CF4 /* PBXTextBookmark */ = 1170EDFE12710E5D00721CF4 /* PBXTextBookmark */;
+			1170EDFF12710E5D00721CF4 /* PBXTextBookmark */ = 1170EDFF12710E5D00721CF4 /* PBXTextBookmark */;
+			1170EE0012710E5D00721CF4 /* PBXTextBookmark */ = 1170EE0012710E5D00721CF4 /* PBXTextBookmark */;
+			1170EE0112710E5D00721CF4 /* PBXTextBookmark */ = 1170EE0112710E5D00721CF4 /* PBXTextBookmark */;
+			1170EE0212710E5D00721CF4 /* PBXTextBookmark */ = 1170EE0212710E5D00721CF4 /* PBXTextBookmark */;
+			1170EE0312710E5D00721CF4 /* PBXTextBookmark */ = 1170EE0312710E5D00721CF4 /* PBXTextBookmark */;
+			1170EE0412710E5D00721CF4 /* XCBuildMessageTextBookmark */ = 1170EE0412710E5D00721CF4 /* XCBuildMessageTextBookmark */;
+			1170EE0512710E5D00721CF4 /* PBXTextBookmark */ = 1170EE0512710E5D00721CF4 /* PBXTextBookmark */;
+			1170EE0C12710E6000721CF4 /* PBXTextBookmark */ = 1170EE0C12710E6000721CF4 /* PBXTextBookmark */;
+			1170EE0F12710E6A00721CF4 /* PBXTextBookmark */ = 1170EE0F12710E6A00721CF4 /* PBXTextBookmark */;
+			1170EE1012710E6A00721CF4 /* XCBuildMessageTextBookmark */ = 1170EE1012710E6A00721CF4 /* XCBuildMessageTextBookmark */;
+			1170EE1112710E6A00721CF4 /* PBXTextBookmark */ = 1170EE1112710E6A00721CF4 /* PBXTextBookmark */;
+			1170EE1212710E6A00721CF4 /* PBXTextBookmark */ = 1170EE1212710E6A00721CF4 /* PBXTextBookmark */;
+			1170EE1312710E6A00721CF4 /* XCBuildMessageTextBookmark */ = 1170EE1312710E6A00721CF4 /* XCBuildMessageTextBookmark */;
+			1170EE1412710E6A00721CF4 /* PBXTextBookmark */ = 1170EE1412710E6A00721CF4 /* PBXTextBookmark */;
+			1170EE151271112A00721CF4 /* PBXTextBookmark */ = 1170EE151271112A00721CF4 /* PBXTextBookmark */;
+			1170EE161271112A00721CF4 /* PBXTextBookmark */ = 1170EE161271112A00721CF4 /* PBXTextBookmark */;
+			1170EE171271112A00721CF4 /* PBXTextBookmark */ = 1170EE171271112A00721CF4 /* PBXTextBookmark */;
+			1170EE181271112A00721CF4 /* XCBuildMessageTextBookmark */ = 1170EE181271112A00721CF4 /* XCBuildMessageTextBookmark */;
+			1170EE191271112A00721CF4 /* PBXTextBookmark */ = 1170EE191271112A00721CF4 /* PBXTextBookmark */;
+			1170EE1A1271113400721CF4 /* PBXTextBookmark */ = 1170EE1A1271113400721CF4 /* PBXTextBookmark */;
+			1170EE1B1271113400721CF4 /* PBXTextBookmark */ = 1170EE1B1271113400721CF4 /* PBXTextBookmark */;
+			1170EE1C1271113400721CF4 /* PBXTextBookmark */ = 1170EE1C1271113400721CF4 /* PBXTextBookmark */;
+			1170EE1D1271113400721CF4 /* PBXTextBookmark */ = 1170EE1D1271113400721CF4 /* PBXTextBookmark */;
+			1170EE1E1271113400721CF4 /* PBXTextBookmark */ = 1170EE1E1271113400721CF4 /* PBXTextBookmark */;
 		};
 		sourceControlManager = 115BDFDB126ED07200461E73 /* Source Control */;
 		userBuildSettings = {

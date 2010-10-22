@@ -30,7 +30,9 @@
 	[window addSubview:glView];
 	[window makeKeyAndVisible];
     
-    [glView performSelectorOnMainThread:@selector(mainGameLoop) withObject:nil waitUntilDone:NO]; 
+    [glView performSelectorOnMainThread:@selector(mainGameLoop) withObject:nil waitUntilDone:NO];
+	
+	return YES;
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application

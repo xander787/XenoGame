@@ -44,15 +44,15 @@
 		[self initOpenGL];
 		
 		// Initialize the game states and add them to the Director class
-		AbstractScene *scene = [[MenuScene alloc] init];
-		[_director addSceneWithKey:@"menu" scene:scene];
-        [scene release];
-		scene = [[GameScene alloc] init];
-		[_director addSceneWithKey:@"game" scene:scene];
-		[scene release];
-		scene = [[SettingsScene alloc] init];
-		[_director addSceneWithKey:@"settings" scene:scene];
-		[scene release];
+//		AbstractScene *scene = [[MenuScene alloc] init];
+//		[_director addSceneWithKey:@"menu" scene:scene];
+//        [scene release];
+//		scene = [[GameScene alloc] init];
+//		[_director addSceneWithKey:@"game" scene:scene];
+//		[scene release];
+//		scene = [[SettingsScene alloc] init];
+//		[_director addSceneWithKey:@"settings" scene:scene];
+//		[scene release];
 		
 		// Make sure glInitialised is set to NO so that OpenGL gets initialised when the first scene is rendered
 		glInitialised = NO;
