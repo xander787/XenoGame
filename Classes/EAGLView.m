@@ -89,10 +89,6 @@
 #pragma mark -
 #pragma mark Main game loop
 
-- (void)startGameTimer {
-    gameLoopTimer = [NSTimer scheduledTimerWithTimeInterval:1.0/60 target:self selector:@selector(mainGameLoop) userInfo:nil repeats:YES];
-}
-
 - (void)mainGameLoop {
 	// Create variables to hold the current time and calculated delta
 	CFTimeInterval		time;

@@ -16,7 +16,7 @@
 #import "Image.h"
 #import "SpriteSheet.h"
 #import "AbstractScene.h"
-//#import "MenuScene.h"
+#import "MainMenuScene.h"
 
 @class EAGLView;
 

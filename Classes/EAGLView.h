@@ -42,10 +42,7 @@
 	/* Time since the last frame was rendered */
 	CFTimeInterval lastTime;
     float _FPSCounter;
-	
-	/* Game loop timer */
-	NSTimer *gameLoopTimer;
-	
+		
 	/* Game Controller */
 	XenophobeGameController *gameController;
     
@@ -54,6 +51,5 @@
 }
 
 - (void) mainGameLoop;
-- (void) startGameTimer;
 
 @end

@@ -14,10 +14,14 @@
 //	- Initial Project Creation
 
 #import <Foundation/Foundation.h>
+#import "AbstractScene.h"
+#import "MenuControl.h"
 
 
-@interface MainMenuScene : NSObject {
-
+@interface MainMenuScene : AbstractScene {
+	NSMutableArray	*menuItems;
+	CGPoint			_origin;
+	Image			*logoImage;
 }
 
 @end

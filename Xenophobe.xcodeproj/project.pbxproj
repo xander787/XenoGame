@@ -7,6 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		115DBD39127280CE005B1D70 /* continue@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 115DBD34127280CE005B1D70 /* continue@2x.png */; };
+		115DBD3A127280CE005B1D70 /* highscores@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 115DBD35127280CE005B1D70 /* highscores@2x.png */; };
+		115DBD3B127280CE005B1D70 /* newgame@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 115DBD36127280CE005B1D70 /* newgame@2x.png */; };
+		115DBD3C127280CE005B1D70 /* settings@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 115DBD37127280CE005B1D70 /* settings@2x.png */; };
+		115DBD3D127280CE005B1D70 /* xenophobe@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 115DBD38127280CE005B1D70 /* xenophobe@2x.png */; };
+		115DBD43127280DB005B1D70 /* continue.png in Resources */ = {isa = PBXBuildFile; fileRef = 115DBD3E127280DB005B1D70 /* continue.png */; };
+		115DBD44127280DB005B1D70 /* highscores.png in Resources */ = {isa = PBXBuildFile; fileRef = 115DBD3F127280DB005B1D70 /* highscores.png */; };
+		115DBD45127280DB005B1D70 /* newgame.png in Resources */ = {isa = PBXBuildFile; fileRef = 115DBD40127280DB005B1D70 /* newgame.png */; };
+		115DBD46127280DB005B1D70 /* settings.png in Resources */ = {isa = PBXBuildFile; fileRef = 115DBD41127280DB005B1D70 /* settings.png */; };
+		115DBD47127280DB005B1D70 /* xenophobe.png in Resources */ = {isa = PBXBuildFile; fileRef = 115DBD42127280DB005B1D70 /* xenophobe.png */; };
 		1170EBEC126ED1E000721CF4 /* Transforms.m in Sources */ = {isa = PBXBuildFile; fileRef = 1170EBEB126ED1E000721CF4 /* Transforms.m */; };
 		1170EBF5126ED26000721CF4 /* Animation.m in Sources */ = {isa = PBXBuildFile; fileRef = 1170EBF4126ED26000721CF4 /* Animation.m */; };
 		1170EBF8126ED28000721CF4 /* Frame.m in Sources */ = {isa = PBXBuildFile; fileRef = 1170EBF7126ED28000721CF4 /* Frame.m */; };
@@ -39,6 +49,8 @@
 		1170ED8F1270151D00721CF4 /* TileSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 1170ED8E1270151D00721CF4 /* TileSet.m */; };
 		1170ED921270153B00721CF4 /* Layer.m in Sources */ = {isa = PBXBuildFile; fileRef = 1170ED911270153B00721CF4 /* Layer.m */; };
 		1170EDB91270160000721CF4 /* MainMenuScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 1170EDB81270160000721CF4 /* MainMenuScene.m */; };
+		1170EE3A127178D500721CF4 /* MenuControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 1170EE39127178D500721CF4 /* MenuControl.m */; };
+		1170EE3F1271790F00721CF4 /* AbstractControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 1170EE3E1271790F00721CF4 /* AbstractControl.m */; };
 		1D3623260D0F684500981E51 /* XenophobeAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* XenophobeAppDelegate.m */; };
 		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
@@ -49,6 +61,16 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		115DBD34127280CE005B1D70 /* continue@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "continue@2x.png"; sourceTree = SOURCE_ROOT; };
+		115DBD35127280CE005B1D70 /* highscores@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "highscores@2x.png"; sourceTree = SOURCE_ROOT; };
+		115DBD36127280CE005B1D70 /* newgame@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "newgame@2x.png"; sourceTree = SOURCE_ROOT; };
+		115DBD37127280CE005B1D70 /* settings@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settings@2x.png"; sourceTree = SOURCE_ROOT; };
+		115DBD38127280CE005B1D70 /* xenophobe@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "xenophobe@2x.png"; sourceTree = SOURCE_ROOT; };
+		115DBD3E127280DB005B1D70 /* continue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = continue.png; sourceTree = SOURCE_ROOT; };
+		115DBD3F127280DB005B1D70 /* highscores.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = highscores.png; sourceTree = SOURCE_ROOT; };
+		115DBD40127280DB005B1D70 /* newgame.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = newgame.png; sourceTree = SOURCE_ROOT; };
+		115DBD41127280DB005B1D70 /* settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = settings.png; sourceTree = SOURCE_ROOT; };
+		115DBD42127280DB005B1D70 /* xenophobe.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = xenophobe.png; sourceTree = SOURCE_ROOT; };
 		1170EBE9126ED1CE00721CF4 /* Common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Common.h; sourceTree = "<group>"; };
 		1170EBEA126ED1E000721CF4 /* Transforms.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Transforms.h; sourceTree = "<group>"; };
 		1170EBEB126ED1E000721CF4 /* Transforms.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Transforms.m; sourceTree = "<group>"; };
@@ -110,6 +132,10 @@
 		1170ED911270153B00721CF4 /* Layer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Layer.m; sourceTree = "<group>"; };
 		1170EDB71270160000721CF4 /* MainMenuScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainMenuScene.h; sourceTree = "<group>"; };
 		1170EDB81270160000721CF4 /* MainMenuScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainMenuScene.m; sourceTree = "<group>"; };
+		1170EE38127178D500721CF4 /* MenuControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuControl.h; sourceTree = "<group>"; };
+		1170EE39127178D500721CF4 /* MenuControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuControl.m; sourceTree = "<group>"; };
+		1170EE3D1271790F00721CF4 /* AbstractControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AbstractControl.h; sourceTree = "<group>"; };
+		1170EE3E1271790F00721CF4 /* AbstractControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AbstractControl.m; sourceTree = "<group>"; };
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1D3623240D0F684500981E51 /* XenophobeAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XenophobeAppDelegate.h; sourceTree = "<group>"; };
 		1D3623250D0F684500981E51 /* XenophobeAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XenophobeAppDelegate.m; sourceTree = "<group>"; };
@@ -318,6 +344,75 @@
 			name = DDXML;
 			sourceTree = "<group>";
 		};
+		1170EE371271788C00721CF4 /* Controls */ = {
+			isa = PBXGroup;
+			children = (
+				1170EE38127178D500721CF4 /* MenuControl.h */,
+				1170EE39127178D500721CF4 /* MenuControl.m */,
+				1170EE3D1271790F00721CF4 /* AbstractControl.h */,
+				1170EE3E1271790F00721CF4 /* AbstractControl.m */,
+			);
+			name = Controls;
+			sourceTree = "<group>";
+		};
+		1170EE5512724F4900721CF4 /* Game Resources */ = {
+			isa = PBXGroup;
+			children = (
+				1170EE5612724F6600721CF4 /* Images */,
+				1170EE5712724F6B00721CF4 /* Sounds */,
+				1170EE5812724F7100721CF4 /* Fonts */,
+			);
+			name = "Game Resources";
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		1170EE5612724F6600721CF4 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				1170EE6012724FA700721CF4 /* Retina */,
+				1170EE6112724FAC00721CF4 /* Normal */,
+			);
+			name = Images;
+			sourceTree = "<group>";
+		};
+		1170EE5712724F6B00721CF4 /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Sounds;
+			sourceTree = "<group>";
+		};
+		1170EE5812724F7100721CF4 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Fonts;
+			sourceTree = "<group>";
+		};
+		1170EE6012724FA700721CF4 /* Retina */ = {
+			isa = PBXGroup;
+			children = (
+				115DBD38127280CE005B1D70 /* xenophobe@2x.png */,
+				115DBD36127280CE005B1D70 /* newgame@2x.png */,
+				115DBD34127280CE005B1D70 /* continue@2x.png */,
+				115DBD35127280CE005B1D70 /* highscores@2x.png */,
+				115DBD37127280CE005B1D70 /* settings@2x.png */,
+			);
+			name = Retina;
+			sourceTree = "<group>";
+		};
+		1170EE6112724FAC00721CF4 /* Normal */ = {
+			isa = PBXGroup;
+			children = (
+				115DBD42127280DB005B1D70 /* xenophobe.png */,
+				115DBD40127280DB005B1D70 /* newgame.png */,
+				115DBD3E127280DB005B1D70 /* continue.png */,
+				115DBD3F127280DB005B1D70 /* highscores.png */,
+				115DBD41127280DB005B1D70 /* settings.png */,
+			);
+			name = Normal;
+			sourceTree = "<group>";
+		};
 		19C28FACFE9D520D11CA2CBB /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -333,8 +428,10 @@
 				1170ED691270147B00721CF4 /* DDXML */,
 				1170ECFB12700EBC00721CF4 /* Singleton Managers */,
 				1170EBED126ED21C00721CF4 /* Graphics Engine */,
+				1170EE371271788C00721CF4 /* Controls */,
 				1170ED2C127010B400721CF4 /* Game Scene */,
 				080E96DDFE201D6D7F000001 /* Classes */,
+				1170EE5512724F4900721CF4 /* Game Resources */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
 				29B97317FDCFA39411CA2CEA /* Resources */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
@@ -427,6 +524,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				115DBD39127280CE005B1D70 /* continue@2x.png in Resources */,
+				115DBD3A127280CE005B1D70 /* highscores@2x.png in Resources */,
+				115DBD3B127280CE005B1D70 /* newgame@2x.png in Resources */,
+				115DBD3C127280CE005B1D70 /* settings@2x.png in Resources */,
+				115DBD3D127280CE005B1D70 /* xenophobe@2x.png in Resources */,
+				115DBD43127280DB005B1D70 /* continue.png in Resources */,
+				115DBD44127280DB005B1D70 /* highscores.png in Resources */,
+				115DBD45127280DB005B1D70 /* newgame.png in Resources */,
+				115DBD46127280DB005B1D70 /* settings.png in Resources */,
+				115DBD47127280DB005B1D70 /* xenophobe.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -465,6 +572,8 @@
 				1170ED8F1270151D00721CF4 /* TileSet.m in Sources */,
 				1170ED921270153B00721CF4 /* Layer.m in Sources */,
 				1170EDB91270160000721CF4 /* MainMenuScene.m in Sources */,
+				1170EE3A127178D500721CF4 /* MenuControl.m in Sources */,
+				1170EE3F1271790F00721CF4 /* AbstractControl.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -485,6 +594,7 @@
 				INFOPLIST_FILE = "Xenophobe-Info.plist";
 				OTHER_LDFLAGS = "-lxml2";
 				PRODUCT_NAME = Xenophobe;
+				SDKROOT = iphonesimulator4.1;
 				USER_HEADER_SEARCH_PATHS = /usr/include/libxml2;
 			};
 			name = Debug;
@@ -501,6 +611,7 @@
 				INFOPLIST_FILE = "Xenophobe-Info.plist";
 				OTHER_LDFLAGS = "-lxml2";
 				PRODUCT_NAME = Xenophobe;
+				SDKROOT = iphonesimulator4.1;
 				USER_HEADER_SEARCH_PATHS = /usr/include/libxml2;
 				VALIDATE_PRODUCT = YES;
 			};
