@@ -43,20 +43,18 @@
 	return self;
 }
 
-- (void)initMenu {
-	logoImage = [[Image alloc] initWithImage:@"xenophobe.png"];
-	
-	MenuControl *menuControl = [[MenuControl alloc] initWithImageNamed:@"newgame.png" location:Vector2fMake(145, 140) centerOfImage:YES type:kControlType_NewGame];
+- (void)initMenu {	
+	MenuControl *menuControl = [[MenuControl alloc] initWithImageNamed:@"newgame.png" location:Vector2fMake(50, 50) centerOfImage:YES type:kControlType_NewGame];
 	[menuItems addObject:menuControl];
 	[menuControl release];
 	
-	menuControl = [[MenuControl alloc] initWithImageNamed:@"settings.png" location:Vector2fMake(145, 183) centerOfImage:YES type:kControlType_Settings];
-	[menuItems addObject:menuControl];
-	[menuControl release];
-	
-	menuControl = [[MenuControl alloc] initWithImageNamed:@"highscores.png" location:Vector2fMake(145, 226) centerOfImage:YES type:kControlType_HighScores];
-	[menuItems addObject:menuControl];
-	[menuControl release];
+//	menuControl = [[MenuControl alloc] initWithImageNamed:@"settings.png" location:Vector2fMake(145, 183) centerOfImage:YES type:kControlType_Settings];
+//	[menuItems addObject:menuControl];
+//	[menuControl release];
+//	
+//	menuControl = [[MenuControl alloc] initWithImageNamed:@"highscores.png" location:Vector2fMake(145, 226) centerOfImage:YES type:kControlType_HighScores];
+//	[menuItems addObject:menuControl];
+//	[menuControl release];
 }
 
 - (void)updateWithDelta:(GLfloat)aDelta {
@@ -124,7 +122,8 @@
     
 	// Flip the y location ready to check it against OpenGL coordinates
 	location.y = 480-location.y;
-	[menuItems makeObjectsPerformSelector:@selector(updateWithLocation:) withObject:NSStringFromCGPoint(location)];	
+	[menuItems makeObjectsPerformSelector:@selector(updateWithLocation:) withObject:NSStringFromCGPoint(location)];
+	NSLog(@"%f %f", location.x, location.y);
 }
 
 - (void)updateWithMovedLocation:(NSSet*)touches withEvent:(UIEvent*)event view:(UIView*)aView {
@@ -143,7 +142,7 @@
 }
 
 - (void)render {
-	[logoImage renderAtPoint:CGPointMake(80, 20) centerOfImage:YES];
+	[menuItems makeObjectsPerformSelector:@selector(render)];
 }
 
 @end
