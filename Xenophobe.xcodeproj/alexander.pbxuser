@@ -690,14 +690,14 @@
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {1171, 676}}";
 			sepNavSelRange = "{404, 0}";
-			sepNavVisRange = "{260, 981}";
+			sepNavVisRange = "{260, 983}";
 		};
 	};
 	1170ED44127012DD00721CF4 /* XenophobeGameController.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1171, 2158}}";
+			sepNavIntBoundsRect = "{{0, 0}, {1171, 2080}}";
 			sepNavSelRange = "{3742, 0}";
-			sepNavVisRange = "{3417, 1019}";
+			sepNavVisRange = "{0, 800}";
 		};
 	};
 	1170ED8A1270150200721CF4 /* TiledMap.h */ = {
@@ -1190,11 +1190,39 @@
 		vrLen = 1243;
 		vrLoc = 1113;
 	};
+	11D3246412739BB400F01BB5 /* Animation.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1171, 767}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{19, 1013}";
+		};
+	};
 	11D3246512739BB400F01BB5 /* Animation.m */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {1171, 2093}}";
 			sepNavSelRange = "{0, 0}";
 			sepNavVisRange = "{0, 885}";
+		};
+	};
+	11D3246612739BB400F01BB5 /* Frame.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1171, 500}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 807}";
+		};
+	};
+	11D3246D12739BCB00F01BB5 /* BezierCurve.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1314, 507}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 1006}";
+		};
+	};
+	11D3247012739BD900F01BB5 /* ParticleEmitter.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1171, 1482}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 913}";
 		};
 	};
 	11D3247312739BED00F01BB5 /* Layer.h */ = {
@@ -1206,7 +1234,7 @@
 	};
 	11D3247512739BED00F01BB5 /* TiledMap.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1171, 1664}}";
+			sepNavIntBoundsRect = "{{0, 0}, {1272, 1690}}";
 			sepNavSelRange = "{0, 0}";
 			sepNavVisRange = "{0, 1401}";
 		};
@@ -1274,6 +1302,13 @@
 		rType = 0;
 		vrLen = 1459;
 		vrLoc = 2783;
+	};
+	11D3248312739BFC00F01BB5 /* Image.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1171, 2444}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 1422}";
+		};
 	};
 	11D3248A12739C1400F01BB5 /* AngelCodeFont.m */ = {
 		uiCtxt = {
@@ -1420,6 +1455,13 @@
 			sepNavVisRange = "{0, 2165}";
 		};
 	};
+	11D324CA12739D6600F01BB5 /* SoundManager.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1171, 6526}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 1550}";
+		};
+	};
 	11D324CD12739D6E00F01BB5 /* PBXBookmark */ = {
 		isa = PBXBookmark;
 		fRef = 11D324BA12739CC300F01BB5 /* xenophobe.png */;
@@ -1464,6 +1506,34 @@
 		vrLen = 2165;
 		vrLoc = 0;
 	};
+	11D324D312739D7800F01BB5 /* Director.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1171, 728}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 913}";
+		};
+	};
+	11D324D412739D7900F01BB5 /* Director.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1171, 1014}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 911}";
+		};
+	};
+	11D324D512739D7900F01BB5 /* ResourceManager.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1171, 572}}";
+			sepNavSelRange = "{434, 0}";
+			sepNavVisRange = "{42, 1531}";
+		};
+	};
+	11D324D612739D7900F01BB5 /* ResourceManager.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1171, 1066}}";
+			sepNavSelRange = "{481, 0}";
+			sepNavVisRange = "{638, 1537}";
+		};
+	};
 	11D324D712739D7900F01BB5 /* SynthesizeSingleton.h */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {1171, 754}}";
@@ -1504,6 +1574,13 @@
 		rType = 0;
 		vrLen = 967;
 		vrLoc = 0;
+	};
+	11D324E712739DBD00F01BB5 /* MainMenuScene.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1171, 1937}}";
+			sepNavSelRange = "{1204, 0}";
+			sepNavVisRange = "{1032, 1398}";
+		};
 	};
 	11D324F312739E0000F01BB5 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
@@ -1583,7 +1660,7 @@
 	};
 	28FD14FD0DC6FC130079059D /* EAGLView.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1202, 3159}}";
+			sepNavIntBoundsRect = "{{0, 0}, {1171, 3172}}";
 			sepNavSelRange = "{545, 0}";
 			sepNavVisRange = "{0, 869}";
 		};

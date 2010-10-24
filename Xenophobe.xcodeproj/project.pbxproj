@@ -51,6 +51,7 @@
 		11D324E912739DBD00F01BB5 /* MainMenuScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 11D324E712739DBD00F01BB5 /* MainMenuScene.m */; };
 		11D324EE12739DD800F01BB5 /* AbstractControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 11D324EB12739DD800F01BB5 /* AbstractControl.m */; };
 		11D324EF12739DD800F01BB5 /* MenuControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 11D324ED12739DD800F01BB5 /* MenuControl.m */; };
+		11D325171273BF7900F01BB5 /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 11D325161273BF7900F01BB5 /* libsqlite3.0.dylib */; };
 		1D3623260D0F684500981E51 /* XenophobeAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* XenophobeAppDelegate.m */; };
 		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
@@ -136,6 +137,8 @@
 		11D324EB12739DD800F01BB5 /* AbstractControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AbstractControl.m; path = Controls/AbstractControl.m; sourceTree = "<group>"; };
 		11D324EC12739DD800F01BB5 /* MenuControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MenuControl.h; path = Controls/MenuControl.h; sourceTree = "<group>"; };
 		11D324ED12739DD800F01BB5 /* MenuControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MenuControl.m; path = Controls/MenuControl.m; sourceTree = "<group>"; };
+		11D325161273BF7900F01BB5 /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
+		11D325201273C14E00F01BB5 /* PreferencesManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PreferencesManager.h; path = "Singleton Managers/PreferencesManager.h"; sourceTree = "<group>"; };
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1D3623240D0F684500981E51 /* XenophobeAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XenophobeAppDelegate.h; sourceTree = "<group>"; };
 		1D3623250D0F684500981E51 /* XenophobeAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XenophobeAppDelegate.m; sourceTree = "<group>"; };
@@ -166,6 +169,7 @@
 				1170EC70126FCB7E00721CF4 /* CoreLocation.framework in Frameworks */,
 				1170EC72126FCB7E00721CF4 /* CoreMotion.framework in Frameworks */,
 				1170EC74126FCB7E00721CF4 /* OpenAL.framework in Frameworks */,
+				11D325171273BF7900F01BB5 /* libsqlite3.0.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -299,6 +303,7 @@
 				11D324D412739D7900F01BB5 /* Director.m */,
 				11D324D512739D7900F01BB5 /* ResourceManager.h */,
 				11D324D612739D7900F01BB5 /* ResourceManager.m */,
+				11D325201273C14E00F01BB5 /* PreferencesManager.h */,
 			);
 			name = "Singleton Managers";
 			sourceTree = "<group>";
@@ -460,6 +465,7 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				11D325161273BF7900F01BB5 /* libsqlite3.0.dylib */,
 				1170EC67126FCB7E00721CF4 /* AudioToolbox.framework */,
 				1170EC69126FCB7E00721CF4 /* AVFoundation.framework */,
 				1170EC6B126FCB7E00721CF4 /* CoreAudio.framework */,
