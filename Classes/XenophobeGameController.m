@@ -29,7 +29,7 @@
 #pragma mark -
 #pragma mark Initialize the game
 
-#define PORTRATE_MODE YES
+#define PORTRATE_MODE NO
 
 - (id)init {
 	
@@ -71,14 +71,14 @@
 	
 	// Rotate the entire view 90 degrees to the left to handle the phone being in landscape mode
 	if(!PORTRATE_MODE) {
-		glRotatef(-90.0f, 0, 0, 1);
+		glRotatef(90.0f, 0, 0, 1);
 		
 		// Setup Ortho for the current matrix mode.  This describes a transformation that is applied to
 		// the projection.  For our needs we are defining the fact that 1 pixel on the screen is equal to
 		// one OGL unit by defining the horizontal and vertical clipping planes to be from 0 to the views
 		// dimensions.  The far clipping plane is set to -1 and the near to 1.  The height and width have
 		// been swapped to handle the phone being in landscape mode
-		glOrthof(0, screenBounds.size.height, 0, screenBounds.size.width, -1, 1);
+		glOrthof(0, screenBounds.size.height, 0, screenBounds.size.width, -1, 1);		
 	} else {
 		glOrthof(0, screenBounds.size.width, 0, screenBounds.size.height, -1, 1);
 	}
@@ -86,7 +86,7 @@
 	// Switch to GL_MODELVIEW so we can now draw our objects
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
-	
+			
 	// Setup how textures should be rendered i.e. how a texture with alpha should be rendered ontop of
 	// another texture.
 	glTexEnvi(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_BLEND_SRC);
@@ -102,7 +102,6 @@
 	// Mark OGL as initialised
 	glInitialised = YES;
 }
-
 
 #pragma mark -
 #pragma mark Update the game scene logic

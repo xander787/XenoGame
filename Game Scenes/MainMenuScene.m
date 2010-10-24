@@ -44,7 +44,7 @@
 }
 
 - (void)initMenu {	
-	MenuControl *menuControl = [[MenuControl alloc] initWithImageNamed:@"newgame.png" location:Vector2fMake(50, 50) centerOfImage:YES type:kControlType_NewGame];
+	MenuControl *menuControl = [[MenuControl alloc] initWithImageNamed:@"newgame.png" location:Vector2fMake(105, 250) centerOfImage:YES type:kControlType_NewGame];
 	[menuItems addObject:menuControl];
 	[menuControl release];
 	
@@ -96,7 +96,7 @@
 			// I'm not using the delta value here as the large map being loaded causes
             // the first delta to be passed in to be very big which takes the alpha
             // to over 1.0 immediately, so I've got a fixed delta for the fade in.
-            sceneAlpha += _sceneFadeSpeed * 0.02f;
+            sceneAlpha += _sceneFadeSpeed * 0.1f;
             [_sharedDirector setGlobalAlpha:sceneAlpha];
 			if(sceneAlpha >= 1.0f) {
 				sceneState = kSceneState_Running;
@@ -121,6 +121,7 @@
 	location = [touch locationInView:aView];
     
 	// Flip the y location ready to check it against OpenGL coordinates
+	NSLog(@"%f %f", location.x, location.y);
 	location.y = 480-location.y;
 	[menuItems makeObjectsPerformSelector:@selector(updateWithLocation:) withObject:NSStringFromCGPoint(location)];
 	NSLog(@"%f %f", location.x, location.y);
