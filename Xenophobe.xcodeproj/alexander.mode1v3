@@ -233,6 +233,8 @@
 			<key>Layout</key>
 			<array>
 				<dict>
+					<key>BecomeActive</key>
+					<true/>
 					<key>ContentConfiguration</key>
 					<dict>
 						<key>PBXBottomSmartGroupGIDs</key>
@@ -304,7 +306,7 @@
 								</array>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateVisibleRectKey</key>
-							<string>{{0, 897}, {186, 725}}</string>
+							<string>{{0, 797}, {186, 725}}</string>
 						</dict>
 						<key>PBXTopSmartGroupGIDs</key>
 						<array/>
@@ -334,8 +336,6 @@
 					<key>Dock</key>
 					<array>
 						<dict>
-							<key>BecomeActive</key>
-							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
@@ -353,7 +353,7 @@
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>11B1B700127545C7006D085D</string>
+										<string>11B1B72E12756BF0006D085D</string>
 										<key>history</key>
 										<array>
 											<string>1170EDFF12710E5D00721CF4</string>
@@ -387,19 +387,19 @@
 											<string>11D3259A1273D68D00F01BB5</string>
 											<string>11D3259B1273D68D00F01BB5</string>
 											<string>11D3259C1273D68D00F01BB5</string>
-											<string>11D325B81273DA9600F01BB5</string>
-											<string>11D325BA1273DA9600F01BB5</string>
 											<string>11D325E51273E8E600F01BB5</string>
 											<string>11D325FE1273EC5600F01BB5</string>
 											<string>11B1B6AA12753D5D006D085D</string>
-											<string>11B1B6C112753FBA006D085D</string>
 											<string>11B1B6D11275418F006D085D</string>
 											<string>11B1B6D21275418F006D085D</string>
 											<string>11B1B6D31275418F006D085D</string>
 											<string>11B1B6DB12754290006D085D</string>
 											<string>11B1B6DC12754290006D085D</string>
-											<string>11B1B6FD127545AB006D085D</string>
-											<string>11B1B6FE127545AB006D085D</string>
+											<string>11B1B72912756BF0006D085D</string>
+											<string>11B1B72A12756BF0006D085D</string>
+											<string>11B1B72B12756BF0006D085D</string>
+											<string>11B1B72C12756BF0006D085D</string>
+											<string>11B1B72D12756BF0006D085D</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>

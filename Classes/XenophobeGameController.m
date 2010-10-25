@@ -3,8 +3,16 @@
 //  Xenophobe
 //
 //  Created by Alexander on 10/20/10.
-//  Copyright 2010 __MyCompanyName__. All rights reserved.
+//  Copyright 2010 Alexander Nabavi-Noori, XanderNet Inc. All rights reserved.
+//  
+//  Team:
+//  Alexander Nabavi-Noori - Software Engineer, Game Architect
+//	James Linnell - Software Engineer, Creative Design, Art Producer
+//	Tyler Newcomb - Creative Design, Art Producer
 //
+//	Last Updated - 10/25/2010 @ 12AM - Alexander
+//	- Fixed some bugs with the glOrthof command
+//	when we were trying to use landscape. Also set PORTRATE_MODE to YES
 
 #import "XenophobeGameController.h"
 #import "Common.h"

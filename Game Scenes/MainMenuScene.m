@@ -10,8 +10,9 @@
 //	James Linnell - Software Engineer, Creative Design, Art Producer
 //	Tyler Newcomb - Creative Design, Art Producer
 //
-//	Last Updated - 10/20/2010 @ 6PM - Alexander
-//	- Initial Project Creation
+//	Last Updated - 10/25/2010 @ 12AM - Alexander
+//	- Added in initial menu buttons and also wrote initial particle
+//	emmitter for the background stars in space view. Currently needs a bit of work
 
 #import "MainMenuScene.h"
 #import "Image.h"
@@ -65,7 +66,7 @@
 																			 speedVariance:0.74
 																		  particleLifeSpan:10.0
 																  particleLifespanVariance:0.0
-																					 angle:184.93
+																					 angle:185
 																			 angleVariance:96.16
 																				   gravity:Vector2fMake(0.0, 0.0)
 																				startColor:Color4fMake(1.0, 1.0, 1.0, 0.58)
@@ -74,9 +75,9 @@
 																	   finishColorVariance:Color4fMake(0.0, 0.0, 0.0, 0.0)
 																			  maxParticles:1500
 																			  particleSize:2.0
-																	  particleSizeVariance:0.0
+																	  particleSizeVariance:5.0
 																				  duration:-1
-																			 blendAdditive:YES];
+																			 blendAdditive:NO];
 }
 
 - (void)updateWithDelta:(GLfloat)aDelta {
