@@ -15,7 +15,7 @@
 
 @implementation MenuControl
 
-#define MAX_SCALE 3.0f
+#define MAX_SCALE 2.0f
 #define SCALE_DELTA 1.0f
 #define ALPHA_DELTA 1.0f
 

@@ -22,6 +22,7 @@
 	NSMutableArray	*menuItems;
 	CGPoint			_origin;
 	Image			*logoImage;
+	ParticleEmitter *backgroundParticleEmitter;
 }
 
 @end

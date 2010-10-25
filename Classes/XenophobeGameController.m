@@ -29,7 +29,7 @@
 #pragma mark -
 #pragma mark Initialize the game
 
-#define PORTRATE_MODE NO
+#define PORTRATE_MODE YES
 
 - (id)init {
 	

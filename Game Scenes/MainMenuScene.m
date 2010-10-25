@@ -15,6 +15,7 @@
 
 #import "MainMenuScene.h"
 #import "Image.h"
+#import "ParticleEmitter.h"
 
 @interface MainMenuScene (Private)
 - (void)initMenu;
@@ -43,18 +44,39 @@
 	return self;
 }
 
-- (void)initMenu {	
-	MenuControl *menuControl = [[MenuControl alloc] initWithImageNamed:@"newgame.png" location:Vector2fMake(105, 250) centerOfImage:YES type:kControlType_NewGame];
+- (void)initMenu {
+	MenuControl *menuControl = [[MenuControl alloc] initWithImageNamed:@"newgame.png" location:Vector2fMake(165, 225) centerOfImage:YES type:kControlType_NewGame];
 	[menuItems addObject:menuControl];
 	[menuControl release];
 	
-//	menuControl = [[MenuControl alloc] initWithImageNamed:@"settings.png" location:Vector2fMake(145, 183) centerOfImage:YES type:kControlType_Settings];
-//	[menuItems addObject:menuControl];
-//	[menuControl release];
-//	
-//	menuControl = [[MenuControl alloc] initWithImageNamed:@"highscores.png" location:Vector2fMake(145, 226) centerOfImage:YES type:kControlType_HighScores];
-//	[menuItems addObject:menuControl];
-//	[menuControl release];
+	menuControl = [[MenuControl alloc] initWithImageNamed:@"highscores.png" location:Vector2fMake(165, 175) centerOfImage:YES type:kControlType_HighScores];
+	[menuItems addObject:menuControl];
+	[menuControl release];
+	
+	menuControl = [[MenuControl alloc] initWithImageNamed:@"settings.png" location:Vector2fMake(165, 125) centerOfImage:YES type:kControlType_Settings];
+	[menuItems addObject:menuControl];
+	[menuControl release];
+	
+	logoImage = [[Image alloc] initWithImage:@"xenophobe.png"];
+	backgroundParticleEmitter = [[ParticleEmitter alloc] initParticleEmitterWithImageNamed:@"texture.png"
+																				  position:Vector2fMake(160.0, 259.76)
+																	sourcePositionVariance:Vector2fMake(373.5, 240.0)
+																					 speed:0.0
+																			 speedVariance:0.74
+																		  particleLifeSpan:10.0
+																  particleLifespanVariance:0.0
+																					 angle:184.93
+																			 angleVariance:96.16
+																				   gravity:Vector2fMake(0.0, 0.0)
+																				startColor:Color4fMake(1.0, 1.0, 1.0, 0.58)
+																		startColorVariance:Color4fMake(0.0, 0.0, 0.0, 0.0)
+																			   finishColor:Color4fMake(0.5, 0.5, 0.5, 0.34)
+																	   finishColorVariance:Color4fMake(0.0, 0.0, 0.0, 0.0)
+																			  maxParticles:1500
+																			  particleSize:2.0
+																	  particleSizeVariance:0.0
+																				  duration:-1
+																			 blendAdditive:YES];
 }
 
 - (void)updateWithDelta:(GLfloat)aDelta {
@@ -105,6 +127,8 @@
 		default:
 			break;
 	}
+	
+	[backgroundParticleEmitter update:aDelta];
 }
 
 - (void)setSceneState:(uint)theState {
@@ -143,7 +167,9 @@
 }
 
 - (void)render {
+	[logoImage renderAtPoint:CGPointMake(0, 300) centerOfImage:NO];
 	[menuItems makeObjectsPerformSelector:@selector(render)];
+	[backgroundParticleEmitter renderParticles];
 }
 
 @end
