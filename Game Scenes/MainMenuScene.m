@@ -80,7 +80,7 @@
 	
 	
 	cometParticleEmitter = [[ParticleEmitter alloc] initParticleEmitterWithImageNamed:@"texture.png"
-																			 position:Vector2fMake(300, 400)
+																			 position:Vector2fMake(280, 440)
 															   sourcePositionVariance:Vector2fMake(10, 15)
 																				speed:1.0
 																		speedVariance:0.0
@@ -98,6 +98,26 @@
 																 particleSizeVariance:-10
 																			 duration:-1
 																		blendAdditive:NO];
+	
+	cometBallParticleEmitter = [[ParticleEmitter alloc] initParticleEmitterWithImageNamed:@"texture.png" 
+																				 position:Vector2fMake(280, 440) 
+																   sourcePositionVariance:Vector2fMake(10, 10)
+																					speed:0.1 
+																			speedVariance:0.05
+																		 particleLifeSpan:1.6 
+																 particleLifespanVariance:0.8
+																					angle:190.0 
+																			angleVariance:0.0
+																				  gravity:Vector2fMake(0.0, 0.0) 
+																			   startColor:Color4fMake(0.9, 0.9, 0.9, 1) 
+																	   startColorVariance:Color4fMake(0.1, 0.1, 0.1, 0.1)
+																			  finishColor:Color4fMake(0.9, 0.9, 0.9, 1)
+																	  finishColorVariance:Color4fMake(0.1, 0.1, 0.1, 0.1)
+																			 maxParticles:50
+																			 particleSize:65
+																	 particleSizeVariance:0
+																				 duration:-1
+																			blendAdditive:YES];	
 }
 
 - (void)updateWithDelta:(GLfloat)aDelta {
@@ -151,6 +171,7 @@
 	
 	[backgroundParticleEmitter update:aDelta];
 	[cometParticleEmitter update:aDelta];
+	[cometBallParticleEmitter update:aDelta];
 }
 
 - (void)setSceneState:(uint)theState {
@@ -191,6 +212,7 @@
 - (void)render {
 	[backgroundParticleEmitter renderParticles];
 	[cometParticleEmitter renderParticles];
+	[cometBallParticleEmitter renderParticles];
 	[logoImage renderAtPoint:CGPointMake(0, 300) centerOfImage:NO];
 	[menuItems makeObjectsPerformSelector:@selector(render)];
 }

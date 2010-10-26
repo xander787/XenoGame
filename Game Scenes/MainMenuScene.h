@@ -24,6 +24,7 @@
 	Image				*logoImage;
 	ParticleEmitter		*backgroundParticleEmitter;
 	ParticleEmitter		*cometParticleEmitter;
+	ParticleEmitter		*cometBallParticleEmitter;
 }
 
 @end
