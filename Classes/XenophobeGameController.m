@@ -10,9 +10,8 @@
 //	James Linnell - Software Engineer, Creative Design, Art Producer
 //	Tyler Newcomb - Creative Design, Art Producer
 //
-//	Last Updated - 10/25/2010 @ 12AM - Alexander
-//	- Fixed some bugs with the glOrthof command
-//	when we were trying to use landscape. Also set PORTRATE_MODE to YES
+//	Last Updated - 10/26/2010 @ 12AM - Alexander
+//	- Added in code to recognize the settings scene
 
 #import "XenophobeGameController.h"
 #import "Common.h"
@@ -55,6 +54,10 @@
 		AbstractScene *scene = [[MainMenuScene alloc] init];
 		[_director addSceneWithKey:@"menu" scene:scene];
         [scene release];
+		
+		scene = [[SettingsScene alloc] init];
+		[_director addSceneWithKey:@"settings" scene:scene];
+		[scene release];
 		
 		// Make sure glInitialised is set to NO so that OpenGL gets initialised when the first scene is rendered
 		glInitialised = NO;

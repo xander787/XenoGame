@@ -16,6 +16,7 @@
 		1170EC74126FCB7E00721CF4 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1170EC73126FCB7E00721CF4 /* OpenAL.framework */; };
 		1170ED45127012DD00721CF4 /* XenophobeGameController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1170ED44127012DD00721CF4 /* XenophobeGameController.m */; };
 		11B1B6FA127543FC006D085D /* texture.png in Resources */ = {isa = PBXBuildFile; fileRef = 11B1B6F9127543FC006D085D /* texture.png */; };
+		11B1B8CF1276B53B006D085D /* SettingsScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 11B1B8CE1276B53B006D085D /* SettingsScene.m */; };
 		11D3246812739BB400F01BB5 /* Animation.m in Sources */ = {isa = PBXBuildFile; fileRef = 11D3246512739BB400F01BB5 /* Animation.m */; };
 		11D3246912739BB400F01BB5 /* Frame.m in Sources */ = {isa = PBXBuildFile; fileRef = 11D3246712739BB400F01BB5 /* Frame.m */; };
 		11D3246C12739BBF00F01BB5 /* Texture2D.m in Sources */ = {isa = PBXBuildFile; fileRef = 11D3246B12739BBF00F01BB5 /* Texture2D.m */; };
@@ -73,6 +74,8 @@
 		1170ED43127012DD00721CF4 /* XenophobeGameController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XenophobeGameController.h; sourceTree = "<group>"; };
 		1170ED44127012DD00721CF4 /* XenophobeGameController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XenophobeGameController.m; sourceTree = "<group>"; };
 		11B1B6F9127543FC006D085D /* texture.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = texture.png; path = Images/Normal/texture.png; sourceTree = SOURCE_ROOT; };
+		11B1B8CD1276B53B006D085D /* SettingsScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SettingsScene.h; path = "Game Scenes/SettingsScene.h"; sourceTree = "<group>"; };
+		11B1B8CE1276B53B006D085D /* SettingsScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SettingsScene.m; path = "Game Scenes/SettingsScene.m"; sourceTree = "<group>"; };
 		11D3246412739BB400F01BB5 /* Animation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Animation.h; path = "Graphics Engine/Animation/Animation.h"; sourceTree = "<group>"; };
 		11D3246512739BB400F01BB5 /* Animation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Animation.m; path = "Graphics Engine/Animation/Animation.m"; sourceTree = "<group>"; };
 		11D3246612739BB400F01BB5 /* Frame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Frame.h; path = "Graphics Engine/Animation/Frame.h"; sourceTree = "<group>"; };
@@ -328,6 +331,8 @@
 				11D324E512739DBD00F01BB5 /* AbstractScene.m */,
 				11D324E612739DBD00F01BB5 /* MainMenuScene.h */,
 				11D324E712739DBD00F01BB5 /* MainMenuScene.m */,
+				11B1B8CD1276B53B006D085D /* SettingsScene.h */,
+				11B1B8CE1276B53B006D085D /* SettingsScene.m */,
 			);
 			name = "Game Scenes";
 			sourceTree = "<group>";
@@ -584,6 +589,7 @@
 				11D324E912739DBD00F01BB5 /* MainMenuScene.m in Sources */,
 				11D324EE12739DD800F01BB5 /* AbstractControl.m in Sources */,
 				11D324EF12739DD800F01BB5 /* MenuControl.m in Sources */,
+				11B1B8CF1276B53B006D085D /* SettingsScene.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

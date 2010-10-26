@@ -189,10 +189,10 @@
 }
 
 - (void)render {
-	[logoImage renderAtPoint:CGPointMake(0, 300) centerOfImage:NO];
-	[menuItems makeObjectsPerformSelector:@selector(render)];
 	[backgroundParticleEmitter renderParticles];
 	[cometParticleEmitter renderParticles];
+	[logoImage renderAtPoint:CGPointMake(0, 300) centerOfImage:NO];
+	[menuItems makeObjectsPerformSelector:@selector(render)];
 }
 
 @end
