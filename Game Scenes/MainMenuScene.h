@@ -19,10 +19,11 @@
 
 
 @interface MainMenuScene : AbstractScene {
-	NSMutableArray	*menuItems;
-	CGPoint			_origin;
-	Image			*logoImage;
-	ParticleEmitter *backgroundParticleEmitter;
+	NSMutableArray		*menuItems;
+	CGPoint				_origin;
+	Image				*logoImage;
+	ParticleEmitter		*backgroundParticleEmitter;
+	ParticleEmitter		*cometParticleEmitter;
 }
 
 @end

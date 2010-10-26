@@ -321,7 +321,7 @@
 			name = "Sound Manager";
 			sourceTree = "<group>";
 		};
-		1170ED2C127010B400721CF4 /* Game Scene */ = {
+		1170ED2C127010B400721CF4 /* Game Scenes */ = {
 			isa = PBXGroup;
 			children = (
 				11D324E412739DBD00F01BB5 /* AbstractScene.h */,
@@ -329,7 +329,7 @@
 				11D324E612739DBD00F01BB5 /* MainMenuScene.h */,
 				11D324E712739DBD00F01BB5 /* MainMenuScene.m */,
 			);
-			name = "Game Scene";
+			name = "Game Scenes";
 			sourceTree = "<group>";
 		};
 		1170ED691270147B00721CF4 /* DDXML */ = {
@@ -437,7 +437,7 @@
 				1170ECFB12700EBC00721CF4 /* Singleton Managers */,
 				1170EBED126ED21C00721CF4 /* Graphics Engine */,
 				1170EE371271788C00721CF4 /* Controls */,
-				1170ED2C127010B400721CF4 /* Game Scene */,
+				1170ED2C127010B400721CF4 /* Game Scenes */,
 				080E96DDFE201D6D7F000001 /* Classes */,
 				1170EE5512724F4900721CF4 /* Game Resources */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,

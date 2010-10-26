@@ -233,8 +233,6 @@
 			<key>Layout</key>
 			<array>
 				<dict>
-					<key>BecomeActive</key>
-					<true/>
 					<key>ContentConfiguration</key>
 					<dict>
 						<key>PBXBottomSmartGroupGIDs</key>
@@ -300,13 +298,13 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>60</integer>
-									<integer>56</integer>
+									<integer>65</integer>
+									<integer>61</integer>
 									<integer>0</integer>
 								</array>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateVisibleRectKey</key>
-							<string>{{0, 797}, {186, 725}}</string>
+							<string>{{0, 750}, {186, 725}}</string>
 						</dict>
 						<key>PBXTopSmartGroupGIDs</key>
 						<array/>
@@ -336,12 +334,14 @@
 					<key>Dock</key>
 					<array>
 						<dict>
+							<key>BecomeActive</key>
+							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
 								<string>1CE0B20306471E060097A5F4</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>MainMenuScene.m</string>
+								<string>SoundManager.h</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -349,11 +349,11 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CE0B20406471E060097A5F4</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>MainMenuScene.m</string>
+										<string>SoundManager.h</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>11B1B72E12756BF0006D085D</string>
+										<string>11B1B839127685B8006D085D</string>
 										<key>history</key>
 										<array>
 											<string>1170EDFF12710E5D00721CF4</string>
@@ -376,12 +376,10 @@
 											<string>11D3258E1273D68D00F01BB5</string>
 											<string>11D325901273D68D00F01BB5</string>
 											<string>11D325911273D68D00F01BB5</string>
-											<string>11D325921273D68D00F01BB5</string>
 											<string>11D325931273D68D00F01BB5</string>
 											<string>11D325941273D68D00F01BB5</string>
 											<string>11D325951273D68D00F01BB5</string>
 											<string>11D325961273D68D00F01BB5</string>
-											<string>11D325971273D68D00F01BB5</string>
 											<string>11D325981273D68D00F01BB5</string>
 											<string>11D325991273D68D00F01BB5</string>
 											<string>11D3259A1273D68D00F01BB5</string>
@@ -390,16 +388,23 @@
 											<string>11D325E51273E8E600F01BB5</string>
 											<string>11D325FE1273EC5600F01BB5</string>
 											<string>11B1B6AA12753D5D006D085D</string>
-											<string>11B1B6D11275418F006D085D</string>
-											<string>11B1B6D21275418F006D085D</string>
 											<string>11B1B6D31275418F006D085D</string>
-											<string>11B1B6DB12754290006D085D</string>
-											<string>11B1B6DC12754290006D085D</string>
 											<string>11B1B72912756BF0006D085D</string>
 											<string>11B1B72A12756BF0006D085D</string>
-											<string>11B1B72B12756BF0006D085D</string>
-											<string>11B1B72C12756BF0006D085D</string>
-											<string>11B1B72D12756BF0006D085D</string>
+											<string>11B1B72F12757133006D085D</string>
+											<string>11B1B73612757133006D085D</string>
+											<string>11B1B73712757133006D085D</string>
+											<string>11B1B73812757133006D085D</string>
+											<string>11B1B7E91276495C006D085D</string>
+											<string>11B1B7EA1276495C006D085D</string>
+											<string>11B1B7FF127684CF006D085D</string>
+											<string>11B1B800127684CF006D085D</string>
+											<string>11B1B801127684CF006D085D</string>
+											<string>11B1B802127684CF006D085D</string>
+											<string>11B1B803127684CF006D085D</string>
+											<string>11B1B82B127685A2006D085D</string>
+											<string>11B1B82C127685A2006D085D</string>
+											<string>11B1B82E127685A2006D085D</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -411,14 +416,14 @@
 							<key>GeometryConfiguration</key>
 							<dict>
 								<key>Frame</key>
-								<string>{{0, 0}, {1232, 526}}</string>
+								<string>{{0, 0}, {1232, 520}}</string>
 								<key>RubberWindowFrame</key>
 								<string>0 94 1440 784 0 0 1440 878 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXNavigatorGroup</string>
 							<key>Proportion</key>
-							<string>526pt</string>
+							<string>520pt</string>
 						</dict>
 						<dict>
 							<key>ContentConfiguration</key>
@@ -431,14 +436,14 @@
 							<key>GeometryConfiguration</key>
 							<dict>
 								<key>Frame</key>
-								<string>{{0, 531}, {1232, 212}}</string>
+								<string>{{0, 525}, {1232, 218}}</string>
 								<key>RubberWindowFrame</key>
 								<string>0 94 1440 784 0 0 1440 878 </string>
 							</dict>
 							<key>Module</key>
 							<string>XCDetailModule</string>
 							<key>Proportion</key>
-							<string>212pt</string>
+							<string>218pt</string>
 						</dict>
 					</array>
 					<key>Proportion</key>
@@ -457,9 +462,9 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>11B1B69612751E73006D085D</string>
+				<string>11B1B83A127685B8006D085D</string>
 				<string>1CE0B1FE06471DED0097A5F4</string>
-				<string>11B1B69712751E73006D085D</string>
+				<string>11B1B83B127685B8006D085D</string>
 				<string>1CE0B20306471E060097A5F4</string>
 				<string>1CE0B20506471E060097A5F4</string>
 			</array>
@@ -597,8 +602,6 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
-		<string>1C78EAAD065D492600B07095</string>
-		<string>1CD10A99069EF8BA00B06720</string>
 		<string>115BDFD9126ED07200461E73</string>
 		<string>/Users/alexander/Desktop/Projects/Game Project/The Game/Xenophobe/Xenophobe.xcodeproj</string>
 	</array>
@@ -680,7 +683,7 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>115BDFD9126ED07200461E73</string>
-				<string>11B1B69812751E73006D085D</string>
+				<string>11B1B83C127685B8006D085D</string>
 				<string>1CD0528F0623707200166675</string>
 				<string>XCMainBuildResultsModuleGUID</string>
 			</array>
