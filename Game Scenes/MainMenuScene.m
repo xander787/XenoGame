@@ -10,9 +10,8 @@
 //	James Linnell - Software Engineer, Creative Design, Art Producer
 //	Tyler Newcomb - Creative Design, Art Producer
 //
-//	Last Updated - 10/25/2010 @ 12AM - Alexander
-//	- Added in initial menu buttons and also wrote initial particle
-//	emmitter for the background stars in space view. Currently needs a bit of work
+//	Last Updated - 10/25/2010 @ 11PM - James
+//	- Fixed background space scene. Looks awesome now.
 
 #import "MainMenuScene.h"
 #import "Image.h"
@@ -62,40 +61,41 @@
 	backgroundParticleEmitter = [[ParticleEmitter alloc] initParticleEmitterWithImageNamed:@"texture.png"
 																				  position:Vector2fMake(160.0, 259.76)
 																	sourcePositionVariance:Vector2fMake(373.5, 240.0)
-																					 speed:0.0
-																			 speedVariance:0.74
-																		  particleLifeSpan:10.0
-																  particleLifespanVariance:0.0
-																					 angle:185
-																			 angleVariance:96.16
+																					 speed:0.2
+																			 speedVariance:0.05
+																		  particleLifeSpan:5.0
+																  particleLifespanVariance:2.0
+																					 angle:200.0
+																			 angleVariance:0.0
 																				   gravity:Vector2fMake(0.0, 0.0)
 																				startColor:Color4fMake(1.0, 1.0, 1.0, 0.58)
 																		startColorVariance:Color4fMake(0.0, 0.0, 0.0, 0.0)
 																			   finishColor:Color4fMake(0.5, 0.5, 0.5, 0.34)
 																	   finishColorVariance:Color4fMake(0.0, 0.0, 0.0, 0.0)
-																			  maxParticles:1500
+																			  maxParticles:2000
 																			  particleSize:2.0
 																	  particleSizeVariance:5.0
 																				  duration:-1
 																			 blendAdditive:NO];
 	
+	
 	cometParticleEmitter = [[ParticleEmitter alloc] initParticleEmitterWithImageNamed:@"texture.png"
-																			 position:Vector2fMake(165, 225)
+																			 position:Vector2fMake(300, 400)
 															   sourcePositionVariance:Vector2fMake(10, 15)
-																				speed:0.0
-																		speedVariance:204.0
-																	 particleLifeSpan:0.5921000242233276
-															 particleLifespanVariance:0.0
-																				angle:332.8800048828125
+																				speed:1.0
+																		speedVariance:0.0
+																	 particleLifeSpan:1.6
+															 particleLifespanVariance:0.8
+																				angle:190.0
 																		angleVariance:0.0
-																			  gravity:Vector2fMake(-1539.469970703125, 434.2099914550781)
-																		   startColor:Color4fMake(0.5400000214576721, 0.699999988079071, 1, 1)
-																   startColorVariance:Color4fMake(0, 0.2000000029802322, 0.2000000029802322, 0.5)
-																		  finishColor:Color4fMake(0.7400000095367432, 0.5799999833106995, 0.300000011920929, 1)
+																			  gravity:Vector2fMake(0.0, 0.0)
+																		   startColor:Color4fMake(0.54, 0.70, 1, 1)
+																   startColorVariance:Color4fMake(0, 0.2, 0.2, 0.5)
+																		  finishColor:Color4fMake(0.74, 0.58, 0.3, 1)
 																  finishColorVariance:Color4fMake(0, 0, 0, 1)
 																		 maxParticles:200
 																		 particleSize:40
-																 particleSizeVariance:0
+																 particleSizeVariance:-10
 																			 duration:-1
 																		blendAdditive:NO];
 }
@@ -149,7 +149,7 @@
 			break;
 	}
 	
-	//[backgroundParticleEmitter update:aDelta];
+	[backgroundParticleEmitter update:aDelta];
 	[cometParticleEmitter update:aDelta];
 }
 
@@ -191,7 +191,7 @@
 - (void)render {
 	[logoImage renderAtPoint:CGPointMake(0, 300) centerOfImage:NO];
 	[menuItems makeObjectsPerformSelector:@selector(render)];
-	//[backgroundParticleEmitter renderParticles];
+	[backgroundParticleEmitter renderParticles];
 	[cometParticleEmitter renderParticles];
 }
 
