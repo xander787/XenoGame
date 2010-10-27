@@ -77,30 +77,32 @@
 																	   finishColorVariance:Color4fMake(0.0, 0.0, 0.0, 0.0)
 																			  maxParticles:2000
 																			  particleSize:2.0
+																		finishParticleSize:2.0
 																	  particleSizeVariance:5.0
 																				  duration:-1
 																			 blendAdditive:NO];
 	
 	
 	cometParticleEmitter = [[ParticleEmitter alloc] initParticleEmitterWithImageNamed:@"texture.png"
-																			 position:Vector2fMake(280, 440)
-															   sourcePositionVariance:Vector2fMake(10, 15)
-																				speed:1.0
-																		speedVariance:0.0
-																	 particleLifeSpan:1.6
-															 particleLifespanVariance:0.8
-																				angle:190.0
+																			 position:Vector2fMake(191, 268)
+															   sourcePositionVariance:Vector2fMake(10, 10)
+																				speed:30.0
+																		speedVariance:10.0
+																	 particleLifeSpan:0.75
+															 particleLifespanVariance:0.5
+																				angle:145.0
 																		angleVariance:0.0
 																			  gravity:Vector2fMake(0.0, 0.0)
-																		   startColor:Color4fMake(0.54, 0.70, 1, 1)
-																   startColorVariance:Color4fMake(0, 0.2, 0.2, 0.5)
-																		  finishColor:Color4fMake(0.74, 0.58, 0.3, 1)
-																  finishColorVariance:Color4fMake(0, 0, 0, 1)
-																		 maxParticles:50
-																		 particleSize:40
-																 particleSizeVariance:-10
+																		   startColor:Color4fMake(0.38, 0.58, 0.94, 1)
+																   startColorVariance:Color4fMake(0, 0, 0, 0)
+																		  finishColor:Color4fMake(0.5, 0.1, 0.1, 1)
+																  finishColorVariance:Color4fMake(0.3, 0.05, 0.05, 0)
+																		 maxParticles:250
+																		 particleSize:60
+																   finishParticleSize:0.0
+																 particleSizeVariance:20
 																			 duration:-1
-																		blendAdditive:NO];
+																		blendAdditive:YES];
 	
 	cometBallParticleEmitter = [[ParticleEmitter alloc] initParticleEmitterWithImageNamed:@"texture.png" 
 																				 position:Vector2fMake(280, 440) 
@@ -118,6 +120,7 @@
 																	  finishColorVariance:Color4fMake(0.1, 0.1, 0.1, 0.1)
 																			 maxParticles:50
 																			 particleSize:65
+																	   finishParticleSize:65
 																	 particleSizeVariance:0
 																				 duration:-1
 																			blendAdditive:YES];	

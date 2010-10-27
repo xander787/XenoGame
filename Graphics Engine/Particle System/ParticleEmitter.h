@@ -11,7 +11,8 @@
 //	Tyler Newcomb - Creative Design, Art Producer
 //
 //	Last Updated - 10/20/2010 @ 6PM - Alexander
-//	- Initial Project Creation
+//	- Particle emitter now uses a delta size in the 
+//	particle struct to implement a finish size for each particle
 
 
 #import <Foundation/Foundation.h>
@@ -40,6 +41,7 @@
 	Color4f finishColorVariance;
 	GLfloat particleSize;
 	GLfloat particleSizeVariance;
+	GLfloat finishParticleSize;
 	GLuint maxParticles;
 	GLint particleCount;
 	GLfloat emissionRate;
@@ -72,6 +74,7 @@
 @property(nonatomic, assign) Color4f finishColor;
 @property(nonatomic, assign) Color4f finishColorVariance;
 @property(nonatomic, assign) GLfloat particleSize;
+@property (nonatomic, assign) GLfloat finishParticleSize;
 @property(nonatomic, assign) GLfloat particleSizeVariance;
 @property(nonatomic, assign) GLuint maxParticles;
 @property(nonatomic, assign) GLint particleCount;
@@ -97,6 +100,7 @@
 					finishColorVariance:(Color4f)inFinishColorVariance
 						   maxParticles:(GLuint)inMaxParticles 
 						   particleSize:(GLfloat)inParticleSize
+					 finishParticleSize:(GLfloat)inFinishParticleSize
 				   particleSizeVariance:(GLfloat)inParticleSizeVariance
 							   duration:(GLfloat)inDuration
 						  blendAdditive:(BOOL)inBlendAdditive;

@@ -10,8 +10,9 @@
  *	James Linnell - Software Engineer, Creative Design, Art Producer
  *	Tyler Newcomb - Creative Design, Art Producer
  *
- *	Last Updated - 10/20/2010 @ 6PM - Alexander
- *	-Initial Project Creation
+ *	Last Updated - 10/27/2010 @ 12AM - Alexander
+ *	- Changed the particle structure to include delta size
+ *	for the ability to set a finish particle size
  *
  */
 
@@ -91,6 +92,7 @@ typedef struct _Particle {
 	Color4f deltaColor;
 	GLfloat particleSize;
 	GLfloat timeToLive;
+	GLfloat	deltaSize;
 } Particle;
 
 

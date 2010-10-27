@@ -11,7 +11,8 @@
 //	Tyler Newcomb - Creative Design, Art Producer
 //
 //	Last Updated - 10/20/2010 @ 6PM - Alexander
-//	- Initial Project Creation
+//	- Particle emitter now uses a delta size in the 
+//	particle struct to implement a finish size for each particle
 
 
 #import "ParticleEmitter.h"
@@ -35,6 +36,7 @@
 @synthesize finishColor;
 @synthesize finishColorVariance;
 @synthesize particleSize;
+@synthesize finishParticleSize;
 @synthesize particleSizeVariance;
 @synthesize active;
 @synthesize particleCount;
@@ -59,6 +61,7 @@
 					finishColorVariance:(Color4f)inFinishColorVariance
 						   maxParticles:(GLuint)inMaxParticles 
 						   particleSize:(GLfloat)inParticleSize
+					 finishParticleSize:(GLfloat)inFinishParticleSize
 				   particleSizeVariance:(GLfloat)inParticleSizeVariance
 							   duration:(GLfloat)inDuration
 						  blendAdditive:(BOOL)inBlendAdditive
@@ -92,6 +95,7 @@
 		finishColorVariance = inFinishColorVariance;
 		maxParticles = inMaxParticles;
 		particleSize = inParticleSize;
+		finishParticleSize = inFinishParticleSize;
 		particleSizeVariance = inParticleSizeVariance;
 		emissionRate = maxParticles/particleLifespan;
 		duration = inDuration;
@@ -178,6 +182,14 @@
 	
 	// Calculate the particle size using the particleSize and variance passed in
 	particle->particleSize = particleSize + particleSizeVariance * RANDOM_MINUS_1_TO_1();
+	if (finishParticleSize == particleSize)
+		particle->deltaSize = 0;
+	else {
+		float endS = finishParticleSize;
+		endS = MAX(0, endS);
+		particle->deltaSize = (endS - particleSize) / particle->timeToLive;
+	}
+
 	
 	// Calculate the particles life span using the life span and variance passed in
 	particle->timeToLive = particleLifespan + particleLifespanVariance * RANDOM_MINUS_1_TO_1();
@@ -251,6 +263,10 @@
 			
 			// Place the size of the current particle in the size array
 			vertices[particleIndex].size = currentParticle->particleSize;
+			
+			//Update the particle size
+			currentParticle->particleSize += (currentParticle->deltaSize * delta);
+			currentParticle->particleSize = MAX(0, currentParticle->particleSize);
 			
 			// Update the particles color
 			currentParticle->color.red += (currentParticle->deltaColor.red * delta);
