@@ -13,8 +13,8 @@
 //	10/26/2010 @ 6PM - Alexander
 //	- Raised speed at which scene fades out to show new scene
 //
-//	10/27/2010 @ 4:30PM - Alexander
-//	- Changed around the comet emitters...looks perfect now.
+//	10/27/2010 @ 4:40PM - Alexander
+//	- Removed second particle emitter, not needed anymore.
 
 #import "MainMenuScene.h"
 #import "Image.h"
@@ -84,13 +84,13 @@
 	
 	
 	cometParticleEmitter = [[ParticleEmitter alloc] initParticleEmitterWithImageNamed:@"texture.png"
-																			 position:Vector2fMake(165, 225)
+																			 position:Vector2fMake(20, 120)
 															   sourcePositionVariance:Vector2fMake(10, 15)
 																				speed:2.0
 																		speedVariance:0.0
-																	 particleLifeSpan:1.6
-															 particleLifespanVariance:0.8
-																				angle:190.0
+																	 particleLifeSpan:.75
+															 particleLifespanVariance:0.5
+																				angle:200.0
 																		angleVariance:0.0
 																			  gravity:Vector2fMake(0.0, 0.0)
 																		   startColor:Color4fMake(0.38, 0.58, 0.94, 1)
@@ -98,32 +98,11 @@
 																		  finishColor:Color4fMake(0.5, 0.1, 0.1, 1)
 																  finishColorVariance:Color4fMake(0.3, 0, 0.05, 0.05)
 																		 maxParticles:300
-																		 particleSize:30
+																		 particleSize:60
 																   finishParticleSize:10
 																 particleSizeVariance:-10
 																			 duration:-1
 																		blendAdditive:YES];
-	
-	cometBallParticleEmitter = [[ParticleEmitter alloc] initParticleEmitterWithImageNamed:@"texture.png" 
-																				 position:Vector2fMake(164, 225) 
-																   sourcePositionVariance:Vector2fMake(10, 10)
-																					speed:0.1 
-																			speedVariance:0.05
-																		 particleLifeSpan:1.6 
-																 particleLifespanVariance:0.8
-																					angle:190.0 
-																			angleVariance:0.0
-																				  gravity:Vector2fMake(0.0, 0.0) 
-																			   startColor:Color4fMake(0.38, 0.58, 0.94, 1) 
-																	   startColorVariance:Color4fMake(0, 0, 0, 0)
-																			  finishColor:Color4fMake(0.1, 0.1, 0.5, 1)
-																	  finishColorVariance:Color4fMake(0.3, 0, 0.05, 0.05)
-																			 maxParticles:50
-																			 particleSize:55
-																	   finishParticleSize:55
-																	 particleSizeVariance:0
-																				 duration:-1
-																			blendAdditive:YES];
 }
 
 - (void)updateWithDelta:(GLfloat)aDelta {
@@ -175,6 +154,8 @@
 			break;
 	}
 	
+	[cometParticleEmitter setSourcePosition:Vector2fMake(cometBallParticleEmitter.sourcePosition.x, cometBallParticleEmitter.sourcePosition.y)];
+	
 	[backgroundParticleEmitter update:aDelta];
 	[cometParticleEmitter update:aDelta];
 	[cometBallParticleEmitter update:aDelta];
@@ -218,7 +199,6 @@
 - (void)render {
 	[backgroundParticleEmitter renderParticles];
 	[cometParticleEmitter renderParticles];
-	[cometBallParticleEmitter renderParticles];
 	[logoImage renderAtPoint:CGPointMake(0, 300) centerOfImage:NO];
 	[menuItems makeObjectsPerformSelector:@selector(render)];
 }
