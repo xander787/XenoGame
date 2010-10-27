@@ -181,6 +181,7 @@
 	particle->direction = Vector2fMultiply(vector, vectorSpeed);
 	
 	// Calculate the particle size using the particleSize and variance passed in
+	// Also do the work to calculate the delta for the finish size
 	particle->particleSize = particleSize + particleSizeVariance * RANDOM_MINUS_1_TO_1();
 	if (finishParticleSize == particleSize)
 		particle->deltaSize = 0;

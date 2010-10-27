@@ -10,11 +10,11 @@
 //	James Linnell - Software Engineer, Creative Design, Art Producer
 //	Tyler Newcomb - Creative Design, Art Producer
 //
-//	Last Updated - 10/25/2010 @ 11PM - James
-//	- Fixed background space scene. Looks awesome now.
-//
 //	10/26/2010 @ 6PM - Alexander
 //	- Raised speed at which scene fades out to show new scene
+//
+//	10/27/2010 @ 4:30PM - Alexander
+//	- Changed around the comet emitters...looks perfect now.
 
 #import "MainMenuScene.h"
 #import "Image.h"
@@ -84,28 +84,28 @@
 	
 	
 	cometParticleEmitter = [[ParticleEmitter alloc] initParticleEmitterWithImageNamed:@"texture.png"
-																			 position:Vector2fMake(191, 268)
-															   sourcePositionVariance:Vector2fMake(10, 10)
-																				speed:30.0
-																		speedVariance:10.0
-																	 particleLifeSpan:0.75
-															 particleLifespanVariance:0.5
-																				angle:145.0
+																			 position:Vector2fMake(165, 225)
+															   sourcePositionVariance:Vector2fMake(10, 15)
+																				speed:2.0
+																		speedVariance:0.0
+																	 particleLifeSpan:1.6
+															 particleLifespanVariance:0.8
+																				angle:190.0
 																		angleVariance:0.0
 																			  gravity:Vector2fMake(0.0, 0.0)
 																		   startColor:Color4fMake(0.38, 0.58, 0.94, 1)
 																   startColorVariance:Color4fMake(0, 0, 0, 0)
 																		  finishColor:Color4fMake(0.5, 0.1, 0.1, 1)
-																  finishColorVariance:Color4fMake(0.3, 0.05, 0.05, 0)
-																		 maxParticles:250
-																		 particleSize:60
-																   finishParticleSize:0.0
-																 particleSizeVariance:20
+																  finishColorVariance:Color4fMake(0.3, 0, 0.05, 0.05)
+																		 maxParticles:300
+																		 particleSize:30
+																   finishParticleSize:10
+																 particleSizeVariance:-10
 																			 duration:-1
 																		blendAdditive:YES];
 	
 	cometBallParticleEmitter = [[ParticleEmitter alloc] initParticleEmitterWithImageNamed:@"texture.png" 
-																				 position:Vector2fMake(280, 440) 
+																				 position:Vector2fMake(164, 225) 
 																   sourcePositionVariance:Vector2fMake(10, 10)
 																					speed:0.1 
 																			speedVariance:0.05
@@ -114,16 +114,16 @@
 																					angle:190.0 
 																			angleVariance:0.0
 																				  gravity:Vector2fMake(0.0, 0.0) 
-																			   startColor:Color4fMake(0.9, 0.9, 0.9, 1) 
-																	   startColorVariance:Color4fMake(0.1, 0.1, 0.1, 0.1)
-																			  finishColor:Color4fMake(0.9, 0.9, 0.9, 1)
-																	  finishColorVariance:Color4fMake(0.1, 0.1, 0.1, 0.1)
+																			   startColor:Color4fMake(0.38, 0.58, 0.94, 1) 
+																	   startColorVariance:Color4fMake(0, 0, 0, 0)
+																			  finishColor:Color4fMake(0.1, 0.1, 0.5, 1)
+																	  finishColorVariance:Color4fMake(0.3, 0, 0.05, 0.05)
 																			 maxParticles:50
-																			 particleSize:65
-																	   finishParticleSize:65
+																			 particleSize:55
+																	   finishParticleSize:55
 																	 particleSizeVariance:0
 																				 duration:-1
-																			blendAdditive:YES];	
+																			blendAdditive:YES];
 }
 
 - (void)updateWithDelta:(GLfloat)aDelta {
@@ -174,7 +174,6 @@
 		default:
 			break;
 	}
-	[cometBallParticleEmitter setSourcePosition:Vector2fMake(cometBallParticleEmitter.sourcePosition.x+aDelta, cometBallParticleEmitter.sourcePosition.y+aDelta)];
 	
 	[backgroundParticleEmitter update:aDelta];
 	[cometParticleEmitter update:aDelta];
