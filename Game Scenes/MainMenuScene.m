@@ -12,6 +12,9 @@
 //
 //	Last Updated - 10/25/2010 @ 11PM - James
 //	- Fixed background space scene. Looks awesome now.
+//
+//	10/26/2010 @ 6PM - Alexander
+//	- Raised speed at which scene fades out to show new scene
 
 #import "MainMenuScene.h"
 #import "Image.h"
@@ -30,7 +33,7 @@
 		_sharedResourceManager = [ResourceManager sharedResourceManager];
 		_sharedSoundManager = [SoundManager sharedSoundManager];
 		
-		_sceneFadeSpeed = 0.5f;
+		_sceneFadeSpeed = 1.5f;
 		sceneAlpha = 0.0f;
 		_origin = CGPointMake(0, 0);
 		[_sharedDirector setGlobalAlpha:sceneAlpha];
@@ -93,7 +96,7 @@
 																   startColorVariance:Color4fMake(0, 0.2, 0.2, 0.5)
 																		  finishColor:Color4fMake(0.74, 0.58, 0.3, 1)
 																  finishColorVariance:Color4fMake(0, 0, 0, 1)
-																		 maxParticles:200
+																		 maxParticles:50
 																		 particleSize:40
 																 particleSizeVariance:-10
 																			 duration:-1
@@ -168,6 +171,7 @@
 		default:
 			break;
 	}
+	[cometBallParticleEmitter setSourcePosition:Vector2fMake(cometBallParticleEmitter.sourcePosition.x+aDelta, cometBallParticleEmitter.sourcePosition.y+aDelta)];
 	
 	[backgroundParticleEmitter update:aDelta];
 	[cometParticleEmitter update:aDelta];
