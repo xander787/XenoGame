@@ -81,8 +81,7 @@
 																	  particleSizeVariance:5.0
 																				  duration:-1
 																			 blendAdditive:NO];
-	
-	
+		
 	cometParticleEmitter = [[ParticleEmitter alloc] initParticleEmitterWithImageNamed:@"texture.png"
 																			 position:Vector2fMake(20, 120)
 															   sourcePositionVariance:Vector2fMake(10, 15)
@@ -152,13 +151,12 @@
 			break;
 		default:
 			break;
-	}
+	};
 	
-	[cometParticleEmitter setSourcePosition:Vector2fMake(cometBallParticleEmitter.sourcePosition.x, cometBallParticleEmitter.sourcePosition.y)];
+	[cometParticleEmitter setSourcePosition:Vector2fMake(cometParticleEmitter.sourcePosition.x + (150 * aDelta), cometParticleEmitter.sourcePosition.y + (150 * aDelta))];
 	
 	[backgroundParticleEmitter update:aDelta];
 	[cometParticleEmitter update:aDelta];
-	[cometBallParticleEmitter update:aDelta];
 }
 
 - (void)setSceneState:(uint)theState {
@@ -197,8 +195,8 @@
 }
 
 - (void)render {
-	[backgroundParticleEmitter renderParticles];
 	[cometParticleEmitter renderParticles];
+	[backgroundParticleEmitter renderParticles];
 	[logoImage renderAtPoint:CGPointMake(0, 300) centerOfImage:NO];
 	[menuItems makeObjectsPerformSelector:@selector(render)];
 }
