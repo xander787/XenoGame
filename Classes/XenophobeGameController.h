@@ -18,6 +18,7 @@
 #import "AbstractScene.h"
 #import "MainMenuScene.h"
 #import "SettingsScene.h"
+#import "HighScoresScene.h"
 
 @class EAGLView;
 

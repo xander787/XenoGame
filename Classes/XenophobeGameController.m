@@ -10,8 +10,8 @@
 //	James Linnell - Software Engineer, Creative Design, Art Producer
 //	Tyler Newcomb - Creative Design, Art Producer
 //
-//	Last Updated - 10/26/2010 @ 12AM - Alexander
-//	- Added in code to recognize the settings scene
+//	Last Updated - 10/28/2010 @ 6:40PM - Alexander
+//	- Added in code to recognize the high scores scene
 
 #import "XenophobeGameController.h"
 #import "Common.h"
@@ -57,6 +57,10 @@
 		
 		scene = [[SettingsScene alloc] init];
 		[_director addSceneWithKey:@"settings" scene:scene];
+		[scene release];
+		
+		scene = [[HighScoresScene alloc] init];
+		[_director addSceneWithKey:@"highscores" scene:scene];
 		[scene release];
 		
 		// Make sure glInitialised is set to NO so that OpenGL gets initialised when the first scene is rendered

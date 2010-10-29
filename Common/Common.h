@@ -41,9 +41,8 @@
 enum {
 	kControlType_NewGame,
 	kControlType_Settings,
+	kControlType_About,
 	kControlType_HighScores,
-	kControlType_QuitGame,
-	kControlType_PauseGame,
 	kControl_Idle,
 	kControl_Scaling,
 	kControl_Selected,

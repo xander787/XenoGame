@@ -1,5 +1,5 @@
 //
-//  SettingsScene.m
+//  HighScoresScene.m
 //  Xenophobe
 //
 //  Created by Alexander on 10/20/10.
@@ -10,16 +10,13 @@
 //	James Linnell - Software Engineer, Creative Design, Art Producer
 //	Tyler Newcomb - Creative Design, Art Producer
 //
-//	Last Updated - 10/28/2010 @ 6:40PM - Alexander
-//	- Added in necessary code to make the view work
+//	Last Updated - 10/26/2010 @ 12AM - Alexander
+//	- Initial creation of the scene
 
-#import "SettingsScene.h"
+#import "HighScoresScene.h"
 
-@interface SettingsScene (Private)
-- (void)initSettings;
-@end
 
-@implementation SettingsScene
+@implementation HighScoresScene
 
 - (id)init {
 	if (self = [super init]) {
@@ -27,7 +24,7 @@
 		_sharedResourceManager = [ResourceManager sharedResourceManager];
 		_sharedSoundManager = [SoundManager sharedSoundManager];
 		
-		_sceneFadeSpeed = 1.5f;
+		_sceneFadeSpeed = 0.5f;
 		sceneAlpha = 0.0f;
 		_origin = CGPointMake(0, 0);
 		[_sharedDirector setGlobalAlpha:sceneAlpha];
@@ -40,7 +37,7 @@
 }
 
 - (void)initSettings {
-	
+	leaderboardsTitle = [[Image alloc] initWithImage:@"leaderboardstitle.png"];
 }
 
 - (void)updateWithDelta:(GLfloat)aDelta {
@@ -81,7 +78,7 @@
 }
 
 - (void)render {
-	
+	[leaderboardsTitle renderAtPoint:CGPointMake(160, 430) centerOfImage:YES];
 }
 
 @end

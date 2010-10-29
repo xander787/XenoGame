@@ -2,9 +2,16 @@
 //  MenuControl.m
 //  Xenophobe
 //
-//  Created by Alexander on 10/22/10.
-//  Copyright 2010 __MyCompanyName__. All rights reserved.
+//  Created by Alexander on 10/20/10.
+//  Copyright 2010 Alexander Nabavi-Noori, XanderNet Inc. All rights reserved.
+//  
+//  Team:
+//  Alexander Nabavi-Noori - Software Engineer, Game Architect
+//	James Linnell - Software Engineer, Creative Design, Art Producer
+//	Tyler Newcomb - Creative Design, Art Producer
 //
+//	Last Updated - 10/28/2010 @ 6:40PM - Alexander
+//	- Made the button animation faster
 
 #import "MenuControl.h"
 
@@ -51,7 +58,7 @@
 	GLfloat delta = [theDelta floatValue];
 	
 	if(state == kControl_Scaling) {		
-		[self scaleImage:delta];
+		[self scaleImage:delta * 3];
 	}
 	if(state == kControl_Idle) {
 		scale = 1.0f;

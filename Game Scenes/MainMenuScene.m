@@ -10,15 +10,16 @@
 //	James Linnell - Software Engineer, Creative Design, Art Producer
 //	Tyler Newcomb - Creative Design, Art Producer
 //
-//	10/26/2010 @ 6PM - Alexander
-//	- Raised speed at which scene fades out to show new scene
-//
 //	10/27/2010 @ 4:40PM - Alexander
 //	- Removed second particle emitter, not needed anymore.
+//
+//	10/28/2010 @ 6:40PM - Alexander
+//	- Added buttons for about page
 
 #import "MainMenuScene.h"
 #import "Image.h"
 #import "ParticleEmitter.h"
+#import <stdlib.h>
 
 @interface MainMenuScene (Private)
 - (void)initMenu;
@@ -60,6 +61,10 @@
 	[menuItems addObject:menuControl];
 	[menuControl release];
 	
+	menuControl = [[MenuControl alloc] initWithImageNamed:@"about.png" location:Vector2fMake(165, 75) centerOfImage:YES type:kControlType_About];
+	[menuItems addObject:menuControl];
+	[menuControl release];
+	
 	logoImage = [[Image alloc] initWithImage:@"xenophobe.png"];
 	backgroundParticleEmitter = [[ParticleEmitter alloc] initParticleEmitterWithImageNamed:@"texture.png"
 																				  position:Vector2fMake(160.0, 259.76)
@@ -78,18 +83,18 @@
 																			  maxParticles:2000
 																			  particleSize:2.0
 																		finishParticleSize:2.0
-																	  particleSizeVariance:5.0
+																	  particleSizeVariance:1.0
 																				  duration:-1
 																			 blendAdditive:NO];
 		
 	cometParticleEmitter = [[ParticleEmitter alloc] initParticleEmitterWithImageNamed:@"texture.png"
-																			 position:Vector2fMake(20, 120)
+																			 position:Vector2fMake(160, 80)
 															   sourcePositionVariance:Vector2fMake(10, 15)
 																				speed:2.0
 																		speedVariance:0.0
-																	 particleLifeSpan:.75
+																	 particleLifeSpan:0.75
 															 particleLifespanVariance:0.5
-																				angle:200.0
+																				angle:180.0
 																		angleVariance:0.0
 																			  gravity:Vector2fMake(0.0, 0.0)
 																		   startColor:Color4fMake(0.38, 0.58, 0.94, 1)
@@ -99,7 +104,7 @@
 																		 maxParticles:300
 																		 particleSize:60
 																   finishParticleSize:10
-																 particleSizeVariance:-10
+																 particleSizeVariance:10.0
 																			 duration:-1
 																		blendAdditive:YES];
 }
@@ -153,8 +158,29 @@
 			break;
 	};
 	
-	[cometParticleEmitter setSourcePosition:Vector2fMake(cometParticleEmitter.sourcePosition.x + (150 * aDelta), cometParticleEmitter.sourcePosition.y + (150 * aDelta))];
+	/*float x = cometParticleEmitter.sourcePosition.x;
+	float y = cometParticleEmitter.sourcePosition.y;
+	if(CGRectContainsPoint(CGRectMake(0, 0, 640, 960), CGPointMake(x, y))){
+		x = x + (150 * aDelta);
+		y = y + (150 * aDelta);
+	}
+	else {
+		int rnd = (arc4random() % 1000) + (arc4random() % 50);
+		int rndM = arc4random() % 100;
+		NSLog(@"%d", rnd);
+		if(rnd == 42 && rndM > 50){
+			if ((rndM & 1) != 0) {
+				x = arc4random() % 640 + 320;
+				y = arc4random() % 960 + 480;
+			}
+			else {
+				x = -(arc4random() % 640 + 320);
+				y = -(arc4random() % 960 + 480);
+			}
+		}
+	}*/
 	
+	//[cometParticleEmitter setSourcePosition:Vector2fMake(x, y)];	
 	[backgroundParticleEmitter update:aDelta];
 	[cometParticleEmitter update:aDelta];
 }
