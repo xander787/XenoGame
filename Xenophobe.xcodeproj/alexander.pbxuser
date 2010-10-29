@@ -54,8 +54,8 @@
 	1170ED44127012DD00721CF4 /* XenophobeGameController.m */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {1171, 2275}}";
-			sepNavSelRange = "{1714, 0}";
-			sepNavVisRange = "{4148, 1196}";
+			sepNavSelRange = "{388, 0}";
+			sepNavVisRange = "{0, 858}";
 		};
 	};
 	1170EE8D12726B2500721CF4 /* PBXBookmark */ = {
@@ -102,8 +102,8 @@
 	};
 	11B1B8CD1276B53B006D085D /* SettingsScene.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1171, 482}}";
-			sepNavSelRange = "{564, 0}";
+			sepNavIntBoundsRect = "{{0, 0}, {1171, 476}}";
+			sepNavSelRange = "{37, 400}";
 			sepNavVisRange = "{0, 573}";
 		};
 	};
@@ -264,17 +264,29 @@
 		fRef = 11B1BB5512794528006D085D /* leaderboardstitle.png */;
 	};
 	11B1BB81127946F7006D085D /* HighScoresScene.h */ = {
+		isa = PBXFileReference;
+		fileEncoding = 4;
+		lastKnownFileType = sourcecode.c.h;
+		name = HighScoresScene.h;
+		path = "/Users/alexander/Desktop/Projects/Game Project/The Game/Xenophobe/HighScoresScene.h";
+		sourceTree = "<absolute>";
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {1171, 476}}";
-			sepNavSelRange = "{438, 0}";
-			sepNavVisRange = "{0, 446}";
+			sepNavSelRange = "{440, 0}";
+			sepNavVisRange = "{0, 744}";
 		};
 	};
 	11B1BB82127946F7006D085D /* HighScoresScene.m */ = {
+		isa = PBXFileReference;
+		fileEncoding = 4;
+		lastKnownFileType = sourcecode.c.objc;
+		name = HighScoresScene.m;
+		path = "/Users/alexander/Desktop/Projects/Game Project/The Game/Xenophobe/HighScoresScene.m";
+		sourceTree = "<absolute>";
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1171, 1014}}";
-			sepNavSelRange = "{1940, 0}";
-			sepNavVisRange = "{834, 1115}";
+			sepNavIntBoundsRect = "{{0, 0}, {1171, 1131}}";
+			sepNavSelRange = "{439, 0}";
+			sepNavVisRange = "{0, 942}";
 		};
 	};
 	11B1BB91127947B8006D085D /* PBXTextBookmark */ = {
@@ -312,7 +324,7 @@
 		fRef = 11B1B8CE1276B53B006D085D /* SettingsScene.m */;
 		name = "SettingsScene.m: 30";
 		rLen = 0;
-		rLoc = 799;
+		rLoc = 817;
 		rType = 0;
 		vrLen = 782;
 		vrLoc = 465;
@@ -332,7 +344,7 @@
 		fRef = 11B1BB81127946F7006D085D /* HighScoresScene.h */;
 		name = "HighScoresScene.h: 20";
 		rLen = 0;
-		rLoc = 438;
+		rLoc = 736;
 		rType = 0;
 		vrLen = 446;
 		vrLoc = 0;
@@ -342,7 +354,7 @@
 		fRef = 11B1BB82127946F7006D085D /* HighScoresScene.m */;
 		name = "HighScoresScene.m: 74";
 		rLen = 0;
-		rLoc = 1940;
+		rLoc = 2238;
 		rType = 0;
 		vrLen = 1115;
 		vrLoc = 834;
@@ -352,7 +364,7 @@
 		fRef = 11D324ED12739DD800F01BB5 /* MenuControl.m */;
 		name = "MenuControl.m: 54";
 		rLen = 0;
-		rLoc = 1449;
+		rLoc = 1752;
 		rType = 0;
 		vrLen = 733;
 		vrLoc = 1130;
@@ -412,7 +424,7 @@
 		fRef = 1170ED44127012DD00721CF4 /* XenophobeGameController.m */;
 		name = "XenophobeGameController.m: 64";
 		rLen = 0;
-		rLoc = 1714;
+		rLoc = 1719;
 		rType = 0;
 		vrLen = 1196;
 		vrLoc = 4148;
@@ -678,6 +690,13 @@
 		vrLen = 2165;
 		vrLoc = 0;
 	};
+	11D324E412739DBD00F01BB5 /* AbstractScene.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1171, 1183}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 1255}";
+		};
+	};
 	11D324E512739DBD00F01BB5 /* AbstractScene.m */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {1171, 611}}";
@@ -709,16 +728,16 @@
 	};
 	11D324EC12739DD800F01BB5 /* MenuControl.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1171, 482}}";
-			sepNavSelRange = "{0, 0}";
-			sepNavVisRange = "{0, 543}";
+			sepNavIntBoundsRect = "{{0, 0}, {1171, 476}}";
+			sepNavSelRange = "{437, 0}";
+			sepNavVisRange = "{0, 843}";
 		};
 	};
 	11D324ED12739DD800F01BB5 /* MenuControl.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1510, 1040}}";
-			sepNavSelRange = "{1449, 0}";
-			sepNavVisRange = "{1130, 733}";
+			sepNavIntBoundsRect = "{{0, 0}, {1171, 1157}}";
+			sepNavSelRange = "{440, 0}";
+			sepNavVisRange = "{0, 1036}";
 		};
 	};
 	11D325201273C14E00F01BB5 /* PreferencesManager.h */ = {
