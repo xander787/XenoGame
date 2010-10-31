@@ -10,11 +10,11 @@
 //	James Linnell - Software Engineer, Creative Design, Art Producer
 //	Tyler Newcomb - Creative Design, Art Producer
 //
-//	10/27/2010 @ 4:40PM - Alexander
-//	- Removed second particle emitter, not needed anymore.
-//
 //	10/28/2010 @ 6:40PM - Alexander
 //	- Added buttons for about page
+//
+//	10/30/2010 @ 8:40PM - Alexander
+//	- Made some changes to the background star emitter
 
 #import "MainMenuScene.h"
 #import "Image.h"
@@ -70,8 +70,8 @@
 	backgroundParticleEmitter = [[ParticleEmitter alloc] initParticleEmitterWithImageNamed:@"texture.png"
 																				  position:Vector2fMake(160.0, 259.76)
 																	sourcePositionVariance:Vector2fMake(373.5, 240.0)
-																					 speed:0.2
-																			 speedVariance:0.05
+																					 speed:0.1
+																			 speedVariance:0.01
 																		  particleLifeSpan:5.0
 																  particleLifespanVariance:2.0
 																					 angle:200.0
@@ -82,9 +82,9 @@
 																			   finishColor:Color4fMake(0.5, 0.5, 0.5, 0.34)
 																	   finishColorVariance:Color4fMake(0.0, 0.0, 0.0, 0.0)
 																			  maxParticles:2000
-																			  particleSize:2.0
-																		finishParticleSize:2.0
-																	  particleSizeVariance:1.0
+																			  particleSize:3.0
+																		finishParticleSize:3.0
+																	  particleSizeVariance:1.3
 																				  duration:-1
 																			 blendAdditive:NO];
 		

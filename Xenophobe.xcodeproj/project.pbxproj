@@ -29,9 +29,9 @@
 		11B1BBB41279540A006D085D /* about.png in Resources */ = {isa = PBXBuildFile; fileRef = 11B1BBB31279540A006D085D /* about.png */; };
 		11B1BBCA127A64E0006D085D /* HighScoresScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 11B1BBC9127A64E0006D085D /* HighScoresScene.m */; };
 		11B1BBD8127AAB1A006D085D /* PreferencesManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 11B1BBD7127AAB1A006D085D /* PreferencesManager.m */; };
-		11B1BC66127D14CB006D085D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 11B1BC64127D14CB006D085D /* main.m */; };
-		11B1BC6A127D14E0006D085D /* Xenophobe-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 11B1BC69127D14E0006D085D /* Xenophobe-Info.plist */; };
 		11B1BC6C127D14E4006D085D /* preferences.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 11B1BC6B127D14E4006D085D /* preferences.sqlite */; };
+		11B1BC78127D1C83006D085D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 11B1BC76127D1C83006D085D /* main.m */; };
+		11B1BC7A127D1C86006D085D /* Xenophobe-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 11B1BC79127D1C86006D085D /* Xenophobe-Info.plist */; };
 		11D3246812739BB400F01BB5 /* Animation.m in Sources */ = {isa = PBXBuildFile; fileRef = 11D3246512739BB400F01BB5 /* Animation.m */; };
 		11D3246912739BB400F01BB5 /* Frame.m in Sources */ = {isa = PBXBuildFile; fileRef = 11D3246712739BB400F01BB5 /* Frame.m */; };
 		11D3246C12739BBF00F01BB5 /* Texture2D.m in Sources */ = {isa = PBXBuildFile; fileRef = 11D3246B12739BBF00F01BB5 /* Texture2D.m */; };
@@ -98,10 +98,10 @@
 		11B1BBC8127A64E0006D085D /* HighScoresScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HighScoresScene.h; path = "Game Scenes/HighScoresScene.h"; sourceTree = "<group>"; };
 		11B1BBC9127A64E0006D085D /* HighScoresScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HighScoresScene.m; path = "Game Scenes/HighScoresScene.m"; sourceTree = "<group>"; };
 		11B1BBD7127AAB1A006D085D /* PreferencesManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PreferencesManager.m; path = "Singleton Managers/PreferencesManager.m"; sourceTree = "<group>"; };
-		11B1BC64127D14CB006D085D /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = "Other Resources/main.m"; sourceTree = "<group>"; };
-		11B1BC65127D14CB006D085D /* Xenophobe_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Xenophobe_Prefix.pch; path = "Other Resources/Xenophobe_Prefix.pch"; sourceTree = "<group>"; };
-		11B1BC69127D14E0006D085D /* Xenophobe-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "Xenophobe-Info.plist"; path = "Other Resources/Xenophobe-Info.plist"; sourceTree = "<group>"; };
 		11B1BC6B127D14E4006D085D /* preferences.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; name = preferences.sqlite; path = "Other Resources/preferences.sqlite"; sourceTree = "<group>"; };
+		11B1BC76127D1C83006D085D /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		11B1BC77127D1C83006D085D /* Xenophobe_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Xenophobe_Prefix.pch; sourceTree = "<group>"; };
+		11B1BC79127D1C86006D085D /* Xenophobe-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Xenophobe-Info.plist"; sourceTree = "<group>"; };
 		11D3246412739BB400F01BB5 /* Animation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Animation.h; path = "Graphics Engine/Animation/Animation.h"; sourceTree = "<group>"; };
 		11D3246512739BB400F01BB5 /* Animation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Animation.m; path = "Graphics Engine/Animation/Animation.m"; sourceTree = "<group>"; };
 		11D3246612739BB400F01BB5 /* Frame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Frame.h; path = "Graphics Engine/Animation/Frame.h"; sourceTree = "<group>"; };
@@ -482,8 +482,8 @@
 		29B97315FDCFA39411CA2CEA /* Other Sources */ = {
 			isa = PBXGroup;
 			children = (
-				11B1BC64127D14CB006D085D /* main.m */,
-				11B1BC65127D14CB006D085D /* Xenophobe_Prefix.pch */,
+				11B1BC76127D1C83006D085D /* main.m */,
+				11B1BC77127D1C83006D085D /* Xenophobe_Prefix.pch */,
 			);
 			name = "Other Sources";
 			sourceTree = "<group>";
@@ -491,8 +491,8 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				11B1BC79127D1C86006D085D /* Xenophobe-Info.plist */,
 				11B1BC6B127D14E4006D085D /* preferences.sqlite */,
-				11B1BC69127D14E0006D085D /* Xenophobe-Info.plist */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -581,8 +581,8 @@
 				11B1BB5C12794528006D085D /* highscoresbuttonweekglow.png in Resources */,
 				11B1BB5E12794528006D085D /* leaderboardstitle.png in Resources */,
 				11B1BBB41279540A006D085D /* about.png in Resources */,
-				11B1BC6A127D14E0006D085D /* Xenophobe-Info.plist in Resources */,
 				11B1BC6C127D14E4006D085D /* preferences.sqlite in Resources */,
+				11B1BC7A127D1C86006D085D /* Xenophobe-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -625,7 +625,7 @@
 				11B1B8CF1276B53B006D085D /* SettingsScene.m in Sources */,
 				11B1BBCA127A64E0006D085D /* HighScoresScene.m in Sources */,
 				11B1BBD8127AAB1A006D085D /* PreferencesManager.m in Sources */,
-				11B1BC66127D14CB006D085D /* main.m in Sources */,
+				11B1BC78127D1C83006D085D /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
