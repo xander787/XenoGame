@@ -13,6 +13,7 @@
 //	- Initial class creation
 
 #import <Foundation/Foundation.h>
+#import "sqlite3.h"
 
 
 @interface PreferencesManager : NSObject {

@@ -66,6 +66,7 @@
 	[menuControl release];
 	
 	logoImage = [[Image alloc] initWithImage:@"xenophobe.png"];
+	
 	backgroundParticleEmitter = [[ParticleEmitter alloc] initParticleEmitterWithImageNamed:@"texture.png"
 																				  position:Vector2fMake(160.0, 259.76)
 																	sourcePositionVariance:Vector2fMake(373.5, 240.0)
@@ -160,7 +161,9 @@
 	
 	/*float x = cometParticleEmitter.sourcePosition.x;
 	float y = cometParticleEmitter.sourcePosition.y;
-	if(CGRectContainsPoint(CGRectMake(0, 0, 640, 960), CGPointMake(x, y))){
+	float newAngle;
+	if(CGRectContainsPoint(CGRectMake(-320, 0, 640, 960), CGPointMake(x, y))){
+		NSLog(@"YES");
 		x = x + (150 * aDelta);
 		y = y + (150 * aDelta);
 	}
@@ -168,21 +171,23 @@
 		int rnd = (arc4random() % 1000) + (arc4random() % 50);
 		int rndM = arc4random() % 100;
 		NSLog(@"%d", rnd);
-		if(rnd == 42 && rndM > 50){
-			if ((rndM & 1) != 0) {
-				x = arc4random() % 640 + 320;
-				y = arc4random() % 960 + 480;
-			}
-			else {
-				x = -(arc4random() % 640 + 320);
-				y = -(arc4random() % 960 + 480);
-			}
+		if(rnd > 42){
+			x = -(arc4random() % -320 + 0);
+			y = -(arc4random() % 1 + 480);
+			float lineSlopHigh = (480 - y) / (0 - x);
+			float lineSlopLow = (0 - y) / (0 - x);
+			
+			float lineAngleHigh = (59.6 * lineSlopHigh) + 184.47;
+			float lineAngleLow = (59.6 * lineSlopLow) + 184.47;
+			
+			newAngle = arc4random() % (int)MAX(lineAngleLow, lineAngleHigh) + (int)MIN(lineAngleLow, lineAngleHigh);
 		}
-	}*/
+	}
 	
-	//[cometParticleEmitter setSourcePosition:Vector2fMake(x, y)];	
+	[cometParticleEmitter setSourcePosition:Vector2fMake(x, y)];	
+	[cometParticleEmitter setAngle:newAngle];
+	 [cometParticleEmitter update:aDelta];*/
 	[backgroundParticleEmitter update:aDelta];
-	[cometParticleEmitter update:aDelta];
 }
 
 - (void)setSceneState:(uint)theState {
@@ -221,7 +226,7 @@
 }
 
 - (void)render {
-	[cometParticleEmitter renderParticles];
+	//[cometParticleEmitter renderParticles];
 	[backgroundParticleEmitter renderParticles];
 	[logoImage renderAtPoint:CGPointMake(0, 300) centerOfImage:NO];
 	[menuItems makeObjectsPerformSelector:@selector(render)];
