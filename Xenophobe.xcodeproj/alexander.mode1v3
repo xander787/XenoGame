@@ -233,6 +233,8 @@
 			<key>Layout</key>
 			<array>
 				<dict>
+					<key>BecomeActive</key>
+					<true/>
 					<key>ContentConfiguration</key>
 					<dict>
 						<key>PBXBottomSmartGroupGIDs</key>
@@ -296,17 +298,18 @@
 								<string>29B97323FDCFA39411CA2CEA</string>
 								<string>19C28FACFE9D520D11CA2CBB</string>
 								<string>1C37FBAC04509CD000000102</string>
+								<string>11B1BE0E1283C69F006D085D</string>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>73</integer>
+									<integer>72</integer>
 									<integer>67</integer>
 									<integer>0</integer>
 								</array>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateVisibleRectKey</key>
-							<string>{{0, 946}, {186, 725}}</string>
+							<string>{{0, 1123}, {186, 725}}</string>
 						</dict>
 						<key>PBXTopSmartGroupGIDs</key>
 						<array/>
@@ -336,14 +339,12 @@
 					<key>Dock</key>
 					<array>
 						<dict>
-							<key>BecomeActive</key>
-							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
 								<string>1CE0B20306471E060097A5F4</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>GameScene.m</string>
+								<string>GameScene.h</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -351,11 +352,11 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CE0B20406471E060097A5F4</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>GameScene.m</string>
+										<string>GameScene.h</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>11B1BDD91283C340006D085D</string>
+										<string>11B1BE131283C69F006D085D</string>
 										<key>history</key>
 										<array>
 											<string>1170EE8D12726B2500721CF4</string>
@@ -393,7 +394,6 @@
 											<string>11B1BB6C12794654006D085D</string>
 											<string>11B1BB6D12794654006D085D</string>
 											<string>11B1BB6E12794654006D085D</string>
-											<string>11B1BB7212794654006D085D</string>
 											<string>11B1BB92127947B8006D085D</string>
 											<string>11B1BBAD12795357006D085D</string>
 											<string>11B1BBEB127BE9CE006D085D</string>
@@ -418,24 +418,22 @@
 											<string>11B1BDB21283C13C006D085D</string>
 											<string>11B1BDB31283C13C006D085D</string>
 											<string>11B1BDB41283C13C006D085D</string>
-											<string>11B1BDB51283C13C006D085D</string>
 											<string>11B1BDB61283C13C006D085D</string>
 											<string>11B1BDB71283C13C006D085D</string>
 											<string>11B1BDB81283C13C006D085D</string>
 											<string>11B1BDB91283C13C006D085D</string>
 											<string>11B1BDBC1283C13C006D085D</string>
 											<string>11B1BDBD1283C13C006D085D</string>
-											<string>11B1BDBE1283C13C006D085D</string>
 											<string>11B1BDBF1283C13C006D085D</string>
 											<string>11B1BDC01283C13C006D085D</string>
 											<string>11B1BDC11283C13C006D085D</string>
 											<string>11B1BDC31283C13C006D085D</string>
 											<string>11B1BDC41283C13C006D085D</string>
 											<string>11B1BDCB1283C245006D085D</string>
-											<string>11B1BDCC1283C245006D085D</string>
-											<string>11B1BDD31283C2AE006D085D</string>
-											<string>11B1BDD41283C2AE006D085D</string>
-											<string>11B1BDD51283C2AE006D085D</string>
+											<string>11B1BE0F1283C69F006D085D</string>
+											<string>11B1BE101283C69F006D085D</string>
+											<string>11B1BE111283C69F006D085D</string>
+											<string>11B1BE121283C69F006D085D</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>

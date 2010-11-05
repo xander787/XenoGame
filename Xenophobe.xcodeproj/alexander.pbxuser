@@ -82,6 +82,13 @@
 	1170EEBF12727F4500721CF4 /* PBXBookmark */ = {
 		isa = PBXBookmark;
 	};
+	11B1B6F9127543FC006D085D /* texture.png */ = {
+		isa = PBXFileReference;
+		lastKnownFileType = image.png;
+		name = texture.png;
+		path = "/Users/alexander/Desktop/Projects/Game Project/The Game/Xenophobe/Images/Normal/texture.png";
+		sourceTree = "<absolute>";
+	};
 	11B1B72912756BF0006D085D /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
 		fRef = 28FD14FD0DC6FC130079059D /* EAGLView.m */;
@@ -218,6 +225,62 @@
 		rType = 0;
 		vrLen = 1095;
 		vrLoc = 478;
+	};
+	11B1BB4D12794528006D085D /* highcsorestable.png */ = {
+		isa = PBXFileReference;
+		lastKnownFileType = image.png;
+		name = highcsorestable.png;
+		path = "/Users/alexander/Desktop/Projects/Game Project/The Game/Xenophobe/Images/Normal/highcsorestable.png";
+		sourceTree = "<absolute>";
+	};
+	11B1BB4E12794528006D085D /* highscoresbuttonalltime.png */ = {
+		isa = PBXFileReference;
+		lastKnownFileType = image.png;
+		name = highscoresbuttonalltime.png;
+		path = "/Users/alexander/Desktop/Projects/Game Project/The Game/Xenophobe/Images/Normal/highscoresbuttonalltime.png";
+		sourceTree = "<absolute>";
+	};
+	11B1BB4F12794528006D085D /* highscoresbuttonalltimeglow.png */ = {
+		isa = PBXFileReference;
+		lastKnownFileType = image.png;
+		name = highscoresbuttonalltimeglow.png;
+		path = "/Users/alexander/Desktop/Projects/Game Project/The Game/Xenophobe/Images/Normal/highscoresbuttonalltimeglow.png";
+		sourceTree = "<absolute>";
+	};
+	11B1BB5012794528006D085D /* highscoresbuttontoday.png */ = {
+		isa = PBXFileReference;
+		lastKnownFileType = image.png;
+		name = highscoresbuttontoday.png;
+		path = "/Users/alexander/Desktop/Projects/Game Project/The Game/Xenophobe/Images/Normal/highscoresbuttontoday.png";
+		sourceTree = "<absolute>";
+	};
+	11B1BB5112794528006D085D /* highscoresbuttontodayglow.png */ = {
+		isa = PBXFileReference;
+		lastKnownFileType = image.png;
+		name = highscoresbuttontodayglow.png;
+		path = "/Users/alexander/Desktop/Projects/Game Project/The Game/Xenophobe/Images/Normal/highscoresbuttontodayglow.png";
+		sourceTree = "<absolute>";
+	};
+	11B1BB5212794528006D085D /* highscoresbuttonweek.png */ = {
+		isa = PBXFileReference;
+		lastKnownFileType = image.png;
+		name = highscoresbuttonweek.png;
+		path = "/Users/alexander/Desktop/Projects/Game Project/The Game/Xenophobe/Images/Normal/highscoresbuttonweek.png";
+		sourceTree = "<absolute>";
+	};
+	11B1BB5312794528006D085D /* highscoresbuttonweekglow.png */ = {
+		isa = PBXFileReference;
+		lastKnownFileType = image.png;
+		name = highscoresbuttonweekglow.png;
+		path = "/Users/alexander/Desktop/Projects/Game Project/The Game/Xenophobe/Images/Normal/highscoresbuttonweekglow.png";
+		sourceTree = "<absolute>";
+	};
+	11B1BB5512794528006D085D /* leaderboardstitle.png */ = {
+		isa = PBXFileReference;
+		lastKnownFileType = image.png;
+		name = leaderboardstitle.png;
+		path = "/Users/alexander/Desktop/Projects/Game Project/The Game/Xenophobe/Images/Normal/leaderboardstitle.png";
+		sourceTree = "<absolute>";
 	};
 	11B1BB6512794654006D085D /* PBXBookmark */ = {
 		isa = PBXBookmark;
@@ -1299,14 +1362,33 @@
 			sepNavVisRange = "{0, 316}";
 		};
 	};
+	11B1BD9B12827B84006D085D /* playership.png */ = {
+		isa = PBXFileReference;
+		lastKnownFileType = image.png;
+		name = playership.png;
+		path = "/Users/alexander/Desktop/Projects/Game Project/The Game/Xenophobe/Images/Normal/playership.png";
+		sourceTree = "<absolute>";
+	};
 	11B1BD9D12827BD8006D085D /* GameScene.h */ = {
+		isa = PBXFileReference;
+		fileEncoding = 4;
+		lastKnownFileType = sourcecode.c.h;
+		name = GameScene.h;
+		path = "/Users/alexander/Desktop/Projects/Game Project/The Game/Xenophobe/GameScene.h";
+		sourceTree = "<absolute>";
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {1171, 476}}";
-			sepNavSelRange = "{274, 0}";
-			sepNavVisRange = "{0, 283}";
+			sepNavSelRange = "{213, 0}";
+			sepNavVisRange = "{0, 301}";
 		};
 	};
 	11B1BD9E12827BD8006D085D /* GameScene.m */ = {
+		isa = PBXFileReference;
+		fileEncoding = 4;
+		lastKnownFileType = sourcecode.c.objc;
+		name = GameScene.m;
+		path = "/Users/alexander/Desktop/Projects/Game Project/The Game/Xenophobe/GameScene.m";
+		sourceTree = "<absolute>";
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {1171, 1053}}";
 			sepNavSelRange = "{1898, 0}";
@@ -1314,8 +1396,14 @@
 		};
 	};
 	11B1BDA712839968006D085D /* xenophobe.fnt */ = {
+		isa = PBXFileReference;
+		fileEncoding = 4;
+		lastKnownFileType = text;
+		name = xenophobe.fnt;
+		path = "/Users/alexander/Desktop/Projects/Game Project/The Game/Xenophobe/Images/Fonts/xenophobe.fnt";
+		sourceTree = "<absolute>";
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1171, 1300}}";
+			sepNavIntBoundsRect = "{{0, 0}, {1171, 1339}}";
 			sepNavSelRange = "{0, 0}";
 			sepNavVisRange = "{0, 4104}";
 		};
@@ -1459,7 +1547,7 @@
 		fRef = 11B1BD9D12827BD8006D085D /* GameScene.h */;
 		name = "GameScene.h: 16";
 		rLen = 0;
-		rLoc = 282;
+		rLoc = 300;
 		rType = 0;
 		vrLen = 265;
 		vrLoc = 0;
@@ -1589,7 +1677,7 @@
 		fRef = 11B1BD9D12827BD8006D085D /* GameScene.h */;
 		name = "GameScene.h: 14";
 		rLen = 0;
-		rLoc = 274;
+		rLoc = 292;
 		rType = 0;
 		vrLen = 283;
 		vrLoc = 0;
@@ -1657,6 +1745,88 @@
 		rType = 0;
 		vrLen = 1085;
 		vrLoc = 867;
+	};
+	11B1BDE01283C524006D085D /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 11B1BD9E12827BD8006D085D /* GameScene.m */;
+		name = "GameScene.m: 77";
+		rLen = 0;
+		rLoc = 1898;
+		rType = 0;
+		vrLen = 780;
+		vrLoc = 0;
+	};
+	11B1BDE11283C524006D085D /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 11B1BD9D12827BD8006D085D /* GameScene.h */;
+		name = "GameScene.h: 14";
+		rLen = 0;
+		rLoc = 292;
+		rType = 0;
+		vrLen = 283;
+		vrLoc = 0;
+	};
+	11B1BDE21283C524006D085D /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 11B1BD9D12827BD8006D085D /* GameScene.h */;
+		name = "GameScene.h: 11";
+		rLen = 0;
+		rLoc = 213;
+		rType = 0;
+		vrLen = 301;
+		vrLoc = 0;
+	};
+	11B1BE071283C662006D085D /* xenophobefont.fnt */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1171, 1339}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 4108}";
+		};
+	};
+	11B1BE0B1283C69C006D085D /* GameScene.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1171, 476}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 301}";
+		};
+	};
+	11B1BE0F1283C69F006D085D /* PBXBookmark */ = {
+		isa = PBXBookmark;
+		fRef = 11B1BDE51283C5C3006D085D /* highcsorestable.png */;
+	};
+	11B1BE101283C69F006D085D /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 11B1BE071283C662006D085D /* xenophobefont.fnt */;
+		name = "xenophobefont.fnt: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 4108;
+		vrLoc = 0;
+	};
+	11B1BE111283C69F006D085D /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 11D324E712739DBD00F01BB5 /* MainMenuScene.m */;
+		name = "MainMenuScene.m: 231";
+		rLen = 0;
+		rLoc = 8147;
+		rType = 0;
+		vrLen = 1325;
+		vrLoc = 6935;
+	};
+	11B1BE121283C69F006D085D /* PBXBookmark */ = {
+		isa = PBXBookmark;
+		fRef = 11B1BE0B1283C69C006D085D /* GameScene.h */;
+	};
+	11B1BE131283C69F006D085D /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 11B1BE0B1283C69C006D085D /* GameScene.h */;
+		name = "GameScene.h: 1";
+		rLen = 0;
+		rLoc = 0;
+		rType = 0;
+		vrLen = 301;
+		vrLoc = 0;
 	};
 	11D3246412739BB400F01BB5 /* Animation.h */ = {
 		uiCtxt = {
@@ -1813,6 +1983,41 @@
 		vrLen = 885;
 		vrLoc = 0;
 	};
+	11D324B612739CC300F01BB5 /* continue.png */ = {
+		isa = PBXFileReference;
+		lastKnownFileType = image.png;
+		name = continue.png;
+		path = "/Users/alexander/Desktop/Projects/Game Project/The Game/Xenophobe/Images/Normal/continue.png";
+		sourceTree = "<absolute>";
+	};
+	11D324B712739CC300F01BB5 /* highscores.png */ = {
+		isa = PBXFileReference;
+		lastKnownFileType = image.png;
+		name = highscores.png;
+		path = "/Users/alexander/Desktop/Projects/Game Project/The Game/Xenophobe/Images/Normal/highscores.png";
+		sourceTree = "<absolute>";
+	};
+	11D324B812739CC300F01BB5 /* newgame.png */ = {
+		isa = PBXFileReference;
+		lastKnownFileType = image.png;
+		name = newgame.png;
+		path = "/Users/alexander/Desktop/Projects/Game Project/The Game/Xenophobe/Images/Normal/newgame.png";
+		sourceTree = "<absolute>";
+	};
+	11D324B912739CC300F01BB5 /* settings.png */ = {
+		isa = PBXFileReference;
+		lastKnownFileType = image.png;
+		name = settings.png;
+		path = "/Users/alexander/Desktop/Projects/Game Project/The Game/Xenophobe/Images/Normal/settings.png";
+		sourceTree = "<absolute>";
+	};
+	11D324BA12739CC300F01BB5 /* xenophobe.png */ = {
+		isa = PBXFileReference;
+		lastKnownFileType = image.png;
+		name = xenophobe.png;
+		path = "/Users/alexander/Desktop/Projects/Game Project/The Game/Xenophobe/Images/Normal/xenophobe.png";
+		sourceTree = "<absolute>";
+	};
 	11D324C312739CEF00F01BB5 /* Common.h */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {1171, 1950}}";
@@ -1923,9 +2128,9 @@
 	};
 	11D324E712739DBD00F01BB5 /* MainMenuScene.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1171, 3055}}";
+			sepNavIntBoundsRect = "{{0, 0}, {1171, 3302}}";
 			sepNavSelRange = "{8147, 0}";
-			sepNavVisRange = "{6937, 1323}";
+			sepNavVisRange = "{6935, 1325}";
 			sepNavWindowFrame = "{{15, 38}, {805, 839}}";
 		};
 	};
@@ -2328,6 +2533,14 @@
 			11B1BDD51283C2AE006D085D /* PBXTextBookmark */ = 11B1BDD51283C2AE006D085D /* PBXTextBookmark */;
 			11B1BDD61283C2AE006D085D /* PBXTextBookmark */ = 11B1BDD61283C2AE006D085D /* PBXTextBookmark */;
 			11B1BDD91283C340006D085D /* PBXTextBookmark */ = 11B1BDD91283C340006D085D /* PBXTextBookmark */;
+			11B1BDE01283C524006D085D /* PBXTextBookmark */ = 11B1BDE01283C524006D085D /* PBXTextBookmark */;
+			11B1BDE11283C524006D085D /* PBXTextBookmark */ = 11B1BDE11283C524006D085D /* PBXTextBookmark */;
+			11B1BDE21283C524006D085D /* PBXTextBookmark */ = 11B1BDE21283C524006D085D /* PBXTextBookmark */;
+			11B1BE0F1283C69F006D085D /* PBXBookmark */ = 11B1BE0F1283C69F006D085D /* PBXBookmark */;
+			11B1BE101283C69F006D085D /* PBXTextBookmark */ = 11B1BE101283C69F006D085D /* PBXTextBookmark */;
+			11B1BE111283C69F006D085D /* PBXTextBookmark */ = 11B1BE111283C69F006D085D /* PBXTextBookmark */;
+			11B1BE121283C69F006D085D /* PBXBookmark */ = 11B1BE121283C69F006D085D /* PBXBookmark */;
+			11B1BE131283C69F006D085D /* PBXTextBookmark */ = 11B1BE131283C69F006D085D /* PBXTextBookmark */;
 			11D3248112739BF400F01BB5 = 11D3248112739BF400F01BB5 /* PBXTextBookmark */;
 			11D3249012739C1A00F01BB5 = 11D3249012739C1A00F01BB5 /* PBXTextBookmark */;
 			11D324B112739CBF00F01BB5 = 11D324B112739CBF00F01BB5 /* PBXTextBookmark */;

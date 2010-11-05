@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "AbstractScene.h"
+#import "Image.h"
 
 @interface GameScene : AbstractScene {
 	CGPoint				_origin;
