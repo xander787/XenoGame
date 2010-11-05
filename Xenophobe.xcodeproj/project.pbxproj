@@ -32,6 +32,16 @@
 		11B1BC6C127D14E4006D085D /* preferences.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 11B1BC6B127D14E4006D085D /* preferences.sqlite */; };
 		11B1BC78127D1C83006D085D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 11B1BC76127D1C83006D085D /* main.m */; };
 		11B1BC7A127D1C86006D085D /* Xenophobe-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 11B1BC79127D1C86006D085D /* Xenophobe-Info.plist */; };
+		11B1BD5E12822445006D085D /* AbstractControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 11B1BD5B12822445006D085D /* AbstractControl.m */; };
+		11B1BD5F12822445006D085D /* MenuControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 11B1BD5D12822445006D085D /* MenuControl.m */; };
+		11B1BD86128275C8006D085D /* AbstractShip.m in Sources */ = {isa = PBXBuildFile; fileRef = 11B1BD7F128275C8006D085D /* AbstractShip.m */; };
+		11B1BD87128275C8006D085D /* BossShip.m in Sources */ = {isa = PBXBuildFile; fileRef = 11B1BD81128275C8006D085D /* BossShip.m */; };
+		11B1BD88128275C8006D085D /* MiniBossShip.m in Sources */ = {isa = PBXBuildFile; fileRef = 11B1BD83128275C8006D085D /* MiniBossShip.m */; };
+		11B1BD89128275C8006D085D /* PlayerShip.m in Sources */ = {isa = PBXBuildFile; fileRef = 11B1BD85128275C8006D085D /* PlayerShip.m */; };
+		11B1BD9C12827B84006D085D /* playership.png in Resources */ = {isa = PBXBuildFile; fileRef = 11B1BD9B12827B84006D085D /* playership.png */; };
+		11B1BD9F12827BD8006D085D /* GameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 11B1BD9E12827BD8006D085D /* GameScene.m */; };
+		11B1BDA912839968006D085D /* xenophobe.fnt in Resources */ = {isa = PBXBuildFile; fileRef = 11B1BDA712839968006D085D /* xenophobe.fnt */; };
+		11B1BDAA12839968006D085D /* xenophobe.png in Resources */ = {isa = PBXBuildFile; fileRef = 11B1BDA812839968006D085D /* xenophobe.png */; };
 		11D3246812739BB400F01BB5 /* Animation.m in Sources */ = {isa = PBXBuildFile; fileRef = 11D3246512739BB400F01BB5 /* Animation.m */; };
 		11D3246912739BB400F01BB5 /* Frame.m in Sources */ = {isa = PBXBuildFile; fileRef = 11D3246712739BB400F01BB5 /* Frame.m */; };
 		11D3246C12739BBF00F01BB5 /* Texture2D.m in Sources */ = {isa = PBXBuildFile; fileRef = 11D3246B12739BBF00F01BB5 /* Texture2D.m */; };
@@ -61,8 +71,6 @@
 		11D324D912739D7900F01BB5 /* ResourceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 11D324D612739D7900F01BB5 /* ResourceManager.m */; };
 		11D324E812739DBD00F01BB5 /* AbstractScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 11D324E512739DBD00F01BB5 /* AbstractScene.m */; };
 		11D324E912739DBD00F01BB5 /* MainMenuScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 11D324E712739DBD00F01BB5 /* MainMenuScene.m */; };
-		11D324EE12739DD800F01BB5 /* AbstractControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 11D324EB12739DD800F01BB5 /* AbstractControl.m */; };
-		11D324EF12739DD800F01BB5 /* MenuControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 11D324ED12739DD800F01BB5 /* MenuControl.m */; };
 		11D325171273BF7900F01BB5 /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 11D325161273BF7900F01BB5 /* libsqlite3.0.dylib */; };
 		1D3623260D0F684500981E51 /* XenophobeAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* XenophobeAppDelegate.m */; };
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
@@ -100,8 +108,25 @@
 		11B1BBD7127AAB1A006D085D /* PreferencesManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PreferencesManager.m; path = "Singleton Managers/PreferencesManager.m"; sourceTree = "<group>"; };
 		11B1BC6B127D14E4006D085D /* preferences.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; name = preferences.sqlite; path = "Other Resources/preferences.sqlite"; sourceTree = "<group>"; };
 		11B1BC76127D1C83006D085D /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		11B1BC77127D1C83006D085D /* Xenophobe_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Xenophobe_Prefix.pch; sourceTree = "<group>"; };
 		11B1BC79127D1C86006D085D /* Xenophobe-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Xenophobe-Info.plist"; sourceTree = "<group>"; };
+		11B1BD5A12822445006D085D /* AbstractControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AbstractControl.h; path = Entities/Controls/AbstractControl.h; sourceTree = "<group>"; };
+		11B1BD5B12822445006D085D /* AbstractControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AbstractControl.m; path = Entities/Controls/AbstractControl.m; sourceTree = "<group>"; };
+		11B1BD5C12822445006D085D /* MenuControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MenuControl.h; path = Entities/Controls/MenuControl.h; sourceTree = "<group>"; };
+		11B1BD5D12822445006D085D /* MenuControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MenuControl.m; path = Entities/Controls/MenuControl.m; sourceTree = "<group>"; };
+		11B1BD7E128275C8006D085D /* AbstractShip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AbstractShip.h; path = Entities/Ships/AbstractShip.h; sourceTree = "<group>"; };
+		11B1BD7F128275C8006D085D /* AbstractShip.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AbstractShip.m; path = Entities/Ships/AbstractShip.m; sourceTree = "<group>"; };
+		11B1BD80128275C8006D085D /* BossShip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BossShip.h; path = Entities/Ships/BossShip.h; sourceTree = "<group>"; };
+		11B1BD81128275C8006D085D /* BossShip.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BossShip.m; path = Entities/Ships/BossShip.m; sourceTree = "<group>"; };
+		11B1BD82128275C8006D085D /* MiniBossShip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MiniBossShip.h; path = Entities/Ships/MiniBossShip.h; sourceTree = "<group>"; };
+		11B1BD83128275C8006D085D /* MiniBossShip.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MiniBossShip.m; path = Entities/Ships/MiniBossShip.m; sourceTree = "<group>"; };
+		11B1BD84128275C8006D085D /* PlayerShip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PlayerShip.h; path = Entities/Ships/PlayerShip.h; sourceTree = "<group>"; };
+		11B1BD85128275C8006D085D /* PlayerShip.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PlayerShip.m; path = Entities/Ships/PlayerShip.m; sourceTree = "<group>"; };
+		11B1BD941282763B006D085D /* Xenophobe_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Xenophobe_Prefix.pch; sourceTree = "<group>"; };
+		11B1BD9B12827B84006D085D /* playership.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = playership.png; path = Images/Normal/playership.png; sourceTree = SOURCE_ROOT; };
+		11B1BD9D12827BD8006D085D /* GameScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameScene.h; sourceTree = "<group>"; };
+		11B1BD9E12827BD8006D085D /* GameScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameScene.m; sourceTree = "<group>"; };
+		11B1BDA712839968006D085D /* xenophobe.fnt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = xenophobe.fnt; path = Images/Fonts/xenophobe.fnt; sourceTree = SOURCE_ROOT; };
+		11B1BDA812839968006D085D /* xenophobe.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = xenophobe.png; path = Images/Fonts/xenophobe.png; sourceTree = SOURCE_ROOT; };
 		11D3246412739BB400F01BB5 /* Animation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Animation.h; path = "Graphics Engine/Animation/Animation.h"; sourceTree = "<group>"; };
 		11D3246512739BB400F01BB5 /* Animation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Animation.m; path = "Graphics Engine/Animation/Animation.m"; sourceTree = "<group>"; };
 		11D3246612739BB400F01BB5 /* Frame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Frame.h; path = "Graphics Engine/Animation/Frame.h"; sourceTree = "<group>"; };
@@ -159,10 +184,6 @@
 		11D324E512739DBD00F01BB5 /* AbstractScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AbstractScene.m; path = "Game Scenes/AbstractScene.m"; sourceTree = "<group>"; };
 		11D324E612739DBD00F01BB5 /* MainMenuScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MainMenuScene.h; path = "Game Scenes/MainMenuScene.h"; sourceTree = "<group>"; };
 		11D324E712739DBD00F01BB5 /* MainMenuScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MainMenuScene.m; path = "Game Scenes/MainMenuScene.m"; sourceTree = "<group>"; };
-		11D324EA12739DD800F01BB5 /* AbstractControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AbstractControl.h; path = Controls/AbstractControl.h; sourceTree = "<group>"; };
-		11D324EB12739DD800F01BB5 /* AbstractControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AbstractControl.m; path = Controls/AbstractControl.m; sourceTree = "<group>"; };
-		11D324EC12739DD800F01BB5 /* MenuControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MenuControl.h; path = Controls/MenuControl.h; sourceTree = "<group>"; };
-		11D324ED12739DD800F01BB5 /* MenuControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MenuControl.m; path = Controls/MenuControl.m; sourceTree = "<group>"; };
 		11D325161273BF7900F01BB5 /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
 		11D325201273C14E00F01BB5 /* PreferencesManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PreferencesManager.h; path = "Singleton Managers/PreferencesManager.h"; sourceTree = "<group>"; };
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -351,6 +372,8 @@
 				11D324E512739DBD00F01BB5 /* AbstractScene.m */,
 				11D324E612739DBD00F01BB5 /* MainMenuScene.h */,
 				11D324E712739DBD00F01BB5 /* MainMenuScene.m */,
+				11B1BD9D12827BD8006D085D /* GameScene.h */,
+				11B1BD9E12827BD8006D085D /* GameScene.m */,
 				11B1B8CD1276B53B006D085D /* SettingsScene.h */,
 				11B1B8CE1276B53B006D085D /* SettingsScene.m */,
 				11B1BBC8127A64E0006D085D /* HighScoresScene.h */,
@@ -381,10 +404,10 @@
 		1170EE371271788C00721CF4 /* Controls */ = {
 			isa = PBXGroup;
 			children = (
-				11D324EA12739DD800F01BB5 /* AbstractControl.h */,
-				11D324EB12739DD800F01BB5 /* AbstractControl.m */,
-				11D324EC12739DD800F01BB5 /* MenuControl.h */,
-				11D324ED12739DD800F01BB5 /* MenuControl.m */,
+				11B1BD5A12822445006D085D /* AbstractControl.h */,
+				11B1BD5B12822445006D085D /* AbstractControl.m */,
+				11B1BD5C12822445006D085D /* MenuControl.h */,
+				11B1BD5D12822445006D085D /* MenuControl.m */,
 			);
 			name = Controls;
 			sourceTree = "<group>";
@@ -419,6 +442,8 @@
 		1170EE5812724F7100721CF4 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
+				11B1BDA712839968006D085D /* xenophobe.fnt */,
+				11B1BDA812839968006D085D /* xenophobe.png */,
 			);
 			name = Fonts;
 			sourceTree = "<group>";
@@ -433,6 +458,7 @@
 		1170EE6112724FAC00721CF4 /* Normal */ = {
 			isa = PBXGroup;
 			children = (
+				11B1BD9B12827B84006D085D /* playership.png */,
 				11D324BA12739CC300F01BB5 /* xenophobe.png */,
 				11D324B812739CC300F01BB5 /* newgame.png */,
 				11D324B612739CC300F01BB5 /* continue.png */,
@@ -452,6 +478,30 @@
 			name = Normal;
 			sourceTree = "<group>";
 		};
+		11B1BD5812822400006D085D /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				11B1BD601282247B006D085D /* Ships */,
+				1170EE371271788C00721CF4 /* Controls */,
+			);
+			name = Entities;
+			sourceTree = "<group>";
+		};
+		11B1BD601282247B006D085D /* Ships */ = {
+			isa = PBXGroup;
+			children = (
+				11B1BD7E128275C8006D085D /* AbstractShip.h */,
+				11B1BD7F128275C8006D085D /* AbstractShip.m */,
+				11B1BD84128275C8006D085D /* PlayerShip.h */,
+				11B1BD85128275C8006D085D /* PlayerShip.m */,
+				11B1BD82128275C8006D085D /* MiniBossShip.h */,
+				11B1BD83128275C8006D085D /* MiniBossShip.m */,
+				11B1BD80128275C8006D085D /* BossShip.h */,
+				11B1BD81128275C8006D085D /* BossShip.m */,
+			);
+			name = Ships;
+			sourceTree = "<group>";
+		};
 		19C28FACFE9D520D11CA2CBB /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -467,7 +517,7 @@
 				1170ED691270147B00721CF4 /* DDXML */,
 				1170ECFB12700EBC00721CF4 /* Singleton Managers */,
 				1170EBED126ED21C00721CF4 /* Graphics Engine */,
-				1170EE371271788C00721CF4 /* Controls */,
+				11B1BD5812822400006D085D /* Entities */,
 				1170ED2C127010B400721CF4 /* Game Scenes */,
 				080E96DDFE201D6D7F000001 /* Classes */,
 				1170EE5512724F4900721CF4 /* Game Resources */,
@@ -483,7 +533,7 @@
 			isa = PBXGroup;
 			children = (
 				11B1BC76127D1C83006D085D /* main.m */,
-				11B1BC77127D1C83006D085D /* Xenophobe_Prefix.pch */,
+				11B1BD941282763B006D085D /* Xenophobe_Prefix.pch */,
 			);
 			name = "Other Sources";
 			sourceTree = "<group>";
@@ -583,6 +633,9 @@
 				11B1BBB41279540A006D085D /* about.png in Resources */,
 				11B1BC6C127D14E4006D085D /* preferences.sqlite in Resources */,
 				11B1BC7A127D1C86006D085D /* Xenophobe-Info.plist in Resources */,
+				11B1BD9C12827B84006D085D /* playership.png in Resources */,
+				11B1BDA912839968006D085D /* xenophobe.fnt in Resources */,
+				11B1BDAA12839968006D085D /* xenophobe.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -620,12 +673,17 @@
 				11D324D912739D7900F01BB5 /* ResourceManager.m in Sources */,
 				11D324E812739DBD00F01BB5 /* AbstractScene.m in Sources */,
 				11D324E912739DBD00F01BB5 /* MainMenuScene.m in Sources */,
-				11D324EE12739DD800F01BB5 /* AbstractControl.m in Sources */,
-				11D324EF12739DD800F01BB5 /* MenuControl.m in Sources */,
 				11B1B8CF1276B53B006D085D /* SettingsScene.m in Sources */,
 				11B1BBCA127A64E0006D085D /* HighScoresScene.m in Sources */,
 				11B1BBD8127AAB1A006D085D /* PreferencesManager.m in Sources */,
 				11B1BC78127D1C83006D085D /* main.m in Sources */,
+				11B1BD5E12822445006D085D /* AbstractControl.m in Sources */,
+				11B1BD5F12822445006D085D /* MenuControl.m in Sources */,
+				11B1BD86128275C8006D085D /* AbstractShip.m in Sources */,
+				11B1BD87128275C8006D085D /* BossShip.m in Sources */,
+				11B1BD88128275C8006D085D /* MiniBossShip.m in Sources */,
+				11B1BD89128275C8006D085D /* PlayerShip.m in Sources */,
+				11B1BD9F12827BD8006D085D /* GameScene.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -63,6 +63,10 @@
 		[_director addSceneWithKey:@"highscores" scene:scene];
 		[scene release];
 		
+		scene = [[GameScene alloc] init];
+		[_director addSceneWithKey:@"game" scene:scene];
+		[scene release];
+		
 		// Make sure glInitialised is set to NO so that OpenGL gets initialised when the first scene is rendered
 		glInitialised = NO;
 		
