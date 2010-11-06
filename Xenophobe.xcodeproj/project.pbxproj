@@ -21,7 +21,6 @@
 		11B1BBD8127AAB1A006D085D /* PreferencesManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 11B1BBD7127AAB1A006D085D /* PreferencesManager.m */; };
 		11B1BC6C127D14E4006D085D /* preferences.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 11B1BC6B127D14E4006D085D /* preferences.sqlite */; };
 		11B1BC78127D1C83006D085D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 11B1BC76127D1C83006D085D /* main.m */; };
-		11B1BC7A127D1C86006D085D /* Xenophobe-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 11B1BC79127D1C86006D085D /* Xenophobe-Info.plist */; };
 		11B1BD5E12822445006D085D /* AbstractControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 11B1BD5B12822445006D085D /* AbstractControl.m */; };
 		11B1BD5F12822445006D085D /* MenuControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 11B1BD5D12822445006D085D /* MenuControl.m */; };
 		11B1BD86128275C8006D085D /* AbstractShip.m in Sources */ = {isa = PBXBuildFile; fileRef = 11B1BD7F128275C8006D085D /* AbstractShip.m */; };
@@ -617,7 +616,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				11B1BC6C127D14E4006D085D /* preferences.sqlite in Resources */,
-				11B1BC7A127D1C86006D085D /* Xenophobe-Info.plist in Resources */,
 				11B1BDF31283C5C3006D085D /* about.png in Resources */,
 				11B1BDF41283C5C3006D085D /* continue.png in Resources */,
 				11B1BDF51283C5C3006D085D /* highcsorestable.png in Resources */,

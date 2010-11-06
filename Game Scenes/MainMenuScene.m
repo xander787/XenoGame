@@ -69,7 +69,7 @@
 	[menuControl release];
 	
 	logoImage = [[Image alloc] initWithImage:@"xenophobe.png"];
-	
+		
 	backgroundParticleEmitter = [[ParticleEmitter alloc] initParticleEmitterWithImageNamed:@"texture.png"
 																				  position:Vector2fMake(160.0, 259.76)
 																	sourcePositionVariance:Vector2fMake(373.5, 240.0)

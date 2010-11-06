@@ -17,7 +17,6 @@
 #import "AbstractScene.h"
 
 @interface HighScoresScene : AbstractScene {
-	CGPoint				_origin;
 	Image				*leaderboardsTitle;
 	Image				*highscoresTable;
 	Image				*todayButton;

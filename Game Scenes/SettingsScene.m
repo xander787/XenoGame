@@ -12,6 +12,10 @@
 //
 //	Last Updated - 10/28/2010 @ 6:40PM - Alexander
 //	- Added in necessary code to make the view work
+//
+//	Last Updated - 11/5/2010 @ 9:20PM - Alexander
+//	- Fixed problem causing the alpha for the scene to
+//	be set to 0 causing nothing to appear to render to the screen
 
 #import "SettingsScene.h"
 
@@ -27,32 +31,48 @@
 		_sharedResourceManager = [ResourceManager sharedResourceManager];
 		_sharedSoundManager = [SoundManager sharedSoundManager];
 		
-		_sceneFadeSpeed = 1.5f;
-		sceneAlpha = 0.0f;
-		_origin = CGPointMake(0, 0);
-		[_sharedDirector setGlobalAlpha:sceneAlpha];
+		_sceneFadeSpeed = 0.5f;
+//		sceneAlpha = 0.0f;
+//		_origin = CGPointMake(0, 0);
+//		[_sharedDirector setGlobalAlpha:sceneAlpha];
+//		
+//		[self setSceneState:kSceneState_TransitionIn];
+//		nextSceneKey = nil;
 		
-		[self setSceneState:kSceneState_TransitionIn];
-		nextSceneKey = nil;
+		[self initSettings];
 	}
 	
 	return self;
 }
 
 - (void)initSettings {
-	
 }
 
 - (void)updateWithDelta:(GLfloat)aDelta {
-	
-}
-
-- (void)setSceneState:(uint)theState {
-	sceneState = theState;
-	if(sceneState == kSceneState_TransitionOut)
-		sceneAlpha = 1.0f;
-	if(sceneState == kSceneState_TransitionIn)
-		sceneAlpha = 0.0f;
+	switch (sceneState) {
+		case kSceneState_Running:
+			break;
+			
+		case kSceneState_TransitionOut:
+			sceneAlpha-= _sceneFadeSpeed * aDelta;
+            [_sharedDirector setGlobalAlpha:sceneAlpha];
+			if(sceneAlpha <= 0.0f)
+                // If the scene being transitioned to does not exist then transition
+                // this scene back in
+				if(![_sharedDirector setCurrentSceneToSceneWithKey:nextSceneKey])
+                    sceneState = kSceneState_TransitionIn;
+			break;
+			
+		case kSceneState_TransitionIn:
+			sceneAlpha += _sceneFadeSpeed * aDelta;
+            [_sharedDirector setGlobalAlpha:sceneAlpha];
+			if(sceneAlpha >= 1.0f) {
+				sceneState = kSceneState_Running;
+			}
+			break;
+		default:
+			break;
+	}
 }
 
 - (void)updateWithTouchLocationBegan:(NSSet *)touches withEvent:(UIEvent *)event view:(UIView *)aView {
@@ -76,12 +96,10 @@
 }
 
 - (void)transitionToSceneWithKey:(NSString *)aKey {
-	sceneState = kSceneState_TransitionOut;
-	sceneAlpha = 1.0f;
+	
 }
 
 - (void)render {
-	
 }
 
 @end

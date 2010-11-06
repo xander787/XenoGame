@@ -36,7 +36,6 @@
 
 - (void)initGameScene {
 	image = [[Image alloc] initWithImage:@"playership.png" scale:(1/8.0f)];
-	NSLog(@"Should have loaded image");
 }
 
 - (void)updateWithDelta:(GLfloat)aDelta {

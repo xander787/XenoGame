@@ -18,7 +18,6 @@
 
 
 @interface SettingsScene : AbstractScene {
-	CGPoint				_origin;
 }
 
 @end
