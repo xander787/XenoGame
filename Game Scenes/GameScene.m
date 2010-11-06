@@ -27,13 +27,16 @@
 		
 		[self setSceneState:kSceneState_TransitionIn];
 		nextSceneKey = nil;
+		
+		[self initGameScene];
 	}
 	
 	return self;
 }
 
 - (void)initGameScene {
-	image = [[Image alloc] initWithImage:@"playership.png" scale:(1/8)];
+	image = [[Image alloc] initWithImage:@"playership.png" scale:(1/8.0f)];
+	NSLog(@"Should have loaded image");
 }
 
 - (void)updateWithDelta:(GLfloat)aDelta {
@@ -74,7 +77,7 @@
 }
 
 - (void)render {
-	[image renderAtPoint:CGPointMake(120, 120)];
+	[image renderAtPoint:CGPointMake(165, 225) centerOfImage:NO];
 }
 
 @end

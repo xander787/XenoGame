@@ -10,11 +10,14 @@
 //	James Linnell - Software Engineer, Creative Design, Art Producer
 //	Tyler Newcomb - Creative Design, Art Producer
 //
-//	10/28/2010 @ 6:40PM - Alexander
-//	- Added buttons for about page
-//
 //	10/30/2010 @ 8:40PM - Alexander
 //	- Made some changes to the background star emitter
+//
+//	11/5/2010 @ 5:40PM - Alexander
+//	- Added scene key strings in updateWithDelta: so that 
+//	the class recognizes and properly switches to scenes
+//	correctly (effected highscores scene & about scene
+//	which weren't showing up before because of this).
 
 #import "MainMenuScene.h"
 #import "Image.h"
@@ -127,6 +130,12 @@
                         case kControlType_Settings:
                             nextSceneKey = @"settings";
                             break;
+						case kControlType_HighScores:
+							nextSceneKey = @"highscores";
+							break;
+						case kControlType_About:
+							nextSceneKey = @"about";
+							break;
 						default:
 							break;
 					}
