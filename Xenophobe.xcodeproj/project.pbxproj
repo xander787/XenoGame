@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		114A1A7412989C4B004769D4 /* PlayerShips.plist in Resources */ = {isa = PBXBuildFile; fileRef = 114A1A7312989C4B004769D4 /* PlayerShips.plist */; };
+		1170E3AC12865A18000BF968 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1170E3AB12865A18000BF968 /* CoreMotion.framework */; };
+		1170E418128A1741000BF968 /* EnemyShip.m in Sources */ = {isa = PBXBuildFile; fileRef = 1170E417128A1741000BF968 /* EnemyShip.m */; };
 		1170EC68126FCB7E00721CF4 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1170EC67126FCB7E00721CF4 /* AudioToolbox.framework */; };
 		1170EC6A126FCB7E00721CF4 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1170EC69126FCB7E00721CF4 /* AVFoundation.framework */; };
 		1170EC6C126FCB7E00721CF4 /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1170EC6B126FCB7E00721CF4 /* CoreAudio.framework */; };
@@ -25,7 +28,6 @@
 		11B1BD5F12822445006D085D /* MenuControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 11B1BD5D12822445006D085D /* MenuControl.m */; };
 		11B1BD86128275C8006D085D /* AbstractShip.m in Sources */ = {isa = PBXBuildFile; fileRef = 11B1BD7F128275C8006D085D /* AbstractShip.m */; };
 		11B1BD87128275C8006D085D /* BossShip.m in Sources */ = {isa = PBXBuildFile; fileRef = 11B1BD81128275C8006D085D /* BossShip.m */; };
-		11B1BD88128275C8006D085D /* MiniBossShip.m in Sources */ = {isa = PBXBuildFile; fileRef = 11B1BD83128275C8006D085D /* MiniBossShip.m */; };
 		11B1BD89128275C8006D085D /* PlayerShip.m in Sources */ = {isa = PBXBuildFile; fileRef = 11B1BD85128275C8006D085D /* PlayerShip.m */; };
 		11B1BDF31283C5C3006D085D /* about.png in Resources */ = {isa = PBXBuildFile; fileRef = 11B1BDE31283C5C3006D085D /* about.png */; };
 		11B1BDF41283C5C3006D085D /* continue.png in Resources */ = {isa = PBXBuildFile; fileRef = 11B1BDE41283C5C3006D085D /* continue.png */; };
@@ -80,6 +82,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		114A1A7312989C4B004769D4 /* PlayerShips.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = PlayerShips.plist; path = "Game Resources/PlayerShips.plist"; sourceTree = SOURCE_ROOT; };
+		1170E3AB12865A18000BF968 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
+		1170E416128A1741000BF968 /* EnemyShip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EnemyShip.h; path = Entities/Ships/EnemyShip.h; sourceTree = "<group>"; };
+		1170E417128A1741000BF968 /* EnemyShip.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EnemyShip.m; path = Entities/Ships/EnemyShip.m; sourceTree = "<group>"; };
 		1170EC67126FCB7E00721CF4 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		1170EC69126FCB7E00721CF4 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		1170EC6B126FCB7E00721CF4 /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
@@ -106,8 +112,6 @@
 		11B1BD7F128275C8006D085D /* AbstractShip.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AbstractShip.m; path = Entities/Ships/AbstractShip.m; sourceTree = "<group>"; };
 		11B1BD80128275C8006D085D /* BossShip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BossShip.h; path = Entities/Ships/BossShip.h; sourceTree = "<group>"; };
 		11B1BD81128275C8006D085D /* BossShip.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BossShip.m; path = Entities/Ships/BossShip.m; sourceTree = "<group>"; };
-		11B1BD82128275C8006D085D /* MiniBossShip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MiniBossShip.h; path = Entities/Ships/MiniBossShip.h; sourceTree = "<group>"; };
-		11B1BD83128275C8006D085D /* MiniBossShip.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MiniBossShip.m; path = Entities/Ships/MiniBossShip.m; sourceTree = "<group>"; };
 		11B1BD84128275C8006D085D /* PlayerShip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PlayerShip.h; path = Entities/Ships/PlayerShip.h; sourceTree = "<group>"; };
 		11B1BD85128275C8006D085D /* PlayerShip.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PlayerShip.m; path = Entities/Ships/PlayerShip.m; sourceTree = "<group>"; };
 		11B1BD941282763B006D085D /* Xenophobe_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Xenophobe_Prefix.pch; sourceTree = "<group>"; };
@@ -214,6 +218,7 @@
 				1170EC74126FCB7E00721CF4 /* OpenAL.framework in Frameworks */,
 				11D325171273BF7900F01BB5 /* libsqlite3.0.dylib in Frameworks */,
 				11B1BABC127922F9006D085D /* GameKit.framework in Frameworks */,
+				1170E3AC12865A18000BF968 /* CoreMotion.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -414,6 +419,7 @@
 		1170EE5512724F4900721CF4 /* Game Resources */ = {
 			isa = PBXGroup;
 			children = (
+				114A1A7312989C4B004769D4 /* PlayerShips.plist */,
 				1170EE5612724F6600721CF4 /* Images */,
 				1170EE5712724F6B00721CF4 /* Sounds */,
 				1170EE5812724F7100721CF4 /* Fonts */,
@@ -493,8 +499,8 @@
 				11B1BD7F128275C8006D085D /* AbstractShip.m */,
 				11B1BD84128275C8006D085D /* PlayerShip.h */,
 				11B1BD85128275C8006D085D /* PlayerShip.m */,
-				11B1BD82128275C8006D085D /* MiniBossShip.h */,
-				11B1BD83128275C8006D085D /* MiniBossShip.m */,
+				1170E416128A1741000BF968 /* EnemyShip.h */,
+				1170E417128A1741000BF968 /* EnemyShip.m */,
 				11B1BD80128275C8006D085D /* BossShip.h */,
 				11B1BD81128275C8006D085D /* BossShip.m */,
 			);
@@ -562,6 +568,7 @@
 				28FD14FF0DC6FC520079059D /* OpenGLES.framework */,
 				1DF5F4DF0D08C38300B7A737 /* UIKit.framework */,
 				1D30AB110D05D00D00671497 /* Foundation.framework */,
+				1170E3AB12865A18000BF968 /* CoreMotion.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -634,6 +641,7 @@
 				11B1BE021283C5C3006D085D /* xenophobe.png in Resources */,
 				11B1BE091283C662006D085D /* xenophobefont.fnt in Resources */,
 				11B1BE0A1283C662006D085D /* xenophobefont.png in Resources */,
+				114A1A7412989C4B004769D4 /* PlayerShips.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -679,9 +687,9 @@
 				11B1BD5F12822445006D085D /* MenuControl.m in Sources */,
 				11B1BD86128275C8006D085D /* AbstractShip.m in Sources */,
 				11B1BD87128275C8006D085D /* BossShip.m in Sources */,
-				11B1BD88128275C8006D085D /* MiniBossShip.m in Sources */,
 				11B1BD89128275C8006D085D /* PlayerShip.m in Sources */,
 				11B1BE0D1283C69C006D085D /* GameScene.m in Sources */,
+				1170E418128A1741000BF968 /* EnemyShip.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

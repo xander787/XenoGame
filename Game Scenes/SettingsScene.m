@@ -25,6 +25,9 @@
 
 @implementation SettingsScene
 
+#pragma mark -
+#pragma mark Initializations
+
 - (id)init {
 	if (self = [super init]) {
 		_sharedDirector = [Director sharedDirector];
@@ -46,7 +49,11 @@
 }
 
 - (void)initSettings {
+	playerShip = [[Image alloc] initWithImage:@"playership.png" scale:(1.0/4.0)];
 }
+
+#pragma mark -
+#pragma mark Update Scene
 
 - (void)updateWithDelta:(GLfloat)aDelta {
 	switch (sceneState) {
@@ -95,11 +102,15 @@
 	location.y = 480-location.y;
 }
 
+#pragma mark -
+#pragma mark Rendering
+
 - (void)transitionToSceneWithKey:(NSString *)aKey {
 	
 }
 
 - (void)render {
+	[playerShip renderAtPoint:CGPointMake(165, 220) centerOfImage:YES];
 }
 
 @end

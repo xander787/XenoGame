@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "AbstractScene.h"
 #import "Image.h"
+#import "PlayerShip.h"
 
 @interface GameScene : AbstractScene {
 	CGPoint				_origin;

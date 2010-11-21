@@ -25,6 +25,9 @@
 
 @implementation HighScoresScene
 
+#pragma mark -
+#pragma mark Initializations
+
 - (id)init {
 	if (self = [super init]) {
 		_sharedDirector = [Director sharedDirector];
@@ -48,6 +51,9 @@
 - (void)initHighScores {
 	
 }
+
+#pragma mark -
+#pragma mark Update Scene
 
 - (void)updateWithDelta:(GLfloat)aDelta {
 	switch (sceneState) {
@@ -95,6 +101,9 @@
 	// Flip the y location ready to check it against OpenGL coordinates
 	location.y = 480-location.y;
 }
+
+#pragma mark -
+#pragma mark Rendering
 
 - (void)transitionToSceneWithKey:(NSString *)aKey {
 	

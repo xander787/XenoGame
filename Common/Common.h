@@ -17,6 +17,7 @@
  */
 
 #import <OpenGLES/ES1/gl.h>
+#import <math.h>
 
 #pragma mark -
 #pragma mark Debug
@@ -29,11 +30,14 @@
 // Macro which returns a random value between -1 and 1
 #define RANDOM_MINUS_1_TO_1() ((random() / (GLfloat)0x3fffffff )-1.0f)
 
-// MAcro which returns a random number between 0 and 1
+// Macro which returns a random number between 0 and 1
 #define RANDOM_0_TO_1() ((random() / (GLfloat)0x7fffffff ))
 
 // Macro which converts degrees into radians
 #define DEGREES_TO_RADIANS(__ANGLE__) ((__ANGLE__) / 180.0 * M_PI)
+
+// Macro which converts coordinate rise / run to particle emitter angle
+#define SLOPE_TO_DEGREES(__SLOPE__) (DEGREES_TO_RADIANS(atan(__SLOPE__)))
 
 #pragma mark -
 #pragma mark Enumerations

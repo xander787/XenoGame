@@ -10,7 +10,8 @@
 //	James Linnell - Software Engineer, Creative Design, Art Producer
 //	Tyler Newcomb - Creative Design, Art Producer
 //
-//	Last Updated - 
+//	Last Updated - 11/6/2010 - Alexander
+//	- Initial Class Creation
 
 #import <Foundation/Foundation.h>
 #import "Image.h"
@@ -19,15 +20,9 @@
 @class GameScene;
 
 @interface AbstractShip : NSObject {
-	Image		*mainImage;
-	Vector2f	position;
-	Vector2f	velocity;
+	Director	*_sharedDirector;
 	BOOL		_gotScene;
 }
-
-@property (nonatomic, readonly) Image *mainImage;
-@property (nonatomic, assign) Vector2f position;
-@property (nonatomic, assign) Vector2f velocity;
 
 - (void)update:(GLfloat)delta;
 - (void)render;

@@ -31,6 +31,9 @@
 
 @implementation MainMenuScene
 
+#pragma mark -
+#pragma mark Initialization
+
 - (id) init {
 	if (self = [super init]) {
 		_sharedDirector = [Director sharedDirector];
@@ -112,6 +115,9 @@
 																			 duration:-1
 																		blendAdditive:YES];
 }
+
+#pragma mark -
+#pragma mark Update Scene
 
 - (void)updateWithDelta:(GLfloat)aDelta {
 
@@ -228,6 +234,9 @@
 	location.y = 480-location.y;
 	[menuItems makeObjectsPerformSelector:@selector(updateWithLocation:) withObject:NSStringFromCGPoint(location)];		
 }
+
+#pragma mark -
+#pragma mark Rendering
 
 - (void)transitionToSceneWithKey:(NSString *)aKey {
 	sceneState = kSceneState_TransitionOut;

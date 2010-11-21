@@ -1,5 +1,5 @@
 //
-//  SettingsScene.h
+//  EnemyShip.m
 //  Xenophobe
 //
 //  Created by Alexander on 10/20/10.
@@ -10,15 +10,12 @@
 //	James Linnell - Software Engineer, Creative Design, Art Producer
 //	Tyler Newcomb - Creative Design, Art Producer
 //
-//	Last Updated - 10/26/2010 @ 12AM - Alexander
-//	- Initial creation of the scene
+//	Last Updated - 11/6/2010 - Alexander
+//	- Initial Class Creation
 
-#import <Foundation/Foundation.h>
-#import "AbstractScene.h"
+#import "EnemyShip.h"
 
 
-@interface SettingsScene : AbstractScene {
-	Image		*playerShip;
-}
+@implementation EnemyShip
 
 @end
