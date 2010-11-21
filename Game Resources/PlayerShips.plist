@@ -2,7 +2,7 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>kPlayerShipDev</key>
+	<key>kPlayerShip_Dev</key>
 	<dict>
 		<key>kShipID</key>
 		<string>kPlayerShip_Dev</string>
@@ -13,7 +13,7 @@
 		<key>kShipStamina</key>
 		<integer>3</integer>
 		<key>kShipCategory</key>
-		<string>kShipCategoryAttack</string>
+		<string>kShipCategory_Attack</string>
 		<key>kMainImage</key>
 		<string>playership.png</string>
 		<key>kTurretPoints</key>
@@ -30,7 +30,7 @@
 			<string>63,92</string>
 		</array>
 		<key>kWeaponType</key>
-		<string>kWeaponSingleShot</string>
+		<string>kWeapon_SingleShot</string>
 	</dict>
 </dict>
 </plist>
