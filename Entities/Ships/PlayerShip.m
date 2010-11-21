@@ -56,7 +56,7 @@
 		else if ([[playerShipsDictionary valueForKey:@"kShipCategory"] stringValue] == @"kShipCategory_Speed") {
 			shipCategory = kShipCategory_Speed;
 		}
-
+		
 		if ([[playerShipsDictionary valueForKey:@"kWeaponType"] stringValue] == @"kWeapon_SingleShot") {
 			shipWeaponType = kWeapon_SingleShot;
 		}
@@ -76,7 +76,7 @@
 		NSArray *turretArray = [playerShipsDictionary objectForKey:@"kTurretPoints"];
 		turretPoints = malloc(sizeof(Vector2f) * [turretArray count]);
 		bzero( turretPoints, sizeof(Vector2f) * [turretArray count]);
-
+		
 		for (int i = 0; i < [turretArray count]; i++) {
 			NSArray *coords = [[[turretArray objectAtIndex:i] stringValue] componentsSeparatedByString:@","];
 			@try {
@@ -90,9 +90,9 @@
 			}
 		}
 		
-		mainImage = [[Image alloc] initWithImage:[[playerShipsDictionary valueForKey:@"kMainImage"] stringValue]];
-		
+		mainImage = [[Image alloc] initWithImage:[[playerShipsDictionary valueForKey:@"kMainImage"] stringValue] scale:(1.0/4.0)];
 	}
+	
 	return self;
 }
 

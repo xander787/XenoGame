@@ -50,6 +50,7 @@
 
 - (void)initSettings {
 	playerShip = [[Image alloc] initWithImage:@"playership.png" scale:(1.0/4.0)];
+	testShip = [[PlayerShip alloc] initWithShipID:kPlayerShip_Dev];
 }
 
 #pragma mark -
@@ -110,6 +111,7 @@
 }
 
 - (void)render {
+	[testShip renderAtPoint:CGPointMake(155, 200) centerOfShip:YES];
 	[playerShip renderAtPoint:CGPointMake(165, 220) centerOfImage:YES];
 }
 

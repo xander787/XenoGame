@@ -15,10 +15,12 @@
 
 #import <Foundation/Foundation.h>
 #import "AbstractScene.h"
+#import "PlayerShip.h"
 
 
 @interface SettingsScene : AbstractScene {
 	Image		*playerShip;
+	PlayerShip	*testShip;
 }
 
 @end
