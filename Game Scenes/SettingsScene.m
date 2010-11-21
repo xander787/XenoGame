@@ -16,6 +16,9 @@
 //	Last Updated - 11/5/2010 @ 9:20PM - Alexander
 //	- Fixed problem causing the alpha for the scene to
 //	be set to 0 causing nothing to appear to render to the screen
+//
+//	Last Updated - 11/21/2010 @ 11AM - Alexander
+//	- Added in testing code for the player ship in here
 
 #import "SettingsScene.h"
 
@@ -49,7 +52,6 @@
 }
 
 - (void)initSettings {
-	playerShip = [[Image alloc] initWithImage:@"playership.png" scale:(1.0/4.0)];
 	testShip = [[PlayerShip alloc] initWithShipID:kPlayerShip_Dev];
 }
 
@@ -112,7 +114,6 @@
 
 - (void)render {
 	[testShip renderAtPoint:CGPointMake(155, 200) centerOfShip:YES];
-	[playerShip renderAtPoint:CGPointMake(165, 220) centerOfImage:YES];
 }
 
 @end

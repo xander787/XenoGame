@@ -13,6 +13,10 @@
 //	Last Updated - 11/20/2010 @6PM - Alexander
 //	- Wrote in all needed attributes for the ship as aggreed
 //	upon by xander and james.
+//
+//	Last Updated - 11/21/2010 @11AM - Alexander
+//	- Replaced thruster and turret arrays with C arrays
+//  so that they can hold Vector2f structs
 
 #import <Foundation/Foundation.h>
 #import "AbstractShip.h"
@@ -59,14 +63,13 @@ typedef enum _PlayerShipTemporaryMiscUpgrade {
 	PlayerShipTemporaryWeaponUpgrade	shipTemporaryWeaponUpgrade;
 	PlayerShipTemporaryMiscUpgrade		shipTemporaryMiscUpgrade;
 	
-	@private
+@private
 	PlayerShipID						shipID;
 	PlayerShipCategory					shipCategory;
 	PlayerShipWeaponType				shipWeaponType;
 	Image								*mainImage;
 	Vector2f							*turretPoints;
-	//NSMutableArray						*turretPoints;
-	NSMutableArray						*thrusterPoints;
+	Vector2f						*thrusterPoints;
 }
 
 - (id)initWithShipID:(PlayerShipID)aShipID;

@@ -18,6 +18,10 @@
 //	- Fixed problems with trying to get stringValue from strings
 //	- Drawing will now work
 //	- Working on fixing the turrets code
+//
+//	Last Updated - 11/21/2010 @11AM - Alexander
+//	- Added in some commenting and fixed a memory leak
+//  - Added in code to load the thruster points as well
 
 #import "PlayerShip.h"
 
@@ -34,10 +38,16 @@
 - (id)initWithShipID:(PlayerShipID)aShipID {
 	if (self = [super init]) {
 		shipID = aShipID;
+		
+		//Load the PLIST with all player ship definitions in them
 		NSBundle *bundle = [NSBundle mainBundle];
-		NSString *path = [NSString stringWithString:[bundle pathForResource:@"PlayerShips" ofType:@"plist"]];
+		NSString *path = [[NSString alloc] initWithString:[bundle pathForResource:@"PlayerShips" ofType:@"plist"]];
 		NSMutableDictionary *playerShipsDictionary = [[NSMutableDictionary alloc] initWithContentsOfFile:path];
 		NSMutableDictionary *shipDictionary;
+		[bundle release];
+		[path release];
+		
+		//Extract our specific ship's dictionary from the PLIST and then release it to reduce memory use
 		switch (shipID) {
 			case kPlayerShip_Default:
 				shipDictionary = [[NSMutableDictionary alloc] initWithDictionary:[playerShipsDictionary objectForKey:@"kPlayerShip_Default"]];
@@ -49,8 +59,9 @@
 				break;
 		}
 		
-		NSLog(@"%@", playerShipsDictionary);
+		[playerShipsDictionary release];
 		
+		//Set the values from the dictionary for our ship
 		shipHealth = 100;
 		shipAttack  = [[shipDictionary valueForKey:@"kShipAttack"] intValue];
 		shipStamina = [[shipDictionary valueForKey:@"kShipStamina"] intValue];
@@ -82,12 +93,13 @@
 			shipWeaponType = kWeapon_Wave;
 		}
 		
-		NSArray *turretArray = [shipDictionary objectForKey:@"kTurretPoints"];
+		//Fill a C array with Vector2f's for our ship's turret points
+		NSArray *turretArray = [[NSArray alloc] initWithArray:[shipDictionary objectForKey:@"kTurretPoints"]];
 		turretPoints = malloc(sizeof(Vector2f) * [turretArray count]);
 		bzero( turretPoints, sizeof(Vector2f) * [turretArray count]);
 		
-		/*for (int i = 0; i < [turretArray count]; i++) {
-			NSArray *coords = [[[turretArray objectAtIndex:i] stringValue] componentsSeparatedByString:@","];
+		for (int i = 0; i < [turretArray count]; i++) {
+			NSArray *coords = [[turretArray objectAtIndex:i] componentsSeparatedByString:@","];
 			@try {
 				turretPoints[i] = Vector2fMake([[coords objectAtIndex:0] intValue], [[coords objectAtIndex:1] intValue]);
 			}
@@ -95,17 +107,50 @@
 				NSLog(@"Exception thrown: %@", e);
 			}
 			@finally {
-				NSLog(@"Finally");
+				Vector2f vector = turretPoints[i];
+				NSLog(@"Turret: %f %f", vector.x, vector.y);
 			}
-		}*/
+		}
+        [turretArray release];
+        
+        //Fill a C array with Vector2f's of our ship's thruster points
+        NSArray *thrusterArray = [[NSArray alloc] initWithArray:[shipDictionary objectForKey:@"kTurretPoints"]];
+        thrusterPoints = malloc(sizeof(Vector2f) * [thrusterArray count]);
+        bzero(thrusterPoints, sizeof(Vector2f) * [thrusterArray count]);
+        
+        for(int i = 0; i < [thrusterArray count]; i++) {
+            NSArray *coords = [[turretArray objectAtIndex:i] componentsSeparatedByString:@","];
+            @try {
+                thrusterPoints[i] = Vector2fMake([[coords objectAtIndex:0] intValue], [[coords objectAtIndex:1] intValue]);
+            }
+            @catch (NSException * e) {
+                NSLog(@"Exception thrown: %@", e);
+            }
+            @finally {
+                Vector2f vector = thrusterPoints[i];
+				NSLog(@"Thruster: %f %f", vector.x, vector.y);
+            }
+        }
+        [thrusterArray release];
 				
 		mainImage = [[Image alloc] initWithImage:[shipDictionary valueForKey:@"kMainImage"] scale:(1.0/4.0)];
 		
-		[playerShipsDictionary release];
 		[shipDictionary release];
 	}
 	
 	return self;
+}
+
+- (void)updateWithTouchLocationBegan:(NSSet*)touches withEvent:(UIEvent*)event view:(UIView*)aView {
+	
+}
+
+- (void)updateWithTouchLocationMoved:(NSSet*)touches withEvent:(UIEvent*)event view:(UIView*)aView {
+	
+}
+
+- (void)updateWithTouchLocationEnded:(NSSet*)touches withEvent:(UIEvent*)event view:(UIView*)aView {
+	
 }
 
 - (void)renderAtPoint:(CGPoint)aPoint centerOfShip:(BOOL)aCenter {
@@ -114,6 +159,11 @@
 
 - (void)fireWeapons {
 	
+}
+
+- (void)dealloc {
+    [mainImage release];
+    [super dealloc];
 }
 
 @end

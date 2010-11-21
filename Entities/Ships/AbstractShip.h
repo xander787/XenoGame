@@ -10,8 +10,8 @@
 //	James Linnell - Software Engineer, Creative Design, Art Producer
 //	Tyler Newcomb - Creative Design, Art Producer
 //
-//	Last Updated - 11/6/2010 - Alexander
-//	- Initial Class Creation
+//	Last Updated - 11/21/2010 - Alexander
+//	- Added in methods for touch handling
 
 #import <Foundation/Foundation.h>
 #import "Image.h"
@@ -26,5 +26,8 @@
 
 - (void)update:(GLfloat)delta;
 - (void)render;
+- (void)updateWithTouchLocationBegan:(NSSet*)touches withEvent:(UIEvent*)event view:(UIView*)aView;
+- (void)updateWithTouchLocationMoved:(NSSet*)touches withEvent:(UIEvent*)event view:(UIView*)aView;
+- (void)updateWithTouchLocationEnded:(NSSet*)touches withEvent:(UIEvent*)event view:(UIView*)aView;
 
 @end

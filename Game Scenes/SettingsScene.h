@@ -10,8 +10,8 @@
 //	James Linnell - Software Engineer, Creative Design, Art Producer
 //	Tyler Newcomb - Creative Design, Art Producer
 //
-//	Last Updated - 10/26/2010 @ 12AM - Alexander
-//	- Initial creation of the scene
+//	Last Updated - 11/21/2010 @ 11AM - Alexander
+//	- Added in testing code for the player ship in here
 
 #import <Foundation/Foundation.h>
 #import "AbstractScene.h"
@@ -19,7 +19,6 @@
 
 
 @interface SettingsScene : AbstractScene {
-	Image		*playerShip;
 	PlayerShip	*testShip;
 }
 
