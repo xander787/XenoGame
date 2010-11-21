@@ -199,8 +199,8 @@
 	[newImage setFlipHorizontally:flipHorizontally];
     
 	// Return the new image and autorelease it.  The caller is responsbile for retaining it
-	return [newImage autorelease];
-	
+//	return [newImage autorelease];
+    return newImage;
 }
 
 
