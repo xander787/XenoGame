@@ -152,14 +152,19 @@
 }
 
 - (void)update:(GLfloat)delta {
-    if(currentLocation.x < desiredPosition.x) currentLocation.x += (10.0 * shipSpeed) * delta;
-    if(currentLocation.x > desiredPosition.x) currentLocation.x -= (10.0 * shipSpeed) * delta;
+//    if(currentLocation.x < desiredPosition.x) currentLocation.x += (10.0 * shipSpeed) * delta;
+//    if(currentLocation.x > desiredPosition.x) currentLocation.x -= (10.0 * shipSpeed) * delta;
+//    
+//    if(currentLocation.y < desiredPosition.y) currentLocation.y += (10.0 * shipSpeed) * delta;
+//    if(currentLocation.y > desiredPosition.y) currentLocation.y -= (10.0 * shipSpeed) * delta;
     
-    if(currentLocation.y < desiredPosition.y) currentLocation.y += (10.0 * shipSpeed) * delta;
-    if(currentLocation.y > desiredPosition.y) currentLocation.y -= (10.0 * shipSpeed) * delta;
+    //^ is deprecated, on bottom works perfectly for correctly moving the ship
+    
+    currentLocation.x += ((desiredPosition.x - currentLocation.x) / shipSpeed) * (10.0 * shipSpeed) * delta;
+    currentLocation.y += ((desiredPosition.y - currentLocation.y) / shipSpeed) * (10.0 * shipSpeed) * delta;
 }
 
-- (void)render {
+- (void)render {    
     [mainImage renderAtPoint:currentLocation centerOfImage:YES];
 }
 
