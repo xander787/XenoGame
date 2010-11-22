@@ -12,6 +12,10 @@
 //
 //	Last Updated - 10/20/2010 @ 6PM - Alexander
 //	- Initial Project Creation
+//  
+//  Last Updated - 11/23/10 @ 12AM - James
+//  -Fixed warning todo with deprecated function, added the encoding
+//  and erro to hte tiledXML var initialization.
 
 #import "TiledMap.h"
 
@@ -45,7 +49,7 @@
 		layers = [[NSMutableArray alloc] init];
 		
 		// Get the path to the tiled config file and parse that file	
-		NSString *tiledXML = [NSString stringWithContentsOfFile:[[NSBundle mainBundle] pathForResource:aTiledFile ofType:aFileExtension]];
+		NSString *tiledXML = [NSString stringWithContentsOfFile:[[NSBundle mainBundle] pathForResource:aTiledFile ofType:aFileExtension] encoding:NSUTF8StringEncoding error:nil];
 		[self parseMapFile:tiledXML];
 		
 		// Calculate the total number of tiles it would take to fill the visible screen.  The values below which define the screen

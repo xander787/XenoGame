@@ -12,6 +12,10 @@
 //
 //	Last Updated - 10/20/2010 @ 6PM - Alexander
 //	- Initial Project Creation
+//
+//  Last Updated - 11/23/2010 @ 12AM - James
+//  - Fixed warning todo with using the error
+//  of type OSStatus in a printf, changed %d to %lx
 
 #import "SoundManager.h"
 #import "SynthesizeSingleton.h"
@@ -62,7 +66,7 @@ void interruptionListener(	void *inClientData, UInt32 inInterruptionState) {
         [soundManager setActivated:NO];
 	} else if (inInterruptionState == kAudioSessionEndInterruption) {
 		OSStatus result = AudioSessionSetActive(true);
-		if (result) printf("Error setting audio session active! %d\n", result);
+		if (result) printf("Error setting audio session active! %lx\n", result);
         [soundManager setActivated:YES];
 	}
 }

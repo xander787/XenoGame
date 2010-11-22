@@ -18,6 +18,10 @@
 //	the class recognizes and properly switches to scenes
 //	correctly (effected highscores scene & about scene
 //	which weren't showing up before because of this).
+//
+//  11/23/2010 @ 12AM - James
+//  - Fixed annoying bug todo with initializing the logoImage
+//  by adding a [NSString stringW/String wrap around
 
 #import "MainMenuScene.h"
 #import "Image.h"
@@ -71,7 +75,7 @@
 	[menuItems addObject:menuControl];
 	[menuControl release];
 	
-	logoImage = [[Image alloc] initWithImage:@"xenophobe.png"];
+	logoImage = [[Image alloc] initWithImage:[NSString stringWithString:@"xenophobe.png"]];
 		
 	backgroundParticleEmitter = [[ParticleEmitter alloc] initParticleEmitterWithImageNamed:@"texture.png"
 																				  position:Vector2fMake(160.0, 259.76)
