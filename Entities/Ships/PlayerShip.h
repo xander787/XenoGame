@@ -17,6 +17,11 @@
 //	Last Updated - 11/21/2010 @11AM - Alexander
 //	- Replaced thruster and turret arrays with C arrays
 //  so that they can hold Vector2f structs
+//
+//	Last Updated - 11/22/2010 @12AM - Alexander
+//	- Added in first test code for moving the ship
+//  using the updateWithDelta approach and coords
+//  passed in from the scene class the ship is in
 
 #import <Foundation/Foundation.h>
 #import "AbstractShip.h"
@@ -62,6 +67,7 @@ typedef enum _PlayerShipTemporaryMiscUpgrade {
 	int									shipSpeed;
 	PlayerShipTemporaryWeaponUpgrade	shipTemporaryWeaponUpgrade;
 	PlayerShipTemporaryMiscUpgrade		shipTemporaryMiscUpgrade;
+    CGPoint                             currentLocation;
 	
 @private
 	PlayerShipID						shipID;
@@ -69,11 +75,12 @@ typedef enum _PlayerShipTemporaryMiscUpgrade {
 	PlayerShipWeaponType				shipWeaponType;
 	Image								*mainImage;
 	Vector2f							*turretPoints;
-	Vector2f						*thrusterPoints;
+	Vector2f                            *thrusterPoints;
+    CGPoint                             desiredPosition;
 }
 
-- (id)initWithShipID:(PlayerShipID)aShipID;
-- (void)renderAtPoint:(CGPoint)aPoint centerOfShip:(BOOL)aCenter;
+- (id)initWithShipID:(PlayerShipID)aShipID andInitialLocation:(CGPoint)aPoint;
+- (void)setDesiredLocation:(CGPoint)aPoint;
 - (void)fireWeapons;
 
 @property (readonly) int shipHealth;
@@ -82,5 +89,6 @@ typedef enum _PlayerShipTemporaryMiscUpgrade {
 @property (readonly) int shipSpeed;
 @property PlayerShipTemporaryWeaponUpgrade	shipTemporaryWeaponUpgrade;
 @property PlayerShipTemporaryMiscUpgrade	shipTemporaryMiscUpgrade;
+@property (readonly) CGPoint currentLocation;
 
 @end

@@ -10,15 +10,17 @@
 //	James Linnell - Software Engineer, Creative Design, Art Producer
 //	Tyler Newcomb - Creative Design, Art Producer
 //
-//	Last Updated - 10/28/2010 @ 6:40PM - Alexander
-//	- Added in necessary code to make the view work
-//
 //	Last Updated - 11/5/2010 @ 9:20PM - Alexander
 //	- Fixed problem causing the alpha for the scene to
 //	be set to 0 causing nothing to appear to render to the screen
 //
 //	Last Updated - 11/21/2010 @ 11AM - Alexander
 //	- Added in testing code for the player ship in here
+//
+//	Last Updated - 11/22/2010 @12AM - Alexander
+//	- Added in first test code for moving the ship
+//  by passing it coords from the touches received on this
+//  scene
 
 #import "SettingsScene.h"
 
@@ -52,7 +54,7 @@
 }
 
 - (void)initSettings {
-	testShip = [[PlayerShip alloc] initWithShipID:kPlayerShip_Dev];
+    testShip = [[PlayerShip alloc] initWithShipID:kPlayerShip_Dev andInitialLocation:CGPointMake(155, 200)];
 }
 
 #pragma mark -
@@ -83,6 +85,8 @@
 		default:
 			break;
 	}
+    
+    [testShip update:aDelta];
 }
 
 - (void)updateWithTouchLocationBegan:(NSSet *)touches withEvent:(UIEvent *)event view:(UIView *)aView {
@@ -94,15 +98,23 @@
 	NSLog(@"%f %f", location.x, location.y);
 	location.y = 480-location.y;
 	NSLog(@"%f %f", location.x, location.y);
+    
+    
+    
 }
 
-- (void)updateWithMovedLocation:(NSSet*)touches withEvent:(UIEvent*)event view:(UIView*)aView {
-	UITouch *touch = [[event touchesForView:aView] anyObject];
+- (void)updateWithTouchLocationMoved:(NSSet *)touches withEvent:(UIEvent *)event view:(UIView *)aView {
+    UITouch *touch = [[event touchesForView:aView] anyObject];
 	CGPoint location;
 	location = [touch locationInView:aView];
     
 	// Flip the y location ready to check it against OpenGL coordinates
+	NSLog(@"%f %f", location.x, location.y);
 	location.y = 480-location.y;
+	NSLog(@"%f %f", location.x, location.y);
+    
+    
+    [testShip setDesiredLocation:location];
 }
 
 #pragma mark -
@@ -113,7 +125,7 @@
 }
 
 - (void)render {
-	[testShip renderAtPoint:CGPointMake(155, 200) centerOfShip:YES];
+	[testShip render];
 }
 
 @end

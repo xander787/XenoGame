@@ -15,7 +15,7 @@
 		<key>kShipCategory</key>
 		<string>kShipCategory_Attack</string>
 		<key>kMainImage</key>
-		<string>playership.png</string>
+		<string>devship.png</string>
 		<key>kTurretPoints</key>
 		<array>
 			<string>52,40</string>

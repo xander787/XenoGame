@@ -22,22 +22,28 @@
 //	Last Updated - 11/21/2010 @11AM - Alexander
 //	- Added in some commenting and fixed a memory leak
 //  - Added in code to load the thruster points as well
+//
+//	Last Updated - 11/22/2010 @12AM - Alexander
+//	- Added in first test code for moving the ship
+//  using the updateWithDelta approach and coords
+//  passed in from the scene class the ship is in
 
 #import "PlayerShip.h"
 
 
 @implementation PlayerShip
 
-@synthesize shipHealth, shipAttack, shipStamina, shipSpeed, shipTemporaryWeaponUpgrade, shipTemporaryMiscUpgrade;
+@synthesize shipHealth, shipAttack, shipStamina, shipSpeed, shipTemporaryWeaponUpgrade, shipTemporaryMiscUpgrade, currentLocation;
 
 - (id) init {
 	self = [super init];
 	return self;
 }
 
-- (id)initWithShipID:(PlayerShipID)aShipID {
+- (id)initWithShipID:(PlayerShipID)aShipID andInitialLocation:(CGPoint)aPoint {
 	if (self = [super init]) {
 		shipID = aShipID;
+        currentLocation = aPoint;
 		
 		//Load the PLIST with all player ship definitions in them
 		NSBundle *bundle = [NSBundle mainBundle];
@@ -132,8 +138,8 @@
             }
         }
         [thrusterArray release];
-				
-		mainImage = [[Image alloc] initWithImage:[shipDictionary valueForKey:@"kMainImage"] scale:(1.0/4.0)];
+        
+		mainImage = [[Image alloc] initWithImage:[shipDictionary valueForKey:@"kMainImage"] scale:1.0];
 		
 		[shipDictionary release];
 	}
@@ -141,20 +147,20 @@
 	return self;
 }
 
-- (void)updateWithTouchLocationBegan:(NSSet*)touches withEvent:(UIEvent*)event view:(UIView*)aView {
-	
+- (void)setDesiredLocation:(CGPoint)aPoint {
+    desiredPosition = aPoint;
 }
 
-- (void)updateWithTouchLocationMoved:(NSSet*)touches withEvent:(UIEvent*)event view:(UIView*)aView {
-	
+- (void)update:(GLfloat)delta {
+    if(currentLocation.x < desiredPosition.x) currentLocation.x += (10.0 * shipSpeed) * delta;
+    if(currentLocation.x > desiredPosition.x) currentLocation.x -= (10.0 * shipSpeed) * delta;
+    
+    if(currentLocation.y < desiredPosition.y) currentLocation.y += (10.0 * shipSpeed) * delta;
+    if(currentLocation.y > desiredPosition.y) currentLocation.y -= (10.0 * shipSpeed) * delta;
 }
 
-- (void)updateWithTouchLocationEnded:(NSSet*)touches withEvent:(UIEvent*)event view:(UIView*)aView {
-	
-}
-
-- (void)renderAtPoint:(CGPoint)aPoint centerOfShip:(BOOL)aCenter {
-	[mainImage renderAtPoint:aPoint centerOfImage:aCenter];
+- (void)render {
+    [mainImage renderAtPoint:currentLocation centerOfImage:YES];
 }
 
 - (void)fireWeapons {
