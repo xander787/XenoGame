@@ -22,6 +22,10 @@
 //	- Added in first test code for moving the ship
 //  using the updateWithDelta approach and coords
 //  passed in from the scene class the ship is in
+//
+// Last Updated - 11/22/2010 @11:40AM - James
+//  -Corrected movement bug when movign the PlayerShip
+//  It now moves smoothly and in it's selected slope
 
 #import <Foundation/Foundation.h>
 #import "AbstractShip.h"
