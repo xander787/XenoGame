@@ -54,7 +54,12 @@
 }
 
 - (void)initSettings {
-    testShip = [[PlayerShip alloc] initWithShipID:kPlayerShip_Dev andInitialLocation:CGPointMake(155, 200)];
+    @try {
+        testShip = [[PlayerShip alloc] initWithShipID:kPlayerShip_Dev andInitialLocation:CGPointMake(155, 200)];
+    }
+    @catch (NSException * e) {
+        NSLog(@"EXC: %@", e);
+    }
 }
 
 #pragma mark -

@@ -120,7 +120,7 @@
         [turretArray release];
         
         //Fill a C array with Vector2f's of our ship's thruster points
-        NSArray *thrusterArray = [[NSArray alloc] initWithArray:[shipDictionary objectForKey:@"kTurretPoints"]];
+        NSArray *thrusterArray = [[NSArray alloc] initWithArray:[shipDictionary objectForKey:@"kThrusterPoints"]];
         thrusterPoints = malloc(sizeof(Vector2f) * [thrusterArray count]);
         bzero(thrusterPoints, sizeof(Vector2f) * [thrusterArray count]);
         
