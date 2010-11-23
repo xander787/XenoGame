@@ -16,10 +16,12 @@
 #import <Foundation/Foundation.h>
 #import "AbstractScene.h"
 #import "PlayerShip.h"
+#import "EnemyShip.h"
 
 
 @interface SettingsScene : AbstractScene {
 	PlayerShip	*testShip;
+    EnemyShip   *testEnemy;
 }
 
 @end

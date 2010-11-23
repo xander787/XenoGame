@@ -56,6 +56,7 @@
 - (void)initSettings {
     @try {
         testShip = [[PlayerShip alloc] initWithShipID:kPlayerShip_Dev andInitialLocation:CGPointMake(155, 200)];
+        testEnemy = [[EnemyShip alloc] initWithShipID:kEnemyShip_MissileBombShotLevelThree initialLocation:CGPointMake(255, 300) andPlayerShipRef:&testShip];
     }
     @catch (NSException * e) {
         NSLog(@"EXC: %@", e);
@@ -92,6 +93,7 @@
 	}
     
     [testShip update:aDelta];
+    [testEnemy update:aDelta];
 }
 
 - (void)updateWithTouchLocationBegan:(NSSet *)touches withEvent:(UIEvent *)event view:(UIView *)aView {
@@ -131,6 +133,7 @@
 
 - (void)render {
 	[testShip render];
+    [testEnemy render];
 }
 
 @end
