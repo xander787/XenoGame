@@ -18,6 +18,8 @@
 		1170EC72126FCB7E00721CF4 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1170EC71126FCB7E00721CF4 /* CoreMotion.framework */; };
 		1170EC74126FCB7E00721CF4 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1170EC73126FCB7E00721CF4 /* OpenAL.framework */; };
 		1170ED45127012DD00721CF4 /* XenophobeGameController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1170ED44127012DD00721CF4 /* XenophobeGameController.m */; };
+		119FCF01129B528C00D3256A /* EnemyShips.plist in Resources */ = {isa = PBXBuildFile; fileRef = 119FCF00129B528C00D3256A /* EnemyShips.plist */; };
+		119FCF03129B573D00D3256A /* enemyspritesheet.png in Resources */ = {isa = PBXBuildFile; fileRef = 119FCF02129B573D00D3256A /* enemyspritesheet.png */; };
 		11B1B8CF1276B53B006D085D /* SettingsScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 11B1B8CE1276B53B006D085D /* SettingsScene.m */; };
 		11B1BABC127922F9006D085D /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11B1BABB127922F9006D085D /* GameKit.framework */; };
 		11B1BBCA127A64E0006D085D /* HighScoresScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 11B1BBC9127A64E0006D085D /* HighScoresScene.m */; };
@@ -95,6 +97,8 @@
 		1170EC73126FCB7E00721CF4 /* OpenAL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenAL.framework; path = System/Library/Frameworks/OpenAL.framework; sourceTree = SDKROOT; };
 		1170ED43127012DD00721CF4 /* XenophobeGameController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XenophobeGameController.h; sourceTree = "<group>"; };
 		1170ED44127012DD00721CF4 /* XenophobeGameController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XenophobeGameController.m; sourceTree = "<group>"; };
+		119FCF00129B528C00D3256A /* EnemyShips.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = EnemyShips.plist; path = "Game Resources/EnemyShips.plist"; sourceTree = SOURCE_ROOT; };
+		119FCF02129B573D00D3256A /* enemyspritesheet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = enemyspritesheet.png; path = "Game Resources/Images/Normal/enemyspritesheet.png"; sourceTree = SOURCE_ROOT; };
 		11B1B8CD1276B53B006D085D /* SettingsScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SettingsScene.h; path = "Game Scenes/SettingsScene.h"; sourceTree = "<group>"; };
 		11B1B8CE1276B53B006D085D /* SettingsScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SettingsScene.m; path = "Game Scenes/SettingsScene.m"; sourceTree = "<group>"; };
 		11B1BABB127922F9006D085D /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
@@ -420,6 +424,7 @@
 			isa = PBXGroup;
 			children = (
 				114A1A7312989C4B004769D4 /* PlayerShips.plist */,
+				119FCF00129B528C00D3256A /* EnemyShips.plist */,
 				1170EE5612724F6600721CF4 /* Images */,
 				1170EE5712724F6B00721CF4 /* Sounds */,
 				1170EE5812724F7100721CF4 /* Fonts */,
@@ -463,6 +468,7 @@
 		1170EE6112724FAC00721CF4 /* Normal */ = {
 			isa = PBXGroup;
 			children = (
+				119FCF02129B573D00D3256A /* enemyspritesheet.png */,
 				11B1BDE31283C5C3006D085D /* about.png */,
 				11B1BDE41283C5C3006D085D /* continue.png */,
 				11B1BDE51283C5C3006D085D /* highcsorestable.png */,
@@ -642,6 +648,8 @@
 				11B1BE091283C662006D085D /* xenophobefont.fnt in Resources */,
 				11B1BE0A1283C662006D085D /* xenophobefont.png in Resources */,
 				114A1A7412989C4B004769D4 /* PlayerShips.plist in Resources */,
+				119FCF01129B528C00D3256A /* EnemyShips.plist in Resources */,
+				119FCF03129B573D00D3256A /* enemyspritesheet.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
