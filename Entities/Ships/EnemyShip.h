@@ -12,6 +12,11 @@
 //
 //	Last Updated - 11/22/2010 @8:20PM - Alexander
 //	- Added in first draft code for the enemy ship class
+//
+//  Last Updated - 11/24/2010 @1:15PM - James
+//  - Fixed warning todo with confliction types for playerShipRef,
+//  it was supposed to be a single pointer, and it was still a
+//  double pointer, thoguh both worked, this is correct and no warnings.
 
 #import <Foundation/Foundation.h>
 #import "PlayerShip.h"
@@ -92,9 +97,9 @@ typedef enum _EnemyShipCategory {
     Vector2f                *weaponPoints;
     SpriteSheet             *enemySpriteSheet;
     Animation               *enemyAnimation;
-    PlayerShip              **playerShipRef;
+    PlayerShip              *playerShipRef;
 }
 
-- (id)initWithShipID:(EnemyShipID)aEnemyID initialLocation:(CGPoint)aPoint andPlayerShipRef:(PlayerShip **)aPlayership;
+- (id)initWithShipID:(EnemyShipID)aEnemyID initialLocation:(CGPoint)aPoint andPlayerShipRef:(PlayerShip *)aPlayership;
 
 @end

@@ -13,6 +13,7 @@
 //	Last Updated - 11/22/2010 @8:20PM - Alexander
 //	- Added in first draft code for the enemy ship class
 
+
 #import "EnemyShip.h"
 
 
@@ -225,7 +226,7 @@
         
         enemyAnimation = [[Animation alloc] init];
         for(int i = 0; i < [[enemyDictionary valueForKey:@"kSpriteSheetNumColumns"] intValue]; i++) {
-            [enemyAnimation addFrameWithImage:[enemySpriteSheet getSpriteAtX:i y:0] delay:80];
+            [enemyAnimation addFrameWithImage:[enemySpriteSheet getSpriteAtX:i y:0] delay:0.1];
         }
         [enemyAnimation setRunning:YES];
         [enemyAnimation setRepeat:YES];

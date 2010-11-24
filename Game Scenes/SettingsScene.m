@@ -21,6 +21,11 @@
 //	- Added in first test code for moving the ship
 //  by passing it coords from the touches received on this
 //  scene
+//
+//  Last Updated - 11/23/2010 @2:15PM - James
+//  - Fixed small bug with change from changing the player
+//  ship reference in Enemy to a single pointer, initialization
+//  was still using &testShip.
 
 #import "SettingsScene.h"
 
@@ -56,7 +61,7 @@
 - (void)initSettings {
     @try {
         testShip = [[PlayerShip alloc] initWithShipID:kPlayerShip_Dev andInitialLocation:CGPointMake(155, 200)];
-        testEnemy = [[EnemyShip alloc] initWithShipID:kEnemyShip_MissileBombShotLevelThree initialLocation:CGPointMake(255, 300) andPlayerShipRef:&testShip];
+        testEnemy = [[EnemyShip alloc] initWithShipID:kEnemyShip_MissileBombShotLevelThree initialLocation:CGPointMake(255, 300) andPlayerShipRef:testShip];
     }
     @catch (NSException * e) {
         NSLog(@"EXC: %@", e);
