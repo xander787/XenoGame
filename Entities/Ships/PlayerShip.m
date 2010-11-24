@@ -10,9 +10,6 @@
 //	James Linnell - Software Engineer, Creative Design, Art Producer
 //	Tyler Newcomb - Creative Design, Art Producer
 //
-//	Last Updated - 11/20/2010 @6PM - Alexander
-//	- Attempting to be able to load information from the PLIST file for a ship
-//
 //	Last Updated - 11/20/2010 @7PM - Alexander
 //	- Changed problem loading main PLIST thanks to James
 //	- Fixed problems with trying to get stringValue from strings
@@ -27,6 +24,10 @@
 //	- Added in first test code for moving the ship
 //  using the updateWithDelta approach and coords
 //  passed in from the scene class the ship is in
+//
+//  Last Updated - 11/23/2010 @10:30PM - Alexander
+//  - Think I've got the speed variance for the ship
+//  down, or at least pretty close now.
 
 #import "PlayerShip.h"
 
@@ -125,7 +126,7 @@
         bzero(thrusterPoints, sizeof(Vector2f) * [thrusterArray count]);
         
         for(int i = 0; i < [thrusterArray count]; i++) {
-            NSArray *coords = [[turretArray objectAtIndex:i] componentsSeparatedByString:@","];
+            NSArray *coords = [[NSArray alloc] initWithArray:[[turretArray objectAtIndex:i] componentsSeparatedByString:@","]];
             @try {
                 thrusterPoints[i] = Vector2fMake([[coords objectAtIndex:0] intValue], [[coords objectAtIndex:1] intValue]);
             }
@@ -136,6 +137,7 @@
                 Vector2f vector = thrusterPoints[i];
 				NSLog(@"Thruster: %f %f", vector.x, vector.y);
             }
+            [coords release];
         }
         [thrusterArray release];
         
@@ -152,8 +154,8 @@
 }
 
 - (void)update:(GLfloat)delta {
-    currentLocation.x += ((desiredPosition.x - currentLocation.x) / shipSpeed) * (2.5 * (shipSpeed)) * delta;
-    currentLocation.y += ((desiredPosition.y - currentLocation.y) / shipSpeed) * (2.5 * (shipSpeed)) * delta;
+    currentLocation.x += ((desiredPosition.x - currentLocation.x) / shipSpeed) * (pow(1.584893192, shipSpeed)) * delta;
+    currentLocation.y += ((desiredPosition.y - currentLocation.y) / shipSpeed) * (pow(1.584893192, shipSpeed)) * delta;
 }
 
 - (void)render {    

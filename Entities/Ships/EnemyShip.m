@@ -23,7 +23,7 @@
     return self;
 }
 
-- (id)initWithShipID:(EnemyShipID)aEnemyID initialLocation:(CGPoint)aPoint andPlayerShipRef:(PlayerShip **)aPlayership {
+- (id)initWithShipID:(EnemyShipID)aEnemyID initialLocation:(CGPoint)aPoint andPlayerShipRef:(PlayerShip *)aPlayership {
     if(self = [super init]) {
         enemyID = aEnemyID;
         currentLocation = aPoint;
@@ -129,7 +129,6 @@
                 enemyDictionary = [[NSMutableDictionary alloc] initWithDictionary:[enemyShipsDictionary objectForKey:@"kShipMissileBombShot_Two"]];
                 break;
             case kEnemyShip_MissileBombShotLevelThree:
-                NSLog(@"PROBLEM?");
                 enemyDictionary = [[NSMutableDictionary alloc] initWithDictionary:[enemyShipsDictionary objectForKey:@"kShipMissileBombShot_Three"]];
                 break;
             case kEnemyShip_MissileBombShotLevelFive:
@@ -205,6 +204,18 @@
             enemyCategroy = kEnemyCategory_Kamikaze;
         }
         
+        //Fill a C array with the weapon points on the enemy
+        NSArray *weaponsArray = [[NSArray alloc] initWithArray:[enemyDictionary objectForKey:@"kWeaponPoints"]];
+        weaponPoints = malloc(sizeof(Vector2f) * [weaponsArray count]);
+        bzero(weaponPoints, sizeof(Vector2f) * [weaponsArray count]);
+        
+        for(int i =0; i < [weaponsArray count]; i++) {
+            NSArray *coords = [[NSArray alloc] initWithArray:[[weaponsArray objectAtIndex:i] componentsSeparatedByString:@","]];
+            weaponPoints[i] = Vector2fMake([[coords objectAtIndex:0] intValue], [[coords objectAtIndex:1] intValue]);
+            [coords release];
+        }
+        [weaponsArray release];
+        
         Image *spriteSheetImage = [[Image alloc] initWithImage:[enemyDictionary valueForKey:@"kShipSpriteSheet"] scale:1.0f];
         enemySpriteSheet = [[SpriteSheet alloc] initWithImage:spriteSheetImage 
                                                   spriteWidth:[[enemyDictionary valueForKey:@"kSpriteSheetColumnWidth"] intValue]
@@ -214,8 +225,7 @@
         
         enemyAnimation = [[Animation alloc] init];
         for(int i = 0; i < [[enemyDictionary valueForKey:@"kSpriteSheetNumColumns"] intValue]; i++) {
-            NSLog(@"Addin an image");
-            [enemyAnimation addFrameWithImage:[enemySpriteSheet getSpriteAtX:i y:0] delay:500];
+            [enemyAnimation addFrameWithImage:[enemySpriteSheet getSpriteAtX:i y:0] delay:80];
         }
         [enemyAnimation setRunning:YES];
         [enemyAnimation setRepeat:YES];
