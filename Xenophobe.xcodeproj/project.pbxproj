@@ -34,7 +34,6 @@
 		11B1BD89128275C8006D085D /* PlayerShip.m in Sources */ = {isa = PBXBuildFile; fileRef = 11B1BD85128275C8006D085D /* PlayerShip.m */; };
 		11B1BDF31283C5C3006D085D /* about.png in Resources */ = {isa = PBXBuildFile; fileRef = 11B1BDE31283C5C3006D085D /* about.png */; };
 		11B1BDF41283C5C3006D085D /* continue.png in Resources */ = {isa = PBXBuildFile; fileRef = 11B1BDE41283C5C3006D085D /* continue.png */; };
-		11B1BDF51283C5C3006D085D /* highcsorestable.png in Resources */ = {isa = PBXBuildFile; fileRef = 11B1BDE51283C5C3006D085D /* highcsorestable.png */; };
 		11B1BDF61283C5C3006D085D /* highscores.png in Resources */ = {isa = PBXBuildFile; fileRef = 11B1BDE61283C5C3006D085D /* highscores.png */; };
 		11B1BDF71283C5C3006D085D /* highscoresbuttonalltime.png in Resources */ = {isa = PBXBuildFile; fileRef = 11B1BDE71283C5C3006D085D /* highscoresbuttonalltime.png */; };
 		11B1BDF81283C5C3006D085D /* highscoresbuttonalltimeglow.png in Resources */ = {isa = PBXBuildFile; fileRef = 11B1BDE81283C5C3006D085D /* highscoresbuttonalltimeglow.png */; };
@@ -108,6 +107,9 @@
 		B91B4BCE129DE8BD00FC87D7 /* cpSpaceQuery.c in Sources */ = {isa = PBXBuildFile; fileRef = B91B4BB2129DE8BD00FC87D7 /* cpSpaceQuery.c */; };
 		B91B4BCF129DE8BD00FC87D7 /* cpSpaceStep.c in Sources */ = {isa = PBXBuildFile; fileRef = B91B4BB3129DE8BD00FC87D7 /* cpSpaceStep.c */; };
 		B91B4BD0129DE8BD00FC87D7 /* cpVect.c in Sources */ = {isa = PBXBuildFile; fileRef = B91B4BB4129DE8BD00FC87D7 /* cpVect.c */; };
+		B965253C129F97FE00233303 /* backbutton.png in Resources */ = {isa = PBXBuildFile; fileRef = B965253A129F97FE00233303 /* backbutton.png */; };
+		B965253D129F97FE00233303 /* forwardbutton.png in Resources */ = {isa = PBXBuildFile; fileRef = B965253B129F97FE00233303 /* forwardbutton.png */; };
+		B9652540129F983F00233303 /* highscorestable.png in Resources */ = {isa = PBXBuildFile; fileRef = B965253F129F983F00233303 /* highscorestable.png */; };
 		B98329A3129DE9C000C543EB /* cpConstraint.c in Sources */ = {isa = PBXBuildFile; fileRef = B983298C129DE9C000C543EB /* cpConstraint.c */; };
 		B98329A4129DE9C000C543EB /* cpDampedRotarySpring.c in Sources */ = {isa = PBXBuildFile; fileRef = B983298E129DE9C000C543EB /* cpDampedRotarySpring.c */; };
 		B98329A5129DE9C000C543EB /* cpDampedSpring.c in Sources */ = {isa = PBXBuildFile; fileRef = B9832990129DE9C000C543EB /* cpDampedSpring.c */; };
@@ -160,7 +162,6 @@
 		11B1BD941282763B006D085D /* Xenophobe_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Xenophobe_Prefix.pch; sourceTree = "<group>"; };
 		11B1BDE31283C5C3006D085D /* about.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = about.png; path = "Game Resources/Images/Normal/about.png"; sourceTree = SOURCE_ROOT; };
 		11B1BDE41283C5C3006D085D /* continue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = continue.png; path = "Game Resources/Images/Normal/continue.png"; sourceTree = SOURCE_ROOT; };
-		11B1BDE51283C5C3006D085D /* highcsorestable.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = highcsorestable.png; path = "Game Resources/Images/Normal/highcsorestable.png"; sourceTree = SOURCE_ROOT; };
 		11B1BDE61283C5C3006D085D /* highscores.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = highscores.png; path = "Game Resources/Images/Normal/highscores.png"; sourceTree = SOURCE_ROOT; };
 		11B1BDE71283C5C3006D085D /* highscoresbuttonalltime.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = highscoresbuttonalltime.png; path = "Game Resources/Images/Normal/highscoresbuttonalltime.png"; sourceTree = SOURCE_ROOT; };
 		11B1BDE81283C5C3006D085D /* highscoresbuttonalltimeglow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = highscoresbuttonalltimeglow.png; path = "Game Resources/Images/Normal/highscoresbuttonalltimeglow.png"; sourceTree = SOURCE_ROOT; };
@@ -284,6 +285,9 @@
 		B91B4BF6129DE95000FC87D7 /* cpSpace.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = cpSpace.h; path = "Physics Engine/cpSpace.h"; sourceTree = "<group>"; };
 		B91B4BF7129DE95000FC87D7 /* cpSpaceHash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = cpSpaceHash.h; path = "Physics Engine/cpSpaceHash.h"; sourceTree = "<group>"; };
 		B91B4BF8129DE95000FC87D7 /* cpVect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = cpVect.h; path = "Physics Engine/cpVect.h"; sourceTree = "<group>"; };
+		B965253A129F97FE00233303 /* backbutton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = backbutton.png; path = "Game Resources/Images/Normal/backbutton.png"; sourceTree = SOURCE_ROOT; };
+		B965253B129F97FE00233303 /* forwardbutton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = forwardbutton.png; path = "Game Resources/Images/Normal/forwardbutton.png"; sourceTree = SOURCE_ROOT; };
+		B965253F129F983F00233303 /* highscorestable.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = highscorestable.png; path = "Game Resources/Images/Normal/highscorestable.png"; sourceTree = SOURCE_ROOT; };
 		B983298C129DE9C000C543EB /* cpConstraint.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cpConstraint.c; sourceTree = "<group>"; };
 		B983298D129DE9C000C543EB /* cpConstraint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cpConstraint.h; sourceTree = "<group>"; };
 		B983298E129DE9C000C543EB /* cpDampedRotarySpring.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cpDampedRotarySpring.c; sourceTree = "<group>"; };
@@ -607,11 +611,13 @@
 		1170EE6112724FAC00721CF4 /* Normal */ = {
 			isa = PBXGroup;
 			children = (
+				B965253F129F983F00233303 /* highscorestable.png */,
+				B965253A129F97FE00233303 /* backbutton.png */,
+				B965253B129F97FE00233303 /* forwardbutton.png */,
 				11336114129EEE8D00FE6A03 /* Ships */,
 				119FCF02129B573D00D3256A /* enemyspritesheet.png */,
 				11B1BDE31283C5C3006D085D /* about.png */,
 				11B1BDE41283C5C3006D085D /* continue.png */,
-				11B1BDE51283C5C3006D085D /* highcsorestable.png */,
 				11B1BDE61283C5C3006D085D /* highscores.png */,
 				11B1BDE71283C5C3006D085D /* highscoresbuttonalltime.png */,
 				11B1BDE81283C5C3006D085D /* highscoresbuttonalltimeglow.png */,
@@ -868,7 +874,6 @@
 				11B1BC6C127D14E4006D085D /* preferences.sqlite in Resources */,
 				11B1BDF31283C5C3006D085D /* about.png in Resources */,
 				11B1BDF41283C5C3006D085D /* continue.png in Resources */,
-				11B1BDF51283C5C3006D085D /* highcsorestable.png in Resources */,
 				11B1BDF61283C5C3006D085D /* highscores.png in Resources */,
 				11B1BDF71283C5C3006D085D /* highscoresbuttonalltime.png in Resources */,
 				11B1BDF81283C5C3006D085D /* highscoresbuttonalltimeglow.png in Resources */,
@@ -899,6 +904,9 @@
 				11E7DCF6129F00D90047E2FD /* kBossEuropeTailRight.png in Resources */,
 				11E7DCF7129F00D90047E2FD /* kBossEuropeWingLeft.png in Resources */,
 				11E7DCF8129F00D90047E2FD /* kBossEuropeWingRight.png in Resources */,
+				B965253C129F97FE00233303 /* backbutton.png in Resources */,
+				B965253D129F97FE00233303 /* forwardbutton.png in Resources */,
+				B9652540129F983F00233303 /* highscorestable.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

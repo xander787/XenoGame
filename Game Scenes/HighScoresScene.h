@@ -23,6 +23,11 @@
 	Image				*todayButtonGlow;
 	Image				*thisWeekButton;
 	Image				*thisWeekButtonGlow;
+    Image               *allTimeButton;
+    Image               *allTimeButtonGlow;
+    Image               *backButton;
+    
+    int                 selectedButtonIndex;
 }
 
 @end

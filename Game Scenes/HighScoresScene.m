@@ -41,15 +41,26 @@
 		
 //		[self setSceneState:kSceneState_TransitionIn];
 //		nextSceneKey = nil;
+        
+        selectedButtonIndex = 0;
 		
 		[self initHighScores];
 	}
 	
 	return self;
+    
 }
 
 - (void)initHighScores {
-	
+	leaderboardsTitle  = [[Image alloc] initWithImage:[NSString stringWithString:@"leaderboardstitle.png"]];
+    highscoresTable    = [[Image alloc] initWithImage:[NSString stringWithString:@"highscorestable.png"]];
+    todayButton        = [[Image alloc] initWithImage:[NSString stringWithString:@"highscoresbuttontoday.png"]];
+    todayButtonGlow    = [[Image alloc] initWithImage:[NSString stringWithString:@"highscoresbuttontodayglow.png"]];
+    thisWeekButton     = [[Image alloc] initWithImage:[NSString stringWithString:@"highscoresbuttonweek.png"]];
+    thisWeekButtonGlow = [[Image alloc] initWithImage:[NSString stringWithString:@"highscoresbuttonweekglow.png"]];
+    allTimeButton      = [[Image alloc] initWithImage:[NSString stringWithString:@"highscoresbuttonalltime.png"]];
+    allTimeButtonGlow  = [[Image alloc] initWithImage:[NSString stringWithString:@"highscoresbuttonalltimeglow.png"]];
+    backButton         = [[Image alloc] initWithImage:[NSString stringWithString:@"backbutton.png"] scale:0.5];
 }
 
 #pragma mark -
@@ -86,7 +97,6 @@
 	UITouch *touch = [[event touchesForView:aView] anyObject];
 	CGPoint location;
 	location = [touch locationInView:aView];
-    
 	// Flip the y location ready to check it against OpenGL coordinates
 	NSLog(@"%f %f", location.x, location.y);
 	location.y = 480-location.y;
@@ -110,7 +120,26 @@
 }
 
 - (void)render {
-	
+	[leaderboardsTitle renderAtPoint:CGPointMake(160, 455) centerOfImage:YES];
+    if(selectedButtonIndex == 0){
+        [todayButtonGlow renderAtPoint:CGPointMake(12, 385) centerOfImage:NO];
+    }
+    else {
+        [todayButton renderAtPoint:CGPointMake(12, 385) centerOfImage:NO];
+    }
+    if(selectedButtonIndex == 1){
+        [thisWeekButtonGlow renderAtPoint:CGPointMake(115, 385) centerOfImage:NO];
+    }
+    else {
+        [thisWeekButton renderAtPoint:CGPointMake(115, 385) centerOfImage:NO];
+    }
+    if(selectedButtonIndex == 2){
+        [allTimeButtonGlow renderAtPoint:CGPointMake(218, 385) centerOfImage:NO];
+    }
+    else {
+        [allTimeButton renderAtPoint:CGPointMake(218, 385) centerOfImage:NO];
+    }
+    [backButton renderAtPoint:CGPointMake(15, 440) centerOfImage:NO];
 }
 
 @end
