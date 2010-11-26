@@ -44,11 +44,11 @@ typedef enum _PlayerShipCategory {
 } PlayerShipCategory;
 
 typedef enum _PlayerShipWeaponType {
-	kWeapon_SingleShot = 0,
-	kWeapon_DoubleShot,
-	kWeapon_TripleShot,
-	kWeapon_Missile,
-	kWeapon_Wave
+	kPlayerWeapon_SingleShot = 0,
+	kPlayerWeapon_DoubleShot,
+	kPlayerWeapon_TripleShot,
+	kPlayerWeapon_Missile,
+	kPlayerWeapon_Wave
 } PlayerShipWeaponType;
 
 typedef enum _PlayerShipTemporaryWeaponUpgrade {

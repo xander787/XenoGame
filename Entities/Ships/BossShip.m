@@ -13,6 +13,9 @@
 //	Last Updated - 11/25/2010 @8PM - Alexander
 //	- Wrote the first-draft initializer code (fuckin complicated)
 //  for the Boss class.
+//
+//	Last Updated - 11/26/2010 @3:30PM - Alexander
+//	- Fixed the problems in the boss initialization. Should work now
 
 #import "BossShip.h"
 
@@ -165,7 +168,8 @@
         
         //Fill a C array with all of the modules for the Boss and all of their information
         NSArray *moduleImagesArray = [[NSArray alloc] initWithArray:[bossDictionary objectForKey:@"kShipModuleImages"]];
-        
+        NSArray *modulePointsArray = [[NSArray alloc] initWithArray:[bossDictionary objectForKey:@"kShipModulePoints"]];
+
         modularObjects = malloc(sizeof(ModularObject) * [moduleImagesArray count]);
         bzero(modularObjects, sizeof(ModularObject) * [moduleImagesArray count]);
         
@@ -173,35 +177,38 @@
             modularObjects[i].moduleImage = [[bossDictionary objectForKey:@"kShipModuleImages"] objectAtIndex:i];
             modularObjects[i].drawingOrder = i;
             
-            NSArray *modulePointsArray = [[NSArray alloc] initWithArray:[bossDictionary objectForKey:@"kShipModulePoints"]];
             NSArray *moduleCoords = [[NSArray alloc] initWithArray:[[modulePointsArray objectAtIndex:i] componentsSeparatedByString:@","]];
             modularObjects[i].location = Vector2fMake([[moduleCoords objectAtIndex:0] floatValue], [[moduleCoords objectAtIndex:1] floatValue]);
-            [modulePointsArray release];
             [moduleCoords release];
             
             NSArray *turretPoints = [[NSArray alloc] initWithArray:[bossDictionary objectForKey:@"kShipTurretPoints"]];
             NSArray *coordPairs = [[NSArray alloc] initWithArray:[[turretPoints objectAtIndex:i] componentsSeparatedByString:@";"]];
+            modularObjects[i].weapons = malloc(sizeof(WeaponObject) * [coordPairs count]);
+            
             for(int j = 0; j < [coordPairs count]; j++) {
-                NSArray *turretCoords = [[NSArray alloc] initWithArray:[[coordPairs objectAtIndex:i] componentsSeparatedByString:@","]];
-                modularObjects[i].weapons = malloc(sizeof(WeaponObject) * [turretCoords count]);
+                NSArray *turretCoords = [[NSArray alloc] initWithArray:[[coordPairs objectAtIndex:j] componentsSeparatedByString:@","]];
+                
                 modularObjects[i].weapons[j].weaponCoord = Vector2fMake([[turretCoords objectAtIndex:0] intValue], [[turretCoords objectAtIndex:1] intValue]);
-                modularObjects[i].weapons[j].weaponType = kWeaponType_Default;
+                modularObjects[i].weapons[j].weaponType = kBossWeapon_Default;
+                
                 [turretCoords release];
             }
+             
             [turretPoints release];
             [coordPairs release];
-            
-            NSArray *destructionOrder = [[NSArray alloc] initWithArray:[bossDictionary objectForKey:@"kModularDestructionOrder"]];
-            for(int i = 0; i < [destructionOrder count]; i++) {
-                NSArray *destructableModulesArray = [[NSArray alloc] initWithArray:[destructionOrder objectAtIndex:i]];
-                for(int j = 0; j < [destructableModulesArray count]; j++) {
-                    int moduleNum = [[destructableModulesArray objectAtIndex:j] intValue];
-                    modularObjects[moduleNum].destructionOrder = i;                
-                }
-                
-                [destructableModulesArray release];
-            }
         }
+        
+        NSArray *destructionOrder = [[NSArray alloc] initWithArray:[bossDictionary objectForKey:@"kModularDestructionOrder"]];
+        for(int i = 0; i < [destructionOrder count]; i++) {
+            NSArray *destructableModulesArray = [[NSArray alloc] initWithArray:[destructionOrder objectAtIndex:i]];
+            for(int j = 0; j < [destructableModulesArray count]; j++) {
+                int moduleNum = [[destructableModulesArray objectAtIndex:j] intValue];
+                modularObjects[moduleNum].destructionOrder = i; 
+            }
+            [destructableModulesArray release];
+        }
+        
+        [modulePointsArray release];
     }
     
     return self;

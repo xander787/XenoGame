@@ -66,11 +66,11 @@ typedef enum _BossShipID {
 } BossShipID;
 
 typedef enum _WeaponType {
-    kWeaponType_Default = 0,
-    kWeaponType_Turret,
-    kWeaponType_Cannon,
-    kWeaponType_Wave,
-    kWeaponType_Laser
+    kBossWeapon_Default = 0,
+    kBossWeapon_Turret,
+    kBossWeapon_Cannon,
+    kBossWeapon_Wave,
+    kBossWeapon_Laser
 } WeaponType;
 
 typedef struct _WeaponObject {

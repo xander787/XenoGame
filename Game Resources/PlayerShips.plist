@@ -29,7 +29,7 @@
 		<array>
 			<string>63,92</string>
 		</array>
-		<key>kWeaponType</key>
+		<key>kPlayerWeaponType</key>
 		<string>kWeapon_SingleShot</string>
 	</dict>
 </dict>

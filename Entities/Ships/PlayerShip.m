@@ -84,20 +84,20 @@
 			shipCategory = kShipCategory_Speed;
 		}
 		
-		if ([shipDictionary valueForKey:@"kWeaponType"] == @"kWeapon_SingleShot") {
-			shipWeaponType = kWeapon_SingleShot;
+		if ([shipDictionary valueForKey:@"kPlayerWeaponType"] == @"kWeapon_SingleShot") {
+			shipWeaponType = kPlayerWeapon_SingleShot;
 		}
-		else if ([shipDictionary valueForKey:@"kWeaponType"] == @"kWeapon_DoubleShot") {
-			shipWeaponType = kWeapon_DoubleShot;
+		else if ([shipDictionary valueForKey:@"kPlayerWeaponType"] == @"kWeapon_DoubleShot") {
+			shipWeaponType = kPlayerWeapon_DoubleShot;
 		}
-		else if ([shipDictionary valueForKey:@"kWeaponType"] == @"kWeapon_TripleShot") {
-			shipWeaponType = kWeapon_TripleShot;
+		else if ([shipDictionary valueForKey:@"kPlayerWeaponType"] == @"kWeapon_TripleShot") {
+			shipWeaponType = kPlayerWeapon_TripleShot;
 		}
-		else if ([shipDictionary valueForKey:@"kWeaponType"] == @"kWeapon_Missile") {
-			shipWeaponType = kWeapon_Missile;
+		else if ([shipDictionary valueForKey:@"kPlayerWeaponType"] == @"kWeapon_Missile") {
+			shipWeaponType = kPlayerWeapon_Missile;
 		}
-		else if ([shipDictionary valueForKey:@"kWeaponType"] == @"kWeapon_Wave") {
-			shipWeaponType = kWeapon_Wave;
+		else if ([shipDictionary valueForKey:@"kPlayerWeaponType"] == @"kWeapon_Wave") {
+			shipWeaponType = kPlayerWeapon_Wave;
 		}
 		
 		//Fill a C array with Vector2f's for our ship's turret points
