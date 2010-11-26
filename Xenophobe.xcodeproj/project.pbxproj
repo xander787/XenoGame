@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		11336113129E54F300FE6A03 /* BossShips.plist in Resources */ = {isa = PBXBuildFile; fileRef = 11336112129E54F300FE6A03 /* BossShips.plist */; };
 		114A1A7412989C4B004769D4 /* PlayerShips.plist in Resources */ = {isa = PBXBuildFile; fileRef = 114A1A7312989C4B004769D4 /* PlayerShips.plist */; };
 		1170E3AC12865A18000BF968 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1170E3AB12865A18000BF968 /* CoreMotion.framework */; };
 		1170E418128A1741000BF968 /* EnemyShip.m in Sources */ = {isa = PBXBuildFile; fileRef = 1170E417128A1741000BF968 /* EnemyShip.m */; };
@@ -75,6 +76,16 @@
 		11D324E812739DBD00F01BB5 /* AbstractScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 11D324E512739DBD00F01BB5 /* AbstractScene.m */; };
 		11D324E912739DBD00F01BB5 /* MainMenuScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 11D324E712739DBD00F01BB5 /* MainMenuScene.m */; };
 		11D325171273BF7900F01BB5 /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 11D325161273BF7900F01BB5 /* libsqlite3.0.dylib */; };
+		11E7DCEF129F00D90047E2FD /* kBossAsiaCannonLeft.png in Resources */ = {isa = PBXBuildFile; fileRef = 11E7DCE5129F00D90047E2FD /* kBossAsiaCannonLeft.png */; };
+		11E7DCF0129F00D90047E2FD /* kBossAsiaCannonRight.png in Resources */ = {isa = PBXBuildFile; fileRef = 11E7DCE6129F00D90047E2FD /* kBossAsiaCannonRight.png */; };
+		11E7DCF1129F00D90047E2FD /* kBossAsiaMainBody.png in Resources */ = {isa = PBXBuildFile; fileRef = 11E7DCE7129F00D90047E2FD /* kBossAsiaMainBody.png */; };
+		11E7DCF2129F00D90047E2FD /* kBossAsiaTurretLeft.png in Resources */ = {isa = PBXBuildFile; fileRef = 11E7DCE8129F00D90047E2FD /* kBossAsiaTurretLeft.png */; };
+		11E7DCF3129F00D90047E2FD /* kBossAsiaTurretRight.png in Resources */ = {isa = PBXBuildFile; fileRef = 11E7DCE9129F00D90047E2FD /* kBossAsiaTurretRight.png */; };
+		11E7DCF4129F00D90047E2FD /* kBossEuropeMainBody.png in Resources */ = {isa = PBXBuildFile; fileRef = 11E7DCEA129F00D90047E2FD /* kBossEuropeMainBody.png */; };
+		11E7DCF5129F00D90047E2FD /* kBossEuropeTailLeft.png in Resources */ = {isa = PBXBuildFile; fileRef = 11E7DCEB129F00D90047E2FD /* kBossEuropeTailLeft.png */; };
+		11E7DCF6129F00D90047E2FD /* kBossEuropeTailRight.png in Resources */ = {isa = PBXBuildFile; fileRef = 11E7DCEC129F00D90047E2FD /* kBossEuropeTailRight.png */; };
+		11E7DCF7129F00D90047E2FD /* kBossEuropeWingLeft.png in Resources */ = {isa = PBXBuildFile; fileRef = 11E7DCED129F00D90047E2FD /* kBossEuropeWingLeft.png */; };
+		11E7DCF8129F00D90047E2FD /* kBossEuropeWingRight.png in Resources */ = {isa = PBXBuildFile; fileRef = 11E7DCEE129F00D90047E2FD /* kBossEuropeWingRight.png */; };
 		1D3623260D0F684500981E51 /* XenophobeAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* XenophobeAppDelegate.m */; };
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
@@ -111,6 +122,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		11336112129E54F300FE6A03 /* BossShips.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = BossShips.plist; path = "Game Resources/BossShips.plist"; sourceTree = SOURCE_ROOT; };
 		114A1A7312989C4B004769D4 /* PlayerShips.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = PlayerShips.plist; path = "Game Resources/PlayerShips.plist"; sourceTree = SOURCE_ROOT; };
 		1170E3AB12865A18000BF968 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
 		1170E416128A1741000BF968 /* EnemyShip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EnemyShip.h; path = Entities/Ships/EnemyShip.h; sourceTree = "<group>"; };
@@ -220,6 +232,16 @@
 		11D324E712739DBD00F01BB5 /* MainMenuScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MainMenuScene.m; path = "Game Scenes/MainMenuScene.m"; sourceTree = "<group>"; };
 		11D325161273BF7900F01BB5 /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
 		11D325201273C14E00F01BB5 /* PreferencesManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PreferencesManager.h; path = "Singleton Managers/PreferencesManager.h"; sourceTree = "<group>"; };
+		11E7DCE5129F00D90047E2FD /* kBossAsiaCannonLeft.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = kBossAsiaCannonLeft.png; path = "Game Resources/Images/Normal/Ships/Boss Ships/kBossAsiaCannonLeft.png"; sourceTree = SOURCE_ROOT; };
+		11E7DCE6129F00D90047E2FD /* kBossAsiaCannonRight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = kBossAsiaCannonRight.png; path = "Game Resources/Images/Normal/Ships/Boss Ships/kBossAsiaCannonRight.png"; sourceTree = SOURCE_ROOT; };
+		11E7DCE7129F00D90047E2FD /* kBossAsiaMainBody.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = kBossAsiaMainBody.png; path = "Game Resources/Images/Normal/Ships/Boss Ships/kBossAsiaMainBody.png"; sourceTree = SOURCE_ROOT; };
+		11E7DCE8129F00D90047E2FD /* kBossAsiaTurretLeft.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = kBossAsiaTurretLeft.png; path = "Game Resources/Images/Normal/Ships/Boss Ships/kBossAsiaTurretLeft.png"; sourceTree = SOURCE_ROOT; };
+		11E7DCE9129F00D90047E2FD /* kBossAsiaTurretRight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = kBossAsiaTurretRight.png; path = "Game Resources/Images/Normal/Ships/Boss Ships/kBossAsiaTurretRight.png"; sourceTree = SOURCE_ROOT; };
+		11E7DCEA129F00D90047E2FD /* kBossEuropeMainBody.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = kBossEuropeMainBody.png; path = "Game Resources/Images/Normal/Ships/Boss Ships/kBossEuropeMainBody.png"; sourceTree = SOURCE_ROOT; };
+		11E7DCEB129F00D90047E2FD /* kBossEuropeTailLeft.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = kBossEuropeTailLeft.png; path = "Game Resources/Images/Normal/Ships/Boss Ships/kBossEuropeTailLeft.png"; sourceTree = SOURCE_ROOT; };
+		11E7DCEC129F00D90047E2FD /* kBossEuropeTailRight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = kBossEuropeTailRight.png; path = "Game Resources/Images/Normal/Ships/Boss Ships/kBossEuropeTailRight.png"; sourceTree = SOURCE_ROOT; };
+		11E7DCED129F00D90047E2FD /* kBossEuropeWingLeft.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = kBossEuropeWingLeft.png; path = "Game Resources/Images/Normal/Ships/Boss Ships/kBossEuropeWingLeft.png"; sourceTree = SOURCE_ROOT; };
+		11E7DCEE129F00D90047E2FD /* kBossEuropeWingRight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = kBossEuropeWingRight.png; path = "Game Resources/Images/Normal/Ships/Boss Ships/kBossEuropeWingRight.png"; sourceTree = SOURCE_ROOT; };
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1D3623240D0F684500981E51 /* XenophobeAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XenophobeAppDelegate.h; sourceTree = "<group>"; };
 		1D3623250D0F684500981E51 /* XenophobeAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XenophobeAppDelegate.m; sourceTree = "<group>"; };
@@ -323,6 +345,39 @@
 				1D3623250D0F684500981E51 /* XenophobeAppDelegate.m */,
 			);
 			path = Classes;
+			sourceTree = "<group>";
+		};
+		11336114129EEE8D00FE6A03 /* Ships */ = {
+			isa = PBXGroup;
+			children = (
+				11336116129EEEA500FE6A03 /* Player Ships */,
+				11336117129EEEB000FE6A03 /* Enemy Ships */,
+				11336115129EEE9900FE6A03 /* Boss Ships */,
+			);
+			name = Ships;
+			sourceTree = "<group>";
+		};
+		11336115129EEE9900FE6A03 /* Boss Ships */ = {
+			isa = PBXGroup;
+			children = (
+				11E7DCE4129F00C00047E2FD /* Bosses */,
+				11E7DCE3129F00B10047E2FD /* MiniBosses */,
+			);
+			name = "Boss Ships";
+			sourceTree = "<group>";
+		};
+		11336116129EEEA500FE6A03 /* Player Ships */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "Player Ships";
+			sourceTree = "<group>";
+		};
+		11336117129EEEB000FE6A03 /* Enemy Ships */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "Enemy Ships";
 			sourceTree = "<group>";
 		};
 		1170EBE8126ED1B900721CF4 /* Common */ = {
@@ -508,6 +563,7 @@
 			children = (
 				114A1A7312989C4B004769D4 /* PlayerShips.plist */,
 				119FCF00129B528C00D3256A /* EnemyShips.plist */,
+				11336112129E54F300FE6A03 /* BossShips.plist */,
 				1170EE5612724F6600721CF4 /* Images */,
 				1170EE5712724F6B00721CF4 /* Sounds */,
 				1170EE5812724F7100721CF4 /* Fonts */,
@@ -551,6 +607,7 @@
 		1170EE6112724FAC00721CF4 /* Normal */ = {
 			isa = PBXGroup;
 			children = (
+				11336114129EEE8D00FE6A03 /* Ships */,
 				119FCF02129B573D00D3256A /* enemyspritesheet.png */,
 				11B1BDE31283C5C3006D085D /* about.png */,
 				11B1BDE41283C5C3006D085D /* continue.png */,
@@ -594,6 +651,30 @@
 				11B1BD81128275C8006D085D /* BossShip.m */,
 			);
 			name = Ships;
+			sourceTree = "<group>";
+		};
+		11E7DCE3129F00B10047E2FD /* MiniBosses */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = MiniBosses;
+			sourceTree = "<group>";
+		};
+		11E7DCE4129F00C00047E2FD /* Bosses */ = {
+			isa = PBXGroup;
+			children = (
+				11E7DCE7129F00D90047E2FD /* kBossAsiaMainBody.png */,
+				11E7DCE8129F00D90047E2FD /* kBossAsiaTurretLeft.png */,
+				11E7DCE9129F00D90047E2FD /* kBossAsiaTurretRight.png */,
+				11E7DCE5129F00D90047E2FD /* kBossAsiaCannonLeft.png */,
+				11E7DCE6129F00D90047E2FD /* kBossAsiaCannonRight.png */,
+				11E7DCEA129F00D90047E2FD /* kBossEuropeMainBody.png */,
+				11E7DCED129F00D90047E2FD /* kBossEuropeWingLeft.png */,
+				11E7DCEE129F00D90047E2FD /* kBossEuropeWingRight.png */,
+				11E7DCEB129F00D90047E2FD /* kBossEuropeTailLeft.png */,
+				11E7DCEC129F00D90047E2FD /* kBossEuropeTailRight.png */,
+			);
+			name = Bosses;
 			sourceTree = "<group>";
 		};
 		19C28FACFE9D520D11CA2CBB /* Products */ = {
@@ -807,6 +888,17 @@
 				119FCF01129B528C00D3256A /* EnemyShips.plist in Resources */,
 				119FCF03129B573D00D3256A /* enemyspritesheet.png in Resources */,
 				B91B4BB7129DE8BD00FC87D7 /* CMakeLists.txt in Resources */,
+				11336113129E54F300FE6A03 /* BossShips.plist in Resources */,
+				11E7DCEF129F00D90047E2FD /* kBossAsiaCannonLeft.png in Resources */,
+				11E7DCF0129F00D90047E2FD /* kBossAsiaCannonRight.png in Resources */,
+				11E7DCF1129F00D90047E2FD /* kBossAsiaMainBody.png in Resources */,
+				11E7DCF2129F00D90047E2FD /* kBossAsiaTurretLeft.png in Resources */,
+				11E7DCF3129F00D90047E2FD /* kBossAsiaTurretRight.png in Resources */,
+				11E7DCF4129F00D90047E2FD /* kBossEuropeMainBody.png in Resources */,
+				11E7DCF5129F00D90047E2FD /* kBossEuropeTailLeft.png in Resources */,
+				11E7DCF6129F00D90047E2FD /* kBossEuropeTailRight.png in Resources */,
+				11E7DCF7129F00D90047E2FD /* kBossEuropeWingLeft.png in Resources */,
+				11E7DCF8129F00D90047E2FD /* kBossEuropeWingRight.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
