@@ -39,6 +39,10 @@
 		<key>kShipModulePoints</key>
 		<array>
 			<string>0,0</string>
+			<string>59,4</string>
+			<string>-59,4</string>
+			<string>136,14</string>
+			<string>-136,14</string>
 		</array>
 		<key>kShipTurretPoints</key>
 		<array>
@@ -66,8 +70,6 @@
 			<array>
 				<integer>1</integer>
 				<integer>2</integer>
-			</array>
-			<array>
 				<integer>3</integer>
 				<integer>4</integer>
 			</array>
@@ -77,23 +79,27 @@
 		</array>
 		<key>kShipModuleImages</key>
 		<array>
-			<string>kBossAsiaMainBody.png</string>
-			<string>kBossAsiaTurretLeft.png</string>
-			<string>kBossAsiaTurretRight.png</string>
-			<string>kBossAsiaCannonRight.png</string>
-			<string>kBossAsiaCannongLeft.png</string>
+			<string>kBossEuropeMainBody.png</string>
+			<string>kBossEuropeWingLeft.png</string>
+			<string>kBossEuropeWingRight.png</string>
+			<string>kBossEuropeTailLeft.png</string>
+			<string>kBossEuropeTailRight.png</string>
 		</array>
 		<key>kShipModulePoints</key>
 		<array>
 			<string>0,0</string>
+			<string>81,36</string>
+			<string>-81,36</string>
+			<string>28,-129</string>
+			<string>28,129</string>
 		</array>
 		<key>kShipTurretPoints</key>
 		<array>
-			<string>22,80;31,80;160,80;169,80</string>
-			<string>45,55</string>
-			<string>45,55</string>
-			<string>22,44</string>
-			<string>14,44</string>
+			<string>31,188</string>
+			<string>36,65;59,69</string>
+			<string>10,68;32,65</string>
+			<string>nil</string>
+			<string>nil</string>
 		</array>
 	</dict>
 </dict>

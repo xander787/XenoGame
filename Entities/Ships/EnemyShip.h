@@ -17,6 +17,9 @@
 //  - Fixed warning todo with confliction types for playerShipRef,
 //  it was supposed to be a single pointer, and it was still a
 //  double pointer, thoguh both worked, this is correct and no warnings.
+//
+//  Last Updated - 11/25/10 @8PM - Alexander
+//  - Forgot to add properties for the public items
 
 #import <Foundation/Foundation.h>
 #import "PlayerShip.h"
@@ -99,6 +102,12 @@ typedef enum _EnemyShipCategory {
     Animation               *enemyAnimation;
     PlayerShip              *playerShipRef;
 }
+
+@property(nonatomic, readonly) int enemyHealth;
+@property(nonatomic, readonly) int enemyAttack;
+@property(nonatomic, readonly) int enemyStamina;
+@property(nonatomic, readonly) int enemySpeed;
+@property(nonatomic, readonly) CGPoint currentLocation;
 
 - (id)initWithShipID:(EnemyShipID)aEnemyID initialLocation:(CGPoint)aPoint andPlayerShipRef:(PlayerShip *)aPlayership;
 

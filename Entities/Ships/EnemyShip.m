@@ -12,12 +12,16 @@
 //
 //	Last Updated - 11/22/2010 @8:20PM - Alexander
 //	- Added in first draft code for the enemy ship class
-
+//
+//  Last Updated - 11/25/10 @8PM - Alexander
+//  - Forgot to add properties for the public items
 
 #import "EnemyShip.h"
 
 
 @implementation EnemyShip
+
+@synthesize enemyHealth, enemyAttack, enemyStamina, enemySpeed, currentLocation;
 
 - (id)init {
     self = [super init];

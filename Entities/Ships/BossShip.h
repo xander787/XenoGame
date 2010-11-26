@@ -10,14 +10,16 @@
 //	James Linnell - Software Engineer, Creative Design, Art Producer
 //	Tyler Newcomb - Creative Design, Art Producer
 //
-//	Last Updated - 11/6/2010 - Alexander
-//	- Initial Class Creation
+//	Last Updated - 11/25/2010 @8PM - Alexander
+//	- Wrote initial structure for the Boss class and created
+//  a few structs for the modular objects and weapons
 
 #import <Foundation/Foundation.h>
 #import "AbstractShip.h"
 #import "Image.h"
 #import "Animation.h"
 #import "SpriteSheet.h"
+#import "PlayerShip.h"
 
 typedef enum _BossType {
     kBossType_Mini = 0,
@@ -64,27 +66,50 @@ typedef enum _BossShipID {
 } BossShipID;
 
 typedef enum _WeaponType {
-    kWeapon_Turret = 0,
-    kWeapon_Cannon,
-    kWeapon_Wave,
-    kWeapon_Laser
+    kWeaponType_Default = 0,
+    kWeaponType_Turret,
+    kWeaponType_Cannon,
+    kWeaponType_Wave,
+    kWeaponType_Laser
 } WeaponType;
 
 typedef struct _WeaponObject {
     WeaponType  weaponType;
-    Vector2f    *weaponCoord;
+    Vector2f    weaponCoord;
 } WeaponObject;
 
 typedef struct _ModularObject {
-    WeaponObject    *weapons;
+    WeaponObject    *weapons; // Array
     BOOL            floating;
     int             positionFloatVariance;
-    Vector2f        *thrusterPoints;
+    Vector2f        *thrusterPoints; // Array
+    int             destructionOrder;
+    int             drawingOrder;
+    Vector2f        location;
+    NSString        *moduleImage;
 } ModularObject;
 
 
 @interface BossShip : AbstractShip {
-
+    int             bossHealth;
+    int             bossAttack;
+    int             bossStamina;
+    int             bossSpeed;
+    CGPoint         currentLocation;
+    
+    @private
+    BossShipID      bossID;
+    BossType        bossType;
+    ModularObject   *modularObjects;
+    PlayerShip      *playerShipRef;
 }
+
+@property(nonatomic, readonly) int bossHealth;
+@property(nonatomic, readonly) int bossAttack;
+@property(nonatomic, readonly) int bossStamina;
+@property(nonatomic, readonly) int bossSpeed;
+@property(nonatomic, readonly) CGPoint currentLocation;
+
+- (id)initWithBossID:(BossShipID)aBossID initialLocation:(CGPoint)aPoint andPlayerShipRef:(PlayerShip *)aPlayerShip;
 
 @end
