@@ -13,6 +13,10 @@
 //	Last Updated - 11/25/2010 @8PM - Alexander
 //	- Wrote initial structure for the Boss class and created
 //  a few structs for the modular objects and weapons
+//
+//	Last Updated - 11/26/2010 @6PM - Alexander
+//	- Added variables (num weapons, num thrusters) for
+//  rendering purposes
 
 #import <Foundation/Foundation.h>
 #import "AbstractShip.h"
@@ -66,11 +70,11 @@ typedef enum _BossShipID {
 } BossShipID;
 
 typedef enum _WeaponType {
-    kWeaponType_Default = 0,
-    kWeaponType_Turret,
-    kWeaponType_Cannon,
-    kWeaponType_Wave,
-    kWeaponType_Laser
+    kBossWeapon_Default = 0,
+    kBossWeapon_Turret,
+    kBossWeapon_Cannon,
+    kBossWeapon_Wave,
+    kBossWeapon_Laser
 } WeaponType;
 
 typedef struct _WeaponObject {
@@ -79,6 +83,8 @@ typedef struct _WeaponObject {
 } WeaponObject;
 
 typedef struct _ModularObject {
+    int             numberOfWeapons;
+    int             numberOfThrusters;
     WeaponObject    *weapons; // Array
     BOOL            floating;
     int             positionFloatVariance;
@@ -96,8 +102,10 @@ typedef struct _ModularObject {
     int             bossStamina;
     int             bossSpeed;
     CGPoint         currentLocation;
+    CGPoint         desiredLocation;
     
     @private
+    int             numberOfModules;
     BossShipID      bossID;
     BossType        bossType;
     ModularObject   *modularObjects;

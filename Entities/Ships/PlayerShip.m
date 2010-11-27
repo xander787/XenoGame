@@ -28,6 +28,10 @@
 //  Last Updated - 11/23/2010 @10:30PM - Alexander
 //  - Think I've got the speed variance for the ship
 //  down, or at least pretty close now.
+//
+//  Last Updated - 11/26/2010 @6PM - Alexander
+//  - Fixed a bug where the playership would move to the
+//  corner of the screen upon initialization
 
 #import "PlayerShip.h"
 
@@ -45,6 +49,7 @@
 	if (self = [super init]) {
 		shipID = aShipID;
         currentLocation = aPoint;
+        desiredPosition = aPoint;
 		
 		//Load the PLIST with all player ship definitions in them
 		NSBundle *bundle = [NSBundle mainBundle];
@@ -84,20 +89,20 @@
 			shipCategory = kShipCategory_Speed;
 		}
 		
-		if ([shipDictionary valueForKey:@"kWeaponType"] == @"kWeapon_SingleShot") {
-			shipWeaponType = kWeapon_SingleShot;
+		if ([shipDictionary valueForKey:@"kPlayerWeaponType"] == @"kWeapon_SingleShot") {
+			shipWeaponType = kPlayerWeapon_SingleShot;
 		}
-		else if ([shipDictionary valueForKey:@"kWeaponType"] == @"kWeapon_DoubleShot") {
-			shipWeaponType = kWeapon_DoubleShot;
+		else if ([shipDictionary valueForKey:@"kPlayerWeaponType"] == @"kWeapon_DoubleShot") {
+			shipWeaponType = kPlayerWeapon_DoubleShot;
 		}
-		else if ([shipDictionary valueForKey:@"kWeaponType"] == @"kWeapon_TripleShot") {
-			shipWeaponType = kWeapon_TripleShot;
+		else if ([shipDictionary valueForKey:@"kPlayerWeaponType"] == @"kWeapon_TripleShot") {
+			shipWeaponType = kPlayerWeapon_TripleShot;
 		}
-		else if ([shipDictionary valueForKey:@"kWeaponType"] == @"kWeapon_Missile") {
-			shipWeaponType = kWeapon_Missile;
+		else if ([shipDictionary valueForKey:@"kPlayerWeaponType"] == @"kWeapon_Missile") {
+			shipWeaponType = kPlayerWeapon_Missile;
 		}
-		else if ([shipDictionary valueForKey:@"kWeaponType"] == @"kWeapon_Wave") {
-			shipWeaponType = kWeapon_Wave;
+		else if ([shipDictionary valueForKey:@"kPlayerWeaponType"] == @"kWeapon_Wave") {
+			shipWeaponType = kPlayerWeapon_Wave;
 		}
 		
 		//Fill a C array with Vector2f's for our ship's turret points

@@ -13,6 +13,12 @@
 //	Last Updated - 11/25/2010 @8PM - Alexander
 //	- Wrote the first-draft initializer code (fuckin complicated)
 //  for the Boss class.
+//
+//	Last Updated - 11/26/2010 @3:30PM - Alexander
+//	- Fixed the problems in the boss initialization. Should work now
+//
+//  Last Updated - 11/26/2010 @6PM - Alexander
+//  - Added rendering code, and fixed some other crashing bugs
 
 #import "BossShip.h"
 
@@ -26,6 +32,7 @@
         bossID = aBossID;
         currentLocation = aPoint;
         playerShipRef = aPlayerShip;
+        desiredLocation = aPoint;
         
         //Load the PLIST with all the boss ship definitions
         NSBundle *bundle = [NSBundle mainBundle];
@@ -165,47 +172,73 @@
         
         //Fill a C array with all of the modules for the Boss and all of their information
         NSArray *moduleImagesArray = [[NSArray alloc] initWithArray:[bossDictionary objectForKey:@"kShipModuleImages"]];
-        
+        NSArray *modulePointsArray = [[NSArray alloc] initWithArray:[bossDictionary objectForKey:@"kShipModulePoints"]];
+
         modularObjects = malloc(sizeof(ModularObject) * [moduleImagesArray count]);
+        numberOfModules = [moduleImagesArray count];
         bzero(modularObjects, sizeof(ModularObject) * [moduleImagesArray count]);
         
         for(int i = 0; i < [moduleImagesArray count]; i++) {
             modularObjects[i].moduleImage = [[bossDictionary objectForKey:@"kShipModuleImages"] objectAtIndex:i];
             modularObjects[i].drawingOrder = i;
             
-            NSArray *modulePointsArray = [[NSArray alloc] initWithArray:[bossDictionary objectForKey:@"kShipModulePoints"]];
             NSArray *moduleCoords = [[NSArray alloc] initWithArray:[[modulePointsArray objectAtIndex:i] componentsSeparatedByString:@","]];
             modularObjects[i].location = Vector2fMake([[moduleCoords objectAtIndex:0] floatValue], [[moduleCoords objectAtIndex:1] floatValue]);
-            [modulePointsArray release];
             [moduleCoords release];
             
             NSArray *turretPoints = [[NSArray alloc] initWithArray:[bossDictionary objectForKey:@"kShipTurretPoints"]];
-            NSArray *coordPairs = [[NSArray alloc] initWithArray:[[turretPoints objectAtIndex:i] componentsSeparatedByString:@";"]];
-            for(int j = 0; j < [coordPairs count]; j++) {
-                NSArray *turretCoords = [[NSArray alloc] initWithArray:[[coordPairs objectAtIndex:i] componentsSeparatedByString:@","]];
-                modularObjects[i].weapons = malloc(sizeof(WeaponObject) * [turretCoords count]);
-                modularObjects[i].weapons[j].weaponCoord = Vector2fMake([[turretCoords objectAtIndex:0] intValue], [[turretCoords objectAtIndex:1] intValue]);
-                modularObjects[i].weapons[j].weaponType = kWeaponType_Default;
-                [turretCoords release];
-            }
-            [turretPoints release];
-            [coordPairs release];
-            
-            NSArray *destructionOrder = [[NSArray alloc] initWithArray:[bossDictionary objectForKey:@"kModularDestructionOrder"]];
-            for(int i = 0; i < [destructionOrder count]; i++) {
-                NSArray *destructableModulesArray = [[NSArray alloc] initWithArray:[destructionOrder objectAtIndex:i]];
-                for(int j = 0; j < [destructableModulesArray count]; j++) {
-                    int moduleNum = [[destructableModulesArray objectAtIndex:j] intValue];
-                    modularObjects[moduleNum].destructionOrder = i;                
-                }
+            NSString *turretString = [turretPoints objectAtIndex:i];
+            if(![turretString isEqualToString:@"nil"]) {
+                NSLog(@"%@", [turretPoints objectAtIndex:i]);
+                NSArray *coordPairs = [[NSArray alloc] initWithArray:[[turretPoints objectAtIndex:i] componentsSeparatedByString:@";"]];
+                modularObjects[i].weapons = malloc(sizeof(WeaponObject) * [coordPairs count]);
+                modularObjects[i].numberOfWeapons = [coordPairs count];
                 
-                [destructableModulesArray release];
+                for(int j = 0; j < [coordPairs count]; j++) {
+                    NSArray *turretCoords = [[NSArray alloc] initWithArray:[[coordPairs objectAtIndex:j] componentsSeparatedByString:@","]];
+                    
+                    modularObjects[i].weapons[j].weaponCoord = Vector2fMake([[turretCoords objectAtIndex:0] intValue], [[turretCoords objectAtIndex:1] intValue]);
+                    modularObjects[i].weapons[j].weaponType = kBossWeapon_Default;
+                    
+                    [turretCoords release];
+                }
+                [coordPairs release];
             }
+            else {
+                modularObjects[i].numberOfWeapons = 0;
+            }            
+             
+            [turretPoints release];
+            [turretString release];
         }
+        
+        NSArray *destructionOrder = [[NSArray alloc] initWithArray:[bossDictionary objectForKey:@"kModularDestructionOrder"]];
+        for(int i = 0; i < [destructionOrder count]; i++) {
+            NSArray *destructableModulesArray = [[NSArray alloc] initWithArray:[destructionOrder objectAtIndex:i]];
+            for(int j = 0; j < [destructableModulesArray count]; j++) {
+                int moduleNum = [[destructableModulesArray objectAtIndex:j] intValue];
+                modularObjects[moduleNum].destructionOrder = i; 
+            }
+            [destructableModulesArray release];
+        }
+        
+        [modulePointsArray release];
     }
     
     return self;
 }
 
+- (void)update:(GLfloat)delta {
+    currentLocation.x += ((desiredLocation.x - currentLocation.x) / bossSpeed) * (pow(1.584893192, bossSpeed)) * delta;
+    currentLocation.y += ((desiredLocation.y - currentLocation.y) / bossSpeed) * (pow(1.584893192, bossSpeed)) * delta;
+}
+
+- (void)render {
+    for(int i = 0; i < numberOfModules; i++) {
+        NSString *imagePath = modularObjects[i].moduleImage;
+        Image *moduleImage = [[Image alloc] initWithImage:[NSString stringWithString:imagePath]];
+        [moduleImage renderAtPoint:CGPointMake(currentLocation.x - modularObjects[i].location.x, currentLocation.y - modularObjects[i].location.y) centerOfImage:YES];
+    }
+}
 
 @end
