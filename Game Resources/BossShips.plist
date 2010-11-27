@@ -34,15 +34,15 @@
 			<string>kBossAsiaTurretLeft.png</string>
 			<string>kBossAsiaTurretRight.png</string>
 			<string>kBossAsiaCannonRight.png</string>
-			<string>kBossAsiaCannongLeft.png</string>
+			<string>kBossAsiaCannonLeft.png</string>
 		</array>
 		<key>kShipModulePoints</key>
 		<array>
 			<string>0,0</string>
-			<string>59,4</string>
-			<string>-59,4</string>
-			<string>136,14</string>
-			<string>-136,14</string>
+			<string>55,-4</string>
+			<string>-59,-4</string>
+			<string>136,-6</string>
+			<string>-136,-6</string>
 		</array>
 		<key>kShipTurretPoints</key>
 		<array>
@@ -88,10 +88,10 @@
 		<key>kShipModulePoints</key>
 		<array>
 			<string>0,0</string>
-			<string>81,36</string>
-			<string>-81,36</string>
+			<string>-81,-36</string>
+			<string>81,-36</string>
+			<string>-28,-129</string>
 			<string>28,-129</string>
-			<string>28,129</string>
 		</array>
 		<key>kShipTurretPoints</key>
 		<array>

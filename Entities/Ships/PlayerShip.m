@@ -28,6 +28,10 @@
 //  Last Updated - 11/23/2010 @10:30PM - Alexander
 //  - Think I've got the speed variance for the ship
 //  down, or at least pretty close now.
+//
+//  Last Updated - 11/26/2010 @6PM - Alexander
+//  - Fixed a bug where the playership would move to the
+//  corner of the screen upon initialization
 
 #import "PlayerShip.h"
 
@@ -45,6 +49,7 @@
 	if (self = [super init]) {
 		shipID = aShipID;
         currentLocation = aPoint;
+        desiredPosition = aPoint;
 		
 		//Load the PLIST with all player ship definitions in them
 		NSBundle *bundle = [NSBundle mainBundle];
