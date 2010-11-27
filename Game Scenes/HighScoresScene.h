@@ -26,6 +26,8 @@
     Image               *allTimeButton;
     Image               *allTimeButtonGlow;
     Image               *backButton;
+    Image               *previousButton;
+    Image               *nextButton;
     
     int                 selectedButtonIndex;
 }

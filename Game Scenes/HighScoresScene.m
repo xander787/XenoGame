@@ -34,7 +34,7 @@
 		_sharedResourceManager = [ResourceManager sharedResourceManager];
 		_sharedSoundManager = [SoundManager sharedSoundManager];
 		
-		_sceneFadeSpeed = 0.5f;
+		_sceneFadeSpeed = 1.5f;
 //		sceneAlpha = 0.0f;
 //		_origin = CGPointMake(0, 0);
 //		[_sharedDirector setGlobalAlpha:sceneAlpha];
@@ -61,6 +61,8 @@
     allTimeButton      = [[Image alloc] initWithImage:[NSString stringWithString:@"highscoresbuttonalltime.png"]];
     allTimeButtonGlow  = [[Image alloc] initWithImage:[NSString stringWithString:@"highscoresbuttonalltimeglow.png"]];
     backButton         = [[Image alloc] initWithImage:[NSString stringWithString:@"backbutton.png"] scale:0.5];
+    previousButton     = [[Image alloc] initWithImage:[NSString stringWithString:@"backbutton.png"] scale:0.5];
+    nextButton         = [[Image alloc] initWithImage:[NSString stringWithString:@"forwardbutton.png"] scale:0.5];
 }
 
 #pragma mark -
@@ -97,10 +99,18 @@
 	UITouch *touch = [[event touchesForView:aView] anyObject];
 	CGPoint location;
 	location = [touch locationInView:aView];
+    
+    
 	// Flip the y location ready to check it against OpenGL coordinates
 	NSLog(@"%f %f", location.x, location.y);
 	location.y = 480-location.y;
 	NSLog(@"%f %f", location.x, location.y);
+    
+    
+    if(CGRectContainsPoint(CGRectMake(15, 440, backButton.imageWidth, backButton.imageHeight), location)){
+        sceneState = kSceneState_TransitionOut;
+        nextSceneKey = @"menu";
+    }
 }
 
 - (void)updateWithMovedLocation:(NSSet*)touches withEvent:(UIEvent*)event view:(UIView*)aView {
@@ -140,6 +150,10 @@
         [allTimeButton renderAtPoint:CGPointMake(218, 385) centerOfImage:NO];
     }
     [backButton renderAtPoint:CGPointMake(15, 440) centerOfImage:NO];
+    [highscoresTable renderAtPoint:CGPointMake(16, 30) centerOfImage:NO];
+    [previousButton renderAtPoint:CGPointMake(25, 0) centerOfImage:NO];
+    [nextButton renderAtPoint:CGPointMake(265, 0) centerOfImage:NO];
+    
 }
 
 @end
