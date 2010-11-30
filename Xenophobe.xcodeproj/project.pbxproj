@@ -20,7 +20,6 @@
 		1170EC74126FCB7E00721CF4 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1170EC73126FCB7E00721CF4 /* OpenAL.framework */; };
 		1170ED45127012DD00721CF4 /* XenophobeGameController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1170ED44127012DD00721CF4 /* XenophobeGameController.m */; };
 		119FCF01129B528C00D3256A /* EnemyShips.plist in Resources */ = {isa = PBXBuildFile; fileRef = 119FCF00129B528C00D3256A /* EnemyShips.plist */; };
-		119FCF03129B573D00D3256A /* enemyspritesheet.png in Resources */ = {isa = PBXBuildFile; fileRef = 119FCF02129B573D00D3256A /* enemyspritesheet.png */; };
 		11B1B8CF1276B53B006D085D /* SettingsScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 11B1B8CE1276B53B006D085D /* SettingsScene.m */; };
 		11B1BABC127922F9006D085D /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11B1BABB127922F9006D085D /* GameKit.framework */; };
 		11B1BBCA127A64E0006D085D /* HighScoresScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 11B1BBC9127A64E0006D085D /* HighScoresScene.m */; };
@@ -32,21 +31,6 @@
 		11B1BD86128275C8006D085D /* AbstractShip.m in Sources */ = {isa = PBXBuildFile; fileRef = 11B1BD7F128275C8006D085D /* AbstractShip.m */; };
 		11B1BD87128275C8006D085D /* BossShip.m in Sources */ = {isa = PBXBuildFile; fileRef = 11B1BD81128275C8006D085D /* BossShip.m */; };
 		11B1BD89128275C8006D085D /* PlayerShip.m in Sources */ = {isa = PBXBuildFile; fileRef = 11B1BD85128275C8006D085D /* PlayerShip.m */; };
-		11B1BDF31283C5C3006D085D /* about.png in Resources */ = {isa = PBXBuildFile; fileRef = 11B1BDE31283C5C3006D085D /* about.png */; };
-		11B1BDF41283C5C3006D085D /* continue.png in Resources */ = {isa = PBXBuildFile; fileRef = 11B1BDE41283C5C3006D085D /* continue.png */; };
-		11B1BDF61283C5C3006D085D /* highscores.png in Resources */ = {isa = PBXBuildFile; fileRef = 11B1BDE61283C5C3006D085D /* highscores.png */; };
-		11B1BDF71283C5C3006D085D /* highscoresbuttonalltime.png in Resources */ = {isa = PBXBuildFile; fileRef = 11B1BDE71283C5C3006D085D /* highscoresbuttonalltime.png */; };
-		11B1BDF81283C5C3006D085D /* highscoresbuttonalltimeglow.png in Resources */ = {isa = PBXBuildFile; fileRef = 11B1BDE81283C5C3006D085D /* highscoresbuttonalltimeglow.png */; };
-		11B1BDF91283C5C3006D085D /* highscoresbuttontoday.png in Resources */ = {isa = PBXBuildFile; fileRef = 11B1BDE91283C5C3006D085D /* highscoresbuttontoday.png */; };
-		11B1BDFA1283C5C3006D085D /* highscoresbuttontodayglow.png in Resources */ = {isa = PBXBuildFile; fileRef = 11B1BDEA1283C5C3006D085D /* highscoresbuttontodayglow.png */; };
-		11B1BDFB1283C5C3006D085D /* highscoresbuttonweek.png in Resources */ = {isa = PBXBuildFile; fileRef = 11B1BDEB1283C5C3006D085D /* highscoresbuttonweek.png */; };
-		11B1BDFC1283C5C3006D085D /* highscoresbuttonweekglow.png in Resources */ = {isa = PBXBuildFile; fileRef = 11B1BDEC1283C5C3006D085D /* highscoresbuttonweekglow.png */; };
-		11B1BDFD1283C5C3006D085D /* leaderboardstitle.png in Resources */ = {isa = PBXBuildFile; fileRef = 11B1BDED1283C5C3006D085D /* leaderboardstitle.png */; };
-		11B1BDFE1283C5C3006D085D /* newgame.png in Resources */ = {isa = PBXBuildFile; fileRef = 11B1BDEE1283C5C3006D085D /* newgame.png */; };
-		11B1BDFF1283C5C3006D085D /* playership.png in Resources */ = {isa = PBXBuildFile; fileRef = 11B1BDEF1283C5C3006D085D /* playership.png */; };
-		11B1BE001283C5C3006D085D /* settings.png in Resources */ = {isa = PBXBuildFile; fileRef = 11B1BDF01283C5C3006D085D /* settings.png */; };
-		11B1BE011283C5C3006D085D /* texture.png in Resources */ = {isa = PBXBuildFile; fileRef = 11B1BDF11283C5C3006D085D /* texture.png */; };
-		11B1BE021283C5C3006D085D /* xenophobe.png in Resources */ = {isa = PBXBuildFile; fileRef = 11B1BDF21283C5C3006D085D /* xenophobe.png */; };
 		11B1BE091283C662006D085D /* xenophobefont.fnt in Resources */ = {isa = PBXBuildFile; fileRef = 11B1BE071283C662006D085D /* xenophobefont.fnt */; };
 		11B1BE0A1283C662006D085D /* xenophobefont.png in Resources */ = {isa = PBXBuildFile; fileRef = 11B1BE081283C662006D085D /* xenophobefont.png */; };
 		11B1BE0D1283C69C006D085D /* GameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 11B1BE0C1283C69C006D085D /* GameScene.m */; };
@@ -85,6 +69,26 @@
 		11E7DCF6129F00D90047E2FD /* kBossEuropeTailRight.png in Resources */ = {isa = PBXBuildFile; fileRef = 11E7DCEC129F00D90047E2FD /* kBossEuropeTailRight.png */; };
 		11E7DCF7129F00D90047E2FD /* kBossEuropeWingLeft.png in Resources */ = {isa = PBXBuildFile; fileRef = 11E7DCED129F00D90047E2FD /* kBossEuropeWingLeft.png */; };
 		11E7DCF8129F00D90047E2FD /* kBossEuropeWingRight.png in Resources */ = {isa = PBXBuildFile; fileRef = 11E7DCEE129F00D90047E2FD /* kBossEuropeWingRight.png */; };
+		11F3275712A0D8D5003CF17B /* about.png in Resources */ = {isa = PBXBuildFile; fileRef = 11F3274312A0D8D5003CF17B /* about.png */; };
+		11F3275812A0D8D5003CF17B /* backbutton.png in Resources */ = {isa = PBXBuildFile; fileRef = 11F3274412A0D8D5003CF17B /* backbutton.png */; };
+		11F3275912A0D8D5003CF17B /* continue.png in Resources */ = {isa = PBXBuildFile; fileRef = 11F3274512A0D8D5003CF17B /* continue.png */; };
+		11F3275B12A0D8D5003CF17B /* enemyspritesheet.png in Resources */ = {isa = PBXBuildFile; fileRef = 11F3274712A0D8D5003CF17B /* enemyspritesheet.png */; };
+		11F3275C12A0D8D5003CF17B /* forwardbutton.png in Resources */ = {isa = PBXBuildFile; fileRef = 11F3274812A0D8D5003CF17B /* forwardbutton.png */; };
+		11F3275D12A0D8D5003CF17B /* highscores.png in Resources */ = {isa = PBXBuildFile; fileRef = 11F3274912A0D8D5003CF17B /* highscores.png */; };
+		11F3275E12A0D8D5003CF17B /* highscoresbuttonalltime.png in Resources */ = {isa = PBXBuildFile; fileRef = 11F3274A12A0D8D5003CF17B /* highscoresbuttonalltime.png */; };
+		11F3275F12A0D8D5003CF17B /* highscoresbuttonalltimeglow.png in Resources */ = {isa = PBXBuildFile; fileRef = 11F3274B12A0D8D5003CF17B /* highscoresbuttonalltimeglow.png */; };
+		11F3276012A0D8D5003CF17B /* highscoresbuttontoday.png in Resources */ = {isa = PBXBuildFile; fileRef = 11F3274C12A0D8D5003CF17B /* highscoresbuttontoday.png */; };
+		11F3276112A0D8D5003CF17B /* highscoresbuttontodayglow.png in Resources */ = {isa = PBXBuildFile; fileRef = 11F3274D12A0D8D5003CF17B /* highscoresbuttontodayglow.png */; };
+		11F3276212A0D8D5003CF17B /* highscoresbuttonweek.png in Resources */ = {isa = PBXBuildFile; fileRef = 11F3274E12A0D8D5003CF17B /* highscoresbuttonweek.png */; };
+		11F3276312A0D8D5003CF17B /* highscoresbuttonweekglow.png in Resources */ = {isa = PBXBuildFile; fileRef = 11F3274F12A0D8D5003CF17B /* highscoresbuttonweekglow.png */; };
+		11F3276412A0D8D5003CF17B /* highscorestable.png in Resources */ = {isa = PBXBuildFile; fileRef = 11F3275012A0D8D5003CF17B /* highscorestable.png */; };
+		11F3276512A0D8D5003CF17B /* leaderboardstitle.png in Resources */ = {isa = PBXBuildFile; fileRef = 11F3275112A0D8D5003CF17B /* leaderboardstitle.png */; };
+		11F3276612A0D8D5003CF17B /* newgame.png in Resources */ = {isa = PBXBuildFile; fileRef = 11F3275212A0D8D5003CF17B /* newgame.png */; };
+		11F3276712A0D8D5003CF17B /* playership.png in Resources */ = {isa = PBXBuildFile; fileRef = 11F3275312A0D8D5003CF17B /* playership.png */; };
+		11F3276812A0D8D5003CF17B /* settings.png in Resources */ = {isa = PBXBuildFile; fileRef = 11F3275412A0D8D5003CF17B /* settings.png */; };
+		11F3276912A0D8D5003CF17B /* texture.png in Resources */ = {isa = PBXBuildFile; fileRef = 11F3275512A0D8D5003CF17B /* texture.png */; };
+		11F3276A12A0D8D5003CF17B /* xenophobe.png in Resources */ = {isa = PBXBuildFile; fileRef = 11F3275612A0D8D5003CF17B /* xenophobe.png */; };
+		11F3276C12A18740003CF17B /* devship.png in Resources */ = {isa = PBXBuildFile; fileRef = 11F3276B12A18740003CF17B /* devship.png */; };
 		1D3623260D0F684500981E51 /* XenophobeAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* XenophobeAppDelegate.m */; };
 		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
 		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
@@ -107,9 +111,6 @@
 		B91B4BCE129DE8BD00FC87D7 /* cpSpaceQuery.c in Sources */ = {isa = PBXBuildFile; fileRef = B91B4BB2129DE8BD00FC87D7 /* cpSpaceQuery.c */; };
 		B91B4BCF129DE8BD00FC87D7 /* cpSpaceStep.c in Sources */ = {isa = PBXBuildFile; fileRef = B91B4BB3129DE8BD00FC87D7 /* cpSpaceStep.c */; };
 		B91B4BD0129DE8BD00FC87D7 /* cpVect.c in Sources */ = {isa = PBXBuildFile; fileRef = B91B4BB4129DE8BD00FC87D7 /* cpVect.c */; };
-		B965253C129F97FE00233303 /* backbutton.png in Resources */ = {isa = PBXBuildFile; fileRef = B965253A129F97FE00233303 /* backbutton.png */; };
-		B965253D129F97FE00233303 /* forwardbutton.png in Resources */ = {isa = PBXBuildFile; fileRef = B965253B129F97FE00233303 /* forwardbutton.png */; };
-		B9652540129F983F00233303 /* highscorestable.png in Resources */ = {isa = PBXBuildFile; fileRef = B965253F129F983F00233303 /* highscorestable.png */; };
 		B98329A3129DE9C000C543EB /* cpConstraint.c in Sources */ = {isa = PBXBuildFile; fileRef = B983298C129DE9C000C543EB /* cpConstraint.c */; };
 		B98329A4129DE9C000C543EB /* cpDampedRotarySpring.c in Sources */ = {isa = PBXBuildFile; fileRef = B983298E129DE9C000C543EB /* cpDampedRotarySpring.c */; };
 		B98329A5129DE9C000C543EB /* cpDampedSpring.c in Sources */ = {isa = PBXBuildFile; fileRef = B9832990129DE9C000C543EB /* cpDampedSpring.c */; };
@@ -139,7 +140,6 @@
 		1170ED43127012DD00721CF4 /* XenophobeGameController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XenophobeGameController.h; sourceTree = "<group>"; };
 		1170ED44127012DD00721CF4 /* XenophobeGameController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XenophobeGameController.m; sourceTree = "<group>"; };
 		119FCF00129B528C00D3256A /* EnemyShips.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = EnemyShips.plist; path = "Game Resources/EnemyShips.plist"; sourceTree = SOURCE_ROOT; };
-		119FCF02129B573D00D3256A /* enemyspritesheet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = enemyspritesheet.png; path = "Game Resources/Images/Normal/enemyspritesheet.png"; sourceTree = SOURCE_ROOT; };
 		11B1B8CD1276B53B006D085D /* SettingsScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SettingsScene.h; path = "Game Scenes/SettingsScene.h"; sourceTree = "<group>"; };
 		11B1B8CE1276B53B006D085D /* SettingsScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SettingsScene.m; path = "Game Scenes/SettingsScene.m"; sourceTree = "<group>"; };
 		11B1BABB127922F9006D085D /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
@@ -160,21 +160,6 @@
 		11B1BD84128275C8006D085D /* PlayerShip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PlayerShip.h; path = Entities/Ships/PlayerShip.h; sourceTree = "<group>"; };
 		11B1BD85128275C8006D085D /* PlayerShip.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PlayerShip.m; path = Entities/Ships/PlayerShip.m; sourceTree = "<group>"; };
 		11B1BD941282763B006D085D /* Xenophobe_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Xenophobe_Prefix.pch; sourceTree = "<group>"; };
-		11B1BDE31283C5C3006D085D /* about.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = about.png; path = "Game Resources/Images/Normal/about.png"; sourceTree = SOURCE_ROOT; };
-		11B1BDE41283C5C3006D085D /* continue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = continue.png; path = "Game Resources/Images/Normal/continue.png"; sourceTree = SOURCE_ROOT; };
-		11B1BDE61283C5C3006D085D /* highscores.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = highscores.png; path = "Game Resources/Images/Normal/highscores.png"; sourceTree = SOURCE_ROOT; };
-		11B1BDE71283C5C3006D085D /* highscoresbuttonalltime.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = highscoresbuttonalltime.png; path = "Game Resources/Images/Normal/highscoresbuttonalltime.png"; sourceTree = SOURCE_ROOT; };
-		11B1BDE81283C5C3006D085D /* highscoresbuttonalltimeglow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = highscoresbuttonalltimeglow.png; path = "Game Resources/Images/Normal/highscoresbuttonalltimeglow.png"; sourceTree = SOURCE_ROOT; };
-		11B1BDE91283C5C3006D085D /* highscoresbuttontoday.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = highscoresbuttontoday.png; path = "Game Resources/Images/Normal/highscoresbuttontoday.png"; sourceTree = SOURCE_ROOT; };
-		11B1BDEA1283C5C3006D085D /* highscoresbuttontodayglow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = highscoresbuttontodayglow.png; path = "Game Resources/Images/Normal/highscoresbuttontodayglow.png"; sourceTree = SOURCE_ROOT; };
-		11B1BDEB1283C5C3006D085D /* highscoresbuttonweek.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = highscoresbuttonweek.png; path = "Game Resources/Images/Normal/highscoresbuttonweek.png"; sourceTree = SOURCE_ROOT; };
-		11B1BDEC1283C5C3006D085D /* highscoresbuttonweekglow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = highscoresbuttonweekglow.png; path = "Game Resources/Images/Normal/highscoresbuttonweekglow.png"; sourceTree = SOURCE_ROOT; };
-		11B1BDED1283C5C3006D085D /* leaderboardstitle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = leaderboardstitle.png; path = "Game Resources/Images/Normal/leaderboardstitle.png"; sourceTree = SOURCE_ROOT; };
-		11B1BDEE1283C5C3006D085D /* newgame.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = newgame.png; path = "Game Resources/Images/Normal/newgame.png"; sourceTree = SOURCE_ROOT; };
-		11B1BDEF1283C5C3006D085D /* playership.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = playership.png; path = "Game Resources/Images/Normal/playership.png"; sourceTree = SOURCE_ROOT; };
-		11B1BDF01283C5C3006D085D /* settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = settings.png; path = "Game Resources/Images/Normal/settings.png"; sourceTree = SOURCE_ROOT; };
-		11B1BDF11283C5C3006D085D /* texture.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = texture.png; path = "Game Resources/Images/Normal/texture.png"; sourceTree = SOURCE_ROOT; };
-		11B1BDF21283C5C3006D085D /* xenophobe.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = xenophobe.png; path = "Game Resources/Images/Normal/xenophobe.png"; sourceTree = SOURCE_ROOT; };
 		11B1BE071283C662006D085D /* xenophobefont.fnt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = xenophobefont.fnt; path = "Game Resources/Fonts/xenophobefont.fnt"; sourceTree = SOURCE_ROOT; };
 		11B1BE081283C662006D085D /* xenophobefont.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = xenophobefont.png; path = "Game Resources/Fonts/xenophobefont.png"; sourceTree = SOURCE_ROOT; };
 		11B1BE0B1283C69C006D085D /* GameScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GameScene.h; path = "Game Scenes/GameScene.h"; sourceTree = "<group>"; };
@@ -243,6 +228,26 @@
 		11E7DCEC129F00D90047E2FD /* kBossEuropeTailRight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = kBossEuropeTailRight.png; path = "Game Resources/Images/Normal/Ships/Boss Ships/kBossEuropeTailRight.png"; sourceTree = SOURCE_ROOT; };
 		11E7DCED129F00D90047E2FD /* kBossEuropeWingLeft.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = kBossEuropeWingLeft.png; path = "Game Resources/Images/Normal/Ships/Boss Ships/kBossEuropeWingLeft.png"; sourceTree = SOURCE_ROOT; };
 		11E7DCEE129F00D90047E2FD /* kBossEuropeWingRight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = kBossEuropeWingRight.png; path = "Game Resources/Images/Normal/Ships/Boss Ships/kBossEuropeWingRight.png"; sourceTree = SOURCE_ROOT; };
+		11F3274312A0D8D5003CF17B /* about.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = about.png; sourceTree = "<group>"; };
+		11F3274412A0D8D5003CF17B /* backbutton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = backbutton.png; sourceTree = "<group>"; };
+		11F3274512A0D8D5003CF17B /* continue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = continue.png; sourceTree = "<group>"; };
+		11F3274712A0D8D5003CF17B /* enemyspritesheet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = enemyspritesheet.png; sourceTree = "<group>"; };
+		11F3274812A0D8D5003CF17B /* forwardbutton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = forwardbutton.png; sourceTree = "<group>"; };
+		11F3274912A0D8D5003CF17B /* highscores.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = highscores.png; sourceTree = "<group>"; };
+		11F3274A12A0D8D5003CF17B /* highscoresbuttonalltime.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = highscoresbuttonalltime.png; sourceTree = "<group>"; };
+		11F3274B12A0D8D5003CF17B /* highscoresbuttonalltimeglow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = highscoresbuttonalltimeglow.png; sourceTree = "<group>"; };
+		11F3274C12A0D8D5003CF17B /* highscoresbuttontoday.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = highscoresbuttontoday.png; sourceTree = "<group>"; };
+		11F3274D12A0D8D5003CF17B /* highscoresbuttontodayglow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = highscoresbuttontodayglow.png; sourceTree = "<group>"; };
+		11F3274E12A0D8D5003CF17B /* highscoresbuttonweek.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = highscoresbuttonweek.png; sourceTree = "<group>"; };
+		11F3274F12A0D8D5003CF17B /* highscoresbuttonweekglow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = highscoresbuttonweekglow.png; sourceTree = "<group>"; };
+		11F3275012A0D8D5003CF17B /* highscorestable.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = highscorestable.png; sourceTree = "<group>"; };
+		11F3275112A0D8D5003CF17B /* leaderboardstitle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = leaderboardstitle.png; sourceTree = "<group>"; };
+		11F3275212A0D8D5003CF17B /* newgame.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = newgame.png; sourceTree = "<group>"; };
+		11F3275312A0D8D5003CF17B /* playership.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = playership.png; sourceTree = "<group>"; };
+		11F3275412A0D8D5003CF17B /* settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = settings.png; sourceTree = "<group>"; };
+		11F3275512A0D8D5003CF17B /* texture.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = texture.png; sourceTree = "<group>"; };
+		11F3275612A0D8D5003CF17B /* xenophobe.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = xenophobe.png; sourceTree = "<group>"; };
+		11F3276B12A18740003CF17B /* devship.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = devship.png; sourceTree = "<group>"; };
 		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1D3623240D0F684500981E51 /* XenophobeAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XenophobeAppDelegate.h; sourceTree = "<group>"; };
 		1D3623250D0F684500981E51 /* XenophobeAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XenophobeAppDelegate.m; sourceTree = "<group>"; };
@@ -285,9 +290,6 @@
 		B91B4BF6129DE95000FC87D7 /* cpSpace.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = cpSpace.h; path = "Physics Engine/cpSpace.h"; sourceTree = "<group>"; };
 		B91B4BF7129DE95000FC87D7 /* cpSpaceHash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = cpSpaceHash.h; path = "Physics Engine/cpSpaceHash.h"; sourceTree = "<group>"; };
 		B91B4BF8129DE95000FC87D7 /* cpVect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = cpVect.h; path = "Physics Engine/cpVect.h"; sourceTree = "<group>"; };
-		B965253A129F97FE00233303 /* backbutton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = backbutton.png; path = "Game Resources/Images/Normal/backbutton.png"; sourceTree = SOURCE_ROOT; };
-		B965253B129F97FE00233303 /* forwardbutton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = forwardbutton.png; path = "Game Resources/Images/Normal/forwardbutton.png"; sourceTree = SOURCE_ROOT; };
-		B965253F129F983F00233303 /* highscorestable.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = highscorestable.png; path = "Game Resources/Images/Normal/highscorestable.png"; sourceTree = SOURCE_ROOT; };
 		B983298C129DE9C000C543EB /* cpConstraint.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cpConstraint.c; sourceTree = "<group>"; };
 		B983298D129DE9C000C543EB /* cpConstraint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cpConstraint.h; sourceTree = "<group>"; };
 		B983298E129DE9C000C543EB /* cpDampedRotarySpring.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cpDampedRotarySpring.c; sourceTree = "<group>"; };
@@ -611,26 +613,8 @@
 		1170EE6112724FAC00721CF4 /* Normal */ = {
 			isa = PBXGroup;
 			children = (
-				B965253F129F983F00233303 /* highscorestable.png */,
-				B965253A129F97FE00233303 /* backbutton.png */,
-				B965253B129F97FE00233303 /* forwardbutton.png */,
+				11F3274212A0D8D5003CF17B /* Application Resources */,
 				11336114129EEE8D00FE6A03 /* Ships */,
-				119FCF02129B573D00D3256A /* enemyspritesheet.png */,
-				11B1BDE31283C5C3006D085D /* about.png */,
-				11B1BDE41283C5C3006D085D /* continue.png */,
-				11B1BDE61283C5C3006D085D /* highscores.png */,
-				11B1BDE71283C5C3006D085D /* highscoresbuttonalltime.png */,
-				11B1BDE81283C5C3006D085D /* highscoresbuttonalltimeglow.png */,
-				11B1BDE91283C5C3006D085D /* highscoresbuttontoday.png */,
-				11B1BDEA1283C5C3006D085D /* highscoresbuttontodayglow.png */,
-				11B1BDEB1283C5C3006D085D /* highscoresbuttonweek.png */,
-				11B1BDEC1283C5C3006D085D /* highscoresbuttonweekglow.png */,
-				11B1BDED1283C5C3006D085D /* leaderboardstitle.png */,
-				11B1BDEE1283C5C3006D085D /* newgame.png */,
-				11B1BDEF1283C5C3006D085D /* playership.png */,
-				11B1BDF01283C5C3006D085D /* settings.png */,
-				11B1BDF11283C5C3006D085D /* texture.png */,
-				11B1BDF21283C5C3006D085D /* xenophobe.png */,
 			);
 			name = Normal;
 			sourceTree = "<group>";
@@ -683,6 +667,34 @@
 			name = Bosses;
 			sourceTree = "<group>";
 		};
+		11F3274212A0D8D5003CF17B /* Application Resources */ = {
+			isa = PBXGroup;
+			children = (
+				11F3276B12A18740003CF17B /* devship.png */,
+				11F3274312A0D8D5003CF17B /* about.png */,
+				11F3274412A0D8D5003CF17B /* backbutton.png */,
+				11F3274512A0D8D5003CF17B /* continue.png */,
+				11F3274712A0D8D5003CF17B /* enemyspritesheet.png */,
+				11F3274812A0D8D5003CF17B /* forwardbutton.png */,
+				11F3274912A0D8D5003CF17B /* highscores.png */,
+				11F3274A12A0D8D5003CF17B /* highscoresbuttonalltime.png */,
+				11F3274B12A0D8D5003CF17B /* highscoresbuttonalltimeglow.png */,
+				11F3274C12A0D8D5003CF17B /* highscoresbuttontoday.png */,
+				11F3274D12A0D8D5003CF17B /* highscoresbuttontodayglow.png */,
+				11F3274E12A0D8D5003CF17B /* highscoresbuttonweek.png */,
+				11F3274F12A0D8D5003CF17B /* highscoresbuttonweekglow.png */,
+				11F3275012A0D8D5003CF17B /* highscorestable.png */,
+				11F3275112A0D8D5003CF17B /* leaderboardstitle.png */,
+				11F3275212A0D8D5003CF17B /* newgame.png */,
+				11F3275312A0D8D5003CF17B /* playership.png */,
+				11F3275412A0D8D5003CF17B /* settings.png */,
+				11F3275512A0D8D5003CF17B /* texture.png */,
+				11F3275612A0D8D5003CF17B /* xenophobe.png */,
+			);
+			name = "Application Resources";
+			path = "Game Resources/Images/Normal/Application Resources";
+			sourceTree = SOURCE_ROOT;
+		};
 		19C28FACFE9D520D11CA2CBB /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -694,11 +706,11 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
-				B91B4B98129DE8A400FC87D7 /* Physics Engine */,
 				1170EBE8126ED1B900721CF4 /* Common */,
 				1170ED691270147B00721CF4 /* DDXML */,
 				1170ECFB12700EBC00721CF4 /* Singleton Managers */,
 				1170EBED126ED21C00721CF4 /* Graphics Engine */,
+				B91B4B98129DE8A400FC87D7 /* Physics Engine */,
 				11B1BD5812822400006D085D /* Entities */,
 				1170ED2C127010B400721CF4 /* Game Scenes */,
 				080E96DDFE201D6D7F000001 /* Classes */,
@@ -872,26 +884,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				11B1BC6C127D14E4006D085D /* preferences.sqlite in Resources */,
-				11B1BDF31283C5C3006D085D /* about.png in Resources */,
-				11B1BDF41283C5C3006D085D /* continue.png in Resources */,
-				11B1BDF61283C5C3006D085D /* highscores.png in Resources */,
-				11B1BDF71283C5C3006D085D /* highscoresbuttonalltime.png in Resources */,
-				11B1BDF81283C5C3006D085D /* highscoresbuttonalltimeglow.png in Resources */,
-				11B1BDF91283C5C3006D085D /* highscoresbuttontoday.png in Resources */,
-				11B1BDFA1283C5C3006D085D /* highscoresbuttontodayglow.png in Resources */,
-				11B1BDFB1283C5C3006D085D /* highscoresbuttonweek.png in Resources */,
-				11B1BDFC1283C5C3006D085D /* highscoresbuttonweekglow.png in Resources */,
-				11B1BDFD1283C5C3006D085D /* leaderboardstitle.png in Resources */,
-				11B1BDFE1283C5C3006D085D /* newgame.png in Resources */,
-				11B1BDFF1283C5C3006D085D /* playership.png in Resources */,
-				11B1BE001283C5C3006D085D /* settings.png in Resources */,
-				11B1BE011283C5C3006D085D /* texture.png in Resources */,
-				11B1BE021283C5C3006D085D /* xenophobe.png in Resources */,
 				11B1BE091283C662006D085D /* xenophobefont.fnt in Resources */,
 				11B1BE0A1283C662006D085D /* xenophobefont.png in Resources */,
 				114A1A7412989C4B004769D4 /* PlayerShips.plist in Resources */,
 				119FCF01129B528C00D3256A /* EnemyShips.plist in Resources */,
-				119FCF03129B573D00D3256A /* enemyspritesheet.png in Resources */,
 				B91B4BB7129DE8BD00FC87D7 /* CMakeLists.txt in Resources */,
 				11336113129E54F300FE6A03 /* BossShips.plist in Resources */,
 				11E7DCEF129F00D90047E2FD /* kBossAsiaCannonLeft.png in Resources */,
@@ -904,9 +900,26 @@
 				11E7DCF6129F00D90047E2FD /* kBossEuropeTailRight.png in Resources */,
 				11E7DCF7129F00D90047E2FD /* kBossEuropeWingLeft.png in Resources */,
 				11E7DCF8129F00D90047E2FD /* kBossEuropeWingRight.png in Resources */,
-				B965253C129F97FE00233303 /* backbutton.png in Resources */,
-				B965253D129F97FE00233303 /* forwardbutton.png in Resources */,
-				B9652540129F983F00233303 /* highscorestable.png in Resources */,
+				11F3275712A0D8D5003CF17B /* about.png in Resources */,
+				11F3275812A0D8D5003CF17B /* backbutton.png in Resources */,
+				11F3275912A0D8D5003CF17B /* continue.png in Resources */,
+				11F3275B12A0D8D5003CF17B /* enemyspritesheet.png in Resources */,
+				11F3275C12A0D8D5003CF17B /* forwardbutton.png in Resources */,
+				11F3275D12A0D8D5003CF17B /* highscores.png in Resources */,
+				11F3275E12A0D8D5003CF17B /* highscoresbuttonalltime.png in Resources */,
+				11F3275F12A0D8D5003CF17B /* highscoresbuttonalltimeglow.png in Resources */,
+				11F3276012A0D8D5003CF17B /* highscoresbuttontoday.png in Resources */,
+				11F3276112A0D8D5003CF17B /* highscoresbuttontodayglow.png in Resources */,
+				11F3276212A0D8D5003CF17B /* highscoresbuttonweek.png in Resources */,
+				11F3276312A0D8D5003CF17B /* highscoresbuttonweekglow.png in Resources */,
+				11F3276412A0D8D5003CF17B /* highscorestable.png in Resources */,
+				11F3276512A0D8D5003CF17B /* leaderboardstitle.png in Resources */,
+				11F3276612A0D8D5003CF17B /* newgame.png in Resources */,
+				11F3276712A0D8D5003CF17B /* playership.png in Resources */,
+				11F3276812A0D8D5003CF17B /* settings.png in Resources */,
+				11F3276912A0D8D5003CF17B /* texture.png in Resources */,
+				11F3276A12A0D8D5003CF17B /* xenophobe.png in Resources */,
+				11F3276C12A18740003CF17B /* devship.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1002,7 +1015,7 @@
 				INFOPLIST_FILE = "Xenophobe-Info.plist";
 				OTHER_LDFLAGS = "-lxml2";
 				PRODUCT_NAME = Xenophobe;
-				SDKROOT = iphonesimulator4.1;
+				SDKROOT = iphonesimulator4.0;
 				USER_HEADER_SEARCH_PATHS = /usr/include/libxml2;
 			};
 			name = Debug;
@@ -1019,7 +1032,7 @@
 				INFOPLIST_FILE = "Xenophobe-Info.plist";
 				OTHER_LDFLAGS = "-lxml2";
 				PRODUCT_NAME = Xenophobe;
-				SDKROOT = iphonesimulator4.1;
+				SDKROOT = iphonesimulator4.0;
 				USER_HEADER_SEARCH_PATHS = /usr/include/libxml2;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -1028,28 +1041,28 @@
 		C01FCF4F08A954540054247B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				ARCHS = "$(ARCHS_UNIVERSAL_IPHONE_OS)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				PREBINDING = NO;
-				SDKROOT = iphoneos4.1;
+				SDKROOT = iphoneos4.2;
 			};
 			name = Debug;
 		};
 		C01FCF5008A954540054247B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				ARCHS = "$(ARCHS_UNIVERSAL_IPHONE_OS)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				PREBINDING = NO;
-				SDKROOT = iphoneos4.1;
+				SDKROOT = iphoneos4.2;
 			};
 			name = Release;
 		};
