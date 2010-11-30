@@ -7,7 +7,7 @@
 		<key>kShipID</key>
 		<string>kPlayerShip_Dev</string>
 		<key>kShipSpeed</key>
-		<integer>5</integer>
+		<integer>10</integer>
 		<key>kShipAttack</key>
 		<integer>8</integer>
 		<key>kShipStamina</key>

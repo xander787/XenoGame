@@ -146,7 +146,7 @@
         }
         [thrusterArray release];
         
-		mainImage = [[Image alloc] initWithImage:[shipDictionary valueForKey:@"kMainImage"] scale:1.0];
+		mainImage = [[Image alloc] initWithImage:[shipDictionary valueForKey:@"kMainImage"] scale:1.0f];
 		
 		[shipDictionary release];
 	}

@@ -206,8 +206,8 @@
             }
             else {
                 modularObjects[i].numberOfWeapons = 0;
-            }            
-             
+            }
+            
             [turretPoints release];
             [turretString release];
         }
