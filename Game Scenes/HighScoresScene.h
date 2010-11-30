@@ -15,6 +15,7 @@
 
 #import <Foundation/Foundation.h>
 #import "AbstractScene.h"
+#import <GameKit/GameKit.h>
 
 @interface HighScoresScene : AbstractScene {
 	Image				*leaderboardsTitle;

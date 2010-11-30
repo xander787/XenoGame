@@ -36,11 +36,8 @@
 		11B1BDF41283C5C3006D085D /* continue.png in Resources */ = {isa = PBXBuildFile; fileRef = 11B1BDE41283C5C3006D085D /* continue.png */; };
 		11B1BDF61283C5C3006D085D /* highscores.png in Resources */ = {isa = PBXBuildFile; fileRef = 11B1BDE61283C5C3006D085D /* highscores.png */; };
 		11B1BDF71283C5C3006D085D /* highscoresbuttonalltime.png in Resources */ = {isa = PBXBuildFile; fileRef = 11B1BDE71283C5C3006D085D /* highscoresbuttonalltime.png */; };
-		11B1BDF81283C5C3006D085D /* highscoresbuttonalltimeglow.png in Resources */ = {isa = PBXBuildFile; fileRef = 11B1BDE81283C5C3006D085D /* highscoresbuttonalltimeglow.png */; };
 		11B1BDF91283C5C3006D085D /* highscoresbuttontoday.png in Resources */ = {isa = PBXBuildFile; fileRef = 11B1BDE91283C5C3006D085D /* highscoresbuttontoday.png */; };
-		11B1BDFA1283C5C3006D085D /* highscoresbuttontodayglow.png in Resources */ = {isa = PBXBuildFile; fileRef = 11B1BDEA1283C5C3006D085D /* highscoresbuttontodayglow.png */; };
 		11B1BDFB1283C5C3006D085D /* highscoresbuttonweek.png in Resources */ = {isa = PBXBuildFile; fileRef = 11B1BDEB1283C5C3006D085D /* highscoresbuttonweek.png */; };
-		11B1BDFC1283C5C3006D085D /* highscoresbuttonweekglow.png in Resources */ = {isa = PBXBuildFile; fileRef = 11B1BDEC1283C5C3006D085D /* highscoresbuttonweekglow.png */; };
 		11B1BDFD1283C5C3006D085D /* leaderboardstitle.png in Resources */ = {isa = PBXBuildFile; fileRef = 11B1BDED1283C5C3006D085D /* leaderboardstitle.png */; };
 		11B1BDFE1283C5C3006D085D /* newgame.png in Resources */ = {isa = PBXBuildFile; fileRef = 11B1BDEE1283C5C3006D085D /* newgame.png */; };
 		11B1BDFF1283C5C3006D085D /* playership.png in Resources */ = {isa = PBXBuildFile; fileRef = 11B1BDEF1283C5C3006D085D /* playership.png */; };
@@ -121,6 +118,9 @@
 		B98329AB129DE9C000C543EB /* cpRotaryLimitJoint.c in Sources */ = {isa = PBXBuildFile; fileRef = B983299C129DE9C000C543EB /* cpRotaryLimitJoint.c */; };
 		B98329AC129DE9C000C543EB /* cpSimpleMotor.c in Sources */ = {isa = PBXBuildFile; fileRef = B983299E129DE9C000C543EB /* cpSimpleMotor.c */; };
 		B98329AD129DE9C000C543EB /* cpSlideJoint.c in Sources */ = {isa = PBXBuildFile; fileRef = B98329A0129DE9C000C543EB /* cpSlideJoint.c */; };
+		B9AE307912A4AFFE002A189D /* highscoresbuttontodayglow.png in Resources */ = {isa = PBXBuildFile; fileRef = B9AE307612A4AFFE002A189D /* highscoresbuttontodayglow.png */; };
+		B9AE307B12A4B033002A189D /* highscoresbuttonweekglow.png in Resources */ = {isa = PBXBuildFile; fileRef = B9AE307A12A4B033002A189D /* highscoresbuttonweekglow.png */; };
+		B9AE307D12A4B090002A189D /* highscoresbuttonalltimeglow.png in Resources */ = {isa = PBXBuildFile; fileRef = B9AE307C12A4B090002A189D /* highscoresbuttonalltimeglow.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -164,11 +164,8 @@
 		11B1BDE41283C5C3006D085D /* continue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = continue.png; path = "Game Resources/Images/Normal/continue.png"; sourceTree = SOURCE_ROOT; };
 		11B1BDE61283C5C3006D085D /* highscores.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = highscores.png; path = "Game Resources/Images/Normal/highscores.png"; sourceTree = SOURCE_ROOT; };
 		11B1BDE71283C5C3006D085D /* highscoresbuttonalltime.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = highscoresbuttonalltime.png; path = "Game Resources/Images/Normal/highscoresbuttonalltime.png"; sourceTree = SOURCE_ROOT; };
-		11B1BDE81283C5C3006D085D /* highscoresbuttonalltimeglow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = highscoresbuttonalltimeglow.png; path = "Game Resources/Images/Normal/highscoresbuttonalltimeglow.png"; sourceTree = SOURCE_ROOT; };
 		11B1BDE91283C5C3006D085D /* highscoresbuttontoday.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = highscoresbuttontoday.png; path = "Game Resources/Images/Normal/highscoresbuttontoday.png"; sourceTree = SOURCE_ROOT; };
-		11B1BDEA1283C5C3006D085D /* highscoresbuttontodayglow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = highscoresbuttontodayglow.png; path = "Game Resources/Images/Normal/highscoresbuttontodayglow.png"; sourceTree = SOURCE_ROOT; };
 		11B1BDEB1283C5C3006D085D /* highscoresbuttonweek.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = highscoresbuttonweek.png; path = "Game Resources/Images/Normal/highscoresbuttonweek.png"; sourceTree = SOURCE_ROOT; };
-		11B1BDEC1283C5C3006D085D /* highscoresbuttonweekglow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = highscoresbuttonweekglow.png; path = "Game Resources/Images/Normal/highscoresbuttonweekglow.png"; sourceTree = SOURCE_ROOT; };
 		11B1BDED1283C5C3006D085D /* leaderboardstitle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = leaderboardstitle.png; path = "Game Resources/Images/Normal/leaderboardstitle.png"; sourceTree = SOURCE_ROOT; };
 		11B1BDEE1283C5C3006D085D /* newgame.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = newgame.png; path = "Game Resources/Images/Normal/newgame.png"; sourceTree = SOURCE_ROOT; };
 		11B1BDEF1283C5C3006D085D /* playership.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = playership.png; path = "Game Resources/Images/Normal/playership.png"; sourceTree = SOURCE_ROOT; };
@@ -311,6 +308,9 @@
 		B98329A0129DE9C000C543EB /* cpSlideJoint.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cpSlideJoint.c; sourceTree = "<group>"; };
 		B98329A1129DE9C000C543EB /* cpSlideJoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cpSlideJoint.h; sourceTree = "<group>"; };
 		B98329A2129DE9C000C543EB /* util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = util.h; sourceTree = "<group>"; };
+		B9AE307612A4AFFE002A189D /* highscoresbuttontodayglow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = highscoresbuttontodayglow.png; path = "Game Resources/Images/Normal/highscoresbuttontodayglow.png"; sourceTree = SOURCE_ROOT; };
+		B9AE307A12A4B033002A189D /* highscoresbuttonweekglow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = highscoresbuttonweekglow.png; path = "Game Resources/Images/Normal/highscoresbuttonweekglow.png"; sourceTree = SOURCE_ROOT; };
+		B9AE307C12A4B090002A189D /* highscoresbuttonalltimeglow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = highscoresbuttonalltimeglow.png; path = "Game Resources/Images/Normal/highscoresbuttonalltimeglow.png"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -619,12 +619,12 @@
 				11B1BDE31283C5C3006D085D /* about.png */,
 				11B1BDE41283C5C3006D085D /* continue.png */,
 				11B1BDE61283C5C3006D085D /* highscores.png */,
-				11B1BDE71283C5C3006D085D /* highscoresbuttonalltime.png */,
-				11B1BDE81283C5C3006D085D /* highscoresbuttonalltimeglow.png */,
 				11B1BDE91283C5C3006D085D /* highscoresbuttontoday.png */,
-				11B1BDEA1283C5C3006D085D /* highscoresbuttontodayglow.png */,
+				B9AE307612A4AFFE002A189D /* highscoresbuttontodayglow.png */,
 				11B1BDEB1283C5C3006D085D /* highscoresbuttonweek.png */,
-				11B1BDEC1283C5C3006D085D /* highscoresbuttonweekglow.png */,
+				B9AE307A12A4B033002A189D /* highscoresbuttonweekglow.png */,
+				11B1BDE71283C5C3006D085D /* highscoresbuttonalltime.png */,
+				B9AE307C12A4B090002A189D /* highscoresbuttonalltimeglow.png */,
 				11B1BDED1283C5C3006D085D /* leaderboardstitle.png */,
 				11B1BDEE1283C5C3006D085D /* newgame.png */,
 				11B1BDEF1283C5C3006D085D /* playership.png */,
@@ -876,11 +876,8 @@
 				11B1BDF41283C5C3006D085D /* continue.png in Resources */,
 				11B1BDF61283C5C3006D085D /* highscores.png in Resources */,
 				11B1BDF71283C5C3006D085D /* highscoresbuttonalltime.png in Resources */,
-				11B1BDF81283C5C3006D085D /* highscoresbuttonalltimeglow.png in Resources */,
 				11B1BDF91283C5C3006D085D /* highscoresbuttontoday.png in Resources */,
-				11B1BDFA1283C5C3006D085D /* highscoresbuttontodayglow.png in Resources */,
 				11B1BDFB1283C5C3006D085D /* highscoresbuttonweek.png in Resources */,
-				11B1BDFC1283C5C3006D085D /* highscoresbuttonweekglow.png in Resources */,
 				11B1BDFD1283C5C3006D085D /* leaderboardstitle.png in Resources */,
 				11B1BDFE1283C5C3006D085D /* newgame.png in Resources */,
 				11B1BDFF1283C5C3006D085D /* playership.png in Resources */,
@@ -907,6 +904,9 @@
 				B965253C129F97FE00233303 /* backbutton.png in Resources */,
 				B965253D129F97FE00233303 /* forwardbutton.png in Resources */,
 				B9652540129F983F00233303 /* highscorestable.png in Resources */,
+				B9AE307912A4AFFE002A189D /* highscoresbuttontodayglow.png in Resources */,
+				B9AE307B12A4B033002A189D /* highscoresbuttonweekglow.png in Resources */,
+				B9AE307D12A4B090002A189D /* highscoresbuttonalltimeglow.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
