@@ -62,6 +62,7 @@
     @try {
         testShip = [[PlayerShip alloc] initWithShipID:kPlayerShip_Dev andInitialLocation:CGPointMake(155, 200)];
         testEnemy = [[EnemyShip alloc] initWithShipID:kEnemyShip_MissileBombShotLevelThree initialLocation:CGPointMake(255, 300) andPlayerShipRef:testShip];
+        testBoss = [[BossShip alloc] initWithBossID:kBoss_Asia initialLocation:CGPointMake(155, 330) andPlayerShipRef:testShip];
     }
     @catch (NSException * e) {
         NSLog(@"EXC: %@", e);
@@ -99,6 +100,7 @@
     
     [testShip update:aDelta];
     [testEnemy update:aDelta];
+    [testBoss update:aDelta];
 }
 
 - (void)updateWithTouchLocationBegan:(NSSet *)touches withEvent:(UIEvent *)event view:(UIView *)aView {
@@ -107,12 +109,7 @@
 	location = [touch locationInView:aView];
     
 	// Flip the y location ready to check it against OpenGL coordinates
-	NSLog(@"%f %f", location.x, location.y);
 	location.y = 480-location.y;
-	NSLog(@"%f %f", location.x, location.y);
-    
-    
-    
 }
 
 - (void)updateWithTouchLocationMoved:(NSSet *)touches withEvent:(UIEvent *)event view:(UIView *)aView {
@@ -121,10 +118,8 @@
 	location = [touch locationInView:aView];
     
 	// Flip the y location ready to check it against OpenGL coordinates
-	NSLog(@"%f %f", location.x, location.y);
 	location.y = 480-location.y;
-	NSLog(@"%f %f", location.x, location.y);
-    
+	location.y += 30;
     
     [testShip setDesiredLocation:location];
 }
@@ -139,6 +134,7 @@
 - (void)render {
 	[testShip render];
     [testEnemy render];
+    [testBoss render];
 }
 
 @end

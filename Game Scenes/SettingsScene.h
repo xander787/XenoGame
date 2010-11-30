@@ -17,11 +17,13 @@
 #import "AbstractScene.h"
 #import "PlayerShip.h"
 #import "EnemyShip.h"
+#import "BossShip.h"
 
 
 @interface SettingsScene : AbstractScene {
 	PlayerShip	*testShip;
     EnemyShip   *testEnemy;
+    BossShip    *testBoss;
 }
 
 @end

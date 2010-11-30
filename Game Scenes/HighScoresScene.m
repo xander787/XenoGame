@@ -21,6 +21,9 @@
 
 @interface HighScoresScene(Private)
 - (void)initHighScores;
+- (void)todayButtonPressed;
+- (void)weekButtonPressed;
+- (void)allTimeButtonPressed;
 @end
 
 @implementation HighScoresScene
@@ -111,6 +114,15 @@
         sceneState = kSceneState_TransitionOut;
         nextSceneKey = @"menu";
     }
+    if(CGRectContainsPoint(CGRectMake(12, 395, todayButton.imageWidth, todayButton.imageHeight), location)){
+        [self todayButtonPressed];
+    }
+    if(CGRectContainsPoint(CGRectMake(115, 395, thisWeekButton.imageWidth, thisWeekButton.imageHeight), location)){
+        [self weekButtonPressed];
+    }
+    if(CGRectContainsPoint(CGRectMake(218, 395, allTimeButton.imageWidth, allTimeButton.imageHeight), location)){
+        [self allTimeButtonPressed];
+    }
 }
 
 - (void)updateWithMovedLocation:(NSSet*)touches withEvent:(UIEvent*)event view:(UIView*)aView {
@@ -120,6 +132,42 @@
     
 	// Flip the y location ready to check it against OpenGL coordinates
 	location.y = 480-location.y;
+}
+
+- (void)todayButtonPressed {
+    NSLog(@"Today");
+    selectedButtonIndex = 0;
+    
+    GKLeaderboard *leaderboardRequest = [[GKLeaderboard alloc] init];
+    if (leaderboardRequest != nil)
+    {
+        leaderboardRequest.playerScope = GKLeaderboardPlayerScopeGlobal;
+        leaderboardRequest.timeScope = GKLeaderboardTimeScopeAllTime;
+        leaderboardRequest.range = NSMakeRange(1,10);
+        leaderboardRequest.timeScope = GKLeaderboardTimeScopeToday;
+        [leaderboardRequest loadScoresWithCompletionHandler: ^(NSArray *scores, NSError *error) {
+            if (error != nil)
+            {
+                // handle the error.
+                NSLog(@"Error: %@", error);
+            }
+            if (scores != nil)
+            {
+                // process the score information.
+                NSLog(@"Scores: %@", scores);
+            }
+        }];
+    }
+}
+
+- (void)weekButtonPressed {
+    NSLog(@"Week");
+    selectedButtonIndex = 1;
+}
+
+- (void)allTimeButtonPressed {
+    NSLog(@"All Time");
+    selectedButtonIndex = 2;
 }
 
 #pragma mark -
@@ -132,27 +180,27 @@
 - (void)render {
 	[leaderboardsTitle renderAtPoint:CGPointMake(160, 455) centerOfImage:YES];
     if(selectedButtonIndex == 0){
-        [todayButtonGlow renderAtPoint:CGPointMake(12, 385) centerOfImage:NO];
+        [todayButtonGlow renderAtPoint:CGPointMake(12, 395) centerOfImage:NO];
     }
     else {
-        [todayButton renderAtPoint:CGPointMake(12, 385) centerOfImage:NO];
+        [todayButton renderAtPoint:CGPointMake(12, 395) centerOfImage:NO];
     }
     if(selectedButtonIndex == 1){
-        [thisWeekButtonGlow renderAtPoint:CGPointMake(115, 385) centerOfImage:NO];
+        [thisWeekButtonGlow renderAtPoint:CGPointMake(115, 395) centerOfImage:NO];
     }
     else {
-        [thisWeekButton renderAtPoint:CGPointMake(115, 385) centerOfImage:NO];
+        [thisWeekButton renderAtPoint:CGPointMake(115, 395) centerOfImage:NO];
     }
     if(selectedButtonIndex == 2){
-        [allTimeButtonGlow renderAtPoint:CGPointMake(218, 385) centerOfImage:NO];
+        [allTimeButtonGlow renderAtPoint:CGPointMake(218, 395) centerOfImage:NO];
     }
     else {
-        [allTimeButton renderAtPoint:CGPointMake(218, 385) centerOfImage:NO];
+        [allTimeButton renderAtPoint:CGPointMake(218, 395) centerOfImage:NO];
     }
     [backButton renderAtPoint:CGPointMake(15, 440) centerOfImage:NO];
-    [highscoresTable renderAtPoint:CGPointMake(16, 30) centerOfImage:NO];
-    [previousButton renderAtPoint:CGPointMake(25, 0) centerOfImage:NO];
-    [nextButton renderAtPoint:CGPointMake(265, 0) centerOfImage:NO];
+    [highscoresTable renderAtPoint:CGPointMake(16, 45) centerOfImage:NO];
+    [previousButton renderAtPoint:CGPointMake(25, 10) centerOfImage:NO];
+    [nextButton renderAtPoint:CGPointMake(260, 10) centerOfImage:NO];
     
 }
 
