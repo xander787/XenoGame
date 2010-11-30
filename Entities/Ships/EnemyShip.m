@@ -82,13 +82,13 @@
             case kEnemyShip_TwoShotLevelSeven:
                 enemyDictionary = [[NSMutableDictionary alloc] initWithDictionary:[enemyShipsDictionary objectForKey:@"kShipTwoShot_Seven"]];
                 break;
-            case kEnemyShip_TwoShotBossAssistLevelOne:
+            case kEnemyShip_TwoShotkBossAfricaAssistOne:
                 enemyDictionary = [[NSMutableDictionary alloc] initWithDictionary:[enemyShipsDictionary objectForKey:@"kShipTwoShot_BossOne"]];
                 break;
-            case kEnemyShip_TwoShotBossAssistLevelTwo:
+            case kEnemyShip_TwoShotkBossAfricaAssistTwo:
                 enemyDictionary = [[NSMutableDictionary alloc] initWithDictionary:[enemyShipsDictionary objectForKey:@"kShipTwoShot_BossTwo"]];
                 break;
-            case kEnemyShip_TwoShotBossAssistLevelThree:
+            case kEnemyShip_TwoShotkBossAsiaAssist:
                 enemyDictionary = [[NSMutableDictionary alloc] initWithDictionary:[enemyShipsDictionary objectForKey:@"kShipTwoShot_BossThree"]];
                 break;
             case kEnemyShip_ThreeShotLevelOne:
@@ -106,7 +106,7 @@
             case kEnemyShip_ThreeShotLevelFive:
                 enemyDictionary = [[NSMutableDictionary alloc] initWithDictionary:[enemyShipsDictionary objectForKey:@"kShipThreeShot_Five"]];
                 break;
-            case kEnemyShip_ThreeShotBossAssistLevelOne:
+            case kEnemyShip_ThreeShotkBossAsiaAssist:
                 enemyDictionary = [[NSMutableDictionary alloc] initWithDictionary:[enemyShipsDictionary objectForKey:@"kShipThreeShot_BossOne"]];
                 break;
             case kEnemyShip_WaveShotLevelOne:
@@ -124,7 +124,7 @@
             case kEnemyShip_WaveShotLevelFive:
                 enemyDictionary = [[NSMutableDictionary alloc] initWithDictionary:[enemyShipsDictionary objectForKey:@"kShipWaveShot_Five"]];
                 break;
-            case kEnemyShip_WaveShotBossAssistLevelOne:
+            case kEnemyShip_WaveShotkBossAntarcticaAssist:
                 enemyDictionary = [[NSMutableDictionary alloc] initWithDictionary:[enemyShipsDictionary objectForKey:@"kShipWaveShot_BossOne"]];
                 break;
             case kEnemyShip_MissileBombShotLevelOne:
@@ -139,13 +139,13 @@
             case kEnemyShip_MissileBombShotLevelFive:
                 enemyDictionary = [[NSMutableDictionary alloc] initWithDictionary:[enemyShipsDictionary objectForKey:@"kShipMissileBombShot_Four"]];
                 break;
-            case kEnemyShip_MissileBombShotBossAssistLevelOne:
+            case kEnemyShip_MissileBombShotkBossSouthAmericaAssist:
                 enemyDictionary = [[NSMutableDictionary alloc] initWithDictionary:[enemyShipsDictionary objectForKey:@"kShipMissileBombShot_BossOne"]];
                 break;
-            case kEnemyShip_MissileBombShotBossAssistLevelTwo:
+            case kEnemyShip_MissileBombShotkBossEuropeAssist:
                 enemyDictionary = [[NSMutableDictionary alloc] initWithDictionary:[enemyShipsDictionary objectForKey:@"kShipMissileBombShot_BossTwo"]];
                 break;
-            case kEnemyShip_MissileBombShotBossAssistLevelThree:
+            case kEnemyShip_MissileBombShotkBossAustraliaAssist:
                 enemyDictionary = [[NSMutableDictionary alloc] initWithDictionary:[enemyShipsDictionary objectForKey:@"kShipMissileBombShot_BossThree"]];
                 break;
             case kEnemyShip_KamikazeLevelOne:
@@ -160,22 +160,22 @@
             case kEnemyShip_KamikazeLevelFour:
                 enemyDictionary = [[NSMutableDictionary alloc] initWithDictionary:[enemyShipsDictionary objectForKey:@"kKamikaze_Four"]];
                 break;
-            case kEnemyShip_KamikazeBossAssistLevelOne:
+            case kEnemyShip_KamikazekBossNorthAmericaAssistOne:
                 enemyDictionary = [[NSMutableDictionary alloc] initWithDictionary:[enemyShipsDictionary objectForKey:@"kShipKamikaze_BossOne"]];
                 break;
-            case kEnemyShip_KamikazeBossAssistLevelTwo:
+            case kEnemyShip_KamikazekBossNorthAmericaAssistTwo:
                 enemyDictionary = [[NSMutableDictionary alloc] initWithDictionary:[enemyShipsDictionary objectForKey:@"kShipKamikaze_BossTwo"]];
                 break;
-            case kEnemyShip_KamikazeBossAssistLevelThree:
+            case kEnemyShip_KamikazekBossSouthAmericaAssist:
                 enemyDictionary = [[NSMutableDictionary alloc] initWithDictionary:[enemyShipsDictionary objectForKey:@"kShipKamikaze_BossThree"]];
                 break;
-            case kEnemyShip_KamikazeBossAssistLevelFour:
+            case kEnemyShip_KamikazekBossEuropeAssist:
                 enemyDictionary = [[NSMutableDictionary alloc] initWithDictionary:[enemyShipsDictionary objectForKey:@"kShipKamikaze_BossFour"]];
                 break;
-            case kEnemyShip_KamikazeBossAssistLevelFive:
+            case kEnemyShip_KamikazekBossAustraliaAssist:
                 enemyDictionary = [[NSMutableDictionary alloc] initWithDictionary:[enemyShipsDictionary objectForKey:@"kShipKamikaze_BossFive"]];
                 break;
-            case kEnemyShip_KamikazeBossAssistLevelSix:
+            case kEnemyShip_KamikazekBossAntarcticaAssist:
                 enemyDictionary = [[NSMutableDictionary alloc] initWithDictionary:[enemyShipsDictionary objectForKey:@"kShipKamikaze_BossSix"]];
                 break;
 			default:
