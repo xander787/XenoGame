@@ -20,6 +20,10 @@
 //
 //  Last Updated - 11/25/10 @8PM - Alexander
 //  - Forgot to add properties for the public items
+//
+//  Last Updated - 11/29/10 @8PM - Alexander
+//  - Made some minor changes to the enemy ship ID enum
+//  regarding the IDs of enemies that support other bosses
 
 #import <Foundation/Foundation.h>
 #import "PlayerShip.h"
@@ -35,7 +39,7 @@ typedef enum _EnemyShipID {
     kEnemyShip_OneShotLevelFour,
     kEnemyShip_OneShotLevelFive,
     kEnemyShip_OneShotLevelSix,
-    kEnemyShip_OneShotBossAssistLevelOne,
+    kEnemyShip_OneShotkBossAfricaAssist,
     kEnemyShip_TwoShotLevelOne,
     kEnemyShip_TwoShotLevelTwo,
     kEnemyShip_TwoShotLevelThree,
@@ -43,39 +47,39 @@ typedef enum _EnemyShipID {
     kEnemyShip_TwoShotLevelFive,
     kEnemyShip_TwoShotLevelSix,
     kEnemyShip_TwoShotLevelSeven,
-    kEnemyShip_TwoShotBossAssistLevelOne,
-    kEnemyShip_TwoShotBossAssistLevelTwo,
-    kEnemyShip_TwoShotBossAssistLevelThree,
+    kEnemyShip_TwoShotkBossAfricaAssistOne,
+    kEnemyShip_TwoShotkBossAfricaAssistTwo,
+    kEnemyShip_TwoShotkBossAsiaAssist,
     kEnemyShip_ThreeShotLevelOne,
     kEnemyShip_ThreeShotLevelTwo,
     kEnemyShip_ThreeShotLevelThree,
     kEnemyShip_ThreeShotLevelFour,
     kEnemyShip_ThreeShotLevelFive,
-    kEnemyShip_ThreeShotBossAssistLevelOne,
+    kEnemyShip_ThreeShotkBossAsiaAssist,
     kEnemyShip_WaveShotLevelOne,
     kEnemyShip_WaveShotLevelTwo,
     kEnemyShip_WaveShotLevelThree,
     kEnemyShip_WaveShotLevelFour,
     kEnemyShip_WaveShotLevelFive,
-    kEnemyShip_WaveShotBossAssistLevelOne,
+    kEnemyShip_WaveShotkBossAntarcticaAssist,
     kEnemyShip_MissileBombShotLevelOne,
     kEnemyShip_MissileBombShotLevelTwo,
     kEnemyShip_MissileBombShotLevelThree,
     kEnemyShip_MissileBombShotLevelFour,
     kEnemyShip_MissileBombShotLevelFive,
-    kEnemyShip_MissileBombShotBossAssistLevelOne,
-    kEnemyShip_MissileBombShotBossAssistLevelTwo,
-    kEnemyShip_MissileBombShotBossAssistLevelThree,
+    kEnemyShip_MissileBombShotkBossSouthAmericaAssist,
+    kEnemyShip_MissileBombShotkBossEuropeAssist,
+    kEnemyShip_MissileBombShotkBossAustraliaAssist,
     kEnemyShip_KamikazeLevelOne,
     kEnemyShip_KamikazeLevelTwo,
     kEnemyShip_KamikazeLevelThree,
     kEnemyShip_KamikazeLevelFour,
-    kEnemyShip_KamikazeBossAssistLevelOne,
-    kEnemyShip_KamikazeBossAssistLevelTwo,
-    kEnemyShip_KamikazeBossAssistLevelThree,
-    kEnemyShip_KamikazeBossAssistLevelFour,
-    kEnemyShip_KamikazeBossAssistLevelFive,
-    kEnemyShip_KamikazeBossAssistLevelSix
+    kEnemyShip_KamikazekBossNorthAmericaAssistOne,
+    kEnemyShip_KamikazekBossNorthAmericaAssistTwo,
+    kEnemyShip_KamikazekBossSouthAmericaAssist,
+    kEnemyShip_KamikazekBossEuropeAssist,
+    kEnemyShip_KamikazekBossAustraliaAssist,
+    kEnemyShip_KamikazekBossAntarcticaAssist
 } EnemyShipID;
 
 typedef enum _EnemyShipCategory {
