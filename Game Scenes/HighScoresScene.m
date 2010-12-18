@@ -138,7 +138,7 @@
     NSLog(@"Today");
     selectedButtonIndex = 0;
     
-    GKLeaderboard *leaderboardRequest = [[GKLeaderboard alloc] init];
+    /*GKLeaderboard *leaderboardRequest = [[GKLeaderboard alloc] init];
     if (leaderboardRequest != nil)
     {
         leaderboardRequest.playerScope = GKLeaderboardPlayerScopeGlobal;
@@ -157,7 +157,7 @@
                 NSLog(@"Scores: %@", scores);
             }
         }];
-    }
+    }*/
 }
 
 - (void)weekButtonPressed {

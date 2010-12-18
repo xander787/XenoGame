@@ -23,8 +23,6 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "1D6058900D05DD3D006BFB54"
-            BuildableName = "Xenophobe.app"
-            BlueprintName = "Xenophobe"
             ReferencedContainer = "container:Xenophobe.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -32,11 +30,19 @@
       </AdditionalOptions>
    </LaunchAction>
    <ProfileAction
+      persistedCurrentAnalysisToolIdentifier = ""
       displayScaleIsEnabled = "NO"
       displayScale = "1.00"
       shouldUseLaunchSchemeArgsEnv = "YES"
       useCustomWorkingDirectory = "NO"
       buildConfiguration = "Debug">
+      <BuildableProductRunnable>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "1D6058900D05DD3D006BFB54"
+            ReferencedContainer = "container:Xenophobe.xcodeproj">
+         </BuildableReference>
+      </BuildableProductRunnable>
    </ProfileAction>
    <ArchiveAction
       buildConfiguration = "Release">

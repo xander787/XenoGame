@@ -32,6 +32,11 @@
 //  Last Updated - 11/26/2010 @6PM - Alexander
 //  - Fixed a bug where the playership would move to the
 //  corner of the screen upon initialization
+//
+//  Last Updated - 12/17/10 @6PM - James
+//  - Assigned correct width and height measurements
+//  to the boundingBox variable, derived from
+//  the GameObject class.
 
 #import "PlayerShip.h"
 
@@ -147,6 +152,7 @@
         [thrusterArray release];
         
 		mainImage = [[Image alloc] initWithImage:[shipDictionary valueForKey:@"kMainImage"] scale:1.0f];
+        self.boundingBox = Vector2fMake(mainImage.imageWidth, mainImage.imageHeight);
 		
 		[shipDictionary release];
 	}

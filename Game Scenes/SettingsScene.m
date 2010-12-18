@@ -26,6 +26,11 @@
 //  - Fixed small bug with change from changing the player
 //  ship reference in Enemy to a single pointer, initialization
 //  was still using &testShip.
+//
+//  Last Updated - 12/17/10 @6PM - James
+//  - Added restriction of only being able to move the
+//  Player ship if the user touched in the bounds of
+//  the Player ship initially.
 
 #import "SettingsScene.h"
 
@@ -62,7 +67,7 @@
     @try {
         testShip = [[PlayerShip alloc] initWithShipID:kPlayerShip_Dev andInitialLocation:CGPointMake(155, 200)];
         testEnemy = [[EnemyShip alloc] initWithShipID:kEnemyShip_MissileBombShotLevelThree initialLocation:CGPointMake(255, 300) andPlayerShipRef:testShip];
-        testBoss = [[BossShip alloc] initWithBossID:kBoss_Asia initialLocation:CGPointMake(155, 330) andPlayerShipRef:testShip];
+//        testBoss = [[BossShip alloc] initWithBossID:kBoss_Asia initialLocation:CGPointMake(155, 330) andPlayerShipRef:testShip];
     }
     @catch (NSException * e) {
         NSLog(@"EXC: %@", e);
@@ -100,7 +105,7 @@
     
     [testShip update:aDelta];
     [testEnemy update:aDelta];
-    [testBoss update:aDelta];
+//    [testBoss update:aDelta];
 }
 
 - (void)updateWithTouchLocationBegan:(NSSet *)touches withEvent:(UIEvent *)event view:(UIView *)aView {
@@ -110,6 +115,18 @@
     
 	// Flip the y location ready to check it against OpenGL coordinates
 	location.y = 480-location.y;
+
+    if(CGRectContainsPoint(CGRectMake(testShip.currentLocation.x - ((testShip.boundingBox.x * 1.4) / 2),
+                                      testShip.currentLocation.y - (testShip.boundingBox.y / 2),
+                                      testShip.boundingBox.x * 1.4,
+                                      testShip.boundingBox.y),
+                           location)){
+        NSLog(@"Touched on Ship :D");
+        touchOriginatedFromPlayerShip = YES;
+    }
+    else {
+        touchOriginatedFromPlayerShip = NO;
+    }
 }
 
 - (void)updateWithTouchLocationMoved:(NSSet *)touches withEvent:(UIEvent *)event view:(UIView *)aView {
@@ -119,9 +136,10 @@
     
 	// Flip the y location ready to check it against OpenGL coordinates
 	location.y = 480-location.y;
-	location.y += 30;
-    
-    [testShip setDesiredLocation:location];
+    if(touchOriginatedFromPlayerShip){
+        location.y += 30;
+        [testShip setDesiredLocation:location];
+    }
 }
 
 #pragma mark -
@@ -134,7 +152,7 @@
 - (void)render {
 	[testShip render];
     [testEnemy render];
-    [testBoss render];
+//    [testBoss render];
 }
 
 @end

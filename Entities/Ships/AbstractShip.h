@@ -16,10 +16,11 @@
 #import <Foundation/Foundation.h>
 #import "Image.h"
 #import "Animation.h"
+#import "PhysicalObject.h"
 
 @class GameScene;
 
-@interface AbstractShip : NSObject {
+@interface AbstractShip : PhysicalObject {
 	Director	*_sharedDirector;
 	BOOL		_gotScene;
 }

@@ -24,6 +24,8 @@
 	PlayerShip	*testShip;
     EnemyShip   *testEnemy;
     BossShip    *testBoss;
+    
+    BOOL        touchOriginatedFromPlayerShip;
 }
 
 @end

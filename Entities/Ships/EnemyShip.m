@@ -15,6 +15,11 @@
 //
 //  Last Updated - 11/25/10 @8PM - Alexander
 //  - Forgot to add properties for the public items
+//
+//  Last Updated - 12/17/10 @6PM - James
+//  - Assigned correct width and height measurements
+//  to the boundingBox variable, derived from
+//  the GameObject class.
 
 #import "EnemyShip.h"
 
@@ -227,6 +232,7 @@
                                                  spriteHeight:[[enemyDictionary valueForKey:@"kSpriteSheetRowHeight"] intValue]
                                                       spacing:0];
         [spriteSheetImage release];
+        self.boundingBox = Vector2fMake([[enemyDictionary valueForKey:@"kSpriteSheetColumnWidth"] intValue], [[enemyDictionary valueForKey:@"kSpriteSheetRowHeight"] intValue]);
         
         enemyAnimation = [[Animation alloc] init];
         for(int i = 0; i < [[enemyDictionary valueForKey:@"kSpriteSheetNumColumns"] intValue]; i++) {
