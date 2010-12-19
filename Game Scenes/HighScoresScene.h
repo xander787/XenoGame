@@ -12,10 +12,15 @@
 //
 //	Last Updated - 10/26/2010 @ 12AM - Alexander
 //	- Initial creation of the scene
+//
+//	Last Updated - 12/19/2010 @ 3:20PM - Alexander
+//	- Fixed problem where using GKLeaderboard was causing crash
+//  (we weren't importing the GKLeaderboard.h file from GameKit).
 
 #import <Foundation/Foundation.h>
 #import "AbstractScene.h"
 #import <GameKit/GameKit.h>
+#import <GameKit/GKLeaderboard.h>
 
 @interface HighScoresScene : AbstractScene {
 	Image				*leaderboardsTitle;

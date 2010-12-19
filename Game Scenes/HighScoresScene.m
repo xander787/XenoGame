@@ -16,6 +16,10 @@
 //	Last Updated - 11/5/2010 @ 9:20PM - alexander
 //	- Fixed problem causing the alpha for the scene to
 //	be set to 0 causing nothing to appear to render to the screen
+//
+//	Last Updated - 12/19/2010 @ 3:20PM - Alexander
+//	- Fixed problem where using GKLeaderboard was causing crash
+//  (we weren't importing the GKLeaderboard.h file from GameKit).
 
 #import "HighScoresScene.h"
 
@@ -137,8 +141,8 @@
 - (void)todayButtonPressed {
     NSLog(@"Today");
     selectedButtonIndex = 0;
-    
-    /*GKLeaderboard *leaderboardRequest = [[GKLeaderboard alloc] init];
+        
+    GKLeaderboard *leaderboardRequest = [[GKLeaderboard alloc] init];
     if (leaderboardRequest != nil)
     {
         leaderboardRequest.playerScope = GKLeaderboardPlayerScopeGlobal;
@@ -157,7 +161,7 @@
                 NSLog(@"Scores: %@", scores);
             }
         }];
-    }*/
+    }
 }
 
 - (void)weekButtonPressed {
