@@ -14,6 +14,11 @@
  *	- Changed the particle structure to include delta size
  *	for the ability to set a finish particle size
  *
+ *  Last Updated - 12/19/2010 @ 5:20PM - James
+ *  - Added inline func for collisions. Takes 5 variables:
+ *  object1's bounding box, it's position
+ *  object2's boundingbox, it's position, and then the tolerance
+ *
  */
 
 #import <OpenGLES/ES1/gl.h>
@@ -151,4 +156,14 @@ static inline GLfloat Vector2fLength(Vector2f v)
 static inline Vector2f Vector2fNormalize(Vector2f v)
 {
 	return Vector2fMultiply(v, 1.0f/Vector2fLength(v));
+}
+
+static inline BOOL didCollide(Vector2f boundingBox1, Vector2f position1, Vector2f boundingBox2, Vector2f position2, GLfloat tolerance) {
+    CGFloat dx, dy;
+
+    
+    dx = ABS(position2.x - position1.x);
+    dy = ABS(position2.y - position1.y);
+    
+    return (dx - (boundingBox1.x/2. + boundingBox2.x/2.) < tolerance) && (dy - (boundingBox1.y/2. + boundingBox2.y/2.) < tolerance);
 }
