@@ -161,6 +161,7 @@ static inline Vector2f Vector2fNormalize(Vector2f v)
 static inline BOOL DidCollide(Vector2f boundingBox1, Vector2f position1, Vector2f boundingBox2, Vector2f position2, GLfloat tolerance) {
     CGFloat dx, dy;
 
+    NSLog(@"%f, %f, %f, %f", position1.x, position1.y, position2.x, position2.y);
     
     
     dx = ABS(position2.x - position1.x);

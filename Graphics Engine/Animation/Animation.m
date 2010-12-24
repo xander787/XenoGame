@@ -12,6 +12,11 @@
 //
 //	Last Updated - 10/20/2010 @ 6PM - Alexander
 //	- Initial Project Creation
+//
+//  Last Updated - 12/23/10 @ 9:50PM - James
+//  - Changed the rendering of the Frame to
+//  render at the center. Helps with DidCollide
+//  and other standards for this.
 
 
 #import "Animation.h"
@@ -140,7 +145,7 @@
 	
 	// Take the image for this frame and render it at the point provided, but default
 	// animations are rendered with their centre at the point provided
-	[[frame frameImage] renderAtPoint:point centerOfImage:NO];
+	[[frame frameImage] renderAtPoint:point centerOfImage:YES];
 }
 
 
