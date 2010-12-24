@@ -158,9 +158,10 @@ static inline Vector2f Vector2fNormalize(Vector2f v)
 	return Vector2fMultiply(v, 1.0f/Vector2fLength(v));
 }
 
-static inline BOOL didCollide(Vector2f boundingBox1, Vector2f position1, Vector2f boundingBox2, Vector2f position2, GLfloat tolerance) {
+static inline BOOL DidCollide(Vector2f boundingBox1, Vector2f position1, Vector2f boundingBox2, Vector2f position2, GLfloat tolerance) {
     CGFloat dx, dy;
 
+    
     
     dx = ABS(position2.x - position1.x);
     dy = ABS(position2.y - position1.y);

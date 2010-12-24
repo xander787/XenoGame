@@ -37,6 +37,7 @@
     if(self = [super init]) {
         enemyID = aEnemyID;
         currentLocation = aPoint;
+        self.position = Vector2fMake(currentLocation.x, currentLocation.y); // Sets position for DidCollide use
         playerShipRef = aPlayership;
         
         //Load the PLIST with all enemy ship definitions in them
@@ -232,7 +233,10 @@
                                                  spriteHeight:[[enemyDictionary valueForKey:@"kSpriteSheetRowHeight"] intValue]
                                                       spacing:0];
         [spriteSheetImage release];
+        
+        //Sets boundingBox for use with DidCollide
         self.boundingBox = Vector2fMake([[enemyDictionary valueForKey:@"kSpriteSheetColumnWidth"] intValue], [[enemyDictionary valueForKey:@"kSpriteSheetRowHeight"] intValue]);
+        NSLog(@"Enemy: %f, %f", self.boundingBox.x, self.boundingBox.y);
         
         enemyAnimation = [[Animation alloc] init];
         for(int i = 0; i < [[enemyDictionary valueForKey:@"kSpriteSheetNumColumns"] intValue]; i++) {

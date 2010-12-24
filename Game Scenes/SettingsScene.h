@@ -25,6 +25,8 @@
     EnemyShip   *testEnemy;
     BossShip    *testBoss;
     
+    NSSet       *enemySet;
+    
     BOOL        touchOriginatedFromPlayerShip;
 }
 

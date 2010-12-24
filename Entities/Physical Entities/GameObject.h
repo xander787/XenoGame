@@ -25,7 +25,7 @@
 @required
 - (BOOL)collideWith:(id<CollisionDetection>)object;
 
-@property(readonly) Vector2f position;
+@property(readwrite) Vector2f position;
 @property(readwrite) Vector2f boundingBox;
 @end
 

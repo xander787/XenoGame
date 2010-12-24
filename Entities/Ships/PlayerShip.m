@@ -55,6 +55,8 @@
 		shipID = aShipID;
         currentLocation = aPoint;
         desiredPosition = aPoint;
+        
+        self.position = Vector2fMake(currentLocation.x, currentLocation.y); // Sets position for use of DidCollide
 		
 		//Load the PLIST with all player ship definitions in them
 		NSBundle *bundle = [NSBundle mainBundle];
@@ -152,7 +154,9 @@
         [thrusterArray release];
         
 		mainImage = [[Image alloc] initWithImage:[shipDictionary valueForKey:@"kMainImage"] scale:1.0f];
+        //Sets the boundingBox for use with DidCollide
         self.boundingBox = Vector2fMake(mainImage.imageWidth, mainImage.imageHeight);
+        NSLog(@"Player: %f, %f", self.boundingBox.x, self.boundingBox.y);
 		
 		[shipDictionary release];
 	}
@@ -167,6 +171,8 @@
 - (void)update:(GLfloat)delta {
     currentLocation.x += ((desiredPosition.x - currentLocation.x) / shipSpeed) * (pow(1.584893192, shipSpeed)) * delta;
     currentLocation.y += ((desiredPosition.y - currentLocation.y) / shipSpeed) * (pow(1.584893192, shipSpeed)) * delta;
+    
+    self.position = Vector2fMake(currentLocation.x, currentLocation.y); // Sets position for use of DidCollide
 }
 
 - (void)render {    

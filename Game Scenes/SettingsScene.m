@@ -31,6 +31,11 @@
 //  - Added restriction of only being able to move the
 //  Player ship if the user touched in the bounds of
 //  the Player ship initially.
+//
+//  Last Updated - 12/23/10 @ 9:15PM - James
+//  - Added an NSSet for enemies loaded into memory,
+//  started basic use of DidCollide (form Common.h)
+//  to detect player vs. enemy collision
 
 #import "SettingsScene.h"
 
@@ -68,6 +73,7 @@
         testShip = [[PlayerShip alloc] initWithShipID:kPlayerShip_Dev andInitialLocation:CGPointMake(155, 200)];
         testEnemy = [[EnemyShip alloc] initWithShipID:kEnemyShip_MissileBombShotLevelThree initialLocation:CGPointMake(255, 300) andPlayerShipRef:testShip];
 //        testBoss = [[BossShip alloc] initWithBossID:kBoss_Asia initialLocation:CGPointMake(155, 330) andPlayerShipRef:testShip];
+        enemySet = [[NSSet alloc] initWithObjects:testEnemy, nil];
     }
     @catch (NSException * e) {
         NSLog(@"EXC: %@", e);
@@ -106,6 +112,13 @@
     [testShip update:aDelta];
     [testEnemy update:aDelta];
 //    [testBoss update:aDelta];
+    
+    //Collision Detection Loop
+    for(EnemyShip* enemy in enemySet){
+        if(DidCollide(testShip.boundingBox, testShip.position, enemy.boundingBox, enemy.position, 0.1)){
+            NSLog(@"Collided");
+        }
+    }
 }
 
 - (void)updateWithTouchLocationBegan:(NSSet *)touches withEvent:(UIEvent *)event view:(UIView *)aView {

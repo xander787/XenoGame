@@ -113,7 +113,6 @@
 		B91B4BCE129DE8BD00FC87D7 /* cpSpaceQuery.c in Sources */ = {isa = PBXBuildFile; fileRef = B91B4BB2129DE8BD00FC87D7 /* cpSpaceQuery.c */; };
 		B91B4BCF129DE8BD00FC87D7 /* cpSpaceStep.c in Sources */ = {isa = PBXBuildFile; fileRef = B91B4BB3129DE8BD00FC87D7 /* cpSpaceStep.c */; };
 		B91B4BD0129DE8BD00FC87D7 /* cpVect.c in Sources */ = {isa = PBXBuildFile; fileRef = B91B4BB4129DE8BD00FC87D7 /* cpVect.c */; };
-		B97013CD12BC3C45000369D9 /* AbstractProjectile.m in Sources */ = {isa = PBXBuildFile; fileRef = B97013CC12BC3C45000369D9 /* AbstractProjectile.m */; };
 		B98329A3129DE9C000C543EB /* cpConstraint.c in Sources */ = {isa = PBXBuildFile; fileRef = B983298C129DE9C000C543EB /* cpConstraint.c */; };
 		B98329A4129DE9C000C543EB /* cpDampedRotarySpring.c in Sources */ = {isa = PBXBuildFile; fileRef = B983298E129DE9C000C543EB /* cpDampedRotarySpring.c */; };
 		B98329A5129DE9C000C543EB /* cpDampedSpring.c in Sources */ = {isa = PBXBuildFile; fileRef = B9832990129DE9C000C543EB /* cpDampedSpring.c */; };
@@ -297,8 +296,6 @@
 		B91B4BF6129DE95000FC87D7 /* cpSpace.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = cpSpace.h; path = "Physics Engine/cpSpace.h"; sourceTree = "<group>"; };
 		B91B4BF7129DE95000FC87D7 /* cpSpaceHash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = cpSpaceHash.h; path = "Physics Engine/cpSpaceHash.h"; sourceTree = "<group>"; };
 		B91B4BF8129DE95000FC87D7 /* cpVect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = cpVect.h; path = "Physics Engine/cpVect.h"; sourceTree = "<group>"; };
-		B97013CB12BC3C45000369D9 /* AbstractProjectile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AbstractProjectile.h; sourceTree = "<group>"; };
-		B97013CC12BC3C45000369D9 /* AbstractProjectile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AbstractProjectile.m; sourceTree = "<group>"; };
 		B983298C129DE9C000C543EB /* cpConstraint.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cpConstraint.c; sourceTree = "<group>"; };
 		B983298D129DE9C000C543EB /* cpConstraint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cpConstraint.h; sourceTree = "<group>"; };
 		B983298E129DE9C000C543EB /* cpDampedRotarySpring.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cpDampedRotarySpring.c; sourceTree = "<group>"; };
@@ -828,8 +825,6 @@
 		B97013C612BC3BF0000369D9 /* Projectiles */ = {
 			isa = PBXGroup;
 			children = (
-				B97013CB12BC3C45000369D9 /* AbstractProjectile.h */,
-				B97013CC12BC3C45000369D9 /* AbstractProjectile.m */,
 			);
 			name = Projectiles;
 			sourceTree = "<group>";
@@ -1027,7 +1022,6 @@
 				B98329AD129DE9C000C543EB /* cpSlideJoint.c in Sources */,
 				11BE519312B297080043B786 /* GameObject.m in Sources */,
 				11BE519912B29CD40043B786 /* PhysicalObject.m in Sources */,
-				B97013CD12BC3C45000369D9 /* AbstractProjectile.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
