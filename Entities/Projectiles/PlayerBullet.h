@@ -1,5 +1,5 @@
 //
-//  AbstractProjectile.h
+//  PlayerBullet.h
 //  Xenophobe
 //
 //  Created by Alexander on 10/20/10.
@@ -13,11 +13,11 @@
 //	Last Updated - 
 
 #import <Foundation/Foundation.h>
-#import "PhysicalObject.h"
+#import "AbstractProjectile.h"
 
 
-@interface AbstractProjectile : PhysicalObject {
-
+@interface PlayerBullet : AbstractProjectile {
+    
 }
 
 @end
