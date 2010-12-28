@@ -115,8 +115,11 @@
     
     //Collision Detection Loop
     for(EnemyShip* enemy in enemySet){
-        if(DidCollide(testShip.boundingBox, testShip.position, enemy.boundingBox, enemy.position, 0.1)){
-            NSLog(@"Collided");
+        if(didCollideRectangular(testShip.boundingBox, testShip.position, enemy.boundingBox, enemy.position, 0.1)){
+            NSLog(@"Collided Rectangular");
+        }
+        if(didCollideCircular(testShip.position, testShip.imageWidth, enemy.position, enemy.imageWidth, 2)){
+            NSLog(@"Collided Circular");
         }
     }
 }

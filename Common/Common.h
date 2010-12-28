@@ -19,6 +19,10 @@
  *  object1's bounding box, it's position
  *  object2's boundingbox, it's position, and then the tolerance
  *
+ *  Last Updated - 12/27/2010 @ 6:50PM - James
+ *  - Added circular collision detection function
+ *  using the positions and radiuses
+ *
  */
 
 #import <OpenGLES/ES1/gl.h>
@@ -158,14 +162,16 @@ static inline Vector2f Vector2fNormalize(Vector2f v)
 	return Vector2fMultiply(v, 1.0f/Vector2fLength(v));
 }
 
-static inline BOOL DidCollide(Vector2f boundingBox1, Vector2f position1, Vector2f boundingBox2, Vector2f position2, GLfloat tolerance) {
+static inline BOOL didCollideRectangular(Vector2f boundingBox1, Vector2f position1, Vector2f boundingBox2, Vector2f position2, GLfloat tolerance) {
     CGFloat dx, dy;
-
-    NSLog(@"%f, %f, %f, %f", position1.x, position1.y, position2.x, position2.y);
-    
-    
+//    NSLog(@"%f, %f, %f, %f", position1.x, position1.y, position2.x, position2.y);
     dx = ABS(position2.x - position1.x);
     dy = ABS(position2.y - position1.y);
     
     return (dx - (boundingBox1.x/2. + boundingBox2.x/2.) < tolerance) && (dy - (boundingBox1.y/2. + boundingBox2.y/2.) < tolerance);
+}
+
+static inline BOOL didCollideCircular(Vector2f position1, int radius1, Vector2f position2, int radius2, int tolerance) {
+    //Uses simple distance formula and checks the distance against the tolerance (in whole numbers, for pixels)
+    return (sqrt(pow((position2.x - position1.x), 2) + pow((position2.y - position1.y), 2)) - (radius1 + radius2) <= tolerance);
 }
