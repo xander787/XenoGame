@@ -16,6 +16,13 @@
 		<string>kShipCategory_Attack</string>
 		<key>kMainImage</key>
 		<string>devship.png</string>
+		<key>kCollisionBoundingPoints</key>
+		<array>
+			<string>39,0</string>
+			<string>78,32</string>
+			<string>39,52</string>
+			<string>1,32</string>
+		</array>
 		<key>kTurretPoints</key>
 		<array>
 			<string>52,40</string>

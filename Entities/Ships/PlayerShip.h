@@ -26,6 +26,9 @@
 // Last Updated - 11/22/2010 @11:40AM - James
 //  -Corrected movement bug when movign the PlayerShip
 //  It now moves smoothly and in it's selected slope
+//
+//  Last Updated - 12/29/10 @12AM - Alexander
+//  - Added array for collision bounding points
 
 #import <Foundation/Foundation.h>
 #import "AbstractShip.h"
@@ -80,6 +83,7 @@ typedef enum _PlayerShipTemporaryMiscUpgrade {
 	Image								*mainImage;
 	Vector2f							*turretPoints;
 	Vector2f                            *thrusterPoints;
+    Vector2f                            *collisionDetectionBoundingPoints;
     CGPoint                             desiredPosition;
 }
 

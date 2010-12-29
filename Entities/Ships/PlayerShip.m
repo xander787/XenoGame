@@ -37,6 +37,11 @@
 //  - Assigned correct width and height measurements
 //  to the boundingBox variable, derived from
 //  the GameObject class.
+//
+//  Last Updated - 12/29/10 @12AM - Alexander
+//  - Added in code to load collision bounding points 
+//  from PLIST file. Also fixed a bug in thruster points 
+//  loading
 
 #import "PlayerShip.h"
 
@@ -138,7 +143,7 @@
         bzero(thrusterPoints, sizeof(Vector2f) * [thrusterArray count]);
         
         for(int i = 0; i < [thrusterArray count]; i++) {
-            NSArray *coords = [[NSArray alloc] initWithArray:[[turretArray objectAtIndex:i] componentsSeparatedByString:@","]];
+            NSArray *coords = [[NSArray alloc] initWithArray:[[thrusterArray objectAtIndex:i] componentsSeparatedByString:@","]];
             @try {
                 thrusterPoints[i] = Vector2fMake([[coords objectAtIndex:0] intValue], [[coords objectAtIndex:1] intValue]);
             }
@@ -152,6 +157,27 @@
             [coords release];
         }
         [thrusterArray release];
+        
+        //Fill a C array with Vector2f's of our ship's collision detection bounding points
+        NSArray *collisionArray = [[NSArray alloc] initWithArray:[shipDictionary objectForKey:@"kCollisionBoundingPoints"]];
+        collisionDetectionBoundingPoints = malloc(sizeof(Vector2f) * [collisionArray count]);
+        bzero(collisionDetectionBoundingPoints, sizeof(Vector2f) * [collisionArray count]);
+        
+        for(int i = 0; i < [collisionArray count]; i++) {
+            NSArray *coords = [[NSArray alloc] initWithArray:[[collisionArray objectAtIndex:i] componentsSeparatedByString:@","]];
+            @try {
+                collisionDetectionBoundingPoints[i] = Vector2fMake([[coords objectAtIndex:0] intValue], [[coords objectAtIndex:1] intValue]);
+            }
+            @catch (NSException * e) {
+                NSLog(@"Exception thrown: %@", e);
+            }
+            @finally {
+                Vector2f vector = thrusterPoints[i];
+                NSLog(@"Collision Point: %f %f", vector.x, vector.y);
+            }
+            [coords release];
+        }
+        [collisionArray release];
         
 		mainImage = [[Image alloc] initWithImage:[shipDictionary valueForKey:@"kMainImage"] scale:1.0f];
         //Sets the boundingBox for use with DidCollide
