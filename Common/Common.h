@@ -23,8 +23,14 @@
  *  - Added circular collision detection function
  *  using the positions and radiuses
  *
+ *  Last Updated - 12/29/2010 @ 12:30AM - James
+ *  - Added function to change NSArrays to
+ *  regular C Arrays, mainly for use in Ship classes
+ *  to shorten init functions.
+ *
  */
 
+#import <Foundation/Foundation.h>
 #import <OpenGLES/ES1/gl.h>
 #import <math.h>
 
@@ -174,4 +180,26 @@ static inline BOOL didCollideRectangular(Vector2f boundingBox1, Vector2f positio
 static inline BOOL didCollideCircular(Vector2f position1, int radius1, Vector2f position2, int radius2, int tolerance) {
     //Uses simple distance formula and checks the distance against the tolerance (in whole numbers, for pixels)
     return (sqrt(pow((position2.x - position1.x), 2) + pow((position2.y - position1.y), 2)) - (radius1 + radius2) <= tolerance);
+}
+
+static inline Vector2f * transferFromNSArrayToCArray(NSArray *recievedArray){
+    //Mainly in use for shortening code in Ships classes
+    Vector2f *targetArray = malloc(sizeof(Vector2f) * [recievedArray count]);
+    bzero(targetArray, sizeof(Vector2f) * [recievedArray count]);
+    
+    for(int i = 0; i < [recievedArray count]; i++){
+        NSArray *recievedArrayObject = [[NSArray alloc] initWithArray:[[recievedArray objectAtIndex:i] componentsSeparatedByString:@","]];
+        @try {
+            targetArray[i] = Vector2fMake([[recievedArrayObject objectAtIndex:0] intValue], [[recievedArrayObject objectAtIndex:1] intValue]);
+        }
+        @catch (NSException * e) {
+            NSLog(@"Exception thrown: %@", e);
+        }
+        @finally {
+            Vector2f vector = targetArray[i];
+            NSLog(@"Added object: %f, %f", vector.x, vector.y);
+        }
+    }
+    
+    return targetArray;
 }

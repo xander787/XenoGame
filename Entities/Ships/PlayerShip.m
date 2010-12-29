@@ -42,6 +42,12 @@
 //  - Added in code to load collision bounding points 
 //  from PLIST file. Also fixed a bug in thruster points 
 //  loading
+//
+//  Last Updated - 12/29/2010 @ 1AM - James
+//  - Started using new NSArray->C Array function in Common.h
+//  (Expiremental too), and full backup of old
+//  code available on git & local copy on James's comp
+//  if anything were to go awry.
 
 #import "PlayerShip.h"
 
@@ -116,67 +122,22 @@
 		else if ([shipDictionary valueForKey:@"kPlayerWeaponType"] == @"kWeapon_Wave") {
 			shipWeaponType = kPlayerWeapon_Wave;
 		}
-		
+		/***
+         OLD CODE STILL BACKED UP ON GIT & PRIVATE COPY ON JAMES'S COMP, NO WORRIES.
+        ***/
 		//Fill a C array with Vector2f's for our ship's turret points
 		NSArray *turretArray = [[NSArray alloc] initWithArray:[shipDictionary objectForKey:@"kTurretPoints"]];
-		turretPoints = malloc(sizeof(Vector2f) * [turretArray count]);
-		bzero( turretPoints, sizeof(Vector2f) * [turretArray count]);
-		
-		for (int i = 0; i < [turretArray count]; i++) {
-			NSArray *coords = [[turretArray objectAtIndex:i] componentsSeparatedByString:@","];
-			@try {
-				turretPoints[i] = Vector2fMake([[coords objectAtIndex:0] intValue], [[coords objectAtIndex:1] intValue]);
-			}
-			@catch (NSException * e) {
-				NSLog(@"Exception thrown: %@", e);
-			}
-			@finally {
-				Vector2f vector = turretPoints[i];
-				NSLog(@"Turret: %f %f", vector.x, vector.y);
-			}
-		}
+		turretPoints = transferFromNSArrayToCArray(turretArray);
         [turretArray release];
         
         //Fill a C array with Vector2f's of our ship's thruster points
         NSArray *thrusterArray = [[NSArray alloc] initWithArray:[shipDictionary objectForKey:@"kThrusterPoints"]];
-        thrusterPoints = malloc(sizeof(Vector2f) * [thrusterArray count]);
-        bzero(thrusterPoints, sizeof(Vector2f) * [thrusterArray count]);
-        
-        for(int i = 0; i < [thrusterArray count]; i++) {
-            NSArray *coords = [[NSArray alloc] initWithArray:[[thrusterArray objectAtIndex:i] componentsSeparatedByString:@","]];
-            @try {
-                thrusterPoints[i] = Vector2fMake([[coords objectAtIndex:0] intValue], [[coords objectAtIndex:1] intValue]);
-            }
-            @catch (NSException * e) {
-                NSLog(@"Exception thrown: %@", e);
-            }
-            @finally {
-                Vector2f vector = thrusterPoints[i];
-				NSLog(@"Thruster: %f %f", vector.x, vector.y);
-            }
-            [coords release];
-        }
+        thrusterPoints = transferFromNSArrayToCArray(thrusterArray);
         [thrusterArray release];
         
         //Fill a C array with Vector2f's of our ship's collision detection bounding points
         NSArray *collisionArray = [[NSArray alloc] initWithArray:[shipDictionary objectForKey:@"kCollisionBoundingPoints"]];
-        collisionDetectionBoundingPoints = malloc(sizeof(Vector2f) * [collisionArray count]);
-        bzero(collisionDetectionBoundingPoints, sizeof(Vector2f) * [collisionArray count]);
-        
-        for(int i = 0; i < [collisionArray count]; i++) {
-            NSArray *coords = [[NSArray alloc] initWithArray:[[collisionArray objectAtIndex:i] componentsSeparatedByString:@","]];
-            @try {
-                collisionDetectionBoundingPoints[i] = Vector2fMake([[coords objectAtIndex:0] intValue], [[coords objectAtIndex:1] intValue]);
-            }
-            @catch (NSException * e) {
-                NSLog(@"Exception thrown: %@", e);
-            }
-            @finally {
-                Vector2f vector = collisionDetectionBoundingPoints[i];
-                NSLog(@"Collision Point: %f %f", vector.x, vector.y);
-            }
-            [coords release];
-        }
+        collisionDetectionBoundingPoints = transferFromNSArrayToCArray(collisionArray);
         [collisionArray release];
         
 		mainImage = [[Image alloc] initWithImage:[shipDictionary valueForKey:@"kMainImage"] scale:1.0f];
