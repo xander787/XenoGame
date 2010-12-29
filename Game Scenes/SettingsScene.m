@@ -36,6 +36,11 @@
 //  - Added an NSSet for enemies loaded into memory,
 //  started basic use of DidCollide (form Common.h)
 //  to detect player vs. enemy collision
+//
+//  Last Updated - 12/29/10 @ 12PM - Alexander
+//  - Removed all testing code for the ships etc.
+//  to the GameScene class. Also moving the above commit
+//  comments to that file as well for reference.
 
 #import "SettingsScene.h"
 
@@ -69,15 +74,7 @@
 }
 
 - (void)initSettings {
-    @try {
-        testShip = [[PlayerShip alloc] initWithShipID:kPlayerShip_Dev andInitialLocation:CGPointMake(155, 200)];
-        testEnemy = [[EnemyShip alloc] initWithShipID:kEnemyShip_MissileBombShotLevelThree initialLocation:CGPointMake(255, 300) andPlayerShipRef:testShip];
-//        testBoss = [[BossShip alloc] initWithBossID:kBoss_Asia initialLocation:CGPointMake(155, 330) andPlayerShipRef:testShip];
-        enemySet = [[NSSet alloc] initWithObjects:testEnemy, nil];
-    }
-    @catch (NSException * e) {
-        NSLog(@"EXC: %@", e);
-    }
+    
 }
 
 #pragma mark -
@@ -108,20 +105,6 @@
 		default:
 			break;
 	}
-    
-    [testShip update:aDelta];
-    [testEnemy update:aDelta];
-//    [testBoss update:aDelta];
-    
-    //Collision Detection Loop
-    for(EnemyShip* enemy in enemySet){
-        if(didCollideRectangular(testShip.boundingBox, testShip.position, enemy.boundingBox, enemy.position, 0.1)){
-            NSLog(@"Collided Rectangular");
-        }
-        if(didCollideCircular(testShip.position, testShip.imageWidth, enemy.position, enemy.imageWidth, 2)){
-            NSLog(@"Collided Circular");
-        }
-    }
 }
 
 - (void)updateWithTouchLocationBegan:(NSSet *)touches withEvent:(UIEvent *)event view:(UIView *)aView {
@@ -131,18 +114,6 @@
     
 	// Flip the y location ready to check it against OpenGL coordinates
 	location.y = 480-location.y;
-
-    if(CGRectContainsPoint(CGRectMake(testShip.currentLocation.x - ((testShip.boundingBox.x * 1.4) / 2),
-                                      testShip.currentLocation.y - (testShip.boundingBox.y / 2),
-                                      testShip.boundingBox.x * 1.4,
-                                      testShip.boundingBox.y),
-                           location)){
-        NSLog(@"Touched on Ship :D");
-        touchOriginatedFromPlayerShip = YES;
-    }
-    else {
-        touchOriginatedFromPlayerShip = NO;
-    }
 }
 
 - (void)updateWithTouchLocationMoved:(NSSet *)touches withEvent:(UIEvent *)event view:(UIView *)aView {
@@ -152,10 +123,6 @@
     
 	// Flip the y location ready to check it against OpenGL coordinates
 	location.y = 480-location.y;
-    if(touchOriginatedFromPlayerShip){
-        location.y += 30;
-        [testShip setDesiredLocation:location];
-    }
 }
 
 #pragma mark -
@@ -166,9 +133,7 @@
 }
 
 - (void)render {
-	[testShip render];
-    [testEnemy render];
-//    [testBoss render];
+    
 }
 
 @end

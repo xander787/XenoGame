@@ -21,13 +21,7 @@
 
 
 @interface SettingsScene : AbstractScene {
-	PlayerShip	*testShip;
-    EnemyShip   *testEnemy;
-    BossShip    *testBoss;
     
-    NSSet       *enemySet;
-    
-    BOOL        touchOriginatedFromPlayerShip;
 }
 
 @end

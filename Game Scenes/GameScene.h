@@ -15,9 +15,17 @@
 #import "AbstractScene.h"
 #import "Image.h"
 #import "PlayerShip.h"
+#import "EnemyShip.h"
+#import "BossShip.h"
 
 @interface GameScene : AbstractScene {
+    PlayerShip	*testShip;
+    EnemyShip   *testEnemy;
+    BossShip    *testBoss;
     
+    NSSet       *enemySet;
+    
+    BOOL        touchOriginatedFromPlayerShip;
 }
 
 @end
