@@ -24,6 +24,9 @@
 //  Last Updated - 11/29/10 @8PM - Alexander
 //  - Made some minor changes to the enemy ship ID enum
 //  regarding the IDs of enemies that support other bosses
+//
+//  Last Updated - 12/29/10 @12AM - Alexander
+//  - Added array for collision bounding points
 
 #import <Foundation/Foundation.h>
 #import "PlayerShip.h"
@@ -102,6 +105,7 @@ typedef enum _EnemyShipCategory {
     EnemyShipID             enemyID;
     EnemyShipCategory       enemyCategroy;
     Vector2f                *weaponPoints;
+    Vector2f                *collisionDetectionBoundingPoints;
     SpriteSheet             *enemySpriteSheet;
     Animation               *enemyAnimation;
     PlayerShip              *playerShipRef;

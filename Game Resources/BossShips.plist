@@ -101,6 +101,8 @@
 			<string>nil</string>
 			<string>nil</string>
 		</array>
+		<key>kShipModuleCollisionBoundingPoints</key>
+		<array/>
 	</dict>
 </dict>
 </plist>

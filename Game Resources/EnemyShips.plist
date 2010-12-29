@@ -29,6 +29,8 @@
 			<string>75,48</string>
 			<string>94,49</string>
 		</array>
+		<key>kCollisionBoundingPoints</key>
+		<array/>
 	</dict>
 </dict>
 </plist>

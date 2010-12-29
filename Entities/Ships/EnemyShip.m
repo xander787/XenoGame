@@ -20,6 +20,10 @@
 //  - Assigned correct width and height measurements
 //  to the boundingBox variable, derived from
 //  the GameObject class.
+//
+//  Last Updated - 12/29/10 @12AM - Alexander
+//  - Added in code to load collision bounding points 
+//  from PLIST file.
 
 #import "EnemyShip.h"
 
@@ -226,6 +230,27 @@
             [coords release];
         }
         [weaponsArray release];
+        
+        //Fill a C array with the collision bounding points from the enemy
+        NSArray *collisionArray = [[NSArray alloc] initWithArray:[enemyDictionary objectForKey:@"kCollisionBoundingPoints"]];
+        collisionDetectionBoundingPoints = malloc(sizeof(Vector2f) * [collisionArray count]);
+        bzero(collisionDetectionBoundingPoints, sizeof(Vector2f) * [collisionArray count]);
+        
+        for(int i = 0; i < [collisionArray count]; i++) {
+            NSArray *coords = [[NSArray alloc] initWithArray:[[collisionArray objectAtIndex:i] componentsSeparatedByString:@","]];
+            @try {
+                collisionDetectionBoundingPoints[i] = Vector2fMake([[coords objectAtIndex:0] intValue], [[coords objectAtIndex:1] intValue]);
+            }
+            @catch (NSException * e) {
+                NSLog(@"Exception thrown: %@", e);
+            }
+            @finally {
+                Vector2f vector = collisionDetectionBoundingPoints[i];
+                NSLog(@"Collision Point: %f %f", vector.x, vector.y);
+            }
+            [coords release];
+        }
+        [collisionArray release];
         
         Image *spriteSheetImage = [[Image alloc] initWithImage:[enemyDictionary valueForKey:@"kShipSpriteSheet"] scale:1.0f];
         enemySpriteSheet = [[SpriteSheet alloc] initWithImage:spriteSheetImage 
