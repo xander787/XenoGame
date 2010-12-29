@@ -10,12 +10,6 @@
 //	James Linnell - Software Engineer, Creative Design, Art Producer
 //	Tyler Newcomb - Creative Design, Art Producer
 //
-//	Last Updated - 11/20/2010 @7PM - Alexander
-//	- Changed problem loading main PLIST thanks to James
-//	- Fixed problems with trying to get stringValue from strings
-//	- Drawing will now work
-//	- Working on fixing the turrets code
-//
 //	Last Updated - 11/21/2010 @11AM - Alexander
 //	- Added in some commenting and fixed a memory leak
 //  - Added in code to load the thruster points as well
@@ -48,6 +42,11 @@
 //  (Expiremental too), and full backup of old
 //  code available on git & local copy on James's comp
 //  if anything were to go awry.
+//
+//  Last Updated - 12/29/2012 @ 12:30PM - Alexander
+//  - Reverted the change to the loading code that utilized the
+//  newly created function by James. Was sort of confusing me
+//  so I'll add it back later.
 
 #import "PlayerShip.h"
 
@@ -127,17 +126,64 @@
         ***/
 		//Fill a C array with Vector2f's for our ship's turret points
 		NSArray *turretArray = [[NSArray alloc] initWithArray:[shipDictionary objectForKey:@"kTurretPoints"]];
-		turretPoints = transferFromNSArrayToCArray(turretArray);
+		turretPoints = malloc(sizeof(Vector2f) * [turretArray count]);
+		bzero( turretPoints, sizeof(Vector2f) * [turretArray count]);
+        
+		for (int i = 0; i < [turretArray count]; i++) {
+			NSArray *coords = [[turretArray objectAtIndex:i] componentsSeparatedByString:@","];
+			@try {
+				turretPoints[i] = Vector2fMake([[coords objectAtIndex:0] intValue], [[coords objectAtIndex:1] intValue]);
+			}
+			@catch (NSException * e) {
+				NSLog(@"Exception thrown: %@", e);
+			}
+			@finally {
+				Vector2f vector = turretPoints[i];
+				NSLog(@"Turret: %f %f", vector.x, vector.y);
+			}
+		}
         [turretArray release];
         
         //Fill a C array with Vector2f's of our ship's thruster points
         NSArray *thrusterArray = [[NSArray alloc] initWithArray:[shipDictionary objectForKey:@"kThrusterPoints"]];
-        thrusterPoints = transferFromNSArrayToCArray(thrusterArray);
+        thrusterPoints = malloc(sizeof(Vector2f) * [thrusterArray count]);
+        bzero(thrusterPoints, sizeof(Vector2f) * [thrusterArray count]);
+        
+        for(int i = 0; i < [thrusterArray count]; i++) {
+            NSArray *coords = [[NSArray alloc] initWithArray:[[thrusterArray objectAtIndex:i] componentsSeparatedByString:@","]];
+            @try {
+                thrusterPoints[i] = Vector2fMake([[coords objectAtIndex:0] intValue], [[coords objectAtIndex:1] intValue]);
+            }
+            @catch (NSException * e) {
+                NSLog(@"Exception thrown: %@", e);
+            }
+            @finally {
+                Vector2f vector = thrusterPoints[i];
+				NSLog(@"Thruster: %f %f", vector.x, vector.y);
+            }
+            [coords release];
+        }
         [thrusterArray release];
         
         //Fill a C array with Vector2f's of our ship's collision detection bounding points
         NSArray *collisionArray = [[NSArray alloc] initWithArray:[shipDictionary objectForKey:@"kCollisionBoundingPoints"]];
-        collisionDetectionBoundingPoints = transferFromNSArrayToCArray(collisionArray);
+        collisionDetectionBoundingPoints = malloc(sizeof(Vector2f) * [collisionArray count]);
+        bzero(collisionDetectionBoundingPoints, sizeof(Vector2f) * [collisionArray count]);
+        
+        for(int i = 0; i < [collisionArray count]; i++) {
+            NSArray *coords = [[NSArray alloc] initWithArray:[[collisionArray objectAtIndex:i] componentsSeparatedByString:@","]];
+            @try {
+                collisionDetectionBoundingPoints[i] = Vector2fMake([[coords objectAtIndex:0] intValue], [[coords objectAtIndex:1] intValue]);
+            }
+            @catch (NSException * e) {
+                NSLog(@"Exception thrown: %@", e);
+            }
+            @finally {
+                Vector2f vector = collisionDetectionBoundingPoints[i];
+                NSLog(@"Collision Point: %f %f", vector.x, vector.y);
+            }
+            [coords release];
+        }
         [collisionArray release];
         
 		mainImage = [[Image alloc] initWithImage:[shipDictionary valueForKey:@"kMainImage"] scale:1.0f];
