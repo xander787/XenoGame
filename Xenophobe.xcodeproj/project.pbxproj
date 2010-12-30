@@ -126,6 +126,8 @@
 		B98329AB129DE9C000C543EB /* cpRotaryLimitJoint.c in Sources */ = {isa = PBXBuildFile; fileRef = B983299C129DE9C000C543EB /* cpRotaryLimitJoint.c */; };
 		B98329AC129DE9C000C543EB /* cpSimpleMotor.c in Sources */ = {isa = PBXBuildFile; fileRef = B983299E129DE9C000C543EB /* cpSimpleMotor.c */; };
 		B98329AD129DE9C000C543EB /* cpSlideJoint.c in Sources */ = {isa = PBXBuildFile; fileRef = B98329A0129DE9C000C543EB /* cpSlideJoint.c */; };
+		B9F3D6AE12CC3E8000DF5D15 /* Collisions.m in Sources */ = {isa = PBXBuildFile; fileRef = B9F3D6AD12CC3E8000DF5D15 /* Collisions.m */; };
+		B9F3D6B412CC40CA00DF5D15 /* Polygon.m in Sources */ = {isa = PBXBuildFile; fileRef = B9F3D6B312CC40CA00DF5D15 /* Polygon.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -325,6 +327,10 @@
 		B98329A0129DE9C000C543EB /* cpSlideJoint.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cpSlideJoint.c; sourceTree = "<group>"; };
 		B98329A1129DE9C000C543EB /* cpSlideJoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cpSlideJoint.h; sourceTree = "<group>"; };
 		B98329A2129DE9C000C543EB /* util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = util.h; sourceTree = "<group>"; };
+		B9F3D6AC12CC3E8000DF5D15 /* Collisions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Collisions.h; path = PolygonCollisions/Collisions.h; sourceTree = "<group>"; };
+		B9F3D6AD12CC3E8000DF5D15 /* Collisions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Collisions.m; path = PolygonCollisions/Collisions.m; sourceTree = "<group>"; };
+		B9F3D6B212CC40CA00DF5D15 /* Polygon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Polygon.h; path = PolygonCollisions/Polygon.h; sourceTree = "<group>"; };
+		B9F3D6B312CC40CA00DF5D15 /* Polygon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Polygon.m; path = PolygonCollisions/Polygon.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -731,6 +737,7 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				B9F3D6A812CC3CF900DF5D15 /* PolygonCollision */,
 				1170EBE8126ED1B900721CF4 /* Common */,
 				1170ED691270147B00721CF4 /* DDXML */,
 				1170ECFB12700EBC00721CF4 /* Singleton Managers */,
@@ -868,6 +875,17 @@
 			);
 			name = constraints;
 			path = "Physics Engine/constraints";
+			sourceTree = "<group>";
+		};
+		B9F3D6A812CC3CF900DF5D15 /* PolygonCollision */ = {
+			isa = PBXGroup;
+			children = (
+				B9F3D6B212CC40CA00DF5D15 /* Polygon.h */,
+				B9F3D6B312CC40CA00DF5D15 /* Polygon.m */,
+				B9F3D6AC12CC3E8000DF5D15 /* Collisions.h */,
+				B9F3D6AD12CC3E8000DF5D15 /* Collisions.m */,
+			);
+			name = PolygonCollision;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1034,6 +1052,8 @@
 				11BE519912B29CD40043B786 /* PhysicalObject.m in Sources */,
 				B97A805612C964AD005FBB61 /* AbstractProjectile.m in Sources */,
 				B97A805C12C9663F005FBB61 /* PlayerBullet.m in Sources */,
+				B9F3D6AE12CC3E8000DF5D15 /* Collisions.m in Sources */,
+				B9F3D6B412CC40CA00DF5D15 /* Polygon.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

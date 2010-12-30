@@ -53,7 +53,7 @@
 
 @implementation PlayerShip
 
-@synthesize shipHealth, shipAttack, shipStamina, shipSpeed, shipTemporaryWeaponUpgrade, shipTemporaryMiscUpgrade, currentLocation;
+@synthesize shipHealth, shipAttack, shipStamina, shipSpeed, shipTemporaryWeaponUpgrade, shipTemporaryMiscUpgrade, currentLocation, collisionDetectionBoundingPoints;
 
 - (id) init {
 	self = [super init];
@@ -185,6 +185,9 @@
             [coords release];
         }
         [collisionArray release];
+        for(int i = 0; i<4; i++){
+            NSLog(@"%f, %f", collisionDetectionBoundingPoints[i].x, collisionDetectionBoundingPoints[i].y);
+        }
         
 		mainImage = [[Image alloc] initWithImage:[shipDictionary valueForKey:@"kMainImage"] scale:1.0f];
         //Sets the boundingBox for use with DidCollide

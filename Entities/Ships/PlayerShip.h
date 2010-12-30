@@ -29,6 +29,9 @@
 //
 //  Last Updated - 12/29/10 @12AM - Alexander
 //  - Added array for collision bounding points
+//
+//  Last Updated - 12/29/2010 @11:50PM - James
+//  - Changed the collision array to be readonly and public
 
 #import <Foundation/Foundation.h>
 #import "AbstractShip.h"
@@ -75,6 +78,8 @@ typedef enum _PlayerShipTemporaryMiscUpgrade {
 	PlayerShipTemporaryWeaponUpgrade	shipTemporaryWeaponUpgrade;
 	PlayerShipTemporaryMiscUpgrade		shipTemporaryMiscUpgrade;
     CGPoint                             currentLocation;
+    Vector2f                            *collisionDetectionBoundingPoints;
+
 	
 @private
 	PlayerShipID						shipID;
@@ -83,7 +88,6 @@ typedef enum _PlayerShipTemporaryMiscUpgrade {
 	Image								*mainImage;
 	Vector2f							*turretPoints;
 	Vector2f                            *thrusterPoints;
-    Vector2f                            *collisionDetectionBoundingPoints;
     CGPoint                             desiredPosition;
 }
 
@@ -98,5 +102,6 @@ typedef enum _PlayerShipTemporaryMiscUpgrade {
 @property PlayerShipTemporaryWeaponUpgrade	shipTemporaryWeaponUpgrade;
 @property PlayerShipTemporaryMiscUpgrade	shipTemporaryMiscUpgrade;
 @property (readonly) CGPoint currentLocation;
+@property (readonly) Vector2f *collisionDetectionBoundingPoints;
 
 @end

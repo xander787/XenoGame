@@ -28,6 +28,11 @@
  *  regular C Arrays, mainly for use in Ship classes
  *  to shorten init functions.
  *
+ *  Last Updated - 12/29/2010 @ 11:50PM - James
+ *  - Added function to retrieve the number of
+ *  objects in a array of Vector2f's, for
+ *  use in the PolygonCollision.
+ *
  */
 
 #import <Foundation/Foundation.h>
@@ -166,6 +171,10 @@ static inline GLfloat Vector2fLength(Vector2f v)
 static inline Vector2f Vector2fNormalize(Vector2f v)
 {
 	return Vector2fMultiply(v, 1.0f/Vector2fLength(v));
+}
+
+static inline int lengthOfVec2fArray(Vector2f *v){
+    return (sizeof(v) / sizeof(Vector2f));
 }
 
 static inline BOOL didCollideRectangular(Vector2f boundingBox1, Vector2f position1, Vector2f boundingBox2, Vector2f position2, GLfloat tolerance) {
