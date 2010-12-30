@@ -17,6 +17,7 @@
 #import "PlayerShip.h"
 #import "EnemyShip.h"
 #import "BossShip.h"
+#import "chipmunk.h"
 
 @interface GameScene : AbstractScene {
     PlayerShip	*testShip;
@@ -26,6 +27,10 @@
     NSSet       *enemySet;
     
     BOOL        touchOriginatedFromPlayerShip;
+    
+    //Chipmunk variables
+    cpSpace     *space;
+    BOOL        shouldStep;
 }
 
 @end
