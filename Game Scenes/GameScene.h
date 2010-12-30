@@ -17,7 +17,7 @@
 #import "PlayerShip.h"
 #import "EnemyShip.h"
 #import "BossShip.h"
-#import "chipmunk.h"
+#import "Collisions.h"
 
 @interface GameScene : AbstractScene {
     PlayerShip	*testShip;
@@ -28,9 +28,10 @@
     
     BOOL        touchOriginatedFromPlayerShip;
     
-    //Chipmunk variables
-    cpSpace     *space;
-    BOOL        shouldStep;
+    NSMutableArray  *enemyPolygons;
+    Polygon         *playerPolygon;
+    Polygon         *testPolygon;
+    CGPoint         *vertices;
 }
 
 @end

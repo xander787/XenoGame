@@ -45,23 +45,18 @@
 //  - Fixed bug with the player not moving, misnamed
 //  update method. And after a lot of messy code, basic
 //  collision detection.
+//
+//  Last Updated - 12/30/2010 @ 3:PM - James
+//  - Removed old and nasty Chipmunk code, started use 
+//  of new Polygon code, small bug in trying to draw 
+//  the polygons though.
 
 #import "GameScene.h"
 
-//Macros form Cocos2D, used in example code
-#define ccp(__X__,__Y__) CGPointMake(__X__,__Y__)
-#define CC_DEGREES_TO_RADIANS(__ANGLE__) ((__ANGLE__) / 180.0f * (float)M_PI)
-
 @interface GameScene(Private)
-- (void)initChipmunk;
 - (void)initGameScene;
 - (void)initSound;
-
-//Chipmunk
-static int playerToEnemyCollision(cpArbiter *arb, cpSpace *space,  void *unused);
-- (void)addBodiesToPlayerShip:(PlayerShip *)ship;
-- (void)step:(GLfloat)delta;
-static void eachShape(void *ptr, void* unused);
+void drawLines( CGPoint *points, unsigned int numberOfPoints);
 @end
 
 @implementation GameScene
@@ -79,65 +74,12 @@ static void eachShape(void *ptr, void* unused);
         _sceneFadeSpeed = 1.0f;
         
         // Init sound
-        [self initChipmunk];
         [self initGameScene];
         [self initSound];
         
-        [self addBodiesToPlayerShip:testShip];
-	}
+    }
 	
 	return self;
-}
-
-- (void)initChipmunk {
-    // Window Size
-    CGSize wins = CGSizeMake(100, 100);
-	// Initialise Chipmunk
-	cpInitChipmunk();
-    
-	// Create space.
-	space = cpSpaceNew();
-	cpSpaceResizeStaticHash(space, 400.0f, 40);
-	cpSpaceResizeActiveHash(space, 100, 600);
-	
-	// Setup the gravity (Nil gravity)
-	space->gravity = ccp(0, 0);
-    
-	//Update Chipmunk
-    shouldStep = YES;
-    
-	
-	// Initialize a static body with infinite mass and moment of inertia
-	// to attach the static geometry to.
-	cpBody * staticBody = cpBodyNew(INFINITY, INFINITY);
-	cpShape *shape;
-    
-	// Create some segments around the edges of the screen.
-	// bottom
-	shape = cpSegmentShapeNew(staticBody, ccp(0,0), ccp(wins.width,0), 0.0f);
-	shape->e = 1.0f; shape->u = 1.0f;
-	cpSpaceAddStaticShape(space, shape);
-	
-	// top
-	shape = cpSegmentShapeNew(staticBody, ccp(0,wins.height), ccp(wins.width,wins.height), 0.0f);
-	shape->e = 1.0f; shape->u = 1.0f;
-	cpSpaceAddStaticShape(space, shape);
-	
-	// left
-	shape = cpSegmentShapeNew(staticBody, ccp(0,0), ccp(0,wins.height), 0.0f);
-	shape->e = 1.0f; shape->u = 1.0f;
-	cpSpaceAddStaticShape(space, shape);
-	
-	// right
-	shape = cpSegmentShapeNew(staticBody, ccp(wins.width,0), ccp(wins.width,wins.height), 0.0f);
-	shape->e = 1.0f; shape->u = 1.0f;
-	cpSpaceAddStaticShape(space, shape);
-	
-	
-	// Setup collisions
-	// Collision between two sprites.
-    //Hooks a function to the beginning of collisions, between players and enemies.
-    cpSpaceAddCollisionHandler(space, 0, 1, (cpCollisionBeginFunc)playerToEnemyCollision, NULL, NULL, NULL, NULL);
 }
 
 - (void)initSound {
@@ -149,62 +91,22 @@ static void eachShape(void *ptr, void* unused);
     testEnemy = [[EnemyShip alloc] initWithShipID:kEnemyShip_MissileBombShotLevelThree initialLocation:CGPointMake(255, 300) andPlayerShipRef:testShip];
 //  testBoss = [[BossShip alloc] initWithBossID:kBoss_Asia initialLocation:CGPointMake(155, 330) andPlayerShipRef:testShip];
     enemySet = [[NSSet alloc] initWithObjects:testEnemy, nil];
+//    enemyPolygons = [[NSMutableArray alloc] initWithObjects:testEnemy, nil];
+    playerPolygon = [[Polygon alloc] init];
+    for(int i = 0; i < lengthOfVec2fArray(testShip.collisionDetectionBoundingPoints); i++){
+        playerPolygon.points[i] = testShip.collisionDetectionBoundingPoints[i];
+    }
+    [playerPolygon buildEdges];
+    vertices = malloc(sizeof(CGPoint) * lengthOfVec2fArray(playerPolygon.points));
+    for(int i = 0; i < lengthOfVec2fArray(playerPolygon.points); i++){
+        vertices[i] = CGPointMake(playerPolygon.points[i].x, playerPolygon.points[i].y);
+    }
+    /*testPolygon = [[Polygon alloc] init];
+    testPolygon.points[0] = Vector2fMake(50, 50);
+    testPolygon.points[1] = Vector2fMake(100, 0);
+    testPolygon.points[2] = Vector2fMake(150, 150);
+    [testPolygon buildEdges];*/
 }
-
-/*** Chipmunk related functions ***/
-
-static int playerToEnemyCollision(cpArbiter *arb, cpSpace *space,  void *unused)
-{	
-    cpShape *a, *b;
-    cpArbiterGetShapes(arb, &a, &b);
-    a->data = (PlayerShip *)a->data;
-	NSLog(@"CP Collision detected: 1:%@\n2:%@", a->data, b->data);
-	return 1;
-}
-
-- (void)addBodiesToPlayerShip:(PlayerShip *)ship {
-    int num = 4;
-	CGPoint verts[] = {
-		ccp(-20,-20),
-		ccp(-20, 20),
-		ccp( 20, 20),
-		ccp( 20,-20),
-	};
-	
-	cpBody *body = cpBodyNew(1.0f, cpMomentForPoly(1.0f, num, verts, CGPointZero));
-	
-	body->p = CGPointMake(ship.position.x, ship.position.y);
-	cpSpaceAddBody(space, body);
-	
-	cpShape* shape = cpPolyShapeNew(body, num, verts, CGPointZero);
-	shape->e = 0.5f; shape->u = 0.5f;
-	shape->data = ship;
-	shape->collision_type = 1;
-	cpSpaceAddShape(space, shape);
-}
-
-static void eachShape(void *ptr, void* unused)
-{
-	cpShape *shape = (cpShape*) ptr;
-	PlayerShip *sprite = shape->data;
-	if( sprite ) {
-		cpBody *body = shape->body;
-		body->p = CGPointMake(sprite.position.x, sprite.position.y);
-		cpBodySetAngle(body, -CC_DEGREES_TO_RADIANS(sprite.rotation));
-	}
-}
-
-- (void)step:(GLfloat)delta {
-	int steps = 2;
-	cpFloat dt = delta/(cpFloat)steps;
-	
-	for(int i=0; i<steps; i++){
-		cpSpaceStep(space, dt);
-	}
-	cpSpaceHashEach(space->activeShapes, &eachShape, nil);
-}
-
-/*** End Chipmunk related functions ***/
 
 - (void)updateWithDelta:(GLfloat)aDelta {
 	switch (sceneState) {
@@ -226,10 +128,7 @@ static void eachShape(void *ptr, void* unused)
     [testEnemy update:aDelta];
 //  [testBoss update:aDelta];
     
-    //For Chipmunk, refreshes hashes for updating
-    if(shouldStep){
-        [self step:aDelta];
-    }
+    
 }
 
 - (void)setSceneState:(uint)theState {
@@ -282,10 +181,28 @@ static void eachShape(void *ptr, void* unused)
 	sceneState = kSceneState_TransitionOut;
 }
 
+void drawLines( CGPoint *points, unsigned int numberOfPoints){
+    // Define vertices and pass to GL.
+	glVertexPointer(2, GL_FLOAT, 0, points);
+	glEnableClientState(GL_VERTEX_ARRAY);
+	
+    glDrawArrays(GL_LINE_STRIP, 0, numberOfPoints);
+    // Reset data source.
+    glDisableClientState(GL_VERTEX_ARRAY);
+}
+
+
 - (void)render {
     [testShip render];
     [testEnemy render];
 //  [testBoss render];
+    
+    //Draw lines over polygons
+    glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
+
+    drawLines(vertices, 4);
+//    drawLines((CGPoint *)testPolygon.points, 3);
+    
 }
 
 @end
