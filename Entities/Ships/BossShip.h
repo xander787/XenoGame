@@ -89,6 +89,7 @@ typedef struct _ModularObject {
     BOOL            floating;
     int             positionFloatVariance;
     Vector2f        *thrusterPoints; // Array
+    Vector2f        *collisionDetectionBoundingPoints; // Array
     int             destructionOrder;
     int             drawingOrder;
     Vector2f        location;

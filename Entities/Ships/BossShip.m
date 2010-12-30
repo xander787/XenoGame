@@ -19,6 +19,9 @@
 //
 //  Last Updated - 11/26/2010 @6PM - Alexander
 //  - Added rendering code, and fixed some other crashing bugs
+//
+//  Last Updated - 12/19/2010 @5PM - Alexander
+//  - Added collision point loading code from PLIST
 
 #import "BossShip.h"
 
@@ -207,9 +210,31 @@
             else {
                 modularObjects[i].numberOfWeapons = 0;
             }
-            
             [turretPoints release];
             [turretString release];
+            
+            //Load the collision detection points and assign them
+            NSArray *collisionCoordPairs = [[NSArray alloc] initWithArray:[bossDictionary objectForKey:@"kCollisionBoundingPoints"]];
+            
+            NSArray *coordPairs = [[NSArray alloc] initWithArray:[[collisionCoordPairs objectAtIndex:i] componentsSeparatedByString:@";"]];
+            modularObjects[i].collisionDetectionBoundingPoints = malloc(sizeof(Vector2f) * [coordPairs count]);
+            bzero(modularObjects[i].collisionDetectionBoundingPoints, sizeof(Vector2f) * [coordPairs count]);
+            
+            for(int i = 0; i < [coordPairs count]; i++) {
+                NSArray *coords = [[NSArray alloc] initWithArray:[[coordPairs objectAtIndex:i] componentsSeparatedByString:@","]];
+                @try {
+                    modularObjects[i].collisionDetectionBoundingPoints[i] = Vector2fMake([[coords objectAtIndex:0] intValue], [[coords objectAtIndex:1] intValue]);
+                }
+                @catch (NSException * e) {
+                    NSLog(@"Exception thrown: %@", e);
+                }
+                @finally {
+                    Vector2f vector = modularObjects[i].collisionDetectionBoundingPoints[i];
+                    NSLog(@"Collision Point: %f %f", vector.x, vector.y);
+                }
+                [coords release];
+            }
+            [coordPairs release];
         }
         
         NSArray *destructionOrder = [[NSArray alloc] initWithArray:[bossDictionary objectForKey:@"kModularDestructionOrder"]];
@@ -238,6 +263,7 @@
         NSString *imagePath = modularObjects[i].moduleImage;
         Image *moduleImage = [[Image alloc] initWithImage:[NSString stringWithString:imagePath]];
         [moduleImage renderAtPoint:CGPointMake(currentLocation.x - modularObjects[i].location.x, currentLocation.y - modularObjects[i].location.y) centerOfImage:YES];
+        [moduleImage release];
     }
 }
 
