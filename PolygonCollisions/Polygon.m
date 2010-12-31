@@ -25,12 +25,20 @@
 
 @synthesize edges, points, pointCount, velocity, originalPoints;
 
-- (id)initWithPointCount:(int)count {
+- (id)initWithPoints:(Vector2f *)vec andCount:(int)count andShipPos:(CGPoint)pos {
     if(self = [super init]){
         pointCount = count;
         points = malloc(sizeof(Vector2f) * pointCount);
         edges = malloc(sizeof(Vector2f) * pointCount);
         originalPoints = malloc(sizeof(Vector2f) * pointCount);
+        
+        //Fill arrays
+        for(int i = 0; i < count; i++){
+            points[i] = Vector2fMake(pos.x + vec[i].x, pos.y + vec[i].y);
+            originalPoints[i] = Vector2fMake(vec[i].x, vec[i].y);
+        }
+        
+        [self buildEdges];
     }
     
     return  self;

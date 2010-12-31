@@ -104,30 +104,11 @@
     enemySet = [[NSSet alloc] initWithObjects:testEnemy, nil];    
     
     //Setup the polygon for PlayerShip
-    playerPolygon = [[Polygon alloc] initWithPointCount:[testShip collisionPointsCount]];
-    
-    //Gets points fro mthe ship
-    for(int i = 0; i < [testShip collisionPointsCount]; i++){
-        playerPolygon.points[i] = Vector2fMake(testShip.currentLocation.x + testShip.collisionDetectionBoundingPoints[i].x, 
-                                               testShip.currentLocation.y + testShip.collisionDetectionBoundingPoints[i].y);
-        playerPolygon.originalPoints[i] = Vector2fMake(testShip.collisionDetectionBoundingPoints[i].x, 
-                                                       testShip.collisionDetectionBoundingPoints[i].y);
-    }
-    //So we don't have to manually put them in
-    [playerPolygon buildEdges];
-    
-    
+    playerPolygon = [[Polygon alloc] initWithPoints:[testShip collisionDetectionBoundingPoints] andCount:[testShip collisionPointsCount] andShipPos:[testShip currentLocation]];
     
     //Second ship
     secondTestShip = [[PlayerShip alloc] initWithShipID:kPlayerShip_Dev andInitialLocation:CGPointMake(155, 270)];
-    secondPlayerPoly = [[Polygon alloc] initWithPointCount:[secondTestShip collisionPointsCount]];
-    for(int i = 0; i < [secondTestShip collisionPointsCount]; i++){
-        secondPlayerPoly.points[i] = Vector2fMake(secondTestShip.currentLocation.x + secondTestShip.collisionDetectionBoundingPoints[i].x, 
-                                               secondTestShip.currentLocation.y + secondTestShip.collisionDetectionBoundingPoints[i].y);
-        secondPlayerPoly.originalPoints[i] = Vector2fMake(secondTestShip.collisionDetectionBoundingPoints[i].x, 
-                                                       secondTestShip.collisionDetectionBoundingPoints[i].y);
-    }
-    [secondPlayerPoly buildEdges];
+    secondPlayerPoly = [[Polygon alloc] initWithPoints:[secondTestShip collisionDetectionBoundingPoints] andCount:[testShip collisionPointsCount] andShipPos:[testShip currentLocation]];
     
 }
 

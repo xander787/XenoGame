@@ -37,7 +37,7 @@
 @property(readwrite)Vector2f    velocity;
 @property(readwrite)Vector2f    *originalPoints;
 
-- (id)initWithPointCount:(int)count;
+- (id)initWithPoints:(Vector2f *)vec andCount:(int)count andShipPos:(CGPoint)pos;
 
 - (void)buildEdges;
 - (Vector2f)center;
