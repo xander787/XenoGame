@@ -10,6 +10,9 @@
 //	James Linnell - Software Engineer, Creative Design, Art Producer
 //	Tyler Newcomb - Creative Design, Art Producer
 //
+//  Last Updated - 12/31/2010 @11AM - Alexander
+//  - Added projectilesSet and bossesSet NSSet's
+//  to hold projectiles and bosses currently in play
 
 #import <Foundation/Foundation.h>
 #import "AbstractScene.h"
@@ -27,16 +30,14 @@
     PlayerShip  *secondTestShip;
     Polygon     *secondPlayerPoly;
     
-    NSSet       *enemySet;
+    // Storing objects in play
+    NSSet       *enemiesSet;
+    NSSet       *projectilesSet;
+    NSSet       *bossesSet;
     
+    // Controlling the player ship
     BOOL        touchOriginatedFromPlayerShip;
     BOOL        touchFromSecondShip;
-    
-    NSMutableArray  *enemyPolygons;
-    Polygon         *playerPolygon;
-    Polygon         *testPolygon;
-    CGPoint         vel;
-    CGPoint         vel2;
 }
 
 @end
