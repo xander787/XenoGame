@@ -18,10 +18,10 @@
 		<string>devship.png</string>
 		<key>kCollisionBoundingPoints</key>
 		<array>
-			<string>39,0</string>
-			<string>78,32</string>
-			<string>39,52</string>
-			<string>1,32</string>
+			<string>0,28</string>
+			<string>39,-4</string>
+			<string>0,-24</string>
+			<string>-38,-4</string>
 		</array>
 		<key>kTurretPoints</key>
 		<array>

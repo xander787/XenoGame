@@ -33,6 +33,8 @@
  *  objects in a array of Vector2f's, for
  *  use in the PolygonCollision.
  *
+ *  Last Updated - 12/30/2010 @ 4:20PM - James
+ *  - Added Vec2f->CGPt, bug in length
  */
 
 #import <Foundation/Foundation.h>
@@ -174,7 +176,20 @@ static inline Vector2f Vector2fNormalize(Vector2f v)
 }
 
 static inline int lengthOfVec2fArray(Vector2f *v){
+    NSLog(@"Lenght: %d", (sizeof(v) / sizeof(Vector2f)));
     return (sizeof(v) / sizeof(Vector2f));
+}
+
+static inline CGPoint returnCGPoint(Vector2f v){
+    return CGPointMake(v.x, v.y);
+}
+
+static inline CGPoint * returnCGPointFromArray(Vector2f *v){
+    CGPoint *cgV;
+    for(int i = 0; i < lengthOfVec2fArray(v); i++){
+        cgV[i] = CGPointMake(v[i].x, v[i].y);
+    }
+    return cgV;
 }
 
 static inline BOOL didCollideRectangular(Vector2f boundingBox1, Vector2f position1, Vector2f boundingBox2, Vector2f position2, GLfloat tolerance) {

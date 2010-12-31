@@ -56,7 +56,6 @@
 @interface GameScene(Private)
 - (void)initGameScene;
 - (void)initSound;
-void drawLines( CGPoint *points, unsigned int numberOfPoints);
 @end
 
 @implementation GameScene
@@ -93,13 +92,16 @@ void drawLines( CGPoint *points, unsigned int numberOfPoints);
     enemySet = [[NSSet alloc] initWithObjects:testEnemy, nil];
 //    enemyPolygons = [[NSMutableArray alloc] initWithObjects:testEnemy, nil];
     playerPolygon = [[Polygon alloc] init];
-    for(int i = 0; i < lengthOfVec2fArray(testShip.collisionDetectionBoundingPoints); i++){
-        playerPolygon.points[i] = testShip.collisionDetectionBoundingPoints[i];
+    NSLog(@"Num: %i", lengthOfVec2fArray(testShip.collisionDetectionBoundingPoints));
+    playerPolygon.points = malloc(sizeof(Vector2f) * 4);
+    for(int i = 0; i < 4; i++){
+        playerPolygon.points[i] = Vector2fMake(testShip.collisionDetectionBoundingPoints[i].x, testShip.collisionDetectionBoundingPoints[i].y);
     }
     [playerPolygon buildEdges];
-    vertices = malloc(sizeof(CGPoint) * lengthOfVec2fArray(playerPolygon.points));
-    for(int i = 0; i < lengthOfVec2fArray(playerPolygon.points); i++){
-        vertices[i] = CGPointMake(playerPolygon.points[i].x, playerPolygon.points[i].y);
+    NSLog(@"Blahhhhh");
+    CGPoint *pt = returnCGPointFromArray(playerPolygon.points);
+    for(int i = 0; i < 4; i++){
+        NSLog(@"Blah: %f, %f", pt[i].x, pt[i].y);
     }
     /*testPolygon = [[Polygon alloc] init];
     testPolygon.points[0] = Vector2fMake(50, 50);
@@ -181,17 +183,6 @@ void drawLines( CGPoint *points, unsigned int numberOfPoints);
 	sceneState = kSceneState_TransitionOut;
 }
 
-void drawLines( CGPoint *points, unsigned int numberOfPoints){
-    // Define vertices and pass to GL.
-	glVertexPointer(2, GL_FLOAT, 0, points);
-	glEnableClientState(GL_VERTEX_ARRAY);
-	
-    glDrawArrays(GL_LINE_STRIP, 0, numberOfPoints);
-    // Reset data source.
-    glDisableClientState(GL_VERTEX_ARRAY);
-}
-
-
 - (void)render {
     [testShip render];
     [testEnemy render];
@@ -199,10 +190,45 @@ void drawLines( CGPoint *points, unsigned int numberOfPoints){
     
     //Draw lines over polygons
     glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
-
-    drawLines(vertices, 4);
-//    drawLines((CGPoint *)testPolygon.points, 3);
     
+    glPushMatrix();
+    
+    glTranslatef(testShip.currentLocation.x, testShip.currentLocation.y, 0.0f);
+    
+    const GLfloat line1[] = {
+        testShip.collisionDetectionBoundingPoints[0].x, testShip.collisionDetectionBoundingPoints[0].y, //point A
+        testShip.collisionDetectionBoundingPoints[1].x, testShip.collisionDetectionBoundingPoints[1].y, //point B
+    };
+    
+    const GLfloat line2[] = {
+        testShip.collisionDetectionBoundingPoints[1].x, testShip.collisionDetectionBoundingPoints[1].y, //point A
+        testShip.collisionDetectionBoundingPoints[2].x, testShip.collisionDetectionBoundingPoints[2].y, //point B
+    };
+    
+    const GLfloat line3[] = {
+        testShip.collisionDetectionBoundingPoints[2].x, testShip.collisionDetectionBoundingPoints[2].y, //point A
+        testShip.collisionDetectionBoundingPoints[3].x, testShip.collisionDetectionBoundingPoints[3].y, //point B
+    };
+    
+    const GLfloat line4[] = {
+        testShip.collisionDetectionBoundingPoints[3].x, testShip.collisionDetectionBoundingPoints[3].y, //point A
+        testShip.collisionDetectionBoundingPoints[4].x, testShip.collisionDetectionBoundingPoints[4].y, //point B
+    };
+    
+    glVertexPointer(2, GL_FLOAT, 0, line1);
+    glEnableClientState(GL_VERTEX_ARRAY);
+    glDrawArrays(GL_LINES, 0, 2);
+    
+    glVertexPointer(2, GL_FLOAT, 0, line2);
+    glDrawArrays(GL_LINES, 0, 2);
+
+    glVertexPointer(2, GL_FLOAT, 0, line3);
+    glDrawArrays(GL_LINES, 0, 2);
+    
+    glVertexPointer(2, GL_FLOAT, 0, line4);
+    glDrawArrays(GL_LINES, 0, 2);
+    
+    glPopMatrix();    
 }
 
 @end

@@ -10,7 +10,8 @@
 //	James Linnell - Software Engineer, Creative Design, Art Producer
 //	Tyler Newcomb - Creative Design, Art Producer
 //
-//	Last Updated - 
+//	Last Updated - 12/30/2010 @ 4:20PM - James
+//  - Changed bot hthe readwrite
 
 #import <Foundation/Foundation.h>
 #import "Common.h"
@@ -23,8 +24,8 @@
     
 }
 
-@property(readonly)Vector2f      *edges;
-@property(readonly)Vector2f      *points;
+@property(readwrite)Vector2f    *edges;
+@property(readwrite)Vector2f    *points;
 
 - (void)buildEdges;
 - (Vector2f)center;
