@@ -80,6 +80,7 @@ typedef enum _PlayerShipTemporaryMiscUpgrade {
     CGPoint                             currentLocation;
     Vector2f                            *collisionDetectionBoundingPoints;
     int                                 collisionPointsCount;
+    CGPoint                             desiredPosition;
 
 	
 @private
@@ -89,7 +90,6 @@ typedef enum _PlayerShipTemporaryMiscUpgrade {
 	Image								*mainImage;
 	Vector2f							*turretPoints;
 	Vector2f                            *thrusterPoints;
-    CGPoint                             desiredPosition;
 }
 
 - (id)initWithShipID:(PlayerShipID)aShipID andInitialLocation:(CGPoint)aPoint;
@@ -105,5 +105,6 @@ typedef enum _PlayerShipTemporaryMiscUpgrade {
 @property (readonly) CGPoint currentLocation;
 @property (readonly) Vector2f *collisionDetectionBoundingPoints;
 @property (readonly) int collisionPointsCount;
+@property (readwrite) CGPoint desiredPosition;
 
 @end

@@ -13,17 +13,24 @@
 //	Last Updated - 12/30/2010 @ 5PM - James
 //  - Changed various parts todo with the
 //  deletion of the length function
+//
+//  Last Updated - 12/30/2010 @ 8PM - James
+//  - Added originalPoints variable,
+//  for use with the setPos method
 
 #import "Polygon.h"
 
 
 @implementation Polygon
 
-@synthesize edges, points;
+@synthesize edges, points, pointCount, velocity, originalPoints;
 
-- (id)init {
+- (id)initWithPointCount:(int)count {
     if(self = [super init]){
-        
+        pointCount = count;
+        points = malloc(sizeof(Vector2f) * pointCount);
+        edges = malloc(sizeof(Vector2f) * pointCount);
+        originalPoints = malloc(sizeof(Vector2f) * pointCount);
     }
     
     return  self;
@@ -62,6 +69,12 @@
     for(int i = 0; i < pointCount; i++){
         Vector2f p = points[i];
         points[i] = Vector2fMake(p.x + x, p.y + y);
+    }
+}
+
+- (void)setPos:(CGPoint)pt {
+    for(int i = 0; i < pointCount; i++){
+        points[i] = Vector2fMake(pt.x + originalPoints[i].x, pt.y + originalPoints[i].y);
     }
 }
 

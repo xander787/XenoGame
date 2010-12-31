@@ -25,19 +25,26 @@
 
     Vector2f    *points;
     Vector2f    *edges;
-    int         pointCount;    
+    int         pointCount;  
+    Vector2f    velocity;
+    Vector2f    *originalPoints;
     
 }
 
 @property(readwrite)Vector2f    *edges;
 @property(readwrite)Vector2f    *points;
 @property(readwrite)int         pointCount;
+@property(readwrite)Vector2f    velocity;
+@property(readwrite)Vector2f    *originalPoints;
+
+- (id)initWithPointCount:(int)count;
 
 - (void)buildEdges;
 - (Vector2f)center;
 
 - (void)offset:(Vector2f)v;
 - (void)offset:(float)x :(float)y;
+- (void)setPos:(CGPoint)pt;
 
 - (NSString *)toString;
 

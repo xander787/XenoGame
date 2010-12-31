@@ -53,12 +53,17 @@
 //
 //  Last Upated - 12/30/2010 @ 5PM - James
 //  - Cleaned up a bit, started using [testShip collisionPointsCount]
+//
+//  Last Updated - 12/30/2010 @ 8PM - James
+//  - Polygon successfuly moves with testShip, and a
+//  test triangle is drawn and ready for collision testing
 
 #import "GameScene.h"
 
 @interface GameScene(Private)
 - (void)initGameScene;
 - (void)initSound;
+- (void)updateCollisions;
 @end
 
 @implementation GameScene
@@ -95,23 +100,26 @@
     enemySet = [[NSSet alloc] initWithObjects:testEnemy, nil];    
     
     //Setup the polygon for PlayerShip
-    playerPolygon = [[Polygon alloc] init];    
-    playerPolygon.points = malloc(sizeof(Vector2f) * [testShip collisionPointsCount]);
+    playerPolygon = [[Polygon alloc] initWithPointCount:[testShip collisionPointsCount]];
     
     //Gets points fro mthe ship
     for(int i = 0; i < [testShip collisionPointsCount]; i++){
-        playerPolygon.points[i] = Vector2fMake(testShip.collisionDetectionBoundingPoints[i].x, testShip.collisionDetectionBoundingPoints[i].y);
+        playerPolygon.points[i] = Vector2fMake(testShip.currentLocation.x + testShip.collisionDetectionBoundingPoints[i].x, 
+                                               testShip.currentLocation.y + testShip.collisionDetectionBoundingPoints[i].y);
+        playerPolygon.originalPoints[i] = Vector2fMake(testShip.collisionDetectionBoundingPoints[i].x, 
+                                                       testShip.collisionDetectionBoundingPoints[i].y);
     }
     
     //So we don't have to manually put them in
     [playerPolygon buildEdges];
     
     //Test poly for collision testing
-    /*testPolygon = [[Polygon alloc] init];
+    testPolygon = [[Polygon alloc] init];
+    testPolygon.points = malloc(sizeof(Vector2f) * 3);
     testPolygon.points[0] = Vector2fMake(50, 50);
     testPolygon.points[1] = Vector2fMake(100, 0);
     testPolygon.points[2] = Vector2fMake(150, 150);
-    [testPolygon buildEdges];*/
+    [testPolygon buildEdges];
 }
 
 - (void)updateWithDelta:(GLfloat)aDelta {
@@ -134,7 +142,8 @@
     [testEnemy update:aDelta];
 //  [testBoss update:aDelta];
     
-    
+    [self updateCollisions];
+    [playerPolygon setPos:testShip.currentLocation];
 }
 
 - (void)setSceneState:(uint)theState {
@@ -171,12 +180,25 @@
 	CGPoint location;
 	location = [touch locationInView:aView];
     
+    
 	// Flip the y location ready to check it against OpenGL coordinates
 	location.y = 480-location.y;
     if(touchOriginatedFromPlayerShip){
         location.y += 30;
+        CGPoint oldShipPt = testShip.currentLocation;
         [testShip setDesiredLocation:location];
+        CGPoint newShipPt = testShip.desiredPosition;
+        vel = CGPointMake(newShipPt.x - oldShipPt.x, newShipPt.y - oldShipPt.y);
     }
+}
+
+- (void)updateCollisions {
+    PolygonCollisionResult result = [Collisions polygonCollision:playerPolygon :testPolygon :Vector2fMake(vel.x, vel.y)];
+    
+    if(result.willIntersect){
+        vel = CGPointMake(vel.x + result.minimumTranslationVector.x, vel.y + result.minimumTranslationVector.y);
+    }
+    [playerPolygon offset:Vector2fMake(vel.x, vel.y)];
 }
 
 - (void)updateWithAccelerometer:(UIAcceleration *)aAcceleration {
@@ -197,26 +219,40 @@
     
     glPushMatrix();
     
-    glTranslatef(testShip.currentLocation.x, testShip.currentLocation.y, 0.0f);
+//    glTranslatef(testShip.currentLocation.x, testShip.currentLocation.y, 0.0f);
     
     const GLfloat line1[] = {
-        testShip.collisionDetectionBoundingPoints[0].x, testShip.collisionDetectionBoundingPoints[0].y, //point A
-        testShip.collisionDetectionBoundingPoints[1].x, testShip.collisionDetectionBoundingPoints[1].y, //point B
+        playerPolygon.points[0].x, playerPolygon.points[0].y, //point A
+        playerPolygon.points[1].x, playerPolygon.points[1].y, //point B
     };
     
     const GLfloat line2[] = {
-        testShip.collisionDetectionBoundingPoints[1].x, testShip.collisionDetectionBoundingPoints[1].y, //point A
-        testShip.collisionDetectionBoundingPoints[2].x, testShip.collisionDetectionBoundingPoints[2].y, //point B
+        playerPolygon.points[1].x, playerPolygon.points[1].y, //point A
+        playerPolygon.points[2].x, playerPolygon.points[2].y, //point B
     };
     
     const GLfloat line3[] = {
-        testShip.collisionDetectionBoundingPoints[2].x, testShip.collisionDetectionBoundingPoints[2].y, //point A
-        testShip.collisionDetectionBoundingPoints[3].x, testShip.collisionDetectionBoundingPoints[3].y, //point B
+        playerPolygon.points[2].x, playerPolygon.points[2].y, //point A
+        playerPolygon.points[3].x, playerPolygon.points[3].y, //point B
     };
     
     const GLfloat line4[] = {
-        testShip.collisionDetectionBoundingPoints[3].x, testShip.collisionDetectionBoundingPoints[3].y, //point A
-        testShip.collisionDetectionBoundingPoints[4].x, testShip.collisionDetectionBoundingPoints[4].y, //point B
+        playerPolygon.points[3].x, playerPolygon.points[3].y, //point A
+        playerPolygon.points[0].x, playerPolygon.points[0].y, //point B
+    };
+    
+    //Triangle
+    const GLfloat line5[] = {
+        testPolygon.points[0].x, testPolygon.points[0].y,
+        testPolygon.points[1].x, testPolygon.points[1].y,
+    };
+    const GLfloat line6[] = {
+        testPolygon.points[1].x, testPolygon.points[1].y,
+        testPolygon.points[2].x, testPolygon.points[2].y,
+    };
+    const GLfloat line7[] = {
+        testPolygon.points[2].x, testPolygon.points[2].y,
+        testPolygon.points[0].x, testPolygon.points[0].y,
     };
     
     glVertexPointer(2, GL_FLOAT, 0, line1);
@@ -230,6 +266,14 @@
     glDrawArrays(GL_LINES, 0, 2);
     
     glVertexPointer(2, GL_FLOAT, 0, line4);
+    glDrawArrays(GL_LINES, 0, 2);
+    
+    //Triangle
+    glVertexPointer(2, GL_FLOAT, 0, line5);
+    glDrawArrays(GL_LINES, 0, 2);
+    glVertexPointer(2, GL_FLOAT, 0, line6);
+    glDrawArrays(GL_LINES, 0, 2);
+    glVertexPointer(2, GL_FLOAT, 0, line7);
     glDrawArrays(GL_LINES, 0, 2);
     
     glPopMatrix();    

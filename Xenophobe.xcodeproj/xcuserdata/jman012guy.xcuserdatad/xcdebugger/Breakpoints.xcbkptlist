@@ -9,11 +9,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "Game Scenes/GameScene.m"
-         timestampString = "315448233.143212"
+         timestampString = "315460634.531381"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "197"
-         endingLineNumber = "197"
+         startingLineNumber = "215"
+         endingLineNumber = "215"
          landmarkName = "-render"
          landmarkType = "5">
       </FileBreakpoint>

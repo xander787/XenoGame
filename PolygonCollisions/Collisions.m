@@ -13,13 +13,17 @@
 //	Last Updated - 12/30/2010 @5PM - James
 //  - Changed various parts todo with the
 //  deletion of the length function.
+//
+//  Last Updated - 12/30/2010 @7:25PM - James
+//  - Converted to class methods
 
 #import "Collisions.h"
 
 
 @implementation Collisions
 
-- (PolygonCollisionResult) polygonCollision:(Polygon *)polygonA :(Polygon *)polygonB :(Vector2f)velocity {
++ (PolygonCollisionResult) polygonCollision:(Polygon *)polygonA :(Polygon *)polygonB :(Vector2f)velocity {
+    PolygonCollisionResult result;
     result.intersect = YES;
     result.willIntersect = YES;
     
@@ -105,7 +109,7 @@
     return result;
 }
 
-- (float)intervalDistance:(float)minA :(float)maxA :(float)minB :(float)maxB {
++ (float)intervalDistance:(float)minA :(float)maxA :(float)minB :(float)maxB {
     if(minA < minB){
         return minB - maxA;
     }
@@ -114,7 +118,7 @@
     }
 }
 
-- (void)projectPolygon:(Vector2f)axis :(Polygon *)polygon :(float *)min :(float *)max {
++ (void)projectPolygon:(Vector2f)axis :(Polygon *)polygon :(float *)min :(float *)max {
     float d = (float)Vector2fDot(axis, polygon.points[0]);
     *min = d;
     *max = d;

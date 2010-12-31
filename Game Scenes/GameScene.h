@@ -31,6 +31,7 @@
     NSMutableArray  *enemyPolygons;
     Polygon         *playerPolygon;
     Polygon         *testPolygon;
+    CGPoint         vel;
 }
 
 @end
