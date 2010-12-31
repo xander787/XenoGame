@@ -29,7 +29,7 @@
     
     int edgeCountA = polygonA.pointCount;
     int edgeCountB = polygonB.pointCount;
-    float  minIntervalDistance = DBL_MAX; // Should be infinity though
+    float  minIntervalDistance = FLT_MAX; // Should be infinity though
     Vector2f translationAxis = Vector2fZero;
     Vector2f edge;
     

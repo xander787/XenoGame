@@ -57,6 +57,10 @@
 //  Last Updated - 12/30/2010 @ 8PM - James
 //  - Polygon successfuly moves with testShip, and a
 //  test triangle is drawn and ready for collision testing
+//
+//  Last Updated - 12/30/2010 @ 9PM - James
+//  - Added in a second ship for better collision testing,
+//  everyhting seems A-okay :D, also took out the triangle
 
 #import "GameScene.h"
 
@@ -109,17 +113,22 @@
         playerPolygon.originalPoints[i] = Vector2fMake(testShip.collisionDetectionBoundingPoints[i].x, 
                                                        testShip.collisionDetectionBoundingPoints[i].y);
     }
-    
     //So we don't have to manually put them in
     [playerPolygon buildEdges];
     
-    //Test poly for collision testing
-    testPolygon = [[Polygon alloc] init];
-    testPolygon.points = malloc(sizeof(Vector2f) * 3);
-    testPolygon.points[0] = Vector2fMake(50, 50);
-    testPolygon.points[1] = Vector2fMake(100, 0);
-    testPolygon.points[2] = Vector2fMake(150, 150);
-    [testPolygon buildEdges];
+    
+    
+    //Second ship
+    secondTestShip = [[PlayerShip alloc] initWithShipID:kPlayerShip_Dev andInitialLocation:CGPointMake(155, 270)];
+    secondPlayerPoly = [[Polygon alloc] initWithPointCount:[secondTestShip collisionPointsCount]];
+    for(int i = 0; i < [secondTestShip collisionPointsCount]; i++){
+        secondPlayerPoly.points[i] = Vector2fMake(secondTestShip.currentLocation.x + secondTestShip.collisionDetectionBoundingPoints[i].x, 
+                                               secondTestShip.currentLocation.y + secondTestShip.collisionDetectionBoundingPoints[i].y);
+        secondPlayerPoly.originalPoints[i] = Vector2fMake(secondTestShip.collisionDetectionBoundingPoints[i].x, 
+                                                       secondTestShip.collisionDetectionBoundingPoints[i].y);
+    }
+    [secondPlayerPoly buildEdges];
+    
 }
 
 - (void)updateWithDelta:(GLfloat)aDelta {
@@ -141,9 +150,11 @@
     [testShip update:aDelta];
     [testEnemy update:aDelta];
 //  [testBoss update:aDelta];
+    [secondTestShip update:aDelta];
     
     [self updateCollisions];
     [playerPolygon setPos:testShip.currentLocation];
+    [secondPlayerPoly setPos:secondTestShip.currentLocation];
 }
 
 - (void)setSceneState:(uint)theState {
@@ -173,6 +184,17 @@
     else {
         touchOriginatedFromPlayerShip = NO;
     }
+    if(CGRectContainsPoint(CGRectMake(secondTestShip.currentLocation.x - ((secondTestShip.boundingBox.x * 1.4) / 2),
+                                      secondTestShip.currentLocation.y - (secondTestShip.boundingBox.y / 2),
+                                      secondTestShip.boundingBox.x * 1.4,
+                                      secondTestShip.boundingBox.y),
+                           location)){
+        NSLog(@"Touched on Ship :D");
+        touchFromSecondShip = YES;
+    }
+    else {
+        touchFromSecondShip = NO;
+    }
 }
 
 - (void)updateWithTouchLocationMoved:(NSSet *)touches withEvent:(UIEvent *)event view:(UIView *)aView {
@@ -180,25 +202,36 @@
 	CGPoint location;
 	location = [touch locationInView:aView];
     
+    vel = CGPointZero;
     
 	// Flip the y location ready to check it against OpenGL coordinates
 	location.y = 480-location.y;
+    location.y += 30;
     if(touchOriginatedFromPlayerShip){
-        location.y += 30;
         CGPoint oldShipPt = testShip.currentLocation;
         [testShip setDesiredLocation:location];
         CGPoint newShipPt = testShip.desiredPosition;
-        vel = CGPointMake(newShipPt.x - oldShipPt.x, newShipPt.y - oldShipPt.y);
+        vel = CGPointMake(newShipPt.x - oldShipPt.x, newShipPt.y - oldShipPt.y);    
+    }
+    if(touchFromSecondShip){
+        CGPoint oldShipPt = secondTestShip.currentLocation;
+        [secondTestShip setDesiredLocation:location];
+        CGPoint newShipPt = secondTestShip.desiredPosition;
+        vel2 = CGPointMake(newShipPt.x - oldShipPt.x, newShipPt.y - oldShipPt.y);    
     }
 }
 
 - (void)updateCollisions {
-    PolygonCollisionResult result = [Collisions polygonCollision:playerPolygon :testPolygon :Vector2fMake(vel.x, vel.y)];
+    //Collisions for 1st ship -> second ship
+    PolygonCollisionResult result = [Collisions polygonCollision:playerPolygon :secondPlayerPoly :Vector2fMake(vel.x, vel.y)];
     
     if(result.willIntersect){
         vel = CGPointMake(vel.x + result.minimumTranslationVector.x, vel.y + result.minimumTranslationVector.y);
+        NSLog(@"First Ship: Will Intersect");
     }
-    [playerPolygon offset:Vector2fMake(vel.x, vel.y)];
+    if(result.intersect){
+        NSLog(@"First Ship: Intersected");
+    }
 }
 
 - (void)updateWithAccelerometer:(UIAcceleration *)aAcceleration {
@@ -213,14 +246,16 @@
     [testShip render];
     [testEnemy render];
 //  [testBoss render];
+    [secondTestShip render];
+    
+    
     
     //Draw lines over polygons
     glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
     
     glPushMatrix();
     
-//    glTranslatef(testShip.currentLocation.x, testShip.currentLocation.y, 0.0f);
-    
+    //Ship one
     const GLfloat line1[] = {
         playerPolygon.points[0].x, playerPolygon.points[0].y, //point A
         playerPolygon.points[1].x, playerPolygon.points[1].y, //point B
@@ -241,18 +276,26 @@
         playerPolygon.points[0].x, playerPolygon.points[0].y, //point B
     };
     
-    //Triangle
-    const GLfloat line5[] = {
-        testPolygon.points[0].x, testPolygon.points[0].y,
-        testPolygon.points[1].x, testPolygon.points[1].y,
+    
+    //Second Ship
+    const GLfloat line8[] = {
+        secondPlayerPoly.points[0].x, secondPlayerPoly.points[0].y, //point A
+        secondPlayerPoly.points[1].x, secondPlayerPoly.points[1].y, //point B
     };
-    const GLfloat line6[] = {
-        testPolygon.points[1].x, testPolygon.points[1].y,
-        testPolygon.points[2].x, testPolygon.points[2].y,
+    
+    const GLfloat line9[] = {
+        secondPlayerPoly.points[1].x, secondPlayerPoly.points[1].y, //point A
+        secondPlayerPoly.points[2].x, secondPlayerPoly.points[2].y, //point B
     };
-    const GLfloat line7[] = {
-        testPolygon.points[2].x, testPolygon.points[2].y,
-        testPolygon.points[0].x, testPolygon.points[0].y,
+    
+    const GLfloat line10[] = {
+        secondPlayerPoly.points[2].x, secondPlayerPoly.points[2].y, //point A
+        secondPlayerPoly.points[3].x, secondPlayerPoly.points[3].y, //point B
+    };
+    
+    const GLfloat line11[] = {
+        secondPlayerPoly.points[3].x, secondPlayerPoly.points[3].y, //point A
+        secondPlayerPoly.points[0].x, secondPlayerPoly.points[0].y, //point B
     };
     
     glVertexPointer(2, GL_FLOAT, 0, line1);
@@ -268,13 +311,16 @@
     glVertexPointer(2, GL_FLOAT, 0, line4);
     glDrawArrays(GL_LINES, 0, 2);
     
-    //Triangle
-    glVertexPointer(2, GL_FLOAT, 0, line5);
+    //Second ship
+    glVertexPointer(2, GL_FLOAT, 0, line8);
     glDrawArrays(GL_LINES, 0, 2);
-    glVertexPointer(2, GL_FLOAT, 0, line6);
+    glVertexPointer(2, GL_FLOAT, 0, line9);
     glDrawArrays(GL_LINES, 0, 2);
-    glVertexPointer(2, GL_FLOAT, 0, line7);
+    glVertexPointer(2, GL_FLOAT, 0, line10);
     glDrawArrays(GL_LINES, 0, 2);
+    glVertexPointer(2, GL_FLOAT, 0, line11);
+    glDrawArrays(GL_LINES, 0, 2);
+    
     
     glPopMatrix();    
 }

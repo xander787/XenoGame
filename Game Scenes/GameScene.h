@@ -24,14 +24,19 @@
     EnemyShip   *testEnemy;
     BossShip    *testBoss;
     
+    PlayerShip  *secondTestShip;
+    Polygon     *secondPlayerPoly;
+    
     NSSet       *enemySet;
     
     BOOL        touchOriginatedFromPlayerShip;
+    BOOL        touchFromSecondShip;
     
     NSMutableArray  *enemyPolygons;
     Polygon         *playerPolygon;
     Polygon         *testPolygon;
     CGPoint         vel;
+    CGPoint         vel2;
 }
 
 @end
