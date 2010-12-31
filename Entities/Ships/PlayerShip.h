@@ -79,6 +79,7 @@ typedef enum _PlayerShipTemporaryMiscUpgrade {
 	PlayerShipTemporaryMiscUpgrade		shipTemporaryMiscUpgrade;
     CGPoint                             currentLocation;
     Vector2f                            *collisionDetectionBoundingPoints;
+    int                                 collisionPointsCount;
 
 	
 @private
@@ -103,5 +104,6 @@ typedef enum _PlayerShipTemporaryMiscUpgrade {
 @property PlayerShipTemporaryMiscUpgrade	shipTemporaryMiscUpgrade;
 @property (readonly) CGPoint currentLocation;
 @property (readonly) Vector2f *collisionDetectionBoundingPoints;
+@property (readonly) int collisionPointsCount;
 
 @end

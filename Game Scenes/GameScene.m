@@ -50,6 +50,9 @@
 //  - Removed old and nasty Chipmunk code, started use 
 //  of new Polygon code, small bug in trying to draw 
 //  the polygons though.
+//
+//  Last Upated - 12/30/2010 @ 5PM - James
+//  - Cleaned up a bit, started using [testShip collisionPointsCount]
 
 #import "GameScene.h"
 
@@ -89,20 +92,21 @@
     testShip = [[PlayerShip alloc] initWithShipID:kPlayerShip_Dev andInitialLocation:CGPointMake(155, 200)];
     testEnemy = [[EnemyShip alloc] initWithShipID:kEnemyShip_MissileBombShotLevelThree initialLocation:CGPointMake(255, 300) andPlayerShipRef:testShip];
 //  testBoss = [[BossShip alloc] initWithBossID:kBoss_Asia initialLocation:CGPointMake(155, 330) andPlayerShipRef:testShip];
-    enemySet = [[NSSet alloc] initWithObjects:testEnemy, nil];
-//    enemyPolygons = [[NSMutableArray alloc] initWithObjects:testEnemy, nil];
-    playerPolygon = [[Polygon alloc] init];
-    NSLog(@"Num: %i", lengthOfVec2fArray(testShip.collisionDetectionBoundingPoints));
-    playerPolygon.points = malloc(sizeof(Vector2f) * 4);
-    for(int i = 0; i < 4; i++){
+    enemySet = [[NSSet alloc] initWithObjects:testEnemy, nil];    
+    
+    //Setup the polygon for PlayerShip
+    playerPolygon = [[Polygon alloc] init];    
+    playerPolygon.points = malloc(sizeof(Vector2f) * [testShip collisionPointsCount]);
+    
+    //Gets points fro mthe ship
+    for(int i = 0; i < [testShip collisionPointsCount]; i++){
         playerPolygon.points[i] = Vector2fMake(testShip.collisionDetectionBoundingPoints[i].x, testShip.collisionDetectionBoundingPoints[i].y);
     }
+    
+    //So we don't have to manually put them in
     [playerPolygon buildEdges];
-    NSLog(@"Blahhhhh");
-    CGPoint *pt = returnCGPointFromArray(playerPolygon.points);
-    for(int i = 0; i < 4; i++){
-        NSLog(@"Blah: %f, %f", pt[i].x, pt[i].y);
-    }
+    
+    //Test poly for collision testing
     /*testPolygon = [[Polygon alloc] init];
     testPolygon.points[0] = Vector2fMake(50, 50);
     testPolygon.points[1] = Vector2fMake(100, 0);

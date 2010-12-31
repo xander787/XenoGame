@@ -38,6 +38,8 @@
 		</array>
 		<key>kPlayerWeaponType</key>
 		<string>kWeapon_SingleShot</string>
+		<key>kCollisionPointsCount</key>
+		<integer>4</integer>
 	</dict>
 </dict>
 </plist>

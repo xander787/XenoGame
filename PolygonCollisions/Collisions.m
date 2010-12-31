@@ -10,7 +10,9 @@
 //	James Linnell - Software Engineer, Creative Design, Art Producer
 //	Tyler Newcomb - Creative Design, Art Producer
 //
-//	Last Updated - 
+//	Last Updated - 12/30/2010 @5PM - James
+//  - Changed various parts todo with the
+//  deletion of the length function.
 
 #import "Collisions.h"
 
@@ -21,8 +23,8 @@
     result.intersect = YES;
     result.willIntersect = YES;
     
-    int edgeCountA = lengthOfVec2fArray(polygonA.edges);
-    int edgeCountB = lengthOfVec2fArray(polygonB.edges);
+    int edgeCountA = polygonA.pointCount;
+    int edgeCountB = polygonB.pointCount;
     float  minIntervalDistance = DBL_MAX; // Should be infinity though
     Vector2f translationAxis = Vector2fZero;
     Vector2f edge;
@@ -116,7 +118,7 @@
     float d = (float)Vector2fDot(axis, polygon.points[0]);
     *min = d;
     *max = d;
-    for(int i = 0; i < lengthOfVec2fArray(polygon.points); i++){
+    for(int i = 0; i < polygon.pointCount; i++){
         d = Vector2fDot(polygon.points[i], axis);
         if(d < *min){
             *min = d;

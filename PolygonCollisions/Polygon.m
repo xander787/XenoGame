@@ -10,7 +10,9 @@
 //	James Linnell - Software Engineer, Creative Design, Art Producer
 //	Tyler Newcomb - Creative Design, Art Producer
 //
-//	Last Updated - 
+//	Last Updated - 12/30/2010 @ 5PM - James
+//  - Changed various parts todo with the
+//  deletion of the length function
 
 #import "Polygon.h"
 
@@ -29,9 +31,9 @@
 
 - (void)buildEdges {
     Vector2f p1, p2;
-    for(int i = 0; i < lengthOfVec2fArray(points); i++){
+    for(int i = 0; i < pointCount; i++){
         p1 = points[i];
-        if(i + 1 >= lengthOfVec2fArray(points)){
+        if(i + 1 >= pointCount){
             p2 = points[0];
         }
         else {
@@ -44,12 +46,12 @@
 - (Vector2f)center {
     float totalX = 0;
     float totalY = 0;
-    for(int i = 0; i < lengthOfVec2fArray(points); i++){
+    for(int i = 0; i < pointCount; i++){
         totalX += points[i].x;
         totalY += points[i].y;
     }
     
-    return Vector2fMake(totalX/(float)lengthOfVec2fArray(points), totalY/(float)lengthOfVec2fArray(points));
+    return Vector2fMake(totalX/(float)pointCount, totalY/(float)pointCount);
 }
 
 - (void)offset:(Vector2f)v {
@@ -57,7 +59,7 @@
 }
 
 - (void)offset:(float)x :(float)y {
-    for(int i = 0; i < lengthOfVec2fArray(points); i++){
+    for(int i = 0; i < pointCount; i++){
         Vector2f p = points[i];
         points[i] = Vector2fMake(p.x + x, p.y + y);
     }
@@ -66,7 +68,7 @@
 - (NSString *)toString {
     NSString *stringResult = [[NSString alloc] initWithFormat:@""];
     
-    for(int i = 0; i < lengthOfVec2fArray(points); i++){
+    for(int i = 0; i < pointCount; i++){
         if(stringResult != @""){
             [stringResult stringByAppendingFormat:@" "];
         }

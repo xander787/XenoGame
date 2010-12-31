@@ -11,7 +11,11 @@
 //	Tyler Newcomb - Creative Design, Art Producer
 //
 //	Last Updated - 12/30/2010 @ 4:20PM - James
-//  - Changed bot hthe readwrite
+//  - Changed both to readwrite
+//
+//  Last Updated - 12/30/2010 @ %PM - James
+//  - Added pointCount, because no way of getting
+//  count of dynamic array
 
 #import <Foundation/Foundation.h>
 #import "Common.h"
@@ -19,13 +23,15 @@
 
 @interface Polygon : NSObject {
 
-    Vector2f     *points;
-    Vector2f     *edges;
+    Vector2f    *points;
+    Vector2f    *edges;
+    int         pointCount;    
     
 }
 
 @property(readwrite)Vector2f    *edges;
 @property(readwrite)Vector2f    *points;
+@property(readwrite)int         pointCount;
 
 - (void)buildEdges;
 - (Vector2f)center;

@@ -35,6 +35,10 @@
  *
  *  Last Updated - 12/30/2010 @ 4:20PM - James
  *  - Added Vec2f->CGPt, bug in length
+ *
+ *  Last Updated - 12/30/2010 @ 5PM - James
+ *  - Removed collide functions and to-CGPoint 
+ *  conversions and length function.
  */
 
 #import <Foundation/Foundation.h>
@@ -173,37 +177,6 @@ static inline GLfloat Vector2fLength(Vector2f v)
 static inline Vector2f Vector2fNormalize(Vector2f v)
 {
 	return Vector2fMultiply(v, 1.0f/Vector2fLength(v));
-}
-
-static inline int lengthOfVec2fArray(Vector2f *v){
-    NSLog(@"Lenght: %d", (sizeof(v) / sizeof(Vector2f)));
-    return (sizeof(v) / sizeof(Vector2f));
-}
-
-static inline CGPoint returnCGPoint(Vector2f v){
-    return CGPointMake(v.x, v.y);
-}
-
-static inline CGPoint * returnCGPointFromArray(Vector2f *v){
-    CGPoint *cgV;
-    for(int i = 0; i < lengthOfVec2fArray(v); i++){
-        cgV[i] = CGPointMake(v[i].x, v[i].y);
-    }
-    return cgV;
-}
-
-static inline BOOL didCollideRectangular(Vector2f boundingBox1, Vector2f position1, Vector2f boundingBox2, Vector2f position2, GLfloat tolerance) {
-    CGFloat dx, dy;
-//    NSLog(@"%f, %f, %f, %f", position1.x, position1.y, position2.x, position2.y);
-    dx = ABS(position2.x - position1.x);
-    dy = ABS(position2.y - position1.y);
-    
-    return (dx - (boundingBox1.x/2. + boundingBox2.x/2.) < tolerance) && (dy - (boundingBox1.y/2. + boundingBox2.y/2.) < tolerance);
-}
-
-static inline BOOL didCollideCircular(Vector2f position1, int radius1, Vector2f position2, int radius2, int tolerance) {
-    //Uses simple distance formula and checks the distance against the tolerance (in whole numbers, for pixels)
-    return (sqrt(pow((position2.x - position1.x), 2) + pow((position2.y - position1.y), 2)) - (radius1 + radius2) <= tolerance);
 }
 
 static inline Vector2f * transferFromNSArrayToCArray(NSArray *recievedArray){
