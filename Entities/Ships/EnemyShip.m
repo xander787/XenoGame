@@ -24,6 +24,9 @@
 //  Last Updated - 12/29/10 @12AM - Alexander
 //  - Added in code to load collision bounding points 
 //  from PLIST file.
+//
+//  Last Updated - 12/31/1010 @11AM - Alexander
+//  - Playing with the spritesheet timer
 
 #import "EnemyShip.h"
 
@@ -265,7 +268,7 @@
         
         enemyAnimation = [[Animation alloc] init];
         for(int i = 0; i < [[enemyDictionary valueForKey:@"kSpriteSheetNumColumns"] intValue]; i++) {
-            [enemyAnimation addFrameWithImage:[enemySpriteSheet getSpriteAtX:i y:0] delay:0.1];
+            [enemyAnimation addFrameWithImage:[enemySpriteSheet getSpriteAtX:i y:0] delay:0.08];
         }
         [enemyAnimation setRunning:YES];
         [enemyAnimation setRepeat:YES];

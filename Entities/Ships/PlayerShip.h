@@ -37,6 +37,7 @@
 #import "AbstractShip.h"
 #import "Image.h"
 #import "Animation.h"
+#import "Polygon.h"
 
 typedef enum _PlayerShipID {
 	kPlayerShip_Dev = 0,
@@ -81,7 +82,7 @@ typedef enum _PlayerShipTemporaryMiscUpgrade {
     Vector2f                            *collisionDetectionBoundingPoints;
     int                                 collisionPointsCount;
     CGPoint                             desiredPosition;
-
+    Polygon                             *collisionPolygon;
 	
 @private
 	PlayerShipID						shipID;
@@ -106,5 +107,6 @@ typedef enum _PlayerShipTemporaryMiscUpgrade {
 @property (readonly) Vector2f *collisionDetectionBoundingPoints;
 @property (readonly) int collisionPointsCount;
 @property (readwrite) CGPoint desiredPosition;
+@property (nonatomic, retain) Polygon *collisionPolygon;
 
 @end

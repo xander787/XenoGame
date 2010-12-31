@@ -2,7 +2,7 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>kShipMissileBombShot_Three</key>
+	<key>kShipKamikaze_One</key>
 	<dict>
 		<key>kShipCategory</key>
 		<string>kShipType_MissileBombShot</string>
@@ -17,11 +17,11 @@
 		<key>kSpriteSheetRowNumber</key>
 		<integer>0</integer>
 		<key>kSpriteSheetNumColumns</key>
-		<integer>5</integer>
+		<integer>12</integer>
 		<key>kSpriteSheetColumnWidth</key>
-		<integer>128</integer>
+		<integer>85</integer>
 		<key>kSpriteSheetRowHeight</key>
-		<integer>128</integer>
+		<integer>85</integer>
 		<key>kTurretPoints</key>
 		<array>
 			<string>30,50</string>

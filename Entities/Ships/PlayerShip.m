@@ -47,13 +47,18 @@
 //  - Reverted the change to the loading code that utilized the
 //  newly created function by James. Was sort of confusing me
 //  so I'll add it back later.
+//
+//  Last Updated - 12/31/2010 @11:30AM - Alexander
+//  - Made it so that if DEBUG is one, it will draw lines
+//  around the collision polys. Also moved the polys to be
+//  a member of this class.
 
 #import "PlayerShip.h"
 
 
 @implementation PlayerShip
 
-@synthesize shipHealth, shipAttack, shipStamina, shipSpeed, shipTemporaryWeaponUpgrade, shipTemporaryMiscUpgrade, currentLocation, collisionDetectionBoundingPoints, collisionPointsCount, desiredPosition;
+@synthesize shipHealth, shipAttack, shipStamina, shipSpeed, shipTemporaryWeaponUpgrade, shipTemporaryMiscUpgrade, currentLocation, collisionDetectionBoundingPoints, collisionPointsCount, desiredPosition, collisionPolygon;
 
 - (id) init {
 	self = [super init];
@@ -216,6 +221,46 @@
 
 - (void)render {    
     [mainImage renderAtPoint:currentLocation centerOfImage:YES];
+    
+    if(DEBUG) {                
+        glPushMatrix();
+        
+        glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
+        
+        //Ship one
+        const GLfloat line1[] = {
+            collisionPolygon.points[0].x, collisionPolygon.points[0].y, //point A
+            collisionPolygon.points[1].x, collisionPolygon.points[1].y, //point B
+        };
+        
+        const GLfloat line2[] = {
+            collisionPolygon.points[1].x, collisionPolygon.points[1].y, //point A
+            collisionPolygon.points[2].x, collisionPolygon.points[2].y, //point B
+        };
+        
+        const GLfloat line3[] = {
+            collisionPolygon.points[2].x, collisionPolygon.points[2].y, //point A
+            collisionPolygon.points[3].x, collisionPolygon.points[3].y, //point B
+        };
+        
+        const GLfloat line4[] = {
+            collisionPolygon.points[3].x, collisionPolygon.points[3].y, //point A
+            collisionPolygon.points[0].x, collisionPolygon.points[0].y, //point B
+        };
+        
+        glVertexPointer(2, GL_FLOAT, 0, line1);
+        glEnableClientState(GL_VERTEX_ARRAY);
+        glDrawArrays(GL_LINES, 0, 2);
+        
+        glVertexPointer(2, GL_FLOAT, 0, line2);
+        glDrawArrays(GL_LINES, 0, 2);
+        
+        glVertexPointer(2, GL_FLOAT, 0, line3);
+        glDrawArrays(GL_LINES, 0, 2);
+        
+        glVertexPointer(2, GL_FLOAT, 0, line4);
+        glDrawArrays(GL_LINES, 0, 2);
+    }
 }
 
 - (void)fireWeapons {
