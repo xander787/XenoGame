@@ -55,6 +55,10 @@
 //  - Removed a lot of uncessary crap, moved the polygon
 //  init stuff out of here, also removed the line drawing
 //  code out.
+//
+//  Last Updated - 12/31/2010 @7:30PM - Alexander
+//  - Memory management: added dealloc method and use it
+//  to deallocate our objects
 
 #import "GameScene.h"
 
@@ -93,7 +97,7 @@
 
 - (void)initGameScene {
     testShip = [[PlayerShip alloc] initWithShipID:kPlayerShip_Dev andInitialLocation:CGPointMake(155, 200)];
-    testEnemy = [[EnemyShip alloc] initWithShipID:kEnemyShip_KamikazeLevelOne initialLocation:CGPointMake(255, 300) andPlayerShipRef:testShip];
+    testEnemy = [[EnemyShip alloc] initWithShipID:kEnemyShip_WaveShotLevelFour initialLocation:CGPointMake(255, 300) andPlayerShipRef:testShip];
 //  testBoss = [[BossShip alloc] initWithBossID:kBoss_Asia initialLocation:CGPointMake(155, 330) andPlayerShipRef:testShip];
     enemiesSet = [[NSSet alloc] initWithObjects:testEnemy, nil];    
     
@@ -209,6 +213,17 @@
     [testEnemy render];
 //  [testBoss render];
     [secondTestShip render];
+}
+
+- (void)dealloc {
+    [testShip release];
+    [testEnemy release];
+    [testBoss release];
+    [secondTestShip release];
+    [enemiesSet release];
+    [projectilesSet release];
+    [bossesSet release];
+    [super dealloc];
 }
 
 @end

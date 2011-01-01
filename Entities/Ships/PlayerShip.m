@@ -52,6 +52,9 @@
 //  - Made it so that if DEBUG is one, it will draw lines
 //  around the collision polys. Also moved the polys to be
 //  a member of this class.
+//
+//  Last Updated - 12/31/2010 @7:30PM - Alexander
+//  - Memory management: deallocate objects in dealloc method
 
 #import "PlayerShip.h"
 
@@ -268,7 +271,11 @@
 }
 
 - (void)dealloc {
-    [mainImage release];
+    free(collisionDetectionBoundingPoints);
+    [Image release];
+    [collisionPolygon release];
+    free(turretPoints);
+    free(thrusterPoints);
     [super dealloc];
 }
 

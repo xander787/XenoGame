@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		112FA4EC12CEAC0A005C542B /* kEnemyKamikazeLevelOne.png in Resources */ = {isa = PBXBuildFile; fileRef = 112FA4EA12CEAC0A005C542B /* kEnemyKamikazeLevelOne.png */; };
+		112FA4F312CEAEEF005C542B /* kEnemyWaveShotLevelFour.png in Resources */ = {isa = PBXBuildFile; fileRef = 112FA4F212CEAEEF005C542B /* kEnemyWaveShotLevelFour.png */; };
 		11336113129E54F300FE6A03 /* BossShips.plist in Resources */ = {isa = PBXBuildFile; fileRef = 11336112129E54F300FE6A03 /* BossShips.plist */; };
 		114A1A7412989C4B004769D4 /* PlayerShips.plist in Resources */ = {isa = PBXBuildFile; fileRef = 114A1A7312989C4B004769D4 /* PlayerShips.plist */; };
 		1170E3AC12865A18000BF968 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1170E3AB12865A18000BF968 /* CoreMotion.framework */; };
@@ -62,22 +64,7 @@
 		11D324E812739DBD00F01BB5 /* AbstractScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 11D324E512739DBD00F01BB5 /* AbstractScene.m */; };
 		11D324E912739DBD00F01BB5 /* MainMenuScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 11D324E712739DBD00F01BB5 /* MainMenuScene.m */; };
 		11D325171273BF7900F01BB5 /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 11D325161273BF7900F01BB5 /* libsqlite3.0.dylib */; };
-		11DE0F1B12CE6A5D00A3F7CA /* kEnemyKamikazeeLevelOne.png in Resources */ = {isa = PBXBuildFile; fileRef = 11DE0F0D12CE6A5D00A3F7CA /* kEnemyKamikazeeLevelOne.png */; };
-		11DE0F1C12CE6A5D00A3F7CA /* kEnemyKamikazeeLevelThree.png in Resources */ = {isa = PBXBuildFile; fileRef = 11DE0F0E12CE6A5D00A3F7CA /* kEnemyKamikazeeLevelThree.png */; };
-		11DE0F1D12CE6A5D00A3F7CA /* kEnemyMissileBombLevelThree.png in Resources */ = {isa = PBXBuildFile; fileRef = 11DE0F0F12CE6A5D00A3F7CA /* kEnemyMissileBombLevelThree.png */; };
-		11DE0F1E12CE6A5D00A3F7CA /* kEnemyOneShotLevelOne.png in Resources */ = {isa = PBXBuildFile; fileRef = 11DE0F1012CE6A5D00A3F7CA /* kEnemyOneShotLevelOne.png */; };
-		11DE0F1F12CE6A5D00A3F7CA /* kEnemyShipKamikazekBossNorthAmericaAssistTwo.png in Resources */ = {isa = PBXBuildFile; fileRef = 11DE0F1112CE6A5D00A3F7CA /* kEnemyShipKamikazekBossNorthAmericaAssistTwo.png */; };
-		11DE0F2012CE6A5D00A3F7CA /* kEnemyShipMissileBombShotkBossEuropeAssist.png in Resources */ = {isa = PBXBuildFile; fileRef = 11DE0F1212CE6A5D00A3F7CA /* kEnemyShipMissileBombShotkBossEuropeAssist.png */; };
-		11DE0F2112CE6A5D00A3F7CA /* kEnemyShipTwoShotkBossAfricaAssistOne.png in Resources */ = {isa = PBXBuildFile; fileRef = 11DE0F1312CE6A5D00A3F7CA /* kEnemyShipTwoShotkBossAfricaAssistOne.png */; };
-		11DE0F2212CE6A5D00A3F7CA /* kEnemyThreeShotLevelOne.png in Resources */ = {isa = PBXBuildFile; fileRef = 11DE0F1412CE6A5D00A3F7CA /* kEnemyThreeShotLevelOne.png */; };
-		11DE0F2312CE6A5D00A3F7CA /* kEnemyThreeShotLevelThree.png in Resources */ = {isa = PBXBuildFile; fileRef = 11DE0F1512CE6A5D00A3F7CA /* kEnemyThreeShotLevelThree.png */; };
-		11DE0F2412CE6A5D00A3F7CA /* kEnemyTwoShotLevelOne.png in Resources */ = {isa = PBXBuildFile; fileRef = 11DE0F1612CE6A5D00A3F7CA /* kEnemyTwoShotLevelOne.png */; };
-		11DE0F2512CE6A5D00A3F7CA /* kEnemyTwoShotLevelTwo.png in Resources */ = {isa = PBXBuildFile; fileRef = 11DE0F1712CE6A5D00A3F7CA /* kEnemyTwoShotLevelTwo.png */; };
-		11DE0F2612CE6A5D00A3F7CA /* kEnemyWaveShotLevelFour.png in Resources */ = {isa = PBXBuildFile; fileRef = 11DE0F1812CE6A5D00A3F7CA /* kEnemyWaveShotLevelFour.png */; };
-		11DE0F2712CE6A5D00A3F7CA /* kEnemyWaveShotLevelOne.png in Resources */ = {isa = PBXBuildFile; fileRef = 11DE0F1912CE6A5D00A3F7CA /* kEnemyWaveShotLevelOne.png */; };
-		11DE0F2812CE6A5D00A3F7CA /* kEnemyWaveShotLevelTwo.png in Resources */ = {isa = PBXBuildFile; fileRef = 11DE0F1A12CE6A5D00A3F7CA /* kEnemyWaveShotLevelTwo.png */; };
 		11DE0F2A12CE6A9500A3F7CA /* devship.png in Resources */ = {isa = PBXBuildFile; fileRef = 11DE0F2912CE6A9500A3F7CA /* devship.png */; };
-		11DE0F2E12CE7ADF00A3F7CA /* enemyspritesheet.png in Resources */ = {isa = PBXBuildFile; fileRef = 11DE0F2D12CE7ADF00A3F7CA /* enemyspritesheet.png */; };
 		11E7DCEF129F00D90047E2FD /* kBossAsiaCannonLeft.png in Resources */ = {isa = PBXBuildFile; fileRef = 11E7DCE5129F00D90047E2FD /* kBossAsiaCannonLeft.png */; };
 		11E7DCF0129F00D90047E2FD /* kBossAsiaCannonRight.png in Resources */ = {isa = PBXBuildFile; fileRef = 11E7DCE6129F00D90047E2FD /* kBossAsiaCannonRight.png */; };
 		11E7DCF1129F00D90047E2FD /* kBossAsiaMainBody.png in Resources */ = {isa = PBXBuildFile; fileRef = 11E7DCE7129F00D90047E2FD /* kBossAsiaMainBody.png */; };
@@ -118,6 +105,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		112FA4EA12CEAC0A005C542B /* kEnemyKamikazeLevelOne.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = kEnemyKamikazeLevelOne.png; path = "Game Resources/Images/Normal/Ships/Enemy Ships/kEnemyKamikazeLevelOne.png"; sourceTree = SOURCE_ROOT; };
+		112FA4F212CEAEEF005C542B /* kEnemyWaveShotLevelFour.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = kEnemyWaveShotLevelFour.png; path = "Game Resources/Images/Normal/Ships/Enemy Ships/kEnemyWaveShotLevelFour.png"; sourceTree = SOURCE_ROOT; };
 		11336112129E54F300FE6A03 /* BossShips.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = BossShips.plist; path = "Game Resources/BossShips.plist"; sourceTree = SOURCE_ROOT; };
 		114A1A7312989C4B004769D4 /* PlayerShips.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = PlayerShips.plist; path = "Game Resources/PlayerShips.plist"; sourceTree = SOURCE_ROOT; };
 		1170E3AB12865A18000BF968 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
@@ -218,22 +207,7 @@
 		11D324E712739DBD00F01BB5 /* MainMenuScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MainMenuScene.m; path = "Game Scenes/MainMenuScene.m"; sourceTree = "<group>"; };
 		11D325161273BF7900F01BB5 /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
 		11D325201273C14E00F01BB5 /* PreferencesManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PreferencesManager.h; path = "Singleton Managers/PreferencesManager.h"; sourceTree = "<group>"; };
-		11DE0F0D12CE6A5D00A3F7CA /* kEnemyKamikazeeLevelOne.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = kEnemyKamikazeeLevelOne.png; path = "Game Resources/Images/Normal/Ships/Enemy Ships/kEnemyKamikazeeLevelOne.png"; sourceTree = SOURCE_ROOT; };
-		11DE0F0E12CE6A5D00A3F7CA /* kEnemyKamikazeeLevelThree.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = kEnemyKamikazeeLevelThree.png; path = "Game Resources/Images/Normal/Ships/Enemy Ships/kEnemyKamikazeeLevelThree.png"; sourceTree = SOURCE_ROOT; };
-		11DE0F0F12CE6A5D00A3F7CA /* kEnemyMissileBombLevelThree.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = kEnemyMissileBombLevelThree.png; path = "Game Resources/Images/Normal/Ships/Enemy Ships/kEnemyMissileBombLevelThree.png"; sourceTree = SOURCE_ROOT; };
-		11DE0F1012CE6A5D00A3F7CA /* kEnemyOneShotLevelOne.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = kEnemyOneShotLevelOne.png; path = "Game Resources/Images/Normal/Ships/Enemy Ships/kEnemyOneShotLevelOne.png"; sourceTree = SOURCE_ROOT; };
-		11DE0F1112CE6A5D00A3F7CA /* kEnemyShipKamikazekBossNorthAmericaAssistTwo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = kEnemyShipKamikazekBossNorthAmericaAssistTwo.png; path = "Game Resources/Images/Normal/Ships/Enemy Ships/kEnemyShipKamikazekBossNorthAmericaAssistTwo.png"; sourceTree = SOURCE_ROOT; };
-		11DE0F1212CE6A5D00A3F7CA /* kEnemyShipMissileBombShotkBossEuropeAssist.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = kEnemyShipMissileBombShotkBossEuropeAssist.png; path = "Game Resources/Images/Normal/Ships/Enemy Ships/kEnemyShipMissileBombShotkBossEuropeAssist.png"; sourceTree = SOURCE_ROOT; };
-		11DE0F1312CE6A5D00A3F7CA /* kEnemyShipTwoShotkBossAfricaAssistOne.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = kEnemyShipTwoShotkBossAfricaAssistOne.png; path = "Game Resources/Images/Normal/Ships/Enemy Ships/kEnemyShipTwoShotkBossAfricaAssistOne.png"; sourceTree = SOURCE_ROOT; };
-		11DE0F1412CE6A5D00A3F7CA /* kEnemyThreeShotLevelOne.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = kEnemyThreeShotLevelOne.png; path = "Game Resources/Images/Normal/Ships/Enemy Ships/kEnemyThreeShotLevelOne.png"; sourceTree = SOURCE_ROOT; };
-		11DE0F1512CE6A5D00A3F7CA /* kEnemyThreeShotLevelThree.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = kEnemyThreeShotLevelThree.png; path = "Game Resources/Images/Normal/Ships/Enemy Ships/kEnemyThreeShotLevelThree.png"; sourceTree = SOURCE_ROOT; };
-		11DE0F1612CE6A5D00A3F7CA /* kEnemyTwoShotLevelOne.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = kEnemyTwoShotLevelOne.png; path = "Game Resources/Images/Normal/Ships/Enemy Ships/kEnemyTwoShotLevelOne.png"; sourceTree = SOURCE_ROOT; };
-		11DE0F1712CE6A5D00A3F7CA /* kEnemyTwoShotLevelTwo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = kEnemyTwoShotLevelTwo.png; path = "Game Resources/Images/Normal/Ships/Enemy Ships/kEnemyTwoShotLevelTwo.png"; sourceTree = SOURCE_ROOT; };
-		11DE0F1812CE6A5D00A3F7CA /* kEnemyWaveShotLevelFour.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = kEnemyWaveShotLevelFour.png; path = "Game Resources/Images/Normal/Ships/Enemy Ships/kEnemyWaveShotLevelFour.png"; sourceTree = SOURCE_ROOT; };
-		11DE0F1912CE6A5D00A3F7CA /* kEnemyWaveShotLevelOne.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = kEnemyWaveShotLevelOne.png; path = "Game Resources/Images/Normal/Ships/Enemy Ships/kEnemyWaveShotLevelOne.png"; sourceTree = SOURCE_ROOT; };
-		11DE0F1A12CE6A5D00A3F7CA /* kEnemyWaveShotLevelTwo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = kEnemyWaveShotLevelTwo.png; path = "Game Resources/Images/Normal/Ships/Enemy Ships/kEnemyWaveShotLevelTwo.png"; sourceTree = SOURCE_ROOT; };
 		11DE0F2912CE6A9500A3F7CA /* devship.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = devship.png; path = "Game Resources/Images/Normal/Ships/Player Ships/devship.png"; sourceTree = SOURCE_ROOT; };
-		11DE0F2D12CE7ADF00A3F7CA /* enemyspritesheet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = enemyspritesheet.png; sourceTree = "<group>"; };
 		11E7DCE5129F00D90047E2FD /* kBossAsiaCannonLeft.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = kBossAsiaCannonLeft.png; path = "Game Resources/Images/Normal/Ships/Boss Ships/kBossAsiaCannonLeft.png"; sourceTree = SOURCE_ROOT; };
 		11E7DCE6129F00D90047E2FD /* kBossAsiaCannonRight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = kBossAsiaCannonRight.png; path = "Game Resources/Images/Normal/Ships/Boss Ships/kBossAsiaCannonRight.png"; sourceTree = SOURCE_ROOT; };
 		11E7DCE7129F00D90047E2FD /* kBossAsiaMainBody.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = kBossAsiaMainBody.png; path = "Game Resources/Images/Normal/Ships/Boss Ships/kBossAsiaMainBody.png"; sourceTree = SOURCE_ROOT; };
@@ -346,20 +320,8 @@
 		11336117129EEEB000FE6A03 /* Enemy Ships */ = {
 			isa = PBXGroup;
 			children = (
-				11DE0F0D12CE6A5D00A3F7CA /* kEnemyKamikazeeLevelOne.png */,
-				11DE0F0E12CE6A5D00A3F7CA /* kEnemyKamikazeeLevelThree.png */,
-				11DE0F0F12CE6A5D00A3F7CA /* kEnemyMissileBombLevelThree.png */,
-				11DE0F1012CE6A5D00A3F7CA /* kEnemyOneShotLevelOne.png */,
-				11DE0F1112CE6A5D00A3F7CA /* kEnemyShipKamikazekBossNorthAmericaAssistTwo.png */,
-				11DE0F1212CE6A5D00A3F7CA /* kEnemyShipMissileBombShotkBossEuropeAssist.png */,
-				11DE0F1312CE6A5D00A3F7CA /* kEnemyShipTwoShotkBossAfricaAssistOne.png */,
-				11DE0F1412CE6A5D00A3F7CA /* kEnemyThreeShotLevelOne.png */,
-				11DE0F1512CE6A5D00A3F7CA /* kEnemyThreeShotLevelThree.png */,
-				11DE0F1612CE6A5D00A3F7CA /* kEnemyTwoShotLevelOne.png */,
-				11DE0F1712CE6A5D00A3F7CA /* kEnemyTwoShotLevelTwo.png */,
-				11DE0F1812CE6A5D00A3F7CA /* kEnemyWaveShotLevelFour.png */,
-				11DE0F1912CE6A5D00A3F7CA /* kEnemyWaveShotLevelOne.png */,
-				11DE0F1A12CE6A5D00A3F7CA /* kEnemyWaveShotLevelTwo.png */,
+				112FA4EA12CEAC0A005C542B /* kEnemyKamikazeLevelOne.png */,
+				112FA4F212CEAEEF005C542B /* kEnemyWaveShotLevelFour.png */,
 			);
 			name = "Enemy Ships";
 			sourceTree = "<group>";
@@ -675,7 +637,6 @@
 				11F3274312A0D8D5003CF17B /* about.png */,
 				11F3274412A0D8D5003CF17B /* backbutton.png */,
 				11F3274512A0D8D5003CF17B /* continue.png */,
-				11DE0F2D12CE7ADF00A3F7CA /* enemyspritesheet.png */,
 				11F3274812A0D8D5003CF17B /* forwardbutton.png */,
 				11F3274912A0D8D5003CF17B /* highscores.png */,
 				11F3274A12A0D8D5003CF17B /* highscoresbuttonalltime.png */,
@@ -857,22 +818,9 @@
 				11F3276812A0D8D5003CF17B /* settings.png in Resources */,
 				11F3276912A0D8D5003CF17B /* texture.png in Resources */,
 				11F3276A12A0D8D5003CF17B /* xenophobe.png in Resources */,
-				11DE0F1B12CE6A5D00A3F7CA /* kEnemyKamikazeeLevelOne.png in Resources */,
-				11DE0F1C12CE6A5D00A3F7CA /* kEnemyKamikazeeLevelThree.png in Resources */,
-				11DE0F1D12CE6A5D00A3F7CA /* kEnemyMissileBombLevelThree.png in Resources */,
-				11DE0F1E12CE6A5D00A3F7CA /* kEnemyOneShotLevelOne.png in Resources */,
-				11DE0F1F12CE6A5D00A3F7CA /* kEnemyShipKamikazekBossNorthAmericaAssistTwo.png in Resources */,
-				11DE0F2012CE6A5D00A3F7CA /* kEnemyShipMissileBombShotkBossEuropeAssist.png in Resources */,
-				11DE0F2112CE6A5D00A3F7CA /* kEnemyShipTwoShotkBossAfricaAssistOne.png in Resources */,
-				11DE0F2212CE6A5D00A3F7CA /* kEnemyThreeShotLevelOne.png in Resources */,
-				11DE0F2312CE6A5D00A3F7CA /* kEnemyThreeShotLevelThree.png in Resources */,
-				11DE0F2412CE6A5D00A3F7CA /* kEnemyTwoShotLevelOne.png in Resources */,
-				11DE0F2512CE6A5D00A3F7CA /* kEnemyTwoShotLevelTwo.png in Resources */,
-				11DE0F2612CE6A5D00A3F7CA /* kEnemyWaveShotLevelFour.png in Resources */,
-				11DE0F2712CE6A5D00A3F7CA /* kEnemyWaveShotLevelOne.png in Resources */,
-				11DE0F2812CE6A5D00A3F7CA /* kEnemyWaveShotLevelTwo.png in Resources */,
 				11DE0F2A12CE6A9500A3F7CA /* devship.png in Resources */,
-				11DE0F2E12CE7ADF00A3F7CA /* enemyspritesheet.png in Resources */,
+				112FA4EC12CEAC0A005C542B /* kEnemyKamikazeLevelOne.png in Resources */,
+				112FA4F312CEAEEF005C542B /* kEnemyWaveShotLevelFour.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

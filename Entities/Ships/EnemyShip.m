@@ -27,6 +27,10 @@
 //
 //  Last Updated - 12/31/1010 @11AM - Alexander
 //  - Playing with the spritesheet timer
+//
+//  Last Updated - 12/31/2010 @7:30PM - Alexander
+//  - Memory management: Added dealloc method and put
+//  our deallocations in it.
 
 #import "EnemyShip.h"
 
@@ -268,7 +272,7 @@
         
         enemyAnimation = [[Animation alloc] init];
         for(int i = 0; i < [[enemyDictionary valueForKey:@"kSpriteSheetNumColumns"] intValue]; i++) {
-            [enemyAnimation addFrameWithImage:[enemySpriteSheet getSpriteAtX:i y:0] delay:0.08];
+            [enemyAnimation addFrameWithImage:[enemySpriteSheet getSpriteAtX:i y:0] delay:0.05];
         }
         [enemyAnimation setRunning:YES];
         [enemyAnimation setRepeat:YES];
@@ -285,6 +289,15 @@
 
 - (void)render {
     [enemyAnimation renderAtPoint:currentLocation];
+}
+
+- (void)dealloc {
+    free(weaponPoints);
+    free(collisionDetectionBoundingPoints);
+    [enemySpriteSheet release];
+    [enemyAnimation release];
+    [playerShipRef release];
+    [super dealloc];
 }
 
 @end

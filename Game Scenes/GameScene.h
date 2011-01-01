@@ -28,7 +28,6 @@
     BossShip    *testBoss;
     
     PlayerShip  *secondTestShip;
-    Polygon     *secondPlayerPoly;
     
     // Storing objects in play
     NSSet       *enemiesSet;

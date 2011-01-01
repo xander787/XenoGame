@@ -39,6 +39,9 @@
  *  Last Updated - 12/30/2010 @ 5PM - James
  *  - Removed collide functions and to-CGPoint 
  *  conversions and length function.
+ *
+ *  Last Updated - 12/31/2010 @ 7:30PM - Alexander
+ *  - Memory management
  */
 
 #import <Foundation/Foundation.h>
@@ -199,4 +202,6 @@ static inline Vector2f * transferFromNSArrayToCArray(NSArray *recievedArray){
     }
     
     return targetArray;
+    
+    free(targetArray);
 }

@@ -22,6 +22,10 @@
 //
 //  Last Updated - 12/19/2010 @5PM - Alexander
 //  - Added collision point loading code from PLIST
+//
+//  Last Updated - 12/31/2010 @7:30PM - Alexander
+//  - Memory management: added dealloc method and use it
+//  to deallocate our objects
 
 #import "BossShip.h"
 
@@ -265,6 +269,11 @@
         [moduleImage renderAtPoint:CGPointMake(currentLocation.x - modularObjects[i].location.x, currentLocation.y - modularObjects[i].location.y) centerOfImage:YES];
         [moduleImage release];
     }
+}
+
+- (void)dealloc {
+    [playerShipRef release];
+    [super dealloc];
 }
 
 @end
