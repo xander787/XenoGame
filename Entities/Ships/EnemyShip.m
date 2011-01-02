@@ -274,7 +274,6 @@
         
         shipWidth = [[enemyDictionary valueForKey:@"kSpriteSheetColumnWidth"] intValue];
         shipHeight = [[enemyDictionary valueForKey:@"kSpriteSheetRowheight"] intValue];
-}
         
         NSLog(@"Enemy: %f, %f", self.boundingBox.x, self.boundingBox.y);
         
