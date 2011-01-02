@@ -56,9 +56,13 @@
 //  init stuff out of here, also removed the line drawing
 //  code out.
 //
-//  Last Updated - 12/31/2010 @7:30PM - Alexander
+//  Last Updated - 12/31/2010 @ 7:30PM - Alexander
 //  - Memory management: added dealloc method and use it
 //  to deallocate our objects
+//
+//  Last Updated - 1/1/11 @ 9:50PM - James
+//  - Made the testShip follow the bounds of the screen
+//  and made selecting the bottom part of the testShip easier
 
 #import "GameScene.h"
 
@@ -152,9 +156,9 @@
 	location.y = 480-location.y;
     
     if(CGRectContainsPoint(CGRectMake(testShip.currentLocation.x - ((testShip.boundingBox.x * 1.4) / 2),
-                                      testShip.currentLocation.y - (testShip.boundingBox.y / 2),
+                                      testShip.currentLocation.y - (testShip.boundingBox.y / 2) - 30,
                                       testShip.boundingBox.x * 1.4,
-                                      testShip.boundingBox.y),
+                                      testShip.boundingBox.y + 30),
                            location)){
         NSLog(@"Touched on Ship :D");
         touchOriginatedFromPlayerShip = YES;
@@ -184,6 +188,20 @@
 	location.y = 480-location.y;
     location.y += 30;
     if(touchOriginatedFromPlayerShip){
+        
+        //Doens't let the ship out of bounds
+        if(location.x - ([testShip shipWidth] / 2) < 0){
+            location.x = [testShip shipWidth] / 2;
+        }
+        if((location.x + [testShip shipWidth]) > 320){
+            location.x = 320 - ([testShip shipWidth] / 2);
+        }
+        if(location.y - ([testShip shipHeight] / 2) < 0){
+            location.y = [testShip shipHeight] / 2;
+        }
+        if(location.y + ([testShip shipHeight] / 2) > 480){
+            location.y = 480 - ([testShip shipHeight] / 2);
+        }
         [testShip setDesiredLocation:location];
     }
     if(touchFromSecondShip){
