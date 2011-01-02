@@ -27,6 +27,9 @@
 //
 //  Last Updated - 12/29/10 @12AM - Alexander
 //  - Added array for collision bounding points
+//
+//  Last Updated - 1/1/11 @9:30PM - Alexander
+//  - Added shipWidth and shipHeight properties
 
 #import <Foundation/Foundation.h>
 #import "PlayerShip.h"
@@ -101,6 +104,9 @@ typedef enum _EnemyShipCategory {
 	int						enemySpeed;
     CGPoint                 currentLocation;
     
+    int                     shipWidth;
+    int                     shipHeight;
+    
     @private
     EnemyShipID             enemyID;
     EnemyShipCategory       enemyCategroy;
@@ -111,12 +117,15 @@ typedef enum _EnemyShipCategory {
     PlayerShip              *playerShipRef;
 }
 
+- (id)initWithShipID:(EnemyShipID)aEnemyID initialLocation:(CGPoint)aPoint andPlayerShipRef:(PlayerShip *)aPlayership;
+
 @property(nonatomic, readonly) int enemyHealth;
 @property(nonatomic, readonly) int enemyAttack;
 @property(nonatomic, readonly) int enemyStamina;
 @property(nonatomic, readonly) int enemySpeed;
 @property(nonatomic, readonly) CGPoint currentLocation;
 
-- (id)initWithShipID:(EnemyShipID)aEnemyID initialLocation:(CGPoint)aPoint andPlayerShipRef:(PlayerShip *)aPlayership;
+@property (readonly) int shipWidth;
+@property (readonly) int shipHeight;
 
 @end

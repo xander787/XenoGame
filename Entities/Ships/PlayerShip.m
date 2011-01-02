@@ -55,13 +55,16 @@
 //
 //  Last Updated - 12/31/2010 @7:30PM - Alexander
 //  - Memory management: deallocate objects in dealloc method
+//
+//  Last Updated - 1/1/11 @9:30PM - Alexander
+//  - Added shipWidth and shipHeight properties
 
 #import "PlayerShip.h"
 
 
 @implementation PlayerShip
 
-@synthesize shipHealth, shipAttack, shipStamina, shipSpeed, shipTemporaryWeaponUpgrade, shipTemporaryMiscUpgrade, currentLocation, collisionDetectionBoundingPoints, collisionPointsCount, desiredPosition, collisionPolygon;
+@synthesize shipHealth, shipAttack, shipStamina, shipSpeed, shipTemporaryWeaponUpgrade, shipTemporaryMiscUpgrade, currentLocation, collisionDetectionBoundingPoints, collisionPointsCount, desiredPosition, collisionPolygon, shipWidth, shipHeight;
 
 - (id) init {
 	self = [super init];
@@ -201,6 +204,8 @@
         collisionPointsCount = [[shipDictionary valueForKey:@"kCollisionPointsCount"] intValue];
         
 		mainImage = [[Image alloc] initWithImage:[shipDictionary valueForKey:@"kMainImage"] scale:1.0f];
+        shipWidth = [mainImage imageWidth];
+        shipHeight = [mainImage imageHeight];
         //Sets the boundingBox for use with DidCollide
         self.boundingBox = Vector2fMake(mainImage.imageWidth, mainImage.imageHeight);
         NSLog(@"Player: %f, %f", self.boundingBox.x, self.boundingBox.y);

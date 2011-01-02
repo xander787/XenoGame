@@ -31,13 +31,16 @@
 //  Last Updated - 12/31/2010 @7:30PM - Alexander
 //  - Memory management: Added dealloc method and put
 //  our deallocations in it.
+//
+//  Last Updated - 1/1/11 @9:30PM - Alexander
+//  - Added shipWidth and shipHeight properties
 
 #import "EnemyShip.h"
 
 
 @implementation EnemyShip
 
-@synthesize enemyHealth, enemyAttack, enemyStamina, enemySpeed, currentLocation;
+@synthesize enemyHealth, enemyAttack, enemyStamina, enemySpeed, currentLocation, shipWidth, shipHeight;
 
 - (id)init {
     self = [super init];
@@ -268,6 +271,11 @@
         
         //Sets boundingBox for use with DidCollide
         self.boundingBox = Vector2fMake([[enemyDictionary valueForKey:@"kSpriteSheetColumnWidth"] intValue], [[enemyDictionary valueForKey:@"kSpriteSheetRowHeight"] intValue]);
+        
+        shipWidth = [[enemyDictionary valueForKey:@"kSpriteSheetColumnWidth"] intValue];
+        shipHeight = [[enemyDictionary valueForKey:@"kSpriteSheetRowheight"] intValue];
+}
+        
         NSLog(@"Enemy: %f, %f", self.boundingBox.x, self.boundingBox.y);
         
         enemyAnimation = [[Animation alloc] init];

@@ -32,6 +32,9 @@
 //
 //  Last Updated - 12/29/2010 @11:50PM - James
 //  - Changed the collision array to be readonly and public
+//
+//  Last Updated - 1/1/11 @9:30PM - Alexander
+//  - Added shipWidth and shipHeight properties
 
 #import <Foundation/Foundation.h>
 #import "AbstractShip.h"
@@ -83,6 +86,9 @@ typedef enum _PlayerShipTemporaryMiscUpgrade {
     int                                 collisionPointsCount;
     CGPoint                             desiredPosition;
     Polygon                             *collisionPolygon;
+    
+    int                                 shipWidth;
+    int                                 shipHeight;
 	
 @private
 	PlayerShipID						shipID;
@@ -108,5 +114,8 @@ typedef enum _PlayerShipTemporaryMiscUpgrade {
 @property (readonly) int collisionPointsCount;
 @property (readwrite) CGPoint desiredPosition;
 @property (nonatomic, retain) Polygon *collisionPolygon;
+
+@property (readonly) int shipWidth;
+@property (readonly) int shipHeight;
 
 @end
