@@ -10,16 +10,6 @@
 //	James Linnell - Software Engineer, Creative Design, Art Producer
 //	Tyler Newcomb - Creative Design, Art Producer
 //
-//  Last Updated - 11/23/2010 @2:15PM - James
-//  - Fixed small bug with change from changing the player
-//  ship reference in Enemy to a single pointer, initialization
-//  was still using &testShip.
-//
-//  Last Updated - 12/17/10 @6PM - James
-//  - Added restriction of only being able to move the
-//  Player ship if the user touched in the bounds of
-//  the Player ship initially.
-//
 //  Last Updated - 12/23/10 @ 9:15PM - James
 //  - Added an NSSet for enemies loaded into memory,
 //  started basic use of DidCollide (form Common.h)
@@ -63,6 +53,10 @@
 //  Last Updated - 1/1/11 @ 9:50PM - James
 //  - Made the testShip follow the bounds of the screen
 //  and made selecting the bottom part of the testShip easier
+//
+//  Last Updated - 1/3/11 @5PM - Alexander
+//  - Moved a lot of external code to the polygon and internalized
+//  it into the class of the ships to make it more organized.
 
 #import "GameScene.h"
 
@@ -104,13 +98,9 @@
     testEnemy = [[EnemyShip alloc] initWithShipID:kEnemyShip_WaveShotLevelFour initialLocation:CGPointMake(255, 300) andPlayerShipRef:testShip];
 //  testBoss = [[BossShip alloc] initWithBossID:kBoss_Asia initialLocation:CGPointMake(155, 330) andPlayerShipRef:testShip];
     enemiesSet = [[NSSet alloc] initWithObjects:testEnemy, nil];    
-    
-    //Setup the polygon for PlayerShip
-    testShip.collisionPolygon = [[Polygon alloc] initWithPoints:[testShip collisionDetectionBoundingPoints] andCount:[testShip collisionPointsCount] andShipPos:[testShip currentLocation]];
-    
+        
     //Second ship
     secondTestShip = [[PlayerShip alloc] initWithShipID:kPlayerShip_Dev andInitialLocation:CGPointMake(155, 270)];
-    secondTestShip.collisionPolygon = [[Polygon alloc] initWithPoints:[secondTestShip collisionDetectionBoundingPoints] andCount:[testShip collisionPointsCount] andShipPos:[testShip currentLocation]];
 }
 
 - (void)updateWithDelta:(GLfloat)aDelta {
@@ -135,8 +125,6 @@
     [secondTestShip update:aDelta];
     
     [self updateCollisions];
-    [testShip.collisionPolygon setPos:testShip.currentLocation];
-    [secondTestShip.collisionPolygon setPos:secondTestShip.currentLocation];
 }
 
 - (void)setSceneState:(uint)theState {

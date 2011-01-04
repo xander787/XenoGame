@@ -10,23 +10,6 @@
 //	James Linnell - Software Engineer, Creative Design, Art Producer
 //	Tyler Newcomb - Creative Design, Art Producer
 //
-//	Last Updated - 11/21/2010 @11AM - Alexander
-//	- Added in some commenting and fixed a memory leak
-//  - Added in code to load the thruster points as well
-//
-//	Last Updated - 11/22/2010 @12AM - Alexander
-//	- Added in first test code for moving the ship
-//  using the updateWithDelta approach and coords
-//  passed in from the scene class the ship is in
-//
-//  Last Updated - 11/23/2010 @10:30PM - Alexander
-//  - Think I've got the speed variance for the ship
-//  down, or at least pretty close now.
-//
-//  Last Updated - 11/26/2010 @6PM - Alexander
-//  - Fixed a bug where the playership would move to the
-//  corner of the screen upon initialization
-//
 //  Last Updated - 12/17/10 @6PM - James
 //  - Assigned correct width and height measurements
 //  to the boundingBox variable, derived from
@@ -58,6 +41,15 @@
 //
 //  Last Updated - 1/1/11 @9:30PM - Alexander
 //  - Added shipWidth and shipHeight properties
+//
+//  Last Updated - 1/3/11 @4PM - Alexander
+//  - Moved the polygon init code from the game scene and internalized it
+//  into this [PlayerShip] class.
+//
+//  Last Updated - 1/3/11 @4:15PM - Alexander
+//  - Removed unecessary key from PLIST "collisionPointsCount"
+//  because we have all the points in an array, and thus obviously
+//  know how many we have. Not needed and takes up more file space.
 
 #import "PlayerShip.h"
 
@@ -178,6 +170,7 @@
         
         //Fill a C array with Vector2f's of our ship's collision detection bounding points
         NSArray *collisionArray = [[NSArray alloc] initWithArray:[shipDictionary objectForKey:@"kCollisionBoundingPoints"]];
+        collisionPointsCount = [collisionArray count];
         collisionDetectionBoundingPoints = malloc(sizeof(Vector2f) * [collisionArray count]);
         bzero(collisionDetectionBoundingPoints, sizeof(Vector2f) * [collisionArray count]);
         
@@ -200,8 +193,7 @@
             NSLog(@"%f, %f", collisionDetectionBoundingPoints[i].x, collisionDetectionBoundingPoints[i].y);
         }
         
-        //Counts for number of points for the collisionBounds
-        collisionPointsCount = [[shipDictionary valueForKey:@"kCollisionPointsCount"] intValue];
+        collisionPolygon = [[Polygon alloc] initWithPoints:collisionDetectionBoundingPoints andCount:collisionPointsCount andShipPos:currentLocation];
         
 		mainImage = [[Image alloc] initWithImage:[shipDictionary valueForKey:@"kMainImage"] scale:1.0f];
         shipWidth = [mainImage imageWidth];
@@ -223,8 +215,8 @@
 - (void)update:(GLfloat)delta {
     currentLocation.x += ((desiredPosition.x - currentLocation.x) / shipSpeed) * (pow(1.584893192, shipSpeed)) * delta;
     currentLocation.y += ((desiredPosition.y - currentLocation.y) / shipSpeed) * (pow(1.584893192, shipSpeed)) * delta;
-    
-    self.position = Vector2fMake(currentLocation.x, currentLocation.y); // Sets position for use of DidCollide
+        
+    [collisionPolygon setPos:currentLocation];
 }
 
 - (void)render {    
@@ -235,39 +227,28 @@
         
         glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
         
-        //Ship one
-        const GLfloat line1[] = {
-            collisionPolygon.points[0].x, collisionPolygon.points[0].y, //point A
-            collisionPolygon.points[1].x, collisionPolygon.points[1].y, //point B
+        
+        for(int i = 0; i < (collisionPointsCount - 1); i++) {
+            GLfloat line[] = {
+              collisionPolygon.points[i].x, collisionPolygon.points[i].y,
+              collisionPolygon.points[i+1].x, collisionPolygon.points[i+1].y,
+            };
+            
+            glVertexPointer(2, GL_FLOAT, 0, line);
+            glEnableClientState(GL_VERTEX_ARRAY);
+            glDrawArrays(GL_LINES, 0, 2);
+        }
+        
+        GLfloat lineEnd[] = {
+            collisionPolygon.points[(collisionPointsCount - 1)].x, collisionPolygon.points[(collisionPointsCount - 1)].y,
+            collisionPolygon.points[0].x, collisionPolygon.points[0].y,
         };
         
-        const GLfloat line2[] = {
-            collisionPolygon.points[1].x, collisionPolygon.points[1].y, //point A
-            collisionPolygon.points[2].x, collisionPolygon.points[2].y, //point B
-        };
-        
-        const GLfloat line3[] = {
-            collisionPolygon.points[2].x, collisionPolygon.points[2].y, //point A
-            collisionPolygon.points[3].x, collisionPolygon.points[3].y, //point B
-        };
-        
-        const GLfloat line4[] = {
-            collisionPolygon.points[3].x, collisionPolygon.points[3].y, //point A
-            collisionPolygon.points[0].x, collisionPolygon.points[0].y, //point B
-        };
-        
-        glVertexPointer(2, GL_FLOAT, 0, line1);
+        glVertexPointer(2, GL_FLOAT, 0, lineEnd);
         glEnableClientState(GL_VERTEX_ARRAY);
         glDrawArrays(GL_LINES, 0, 2);
         
-        glVertexPointer(2, GL_FLOAT, 0, line2);
-        glDrawArrays(GL_LINES, 0, 2);
-        
-        glVertexPointer(2, GL_FLOAT, 0, line3);
-        glDrawArrays(GL_LINES, 0, 2);
-        
-        glVertexPointer(2, GL_FLOAT, 0, line4);
-        glDrawArrays(GL_LINES, 0, 2);
+        glPopMatrix();
     }
 }
 

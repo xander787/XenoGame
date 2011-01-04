@@ -40,7 +40,7 @@
 
 @implementation EnemyShip
 
-@synthesize enemyHealth, enemyAttack, enemyStamina, enemySpeed, currentLocation, shipWidth, shipHeight;
+@synthesize enemyHealth, enemyAttack, enemyStamina, enemySpeed, currentLocation, shipWidth, shipHeight, collisionPolygon;
 
 - (id)init {
     self = [super init];
@@ -243,6 +243,7 @@
         
         //Fill a C array with the collision bounding points from the enemy
         NSArray *collisionArray = [[NSArray alloc] initWithArray:[enemyDictionary objectForKey:@"kCollisionBoundingPoints"]];
+        collisionPointsCount = [collisionArray count];
         collisionDetectionBoundingPoints = malloc(sizeof(Vector2f) * [collisionArray count]);
         bzero(collisionDetectionBoundingPoints, sizeof(Vector2f) * [collisionArray count]);
         
@@ -262,21 +263,18 @@
         }
         [collisionArray release];
         
+        collisionPolygon = [[Polygon alloc] initWithPoints:collisionDetectionBoundingPoints andCount:collisionPointsCount andShipPos:currentLocation];
+        
+        shipWidth = [[enemyDictionary valueForKey:@"kSpriteSheetColumnWidth"] intValue];
+        shipHeight = [[enemyDictionary valueForKey:@"kSpriteSheetRowheight"] intValue];
+        
         Image *spriteSheetImage = [[Image alloc] initWithImage:[enemyDictionary valueForKey:@"kShipSpriteSheet"] scale:1.0f];
         enemySpriteSheet = [[SpriteSheet alloc] initWithImage:spriteSheetImage 
                                                   spriteWidth:[[enemyDictionary valueForKey:@"kSpriteSheetColumnWidth"] intValue]
                                                  spriteHeight:[[enemyDictionary valueForKey:@"kSpriteSheetRowHeight"] intValue]
                                                       spacing:0];
         [spriteSheetImage release];
-        
-        //Sets boundingBox for use with DidCollide
-        self.boundingBox = Vector2fMake([[enemyDictionary valueForKey:@"kSpriteSheetColumnWidth"] intValue], [[enemyDictionary valueForKey:@"kSpriteSheetRowHeight"] intValue]);
-        
-        shipWidth = [[enemyDictionary valueForKey:@"kSpriteSheetColumnWidth"] intValue];
-        shipHeight = [[enemyDictionary valueForKey:@"kSpriteSheetRowheight"] intValue];
-        
-        NSLog(@"Enemy: %f, %f", self.boundingBox.x, self.boundingBox.y);
-        
+                                
         enemyAnimation = [[Animation alloc] init];
         for(int i = 0; i < [[enemyDictionary valueForKey:@"kSpriteSheetNumColumns"] intValue]; i++) {
             [enemyAnimation addFrameWithImage:[enemySpriteSheet getSpriteAtX:i y:0] delay:0.05];
@@ -292,10 +290,40 @@
 
 - (void)update:(GLfloat)delta {
     [enemyAnimation update:delta];
+    [collisionPolygon setPos:currentLocation];
 }
 
 - (void)render {
     [enemyAnimation renderAtPoint:currentLocation];
+    
+    if(DEBUG) {                
+        glPushMatrix();
+        
+        glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
+        
+        
+        for(int i = 0; i < (collisionPointsCount - 1); i++) {
+            GLfloat line[] = {
+                collisionPolygon.points[i].x, collisionPolygon.points[i].y,
+                collisionPolygon.points[i+1].x, collisionPolygon.points[i+1].y,
+            };
+            
+            glVertexPointer(2, GL_FLOAT, 0, line);
+            glEnableClientState(GL_VERTEX_ARRAY);
+            glDrawArrays(GL_LINES, 0, 2);
+        }
+        
+        GLfloat lineEnd[] = {
+            collisionPolygon.points[(collisionPointsCount - 1)].x, collisionPolygon.points[(collisionPointsCount - 1)].y,
+            collisionPolygon.points[0].x, collisionPolygon.points[0].y,
+        };
+        
+        glVertexPointer(2, GL_FLOAT, 0, lineEnd);
+        glEnableClientState(GL_VERTEX_ARRAY);
+        glDrawArrays(GL_LINES, 0, 2);
+        
+        glPopMatrix();
+    }
 }
 
 - (void)dealloc {

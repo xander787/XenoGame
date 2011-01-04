@@ -30,7 +30,12 @@
 			<string>94,49</string>
 		</array>
 		<key>kCollisionBoundingPoints</key>
-		<array/>
+		<array>
+			<string>20,21</string>
+			<string>20,-21</string>
+			<string>-21,-21</string>
+			<string>-21,21</string>
+		</array>
 	</dict>
 	<key>kShipWaveShot_Four</key>
 	<dict>
@@ -60,7 +65,12 @@
 			<string>94,49</string>
 		</array>
 		<key>kCollisionBoundingPoints</key>
-		<array/>
+		<array>
+			<string>20,21</string>
+			<string>20,-21</string>
+			<string>-21,-21</string>
+			<string>-21,21</string>
+		</array>
 	</dict>
 </dict>
 </plist>

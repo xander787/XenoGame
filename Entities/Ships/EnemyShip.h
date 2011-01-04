@@ -30,6 +30,9 @@
 //
 //  Last Updated - 1/1/11 @9:30PM - Alexander
 //  - Added shipWidth and shipHeight properties
+//
+//  Last Updated - 1/3/11 @4PM - Alexander
+//  - Adding in code to support the Polygon Collision system
 
 #import <Foundation/Foundation.h>
 #import "PlayerShip.h"
@@ -37,6 +40,7 @@
 #import "Animation.h"
 #import "SpriteSheet.h"
 #import "AbstractShip.h"
+#import "Polygon.h"
 
 typedef enum _EnemyShipID {
     kEnemyShip_OneShotLevelOne = 0,
@@ -103,6 +107,8 @@ typedef enum _EnemyShipCategory {
 	int						enemyStamina;
 	int						enemySpeed;
     CGPoint                 currentLocation;
+    int                                 collisionPointsCount;
+    Polygon                 *collisionPolygon;
     
     int                     shipWidth;
     int                     shipHeight;
@@ -124,6 +130,7 @@ typedef enum _EnemyShipCategory {
 @property(nonatomic, readonly) int enemyStamina;
 @property(nonatomic, readonly) int enemySpeed;
 @property(nonatomic, readonly) CGPoint currentLocation;
+@property (nonatomic, retain) Polygon *collisionPolygon;
 
 @property (readonly) int shipWidth;
 @property (readonly) int shipHeight;
