@@ -21,6 +21,7 @@
 #import "EnemyShip.h"
 #import "BossShip.h"
 #import "Collisions.h"
+#import "AngelCodeFont.h"
 
 @interface GameScene : AbstractScene {
     PlayerShip	*testShip;

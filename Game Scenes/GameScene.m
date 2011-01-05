@@ -10,16 +10,6 @@
 //	James Linnell - Software Engineer, Creative Design, Art Producer
 //	Tyler Newcomb - Creative Design, Art Producer
 //
-//  Last Updated - 12/23/10 @ 9:15PM - James
-//  - Added an NSSet for enemies loaded into memory,
-//  started basic use of DidCollide (form Common.h)
-//  to detect player vs. enemy collision
-//
-//	Last Updated - 12/29/2010 @ 12PM - Alexander
-//	- Moved test ship and other rendering here from
-//  the settings scene so we can begin setting up
-//  the class to handle the actual game.
-//
 //  Last Updated - 12/29/2010 @ 5PM - James
 //  - Fixed bug with the player not moving, misnamed
 //  update method. And after a lot of messy code, basic
@@ -57,6 +47,11 @@
 //  Last Updated - 1/3/11 @5PM - Alexander
 //  - Moved a lot of external code to the polygon and internalized
 //  it into the class of the ships to make it more organized.
+//
+//  Last Updatd - 1/5/11 @12:30AM - Alexander
+//  - Added really quick code to the render function that will
+//  print the game's framerate if DEBUG is set to on, thus helping
+//  us track performance later in development.
 
 #import "GameScene.h"
 
@@ -96,7 +91,7 @@
 - (void)initGameScene {
     testShip = [[PlayerShip alloc] initWithShipID:kPlayerShip_Dev andInitialLocation:CGPointMake(155, 200)];
     testEnemy = [[EnemyShip alloc] initWithShipID:kEnemyShip_WaveShotLevelFour initialLocation:CGPointMake(255, 300) andPlayerShipRef:testShip];
-//  testBoss = [[BossShip alloc] initWithBossID:kBoss_Asia initialLocation:CGPointMake(155, 330) andPlayerShipRef:testShip];
+    testBoss = [[BossShip alloc] initWithBossID:kBoss_Asia initialLocation:CGPointMake(155, 330) andPlayerShipRef:testShip];
     enemiesSet = [[NSSet alloc] initWithObjects:testEnemy, nil];    
         
     //Second ship
@@ -121,7 +116,7 @@
     
     [testShip update:aDelta];
     [testEnemy update:aDelta];
-//  [testBoss update:aDelta];
+    [testBoss update:aDelta];
     [secondTestShip update:aDelta];
     
     [self updateCollisions];
@@ -194,7 +189,7 @@
     }
     if(touchFromSecondShip){
         [secondTestShip setDesiredLocation:location];
-    }
+    }    
 }
 
 - (void)updateCollisions {
@@ -204,6 +199,10 @@
     if(result.intersect){
         NSLog(@"First Ship: Intersected");
     }
+    
+    result = [Collisions polygonCollision:testShip.collisionPolygon :testEnemy.collisionPolygon :Vector2fZero];
+    
+    if(result.intersect) NSLog(@"Enemy hit");
 }
 
 - (void)updateWithAccelerometer:(UIAcceleration *)aAcceleration {
@@ -216,9 +215,14 @@
 
 - (void)render {
     [testShip render];
-    [testEnemy render];
-//  [testBoss render];
+//    [testEnemy render];
+    [testBoss render];
     [secondTestShip render];
+    
+    if(DEBUG) {
+        AngelCodeFont *font = [[AngelCodeFont alloc] initWithFontImageNamed:@"xenophobefont.png" controlFile:@"xenophobefont" scale:(1.0/3.0) filter:GL_LINEAR];
+        [font drawStringAt:CGPointMake(15.0, 15.0) text:[NSString stringWithFormat:@"%.1f", [_sharedDirector framesPerSecond]]];
+    }
 }
 
 - (void)dealloc {
