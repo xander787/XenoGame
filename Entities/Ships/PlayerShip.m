@@ -93,12 +93,16 @@
 		
 		[playerShipsDictionary release];
 		
+        
+        
 		//Set the values from the dictionary for our ship
 		shipHealth = 100;
 		shipAttack  = [[shipDictionary valueForKey:@"kShipAttack"] intValue];
 		shipStamina = [[shipDictionary valueForKey:@"kShipStamina"] intValue];
 		shipSpeed = [[shipDictionary valueForKey:@"kShipSpeed"] intValue];
 		
+        
+        
 		if ([shipDictionary valueForKey:@"kShipCategory"] == @"kShipCategory_Attack") {
 			shipCategory = kShipCategory_Attack;
 		}
@@ -124,9 +128,9 @@
 		else if ([shipDictionary valueForKey:@"kPlayerWeaponType"] == @"kWeapon_Wave") {
 			shipWeaponType = kPlayerWeapon_Wave;
 		}
-		/***
-         OLD CODE STILL BACKED UP ON GIT & PRIVATE COPY ON JAMES'S COMP, NO WORRIES.
-        ***/
+
+        
+        
 		//Fill a C array with Vector2f's for our ship's turret points
 		NSArray *turretArray = [[NSArray alloc] initWithArray:[shipDictionary objectForKey:@"kTurretPoints"]];
 		turretPoints = malloc(sizeof(Vector2f) * [turretArray count]);
@@ -146,6 +150,8 @@
 			}
 		}
         [turretArray release];
+        
+        
         
         //Fill a C array with Vector2f's of our ship's thruster points
         NSArray *thrusterArray = [[NSArray alloc] initWithArray:[shipDictionary objectForKey:@"kThrusterPoints"]];
@@ -168,6 +174,8 @@
         }
         [thrusterArray release];
         
+        
+        
         //Fill a C array with Vector2f's of our ship's collision detection bounding points
         NSArray *collisionArray = [[NSArray alloc] initWithArray:[shipDictionary objectForKey:@"kCollisionBoundingPoints"]];
         collisionPointsCount = [collisionArray count];
@@ -189,11 +197,13 @@
             [coords release];
         }
         [collisionArray release];
-        for(int i = 0; i<4; i++){
-            NSLog(@"%f, %f", collisionDetectionBoundingPoints[i].x, collisionDetectionBoundingPoints[i].y);
-        }
+
         
+        
+        //Allocate our polygon, for use in collision detection.
         collisionPolygon = [[Polygon alloc] initWithPoints:collisionDetectionBoundingPoints andCount:collisionPointsCount andShipPos:currentLocation];
+        
+        
         
 		mainImage = [[Image alloc] initWithImage:[shipDictionary valueForKey:@"kMainImage"] scale:1.0f];
         shipWidth = [mainImage imageWidth];
@@ -209,6 +219,7 @@
 }
 
 - (void)setDesiredLocation:(CGPoint)aPoint {
+    //Named desired because the ship will not move as fast as the user inputs, we implement drag
     desiredPosition = aPoint;
 }
 
@@ -216,6 +227,7 @@
     currentLocation.x += ((desiredPosition.x - currentLocation.x) / shipSpeed) * (pow(1.584893192, shipSpeed)) * delta;
     currentLocation.y += ((desiredPosition.y - currentLocation.y) / shipSpeed) * (pow(1.584893192, shipSpeed)) * delta;
         
+    //Update the points for our polygon
     [collisionPolygon setPos:currentLocation];
 }
 
@@ -227,7 +239,7 @@
         
         glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
         
-        
+        //Loop through the all the lines except for the last
         for(int i = 0; i < (collisionPointsCount - 1); i++) {
             GLfloat line[] = {
               collisionPolygon.points[i].x, collisionPolygon.points[i].y,
@@ -239,6 +251,8 @@
             glDrawArrays(GL_LINES, 0, 2);
         }
         
+        
+        //Renders last line, we do this because of how arrays work.
         GLfloat lineEnd[] = {
             collisionPolygon.points[(collisionPointsCount - 1)].x, collisionPolygon.points[(collisionPointsCount - 1)].y,
             collisionPolygon.points[0].x, collisionPolygon.points[0].y,

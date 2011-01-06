@@ -94,7 +94,7 @@
     testBoss = [[BossShip alloc] initWithBossID:kBoss_Asia initialLocation:CGPointMake(155, 330) andPlayerShipRef:testShip];
     enemiesSet = [[NSSet alloc] initWithObjects:testEnemy, nil];    
         
-    //Second ship
+    //Second ship, used for collision testing purposes
     secondTestShip = [[PlayerShip alloc] initWithShipID:kPlayerShip_Dev andInitialLocation:CGPointMake(155, 270)];
 }
 
@@ -114,11 +114,14 @@
             break;
     }
     
+    //Make sure that all of our ship objects get their update: called. Necessary.
     [testShip update:aDelta];
     [testEnemy update:aDelta];
     [testBoss update:aDelta];
     [secondTestShip update:aDelta];
     
+    //Our method to check all collisions between the main
+    //player ship and all other objects with polygons
     [self updateCollisions];
 }
 
@@ -137,23 +140,33 @@
     
 	// Flip the y location ready to check it against OpenGL coordinates
 	location.y = 480-location.y;
+
     
-    if(CGRectContainsPoint(CGRectMake(testShip.currentLocation.x - ((testShip.boundingBox.x * 1.4) / 2),
-                                      testShip.currentLocation.y - (testShip.boundingBox.y / 2) - 30,
-                                      testShip.boundingBox.x * 1.4,
-                                      testShip.boundingBox.y + 30),
-                           location)){
+    //Gets a frame of the first player ship, adding a bit of width and
+    //30 pixels worth of height on the bottom half for ease of selection
+    CGRect shipFrame = CGRectMake(testShip.currentLocation.x - ((testShip.boundingBox.x * 1.4) / 2),
+                                  testShip.currentLocation.y - (testShip.boundingBox.y / 2) - 30,
+                                  testShip.boundingBox.x * 1.4,
+                                  testShip.boundingBox.y + 30);
+    
+    //If the ship was actually selected, set a Bool for the
+    //updateWithTouchLocationMoved: method to allow the ship to move
+    if(CGRectContainsPoint(shipFrame, location)){
         NSLog(@"Touched on Ship :D");
         touchOriginatedFromPlayerShip = YES;
     }
     else {
         touchOriginatedFromPlayerShip = NO;
     }
-    if(CGRectContainsPoint(CGRectMake(secondTestShip.currentLocation.x - ((secondTestShip.boundingBox.x * 1.4) / 2),
-                                      secondTestShip.currentLocation.y - (secondTestShip.boundingBox.y / 2),
-                                      secondTestShip.boundingBox.x * 1.4,
-                                      secondTestShip.boundingBox.y),
-                           location)){
+    
+    
+    //Same for the second ship
+    shipFrame = CGRectMake(secondTestShip.currentLocation.x - ((secondTestShip.boundingBox.x * 1.4) / 2),
+                           secondTestShip.currentLocation.y - (secondTestShip.boundingBox.y / 2),
+                           secondTestShip.boundingBox.x * 1.4,
+                           secondTestShip.boundingBox.y + 30);
+    
+    if(CGRectContainsPoint(shipFrame, location)){
         NSLog(@"Touched on Ship :D");
         touchFromSecondShip = YES;
     }
@@ -172,17 +185,19 @@
     location.y += 30;
     if(touchOriginatedFromPlayerShip){
         
-        //Doens't let the ship out of bounds
+        //Checks the edges of the ship against the edges of the screen.
+        //Note: we check one edge at a time because if we simply use CGRectContainsRect,
+        //the ship would not be able to move along an edge once exiting
         if(location.x - ([testShip shipWidth] / 2) < 0){
             location.x = [testShip shipWidth] / 2;
         }
-        if((location.x + [testShip shipWidth]) > 320){
+        if((location.x + [testShip shipWidth]) > _screenBounds.size.width){
             location.x = 320 - ([testShip shipWidth] / 2);
         }
         if(location.y - ([testShip shipHeight] / 2) < 0){
             location.y = [testShip shipHeight] / 2;
         }
-        if(location.y + ([testShip shipHeight] / 2) > 480){
+        if(location.y + ([testShip shipHeight] / 2) > _screenBounds.size.width){
             location.y = 480 - ([testShip shipHeight] / 2);
         }
         [testShip setDesiredLocation:location];
@@ -193,13 +208,18 @@
 }
 
 - (void)updateCollisions {
-    //Collisions for 1st ship -> second ship
+    
+    //So far we only check for collisions between the 1st ship and 2nd ship.
+    //When dealing with more obejcts, such as Enemies, we will loop through the NSSet's of loaded enemies.
+    
+    //result is a struct, containing intersect, willIntersect, and minimumTranslationVector.
+    //We will only be using intersect, as the other two are used for moving against polygons, not simple collisions.
     PolygonCollisionResult result = [Collisions polygonCollision:testShip.collisionPolygon :secondTestShip.collisionPolygon :Vector2fZero];
     
-    if(result.intersect){
-        NSLog(@"First Ship: Intersected");
-    }
+    if(result.intersect) NSLog(@"First Ship: Intersected");
     
+    
+    //Collision for a single enemy, same as above.
     result = [Collisions polygonCollision:testShip.collisionPolygon :testEnemy.collisionPolygon :Vector2fZero];
     
     if(result.intersect) NSLog(@"Enemy hit");
@@ -220,6 +240,8 @@
     [secondTestShip render];
     
     if(DEBUG) {
+        
+        //Draw some text at the bottom-left corner indicating the current FPS.
         AngelCodeFont *font = [[AngelCodeFont alloc] initWithFontImageNamed:@"xenophobefont.png" controlFile:@"xenophobefont" scale:(1.0/3.0) filter:GL_LINEAR];
         [font drawStringAt:CGPointMake(15.0, 15.0) text:[NSString stringWithFormat:@"%.1f", [_sharedDirector framesPerSecond]]];
     }
