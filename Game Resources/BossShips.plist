@@ -44,6 +44,14 @@
 			<string>136,-6</string>
 			<string>-136,-6</string>
 		</array>
+		<key>kCollisionBoundingPoints</key>
+		<array>
+			<string>0,-64;-90,17;-96,36;-27,66;27,66;95,36;89,17</string>
+			<string>9,0;-1,-11;-9,1;-1,12</string>
+			<string>9,0;-1,-11;-9,1;-1,12</string>
+			<string>16,-29;-5,-29;-16,4;-15,-30;16,18</string>
+			<string>-16,-29;5,-29;16,4;15,-30;-16,18</string>
+		</array>
 		<key>kShipTurretPoints</key>
 		<array>
 			<string>22,80;31,80;160,80;169,80</string>
@@ -101,7 +109,7 @@
 			<string>nil</string>
 			<string>nil</string>
 		</array>
-		<key>kShipModuleCollisionBoundingPoints</key>
+		<key>kCollisionBoundingPoints</key>
 		<array>
 			<string>10,0;20,0;30,0;40,0;</string>
 			<string>10,10;20,10;30,10;40,10;</string>

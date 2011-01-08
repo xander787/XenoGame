@@ -26,6 +26,10 @@
 //  Last Updated - 12/31/2010 @7:30PM - Alexander
 //  - Memory management: added dealloc method and use it
 //  to deallocate our objects
+//
+//  Last Updated - 1/8/11 @ 3PM - James
+//  Fixed the for loop using 'i' instead of 'j' for
+//  cloading collision points.
 
 #import "BossShip.h"
 
@@ -224,10 +228,10 @@
             modularObjects[i].collisionDetectionBoundingPoints = malloc(sizeof(Vector2f) * [coordPairs count]);
             bzero(modularObjects[i].collisionDetectionBoundingPoints, sizeof(Vector2f) * [coordPairs count]);
             
-            for(int i = 0; i < [coordPairs count]; i++) {
-                NSArray *coords = [[NSArray alloc] initWithArray:[[coordPairs objectAtIndex:i] componentsSeparatedByString:@","]];
+            for(int j = 0; j < [coordPairs count]; j++) {
+                NSArray *coords = [[NSArray alloc] initWithArray:[[coordPairs objectAtIndex:j] componentsSeparatedByString:@","]];
                 @try {
-                    modularObjects[i].collisionDetectionBoundingPoints[i] = Vector2fMake([[coords objectAtIndex:0] intValue], [[coords objectAtIndex:1] intValue]);
+                    modularObjects[i].collisionDetectionBoundingPoints[j] = Vector2fMake([[coords objectAtIndex:0] intValue], [[coords objectAtIndex:1] intValue]);
                 }
                 @catch (NSException * e) {
                     NSLog(@"Exception thrown: %@", e);
