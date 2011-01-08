@@ -107,7 +107,7 @@ typedef enum _EnemyShipCategory {
 	int						enemyStamina;
 	int						enemySpeed;
     CGPoint                 currentLocation;
-    int                                 collisionPointsCount;
+    int                     collisionPointsCount;
     Polygon                 *collisionPolygon;
     
     int                     shipWidth;
