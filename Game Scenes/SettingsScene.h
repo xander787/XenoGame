@@ -15,13 +15,11 @@
 
 #import <Foundation/Foundation.h>
 #import "AbstractScene.h"
-#import "PlayerShip.h"
-#import "EnemyShip.h"
-#import "BossShip.h"
-
+#import "AngelCodeFont.h"
 
 @interface SettingsScene : AbstractScene {
-    
+    AngelCodeFont   *font;
+    NSString        *controlsSettingString;
 }
 
 @end
