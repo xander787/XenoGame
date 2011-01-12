@@ -99,4 +99,11 @@
     return stringResult;
 }
 
+- (void)dealloc {
+    free(points);
+    free(edges);
+    free(originalPoints);
+    [super dealloc];
+}
+
 @end

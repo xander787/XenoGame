@@ -128,5 +128,6 @@ typedef struct _ModularObject {
 @property(readonly) ModularObject   *modularObjects;
 
 - (id)initWithBossID:(BossShipID)aBossID initialLocation:(CGPoint)aPoint andPlayerShipRef:(PlayerShip *)aPlayerShip;
+- (void)setDesiredLocation:(CGPoint)aPoint;
 
 @end

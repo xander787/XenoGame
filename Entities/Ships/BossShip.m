@@ -224,7 +224,7 @@
             [turretString release];
             
             //Load the collision detection points and assign them
-            NSArray *collisionCoordPairs = [[NSArray alloc] initWithArray:[bossDictionary objectForKey:@"kShipModuleCollisionBoundingPoints"]];
+            NSArray *collisionCoordPairs = [[NSArray alloc] initWithArray:[bossDictionary objectForKey:@"kCollisionBoundingPoints"]];
             
             NSArray *coordPairs = [[NSArray alloc] initWithArray:[[collisionCoordPairs objectAtIndex:i] componentsSeparatedByString:@";"]];
             modularObjects[i].collisionDetectionBoundingPoints = malloc(sizeof(Vector2f) * [coordPairs count]);
@@ -270,6 +270,10 @@
     }
     
     return self;
+}
+
+- (void)setDesiredLocation:(CGPoint)aPoint {
+    desiredLocation = aPoint;
 }
 
 - (void)update:(GLfloat)delta {
