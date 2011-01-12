@@ -26,17 +26,13 @@
 //  Last Updated - 12/31/2010 @7:30PM - Alexander
 //  - Memory management: added dealloc method and use it
 //  to deallocate our objects
-//
-//  Last Updated - 1/8/11 @ 3PM - James
-//  Fixed the for loop using 'i' instead of 'j' for
-//  cloading collision points.
 
 #import "BossShip.h"
 
 
 @implementation BossShip
 
-@synthesize bossHealth, bossAttack, bossStamina, bossSpeed, currentLocation;
+@synthesize bossHealth, bossAttack, bossStamina, bossSpeed, currentLocation, modularObjects;
 
 - (id)initWithBossID:(BossShipID)aBossID initialLocation:(CGPoint)aPoint andPlayerShipRef:(PlayerShip *)aPlayerShip {
     if(self = [super init]) {
@@ -189,10 +185,16 @@
         numberOfModules = [moduleImagesArray count];
         bzero(modularObjects, sizeof(ModularObject) * [moduleImagesArray count]);
         
+        shipWidth = 0;
+        shipHeight = 0;
+        
         for(int i = 0; i < [moduleImagesArray count]; i++) {
-            modularObjects[i].moduleImage = [[bossDictionary objectForKey:@"kShipModuleImages"] objectAtIndex:i];
+            modularObjects[i].moduleImage = [[Image alloc] initWithImage:[[bossDictionary objectForKey:@"kShipModuleImages"] objectAtIndex:i] scale:1.0f];
             modularObjects[i].drawingOrder = i;
             
+            shipWidth += modularObjects[i].moduleImage.imageWidth;
+            shipHeight += modularObjects[i].moduleImage.imageHeight;
+                        
             NSArray *moduleCoords = [[NSArray alloc] initWithArray:[[modulePointsArray objectAtIndex:i] componentsSeparatedByString:@","]];
             modularObjects[i].location = Vector2fMake([[moduleCoords objectAtIndex:0] floatValue], [[moduleCoords objectAtIndex:1] floatValue]);
             [moduleCoords release];
@@ -222,7 +224,7 @@
             [turretString release];
             
             //Load the collision detection points and assign them
-            NSArray *collisionCoordPairs = [[NSArray alloc] initWithArray:[bossDictionary objectForKey:@"kCollisionBoundingPoints"]];
+            NSArray *collisionCoordPairs = [[NSArray alloc] initWithArray:[bossDictionary objectForKey:@"kShipModuleCollisionBoundingPoints"]];
             
             NSArray *coordPairs = [[NSArray alloc] initWithArray:[[collisionCoordPairs objectAtIndex:i] componentsSeparatedByString:@";"]];
             modularObjects[i].collisionDetectionBoundingPoints = malloc(sizeof(Vector2f) * [coordPairs count]);
@@ -237,12 +239,21 @@
                     NSLog(@"Exception thrown: %@", e);
                 }
                 @finally {
-                    Vector2f vector = modularObjects[i].collisionDetectionBoundingPoints[i];
+                    Vector2f vector = modularObjects[i].collisionDetectionBoundingPoints[j];
                     NSLog(@"Collision Point: %f %f", vector.x, vector.y);
                 }
                 [coords release];
             }
             [coordPairs release];
+            
+            modularObjects[i].collisionPointsCount = [coordPairs count];
+            
+            modularObjects[i].collisionPolygon = [[Polygon alloc] initWithPoints:modularObjects[i].collisionDetectionBoundingPoints andCount:modularObjects[i].collisionPointsCount andShipPos:currentLocation];
+        }
+        
+        //Set the centers of the polygons so they get rendered properly
+        for(int i = 0; i < numberOfModules; i++){
+            [modularObjects[i].collisionPolygon setPos:CGPointMake(modularObjects[i].location.x + currentLocation.x, modularObjects[i].location.y + currentLocation.y)];
         }
         
         NSArray *destructionOrder = [[NSArray alloc] initWithArray:[bossDictionary objectForKey:@"kModularDestructionOrder"]];
@@ -264,14 +275,46 @@
 - (void)update:(GLfloat)delta {
     currentLocation.x += ((desiredLocation.x - currentLocation.x) / bossSpeed) * (pow(1.584893192, bossSpeed)) * delta;
     currentLocation.y += ((desiredLocation.y - currentLocation.y) / bossSpeed) * (pow(1.584893192, bossSpeed)) * delta;
+    
+    //Set the centers of the polygons so they get rendered properly
+    for(int i = 0; i < numberOfModules; i++){
+        [modularObjects[i].collisionPolygon setPos:CGPointMake(modularObjects[i].location.x + currentLocation.x, modularObjects[i].location.y + currentLocation.y)];  
+    }
 }
 
 - (void)render {
     for(int i = 0; i < numberOfModules; i++) {
-        NSString *imagePath = modularObjects[i].moduleImage;
-        Image *moduleImage = [[Image alloc] initWithImage:[NSString stringWithString:imagePath]];
-        [moduleImage renderAtPoint:CGPointMake(currentLocation.x - modularObjects[i].location.x, currentLocation.y - modularObjects[i].location.y) centerOfImage:YES];
-        [moduleImage release];
+        [modularObjects[i].moduleImage renderAtPoint:CGPointMake(currentLocation.x - modularObjects[i].location.x, currentLocation.y - modularObjects[i].location.y) centerOfImage:YES];
+    }
+    
+    if(DEBUG) {                
+        glPushMatrix();
+        
+        glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
+        
+        for(int i = 0; i < numberOfModules; i++) {
+            for(int j = 0; j < (modularObjects[i].collisionPointsCount - 1); j++) {
+                GLfloat line[] = {
+                    modularObjects[i].collisionPolygon.points[j].x, modularObjects[i].collisionPolygon.points[j].y,
+                    modularObjects[i].collisionPolygon.points[j+1].x, modularObjects[i].collisionPolygon.points[j+1].y,
+                };
+                
+                glVertexPointer(2, GL_FLOAT, 0, line);
+                glEnableClientState(GL_VERTEX_ARRAY);
+                glDrawArrays(GL_LINES, 0, 2);
+            }
+            
+            GLfloat lineEnd[] = {
+                modularObjects[i].collisionPolygon.points[(modularObjects[i].collisionPointsCount - 1)].x, modularObjects[i].collisionPolygon.points[(modularObjects[i].collisionPointsCount - 1)].y,
+                modularObjects[i].collisionPolygon.points[0].x, modularObjects[i].collisionPolygon.points[0].y,
+            };
+            
+            glVertexPointer(2, GL_FLOAT, 0, lineEnd);
+            glEnableClientState(GL_VERTEX_ARRAY);
+            glDrawArrays(GL_LINES, 0, 2);
+        }
+        
+        glPopMatrix();
     }
 }
 

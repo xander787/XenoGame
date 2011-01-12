@@ -24,6 +24,7 @@
 #import "Animation.h"
 #import "SpriteSheet.h"
 #import "PlayerShip.h"
+#import "Polygon.h"
 
 typedef enum _BossType {
     kBossType_Mini = 0,
@@ -85,15 +86,18 @@ typedef struct _WeaponObject {
 typedef struct _ModularObject {
     int             numberOfWeapons;
     int             numberOfThrusters;
-    WeaponObject    *weapons; // Array
+    WeaponObject    *weapons;
     BOOL            floating;
     int             positionFloatVariance;
-    Vector2f        *thrusterPoints; // Array
-    Vector2f        *collisionDetectionBoundingPoints; // Array
+    Vector2f        *thrusterPoints;
     int             destructionOrder;
     int             drawingOrder;
     Vector2f        location;
-    NSString        *moduleImage;
+    Image           *moduleImage;
+    
+    Vector2f        *collisionDetectionBoundingPoints;
+    Polygon         *collisionPolygon;
+    int             collisionPointsCount;
 } ModularObject;
 
 
@@ -104,12 +108,15 @@ typedef struct _ModularObject {
     int             bossSpeed;
     CGPoint         currentLocation;
     CGPoint         desiredLocation;
+    ModularObject   *modularObjects;
+    
+    int             shipWidth;
+    int             shipHeight;
     
     @private
     int             numberOfModules;
     BossShipID      bossID;
     BossType        bossType;
-    ModularObject   *modularObjects;
     PlayerShip      *playerShipRef;
 }
 
@@ -118,6 +125,7 @@ typedef struct _ModularObject {
 @property(nonatomic, readonly) int bossStamina;
 @property(nonatomic, readonly) int bossSpeed;
 @property(nonatomic, readonly) CGPoint currentLocation;
+@property(readonly) ModularObject   *modularObjects;
 
 - (id)initWithBossID:(BossShipID)aBossID initialLocation:(CGPoint)aPoint andPlayerShipRef:(PlayerShip *)aPlayerShip;
 

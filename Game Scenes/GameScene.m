@@ -52,10 +52,6 @@
 //  - Added really quick code to the render function that will
 //  print the game's framerate if DEBUG is set to on, thus helping
 //  us track performance later in development.
-//
-//  Last Updated - 1/8/11 @3PM - James
-//  - Small fix with the test ship clipping to the top of the screen,
-//  stupid typo when using the _screenBounds instead of static numbers
 
 #import "GameScene.h"
 
@@ -192,22 +188,17 @@
         //Checks the edges of the ship against the edges of the screen.
         //Note: we check one edge at a time because if we simply use CGRectContainsRect,
         //the ship would not be able to move along an edge once exiting
-        
-        //Width
-        NSLog(@"Bounds: %f, %f", _screenBounds.size.width, _screenBounds.size.height);
         if(location.x - ([testShip shipWidth] / 2) < 0){
             location.x = [testShip shipWidth] / 2;
         }
-        if((location.x + [testShip shipWidth] / 2) > _screenBounds.size.width){
-            location.x = _screenBounds.size.width - ([testShip shipWidth] / 2);
+        if((location.x + [testShip shipWidth]) > _screenBounds.size.width){
+            location.x = 320 - ([testShip shipWidth] / 2);
         }
-        
-        //Height
         if(location.y - ([testShip shipHeight] / 2) < 0){
             location.y = [testShip shipHeight] / 2;
         }
-        if(location.y + ([testShip shipHeight] / 2) > _screenBounds.size.height){
-            location.y = _screenBounds.size.height - ([testShip shipHeight] / 2);
+        if(location.y + ([testShip shipHeight] / 2) > _screenBounds.size.width){
+            location.y = 480 - ([testShip shipHeight] / 2);
         }
         [testShip setDesiredLocation:location];
     }
