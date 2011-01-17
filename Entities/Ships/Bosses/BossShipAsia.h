@@ -10,8 +10,16 @@
 #import "BossShip.h"
 
 
-@interface BossShipAsia : BossShip {
-
+@interface BossShipAsia : BossShip {    
+    ModularObject    leftCannon;
+    ModularObject    rightCannon;
+    
+    
+    float       angleFromLeftCannon;
+    float       angleFromRightCannon;
 }
+
+- (id)initWithLocation:(CGPoint)aPoint andPlayerShipRef:(PlayerShip *)playerRef;
+- (void)update:(GLfloat)aDelta;
 
 @end

@@ -11,4 +11,30 @@
 
 @implementation BossShipAsia
 
+- (id)initWithLocation:(CGPoint)aPoint andPlayerShipRef:(PlayerShip *)playerRef {
+    if((self = [super initWithBossID:kBoss_Asia initialLocation:aPoint andPlayerShipRef:playerRef])){
+        leftCannon = self.modularObjects[1];
+        rightCannon = self.modularObjects[2];
+    }
+    return self;
+}
+
+- (void)update:(GLfloat)aDelta {
+    // Angle cannon towards the player
+    float tempPlayerPosX, tempPlayerPosY;
+    tempPlayerPosX = playerShipRef.currentLocation.x;
+    tempPlayerPosY = playerShipRef.currentLocation.y;
+    
+    
+}
+
+- (void)render {
+    
+}
+
+- (void)dealloc {
+    
+    [super dealloc];
+}
+
 @end

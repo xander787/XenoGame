@@ -102,7 +102,7 @@
 		28FD14FE0DC6FC130079059D /* EAGLView.m in Sources */ = {isa = PBXBuildFile; fileRef = 28FD14FD0DC6FC130079059D /* EAGLView.m */; };
 		28FD15000DC6FC520079059D /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28FD14FF0DC6FC520079059D /* OpenGLES.framework */; };
 		28FD15080DC6FC5B0079059D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28FD15070DC6FC5B0079059D /* QuartzCore.framework */; };
-		B963267A12DD392E00FA1BA1 /* Bullets.plist in Resources */ = {isa = PBXBuildFile; fileRef = B963267912DD392E00FA1BA1 /* Bullets.plist */; };
+		B963267A12DD392E00FA1BA1 /* Projectiles.plist in Resources */ = {isa = PBXBuildFile; fileRef = B963267912DD392E00FA1BA1 /* Projectiles.plist */; };
 		B97A805612C964AD005FBB61 /* AbstractProjectile.m in Sources */ = {isa = PBXBuildFile; fileRef = B97A805512C964AD005FBB61 /* AbstractProjectile.m */; };
 /* End PBXBuildFile section */
 
@@ -252,7 +252,7 @@
 		28FD14FD0DC6FC130079059D /* EAGLView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EAGLView.m; sourceTree = "<group>"; };
 		28FD14FF0DC6FC520079059D /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		28FD15070DC6FC5B0079059D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		B963267912DD392E00FA1BA1 /* Bullets.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Bullets.plist; path = "Game Resources/Bullets.plist"; sourceTree = SOURCE_ROOT; };
+		B963267912DD392E00FA1BA1 /* Projectiles.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Projectiles.plist; path = "Game Resources/Projectiles.plist"; sourceTree = SOURCE_ROOT; };
 		B97A805412C964AD005FBB61 /* AbstractProjectile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AbstractProjectile.h; path = Entities/Projectiles/AbstractProjectile.h; sourceTree = "<group>"; };
 		B97A805512C964AD005FBB61 /* AbstractProjectile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AbstractProjectile.m; path = Entities/Projectiles/AbstractProjectile.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -530,7 +530,7 @@
 		1170EE5512724F4900721CF4 /* Game Resources */ = {
 			isa = PBXGroup;
 			children = (
-				B963267912DD392E00FA1BA1 /* Bullets.plist */,
+				B963267912DD392E00FA1BA1 /* Projectiles.plist */,
 				114A1A7312989C4B004769D4 /* PlayerShips.plist */,
 				119FCF00129B528C00D3256A /* EnemyShips.plist */,
 				11336112129E54F300FE6A03 /* BossShips.plist */,
@@ -845,7 +845,7 @@
 				11DE0F2A12CE6A9500A3F7CA /* devship.png in Resources */,
 				1164A6F612D29F7400B21071 /* kEnemyKamikazeeLevelOne.png in Resources */,
 				1164A6F712D29F7400B21071 /* kEnemyWaveShotLevelFourSpriteSheet.png in Resources */,
-				B963267A12DD392E00FA1BA1 /* Bullets.plist in Resources */,
+				B963267A12DD392E00FA1BA1 /* Projectiles.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

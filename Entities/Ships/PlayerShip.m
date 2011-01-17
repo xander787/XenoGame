@@ -64,7 +64,7 @@
 }
 
 - (id)initWithShipID:(PlayerShipID)aShipID andInitialLocation:(CGPoint)aPoint {
-	if (self = [super init]) {
+	if ((self = [super init])) {
 		shipID = aShipID;
         currentLocation = aPoint;
         desiredPosition = aPoint;

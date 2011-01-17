@@ -17,31 +17,50 @@
 #import "ParticleEmitter.h"
 #import "Polygon.h"
 
-typedef enum _BulletID {
-    kBulletID_Normal = 0,
-    kBulletID_Missile,
-    kBulletID_Wave
-} BulletID;
+#define BULLET_INTERVAL 1
+#define MISSILE_INETERVAL 2000
+#define WAVE_INTERVAL 1500
+
+typedef enum _ProjectileID {
+    kEnemyProjectile_Bullet = 0,
+    kEnemyProjectile_Missile,
+    kEnemyProjectile_Wave,
+    kPlayerProjectile_Bullet,
+    kPlayerProjectile_Missile,
+    kPlayerProjectile_Wave
+} ProjectileID;
+
+typedef enum _ParticleID {
+    kEnemyParticle = 0,
+    kPlayerParticle
+} ParticleID;
 
 @interface AbstractProjectile : PhysicalObject {
-    Polygon *polygon;
-    Vector2f *collisionPoints;
-
-    int bulletAngle;
-    int bulletSpeed;
-    BulletID mainBulletID;
-    
-    
-    CGPoint turretPosition;
-    
-    CGPoint currentLocation;
-    CGPoint desiredLocation;
-    
     ParticleEmitter *emitter;
+    Image           *image;
+    
+    NSMutableArray  *polygonArray;
+    Vector2f        *collisionPoints;
+    int             collisionPointCount;
+
+    int             projectileAngle;
+    int             projectileSpeed;
+    ProjectileID    projectileID;
+    
+    CGPoint         turretPosition;
+    CGPoint         currentLocation;
+    CGPoint         desiredLocation;
+    
+    GLfloat         elapsedTime;
+    
+    BOOL            isActive;
 }
 
-- (id)initWithBulletID:(BulletID)aBulletID fromTurretPosition:(CGPoint)aPosition andAngle:(int)aAngle;
+- (id)initWithProjectileID:(ProjectileID)aProjectileID fromTurretPosition:(CGPoint)aPosition andAngle:(int)aAngle;
+- (id)initWithParticleID:(ParticleID)aParticleID fromTurretPosition:(CGPoint)aPosition andAngle:(int)aAngle;
 - (void)update:(CGFloat)aDelta;
 - (void)render;
+- (void)setFiring:(BOOL)aFire;
+- (void)fireProjectile;
 
 @end

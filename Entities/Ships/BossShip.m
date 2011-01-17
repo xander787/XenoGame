@@ -180,7 +180,7 @@
         //Fill a C array with all of the modules for the Boss and all of their information
         NSArray *moduleImagesArray = [[NSArray alloc] initWithArray:[bossDictionary objectForKey:@"kShipModuleImages"]];
         NSArray *modulePointsArray = [[NSArray alloc] initWithArray:[bossDictionary objectForKey:@"kShipModulePoints"]];
-
+        
         modularObjects = malloc(sizeof(ModularObject) * [moduleImagesArray count]);
         numberOfModules = [moduleImagesArray count];
         bzero(modularObjects, sizeof(ModularObject) * [moduleImagesArray count]);
@@ -194,7 +194,7 @@
             
             shipWidth += modularObjects[i].moduleImage.imageWidth;
             shipHeight += modularObjects[i].moduleImage.imageHeight;
-                        
+            
             NSArray *moduleCoords = [[NSArray alloc] initWithArray:[[modulePointsArray objectAtIndex:i] componentsSeparatedByString:@","]];
             modularObjects[i].location = Vector2fMake([[moduleCoords objectAtIndex:0] floatValue], [[moduleCoords objectAtIndex:1] floatValue]);
             [moduleCoords release];

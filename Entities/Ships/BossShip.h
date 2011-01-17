@@ -98,6 +98,7 @@ typedef struct _ModularObject {
     Vector2f        *collisionDetectionBoundingPoints;
     Polygon         *collisionPolygon;
     int             collisionPointsCount;
+    float           rotation;
 } ModularObject;
 
 
@@ -113,11 +114,13 @@ typedef struct _ModularObject {
     int             shipWidth;
     int             shipHeight;
     
+    PlayerShip      *playerShipRef;
+
+    
     @private
     int             numberOfModules;
     BossShipID      bossID;
     BossType        bossType;
-    PlayerShip      *playerShipRef;
 }
 
 @property(nonatomic, readonly) int bossHealth;

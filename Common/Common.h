@@ -181,27 +181,3 @@ static inline Vector2f Vector2fNormalize(Vector2f v)
 {
 	return Vector2fMultiply(v, 1.0f/Vector2fLength(v));
 }
-
-static inline Vector2f * transferFromNSArrayToCArray(NSArray *recievedArray){
-    //Mainly in use for shortening code in Ships classes
-    Vector2f *targetArray = malloc(sizeof(Vector2f) * [recievedArray count]);
-    bzero(targetArray, sizeof(Vector2f) * [recievedArray count]);
-    
-    for(int i = 0; i < [recievedArray count]; i++){
-        NSArray *recievedArrayObject = [[NSArray alloc] initWithArray:[[recievedArray objectAtIndex:i] componentsSeparatedByString:@","]];
-        @try {
-            targetArray[i] = Vector2fMake([[recievedArrayObject objectAtIndex:0] intValue], [[recievedArrayObject objectAtIndex:1] intValue]);
-        }
-        @catch (NSException * e) {
-            NSLog(@"Exception thrown: %@", e);
-        }
-        @finally {
-            Vector2f vector = targetArray[i];
-            NSLog(@"Added object: %f, %f", vector.x, vector.y);
-        }
-    }
-    
-    return targetArray;
-    
-    free(targetArray);
-}

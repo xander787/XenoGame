@@ -13,6 +13,10 @@
 //	Last Updated - 10/20/2010 @ 6PM - Alexander
 //	- Particle emitter now uses a delta size in the 
 //	particle struct to implement a finish size for each particle
+//
+//  Last Updated - 1/16/11 @ 7:30PM - James
+//  - Made the particles accessible to outside owners
+//  mainly for the Projectiles class
 
 
 #import <Foundation/Foundation.h>
@@ -83,6 +87,8 @@
 @property(nonatomic, assign) BOOL active;
 @property(nonatomic, assign) GLfloat duration;
 @property(nonatomic, assign) BOOL blendAdditive;
+
+@property(nonatomic, assign) Particle *particles;
 
 - (id)initParticleEmitterWithImageNamed:(NSString*)inTextureName
 							   position:(Vector2f)inPosition 

@@ -9,11 +9,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "Entities/Ships/BossShip.m"
-         timestampString = "315897918.841481"
+         timestampString = "316568218.12287"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "291"
-         endingLineNumber = "291"
+         startingLineNumber = "322"
+         endingLineNumber = "322"
          landmarkName = "-render"
          landmarkType = "5">
       </FileBreakpoint>

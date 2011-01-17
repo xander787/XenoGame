@@ -64,7 +64,7 @@
 @implementation GameScene
 
 - (id)init {
-	if (self = [super init]) {
+	if ((self = [super init])) {
         // Get an instance of the singleton classes
 		_sharedDirector = [Director sharedDirector];
 		_sharedResourceManager = [ResourceManager sharedResourceManager];
@@ -94,8 +94,8 @@
     testBoss = [[BossShip alloc] initWithBossID:kBoss_Asia initialLocation:CGPointMake(155, 330) andPlayerShipRef:testShip];
     enemiesSet = [[NSSet alloc] initWithObjects:testEnemy, nil];    
         
-    //Second ship, used for collision testing purposes
-    secondTestShip = [[PlayerShip alloc] initWithShipID:kPlayerShip_Dev andInitialLocation:CGPointMake(155, 270)];
+        
+    testBullet = [[AbstractProjectile alloc] initWithProjectileID:kPlayerProjectile_Bullet fromTurretPosition:CGPointMake(200, 100) andAngle:90];
 }
 
 - (void)updateWithDelta:(GLfloat)aDelta {
@@ -118,7 +118,7 @@
     [testShip update:aDelta];
     [testEnemy update:aDelta];
     [testBoss update:aDelta];
-    [secondTestShip update:aDelta];
+    [testBullet update:aDelta];
     
     //Our method to check all collisions between the main
     //player ship and all other objects with polygons
@@ -158,21 +158,6 @@
     else {
         touchOriginatedFromPlayerShip = NO;
     }
-    
-    
-    //Same for the second ship
-    shipFrame = CGRectMake(secondTestShip.currentLocation.x - ((secondTestShip.boundingBox.x * 1.4) / 2),
-                           secondTestShip.currentLocation.y - (secondTestShip.boundingBox.y / 2),
-                           secondTestShip.boundingBox.x * 1.4,
-                           secondTestShip.boundingBox.y + 30);
-    
-    if(CGRectContainsPoint(shipFrame, location)){
-        NSLog(@"Touched on Ship :D");
-        touchFromSecondShip = YES;
-    }
-    else {
-        touchFromSecondShip = NO;
-    }
 }
 
 - (void)updateWithTouchLocationMoved:(NSSet *)touches withEvent:(UIEvent *)event view:(UIView *)aView {
@@ -201,9 +186,6 @@
             location.y = 480 - ([testShip shipHeight] / 2);
         }
         [testShip setDesiredLocation:location];
-    }
-    if(touchFromSecondShip){
-        [secondTestShip setDesiredLocation:location];
     }    
 }
 
@@ -214,7 +196,7 @@
     
     //result is a struct, containing intersect, willIntersect, and minimumTranslationVector.
     //We will only be using intersect, as the other two are used for moving against polygons, not simple collisions.
-    PolygonCollisionResult result = [Collisions polygonCollision:testShip.collisionPolygon :secondTestShip.collisionPolygon :Vector2fZero];
+    PolygonCollisionResult result = [Collisions polygonCollision:testShip.collisionPolygon :testEnemy.collisionPolygon :Vector2fZero];
     
     if(result.intersect) NSLog(@"First Ship: Intersected");
     
@@ -237,7 +219,7 @@
     [testShip render];
 //    [testEnemy render];
     [testBoss render];
-    [secondTestShip render];
+    [testBullet render];
     
     if(DEBUG) {
         
@@ -251,7 +233,7 @@
     [testShip release];
     [testEnemy release];
     [testBoss release];
-    [secondTestShip release];
+    [testBullet release];
     [enemiesSet release];
     [projectilesSet release];
     [bossesSet release];

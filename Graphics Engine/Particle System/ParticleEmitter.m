@@ -45,6 +45,8 @@
 @synthesize duration;
 @synthesize blendAdditive;
 
+@synthesize particles;
+
 - (id)initParticleEmitterWithImageNamed:(NSString*)inTextureName
 							   position:(Vector2f)inPosition 
 				 sourcePositionVariance:(Vector2f)inSourcePositionVariance

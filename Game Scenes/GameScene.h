@@ -22,13 +22,12 @@
 #import "BossShip.h"
 #import "Collisions.h"
 #import "AngelCodeFont.h"
+#import "AbstractProjectile.h"
 
 @interface GameScene : AbstractScene {
     PlayerShip	*testShip;
     EnemyShip   *testEnemy;
     BossShip    *testBoss;
-    
-    PlayerShip  *secondTestShip;
     
     // Storing objects in play
     NSSet       *enemiesSet;
@@ -37,7 +36,8 @@
     
     // Controlling the player ship
     BOOL        touchOriginatedFromPlayerShip;
-    BOOL        touchFromSecondShip;
+    
+    AbstractProjectile *testBullet;
 }
 
 @end

@@ -45,12 +45,12 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(ResourceManager);
     
     // If we can find a texture with the supplied key then return it.
     if(_cachedTexture = [_cachedTextures objectForKey:aTextureName]) {
-        if(DEBUG) NSLog(@"INFO - Resource Manager: A cached texture was found with the key '%@'.", aTextureName);
+        //if(DEBUG) NSLog(@"INFO - Resource Manager: A cached texture was found with the key '%@'.", aTextureName);
         return _cachedTexture;
     }
     
     // As no texture was found we create a new one, cache it and return it.
-    if(DEBUG) NSLog(@"INFO - Resource Manager: A texture with the key '%@' could not be found so creating it.", aTextureName);
+    //if(DEBUG) NSLog(@"INFO - Resource Manager: A texture with the key '%@' could not be found so creating it.", aTextureName);
     _cachedTexture = [[Texture2D alloc] initWithImage:[UIImage imageNamed:aTextureName] filter:GL_NEAREST];
     [_cachedTextures setObject:_cachedTexture forKey:aTextureName];
     
