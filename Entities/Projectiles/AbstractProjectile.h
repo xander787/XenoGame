@@ -18,8 +18,8 @@
 #import "Polygon.h"
 
 #define BULLET_INTERVAL 1
-#define MISSILE_INETERVAL 2000
-#define WAVE_INTERVAL 1500
+#define MISSILE_INETERVAL 2
+#define WAVE_INTERVAL 1.5
 
 typedef enum _ProjectileID {
     kEnemyProjectile_Bullet = 0,

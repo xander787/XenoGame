@@ -28,6 +28,8 @@
     PlayerShip	*testShip;
     EnemyShip   *testEnemy;
     BossShip    *testBoss;
+        
+    AbstractProjectile *bulletTest;
     
     // Storing objects in play
     NSSet       *enemiesSet;
@@ -36,8 +38,7 @@
     
     // Controlling the player ship
     BOOL        touchOriginatedFromPlayerShip;
-    
-    AbstractProjectile *testBullet;
+    BOOL        touchFromSecondShip;
 }
 
 @end

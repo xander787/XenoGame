@@ -94,8 +94,9 @@
     testBoss = [[BossShip alloc] initWithBossID:kBoss_Asia initialLocation:CGPointMake(155, 330) andPlayerShipRef:testShip];
     enemiesSet = [[NSSet alloc] initWithObjects:testEnemy, nil];    
         
-        
-    testBullet = [[AbstractProjectile alloc] initWithProjectileID:kPlayerProjectile_Bullet fromTurretPosition:CGPointMake(200, 100) andAngle:90];
+    
+    //Testing bullet
+    bulletTest = [[AbstractProjectile alloc] initWithProjectileID:kPlayerProjectile_Bullet fromTurretPosition:CGPointMake(250, 200) andAngle:120];
 }
 
 - (void)updateWithDelta:(GLfloat)aDelta {
@@ -118,7 +119,7 @@
     [testShip update:aDelta];
     [testEnemy update:aDelta];
     [testBoss update:aDelta];
-    [testBullet update:aDelta];
+    [bulletTest update:aDelta];
     
     //Our method to check all collisions between the main
     //player ship and all other objects with polygons
@@ -176,17 +177,19 @@
         if(location.x - ([testShip shipWidth] / 2) < 0){
             location.x = [testShip shipWidth] / 2;
         }
-        if((location.x + [testShip shipWidth]) > _screenBounds.size.width){
-            location.x = 320 - ([testShip shipWidth] / 2);
+        if(location.x + ([testShip shipWidth] / 2) > _screenBounds.size.width){
+            location.x = _screenBounds.size.width - ([testShip shipWidth] / 2);
         }
+        
         if(location.y - ([testShip shipHeight] / 2) < 0){
             location.y = [testShip shipHeight] / 2;
         }
-        if(location.y + ([testShip shipHeight] / 2) > _screenBounds.size.width){
-            location.y = 480 - ([testShip shipHeight] / 2);
+        if(location.y + ([testShip shipHeight] / 2) > _screenBounds.size.height){
+            location.y = _screenBounds.size.height - ([testShip shipHeight] / 2);
         }
         [testShip setDesiredLocation:location];
-    }    
+    }
+    
 }
 
 - (void)updateCollisions {
@@ -219,7 +222,7 @@
     [testShip render];
 //    [testEnemy render];
     [testBoss render];
-    [testBullet render];
+    [bulletTest render];
     
     if(DEBUG) {
         
@@ -233,7 +236,7 @@
     [testShip release];
     [testEnemy release];
     [testBoss release];
-    [testBullet release];
+    [bulletTest release];
     [enemiesSet release];
     [projectilesSet release];
     [bossesSet release];
