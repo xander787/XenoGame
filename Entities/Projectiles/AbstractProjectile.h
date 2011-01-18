@@ -50,9 +50,7 @@ typedef enum _ParticleID {
     CGPoint         turretPosition;
     CGPoint         currentLocation;
     CGPoint         desiredLocation;
-    
-    GLfloat         elapsedTime;
-    
+        
     BOOL            isActive;
 }
 
@@ -61,6 +59,5 @@ typedef enum _ParticleID {
 - (void)update:(CGFloat)aDelta;
 - (void)render;
 - (void)setFiring:(BOOL)aFire;
-- (void)fireProjectile;
 
 @end

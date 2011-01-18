@@ -86,19 +86,6 @@
     }
 }
 
-- (NSString *)toString {
-    NSString *stringResult = [[NSString alloc] initWithFormat:@""];
-    
-    for(int i = 0; i < pointCount; i++){
-        if(stringResult != @""){
-            [stringResult stringByAppendingFormat:@" "];
-        }
-        [stringResult stringByAppendingFormat:@"{ %i }", points[i]];
-    }
-    
-    return stringResult;
-}
-
 - (void)dealloc {
     free(points);
     free(edges);

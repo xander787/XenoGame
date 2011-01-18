@@ -13,6 +13,10 @@
 //	Last Updated - 10/20/2010 @ 6PM - Alexander
 //	- Particle emitter now uses a delta size in the 
 //	particle struct to implement a finish size for each particle
+//
+//  Last Updated - 1/17/11 - James
+//  - Changed the rate from 0.1f/emissionRate to us 1.0f
+//  because it was making particles way too fast
 
 
 #import "ParticleEmitter.h"
@@ -228,7 +232,7 @@
 	// If the emitter is active and the emission rate is greater than zero then emit
 	// particles
 	if(active && emissionRate) {
-		float rate = 0.1f/emissionRate;
+		float rate = 1.0f/emissionRate;
 		emitCounter += delta;
 		while(particleCount < maxParticles && emitCounter > rate) {
 			[self addParticle];
@@ -300,7 +304,7 @@
 	glBindBuffer(GL_ARRAY_BUFFER, colorsID);
 	glBufferData(GL_ARRAY_BUFFER, sizeof(Color4f)*maxParticles, colors, GL_DYNAMIC_DRAW);
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
-	
+
 }
 
 

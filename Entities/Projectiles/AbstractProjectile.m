@@ -89,23 +89,31 @@
                 emitter = [[ParticleEmitter alloc] initParticleEmitterWithImageNamed:[projectileDictionary objectForKey:@"kProjectileImage"] 
                                                                             position:Vector2fMake(currentLocation.x, currentLocation.y) 
                                                               sourcePositionVariance:Vector2fZero 
-                                                                               speed:2.0
-                                                                       speedVariance:0.0 
-                                                                    particleLifeSpan:1.0
+                                                                               speed:projectileSpeed
+                                                                       speedVariance:0.0
+                                                                    particleLifeSpan:3.0
                                                             particleLifespanVariance:0.0
-                                                                               angle:projectileAngle 
-                                                                       angleVariance:0.0 
-                                                                             gravity:Vector2fZero 
-                                                                          startColor:Color4fMake(1.0, 1.0, 1.0, 1.0) 
-                                                                  startColorVariance:Color4fMake(0.0, 0.0, 0.0, 0.0) 
-                                                                         finishColor:Color4fMake(1.0, 1.0, 1.0, 1.0) 
-                                                                 finishColorVariance:Color4fMake(0.0, 0.0, 0.0, 0.0) 
-                                                                        maxParticles:20
+                                                                               angle:projectileAngle
+                                                                       angleVariance:0.0
+                                                                             gravity:Vector2fZero
+                                                                          startColor:Color4fMake(1.0, 1.0, 1.0, 1.0)
+                                                                  startColorVariance:Color4fMake(0.0, 0.0, 0.0, 0.0)
+                                                                         finishColor:Color4fMake(1.0, 1.0, 1.0, 1.0)
+                                                                 finishColorVariance:Color4fMake(0.0, 0.0, 0.0, 0.0)
+                                                                        maxParticles:5.0
                                                                         particleSize:10.0
                                                                   finishParticleSize:10.0
                                                                 particleSizeVariance:0.0
-                                                                            duration:10.0
+                                                                            duration:-1.0
                                                                        blendAdditive:NO];
+                //Set up the Polygons for each particle
+                polygonArray = [[NSMutableArray alloc] init];
+                for(int i = 0; i < [emitter maxParticles]; i++){
+                    Polygon *tempPolygon = [[Polygon alloc] initWithPoints:collisionPoints andCount:collisionPointCount andShipPos:turretPosition];
+                    [tempPolygon setPos:CGPointMake(emitter.particles[i].position.x, emitter.particles[i].position.y)];
+                    [polygonArray addObject:tempPolygon];
+                    [tempPolygon release];
+                }
                 break;
             case kPlayerProjectile_Missile:
                 
@@ -141,7 +149,7 @@
                                                               sourcePositionVariance:Vector2fZero 
                                                                                speed:projectileSpeed
                                                                        speedVariance:0.0 
-                                                                    particleLifeSpan:10.0
+                                                                    particleLifeSpan:3.0
                                                             particleLifespanVariance:0.0
                                                                                angle:projectileAngle 
                                                                        angleVariance:0.0 
@@ -150,12 +158,20 @@
                                                                   startColorVariance:Color4fMake(0.0, 0.0, 0.0, 0.0) 
                                                                          finishColor:Color4fMake(1.0, 0.0, 0.0, 1.0) 
                                                                  finishColorVariance:Color4fMake(0.0, 0.0, 0.0, 0.0) 
-                                                                        maxParticles:50
+                                                                        maxParticles:5.0
                                                                         particleSize:10.0
                                                                   finishParticleSize:10.0
                                                                 particleSizeVariance:0.0
-                                                                            duration:0.0
+                                                                            duration:-1.0
                                                                        blendAdditive:NO];
+                //Set up the Polygons for each particle
+                polygonArray = [[NSMutableArray alloc] init];
+                for(int i = 0; i < [emitter maxParticles]; i++){
+                    Polygon *tempPolygon = [[Polygon alloc] initWithPoints:collisionPoints andCount:collisionPointCount andShipPos:turretPosition];
+                    [tempPolygon setPos:CGPointMake(emitter.particles[i].position.x, emitter.particles[i].position.y)];
+                    [polygonArray addObject:tempPolygon];
+                    [tempPolygon release];
+                }
                 break;
             case kEnemyProjectile_Missile:
                 
@@ -186,12 +202,6 @@
                 break;
         }
         
-        
-        //Allocate polygon
-        polygonArray = [[NSMutableArray alloc] init];
-        
-        
-        
         [tempCollisionPoints release];
         [projectileDictionary release];
         
@@ -207,55 +217,31 @@
 
 - (void)update:(CGFloat)aDelta {
     if(isActive == NO) return;
-    
-    elapsedTime += aDelta;
-    
+        
     switch(projectileID){
         case kPlayerProjectile_Bullet:
-            for(int i = 0; i < [polygonArray count]; i++){
+            for(int i = 0; i < [emitter maxParticles]; i++){
                 [[polygonArray objectAtIndex:i] setPos:CGPointMake(emitter.particles[i].position.x, emitter.particles[i].position.y)];
-            }
-//            [emitter setActive:YES];
-
-            if(elapsedTime > BULLET_INTERVAL){
-                elapsedTime = 0;
-//                [self fireProjectile];
             }
             break;
         case kPlayerProjectile_Missile:
-            if(elapsedTime > MISSILE_INETERVAL){
-                elapsedTime = 0;
-                [self fireProjectile];
-            }
+            
             break;
         case kPlayerProjectile_Wave:
-            if(elapsedTime > WAVE_INTERVAL){
-                elapsedTime = 0;
-                [self fireProjectile];
-            }
+
             break;
             
         
         case kEnemyProjectile_Bullet:
-            for(int i = 0; i < [polygonArray count]; i++){
-                [[polygonArray objectAtIndex:i] setCenter:CGPointMake(emitter.particles[i].position.x, emitter.particles[i].position.y)];
-            }
-            if(elapsedTime > BULLET_INTERVAL){
-                elapsedTime = 0;
-                [self fireProjectile];
+            for(int i = 0; i < [emitter maxParticles]; i++){
+                [[polygonArray objectAtIndex:i] setPos:CGPointMake(emitter.particles[i].position.x, emitter.particles[i].position.y)];
             }
             break;
         case kEnemyProjectile_Missile:
-            if(elapsedTime > MISSILE_INETERVAL){
-                elapsedTime = 0;
-                [self fireProjectile];
-            }
+
             break;
         case kEnemyProjectile_Wave:
-            if(elapsedTime > WAVE_INTERVAL){
-                elapsedTime = 0;
-                [self fireProjectile];
-            }
+
             break;
             
         default:
@@ -269,39 +255,9 @@
 - (void)setFiring:(BOOL)aFire {
     if(aFire == YES){
         isActive = YES;
-        switch(projectileID){
-            case kPlayerProjectile_Bullet:
-                break;
-            case kPlayerProjectile_Missile:
-                
-                break;
-            case kPlayerProjectile_Wave:
-                break;
-                
-                
-            case kEnemyProjectile_Bullet:
-                break;
-            case kEnemyProjectile_Missile:
-                
-                break;
-            case kEnemyProjectile_Wave:
-                break;
-                
-            default:
-                break;
-        }
     }
     else if(aFire == NO){
         isActive = NO;
-    }
-}
-
-- (void)fireProjectile {
-    if([emitter addParticle]){
-        NSLog(@"Fired");
-        //Make a polygon for the new Particle created
-        Polygon *tempPolygon = [[Polygon alloc] initWithPoints:collisionPoints andCount:collisionPointCount andShipPos:turretPosition];
-        [polygonArray addObject:tempPolygon];
     }
 }
 

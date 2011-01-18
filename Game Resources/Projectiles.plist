@@ -4,10 +4,6 @@
 <dict>
 	<key>kEnemyProjectile_Bullet</key>
 	<dict>
-		<key>kProjectileSpeed</key>
-		<integer>1</integer>
-		<key>kProjectileImage</key>
-		<string>texture.png</string>
 		<key>kCollisionBoundingPoints</key>
 		<array>
 			<string>6,0</string>
@@ -15,13 +11,13 @@
 			<string>-6,0</string>
 			<string>0,-6</string>
 		</array>
+		<key>kProjectileImage</key>
+		<string>texture.png</string>
+		<key>kProjectileSpeed</key>
+		<integer>1</integer>
 	</dict>
 	<key>kEnemyProjectile_Missile</key>
 	<dict>
-		<key>kProjectileSpeed</key>
-		<integer>10</integer>
-		<key>kProjectileImage</key>
-		<string>texture.png</string>
 		<key>kCollisionBoundingPoints</key>
 		<array>
 			<string>6,0</string>
@@ -29,13 +25,13 @@
 			<string>-6,0</string>
 			<string>0,-6</string>
 		</array>
+		<key>kProjectileImage</key>
+		<string>texture.png</string>
+		<key>kProjectileSpeed</key>
+		<real>0.5</real>
 	</dict>
 	<key>kEnemyProjectile_Wave</key>
 	<dict>
-		<key>kProjectileSpeed</key>
-		<integer>10</integer>
-		<key>kProjectileImage</key>
-		<string>texture.png</string>
 		<key>kCollisionBoundingPoints</key>
 		<array>
 			<string>6,0</string>
@@ -43,13 +39,13 @@
 			<string>-6,0</string>
 			<string>0,-6</string>
 		</array>
+		<key>kProjectileImage</key>
+		<string>texture.png</string>
+		<key>kProjectileSpeed</key>
+		<integer>1</integer>
 	</dict>
 	<key>kPlayerProjectile_Bullet</key>
 	<dict>
-		<key>kProjectileSpeed</key>
-		<integer>10</integer>
-		<key>kProjectileImage</key>
-		<string>texture.png</string>
 		<key>kCollisionBoundingPoints</key>
 		<array>
 			<string>6,0</string>
@@ -57,13 +53,13 @@
 			<string>-6,0</string>
 			<string>0,-6</string>
 		</array>
+		<key>kProjectileImage</key>
+		<string>texture.png</string>
+		<key>kProjectileSpeed</key>
+		<integer>1</integer>
 	</dict>
 	<key>kPlayerProjectile_Missile</key>
 	<dict>
-		<key>kProjectileSpeed</key>
-		<integer>10</integer>
-		<key>kProjectileImage</key>
-		<string>texture.png</string>
 		<key>kCollisionBoundingPoints</key>
 		<array>
 			<string>6,0</string>
@@ -71,13 +67,13 @@
 			<string>-6,0</string>
 			<string>0,-6</string>
 		</array>
+		<key>kProjectileImage</key>
+		<string>texture.png</string>
+		<key>kProjectileSpeed</key>
+		<real>0.5</real>
 	</dict>
 	<key>kPlayerProjectile_Wave</key>
 	<dict>
-		<key>kProjectileSpeed</key>
-		<integer>10</integer>
-		<key>kProjectileImage</key>
-		<string>texture.png</string>
 		<key>kCollisionBoundingPoints</key>
 		<array>
 			<string>6,0</string>
@@ -85,6 +81,10 @@
 			<string>-6,0</string>
 			<string>0,-6</string>
 		</array>
+		<key>kProjectileImage</key>
+		<string>texture.png</string>
+		<key>kProjectileSpeed</key>
+		<integer>1</integer>
 	</dict>
 </dict>
 </plist>

@@ -17,6 +17,7 @@
 //  - Added pointCount, because no way of getting
 //  count of dynamic array
 
+
 #import <Foundation/Foundation.h>
 #import "Common.h"
 
@@ -45,7 +46,5 @@
 - (void)offset:(Vector2f)v;
 - (void)offset:(float)x :(float)y;
 - (void)setPos:(CGPoint)pt;
-
-- (NSString *)toString;
 
 @end

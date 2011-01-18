@@ -96,7 +96,7 @@
         
     
     //Testing bullet
-    bulletTest = [[AbstractProjectile alloc] initWithProjectileID:kPlayerProjectile_Bullet fromTurretPosition:CGPointMake(250, 200) andAngle:120];
+    bulletTest = [[AbstractProjectile alloc] initWithProjectileID:kEnemyProjectile_Bullet fromTurretPosition:CGPointMake(250, 200) andAngle:90];
 }
 
 - (void)updateWithDelta:(GLfloat)aDelta {
@@ -229,6 +229,7 @@
         //Draw some text at the bottom-left corner indicating the current FPS.
         AngelCodeFont *font = [[AngelCodeFont alloc] initWithFontImageNamed:@"xenophobefont.png" controlFile:@"xenophobefont" scale:(1.0/3.0) filter:GL_LINEAR];
         [font drawStringAt:CGPointMake(15.0, 15.0) text:[NSString stringWithFormat:@"%.1f", [_sharedDirector framesPerSecond]]];
+        [font release];
     }
 }
 
