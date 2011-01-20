@@ -26,6 +26,9 @@
 //  Last Updated - 12/31/2010 @7:30PM - Alexander
 //  - Memory management: added dealloc method and use it
 //  to deallocate our objects
+//  Last updated - 1/19/11 @ &PM - James
+//  - Rewrote hte majority of the initialization, mainly
+//  for loading information fomr the BossShips.plist file
 
 #import "BossShip.h"
 
@@ -35,7 +38,7 @@
 @synthesize bossHealth, bossAttack, bossStamina, bossSpeed, currentLocation, modularObjects;
 
 - (id)initWithBossID:(BossShipID)aBossID initialLocation:(CGPoint)aPoint andPlayerShipRef:(PlayerShip *)aPlayerShip {
-    if(self = [super init]) {
+    if((self = [super init])) {
         bossID = aBossID;
         currentLocation = aPoint;
         playerShipRef = aPlayerShip;
@@ -177,88 +180,106 @@
             bossType = kBossType_Mini;
         }
         
-        //Fill a C array with all of the modules for the Boss and all of their information
-        NSArray *moduleImagesArray = [[NSArray alloc] initWithArray:[bossDictionary objectForKey:@"kShipModuleImages"]];
-        NSArray *modulePointsArray = [[NSArray alloc] initWithArray:[bossDictionary objectForKey:@"kShipModulePoints"]];
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         
-        modularObjects = malloc(sizeof(ModularObject) * [moduleImagesArray count]);
+        //Pre allocate all of the arrays from our BossShips.plist
+        NSArray *moduleImagesArray = [[NSArray alloc] initWithArray:[bossDictionary objectForKey:@"kShipModuleImages"]];
+        NSArray *moduleLocationsArray = [[NSArray alloc] initWithArray:[bossDictionary objectForKey:@"kShipModulePoints"]];
+        NSArray *moduleTurretPointsArray = [[NSArray alloc] initWithArray:[bossDictionary objectForKey:@"kShipTurretPoints"]];
+        NSArray *moduleCollisionPointsArray = [[NSArray alloc] initWithArray:[bossDictionary objectForKey:@"kCollisionBoundingPoints"]];
+        NSArray *moduleDestructionOrder = [[NSArray alloc] initWithArray:[bossDictionary objectForKey:@"kModularDestructionOrder"]];
+        
+        //Set a global number of modules we have for the boss ship, better to use than getting the count of an array multiple times
         numberOfModules = [moduleImagesArray count];
-        bzero(modularObjects, sizeof(ModularObject) * [moduleImagesArray count]);
+        
+        //Alloc memory for each module, old C style
+        modularObjects = malloc(sizeof(ModularObject) * numberOfModules);
+        bzero(modularObjects, sizeof(ModularObject) * numberOfModules);
         
         shipWidth = 0;
         shipHeight = 0;
         
-        for(int i = 0; i < [moduleImagesArray count]; i++) {
-            modularObjects[i].moduleImage = [[Image alloc] initWithImage:[[bossDictionary objectForKey:@"kShipModuleImages"] objectAtIndex:i] scale:1.0f];
-            modularObjects[i].drawingOrder = i;
+        //This is our main loop, getting the unique info for each module at a time
+        for(int i = 0; i < numberOfModules; i++){
             
+            //Step one: get the image for the module, simple so it's first
+            modularObjects[i].moduleImage = [[Image alloc] initWithImage:[moduleImagesArray objectAtIndex:i] scale:1.0f];
+            
+            //Set the width & height for later use in super class handling this ship
             shipWidth += modularObjects[i].moduleImage.imageWidth;
             shipHeight += modularObjects[i].moduleImage.imageHeight;
             
-            NSArray *moduleCoords = [[NSArray alloc] initWithArray:[[modulePointsArray objectAtIndex:i] componentsSeparatedByString:@","]];
-            modularObjects[i].location = Vector2fMake([[moduleCoords objectAtIndex:0] floatValue], [[moduleCoords objectAtIndex:1] floatValue]);
-            [moduleCoords release];
+            //Drawing order goes here, it's so certain things are not drawn over other parts of the ship
+            modularObjects[i].drawingOrder = i;
             
-            NSArray *turretPoints = [[NSArray alloc] initWithArray:[bossDictionary objectForKey:@"kShipTurretPoints"]];
-            NSString *turretString = [turretPoints objectAtIndex:i];
-            if(![turretString isEqualToString:@"nil"]) {
-                NSLog(@"%@", [turretPoints objectAtIndex:i]);
-                NSArray *coordPairs = [[NSArray alloc] initWithArray:[[turretPoints objectAtIndex:i] componentsSeparatedByString:@";"]];
-                modularObjects[i].weapons = malloc(sizeof(WeaponObject) * [coordPairs count]);
-                modularObjects[i].numberOfWeapons = [coordPairs count];
+            
+            //Step two:  get the locations for each module relative to the center of the ship
+            NSArray *moduleLocationCoords = [[NSArray alloc] initWithArray:[[moduleLocationsArray objectAtIndex:i] componentsSeparatedByString:@","]];
+            modularObjects[i].location = Vector2fMake([[moduleLocationCoords objectAtIndex:0] floatValue], [[moduleLocationCoords objectAtIndex:1] floatValue]);
+            [moduleLocationCoords release];
+            
+            
+            //Now for getting the turret locations relative to the center of this certain module, note there can be multiple turrets for each module
+            NSString *turretString = [moduleTurretPointsArray objectAtIndex:i];
+            //Are we sure that this module even has a single turret?
+            if([turretString isEqualToString:nil] == NO){
+                //We seperate by a semicolon because there can be multiple turrets
+                NSArray *turretCoordPairs = [[NSArray alloc] initWithArray:[[moduleTurretPointsArray objectAtIndex:i] componentsSeparatedByString:@";"]];
+                //Alloc the space for information of our weapons
+                modularObjects[i].weapons = malloc(sizeof(WeaponObject) * [turretCoordPairs count]);
+                modularObjects[i].numberOfWeapons = [turretCoordPairs count];
                 
-                for(int j = 0; j < [coordPairs count]; j++) {
-                    NSArray *turretCoords = [[NSArray alloc] initWithArray:[[coordPairs objectAtIndex:j] componentsSeparatedByString:@","]];
+                //Now loops through each pairs of coordinates of turrets
+                for(int j = 0; j < modularObjects[i].numberOfWeapons; j++){
+                    NSArray *turretCoords = [[NSArray alloc] initWithArray:[[turretCoordPairs objectAtIndex:j] componentsSeparatedByString:@","]];
                     
-                    modularObjects[i].weapons[j].weaponCoord = Vector2fMake([[turretCoords objectAtIndex:0] intValue], [[turretCoords objectAtIndex:1] intValue]);
+                    modularObjects[i].weapons[j].weaponCoord = Vector2fMake([[turretCoords objectAtIndex:0] floatValue], [[turretCoords objectAtIndex:1] floatValue]);
+                    //Note: we will add custom weapons later
                     modularObjects[i].weapons[j].weaponType = kBossWeapon_Default;
-                    
                     [turretCoords release];
+                    
                 }
-                [coordPairs release];
+                [turretCoordPairs release];
             }
             else {
                 modularObjects[i].numberOfWeapons = 0;
             }
-            [turretPoints release];
             [turretString release];
             
-            //Load the collision detection points and assign them
-            NSArray *collisionCoordPairs = [[NSArray alloc] initWithArray:[bossDictionary objectForKey:@"kCollisionBoundingPoints"]];
             
-            NSArray *coordPairs = [[NSArray alloc] initWithArray:[[collisionCoordPairs objectAtIndex:i] componentsSeparatedByString:@";"]];
-            modularObjects[i].collisionDetectionBoundingPoints = malloc(sizeof(Vector2f) * [coordPairs count]);
-            bzero(modularObjects[i].collisionDetectionBoundingPoints, sizeof(Vector2f) * [coordPairs count]);
             
-            for(int j = 0; j < [coordPairs count]; j++) {
-                NSArray *coords = [[NSArray alloc] initWithArray:[[coordPairs objectAtIndex:j] componentsSeparatedByString:@","]];
-                @try {
-                    modularObjects[i].collisionDetectionBoundingPoints[j] = Vector2fMake([[coords objectAtIndex:0] intValue], [[coords objectAtIndex:1] intValue]);
-                }
-                @catch (NSException * e) {
-                    NSLog(@"Exception thrown: %@", e);
-                }
-                @finally {
-                    Vector2f vector = modularObjects[i].collisionDetectionBoundingPoints[j];
-                    NSLog(@"Collision Point: %f %f", vector.x, vector.y);
-                }
+            //Collision detection points time!
+            NSArray *collisionCoordPairs = [[NSArray alloc] initWithArray:[[moduleCollisionPointsArray objectAtIndex:i] componentsSeparatedByString:@";"]];
+            
+            modularObjects[i].collisionDetectionBoundingPoints = malloc(sizeof(Vector2f) * [collisionCoordPairs count]);
+            bzero(modularObjects[i].collisionDetectionBoundingPoints, sizeof(Vector2f) * [collisionCoordPairs count]);
+            
+            //Loop through the pairs of coordinates and apply them
+            for(int j = 0; j < [collisionCoordPairs count]; j++){
+                NSArray *coords = [[NSArray alloc] initWithArray:[[collisionCoordPairs objectAtIndex:j] componentsSeparatedByString:@","]];
+                
+                modularObjects[i].collisionDetectionBoundingPoints[j] = Vector2fMake([[coords objectAtIndex:0] floatValue], [[coords objectAtIndex:1] floatValue]);
                 [coords release];
             }
-            [coordPairs release];
             
-            modularObjects[i].collisionPointsCount = [coordPairs count];
+            //We need the number of points for polygons
+            modularObjects[i].collisionPointsCount = [collisionCoordPairs count];
+            [collisionCoordPairs release];
             
-            modularObjects[i].collisionPolygon = [[Polygon alloc] initWithPoints:modularObjects[i].collisionDetectionBoundingPoints andCount:modularObjects[i].collisionPointsCount andShipPos:currentLocation];
+            //Finally create our polygon, for each module of course
+            modularObjects[i].collisionPolygon = [[Polygon alloc] initWithPoints:modularObjects[i].collisionDetectionBoundingPoints
+                                                                        andCount:modularObjects[i].collisionPointsCount
+                                                                      andShipPos:currentLocation];
+            //Update the position of the polygon to the center of the module
+            [modularObjects[i].collisionPolygon setPos:CGPointMake(currentLocation.x + modularObjects[i].location.x, currentLocation.y + modularObjects[i].location.y)];
+            
+            
         }
         
-        //Set the centers of the polygons so they get rendered properly
-        for(int i = 0; i < numberOfModules; i++){
-            [modularObjects[i].collisionPolygon setPos:CGPointMake(modularObjects[i].location.x + currentLocation.x, modularObjects[i].location.y + currentLocation.y)];
-        }
-        
-        NSArray *destructionOrder = [[NSArray alloc] initWithArray:[bossDictionary objectForKey:@"kModularDestructionOrder"]];
-        for(int i = 0; i < [destructionOrder count]; i++) {
-            NSArray *destructableModulesArray = [[NSArray alloc] initWithArray:[destructionOrder objectAtIndex:i]];
+        //We have to put this in a seperate for loop because it doesn't conform to the number of modules
+        //Here, we order the way the modules get destroyed
+        for(int i = 0; i < [moduleDestructionOrder count]; i++) {
+            NSArray *destructableModulesArray = [[NSArray alloc] initWithArray:[moduleDestructionOrder objectAtIndex:i]];
             for(int j = 0; j < [destructableModulesArray count]; j++) {
                 int moduleNum = [[destructableModulesArray objectAtIndex:j] intValue];
                 modularObjects[moduleNum].destructionOrder = i; 
@@ -266,7 +287,16 @@
             [destructableModulesArray release];
         }
         
-        [modulePointsArray release];
+        
+        //Make sure to free our memory, leaks are bad.
+        [moduleImagesArray release];
+        [moduleLocationsArray release];
+        [moduleTurretPointsArray release];
+        [moduleCollisionPointsArray release];
+        [moduleDestructionOrder release];
+        
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
     }
     
     return self;
