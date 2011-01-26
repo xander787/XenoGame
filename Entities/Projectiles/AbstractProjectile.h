@@ -17,10 +17,6 @@
 #import "ParticleEmitter.h"
 #import "Polygon.h"
 
-#define BULLET_INTERVAL 1
-#define MISSILE_INETERVAL 2
-#define WAVE_INTERVAL 1.5
-
 typedef enum _ProjectileID {
     kEnemyProjectile_Bullet = 0,
     kEnemyProjectile_Missile,
@@ -35,11 +31,7 @@ typedef enum _ParticleID {
     kPlayerParticle
 } ParticleID;
 
-@interface AbstractProjectile : PhysicalObject {
-    ParticleEmitter *emitter;
-    Image           *image;
-    
-    NSMutableArray  *polygonArray;
+@interface AbstractProjectile : PhysicalObject {    
     Vector2f        *collisionPoints;
     int             collisionPointCount;
 
@@ -52,6 +44,15 @@ typedef enum _ParticleID {
     CGPoint         desiredLocation;
         
     BOOL            isActive;
+    
+    //Particle Emitter specific variables
+    ParticleEmitter *emitter;
+    NSMutableArray  *polygonArray;
+    
+    //Image specific variables
+    Image           *image;
+    Polygon         *missilePolygon;
+    GLuint          elapsedTime;
 }
 
 - (id)initWithProjectileID:(ProjectileID)aProjectileID fromTurretPosition:(CGPoint)aPosition andAngle:(int)aAngle;

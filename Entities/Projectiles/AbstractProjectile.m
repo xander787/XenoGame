@@ -91,7 +91,7 @@
                                                               sourcePositionVariance:Vector2fZero 
                                                                                speed:projectileSpeed
                                                                        speedVariance:0.0
-                                                                    particleLifeSpan:3.0
+                                                                    particleLifeSpan:4.0
                                                             particleLifespanVariance:0.0
                                                                                angle:projectileAngle
                                                                        angleVariance:0.0
@@ -100,7 +100,7 @@
                                                                   startColorVariance:Color4fMake(0.0, 0.0, 0.0, 0.0)
                                                                          finishColor:Color4fMake(1.0, 1.0, 1.0, 1.0)
                                                                  finishColorVariance:Color4fMake(0.0, 0.0, 0.0, 0.0)
-                                                                        maxParticles:5.0
+                                                                        maxParticles:15.0
                                                                         particleSize:10.0
                                                                   finishParticleSize:10.0
                                                                 particleSizeVariance:0.0
@@ -116,16 +116,17 @@
                 }
                 break;
             case kPlayerProjectile_Missile:
-                
+                image = [[Image alloc] initWithImage:[projectileDictionary objectForKey:@"kProjectileImage"] scale:1.0f];
+                missilePolygon = [[Polygon alloc] initWithPoints:collisionPoints andCount:collisionPointCount andShipPos:turretPosition];
                 break;
             case kPlayerProjectile_Wave:
                 emitter = [[ParticleEmitter alloc] initParticleEmitterWithImageNamed:[projectileDictionary objectForKey:@"kProjectileImage"]
                                                                             position:Vector2fMake(currentLocation.x, currentLocation.y) 
                                                               sourcePositionVariance:Vector2fZero
-                                                                               speed:72.37000274658203 
-                                                                       speedVariance:0
-                                                                    particleLifeSpan:0
-                                                            particleLifespanVariance:1.118399977684021
+                                                                               speed:projectileSpeed 
+                                                                       speedVariance:0.0
+                                                                    particleLifeSpan:1.0
+                                                            particleLifespanVariance:0.0
                                                                                angle:projectileAngle
                                                                        angleVariance:30.0
                                                                              gravity:Vector2fZero
@@ -133,11 +134,11 @@
                                                                   startColorVariance:Color4fMake(0.0, 0.0, 0.0, 0.0)
                                                                          finishColor:Color4fMake(0.0, 0.0, 0.0, 0.8399999737739563)
                                                                  finishColorVariance:Color4fMake(0.0, 0.0, 0.0, 0.0)
-                                                                        maxParticles:100
-                                                                        particleSize:5.0
-                                                                  finishParticleSize:19.72999954223633
-                                                                particleSizeVariance:0
-                                                                            duration:0.009999999776482582
+                                                                        maxParticles:60
+                                                                        particleSize:15.0
+                                                                  finishParticleSize:10.0
+                                                                particleSizeVariance:0.0
+                                                                            duration:-1.0
                                                                        blendAdditive:NO];
                 break;
                 
@@ -149,7 +150,7 @@
                                                               sourcePositionVariance:Vector2fZero 
                                                                                speed:projectileSpeed
                                                                        speedVariance:0.0 
-                                                                    particleLifeSpan:3.0
+                                                                    particleLifeSpan:4.0
                                                             particleLifespanVariance:0.0
                                                                                angle:projectileAngle 
                                                                        angleVariance:0.0 
@@ -158,7 +159,7 @@
                                                                   startColorVariance:Color4fMake(0.0, 0.0, 0.0, 0.0) 
                                                                          finishColor:Color4fMake(1.0, 0.0, 0.0, 1.0) 
                                                                  finishColorVariance:Color4fMake(0.0, 0.0, 0.0, 0.0) 
-                                                                        maxParticles:5.0
+                                                                        maxParticles:15.0
                                                                         particleSize:10.0
                                                                   finishParticleSize:10.0
                                                                 particleSizeVariance:0.0
@@ -174,16 +175,17 @@
                 }
                 break;
             case kEnemyProjectile_Missile:
-                
+                image = [[Image alloc] initWithImage:[projectileDictionary objectForKey:@"kProjectileImage"] scale:1.0f];
+                missilePolygon = [[Polygon alloc] initWithPoints:collisionPoints andCount:collisionPointCount andShipPos:turretPosition];
                 break;
             case kEnemyProjectile_Wave:
                 emitter = [[ParticleEmitter alloc] initParticleEmitterWithImageNamed:[projectileDictionary objectForKey:@"kProjectileImage"]
                                                                             position:Vector2fMake(currentLocation.x, currentLocation.y) 
                                                               sourcePositionVariance:Vector2fZero 
-                                                                               speed:10 
-                                                                       speedVariance:0
-                                                                    particleLifeSpan:0
-                                                            particleLifespanVariance:1.1
+                                                                               speed:projectileSpeed
+                                                                       speedVariance:0.0
+                                                                    particleLifeSpan:4.0
+                                                            particleLifespanVariance:0.0
                                                                                angle:projectileAngle
                                                                        angleVariance:30.0
                                                                              gravity:Vector2fZero
@@ -191,11 +193,11 @@
                                                                   startColorVariance:Color4fMake(0.0, 0.0, 0.0, 0.0)
                                                                          finishColor:Color4fMake(0.0, 0.0, 0.0, 0.8399999737739563)
                                                                  finishColorVariance:Color4fMake(0.0, 0.0, 0.0, 0.0)
-                                                                        maxParticles:100.0
-                                                                        particleSize:0.0
-                                                                  finishParticleSize:19.72999954223633
+                                                                        maxParticles:30.0
+                                                                        particleSize:15.0
+                                                                  finishParticleSize:10.0
                                                                 particleSizeVariance:0.0
-                                                                            duration:-1
+                                                                            duration:-1.0
                                                                        blendAdditive:NO];
                 break;
             default:
@@ -223,12 +225,23 @@
             for(int i = 0; i < [emitter maxParticles]; i++){
                 [[polygonArray objectAtIndex:i] setPos:CGPointMake(emitter.particles[i].position.x, emitter.particles[i].position.y)];
             }
+            [emitter update:aDelta];
             break;
         case kPlayerProjectile_Missile:
-            
+            elapsedTime += aDelta;
+            if(elapsedTime >= 2){
+                //If it's been two seconds then reset the position back to where the missile came from
+                currentLocation = turretPosition;
+                elapsedTime = 0;
+            }
+            float newAngle = DEGREES_TO_RADIANS(projectileAngle);
+            CGPoint vector = CGPointMake(cosf(newAngle), sinf(newAngle));
+            currentLocation.x += (projectileSpeed * 10) * aDelta * vector.x;
+            currentLocation.y += (projectileSpeed * 10) * aDelta * vector.y;
+            [missilePolygon setPos:currentLocation];
             break;
         case kPlayerProjectile_Wave:
-
+            [emitter update:aDelta];
             break;
             
         
@@ -236,20 +249,29 @@
             for(int i = 0; i < [emitter maxParticles]; i++){
                 [[polygonArray objectAtIndex:i] setPos:CGPointMake(emitter.particles[i].position.x, emitter.particles[i].position.y)];
             }
+            [emitter update:aDelta];
             break;
         case kEnemyProjectile_Missile:
-
+            elapsedTime += aDelta;
+            if(elapsedTime >= 2){
+                //If it's been two seconds then reset the position back to where the missile came from
+                currentLocation = turretPosition;
+                elapsedTime = 0;
+            }
+            float newAngle2 = DEGREES_TO_RADIANS(projectileAngle);
+            CGPoint vector2 = CGPointMake(cosf(newAngle2), sinf(newAngle2));
+            currentLocation.x += (projectileSpeed * 10) * aDelta * vector2.x;
+            currentLocation.y += (projectileSpeed * 10) * aDelta * vector2.y;
+            [missilePolygon setPos:currentLocation];
             break;
         case kEnemyProjectile_Wave:
-
+            [emitter update:aDelta];
             break;
             
         default:
             break;
     }
     
-
-    [emitter update:aDelta];
 }
 
 - (void)setFiring:(BOOL)aFire {
