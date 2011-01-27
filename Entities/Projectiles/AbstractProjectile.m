@@ -21,13 +21,14 @@
 
 @synthesize turretPosition, currentLocation, desiredLocation, isActive, projectileAngle, projectileSpeed, projectileID;
 
-- (id)initWithProjectileID:(ProjectileID)aProjectileID fromTurretPosition:(Vector2f)aPosition andAngle:(int)aAngle {
+- (id)initWithProjectileID:(ProjectileID)aProjectileID fromTurretPosition:(Vector2f)aPosition andAngle:(int)aAngle emissionRate:(int)aRate {
     if((self = [super init])){
         
         projectileID = aProjectileID;
         turretPosition = aPosition;
         projectileAngle = aAngle;
         currentLocation = turretPosition;
+        rateOfFire = aRate;
         
         //Paths for main dictionary
         NSBundle *bundle = [NSBundle mainBundle];
@@ -114,6 +115,7 @@
                 for(int i = 0; i < [emitter maxParticles]; i++){
                     Polygon *tempPolygon = [[Polygon alloc] initWithPoints:collisionPoints andCount:collisionPointCount andShipPos:CGPointMake(turretPosition.x, turretPosition.y)];
                     [tempPolygon setPos:CGPointMake(emitter.particles[i].position.x, emitter.particles[i].position.y)];
+                    isAlive = YES;
                     [polygonArray addObject:tempPolygon];
                     [tempPolygon release];
                 }
@@ -130,21 +132,22 @@
                                                               sourcePositionVariance:Vector2fZero
                                                                                speed:projectileSpeed 
                                                                        speedVariance:0.0
-                                                                    particleLifeSpan:1.0
+                                                                    particleLifeSpan:1.118
                                                             particleLifespanVariance:0.0
                                                                                angle:projectileAngle
-                                                                       angleVariance:30.0
+                                                                       angleVariance:15.0
                                                                              gravity:Vector2fZero
                                                                           startColor:Color4fMake(1.0, 1.0, 1.0, 1.0)
                                                                   startColorVariance:Color4fMake(0.0, 0.0, 0.0, 0.0)
-                                                                         finishColor:Color4fMake(0.0, 0.0, 0.0, 0.8399999737739563)
+                                                                         finishColor:Color4fMake(1.0, 1.0, 1.0, 1.0)
                                                                  finishColorVariance:Color4fMake(0.0, 0.0, 0.0, 0.0)
-                                                                        maxParticles:60
+                                                                        maxParticles:100.0
                                                                         particleSize:15.0
-                                                                  finishParticleSize:10.0
+                                                                  finishParticleSize:15.0
                                                                 particleSizeVariance:0.0
-                                                                            duration:-1.0
+                                                                            duration:0.009999999776482582
                                                                        blendAdditive:NO];
+                emitter.fastEmission = YES;
                 break;
                 
                 //Enemies:
@@ -182,6 +185,7 @@
             case kEnemyProjectile_Missile:
                 image = [[Image alloc] initWithImage:[projectileDictionary objectForKey:@"kProjectileImage"] scale:1.0f];
                 missilePolygon = [[Polygon alloc] initWithPoints:collisionPoints andCount:collisionPointCount andShipPos:CGPointMake(turretPosition.x, turretPosition.y)];
+                isAlive = YES;
                 break;
                 
             case kEnemyProjectile_Wave:
@@ -190,21 +194,22 @@
                                                               sourcePositionVariance:Vector2fZero 
                                                                                speed:projectileSpeed
                                                                        speedVariance:0.0
-                                                                    particleLifeSpan:4.0
+                                                                    particleLifeSpan:1.118
                                                             particleLifespanVariance:0.0
                                                                                angle:projectileAngle
-                                                                       angleVariance:30.0
+                                                                       angleVariance:15.0
                                                                              gravity:Vector2fZero
                                                                           startColor:Color4fMake(1.0, 0.0, 0.0, 1.0)
                                                                   startColorVariance:Color4fMake(0.0, 0.0, 0.0, 0.0)
-                                                                         finishColor:Color4fMake(0.0, 0.0, 0.0, 0.8399999737739563)
+                                                                         finishColor:Color4fMake(1.0, 0.0, 0.0, 1.0)
                                                                  finishColorVariance:Color4fMake(0.0, 0.0, 0.0, 0.0)
-                                                                        maxParticles:30.0
+                                                                        maxParticles:100.0
                                                                         particleSize:15.0
-                                                                  finishParticleSize:10.0
+                                                                  finishParticleSize:15.0
                                                                 particleSizeVariance:0.0
-                                                                            duration:-1.0
+                                                                            duration:0.009999999776482582
                                                                        blendAdditive:NO];
+                emitter.fastEmission = YES;
                 break;
                 
             default:
@@ -229,16 +234,16 @@
         
     switch(projectileID){
         case kPlayerProjectile_Bullet:
+            [emitter setSourcePosition:Vector2fMake(turretPosition.x, turretPosition.y)];
+            [emitter update:aDelta];
             for(int i = 0; i < [emitter maxParticles]; i++){
                 [[polygonArray objectAtIndex:i] setPos:CGPointMake(emitter.particles[i].position.x, emitter.particles[i].position.y)];
             }
-            [emitter setSourcePosition:Vector2fMake(turretPosition.x, turretPosition.y)];
-            [emitter update:aDelta];
             break;
             
         case kPlayerProjectile_Missile:
             elapsedTime += aDelta;
-            if(elapsedTime >= 2){
+            if(elapsedTime >= rateOfFire){
                 //If it's been two seconds then reset the position back to where the missile came from
                 currentLocation = turretPosition;
                 elapsedTime = 0;
@@ -251,21 +256,26 @@
             break;
             
         case kPlayerProjectile_Wave:
+            elapsedTime += aDelta;
+            if(elapsedTime >= rateOfFire){
+                emitter.active = YES;
+                elapsedTime = 0;
+            }
             [emitter update:aDelta];
             break;
             
         
         case kEnemyProjectile_Bullet:
+            [emitter setSourcePosition:Vector2fMake(turretPosition.x, turretPosition.y)];
+            [emitter update:aDelta];
             for(int i = 0; i < [emitter maxParticles]; i++){
                 [[polygonArray objectAtIndex:i] setPos:CGPointMake(emitter.particles[i].position.x, emitter.particles[i].position.y)];
             }
-            [emitter update:aDelta];
-            [emitter setSourcePosition:Vector2fMake(turretPosition.x, turretPosition.y)];
             break;
             
         case kEnemyProjectile_Missile:
             elapsedTime += aDelta;
-            if(elapsedTime >= 2){
+            if(elapsedTime >= rateOfFire){
                 //If it's been two seconds then reset the position back to where the missile came from
                 currentLocation = turretPosition;
                 elapsedTime = 0;
@@ -278,6 +288,11 @@
             break;
             
         case kEnemyProjectile_Wave:
+            elapsedTime += aDelta;
+            if(elapsedTime >= rateOfFire){
+                emitter.active = YES;
+                elapsedTime = 0;
+            }
             [emitter update:aDelta];
             break;
             
@@ -301,7 +316,9 @@
         [emitter renderParticles];
     }
     else if(projectileID == kPlayerProjectile_Missile || projectileID == kEnemyProjectile_Missile){
-        [image renderAtPoint:CGPointMake(currentLocation.x, currentLocation.y) centerOfImage:YES];
+        if(isAlive == YES){
+            [image renderAtPoint:CGPointMake(currentLocation.x, currentLocation.y) centerOfImage:YES];
+        }
     }
     //From PlayerShip class
     if(DEBUG) { 

@@ -48,6 +48,7 @@ typedef enum _ParticleID {
     @private
     Vector2f        *collisionPoints;
     int             collisionPointCount;
+    int             rateOfFire;
     
     //Particle Emitter specific variables
     ParticleEmitter *emitter;
@@ -56,7 +57,8 @@ typedef enum _ParticleID {
     //Image specific variables
     Image           *image;
     Polygon         *missilePolygon;
-    GLuint          elapsedTime;
+    GLfloat         elapsedTime;
+    BOOL            isAlive;
 }
 
 @property (nonatomic)   Vector2f        turretPosition;
@@ -68,7 +70,7 @@ typedef enum _ParticleID {
 @property (nonatomic)   ProjectileID    projectileID;
 
 
-- (id)initWithProjectileID:(ProjectileID)aProjectileID fromTurretPosition:(Vector2f)aPosition andAngle:(int)aAngle;
+- (id)initWithProjectileID:(ProjectileID)aProjectileID fromTurretPosition:(Vector2f)aPosition andAngle:(int)aAngle emissionRate:(int)aRate;
 - (id)initWithParticleID:(ParticleID)aParticleID fromTurretPosition:(Vector2f)aPosition andAngle:(int)aAngle;
 - (void)update:(CGFloat)aDelta;
 - (void)render;

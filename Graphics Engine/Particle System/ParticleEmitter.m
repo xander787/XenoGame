@@ -48,6 +48,7 @@
 @synthesize emitCounter;
 @synthesize duration;
 @synthesize blendAdditive;
+@synthesize fastEmission;
 
 @synthesize particles;
 
@@ -106,6 +107,8 @@
 		emissionRate = maxParticles/particleLifespan;
 		duration = inDuration;
 		blendAdditive = inBlendAdditive;
+        
+        fastEmission = NO;
 		
 		// Allocate the memory necessary for the particle emitter arrays
 		particles = malloc( sizeof(Particle) * maxParticles);
@@ -232,8 +235,14 @@
 	// If the emitter is active and the emission rate is greater than zero then emit
 	// particles
 	if(active && emissionRate) {
-		float rate = 1.0f/emissionRate;
-		emitCounter += delta;
+        float rate;
+        if(fastEmission == YES){
+            rate = 0.1f/emissionRate;
+        }
+        else {
+            rate = 1.0f/emissionRate;
+		}
+        emitCounter += delta;
 		while(particleCount < maxParticles && emitCounter > rate) {
 			[self addParticle];
 			emitCounter -= rate;

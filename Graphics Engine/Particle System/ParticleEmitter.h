@@ -61,6 +61,8 @@
 	GLfloat elapsedTime;
 	GLfloat duration;
 	BOOL blendAdditive;
+    
+    BOOL fastEmission;
 }
 
 @property(nonatomic, retain) Image *texture;
@@ -87,6 +89,7 @@
 @property(nonatomic, assign) BOOL active;
 @property(nonatomic, assign) GLfloat duration;
 @property(nonatomic, assign) BOOL blendAdditive;
+@property(readwrite) BOOL fastEmission;
 
 @property(nonatomic, assign) Particle *particles;
 
