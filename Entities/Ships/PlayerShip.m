@@ -50,6 +50,9 @@
 //  - Removed unecessary key from PLIST "collisionPointsCount"
 //  because we have all the points in an array, and thus obviously
 //  know how many we have. Not needed and takes up more file space.
+//
+//  Last Updated - 1/26/2011 @5:20PM - Alexander
+//  - Added NSSet for storing our projectiles
 
 #import "PlayerShip.h"
 
@@ -133,6 +136,7 @@
         
 		//Fill a C array with Vector2f's for our ship's turret points
 		NSArray *turretArray = [[NSArray alloc] initWithArray:[shipDictionary objectForKey:@"kTurretPoints"]];
+        numTurrets = [turretArray count];
 		turretPoints = malloc(sizeof(Vector2f) * [turretArray count]);
 		bzero( turretPoints, sizeof(Vector2f) * [turretArray count]);
         
@@ -155,6 +159,7 @@
         
         //Fill a C array with Vector2f's of our ship's thruster points
         NSArray *thrusterArray = [[NSArray alloc] initWithArray:[shipDictionary objectForKey:@"kThrusterPoints"]];
+        numThrusters = [thrusterArray count];
         thrusterPoints = malloc(sizeof(Vector2f) * [thrusterArray count]);
         bzero(thrusterPoints, sizeof(Vector2f) * [thrusterArray count]);
         
@@ -213,8 +218,17 @@
         NSLog(@"Player: %f, %f", self.boundingBox.x, self.boundingBox.y);
 		
 		[shipDictionary release];
+        
+        
+        // Add projectiles to our local projectile set for the weapon points on the ship
+        projectilesArray = [[NSMutableArray alloc] init];
+        for(int i = 0; i < numTurrets; i++) {
+            AbstractProjectile *projectile = [[AbstractProjectile alloc] initWithProjectileID:kPlayerProjectile_Bullet fromTurretPosition:Vector2fMake(currentLocation.x + turretPoints[i].x, currentLocation.y + turretPoints[i].y) andAngle:90];
+            [projectilesArray insertObject:projectile atIndex:i];
+            [projectile release];
+        }
 	}
-	
+    	
 	return self;
 }
 
@@ -226,14 +240,26 @@
 - (void)update:(GLfloat)delta {
     currentLocation.x += ((desiredPosition.x - currentLocation.x) / shipSpeed) * (pow(1.584893192, shipSpeed)) * delta;
     currentLocation.y += ((desiredPosition.y - currentLocation.y) / shipSpeed) * (pow(1.584893192, shipSpeed)) * delta;
-        
+    
     //Update the points for our polygon
     [collisionPolygon setPos:currentLocation];
+    
+    // Update all of our projectiles
+    for(int i = 0; i < [projectilesArray count]; i++) {
+        [[projectilesArray objectAtIndex:i] update:delta];
+        [[projectilesArray objectAtIndex:i] setTurretPosition:Vector2fMake(currentLocation.x + turretPoints[i].x, currentLocation.y + turretPoints[i].y)];
+    }
 }
 
 - (void)render {    
     [mainImage renderAtPoint:currentLocation centerOfImage:YES];
+
+    // Render projectiles
+    for(int i = 0; i < [projectilesArray count]; i++) {
+        [[projectilesArray objectAtIndex:i] render];
+    }
     
+    // For debugging collisions
     if(DEBUG) {                
         glPushMatrix();
         

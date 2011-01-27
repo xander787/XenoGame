@@ -10,7 +10,9 @@
 //	James Linnell - Software Engineer, Creative Design, Art Producer
 //	Tyler Newcomb - Creative Design, Art Producer
 //
-//	Last Updated - 
+//	Last Updated - 1/26/2011 @ 5:20PM - Alexander
+//  - Added ability to change location, and also added properties for
+//  public vars
 
 #import <Foundation/Foundation.h>
 #import "PhysicalObject.h"
@@ -32,18 +34,20 @@ typedef enum _ParticleID {
 } ParticleID;
 
 @interface AbstractProjectile : PhysicalObject {    
-    Vector2f        *collisionPoints;
-    int             collisionPointCount;
-
     int             projectileAngle;
     int             projectileSpeed;
     ProjectileID    projectileID;
     
-    CGPoint         turretPosition;
-    CGPoint         currentLocation;
-    CGPoint         desiredLocation;
+    Vector2f         turretPosition;
+    Vector2f         currentLocation;
+    Vector2f         desiredLocation;
         
     BOOL            isActive;
+    
+    
+    @private
+    Vector2f        *collisionPoints;
+    int             collisionPointCount;
     
     //Particle Emitter specific variables
     ParticleEmitter *emitter;
@@ -55,8 +59,17 @@ typedef enum _ParticleID {
     GLuint          elapsedTime;
 }
 
-- (id)initWithProjectileID:(ProjectileID)aProjectileID fromTurretPosition:(CGPoint)aPosition andAngle:(int)aAngle;
-- (id)initWithParticleID:(ParticleID)aParticleID fromTurretPosition:(CGPoint)aPosition andAngle:(int)aAngle;
+@property (nonatomic)   Vector2f        turretPosition;
+@property (readonly)    Vector2f        currentLocation;
+@property (nonatomic)   Vector2f        desiredLocation;
+@property (nonatomic)   BOOL            isActive;
+@property (nonatomic)   int             projectileAngle;
+@property (nonatomic)   int             projectileSpeed;
+@property (nonatomic)   ProjectileID    projectileID;
+
+
+- (id)initWithProjectileID:(ProjectileID)aProjectileID fromTurretPosition:(Vector2f)aPosition andAngle:(int)aAngle;
+- (id)initWithParticleID:(ParticleID)aParticleID fromTurretPosition:(Vector2f)aPosition andAngle:(int)aAngle;
 - (void)update:(CGFloat)aDelta;
 - (void)render;
 - (void)setFiring:(BOOL)aFire;

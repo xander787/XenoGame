@@ -4,18 +4,6 @@
 <dict>
 	<key>kPlayerShip_Dev</key>
 	<dict>
-		<key>kShipID</key>
-		<string>kPlayerShip_Dev</string>
-		<key>kShipSpeed</key>
-		<integer>10</integer>
-		<key>kShipAttack</key>
-		<integer>8</integer>
-		<key>kShipStamina</key>
-		<integer>3</integer>
-		<key>kShipCategory</key>
-		<string>kShipCategory_Attack</string>
-		<key>kMainImage</key>
-		<string>devship.png</string>
 		<key>kCollisionBoundingPoints</key>
 		<array>
 			<string>0,28</string>
@@ -23,21 +11,33 @@
 			<string>0,-24</string>
 			<string>-38,-4</string>
 		</array>
-		<key>kTurretPoints</key>
-		<array>
-			<string>52,40</string>
-			<string>40,52</string>
-			<string>22,60</string>
-			<string>72,40</string>
-			<string>87,52</string>
-			<string>106,60</string>
-		</array>
+		<key>kMainImage</key>
+		<string>devship.png</string>
+		<key>kPlayerWeaponType</key>
+		<string>kWeapon_SingleShot</string>
+		<key>kShipAttack</key>
+		<integer>8</integer>
+		<key>kShipCategory</key>
+		<string>kShipCategory_Attack</string>
+		<key>kShipID</key>
+		<string>kPlayerShip_Dev</string>
+		<key>kShipSpeed</key>
+		<integer>10</integer>
+		<key>kShipStamina</key>
+		<integer>3</integer>
 		<key>kThrusterPoints</key>
 		<array>
 			<string>63,92</string>
 		</array>
-		<key>kPlayerWeaponType</key>
-		<string>kWeapon_SingleShot</string>
+		<key>kTurretPoints</key>
+		<array>
+			<string>12.23</string>
+			<string>24,19</string>
+			<string>32,11</string>
+			<string>46,11</string>
+			<string>55,19</string>
+			<string>67,23</string>
+		</array>
 	</dict>
 </dict>
 </plist>

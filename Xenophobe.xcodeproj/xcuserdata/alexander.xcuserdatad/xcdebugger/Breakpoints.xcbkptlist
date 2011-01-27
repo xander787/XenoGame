@@ -9,25 +9,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "Entities/Ships/BossShip.m"
-         timestampString = "316568218.12287"
+         timestampString = "317534018.037345"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "322"
-         endingLineNumber = "322"
-         landmarkName = "-render"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         isPathRelative = "1"
-         filePath = "Entities/Ships/BossShip.m"
-         timestampString = "315892644.223837"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "249"
-         endingLineNumber = "249"
+         startingLineNumber = "248"
+         endingLineNumber = "248"
          landmarkName = "-initWithBossID:initialLocation:andPlayerShipRef:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -37,35 +23,7 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "Entities/Ships/BossShip.m"
-         timestampString = "315892850.359402"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "246"
-         endingLineNumber = "246"
-         landmarkName = "-initWithBossID:initialLocation:andPlayerShipRef:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         isPathRelative = "1"
-         filePath = "Entities/Ships/BossShip.m"
-         timestampString = "315897918.841481"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "256"
-         endingLineNumber = "256"
-         landmarkName = "-initWithBossID:initialLocation:andPlayerShipRef:"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         isPathRelative = "1"
-         filePath = "Entities/Ships/BossShip.m"
-         timestampString = "315894089.397147"
+         timestampString = "317534018.037345"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "245"
@@ -79,11 +37,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "Entities/Ships/BossShip.m"
-         timestampString = "315894095.484836"
+         timestampString = "317534018.037345"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "231"
-         endingLineNumber = "231"
+         startingLineNumber = "255"
+         endingLineNumber = "255"
          landmarkName = "-initWithBossID:initialLocation:andPlayerShipRef:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -93,12 +51,68 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "Entities/Ships/BossShip.m"
-         timestampString = "315894103.577528"
+         timestampString = "317534018.037345"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "229"
-         endingLineNumber = "229"
+         startingLineNumber = "244"
+         endingLineNumber = "244"
          landmarkName = "-initWithBossID:initialLocation:andPlayerShipRef:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "Entities/Ships/BossShip.m"
+         timestampString = "317534018.037345"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "230"
+         endingLineNumber = "230"
+         landmarkName = "-initWithBossID:initialLocation:andPlayerShipRef:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "Entities/Ships/BossShip.m"
+         timestampString = "317534018.037345"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "228"
+         endingLineNumber = "228"
+         landmarkName = "-initWithBossID:initialLocation:andPlayerShipRef:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "Entities/Ships/BossShip.m"
+         timestampString = "317534018.037345"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "292"
+         endingLineNumber = "292"
+         landmarkName = "-initWithBossID:initialLocation:andPlayerShipRef:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         isPathRelative = "1"
+         filePath = "Entities/Ships/PlayerShip.m"
+         timestampString = "317784874.405513"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "257"
+         endingLineNumber = "257"
+         landmarkName = "-render"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>
@@ -110,13 +124,4 @@
          symbolName = "[NSException raise]">
       </SymbolicBreakpoint>
    </SymbolicBreakpoints>
-   <ExceptionBreakpoints>
-      <ExceptionBreakpoint
-         shouldBeEnabled = "Yes"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         scope = "1"
-         stopOnStyle = "0">
-      </ExceptionBreakpoint>
-   </ExceptionBreakpoints>
 </Bucket>

@@ -20,11 +20,6 @@
 }
 
 - (void)update:(GLfloat)aDelta {
-    // Angle cannon towards the player
-    float tempPlayerPosX, tempPlayerPosY;
-    tempPlayerPosX = playerShipRef.currentLocation.x;
-    tempPlayerPosY = playerShipRef.currentLocation.y;
-    
     
 }
 

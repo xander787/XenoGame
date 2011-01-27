@@ -96,7 +96,7 @@
         
     
     //Testing bullet
-    bulletTest = [[AbstractProjectile alloc] initWithProjectileID:kEnemyProjectile_Bullet fromTurretPosition:CGPointMake(250, 200) andAngle:90];
+    bulletTest = [[AbstractProjectile alloc] initWithProjectileID:kEnemyProjectile_Bullet fromTurretPosition:Vector2fMake(250, 200) andAngle:90];
 }
 
 - (void)updateWithDelta:(GLfloat)aDelta {
@@ -222,7 +222,7 @@
     [testShip render];
 //    [testEnemy render];
     [testBoss render];
-    [bulletTest render];
+    //[bulletTest render];
     
     if(DEBUG) {
         
@@ -237,7 +237,7 @@
     [testShip release];
     [testEnemy release];
     [testBoss release];
-    [bulletTest release];
+    //[bulletTest release];
     [enemiesSet release];
     [projectilesSet release];
     [bossesSet release];

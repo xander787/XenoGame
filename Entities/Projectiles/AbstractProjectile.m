@@ -10,15 +10,18 @@
 //	James Linnell - Software Engineer, Creative Design, Art Producer
 //	Tyler Newcomb - Creative Design, Art Producer
 //
-//	Last Updated - 
+//	Last Updated - 1/26/2011 @ 5:20PM - Alexander
+//  - Added ability to change location, and also added properties for
+//  public vars
 
 #import "AbstractProjectile.h"
 
 
 @implementation AbstractProjectile
 
+@synthesize turretPosition, currentLocation, desiredLocation, isActive, projectileAngle, projectileSpeed, projectileID;
 
-- (id)initWithProjectileID:(ProjectileID)aProjectileID fromTurretPosition:(CGPoint)aPosition andAngle:(int)aAngle {
+- (id)initWithProjectileID:(ProjectileID)aProjectileID fromTurretPosition:(Vector2f)aPosition andAngle:(int)aAngle {
     if((self = [super init])){
         
         projectileID = aProjectileID;
@@ -109,16 +112,18 @@
                 //Set up the Polygons for each particle
                 polygonArray = [[NSMutableArray alloc] init];
                 for(int i = 0; i < [emitter maxParticles]; i++){
-                    Polygon *tempPolygon = [[Polygon alloc] initWithPoints:collisionPoints andCount:collisionPointCount andShipPos:turretPosition];
+                    Polygon *tempPolygon = [[Polygon alloc] initWithPoints:collisionPoints andCount:collisionPointCount andShipPos:CGPointMake(turretPosition.x, turretPosition.y)];
                     [tempPolygon setPos:CGPointMake(emitter.particles[i].position.x, emitter.particles[i].position.y)];
                     [polygonArray addObject:tempPolygon];
                     [tempPolygon release];
                 }
                 break;
+                
             case kPlayerProjectile_Missile:
                 image = [[Image alloc] initWithImage:[projectileDictionary objectForKey:@"kProjectileImage"] scale:1.0f];
-                missilePolygon = [[Polygon alloc] initWithPoints:collisionPoints andCount:collisionPointCount andShipPos:turretPosition];
+                missilePolygon = [[Polygon alloc] initWithPoints:collisionPoints andCount:collisionPointCount andShipPos:CGPointMake(turretPosition.x, turretPosition.y)];
                 break;
+                
             case kPlayerProjectile_Wave:
                 emitter = [[ParticleEmitter alloc] initParticleEmitterWithImageNamed:[projectileDictionary objectForKey:@"kProjectileImage"]
                                                                             position:Vector2fMake(currentLocation.x, currentLocation.y) 
@@ -141,7 +146,6 @@
                                                                             duration:-1.0
                                                                        blendAdditive:NO];
                 break;
-                
                 
                 //Enemies:
             case kEnemyProjectile_Bullet:
@@ -168,16 +172,18 @@
                 //Set up the Polygons for each particle
                 polygonArray = [[NSMutableArray alloc] init];
                 for(int i = 0; i < [emitter maxParticles]; i++){
-                    Polygon *tempPolygon = [[Polygon alloc] initWithPoints:collisionPoints andCount:collisionPointCount andShipPos:turretPosition];
+                    Polygon *tempPolygon = [[Polygon alloc] initWithPoints:collisionPoints andCount:collisionPointCount andShipPos:CGPointMake(turretPosition.x, turretPosition.y)];
                     [tempPolygon setPos:CGPointMake(emitter.particles[i].position.x, emitter.particles[i].position.y)];
                     [polygonArray addObject:tempPolygon];
                     [tempPolygon release];
                 }
                 break;
+                
             case kEnemyProjectile_Missile:
                 image = [[Image alloc] initWithImage:[projectileDictionary objectForKey:@"kProjectileImage"] scale:1.0f];
-                missilePolygon = [[Polygon alloc] initWithPoints:collisionPoints andCount:collisionPointCount andShipPos:turretPosition];
+                missilePolygon = [[Polygon alloc] initWithPoints:collisionPoints andCount:collisionPointCount andShipPos:CGPointMake(turretPosition.x, turretPosition.y)];
                 break;
+                
             case kEnemyProjectile_Wave:
                 emitter = [[ParticleEmitter alloc] initParticleEmitterWithImageNamed:[projectileDictionary objectForKey:@"kProjectileImage"]
                                                                             position:Vector2fMake(currentLocation.x, currentLocation.y) 
@@ -200,6 +206,7 @@
                                                                             duration:-1.0
                                                                        blendAdditive:NO];
                 break;
+                
             default:
                 break;
         }
@@ -213,7 +220,7 @@
     return self;
 }
 
-- (id)initWithParticleID:(ParticleID)aParticleID fromTurretPosition:(CGPoint)aPosition andAngle:(int)aAngle {
+- (id)initWithParticleID:(ParticleID)aParticleID fromTurretPosition:(Vector2f)aPosition andAngle:(int)aAngle {
     return self;
 }
 
@@ -225,8 +232,10 @@
             for(int i = 0; i < [emitter maxParticles]; i++){
                 [[polygonArray objectAtIndex:i] setPos:CGPointMake(emitter.particles[i].position.x, emitter.particles[i].position.y)];
             }
+            [emitter setSourcePosition:Vector2fMake(turretPosition.x, turretPosition.y)];
             [emitter update:aDelta];
             break;
+            
         case kPlayerProjectile_Missile:
             elapsedTime += aDelta;
             if(elapsedTime >= 2){
@@ -238,8 +247,9 @@
             CGPoint vector = CGPointMake(cosf(newAngle), sinf(newAngle));
             currentLocation.x += (projectileSpeed * 10) * aDelta * vector.x;
             currentLocation.y += (projectileSpeed * 10) * aDelta * vector.y;
-            [missilePolygon setPos:currentLocation];
+            [missilePolygon setPos:CGPointMake(turretPosition.x, turretPosition.y)];
             break;
+            
         case kPlayerProjectile_Wave:
             [emitter update:aDelta];
             break;
@@ -250,7 +260,9 @@
                 [[polygonArray objectAtIndex:i] setPos:CGPointMake(emitter.particles[i].position.x, emitter.particles[i].position.y)];
             }
             [emitter update:aDelta];
+            [emitter setSourcePosition:Vector2fMake(turretPosition.x, turretPosition.y)];
             break;
+            
         case kEnemyProjectile_Missile:
             elapsedTime += aDelta;
             if(elapsedTime >= 2){
@@ -262,8 +274,9 @@
             CGPoint vector2 = CGPointMake(cosf(newAngle2), sinf(newAngle2));
             currentLocation.x += (projectileSpeed * 10) * aDelta * vector2.x;
             currentLocation.y += (projectileSpeed * 10) * aDelta * vector2.y;
-            [missilePolygon setPos:currentLocation];
+            [missilePolygon setPos:CGPointMake(turretPosition.x, turretPosition.y)];
             break;
+            
         case kEnemyProjectile_Wave:
             [emitter update:aDelta];
             break;
@@ -288,7 +301,7 @@
         [emitter renderParticles];
     }
     else if(projectileID == kPlayerProjectile_Missile || projectileID == kEnemyProjectile_Missile){
-        [image renderAtPoint:currentLocation centerOfImage:YES];
+        [image renderAtPoint:CGPointMake(currentLocation.x, currentLocation.y) centerOfImage:YES];
     }
     //From PlayerShip class
     if(DEBUG) { 

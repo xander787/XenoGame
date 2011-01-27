@@ -35,12 +35,16 @@
 //
 //  Last Updated - 1/1/11 @9:30PM - Alexander
 //  - Added shipWidth and shipHeight properties
+//
+//  Last Updated - 1/26/2011 @5:20PM - Alexander
+//  - Added NSSet for storing our projectiles
 
 #import <Foundation/Foundation.h>
 #import "AbstractShip.h"
 #import "Image.h"
 #import "Animation.h"
 #import "Polygon.h"
+#import "AbstractProjectile.h"
 
 typedef enum _PlayerShipID {
 	kPlayerShip_Dev = 0,
@@ -96,7 +100,10 @@ typedef enum _PlayerShipTemporaryMiscUpgrade {
 	PlayerShipWeaponType				shipWeaponType;
 	Image								*mainImage;
 	Vector2f							*turretPoints;
+    int                                 numTurrets;
 	Vector2f                            *thrusterPoints;
+    int                                 numThrusters;
+    NSMutableArray                      *projectilesArray;
 }
 
 - (id)initWithShipID:(PlayerShipID)aShipID andInitialLocation:(CGPoint)aPoint;
