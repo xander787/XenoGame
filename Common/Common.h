@@ -65,6 +65,9 @@
 // Macro which converts degrees into radians
 #define DEGREES_TO_RADIANS(__ANGLE__) ((__ANGLE__) / 180.0 * M_PI)
 
+// Macro which converts radians to degrees
+#define RADIANS_TO_DEGREES(__RAD__) ((__RAD__)*180.0/M_PI)
+
 // Macro which converts coordinate rise / run to particle emitter angle
 // ;#define SLOPE_TO_DEGREES(__SLOPE__) (DEGREES_TO_RADIANS(atan(__SLOPE__)))
 
