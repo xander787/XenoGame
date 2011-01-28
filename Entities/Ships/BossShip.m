@@ -215,7 +215,7 @@
             
             //Step two:  get the locations for each module relative to the center of the ship
             NSArray *moduleLocationCoords = [[NSArray alloc] initWithArray:[[moduleLocationsArray objectAtIndex:i] componentsSeparatedByString:@","]];
-            modularObjects[i].location = Vector2fMake([[moduleLocationCoords objectAtIndex:0] floatValue], [[moduleLocationCoords objectAtIndex:1] floatValue]);
+            modularObjects[i].location = Vector2fMake([[moduleLocationCoords objectAtIndex:0] intValue], [[moduleLocationCoords objectAtIndex:1] floatValue]);
             [moduleLocationCoords release];
             
             
@@ -318,7 +318,7 @@
 
 - (void)render {
     for(int i = 0; i < numberOfModules; i++) {
-        [modularObjects[i].moduleImage renderAtPoint:CGPointMake(currentLocation.x - modularObjects[i].location.x, currentLocation.y - modularObjects[i].location.y) centerOfImage:YES];
+        [modularObjects[i].moduleImage renderAtPoint:CGPointMake(currentLocation.x - modularObjects[i].location.x, currentLocation.y + modularObjects[i].location.y) centerOfImage:YES];
     }
     
     if(DEBUG) {                
