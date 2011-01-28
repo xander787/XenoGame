@@ -8,18 +8,21 @@
 
 #import <Foundation/Foundation.h>
 #import "BossShip.h"
+#import "ParticleEmitter.h"
 
 
 @interface BossShipAsia : BossShip {    
-    ModularObject    leftCannon;
-    ModularObject    rightCannon;
+    ModularObject   cannonLeft;
+    ModularObject   cannonRight;
+    ModularObject   turretLeft;
+    ModularObject   turretRight;
+    ModularObject   mainBody;
     
-    
-    float       angleFromLeftCannon;
-    float       angleFromRightCannon;
+    ParticleEmitter *leftCannonEmitterJoint;
+    ParticleEmitter *rightCannonEmitterJoint;
 }
 
 - (id)initWithLocation:(CGPoint)aPoint andPlayerShipRef:(PlayerShip *)playerRef;
-- (void)update:(GLfloat)aDelta;
+- (void)update:(GLfloat)delta;
 
 @end

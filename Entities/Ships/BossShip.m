@@ -296,7 +296,7 @@
         [moduleDestructionOrder release];
         
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
+        
     }
     
     return self;
@@ -307,49 +307,11 @@
 }
 
 - (void)update:(GLfloat)delta {
-    currentLocation.x += ((desiredLocation.x - currentLocation.x) / bossSpeed) * (pow(1.584893192, bossSpeed)) * delta;
-    currentLocation.y += ((desiredLocation.y - currentLocation.y) / bossSpeed) * (pow(1.584893192, bossSpeed)) * delta;
     
-    //Set the centers of the polygons so they get rendered properly
-    for(int i = 0; i < numberOfModules; i++){
-        [modularObjects[i].collisionPolygon setPos:CGPointMake(modularObjects[i].location.x + currentLocation.x, modularObjects[i].location.y + currentLocation.y)];  
-    }
 }
 
 - (void)render {
-    for(int i = 0; i < numberOfModules; i++) {
-        [modularObjects[i].moduleImage renderAtPoint:CGPointMake(currentLocation.x - modularObjects[i].location.x, currentLocation.y + modularObjects[i].location.y) centerOfImage:YES];
-    }
     
-    if(DEBUG) {                
-        glPushMatrix();
-        
-        glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
-        
-        for(int i = 0; i < numberOfModules; i++) {
-            for(int j = 0; j < (modularObjects[i].collisionPointsCount - 1); j++) {
-                GLfloat line[] = {
-                    modularObjects[i].collisionPolygon.points[j].x, modularObjects[i].collisionPolygon.points[j].y,
-                    modularObjects[i].collisionPolygon.points[j+1].x, modularObjects[i].collisionPolygon.points[j+1].y,
-                };
-                
-                glVertexPointer(2, GL_FLOAT, 0, line);
-                glEnableClientState(GL_VERTEX_ARRAY);
-                glDrawArrays(GL_LINES, 0, 2);
-            }
-            
-            GLfloat lineEnd[] = {
-                modularObjects[i].collisionPolygon.points[(modularObjects[i].collisionPointsCount - 1)].x, modularObjects[i].collisionPolygon.points[(modularObjects[i].collisionPointsCount - 1)].y,
-                modularObjects[i].collisionPolygon.points[0].x, modularObjects[i].collisionPolygon.points[0].y,
-            };
-            
-            glVertexPointer(2, GL_FLOAT, 0, lineEnd);
-            glEnableClientState(GL_VERTEX_ARRAY);
-            glDrawArrays(GL_LINES, 0, 2);
-        }
-        
-        glPopMatrix();
-    }
 }
 
 - (void)dealloc {

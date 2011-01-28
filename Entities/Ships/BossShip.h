@@ -19,6 +19,7 @@
 //  rendering purposes
 
 #import <Foundation/Foundation.h>
+#import "Common.h"
 #import "AbstractShip.h"
 #import "Image.h"
 #import "Animation.h"
@@ -115,9 +116,7 @@ typedef struct _ModularObject {
     int             shipHeight;
     
     PlayerShip      *playerShipRef;
-
     
-    @private
     int             numberOfModules;
     BossShipID      bossID;
     BossType        bossType;
