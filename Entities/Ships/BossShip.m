@@ -26,9 +26,14 @@
 //  Last Updated - 12/31/2010 @7:30PM - Alexander
 //  - Memory management: added dealloc method and use it
 //  to deallocate our objects
+//
 //  Last updated - 1/19/11 @ &PM - James
 //  - Rewrote hte majority of the initialization, mainly
 //  for loading information fomr the BossShips.plist file
+//
+//  Last Updated - 1/28/2011 @10PM - Alexander
+//  - Make sure that on initialization, module rotations 
+//  are set to 0.0f
 
 #import "BossShip.h"
 
@@ -204,6 +209,9 @@
             
             //Step one: get the image for the module, simple so it's first
             modularObjects[i].moduleImage = [[Image alloc] initWithImage:[moduleImagesArray objectAtIndex:i] scale:1.0f];
+            
+            modularObjects[i].currentRotation = 0.0;
+            modularObjects[i].defaultRotation = 270.0;
             
             //Set the width & height for later use in super class handling this ship
             shipWidth += modularObjects[i].moduleImage.imageWidth;

@@ -99,7 +99,8 @@ typedef struct _ModularObject {
     Vector2f        *collisionDetectionBoundingPoints;
     Polygon         *collisionPolygon;
     int             collisionPointsCount;
-    float           rotation;
+    float           currentRotation;
+    float           defaultRotation;
 } ModularObject;
 
 

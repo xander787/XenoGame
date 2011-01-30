@@ -37,7 +37,7 @@
 //  - Added shipWidth and shipHeight properties
 //
 //  Last Updated - 1/26/2011 @5:20PM - Alexander
-//  - Added NSSet for storing our projectiles
+//  - Added NSMutableArray for storing our projectiles
 
 #import <Foundation/Foundation.h>
 #import "AbstractShip.h"
@@ -108,7 +108,9 @@ typedef enum _PlayerShipTemporaryMiscUpgrade {
 
 - (id)initWithShipID:(PlayerShipID)aShipID andInitialLocation:(CGPoint)aPoint;
 - (void)setDesiredLocation:(CGPoint)aPoint;
+- (void)shipWasHitWithProjectile:(AbstractProjectile *)projectile;
 - (void)fireWeapons;
+- (void)destroyShip;
 
 @property (readonly) int shipHealth;
 @property (readonly) int shipAttack;

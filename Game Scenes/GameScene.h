@@ -20,14 +20,15 @@
 #import "PlayerShip.h"
 #import "EnemyShip.h"
 #import "BossShip.h"
+#import "BossShipAsia.h"
 #import "Collisions.h"
 #import "AngelCodeFont.h"
 #import "AbstractProjectile.h"
 
 @interface GameScene : AbstractScene {
-    PlayerShip	*testShip;
-    EnemyShip   *testEnemy;
-    BossShip    *testBoss;
+    PlayerShip      *testShip;
+    EnemyShip       *testEnemy;
+    BossShipAsia    *testBoss;
         
     AbstractProjectile *bulletTest;
     

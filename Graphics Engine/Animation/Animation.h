@@ -16,6 +16,7 @@
 #import <Foundation/Foundation.h>
 #import "SpriteSheet.h"
 #import "Frame.h"
+#import "Common.h"
 
 enum {
 	kDirection_Forward = 1,

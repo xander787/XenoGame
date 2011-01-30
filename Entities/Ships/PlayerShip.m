@@ -10,16 +10,6 @@
 //	James Linnell - Software Engineer, Creative Design, Art Producer
 //	Tyler Newcomb - Creative Design, Art Producer
 //
-//  Last Updated - 12/17/10 @6PM - James
-//  - Assigned correct width and height measurements
-//  to the boundingBox variable, derived from
-//  the GameObject class.
-//
-//  Last Updated - 12/29/10 @12AM - Alexander
-//  - Added in code to load collision bounding points 
-//  from PLIST file. Also fixed a bug in thruster points 
-//  loading
-//
 //  Last Updated - 12/29/2010 @ 1AM - James
 //  - Started using new NSArray->C Array function in Common.h
 //  (Expiremental too), and full backup of old
@@ -52,7 +42,10 @@
 //  know how many we have. Not needed and takes up more file space.
 //
 //  Last Updated - 1/26/2011 @5:20PM - Alexander
-//  - Added NSSet for storing our projectiles
+//  - Added NSMutableArray for storing our projectiles
+//
+//  Last Updated - 1/28/2011 *10PM - Alexander
+//  - Added code for the ship to fire projectiles
 
 #import "PlayerShip.h"
 
@@ -131,7 +124,7 @@
 		else if ([shipDictionary valueForKey:@"kPlayerWeaponType"] == @"kWeapon_Wave") {
 			shipWeaponType = kPlayerWeapon_Wave;
 		}
-
+        
         
         
 		//Fill a C array with Vector2f's for our ship's turret points
@@ -202,7 +195,7 @@
             [coords release];
         }
         [collisionArray release];
-
+        
         
         
         //Allocate our polygon, for use in collision detection.
@@ -228,7 +221,7 @@
             [projectile release];
         }
 	}
-    	
+    
 	return self;
 }
 
@@ -253,13 +246,13 @@
 
 - (void)render {    
     [mainImage renderAtPoint:currentLocation centerOfImage:YES];
-
+    
     // Render projectiles
     for(int i = 0; i < [projectilesArray count]; i++) {
         [[projectilesArray objectAtIndex:i] render];
     }
     
-    // For debugging collisions
+    // For DEBUGging collisions
     if(DEBUG) {                
         glPushMatrix();
         
@@ -268,8 +261,8 @@
         //Loop through the all the lines except for the last
         for(int i = 0; i < (collisionPointsCount - 1); i++) {
             GLfloat line[] = {
-              collisionPolygon.points[i].x, collisionPolygon.points[i].y,
-              collisionPolygon.points[i+1].x, collisionPolygon.points[i+1].y,
+                collisionPolygon.points[i].x, collisionPolygon.points[i].y,
+                collisionPolygon.points[i+1].x, collisionPolygon.points[i+1].y,
             };
             
             glVertexPointer(2, GL_FLOAT, 0, line);
@@ -293,6 +286,14 @@
 }
 
 - (void)fireWeapons {
+    
+}
+
+- (void)shipWasHitWithProjectile:(AbstractProjectile *)projectile {
+    
+}
+
+- (void)destroyShip {
     
 }
 

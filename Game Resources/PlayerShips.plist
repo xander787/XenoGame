@@ -31,12 +31,8 @@
 		</array>
 		<key>kTurretPoints</key>
 		<array>
-			<string>-28,5</string>
 			<string>-16,9</string>
-			<string>-8,17</string>
-			<string>6,17</string>
 			<string>15,9</string>
-			<string>27,5</string>
 		</array>
 	</dict>
 </dict>

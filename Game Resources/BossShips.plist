@@ -47,10 +47,10 @@
 		<key>kShipModulePoints</key>
 		<array>
 			<string>0,0</string>
-			<string>59,-4</string>
-			<string>-59,-4</string>
-			<string>136,-6</string>
-			<string>-136,-6</string>
+			<string>59,5</string>
+			<string>-59,5</string>
+			<string>136,0</string>
+			<string>-136,0</string>
 		</array>
 		<key>kShipTurretPoints</key>
 		<array>

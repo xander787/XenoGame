@@ -13,6 +13,10 @@
 //	Last Updated - 1/26/2011 @ 5:20PM - Alexander
 //  - Added ability to change location, and also added properties for
 //  public vars
+//
+//  Last Updated - 1/18/2011 @10PM - Alexander
+//  - Changed player bullet to fade and get smaller as the projectile
+//  moves across the screen
 
 #import "AbstractProjectile.h"
 
@@ -102,9 +106,9 @@
                                                                              gravity:Vector2fZero
                                                                           startColor:Color4fMake(1.0, 1.0, 1.0, 1.0)
                                                                   startColorVariance:Color4fMake(0.0, 0.0, 0.0, 0.0)
-                                                                         finishColor:Color4fMake(1.0, 1.0, 1.0, 1.0)
+                                                                         finishColor:Color4fMake(1.0, 1.0, 1.0, 0.5)
                                                                  finishColorVariance:Color4fMake(0.0, 0.0, 0.0, 0.0)
-                                                                        maxParticles:15.0
+                                                                        maxParticles:10.0
                                                                         particleSize:10.0
                                                                   finishParticleSize:10.0
                                                                 particleSizeVariance:0.0
@@ -231,7 +235,7 @@
 
 - (void)update:(CGFloat)aDelta {
     if(isActive == NO) return;
-        
+    
     switch(projectileID){
         case kPlayerProjectile_Bullet:
             [emitter setSourcePosition:Vector2fMake(turretPosition.x, turretPosition.y)];
@@ -262,9 +266,10 @@
                 elapsedTime = 0;
             }
             [emitter update:aDelta];
+            [emitter setSourcePosition:Vector2fMake(turretPosition.x, turretPosition.y)];
             break;
             
-        
+            
         case kEnemyProjectile_Bullet:
             [emitter setSourcePosition:Vector2fMake(turretPosition.x, turretPosition.y)];
             [emitter update:aDelta];

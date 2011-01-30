@@ -5,16 +5,27 @@
 //  Created by Alexander on 10/20/10.
 //  Copyright 2010 Alexander Nabavi-Noori, XanderNet Inc. All rights reserved.
 //  
+//  Team:
+//  Alexander Nabavi-Noori - Software Engineer, Game Architect
+//	James Linnell - Software Engineer, Creative Design, Art Producer
+//	Tyler Newcomb - Creative Design, Art Producer
+//
+//	Last Updated - 1/28/2011 @10PM - Alexander
+//  - Initial write, added a bunch of stuff including
+//      • Cannon joint particle emitters
+//      • Objects for all of the modules
 
 #import "BossShipAsia.h"
+
+@interface BossShipAsia(Private)
+- (void)aimCannonsAtPlayer;
+@end
 
 
 @implementation BossShipAsia
 
 - (id)initWithLocation:(CGPoint)aPoint andPlayerShipRef:(PlayerShip *)playerRef {
-    if((self = [super initWithBossID:kBoss_Asia initialLocation:aPoint andPlayerShipRef:playerRef])){
-        NSLog(@"TEST");
-        
+    if((self = [super initWithBossID:kBoss_Asia initialLocation:aPoint andPlayerShipRef:playerRef])){        
         mainBody = self.modularObjects[0];
         turretLeft = self.modularObjects[1];
         turretRight = self.modularObjects[2];
@@ -22,46 +33,46 @@
         cannonLeft = self.modularObjects[4];
         
         rightCannonEmitterJoint = [[ParticleEmitter alloc] initParticleEmitterWithImageNamed:@"texture.png"
-                                                                                    position:Vector2fMake(currentLocation.x + (-10), 0)
-                                                                      sourcePositionVariance:Vector2fZero
-                                                                                       speed:0.0f
-                                                                               speedVariance:30.0f
+                                                                                    position:Vector2fMake(currentLocation.x + 105, 0)
+                                                                      sourcePositionVariance:Vector2fMake(0,0)
+                                                                                       speed:0.01f
+                                                                               speedVariance:0.0f
                                                                             particleLifeSpan:1.0f
-                                                                    particleLifespanVariance:0.0f
+                                                                    particleLifespanVariance:1.0f
                                                                                        angle:360.0f
-                                                                               angleVariance:0.0f
-                                                                                     gravity:Vector2fMake(1.54, 0.7)
+                                                                               angleVariance:0
+                                                                                     gravity:Vector2fMake(0.0f, 0.0f)
                                                                                   startColor:Color4fMake(0.3f, 1.0f, 0.66f, 1.0f)
                                                                           startColorVariance:Color4fMake(0.0f, 0.2f, 0.2f, 0.5f)
                                                                                  finishColor:Color4fMake(0.16f, 0.0f, 0.0f, 1.0f)
                                                                          finishColorVariance:Color4fMake(0.0f, 0.0f, 0.0f, 1.0f)
-                                                                                maxParticles:100
-                                                                                particleSize:64.0f
-                                                                          finishParticleSize:0.0f
-                                                                        particleSizeVariance:27.0f
+                                                                                maxParticles:10
+                                                                                particleSize:25
+                                                                          finishParticleSize:25
+                                                                        particleSizeVariance:2
                                                                                     duration:-1
-                                                                               blendAdditive:NO];
+                                                                               blendAdditive:YES];
         
         leftCannonEmitterJoint = [[ParticleEmitter alloc] initParticleEmitterWithImageNamed:@"texture.png"
-                                                                                   position:Vector2fMake(currentLocation.x + 10, 0)
-                                                                     sourcePositionVariance:Vector2fZero
-                                                                                      speed:0.0f
-                                                                              speedVariance:30.0f
+                                                                                   position:Vector2fMake(currentLocation.x + 105, 0)
+                                                                     sourcePositionVariance:Vector2fMake(0,0)
+                                                                                      speed:0.01f
+                                                                              speedVariance:0.0f
                                                                            particleLifeSpan:1.0f
-                                                                   particleLifespanVariance:0.0f
+                                                                   particleLifespanVariance:1.0f
                                                                                       angle:360.0f
-                                                                              angleVariance:0.0f
-                                                                                    gravity:Vector2fMake(1.54, 0.7)
+                                                                              angleVariance:0
+                                                                                    gravity:Vector2fMake(0.0f, 0.0f)
                                                                                  startColor:Color4fMake(0.3f, 1.0f, 0.66f, 1.0f)
                                                                          startColorVariance:Color4fMake(0.0f, 0.2f, 0.2f, 0.5f)
                                                                                 finishColor:Color4fMake(0.16f, 0.0f, 0.0f, 1.0f)
                                                                         finishColorVariance:Color4fMake(0.0f, 0.0f, 0.0f, 1.0f)
-                                                                               maxParticles:100
-                                                                               particleSize:64.0f
-                                                                         finishParticleSize:0.0f
-                                                                       particleSizeVariance:27.0f
+                                                                               maxParticles:10
+                                                                               particleSize:25
+                                                                         finishParticleSize:25
+                                                                       particleSizeVariance:2
                                                                                    duration:-1
-                                                                              blendAdditive:NO];
+                                                                              blendAdditive:YES];
     }
     return self;
 }
@@ -70,17 +81,50 @@
     currentLocation.x += ((desiredLocation.x - currentLocation.x) / bossSpeed) * (pow(1.584893192, bossSpeed)) * delta;
     currentLocation.y += ((desiredLocation.y - currentLocation.y) / bossSpeed) * (pow(1.584893192, bossSpeed)) * delta;
     
+    [self aimCannonsAtPlayer];
+    
     //Set the centers of the polygons so they get rendered properly
     for(int i = 0; i < numberOfModules; i++){
         [modularObjects[i].collisionPolygon setPos:CGPointMake(modularObjects[i].location.x + currentLocation.x, modularObjects[i].location.y + currentLocation.y)];  
     }
-    
-    NSLog(@"ASDLFKJ");
-    
-    [rightCannonEmitterJoint setSourcePosition:Vector2fMake(currentLocation.x + (-10), 0)];
-    [leftCannonEmitterJoint setSourcePosition:Vector2fMake(currentLocation.x + 10, 0)];
+        
+    [rightCannonEmitterJoint setSourcePosition:Vector2fMake(currentLocation.x + (-105), currentLocation.y)];
+    [leftCannonEmitterJoint setSourcePosition:Vector2fMake(currentLocation.x + 105, currentLocation.y)];
     [rightCannonEmitterJoint update:delta];
     [leftCannonEmitterJoint update:delta];
+}
+
+- (void)aimCannonsAtPlayer {
+    // Right Cannon Aiming
+    float playerXPosition = (currentLocation.x + cannonLeft.location.x) - playerShipRef.currentLocation.x;
+    float playerYPosition = (currentLocation.y + cannonLeft.location.y) - playerShipRef.currentLocation.y;
+    
+    float angleToPlayer = atan2f(playerYPosition, playerXPosition);
+    angleToPlayer = angleToPlayer * (180 / M_PI);
+    if(angleToPlayer < 0) angleToPlayer += 360;
+    angleToPlayer = 90 - angleToPlayer;
+    if(angleToPlayer < 0) angleToPlayer += 360;
+    
+    if(angleToPlayer < 340) angleToPlayer = 340;
+    
+    [modularObjects[3].moduleImage setRotation:angleToPlayer];
+    
+    // Left Cannon aiming
+    playerXPosition = (currentLocation.x + cannonRight.location.x) - playerShipRef.currentLocation.x;
+    playerYPosition = (currentLocation.y + cannonRight.location.y) - playerShipRef.currentLocation.y;
+    
+    angleToPlayer = atan2f(playerYPosition, playerXPosition);
+    angleToPlayer = angleToPlayer * (180 / M_PI);
+    if(angleToPlayer < 0) angleToPlayer += 360;
+    angleToPlayer = 90 - angleToPlayer;
+    if(angleToPlayer < 0) angleToPlayer += 360;
+    
+    NSLog(@"%f", angleToPlayer);
+    
+    if(angleToPlayer > 20) angleToPlayer = 20;
+    
+    [modularObjects[4].moduleImage setRotation:angleToPlayer];
+
 }
 
 - (void)render {
@@ -91,7 +135,24 @@
     [rightCannonEmitterJoint renderParticles];
     [leftCannonEmitterJoint renderParticles];
     
-    if(DEBUG) {                
+    /*
+    glPushMatrix();
+    
+    glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
+    
+    GLfloat lineToShip[] = {
+        playerShipRef.currentLocation.x, playerShipRef.currentLocation.y,
+        (currentLocation.x + cannonLeft.location.x), (currentLocation.y + cannonLeft.location.y),
+    };
+    
+    glVertexPointer(2, GL_FLOAT, 0, lineToShip);
+    glEnableClientState(GL_VERTEX_ARRAY);
+    glDrawArrays(GL_LINES, 0, 2);
+    
+    glPopMatrix();
+    */
+    
+    if(DEBUG) {
         glPushMatrix();
         
         glColor4f(1.0f, 1.0f, 1.0f, 1.0f);

@@ -41,11 +41,11 @@ typedef enum _ParticleID {
     Vector2f         turretPosition;
     Vector2f         currentLocation;
     Vector2f         desiredLocation;
-        
+    
     BOOL            isActive;
     
     
-    @private
+@private
     Vector2f        *collisionPoints;
     int             collisionPointCount;
     int             rateOfFire;
