@@ -107,25 +107,45 @@
     
     if(angleToPlayer < 340) angleToPlayer = 340;
     
-    [modularObjects[3].moduleImage setRotation:angleToPlayer];
-    modularObjects[3].rotation = angleToPlayer;
+    
     
     // Left Cannon aiming
     playerXPosition = (currentLocation.x + cannonRight.location.x) - playerShipRef.currentLocation.x;
     playerYPosition = (currentLocation.y + cannonRight.location.y) - playerShipRef.currentLocation.y;
     
-    angleToPlayer = atan2f(playerYPosition, playerXPosition);
-    angleToPlayer = angleToPlayer * (180 / M_PI);
-    if(angleToPlayer < 0) angleToPlayer += 360;
-    angleToPlayer = 90 - angleToPlayer;
-    if(angleToPlayer < 0) angleToPlayer += 360;
+    float angleToPlayer2 = atan2f(playerYPosition, playerXPosition);
+    angleToPlayer2 = angleToPlayer2 * (180 / M_PI);
+    if(angleToPlayer2 < 0) angleToPlayer2 += 360;
+    angleToPlayer2 = 90 - angleToPlayer2;
+    if(angleToPlayer2 < 0) angleToPlayer2 += 360;
     
-    NSLog(@"%f", angleToPlayer);
+    if(angleToPlayer2 > 20) angleToPlayer2 = 20;
     
-    if(angleToPlayer > 20) angleToPlayer = 20;
     
-    [modularObjects[4].moduleImage setRotation:angleToPlayer];
-    modularObjects[4].rotation = angleToPlayer;
+    
+    //Rotation for polygons to match the rotation of the cannons
+    for(int i = 0; i < modularObjects[4].collisionPolygon.pointCount; i++){
+        Vector2f tempPoint = modularObjects[4].collisionPolygon.originalPoints[i];
+        double tempAngle = DEGREES_TO_RADIANS(modularObjects[3].rotation - angleToPlayer);
+        modularObjects[4].collisionPolygon.originalPoints[i] = Vector2fMake((tempPoint.x * cos(tempAngle)) - (tempPoint.y * sin(tempAngle)),
+                                                                            (tempPoint.x * sin(tempAngle)) + (tempPoint.y * cos(tempAngle)));
+    }
+    [modularObjects[4].collisionPolygon buildEdges];
+
+    for(int i = 0; i < modularObjects[3].collisionPolygon.pointCount; i++){
+        Vector2f tempPoint = modularObjects[3].collisionPolygon.originalPoints[i];
+        double tempAngle = DEGREES_TO_RADIANS(modularObjects[4].rotation - angleToPlayer2);
+        modularObjects[3].collisionPolygon.originalPoints[i] = Vector2fMake((tempPoint.x * cos(tempAngle)) - (tempPoint.y * sin(tempAngle)),
+                                                                            (tempPoint.x * sin(tempAngle)) + (tempPoint.y * cos(tempAngle)));
+    }
+    [modularObjects[3].collisionPolygon buildEdges];
+
+    
+    
+    [modularObjects[3].moduleImage setRotation:angleToPlayer];
+    modularObjects[3].rotation = angleToPlayer;
+    [modularObjects[4].moduleImage setRotation:angleToPlayer2];
+    modularObjects[4].rotation = angleToPlayer2;
 }
 
 - (void)render {
