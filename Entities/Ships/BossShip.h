@@ -17,6 +17,9 @@
 //	Last Updated - 11/26/2010 @6PM - Alexander
 //	- Added variables (num weapons, num thrusters) for
 //  rendering purposes
+//
+//  Last Updated - 1/31/20101 @8PM - Alexander
+//  - Added rotation property to modules
 
 #import <Foundation/Foundation.h>
 #import "Common.h"
@@ -99,8 +102,7 @@ typedef struct _ModularObject {
     Vector2f        *collisionDetectionBoundingPoints;
     Polygon         *collisionPolygon;
     int             collisionPointsCount;
-    float           currentRotation;
-    float           defaultRotation;
+    float             rotation;
 } ModularObject;
 
 

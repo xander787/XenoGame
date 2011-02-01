@@ -108,6 +108,7 @@
     if(angleToPlayer < 340) angleToPlayer = 340;
     
     [modularObjects[3].moduleImage setRotation:angleToPlayer];
+    modularObjects[3].rotation = angleToPlayer;
     
     // Left Cannon aiming
     playerXPosition = (currentLocation.x + cannonRight.location.x) - playerShipRef.currentLocation.x;
@@ -124,7 +125,7 @@
     if(angleToPlayer > 20) angleToPlayer = 20;
     
     [modularObjects[4].moduleImage setRotation:angleToPlayer];
-
+    modularObjects[4].rotation = angleToPlayer;
 }
 
 - (void)render {

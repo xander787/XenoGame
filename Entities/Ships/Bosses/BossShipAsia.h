@@ -29,6 +29,8 @@
     
     ParticleEmitter *leftCannonEmitterJoint;
     ParticleEmitter *rightCannonEmitterJoint;
+    
+    float           currentDelta;
 }
 
 - (id)initWithLocation:(CGPoint)aPoint andPlayerShipRef:(PlayerShip *)playerRef;

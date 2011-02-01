@@ -210,8 +210,7 @@
             //Step one: get the image for the module, simple so it's first
             modularObjects[i].moduleImage = [[Image alloc] initWithImage:[moduleImagesArray objectAtIndex:i] scale:1.0f];
             
-            modularObjects[i].currentRotation = 0.0;
-            modularObjects[i].defaultRotation = 270.0;
+            modularObjects[i].rotation = 0;
             
             //Set the width & height for later use in super class handling this ship
             shipWidth += modularObjects[i].moduleImage.imageWidth;
