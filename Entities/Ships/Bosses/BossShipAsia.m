@@ -14,6 +14,11 @@
 //  - Initial write, added a bunch of stuff including
 //      • Cannon joint particle emitters
 //      • Objects for all of the modules
+//
+//  Last Updated - 2/4/2011 @ 8PM - Alexander
+//  - Changed all modularObjects[x] references for the cannons
+//  to the cannonLeft and cannonRight objects for better 
+//  readability of the code
 
 #import "BossShipAsia.h"
 
@@ -26,11 +31,11 @@
 
 - (id)initWithLocation:(CGPoint)aPoint andPlayerShipRef:(PlayerShip *)playerRef {
     if((self = [super initWithBossID:kBoss_Asia initialLocation:aPoint andPlayerShipRef:playerRef])){        
-        mainBody = self.modularObjects[0];
-        turretLeft = self.modularObjects[1];
-        turretRight = self.modularObjects[2];
-        cannonRight = self.modularObjects[3];
-        cannonLeft = self.modularObjects[4];
+        mainBody = &self.modularObjects[0];
+        turretLeft = &self.modularObjects[1];
+        turretRight = &self.modularObjects[2];
+        cannonRight = &self.modularObjects[3];
+        cannonLeft = &self.modularObjects[4];
         
         rightCannonEmitterJoint = [[ParticleEmitter alloc] initParticleEmitterWithImageNamed:@"texture.png"
                                                                                     position:Vector2fMake(currentLocation.x + 105, 0)
@@ -95,9 +100,9 @@
 }
 
 - (void)aimCannonsAtPlayer {
-    // Right Cannon Aiming
-    float playerXPosition = (currentLocation.x + cannonLeft.location.x) - playerShipRef.currentLocation.x;
-    float playerYPosition = (currentLocation.y + cannonLeft.location.y) - playerShipRef.currentLocation.y;
+    // Left Cannon Aiming
+    float playerXPosition = (currentLocation.x + cannonLeft->location.x) - playerShipRef.currentLocation.x;
+    float playerYPosition = (currentLocation.y + cannonLeft->location.y) - playerShipRef.currentLocation.y;
     
     float angleToPlayer = atan2f(playerYPosition, playerXPosition);
     angleToPlayer = angleToPlayer * (180 / M_PI);
@@ -109,9 +114,9 @@
     
     
     
-    // Left Cannon aiming
-    playerXPosition = (currentLocation.x + cannonRight.location.x) - playerShipRef.currentLocation.x;
-    playerYPosition = (currentLocation.y + cannonRight.location.y) - playerShipRef.currentLocation.y;
+    // Right Cannon aiming
+    playerXPosition = (currentLocation.x + cannonRight->location.x) - playerShipRef.currentLocation.x;
+    playerYPosition = (currentLocation.y + cannonRight->location.y) - playerShipRef.currentLocation.y;
     
     float angleToPlayer2 = atan2f(playerYPosition, playerXPosition);
     angleToPlayer2 = angleToPlayer2 * (180 / M_PI);
@@ -122,34 +127,32 @@
     if(angleToPlayer2 > 20) angleToPlayer2 = 20;
     
     
-    
     //Rotation for polygons to match the rotation of the cannons
-    for(int i = 0; i < modularObjects[4].collisionPolygon.pointCount; i++){
-        Vector2f tempPoint = modularObjects[4].collisionPolygon.originalPoints[i];
-        double tempAngle = DEGREES_TO_RADIANS(modularObjects[3].rotation - angleToPlayer);
-        modularObjects[4].collisionPolygon.originalPoints[i] = Vector2fMake((tempPoint.x * cos(tempAngle)) - (tempPoint.y * sin(tempAngle)),
+    for(int i = 0; i < cannonLeft->collisionPolygon.pointCount; i++){
+        Vector2f tempPoint = cannonLeft->collisionPolygon.originalPoints[i];
+        double tempAngle = DEGREES_TO_RADIANS(cannonRight->rotation - angleToPlayer);
+        cannonLeft->collisionPolygon.originalPoints[i] = Vector2fMake((tempPoint.x * cos(tempAngle)) - (tempPoint.y * sin(tempAngle)),
                                                                             (tempPoint.x * sin(tempAngle)) + (tempPoint.y * cos(tempAngle)));
     }
-    [modularObjects[4].collisionPolygon buildEdges];
+    [cannonLeft->collisionPolygon buildEdges];
 
-    for(int i = 0; i < modularObjects[3].collisionPolygon.pointCount; i++){
-        Vector2f tempPoint = modularObjects[3].collisionPolygon.originalPoints[i];
-        double tempAngle = DEGREES_TO_RADIANS(modularObjects[4].rotation - angleToPlayer2);
-        modularObjects[3].collisionPolygon.originalPoints[i] = Vector2fMake((tempPoint.x * cos(tempAngle)) - (tempPoint.y * sin(tempAngle)),
+    for(int i = 0; i < cannonRight->collisionPolygon.pointCount; i++){
+        Vector2f tempPoint = cannonRight->collisionPolygon.originalPoints[i];
+        double tempAngle = DEGREES_TO_RADIANS(cannonLeft->rotation - angleToPlayer2);
+        cannonRight->collisionPolygon.originalPoints[i] = Vector2fMake((tempPoint.x * cos(tempAngle)) - (tempPoint.y * sin(tempAngle)),
                                                                             (tempPoint.x * sin(tempAngle)) + (tempPoint.y * cos(tempAngle)));
     }
-    [modularObjects[3].collisionPolygon buildEdges];
+    [cannonRight->collisionPolygon buildEdges];
 
     
-    
-    [modularObjects[3].moduleImage setRotation:angleToPlayer];
-    modularObjects[3].rotation = angleToPlayer;
-    [modularObjects[4].moduleImage setRotation:angleToPlayer2];
-    modularObjects[4].rotation = angleToPlayer2;
+    cannonRight->rotation = angleToPlayer;
+    cannonLeft->rotation = angleToPlayer2;
 }
 
 - (void)render {
     for(int i = 0; i < numberOfModules; i++) {
+//        cannonLeft->rotation = 90;
+        [modularObjects[i].moduleImage setRotation:modularObjects[i].rotation];
         [modularObjects[i].moduleImage renderAtPoint:CGPointMake(currentLocation.x - modularObjects[i].location.x, currentLocation.y + modularObjects[i].location.y) centerOfImage:YES];
     }
     

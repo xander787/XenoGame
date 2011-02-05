@@ -21,16 +21,14 @@
 
 
 @interface BossShipAsia : BossShip {    
-    ModularObject   cannonLeft;
-    ModularObject   cannonRight;
-    ModularObject   turretLeft;
-    ModularObject   turretRight;
-    ModularObject   mainBody;
+    ModularObject   *cannonLeft;
+    ModularObject   *cannonRight;
+    ModularObject   *turretLeft;
+    ModularObject   *turretRight;
+    ModularObject   *mainBody;
     
     ParticleEmitter *leftCannonEmitterJoint;
     ParticleEmitter *rightCannonEmitterJoint;
-    
-    float           currentDelta;
 }
 
 - (id)initWithLocation:(CGPoint)aPoint andPlayerShipRef:(PlayerShip *)playerRef;
