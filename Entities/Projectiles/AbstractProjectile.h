@@ -37,22 +37,28 @@ typedef enum _ParticleID {
     int             projectileAngle;
     int             projectileSpeed;
     ProjectileID    projectileID;
+    ParticleID      particleID;
+    NSString        *idType;
     
-    Vector2f         turretPosition;
-    Vector2f         currentLocation;
-    Vector2f         desiredLocation;
+    Vector2f        turretPosition;
+    Vector2f        currentLocation;
+    Vector2f        desiredLocation;
     
     BOOL            isActive;
+    
+    NSString        *nameOfImage;
     
     
 @private
     Vector2f        *collisionPoints;
     int             collisionPointCount;
     int             rateOfFire;
+    int             particleRadius;
     
     //Particle Emitter specific variables
     ParticleEmitter *emitter;
     NSMutableArray  *polygonArray;
+    Polygon         *particlePolygon;
     
     //Image specific variables
     Image           *image;
@@ -71,7 +77,7 @@ typedef enum _ParticleID {
 
 
 - (id)initWithProjectileID:(ProjectileID)aProjectileID fromTurretPosition:(Vector2f)aPosition andAngle:(int)aAngle emissionRate:(int)aRate;
-- (id)initWithParticleID:(ParticleID)aParticleID fromTurretPosition:(Vector2f)aPosition andAngle:(int)aAngle;
+- (id)initWithParticleID:(ParticleID)aParticleID fromTurretPosition:(Vector2f)aPosition radius:(int)aRadius rateOfFire:(int)aRate andAngle:(int)aAngle;
 - (void)update:(CGFloat)aDelta;
 - (void)render;
 - (void)setFiring:(BOOL)aFire;
