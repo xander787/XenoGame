@@ -46,6 +46,9 @@
 //
 //  Last Updated - 1/28/2011 *10PM - Alexander
 //  - Added code for the ship to fire projectiles
+//
+//  Last Updated - 2/15/2011 @8:45PM - Alexander
+//  - Rewrote the init method to make it just a bit more organized
 
 #import "PlayerShip.h"
 
@@ -88,7 +91,6 @@
 		}
 		
 		[playerShipsDictionary release];
-		
         
         
 		//Set the values from the dictionary for our ship
@@ -96,7 +98,9 @@
 		shipAttack  = [[shipDictionary valueForKey:@"kShipAttack"] intValue];
 		shipStamina = [[shipDictionary valueForKey:@"kShipStamina"] intValue];
 		shipSpeed = [[shipDictionary valueForKey:@"kShipSpeed"] intValue];
-		
+        mainImage = [[Image alloc] initWithImage:[shipDictionary valueForKey:@"kMainImage"] scale:1.0f];
+        shipWidth = [mainImage imageWidth];
+        shipHeight = [mainImage imageHeight];
         
         
 		if ([shipDictionary valueForKey:@"kShipCategory"] == @"kShipCategory_Attack") {
@@ -125,16 +129,18 @@
 			shipWeaponType = kPlayerWeapon_Wave;
 		}
         
+        NSArray *shipTurretArray = [[NSArray alloc] initWithArray:[shipDictionary objectForKey:@"kTurretPoints"]];
+        NSArray *shipThrusterArray = [[NSArray alloc] initWithArray:[shipDictionary objectForKey:@"kThrusterPoints"]];
+        NSArray *shipCollisionArray = [[NSArray alloc] initWithArray:[shipDictionary objectForKey:@"kCollisionBoundingPoints"]];
         
         
 		//Fill a C array with Vector2f's for our ship's turret points
-		NSArray *turretArray = [[NSArray alloc] initWithArray:[shipDictionary objectForKey:@"kTurretPoints"]];
-        numTurrets = [turretArray count];
-		turretPoints = malloc(sizeof(Vector2f) * [turretArray count]);
-		bzero( turretPoints, sizeof(Vector2f) * [turretArray count]);
+        numTurrets = [shipTurretArray count];
+		turretPoints = malloc(sizeof(Vector2f) * [shipTurretArray count]);
+		bzero( turretPoints, sizeof(Vector2f) * [shipTurretArray count]);
         
-		for (int i = 0; i < [turretArray count]; i++) {
-			NSArray *coords = [[turretArray objectAtIndex:i] componentsSeparatedByString:@","];
+		for (int i = 0; i < [shipTurretArray count]; i++) {
+			NSArray *coords = [[shipTurretArray objectAtIndex:i] componentsSeparatedByString:@","];
 			@try {
 				turretPoints[i] = Vector2fMake([[coords objectAtIndex:0] intValue], [[coords objectAtIndex:1] intValue]);
 			}
@@ -145,19 +151,16 @@
 				Vector2f vector = turretPoints[i];
 				NSLog(@"Turret: %f %f", vector.x, vector.y);
 			}
-		}
-        [turretArray release];
-        
+		}        
         
         
         //Fill a C array with Vector2f's of our ship's thruster points
-        NSArray *thrusterArray = [[NSArray alloc] initWithArray:[shipDictionary objectForKey:@"kThrusterPoints"]];
-        numThrusters = [thrusterArray count];
-        thrusterPoints = malloc(sizeof(Vector2f) * [thrusterArray count]);
-        bzero(thrusterPoints, sizeof(Vector2f) * [thrusterArray count]);
+        numThrusters = [shipThrusterArray count];
+        thrusterPoints = malloc(sizeof(Vector2f) * [shipThrusterArray count]);
+        bzero(thrusterPoints, sizeof(Vector2f) * [shipThrusterArray count]);
         
-        for(int i = 0; i < [thrusterArray count]; i++) {
-            NSArray *coords = [[NSArray alloc] initWithArray:[[thrusterArray objectAtIndex:i] componentsSeparatedByString:@","]];
+        for(int i = 0; i < [shipThrusterArray count]; i++) {
+            NSArray *coords = [[NSArray alloc] initWithArray:[[shipThrusterArray objectAtIndex:i] componentsSeparatedByString:@","]];
             @try {
                 thrusterPoints[i] = Vector2fMake([[coords objectAtIndex:0] intValue], [[coords objectAtIndex:1] intValue]);
             }
@@ -169,19 +172,16 @@
 				NSLog(@"Thruster: %f %f", vector.x, vector.y);
             }
             [coords release];
-        }
-        [thrusterArray release];
-        
+        }        
         
         
         //Fill a C array with Vector2f's of our ship's collision detection bounding points
-        NSArray *collisionArray = [[NSArray alloc] initWithArray:[shipDictionary objectForKey:@"kCollisionBoundingPoints"]];
-        collisionPointsCount = [collisionArray count];
-        collisionDetectionBoundingPoints = malloc(sizeof(Vector2f) * [collisionArray count]);
-        bzero(collisionDetectionBoundingPoints, sizeof(Vector2f) * [collisionArray count]);
+        collisionPointsCount = [shipCollisionArray count];
+        collisionDetectionBoundingPoints = malloc(sizeof(Vector2f) * [shipCollisionArray count]);
+        bzero(collisionDetectionBoundingPoints, sizeof(Vector2f) * [shipCollisionArray count]);
         
-        for(int i = 0; i < [collisionArray count]; i++) {
-            NSArray *coords = [[NSArray alloc] initWithArray:[[collisionArray objectAtIndex:i] componentsSeparatedByString:@","]];
+        for(int i = 0; i < [shipCollisionArray count]; i++) {
+            NSArray *coords = [[NSArray alloc] initWithArray:[[shipCollisionArray objectAtIndex:i] componentsSeparatedByString:@","]];
             @try {
                 collisionDetectionBoundingPoints[i] = Vector2fMake([[coords objectAtIndex:0] intValue], [[coords objectAtIndex:1] intValue]);
             }
@@ -193,34 +193,25 @@
                 NSLog(@"Collision Point: %f %f", vector.x, vector.y);
             }
             [coords release];
-        }
-        [collisionArray release];
-        
+        }        
         
         
         //Allocate our polygon, for use in collision detection.
-        collisionPolygon = [[Polygon alloc] initWithPoints:collisionDetectionBoundingPoints andCount:collisionPointsCount andShipPos:currentLocation];
-        
-        
-        
-		mainImage = [[Image alloc] initWithImage:[shipDictionary valueForKey:@"kMainImage"] scale:1.0f];
-        shipWidth = [mainImage imageWidth];
-        shipHeight = [mainImage imageHeight];
-        //Sets the boundingBox for use with DidCollide
-        self.boundingBox = Vector2fMake(mainImage.imageWidth, mainImage.imageHeight);
-        NSLog(@"Player: %f, %f", self.boundingBox.x, self.boundingBox.y);
-		
-		[shipDictionary release];
-        
+        collisionPolygon = [[Polygon alloc] initWithPoints:collisionDetectionBoundingPoints andCount:collisionPointsCount andShipPos:currentLocation];        
         
         // Add projectiles to our local projectile set for the weapon points on the ship
         projectilesArray = [[NSMutableArray alloc] init];
         for(int i = 0; i < numTurrets; i++) {
-//            AbstractProjectile *projectile = [[AbstractProjectile alloc] initWithProjectileID:kPlayerProjectile_Wave fromTurretPosition:Vector2fMake(currentLocation.x + turretPoints[i].x, currentLocation.y + turretPoints[i].y) andAngle:90 emissionRate:2];
             AbstractProjectile *projectile = [[AbstractProjectile alloc] initWithParticleID:kPlayerParticle fromTurretPosition:Vector2fMake(currentLocation.x + turretPoints[i].x, currentLocation.y + turretPoints[i].y) radius:10 rateOfFire:4 andAngle:90];
             [projectilesArray insertObject:projectile atIndex:i];
             [projectile release];
         }
+        
+        
+        [shipTurretArray release];
+        [shipThrusterArray release];
+        [shipCollisionArray release];
+        [shipDictionary release];
 	}
     
 	return self;

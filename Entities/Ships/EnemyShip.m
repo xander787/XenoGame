@@ -34,6 +34,9 @@
 //
 //  Last Updated - 1/1/11 @9:30PM - Alexander
 //  - Added shipWidth and shipHeight properties
+//
+//  Last Updated - 2/15/11 @9PM - Alexander
+//  - Rewrote the init method to be more organized
 
 #import "EnemyShip.h"
 
@@ -209,6 +212,9 @@
         enemyAttack = [[enemyDictionary valueForKey:@"kShipAttack"] intValue];
         enemyStamina = [[enemyDictionary valueForKey:@"kShipStamina"] intValue];
         enemySpeed = [[enemyDictionary valueForKey:@"kShipSpeed"] intValue];
+        shipWidth = [[enemyDictionary valueForKey:@"kSpriteSheetColumnWidth"] intValue];
+        shipHeight = [[enemyDictionary valueForKey:@"kSpriteSheetRowheight"] intValue];
+        
         
         if([enemyDictionary valueForKey:@"kShipCategory"] == @"kShipType_OneShot") {
             enemyCategroy = kEnemyCategory_OneShot;
@@ -229,26 +235,27 @@
             enemyCategroy = kEnemyCategory_Kamikaze;
         }
         
-        //Fill a C array with the weapon points on the enemy
-        NSArray *weaponsArray = [[NSArray alloc] initWithArray:[enemyDictionary objectForKey:@"kWeaponPoints"]];
-        weaponPoints = malloc(sizeof(Vector2f) * [weaponsArray count]);
-        bzero(weaponPoints, sizeof(Vector2f) * [weaponsArray count]);
+        NSArray *shipWeaponsArray = [[NSArray alloc] initWithArray:[enemyDictionary objectForKey:@"kWeaponPoints"]];
+        NSArray *shipCollisionArray = [[NSArray alloc] initWithArray:[enemyDictionary objectForKey:@"kCollisionBoundingPoints"]];
         
-        for(int i =0; i < [weaponsArray count]; i++) {
-            NSArray *coords = [[NSArray alloc] initWithArray:[[weaponsArray objectAtIndex:i] componentsSeparatedByString:@","]];
+        //Fill a C array with the weapon points on the enemy
+        weaponPoints = malloc(sizeof(Vector2f) * [shipWeaponsArray count]);
+        bzero(weaponPoints, sizeof(Vector2f) * [shipWeaponsArray count]);
+        
+        for(int i =0; i < [shipWeaponsArray count]; i++) {
+            NSArray *coords = [[NSArray alloc] initWithArray:[[shipWeaponsArray objectAtIndex:i] componentsSeparatedByString:@","]];
             weaponPoints[i] = Vector2fMake([[coords objectAtIndex:0] intValue], [[coords objectAtIndex:1] intValue]);
             [coords release];
         }
-        [weaponsArray release];
+        
         
         //Fill a C array with the collision bounding points from the enemy
-        NSArray *collisionArray = [[NSArray alloc] initWithArray:[enemyDictionary objectForKey:@"kCollisionBoundingPoints"]];
-        collisionPointsCount = [collisionArray count];
-        collisionDetectionBoundingPoints = malloc(sizeof(Vector2f) * [collisionArray count]);
-        bzero(collisionDetectionBoundingPoints, sizeof(Vector2f) * [collisionArray count]);
+        collisionPointsCount = [shipCollisionArray count];
+        collisionDetectionBoundingPoints = malloc(sizeof(Vector2f) * [shipCollisionArray count]);
+        bzero(collisionDetectionBoundingPoints, sizeof(Vector2f) * [shipCollisionArray count]);
         
-        for(int i = 0; i < [collisionArray count]; i++) {
-            NSArray *coords = [[NSArray alloc] initWithArray:[[collisionArray objectAtIndex:i] componentsSeparatedByString:@","]];
+        for(int i = 0; i < [shipCollisionArray count]; i++) {
+            NSArray *coords = [[NSArray alloc] initWithArray:[[shipCollisionArray objectAtIndex:i] componentsSeparatedByString:@","]];
             @try {
                 collisionDetectionBoundingPoints[i] = Vector2fMake([[coords objectAtIndex:0] intValue], [[coords objectAtIndex:1] intValue]);
             }
@@ -261,13 +268,12 @@
             }
             [coords release];
         }
-        [collisionArray release];
         
+        // Load collision polygon for ship
         collisionPolygon = [[Polygon alloc] initWithPoints:collisionDetectionBoundingPoints andCount:collisionPointsCount andShipPos:currentLocation];
         
-        shipWidth = [[enemyDictionary valueForKey:@"kSpriteSheetColumnWidth"] intValue];
-        shipHeight = [[enemyDictionary valueForKey:@"kSpriteSheetRowheight"] intValue];
         
+        // Load images from spritesheet
         Image *spriteSheetImage = [[Image alloc] initWithImage:[enemyDictionary valueForKey:@"kShipSpriteSheet"] scale:1.0f];
         enemySpriteSheet = [[SpriteSheet alloc] initWithImage:spriteSheetImage 
                                                   spriteWidth:[[enemyDictionary valueForKey:@"kSpriteSheetColumnWidth"] intValue]
@@ -275,6 +281,8 @@
                                                       spacing:0];
         [spriteSheetImage release];
                                 
+        
+        // Load animation for the sprites
         enemyAnimation = [[Animation alloc] init];
         for(int i = 0; i < [[enemyDictionary valueForKey:@"kSpriteSheetNumColumns"] intValue]; i++) {
             [enemyAnimation addFrameWithImage:[enemySpriteSheet getSpriteAtX:i y:0] delay:0.05];
