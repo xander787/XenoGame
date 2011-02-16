@@ -291,6 +291,9 @@
         [enemyAnimation setRepeat:YES];
         
         [enemyDictionary release];
+        
+        [shipWeaponsArray release];
+        [shipCollisionArray release];
     }
     
     return self;
