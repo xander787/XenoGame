@@ -52,6 +52,10 @@
 //  - Added really quick code to the render function that will
 //  print the game's framerate if DEBUG is set to on, thus helping
 //  us track performance later in development.
+//
+//  Last Updated - 5/29/11 @ 4PM - James
+//  - Changed the usage of testShip.boundingBox to .shipWidth/Height
+//  Note: boudingBox should be deprecated
 
 #import "GameScene.h"
 
@@ -145,10 +149,11 @@
     
     //Gets a frame of the first player ship, adding a bit of width and
     //30 pixels worth of height on the bottom half for ease of selection
-    CGRect shipFrame = CGRectMake(testShip.currentLocation.x - ((testShip.boundingBox.x * 1.4) / 2),
-                                  testShip.currentLocation.y - (testShip.boundingBox.y / 2) - 30,
-                                  testShip.boundingBox.x * 1.4,
-                                  testShip.boundingBox.y + 30);
+    CGRect shipFrame = CGRectMake(testShip.currentLocation.x - ((testShip.shipWidth * 1.4) / 2),
+                                  testShip.currentLocation.y - (testShip.shipHeight / 2) - 30,
+                                  testShip.shipWidth * 1.4,
+                                  testShip.shipHeight + 30);
+    
     
     //If the ship was actually selected, set a Bool for the
     //updateWithTouchLocationMoved: method to allow the ship to move
