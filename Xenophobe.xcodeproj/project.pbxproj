@@ -66,6 +66,7 @@
 		11D324E812739DBD00F01BB5 /* AbstractScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 11D324E512739DBD00F01BB5 /* AbstractScene.m */; };
 		11D324E912739DBD00F01BB5 /* MainMenuScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 11D324E712739DBD00F01BB5 /* MainMenuScene.m */; };
 		11D325171273BF7900F01BB5 /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 11D325161273BF7900F01BB5 /* libsqlite3.0.dylib */; };
+		11D72CCD13557E7500C6C99A /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 11D72CCC13557E7500C6C99A /* libz.dylib */; };
 		11DE0F2A12CE6A9500A3F7CA /* devship.png in Resources */ = {isa = PBXBuildFile; fileRef = 11DE0F2912CE6A9500A3F7CA /* devship.png */; };
 		11E7DCEF129F00D90047E2FD /* kBossAsiaCannonLeft.png in Resources */ = {isa = PBXBuildFile; fileRef = 11E7DCE5129F00D90047E2FD /* kBossAsiaCannonLeft.png */; };
 		11E7DCF0129F00D90047E2FD /* kBossAsiaCannonRight.png in Resources */ = {isa = PBXBuildFile; fileRef = 11E7DCE6129F00D90047E2FD /* kBossAsiaCannonRight.png */; };
@@ -213,6 +214,7 @@
 		11D324E712739DBD00F01BB5 /* MainMenuScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MainMenuScene.m; path = "Game Scenes/MainMenuScene.m"; sourceTree = "<group>"; };
 		11D325161273BF7900F01BB5 /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
 		11D325201273C14E00F01BB5 /* PreferencesManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PreferencesManager.h; path = "Singleton Managers/PreferencesManager.h"; sourceTree = "<group>"; };
+		11D72CCC13557E7500C6C99A /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		11DE0F2912CE6A9500A3F7CA /* devship.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = devship.png; path = "Game Resources/Images/Normal/Ships/Player Ships/devship.png"; sourceTree = SOURCE_ROOT; };
 		11E7DCE5129F00D90047E2FD /* kBossAsiaCannonLeft.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = kBossAsiaCannonLeft.png; path = "Game Resources/Images/Normal/Ships/Boss Ships/kBossAsiaCannonLeft.png"; sourceTree = SOURCE_ROOT; };
 		11E7DCE6129F00D90047E2FD /* kBossAsiaCannonRight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = kBossAsiaCannonRight.png; path = "Game Resources/Images/Normal/Ships/Boss Ships/kBossAsiaCannonRight.png"; sourceTree = SOURCE_ROOT; };
@@ -276,6 +278,7 @@
 				11D325171273BF7900F01BB5 /* libsqlite3.0.dylib in Frameworks */,
 				1170E3AC12865A18000BF968 /* CoreMotion.framework in Frameworks */,
 				11F3277A12A4BF22003CF17B /* GameKit.framework in Frameworks */,
+				11D72CCD13557E7500C6C99A /* libz.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -534,6 +537,7 @@
 				114A1A7312989C4B004769D4 /* PlayerShips.plist */,
 				119FCF00129B528C00D3256A /* EnemyShips.plist */,
 				11336112129E54F300FE6A03 /* BossShips.plist */,
+				11D72CC213557DAF00C6C99A /* Particle Emitters */,
 				1170EE5612724F6600721CF4 /* Images */,
 				1170EE5712724F6B00721CF4 /* Sounds */,
 				1170EE5812724F7100721CF4 /* Fonts */,
@@ -631,6 +635,13 @@
 				1130822412D83C9E009C9502 /* MiniBosses */,
 			);
 			name = Ships;
+			sourceTree = "<group>";
+		};
+		11D72CC213557DAF00C6C99A /* Particle Emitters */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "Particle Emitters";
 			sourceTree = "<group>";
 		};
 		11E7DCE3129F00B10047E2FD /* MiniBosses */ = {
@@ -732,6 +743,7 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				11D72CCC13557E7500C6C99A /* libz.dylib */,
 				11D325161273BF7900F01BB5 /* libsqlite3.0.dylib */,
 				11F3277912A4BF22003CF17B /* GameKit.framework */,
 				1170EC67126FCB7E00721CF4 /* AudioToolbox.framework */,

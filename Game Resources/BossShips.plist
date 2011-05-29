@@ -16,7 +16,7 @@
 		<string>kBossTypeBoss</string>
 		<key>kCollisionBoundingPoints</key>
 		<array>
-			<string>0,-64;-90,17;-96,36;-27,66;27,66;95,36;89,17</string>
+			<string>0,-64;-90,-5;-96,36;-27,66;27,66;95,36;89,-5</string>
 			<string>9,0;0,-9;-9,0;0,9</string>
 			<string>9,0;0,-9;-9,0;0,9</string>
 			<string>15,30;18,1;7,-27;-4,-30;-16,-27;-14,19</string>

@@ -291,7 +291,7 @@
                                                                  finishColorVariance:Color4fMake(0.05, 0.05, 0.3, 0.0)
                                                                         maxParticles:250.0
                                                                         particleSize:30.0
-                                                                  finishParticleSize:0.0
+                                                                  finishParticleSize:5.0
                                                                 particleSizeVariance:10.0
                                                                             duration:-1.0
                                                                        blendAdditive:YES];
@@ -315,7 +315,7 @@
                                                                  finishColorVariance:Color4fMake(0.3, 0.05, 0.05, 0.0)
                                                                         maxParticles:250.0
                                                                         particleSize:30.0
-                                                                  finishParticleSize:0.0
+                                                                  finishParticleSize:5.0
                                                                 particleSizeVariance:10.0
                                                                             duration:-1.0
                                                                        blendAdditive:YES];

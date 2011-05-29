@@ -113,7 +113,6 @@
     if(angleToPlayer < 340) angleToPlayer = 340;
     
     
-    
     // Right Cannon aiming
     playerXPosition = (currentLocation.x + cannonRight->location.x) - playerShipRef.currentLocation.x;
     playerYPosition = (currentLocation.y + cannonRight->location.y) - playerShipRef.currentLocation.y;
@@ -151,7 +150,6 @@
 
 - (void)render {
     for(int i = 0; i < numberOfModules; i++) {
-//        cannonLeft->rotation = 90;
         [modularObjects[i].moduleImage setRotation:modularObjects[i].rotation];
         [modularObjects[i].moduleImage renderAtPoint:CGPointMake(currentLocation.x - modularObjects[i].location.x, currentLocation.y + modularObjects[i].location.y) centerOfImage:YES];
     }

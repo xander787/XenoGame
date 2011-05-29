@@ -170,7 +170,6 @@
 	location.y = 480-location.y;
     location.y += 30;
     if(touchOriginatedFromPlayerShip){
-        
         //Checks the edges of the ship against the edges of the screen.
         //Note: we check one edge at a time because if we simply use CGRectContainsRect,
         //the ship would not be able to move along an edge once exiting
