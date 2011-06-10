@@ -42,7 +42,7 @@
 		<key>kProjectileImage</key>
 		<string>texture.png</string>
 		<key>kProjectileSpeed</key>
-		<integer>2</integer>
+		<integer>1</integer>
 	</dict>
 	<key>kPlayerProjectile_Bullet</key>
 	<dict>
@@ -84,7 +84,7 @@
 		<key>kProjectileImage</key>
 		<string>texture.png</string>
 		<key>kProjectileSpeed</key>
-		<integer>2</integer>
+		<integer>1</integer>
 	</dict>
 </dict>
 </plist>

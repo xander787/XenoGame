@@ -138,21 +138,22 @@
                                                               sourcePositionVariance:Vector2fZero
                                                                                speed:projectileSpeed 
                                                                        speedVariance:0.0
-                                                                    particleLifeSpan:0.0
-                                                            particleLifespanVariance:2.0
+                                                                    particleLifeSpan:4.0
+                                                            particleLifespanVariance:0.0
                                                                                angle:projectileAngle
-                                                                       angleVariance:15.0
+                                                                       angleVariance:30.0
                                                                              gravity:Vector2fZero
                                                                           startColor:Color4fMake(1.0, 1.0, 1.0, 1.0)
                                                                   startColorVariance:Color4fMake(0.0, 0.0, 0.0, 0.0)
                                                                          finishColor:Color4fMake(1.0, 1.0, 1.0, 1.0)
                                                                  finishColorVariance:Color4fMake(0.0, 0.0, 0.0, 0.0)
-                                                                        maxParticles:100.0
+                                                                        maxParticles:50.0
                                                                         particleSize:15.0
                                                                   finishParticleSize:15.0
                                                                 particleSizeVariance:0.0
-                                                                            duration:0.01
-                                                                       blendAdditive:NO];
+                                                                            duration:0.1
+                                                                       blendAdditive:YES];
+                emitter.emissionRate = 5000;
                 emitter.fastEmission = YES;
                 polygonArray = [[NSMutableArray alloc] init];
                 for(int i = 0; i < emitter.maxParticles; i++){
@@ -278,48 +279,46 @@
                 emitter = [[ParticleEmitter alloc] initParticleEmitterWithImageNamed:@"texture.png"
                                                                             position:turretPosition
                                                               sourcePositionVariance:Vector2fZero
-                                                                               speed:0.0
+                                                                               speed:0.6
                                                                        speedVariance:0.0
-                                                                    particleLifeSpan:0.4
-                                                            particleLifespanVariance:0.2
-                                                                               angle:-projectileAngle
+                                                                    particleLifeSpan:0.3
+                                                            particleLifespanVariance:0.1
+                                                                               angle:projectileAngle
                                                                        angleVariance:0.0
                                                                              gravity:Vector2fZero
                                                                           startColor:Color4fMake(0.12, 0.25, 0.75, 1.0)
                                                                   startColorVariance:Color4fMake(0.0, 0.0, 0.0, 0.0)
                                                                          finishColor:Color4fMake(0.1, 0.1, 0.5, 1.0)
                                                                  finishColorVariance:Color4fMake(0.05, 0.05, 0.3, 0.0)
-                                                                        maxParticles:250.0
-                                                                        particleSize:30.0
-                                                                  finishParticleSize:5.0
-                                                                particleSizeVariance:10.0
+                                                                        maxParticles:20.0
+                                                                        particleSize:25.0
+                                                                  finishParticleSize:25.0
+                                                                particleSizeVariance:0.0
                                                                             duration:-1.0
                                                                        blendAdditive:YES];
-                emitter.fastEmission = YES;
                 break;
                 
             case kEnemyParticle:
                 emitter = [[ParticleEmitter alloc] initParticleEmitterWithImageNamed:@"texture.png"
                                                                             position:turretPosition
                                                               sourcePositionVariance:Vector2fZero
-                                                                               speed:0.0
+                                                                               speed:0.6
                                                                        speedVariance:0.0
-                                                                    particleLifeSpan:0.4
-                                                            particleLifespanVariance:0.2
-                                                                               angle:-projectileAngle
+                                                                    particleLifeSpan:0.3
+                                                            particleLifespanVariance:0.1
+                                                                               angle:projectileAngle
                                                                        angleVariance:0.0
                                                                              gravity:Vector2fZero
                                                                           startColor:Color4fMake(0.75, 0.25, 0.12, 1.0)
                                                                   startColorVariance:Color4fMake(0.0, 0.0, 0.0, 0.0)
                                                                          finishColor:Color4fMake(0.5, 0.1, 0.1, 1.0)
                                                                  finishColorVariance:Color4fMake(0.3, 0.05, 0.05, 0.0)
-                                                                        maxParticles:250.0
-                                                                        particleSize:30.0
-                                                                  finishParticleSize:5.0
-                                                                particleSizeVariance:10.0
+                                                                        maxParticles:20.0
+                                                                        particleSize:25.0
+                                                                  finishParticleSize:25.0
+                                                                particleSizeVariance:0.0
                                                                             duration:-1.0
                                                                        blendAdditive:YES];
-                emitter.fastEmission = YES;
                 break;
                 
             default:
@@ -368,21 +367,22 @@
                                                                   sourcePositionVariance:Vector2fZero
                                                                                    speed:projectileSpeed 
                                                                            speedVariance:0.0
-                                                                        particleLifeSpan:0.0
-                                                                particleLifespanVariance:2.0
+                                                                        particleLifeSpan:4.0
+                                                                particleLifespanVariance:0.0
                                                                                    angle:projectileAngle
-                                                                           angleVariance:15.0
+                                                                           angleVariance:30.0
                                                                                  gravity:Vector2fZero
                                                                               startColor:Color4fMake(1.0, 1.0, 1.0, 1.0)
                                                                       startColorVariance:Color4fMake(0.0, 0.0, 0.0, 0.0)
                                                                              finishColor:Color4fMake(1.0, 1.0, 1.0, 1.0)
                                                                      finishColorVariance:Color4fMake(0.0, 0.0, 0.0, 0.0)
-                                                                            maxParticles:100.0
+                                                                            maxParticles:50.0
                                                                             particleSize:15.0
                                                                       finishParticleSize:15.0
                                                                     particleSizeVariance:0.0
-                                                                                duration:0.01
+                                                                                duration:0.1
                                                                            blendAdditive:YES];
+                    emitter.emissionRate = 5000;
                     emitter.fastEmission = YES;
                     elapsedTime = 0;
                 }
@@ -462,63 +462,22 @@
                 break;
         }
     }
+    
     //Particle updating
     else if([idType isEqualToString:@"Particle"] == TRUE){
         elapsedTime += aDelta;
         //Re-initialize our emitter
         if(elapsedTime >= rateOfFire){
-            [emitter stopParticleEmitter];
-            [emitter release];
-            emitter = nil;
+
             elapsedTime = 0;
             
             switch(particleID){
                 case kPlayerParticle:
-                    emitter = [[ParticleEmitter alloc] initParticleEmitterWithImageNamed:@"texture.png"
-                                                                                position:turretPosition
-                                                                  sourcePositionVariance:Vector2fZero
-                                                                                   speed:0.0
-                                                                           speedVariance:0.0
-                                                                        particleLifeSpan:0.4
-                                                                particleLifespanVariance:0.2
-                                                                                   angle:-projectileAngle
-                                                                           angleVariance:0.0
-                                                                                 gravity:Vector2fZero
-                                                                              startColor:Color4fMake(0.12, 0.25, 0.75, 1.0)
-                                                                      startColorVariance:Color4fMake(0.0, 0.0, 0.0, 0.0)
-                                                                             finishColor:Color4fMake(0.1, 0.1, 0.5, 1.0)
-                                                                     finishColorVariance:Color4fMake(0.05, 0.05, 0.3, 0.0)
-                                                                            maxParticles:250.0
-                                                                            particleSize:30.0
-                                                                      finishParticleSize:0.0
-                                                                    particleSizeVariance:10.0
-                                                                                duration:-1.0
-                                                                           blendAdditive:YES];
-                    emitter.fastEmission = YES;
+                    emitter.sourcePosition = turretPosition;
                     break;
                     
                 case kEnemyParticle:
-                    emitter = [[ParticleEmitter alloc] initParticleEmitterWithImageNamed:@"texture.png"
-                                                                                position:turretPosition
-                                                                  sourcePositionVariance:Vector2fZero
-                                                                                   speed:0.0
-                                                                           speedVariance:0.0
-                                                                        particleLifeSpan:0.4
-                                                                particleLifespanVariance:0.2
-                                                                                   angle:-projectileAngle
-                                                                           angleVariance:0.0
-                                                                                 gravity:Vector2fZero
-                                                                              startColor:Color4fMake(0.75, 0.25, 0.12, 1.0)
-                                                                      startColorVariance:Color4fMake(0.0, 0.0, 0.0, 0.0)
-                                                                             finishColor:Color4fMake(0.5, 0.1, 0.1, 1.0)
-                                                                     finishColorVariance:Color4fMake(0.3, 0.05, 0.05, 0.0)
-                                                                            maxParticles:250.0
-                                                                            particleSize:30.0
-                                                                      finishParticleSize:0.0
-                                                                    particleSizeVariance:10.0
-                                                                                duration:-1.0
-                                                                           blendAdditive:YES];
-//                    emitter.fastEmission = YES;
+                    emitter.sourcePosition = turretPosition;
                     break;
                     
                 default:
