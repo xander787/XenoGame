@@ -51,7 +51,7 @@
 #pragma mark -
 #pragma mark Debug
 
-#define DEBUG 1
+#define DEBUG 0
 
 #pragma mark -
 #pragma mark Macros
