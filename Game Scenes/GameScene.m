@@ -10,23 +10,6 @@
 //	James Linnell - Software Engineer, Creative Design, Art Producer
 //	Tyler Newcomb - Creative Design, Art Producer
 //
-//  Last Updated - 12/29/2010 @ 5PM - James
-//  - Fixed bug with the player not moving, misnamed
-//  update method. And after a lot of messy code, basic
-//  collision detection.
-//
-//  Last Updated - 12/30/2010 @ 3:PM - James
-//  - Removed old and nasty Chipmunk code, started use 
-//  of new Polygon code, small bug in trying to draw 
-//  the polygons though.
-//
-//  Last Upated - 12/30/2010 @ 5PM - James
-//  - Cleaned up a bit, started using [testShip collisionPointsCount]
-//
-//  Last Updated - 12/30/2010 @ 8PM - James
-//  - Polygon successfuly moves with testShip, and a
-//  test triangle is drawn and ready for collision testing
-//
 //  Last Updated - 12/30/2010 @ 9PM - James
 //  - Added in a second ship for better collision testing,
 //  everyhting seems A-okay :D, also took out the triangle
@@ -56,6 +39,11 @@
 //  Last Updated - 5/29/11 @ 4PM - James
 //  - Changed the usage of testShip.boundingBox to .shipWidth/Height
 //  Note: boudingBox should be deprecated
+//
+//  Last Updated - 6/13/11 @3PM - Alexander
+//  - Added starry background, and score string. Both are currently
+//  rendering
+//
 
 #import "GameScene.h"
 
@@ -97,10 +85,33 @@
     testEnemy = [[EnemyShip alloc] initWithShipID:kEnemyShip_WaveShotLevelFour initialLocation:CGPointMake(255, 300) andPlayerShipRef:testShip];
     testBoss = [[BossShipAsia alloc] initWithLocation:CGPointMake(160, 330) andPlayerShipRef:testShip];
     enemiesSet = [[NSSet alloc] initWithObjects:testEnemy, nil];    
-        
     
     //Testing bullet
     bulletTest = [[AbstractProjectile alloc] initWithProjectileID:kPlayerProjectile_Wave fromTurretPosition:Vector2fMake(250, 200) andAngle:90 emissionRate:2];
+    
+    // In-game graphics
+    font = [[AngelCodeFont alloc] initWithFontImageNamed:@"xenophobefont.png" controlFile:@"xenophobefont" scale:(1.0/3.0) filter:GL_LINEAR];
+    
+    backgroundParticleEmitter = [[ParticleEmitter alloc] initParticleEmitterWithImageNamed:@"texture.png"
+																				  position:Vector2fMake(160.0, 259.76)
+																	sourcePositionVariance:Vector2fMake(373.5, 240.0)
+																					 speed:0.1
+																			 speedVariance:0.01
+																		  particleLifeSpan:5.0
+																  particleLifespanVariance:2.0
+																					 angle:200.0
+																			 angleVariance:0.0
+																				   gravity:Vector2fMake(0.0, 0.0)
+																				startColor:Color4fMake(1.0, 1.0, 1.0, 0.58)
+																		startColorVariance:Color4fMake(0.0, 0.0, 0.0, 0.0)
+																			   finishColor:Color4fMake(0.5, 0.5, 0.5, 0.34)
+																	   finishColorVariance:Color4fMake(0.0, 0.0, 0.0, 0.0)
+																			  maxParticles:2000
+																			  particleSize:3.0
+																		finishParticleSize:3.0
+																	  particleSizeVariance:1.3
+																				  duration:-1
+																			 blendAdditive:NO];
 }
 
 - (void)updateWithDelta:(GLfloat)aDelta {
@@ -118,6 +129,11 @@
         default:
             break;
     }
+    
+    // In-game graphics updating
+    [backgroundParticleEmitter update:aDelta];
+    playerScore = [NSString stringWithFormat:@"%09d", playerScoreNum];
+    
     
     //Make sure that all of our ship objects get their update: called. Necessary.
     [testShip update:aDelta];
@@ -223,17 +239,18 @@
 }
 
 - (void)render {
-    [testShip render];
-//    [testEnemy render];
+    // In-game graphics rendered first
+    [backgroundParticleEmitter renderParticles];
+    [font drawStringAt:CGPointMake(10.0, 465.0) text:playerScore];
+    
     [testBoss render];
-    //[bulletTest render];
+    [testEnemy render];
+    [testShip render];
     
     if(DEBUG) {
         
         //Draw some text at the bottom-left corner indicating the current FPS.
-        AngelCodeFont *font = [[AngelCodeFont alloc] initWithFontImageNamed:@"xenophobefont.png" controlFile:@"xenophobefont" scale:(1.0/3.0) filter:GL_LINEAR];
         [font drawStringAt:CGPointMake(15.0, 15.0) text:[NSString stringWithFormat:@"%.1f", [_sharedDirector framesPerSecond]]];
-        [font release];
     }
 }
 
@@ -241,6 +258,7 @@
     [testShip release];
     [testEnemy release];
     [testBoss release];
+    [font release];
     //[bulletTest release];
     [enemiesSet release];
     [projectilesSet release];

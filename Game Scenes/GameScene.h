@@ -15,6 +15,7 @@
 //  to hold projectiles and bosses currently in play
 
 #import <Foundation/Foundation.h>
+#import "ParticleEmitter.h"
 #import "AbstractScene.h"
 #import "Image.h"
 #import "PlayerShip.h"
@@ -31,6 +32,12 @@
     BossShipAsia    *testBoss;
         
     AbstractProjectile *bulletTest;
+    
+    // In-game graphics
+    ParticleEmitter *backgroundParticleEmitter;
+    AngelCodeFont   *font;
+    NSString        *playerScore;
+    int             playerScoreNum;
     
     // Storing objects in play
     NSSet       *enemiesSet;
