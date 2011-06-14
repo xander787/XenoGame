@@ -50,9 +50,13 @@
 //  Last Updated - 2/15/2011 @8:45PM - Alexander
 //  - Rewrote the init method to make it just a bit more organized
 //
-//   Last Updated - 6/13/2011 @ 4:40PM - James
+//  Last Updated - 6/13/2011 @ 4:40PM - James
 //  - Added in death animation, basic health system. Ship
 //  images stops rendering on deaht, too.
+//
+//  Last Updated - 6/13/2011 @5:50PM - James
+//  - Cleaned up a bit of code, removing NSLogs and all.
+//  On death all projectiles also cease firing and rendering
 
 #import "PlayerShip.h"
 
@@ -243,20 +247,28 @@
     
     if(shipIsDead == TRUE){
         [deathAnimationEmitter update:delta];
+        if(deathAnimationEmitter.particleCount == 0){
+            //When the emitter is done, no more particles:
+            
+        }
     }
 }
 
 - (void)hitShipWithDamage:(int)damage {
-    NSLog(@"Player Ship takes damage with %d damage", damage);
+    //NSLog(@"Player Ship takes damage with %d damage", damage);
     
     //Deduct damage from existing health
     shipHealth = shipHealth - damage;
-    NSLog(@"New ship health: %d", shipHealth);
+    //NSLog(@"New ship health: %d", shipHealth);
     
     if(shipHealth <= 0){
         NSLog(@"Player Ship died");
         //Player ship is offically dead
         shipIsDead = TRUE;
+        
+        for(AbstractProjectile *tempProjectile in projectilesArray){
+            [tempProjectile setFiring:NO];
+        }
         
         //TODO: Remove image, start particle death animation, etc
         
@@ -290,6 +302,7 @@
         [mainImage renderAtPoint:currentLocation centerOfImage:YES];
     }
     if(shipIsDead == TRUE){
+        //Make sure to *start* rendering our emitter!
         [deathAnimationEmitter renderParticles];
     }
         
@@ -346,6 +359,10 @@
 - (void)dealloc {
     free(collisionDetectionBoundingPoints);
     [Image release];
+    if(deathAnimationEmitter){
+        [deathAnimationEmitter release];
+    }
+    [projectilesArray release];
     [collisionPolygon release];
     free(turretPoints);
     free(thrusterPoints);

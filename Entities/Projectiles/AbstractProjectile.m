@@ -17,6 +17,10 @@
 //  Last Updated - 1/18/2011 @10PM - Alexander
 //  - Changed player bullet to fade and get smaller as the projectile
 //  moves across the screen
+//
+//  Last Updated - 6/13/2011 @ 5:40PM - James
+//  - Stopped rendering of all objects when projectile is
+//  set to inactive.
 
 #import "AbstractProjectile.h"
 
@@ -509,6 +513,8 @@
 }
 
 - (void)render {
+    if(isActive == NO) return;
+    
     if(projectileID == kPlayerProjectile_Bullet || projectileID == kPlayerProjectile_Wave || projectileID == kEnemyProjectile_Bullet || projectileID == kEnemyProjectile_Wave){
         [emitter renderParticles];
     }
