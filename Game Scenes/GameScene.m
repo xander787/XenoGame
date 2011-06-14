@@ -137,6 +137,12 @@
     
     //Make sure that all of our ship objects get their update: called. Necessary.
     [testShip update:aDelta];
+    
+    //TEMPORARY: Used only for testing death animation.
+    if(!testShip.shipIsDead){
+        [testShip hitShipWithDamage:1];
+    }
+    
     [testEnemy update:aDelta];
     [testBoss update:aDelta];
     [bulletTest update:aDelta];

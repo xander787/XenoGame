@@ -12,6 +12,10 @@
 //
 //	Last Updated - 11/21/2010 - Alexander
 //	- Added in methods for touch handling
+//
+// Last Updated - 6/13/2011 @ 4PM - James
+//  - Added hitShipWithDamage method for universal damage 
+//  detection, with subclasses defining the method.
 
 #import <Foundation/Foundation.h>
 #import "Image.h"
@@ -23,12 +27,18 @@
 @interface AbstractShip : PhysicalObject {
 	Director	*_sharedDirector;
 	BOOL		_gotScene;
+    
+    BOOL        shipIsDead;
 }
+
+@property (readonly) BOOL shipIsDead;
 
 - (void)update:(GLfloat)delta;
 - (void)render;
 - (void)updateWithTouchLocationBegan:(NSSet*)touches withEvent:(UIEvent*)event view:(UIView*)aView;
 - (void)updateWithTouchLocationMoved:(NSSet*)touches withEvent:(UIEvent*)event view:(UIView*)aView;
 - (void)updateWithTouchLocationEnded:(NSSet*)touches withEvent:(UIEvent*)event view:(UIView*)aView;
+
+- (void)hitShipWithDamage:(int)damage;
 
 @end

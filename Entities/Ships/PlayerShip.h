@@ -80,6 +80,7 @@ typedef enum _PlayerShipTemporaryMiscUpgrade {
 
 @interface PlayerShip : AbstractShip {
 	int									shipHealth;
+    int                                 shipMaxHealth;
 	int									shipAttack;
 	int									shipStamina;
 	int									shipSpeed;
@@ -104,6 +105,8 @@ typedef enum _PlayerShipTemporaryMiscUpgrade {
 	Vector2f                            *thrusterPoints;
     int                                 numThrusters;
     NSMutableArray                      *projectilesArray;
+    
+    ParticleEmitter                     *deathAnimationEmitter;
 }
 
 - (id)initWithShipID:(PlayerShipID)aShipID andInitialLocation:(CGPoint)aPoint;
@@ -113,6 +116,7 @@ typedef enum _PlayerShipTemporaryMiscUpgrade {
 - (void)destroyShip;
 
 @property (readonly) int shipHealth;
+@property (readonly) int shipMaxHealth;
 @property (readonly) int shipAttack;
 @property (readonly) int shipStamina;
 @property (readonly) int shipSpeed;

@@ -18,14 +18,20 @@
 
 @implementation AbstractShip
 
+@synthesize shipIsDead;
 
 - (id)init {
 	self = [super init];
 	if (self != nil) {
 		_gotScene = NO;
+        shipIsDead = FALSE;
 	}
 	
 	return self;
+}
+
+- (void)hitShipWithDamage:(int)damage {
+    
 }
 
 - (void)updateWithTouchLocationBegan:(NSSet*)touches withEvent:(UIEvent*)event view:(UIView*)aView {

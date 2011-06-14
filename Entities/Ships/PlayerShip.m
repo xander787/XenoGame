@@ -49,13 +49,17 @@
 //
 //  Last Updated - 2/15/2011 @8:45PM - Alexander
 //  - Rewrote the init method to make it just a bit more organized
+//
+//   Last Updated - 6/13/2011 @ 4:40PM - James
+//  - Added in death animation, basic health system. Ship
+//  images stops rendering on deaht, too.
 
 #import "PlayerShip.h"
 
 
 @implementation PlayerShip
 
-@synthesize shipHealth, shipAttack, shipStamina, shipSpeed, shipTemporaryWeaponUpgrade, shipTemporaryMiscUpgrade, currentLocation, collisionDetectionBoundingPoints, collisionPointsCount, desiredPosition, collisionPolygon, shipWidth, shipHeight;
+@synthesize shipHealth, shipMaxHealth, shipAttack, shipStamina, shipSpeed, shipTemporaryWeaponUpgrade, shipTemporaryMiscUpgrade, currentLocation, collisionDetectionBoundingPoints, collisionPointsCount, desiredPosition, collisionPolygon, shipWidth, shipHeight;
 
 - (id) init {
 	self = [super init];
@@ -94,7 +98,8 @@
         
         
 		//Set the values from the dictionary for our ship
-		shipHealth = 100;
+		shipMaxHealth = 300;
+        shipHealth = shipMaxHealth;
 		shipAttack  = [[shipDictionary valueForKey:@"kShipAttack"] intValue];
 		shipStamina = [[shipDictionary valueForKey:@"kShipStamina"] intValue];
 		shipSpeed = [[shipDictionary valueForKey:@"kShipSpeed"] intValue];
@@ -202,8 +207,8 @@
         // Add projectiles to our local projectile set for the weapon points on the ship
         projectilesArray = [[NSMutableArray alloc] init];
         for(int i = 0; i < numTurrets; i++) {
-            //AbstractProjectile *projectile = [[AbstractProjectile alloc] initWithParticleID:kPlayerParticle fromTurretPosition:Vector2fMake(currentLocation.x + turretPoints[i].x, currentLocation.y + turretPoints[i].y) radius:10 rateOfFire:4 andAngle:90];
-            AbstractProjectile *projectile = [[AbstractProjectile alloc] initWithProjectileID:kPlayerProjectile_Wave fromTurretPosition:Vector2fMake(currentLocation.x + turretPoints[i].x, currentLocation.y + turretPoints[i].y) andAngle:90 emissionRate:4];
+            AbstractProjectile *projectile = [[AbstractProjectile alloc] initWithParticleID:kPlayerParticle fromTurretPosition:Vector2fMake(currentLocation.x + turretPoints[i].x, currentLocation.y + turretPoints[i].y) radius:10 rateOfFire:4 andAngle:90];
+            //AbstractProjectile *projectile = [[AbstractProjectile alloc] initWithProjectileID:kPlayerProjectile_Bullet fromTurretPosition:Vector2fMake(currentLocation.x + turretPoints[i].x, currentLocation.y + turretPoints[i].y) andAngle:90 emissionRate:4];
             [projectilesArray insertObject:projectile atIndex:i];
             [projectile release];
         }
@@ -235,11 +240,59 @@
         [[projectilesArray objectAtIndex:i] update:delta];
         [[projectilesArray objectAtIndex:i] setTurretPosition:Vector2fMake(currentLocation.x + turretPoints[i].x, currentLocation.y + turretPoints[i].y)];
     }
+    
+    if(shipIsDead == TRUE){
+        [deathAnimationEmitter update:delta];
+    }
+}
+
+- (void)hitShipWithDamage:(int)damage {
+    NSLog(@"Player Ship takes damage with %d damage", damage);
+    
+    //Deduct damage from existing health
+    shipHealth = shipHealth - damage;
+    NSLog(@"New ship health: %d", shipHealth);
+    
+    if(shipHealth <= 0){
+        NSLog(@"Player Ship died");
+        //Player ship is offically dead
+        shipIsDead = TRUE;
+        
+        //TODO: Remove image, start particle death animation, etc
+        
+        deathAnimationEmitter = [[ParticleEmitter alloc] initParticleEmitterWithImageNamed:@"texture.png"
+                                                                                  position:Vector2fMake(currentLocation.x, currentLocation.y)
+                                                                    sourcePositionVariance:Vector2fZero
+                                                                                     speed:0.8
+                                                                             speedVariance:0.2
+                                                                          particleLifeSpan:0.3
+                                                                  particleLifespanVariance:0.2
+                                                                                     angle:0.0
+                                                                             angleVariance:360.0
+                                                                                   gravity:Vector2fZero
+                                                                                startColor:Color4fMake(0.7, 0.7, 0.7, 1.0)
+                                                                        startColorVariance:Color4fMake(0.5, 0.5, 0.5, 0.0)
+                                                                               finishColor:Color4fMake(0.7, 0.7, 0.7, 0.2)
+                                                                       finishColorVariance:Color4fMake(0.5, 0.5, 0.5, 0.0)
+                                                                              maxParticles:1000
+                                                                              particleSize:10.0
+                                                                        finishParticleSize:10.0
+                                                                      particleSizeVariance:0.0
+                                                                                  duration:0.1
+                                                                             blendAdditive:YES];
+        deathAnimationEmitter.fastEmission = YES;
+    }
 }
 
 - (void)render {    
-    [mainImage renderAtPoint:currentLocation centerOfImage:YES];
-    
+    if(shipIsDead == FALSE){
+        //Only render if ship is alive, else do not draw for the particle animation
+        [mainImage renderAtPoint:currentLocation centerOfImage:YES];
+    }
+    if(shipIsDead == TRUE){
+        [deathAnimationEmitter renderParticles];
+    }
+        
     // Render projectiles
     for(int i = 0; i < [projectilesArray count]; i++) {
         [[projectilesArray objectAtIndex:i] render];
