@@ -33,6 +33,9 @@
 //
 //  Last Updated - 1/3/11 @4PM - Alexander
 //  - Adding in code to support the Polygon Collision system
+//
+//  Last Updated - 6/15/2011 @1:10PM - James
+//  - Removed some redundant variables, moved in AbstractShip class
 
 #import <Foundation/Foundation.h>
 #import "PlayerShip.h"
@@ -102,22 +105,10 @@ typedef enum _EnemyShipCategory {
 } EnemyShipCategory;
 
 @interface EnemyShip : AbstractShip {
-	int						enemyHealth;
-	int						enemyAttack;
-	int						enemyStamina;
-	int						enemySpeed;
-    CGPoint                 currentLocation;
-    int                     collisionPointsCount;
-    Polygon                 *collisionPolygon;
-    
-    int                     shipWidth;
-    int                     shipHeight;
     
     @private
     EnemyShipID             enemyID;
-    EnemyShipCategory       enemyCategroy;
-    Vector2f                *weaponPoints;
-    Vector2f                *collisionDetectionBoundingPoints;
+    EnemyShipCategory       enemyCategory;
     SpriteSheet             *enemySpriteSheet;
     Animation               *enemyAnimation;
     PlayerShip              *playerShipRef;
@@ -125,14 +116,5 @@ typedef enum _EnemyShipCategory {
 
 - (id)initWithShipID:(EnemyShipID)aEnemyID initialLocation:(CGPoint)aPoint andPlayerShipRef:(PlayerShip *)aPlayership;
 
-@property(nonatomic, readonly) int enemyHealth;
-@property(nonatomic, readonly) int enemyAttack;
-@property(nonatomic, readonly) int enemyStamina;
-@property(nonatomic, readonly) int enemySpeed;
-@property(nonatomic, readonly) CGPoint currentLocation;
-@property (nonatomic, retain) Polygon *collisionPolygon;
-
-@property (readonly) int shipWidth;
-@property (readonly) int shipHeight;
 
 @end

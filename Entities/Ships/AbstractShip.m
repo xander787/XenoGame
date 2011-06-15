@@ -18,7 +18,8 @@
 
 @implementation AbstractShip
 
-@synthesize shipIsDead;
+@synthesize shipIsDead, shipHealth, shipMaxHealth, shipAttack, shipStamina, shipSpeed, shipWidth, shipHeight;
+@synthesize collisionPolygon, projectilesArray, currentLocation;
 
 - (id)init {
 	self = [super init];

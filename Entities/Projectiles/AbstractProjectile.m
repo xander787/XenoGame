@@ -21,6 +21,11 @@
 //  Last Updated - 6/13/2011 @ 5:40PM - James
 //  - Stopped rendering of all objects when projectile is
 //  set to inactive.
+//
+//  Last Updated - 6/15/2011 @12:40PM - James
+//  - Removed setFiring: method, added pauseProj, playProj, and stopProj
+//  to differentiate between needs, play/pause for pause screen, stop for
+//  not rendering projectile.
 
 #import "AbstractProjectile.h"
 
@@ -334,7 +339,7 @@
 }
 
 - (void)update:(CGFloat)aDelta {
-    if(isActive == NO) return;
+    if(isActive == NO || isDead == YES) return;
     //Switch between projectile or particle
     if([idType isEqualToString:@"Projectile"] == TRUE){
         switch(projectileID){
@@ -503,17 +508,28 @@
     
 }
 
-- (void)setFiring:(BOOL)aFire {
-    if(aFire == YES){
-        isActive = YES;
-    }
-    else if(aFire == NO){
-        isActive = NO;
-    }
+- (void)pauseProjectile {
+    //This merely tells the class to stop updating the projectiles, mainly for use on pause screen
+    
+    isActive = NO;
+    
+}
+
+- (void)playProjectile {
+    //Reverses the ffect of pauseProjectile, mainly for when pause screen goes away
+    
+    isActive = YES;
+}
+
+- (void)stopProjectile {
+    //Used when we want to stop updating AND rendering our projectile.
+    //The owner of the class uses this so it doesn't have to deallocate the projectile on ship death
+    
+    isDead = YES;
 }
 
 - (void)render {
-    if(isActive == NO) return;
+    if(isDead == YES) return;
     
     if(projectileID == kPlayerProjectile_Bullet || projectileID == kPlayerProjectile_Wave || projectileID == kEnemyProjectile_Bullet || projectileID == kEnemyProjectile_Wave){
         [emitter renderParticles];

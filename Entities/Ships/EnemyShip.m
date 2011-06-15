@@ -43,7 +43,6 @@
 
 @implementation EnemyShip
 
-@synthesize enemyHealth, enemyAttack, enemyStamina, enemySpeed, currentLocation, shipWidth, shipHeight, collisionPolygon;
 
 - (id)init {
     self = [super init];
@@ -208,43 +207,44 @@
         [enemyShipsDictionary release];
         
         //Set the values for the ship based on those in the plist file
-        enemyHealth = 100; 
-        enemyAttack = [[enemyDictionary valueForKey:@"kShipAttack"] intValue];
-        enemyStamina = [[enemyDictionary valueForKey:@"kShipStamina"] intValue];
-        enemySpeed = [[enemyDictionary valueForKey:@"kShipSpeed"] intValue];
+        shipMaxHealth = 100;
+        shipHealth = shipMaxHealth; 
+        shipAttack = [[enemyDictionary valueForKey:@"kShipAttack"] intValue];
+        shipStamina = [[enemyDictionary valueForKey:@"kShipStamina"] intValue];
+        shipSpeed = [[enemyDictionary valueForKey:@"kShipSpeed"] intValue];
         shipWidth = [[enemyDictionary valueForKey:@"kSpriteSheetColumnWidth"] intValue];
         shipHeight = [[enemyDictionary valueForKey:@"kSpriteSheetRowheight"] intValue];
         
         
         if([enemyDictionary valueForKey:@"kShipCategory"] == @"kShipType_OneShot") {
-            enemyCategroy = kEnemyCategory_OneShot;
+            enemyCategory = kEnemyCategory_OneShot;
         }
         else if([enemyDictionary valueForKey:@"kShipCategory"] == @"kShipType_TwoShot") {
-            enemyCategroy = kEnemyCategory_TwoShot;
+            enemyCategory = kEnemyCategory_TwoShot;
         }
         else if([enemyDictionary valueForKey:@"kShipCategory"] == @"kShipType_ThreeShot") {
-            enemyCategroy = kEnemyCategory_ThreeShot;
+            enemyCategory = kEnemyCategory_ThreeShot;
         }
         else if([enemyDictionary valueForKey:@"kShipCategory"] == @"kShipType_WaveShot") {
-            enemyCategroy = kEnemyCategory_WaveShot;
+            enemyCategory = kEnemyCategory_WaveShot;
         }
         else if([enemyDictionary valueForKey:@"kShipCategory"] == @"kShipType_MissileBombShot") {
-            enemyCategroy = kEnemyCategory_MissileBombShot;
+            enemyCategory = kEnemyCategory_MissileBombShot;
         }
         else if([enemyDictionary valueForKey:@"kShipCategory"] == @"kShipType_Kamikaze") {
-            enemyCategroy = kEnemyCategory_Kamikaze;
+            enemyCategory = kEnemyCategory_Kamikaze;
         }
         
         NSArray *shipWeaponsArray = [[NSArray alloc] initWithArray:[enemyDictionary objectForKey:@"kWeaponPoints"]];
         NSArray *shipCollisionArray = [[NSArray alloc] initWithArray:[enemyDictionary objectForKey:@"kCollisionBoundingPoints"]];
         
         //Fill a C array with the weapon points on the enemy
-        weaponPoints = malloc(sizeof(Vector2f) * [shipWeaponsArray count]);
-        bzero(weaponPoints, sizeof(Vector2f) * [shipWeaponsArray count]);
+        turretPoints = malloc(sizeof(Vector2f) * [shipWeaponsArray count]);
+        bzero(turretPoints, sizeof(Vector2f) * [shipWeaponsArray count]);
         
         for(int i =0; i < [shipWeaponsArray count]; i++) {
             NSArray *coords = [[NSArray alloc] initWithArray:[[shipWeaponsArray objectAtIndex:i] componentsSeparatedByString:@","]];
-            weaponPoints[i] = Vector2fMake([[coords objectAtIndex:0] intValue], [[coords objectAtIndex:1] intValue]);
+            turretPoints[i] = Vector2fMake([[coords objectAtIndex:0] intValue], [[coords objectAtIndex:1] intValue]);
             [coords release];
         }
         
@@ -338,7 +338,7 @@
 }
 
 - (void)dealloc {
-    free(weaponPoints);
+    free(turretPoints);
     free(collisionDetectionBoundingPoints);
     [enemySpriteSheet release];
     [enemyAnimation release];

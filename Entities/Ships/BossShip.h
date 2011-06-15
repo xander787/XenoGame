@@ -20,6 +20,9 @@
 //
 //  Last Updated - 1/31/20101 @8PM - Alexander
 //  - Added rotation property to modules
+//
+//  Last Updated - 6/15/2011 @1:10PM - James
+//  - Removed some redundant variables, moved in AbstractShip class
 
 #import <Foundation/Foundation.h>
 #import "Common.h"
@@ -111,12 +114,9 @@ typedef struct _ModularObject {
     int             bossAttack;
     int             bossStamina;
     int             bossSpeed;
-    CGPoint         currentLocation;
     CGPoint         desiredLocation;
     ModularObject   *modularObjects;
-    
-    int             shipWidth;
-    int             shipHeight;
+
     
     PlayerShip      *playerShipRef;
     
@@ -129,7 +129,6 @@ typedef struct _ModularObject {
 @property(nonatomic, readonly) int bossAttack;
 @property(nonatomic, readonly) int bossStamina;
 @property(nonatomic, readonly) int bossSpeed;
-@property(nonatomic, readonly) CGPoint currentLocation;
 @property(readonly) ModularObject   *modularObjects;
 
 - (id)initWithBossID:(BossShipID)aBossID initialLocation:(CGPoint)aPoint andPlayerShipRef:(PlayerShip *)aPlayerShip;

@@ -63,7 +63,7 @@
 
 @implementation PlayerShip
 
-@synthesize shipHealth, shipMaxHealth, shipAttack, shipStamina, shipSpeed, shipTemporaryWeaponUpgrade, shipTemporaryMiscUpgrade, currentLocation, collisionDetectionBoundingPoints, collisionPointsCount, desiredPosition, collisionPolygon, shipWidth, shipHeight;
+@synthesize shipTemporaryWeaponUpgrade, shipTemporaryMiscUpgrade, desiredPosition;
 
 - (id) init {
 	self = [super init];
@@ -262,12 +262,13 @@
     //NSLog(@"New ship health: %d", shipHealth);
     
     if(shipHealth <= 0){
+        
         NSLog(@"Player Ship died");
         //Player ship is offically dead
         shipIsDead = TRUE;
         
         for(AbstractProjectile *tempProjectile in projectilesArray){
-            [tempProjectile setFiring:NO];
+            [tempProjectile stopProjectile];
         }
         
         //TODO: Remove image, start particle death animation, etc

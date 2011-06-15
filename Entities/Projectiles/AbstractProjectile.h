@@ -45,6 +45,7 @@ typedef enum _ParticleID {
     Vector2f        desiredLocation;
     
     BOOL            isActive;
+    BOOL            isDead;
     
     NSString        *nameOfImage;
     
@@ -80,6 +81,8 @@ typedef enum _ParticleID {
 - (id)initWithParticleID:(ParticleID)aParticleID fromTurretPosition:(Vector2f)aPosition radius:(int)aRadius rateOfFire:(int)aRate andAngle:(int)aAngle;
 - (void)update:(CGFloat)aDelta;
 - (void)render;
-- (void)setFiring:(BOOL)aFire;
+- (void)pauseProjectile;
+- (void)playProjectile;
+- (void)stopProjectile;
 
 @end

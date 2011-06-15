@@ -38,6 +38,9 @@
 //
 //  Last Updated - 1/26/2011 @5:20PM - Alexander
 //  - Added NSMutableArray for storing our projectiles
+//
+//  Last Updated - 6/15/2011 @1:10PM - James
+//  - Removed some redundant variables, moved in AbstractShip class
 
 #import <Foundation/Foundation.h>
 #import "AbstractShip.h"
@@ -79,34 +82,20 @@ typedef enum _PlayerShipTemporaryMiscUpgrade {
 
 
 @interface PlayerShip : AbstractShip {
-	int									shipHealth;
-    int                                 shipMaxHealth;
-	int									shipAttack;
-	int									shipStamina;
-	int									shipSpeed;
+	
 	PlayerShipTemporaryWeaponUpgrade	shipTemporaryWeaponUpgrade;
 	PlayerShipTemporaryMiscUpgrade		shipTemporaryMiscUpgrade;
-    CGPoint                             currentLocation;
-    Vector2f                            *collisionDetectionBoundingPoints;
-    int                                 collisionPointsCount;
+
     CGPoint                             desiredPosition;
-    Polygon                             *collisionPolygon;
     
-    int                                 shipWidth;
-    int                                 shipHeight;
+
 	
 @private
 	PlayerShipID						shipID;
 	PlayerShipCategory					shipCategory;
 	PlayerShipWeaponType				shipWeaponType;
 	Image								*mainImage;
-	Vector2f							*turretPoints;
-    int                                 numTurrets;
-	Vector2f                            *thrusterPoints;
-    int                                 numThrusters;
-    NSMutableArray                      *projectilesArray;
-    
-    ParticleEmitter                     *deathAnimationEmitter;
+	
 }
 
 - (id)initWithShipID:(PlayerShipID)aShipID andInitialLocation:(CGPoint)aPoint;
@@ -115,20 +104,9 @@ typedef enum _PlayerShipTemporaryMiscUpgrade {
 - (void)fireWeapons;
 - (void)destroyShip;
 
-@property (readonly) int shipHealth;
-@property (readonly) int shipMaxHealth;
-@property (readonly) int shipAttack;
-@property (readonly) int shipStamina;
-@property (readonly) int shipSpeed;
+
 @property PlayerShipTemporaryWeaponUpgrade	shipTemporaryWeaponUpgrade;
 @property PlayerShipTemporaryMiscUpgrade	shipTemporaryMiscUpgrade;
-@property (readonly) CGPoint currentLocation;
-@property (readonly) Vector2f *collisionDetectionBoundingPoints;
-@property (readonly) int collisionPointsCount;
 @property (readwrite) CGPoint desiredPosition;
-@property (nonatomic, retain) Polygon *collisionPolygon;
-
-@property (readonly) int shipWidth;
-@property (readonly) int shipHeight;
 
 @end

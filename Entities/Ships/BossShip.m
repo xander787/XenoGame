@@ -40,7 +40,7 @@
 
 @implementation BossShip
 
-@synthesize bossHealth, bossAttack, bossStamina, bossSpeed, currentLocation, modularObjects;
+@synthesize bossHealth, bossAttack, bossStamina, bossSpeed, modularObjects;
 
 - (id)initWithBossID:(BossShipID)aBossID initialLocation:(CGPoint)aPoint andPlayerShipRef:(PlayerShip *)aPlayerShip {
     if((self = [super init])) {
