@@ -12,6 +12,11 @@
 //
 //	Last Updated - 10/20/2010 @ 6PM - Alexander
 //	- Initial Project Creation
+//
+//	Last Updated - 6/15/2011 @ 3:30PM - Alexander
+//	- Changed the system of scaling from a single value
+//  to vector-based so that we can scale both the x and
+//  y axis independently
 
 
 #import "Image.h"

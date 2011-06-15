@@ -26,6 +26,9 @@
 //  - Removed setFiring: method, added pauseProj, playProj, and stopProj
 //  to differentiate between needs, play/pause for pause screen, stop for
 //  not rendering projectile.
+//
+//	Last Updated - 6/15/2011 @ 3:30PM - Alexander
+//	- Support for new Scale2f vector scaling system
 
 #import "AbstractProjectile.h"
 

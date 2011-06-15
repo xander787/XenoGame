@@ -37,6 +37,9 @@
 //
 //  Last Updated - 2/15/11 @9PM - Alexander
 //  - Rewrote the init method to be more organized
+//
+//	Last Updated - 6/15/2011 @ 3:30PM - Alexander
+//	- Support for new Scale2f vector scaling system
 
 #import "EnemyShip.h"
 

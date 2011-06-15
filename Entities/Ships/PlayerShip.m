@@ -57,6 +57,9 @@
 //  Last Updated - 6/13/2011 @5:50PM - James
 //  - Cleaned up a bit of code, removing NSLogs and all.
 //  On death all projectiles also cease firing and rendering
+//
+//	Last Updated - 6/15/2011 @ 3:30PM - Alexander
+//	- Support for new Scale2f vector scaling system
 
 #import "PlayerShip.h"
 
@@ -107,7 +110,7 @@
 		shipAttack  = [[shipDictionary valueForKey:@"kShipAttack"] intValue];
 		shipStamina = [[shipDictionary valueForKey:@"kShipStamina"] intValue];
 		shipSpeed = [[shipDictionary valueForKey:@"kShipSpeed"] intValue];
-        mainImage = [[Image alloc] initWithImage:[shipDictionary valueForKey:@"kMainImage"] scale:Scale2fMake(2.0f, 1.0f)];
+        mainImage = [[Image alloc] initWithImage:[shipDictionary valueForKey:@"kMainImage"] scale:Scale2fOne];
         shipWidth = [mainImage imageWidth];
         shipHeight = [mainImage imageHeight];
         

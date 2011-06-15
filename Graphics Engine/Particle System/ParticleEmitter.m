@@ -17,6 +17,9 @@
 //  Last Updated - 1/17/11 - James
 //  - Changed the rate from 0.1f/emissionRate to us 1.0f
 //  because it was making particles way too fast
+//
+//	Last Updated - 6/15/2011 @ 3:30PM - Alexander
+//	- Support for new Scale2f vector scaling system
 
 
 #import "ParticleEmitter.h"

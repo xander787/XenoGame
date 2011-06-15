@@ -24,6 +24,9 @@
 //  Last Updated - 12/29/2010 @ 12PM - Alexander
 //  - Fixed a very small memory leak issue in the highscore leaderboard
 //  loading code.
+//
+//	Last Updated - 6/15/2011 @ 3:30PM - Alexander
+//	- Support for new Scale2f vector scaling system
 
 #import "HighScoresScene.h"
 

@@ -12,6 +12,9 @@
 //
 //	Last Updated - 10/20/2010 @ 6PM - Alexander
 //	- Initial Project Creation
+//
+//	Last Updated - 6/15/2011 @ 3:30PM - Alexander
+//	- Support for new Scale2f vector scaling system
 
 
 #import "SpriteSheet.h"

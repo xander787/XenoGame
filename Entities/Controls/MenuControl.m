@@ -12,6 +12,9 @@
 //
 //	Last Updated - 10/28/2010 @ 6:40PM - Alexander
 //	- Made the button animation faster
+//
+//	Last Updated - 6/15/2011 @ 3:30PM - Alexander
+//	- Support for new Scale2f vector scaling system
 
 #import "MenuControl.h"
 

@@ -34,6 +34,9 @@
 //  Last Updated - 1/28/2011 @10PM - Alexander
 //  - Make sure that on initialization, module rotations 
 //  are set to 0.0f
+//
+//	Last Updated - 6/15/2011 @ 3:30PM - Alexander
+//	- Support for new Scale2f vector scaling system
 
 #import "BossShip.h"
 

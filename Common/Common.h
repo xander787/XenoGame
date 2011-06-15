@@ -42,6 +42,10 @@
  *
  *  Last Updated - 12/31/2010 @ 7:30PM - Alexander
  *  - Memory management
+ *
+ *  Last Updated - 6/15/2011 @ 3:30PM - Alexander
+ *  - Added structures and methods for new Scale2f
+ *  vector for scaling images
  */
 
 #import <Foundation/Foundation.h>
