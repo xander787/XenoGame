@@ -43,7 +43,7 @@
 
 - (void)updateWithLocation:(NSString*)theTouchLocation {
 	
-	CGRect controlBounds = CGRectMake(location.x - (([image imageWidth]*[image scale])/2), location.y - (([image imageHeight]*[image scale])/2), [image imageWidth]*[image scale], [image imageHeight]*[image scale]);
+	CGRect controlBounds = CGRectMake(location.x - (([image imageWidth]*[image scale].x)/2), location.y - (([image imageHeight]*[image scale].y)/2), [image imageWidth]*[image scale].x, [image imageHeight]*[image scale].y);
 	
 	CGPoint touchPoint = CGPointFromString((NSString*)theTouchLocation);
 	
@@ -79,7 +79,7 @@
 
 - (void)render {
 	[image setAlpha:alpha];
-	[image setScale:scale];
+	[image setScale:Scale2fMake(scale, scale)];
 	[image renderAtPoint:CGPointMake(location.x, location.y) centerOfImage:centered];	
 }
 

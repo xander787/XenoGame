@@ -19,7 +19,7 @@
 // Private methods
 @interface SpriteSheet ()
 // Private selector that is used as a standard method for initializing a sprite sheet
-- (void)initImplementation:(GLuint)aSpriteWidth spriteHeight:(GLuint)aSpriteHeight spacing:(GLuint)aSpacing imageScale:(float)scale;
+- (void)initImplementation:(GLuint)aSpriteWidth spriteHeight:(GLuint)aSpriteHeight spacing:(GLuint)aSpacing imageScale:(Scale2f)scale;
 
 // Precalculate texture coordinates for all the sprites on the sprite sheet
 - (void)calculateCachedTextureCoordinates;
@@ -53,7 +53,7 @@
 		spriteWidth = 0;
 		spriteHeight = 0;
 		spacing = 0;
-		scale = 1.0f;
+		scale = Scale2fOne;
 	}
 	return self;
 }
@@ -71,13 +71,13 @@
 		[image retain];
 		
 		// Call the standard init implementation		
-		[self initImplementation:aSpriteWidth spriteHeight:aSpriteHeight spacing:aSpacing imageScale:[image scale]];
+		[self initImplementation:aSpriteWidth spriteHeight:aSpriteHeight spacing:aSpacing imageScale:Scale2fMake(image.scale.x, image.scale.y)];
 	}
 	return self;
 }
 
 
-- (id)initWithImageNamed:(NSString*)aImageName spriteWidth:(GLuint)aSpriteWidth spriteHeight:(GLuint)aSpriteHeight spacing:(GLuint)aSpacing imageScale:(float)theScale {
+- (id)initWithImageNamed:(NSString*)aImageName spriteWidth:(GLuint)aSpriteWidth spriteHeight:(GLuint)aSpriteHeight spacing:(GLuint)aSpacing imageScale:(Scale2f)theScale {
 	self = [super init];
 	if (self != nil) {
 		// Set the sprite sheet name
@@ -92,7 +92,7 @@
 }
 
 
-- (void)initImplementation:(GLuint)aSpriteWidth spriteHeight:(GLuint)aSpriteHeight spacing:(GLuint)aSpacing imageScale:(float)theScale {
+- (void)initImplementation:(GLuint)aSpriteWidth spriteHeight:(GLuint)aSpriteHeight spacing:(GLuint)aSpacing imageScale:(Scale2f)theScale {
 	// Set the width, height and spacing within the spritesheet
 	spriteWidth = aSpriteWidth;
 	spriteHeight = aSpriteHeight;
@@ -118,7 +118,7 @@
 	
 	// Return the subimage defined by the point and dimensions of a sprite.  This will use the spritesheet
 	// images scale so that it is respected in the image returned
-	return [[image getSubImageAtPoint:spritePoint subImageWidth:spriteWidth subImageHeight:spriteHeight scale:[image scale]] retain];
+	return [[image getSubImageAtPoint:spritePoint subImageWidth:spriteWidth subImageHeight:spriteHeight scale:Scale2fMake([image scale].x, [image scale].y)] retain];
 }
 
 

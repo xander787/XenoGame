@@ -71,9 +71,9 @@
     thisWeekButtonGlow = [[Image alloc] initWithImage:[NSString stringWithString:@"highscoresbuttonweekglow.png"]];
     allTimeButton      = [[Image alloc] initWithImage:[NSString stringWithString:@"highscoresbuttonalltime.png"]];
     allTimeButtonGlow  = [[Image alloc] initWithImage:[NSString stringWithString:@"highscoresbuttonalltimeglow.png"]];
-    backButton         = [[Image alloc] initWithImage:[NSString stringWithString:@"backbutton.png"] scale:0.5];
-    previousButton     = [[Image alloc] initWithImage:[NSString stringWithString:@"backbutton.png"] scale:0.5];
-    nextButton         = [[Image alloc] initWithImage:[NSString stringWithString:@"forwardbutton.png"] scale:0.5];
+    backButton         = [[Image alloc] initWithImage:[NSString stringWithString:@"backbutton.png"] scale:Scale2fMake(0.5f, 0.5f)];
+    previousButton     = [[Image alloc] initWithImage:[NSString stringWithString:@"backbutton.png"] scale:Scale2fMake(0.5f, 0.5f)];
+    nextButton         = [[Image alloc] initWithImage:[NSString stringWithString:@"forwardbutton.png"] scale:Scale2fMake(0.5f, 0.5f)];
 }
 
 #pragma mark -

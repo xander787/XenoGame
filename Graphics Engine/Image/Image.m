@@ -64,7 +64,8 @@
 	self = [super init];
 	if (self != nil) {
         filter = GL_NEAREST;
-		scale = 1.0f;
+		scale.x = 1.0f;
+        scale.y = 1.0f;
 		imageName = aImage;
 		[self initImplementation];
 	}
@@ -76,7 +77,8 @@
 	self = [super init];
 	if (self != nil) {
 		filter = aFilter;
-		scale = 1.0f;
+		scale.x = 1.0f;
+        scale.y = 1.0f;
 		imageName = aImage;
 		[self initImplementation];
 	}
@@ -84,7 +86,7 @@
 }
 
 
-- (id)initWithImage:(NSString*)aImage scale:(float)aScale {
+- (id)initWithImage:(NSString*)aImage scale:(Scale2f)aScale {
 	self = [super init];
 	if (self != nil) {
 		filter = GL_NEAREST;
@@ -96,11 +98,12 @@
 }	
 
 
-- (id)initWithImage:(NSString*)aImage scale:(float)aScale filter:(GLenum)aFilter {
+- (id)initWithImage:(NSString*)aImage scale:(Scale2f)aScale filter:(GLenum)aFilter {
 	self = [super init];
 	if (self != nil) {
 		filter = aFilter;
-		scale = aScale;
+		scale.x = aScale.x;
+        scale.y = aScale.y;
 		imageName = aImage;
 		[self initImplementation];
 	}
@@ -151,11 +154,11 @@
 
 
 - (NSString *)description {
-	return [NSString stringWithFormat:@"texture:%d width:%d height:%d texWidth:%d texHeight:%d maxTexWidth:%f maxTexHeight:%f angle:%f scale:%f", [texture name], imageWidth, imageHeight, textureWidth, textureHeight, maxTexWidth, maxTexHeight, rotation, scale];
+	return [NSString stringWithFormat:@"texture:%d width:%d height:%d texWidth:%d texHeight:%d maxTexWidth:%f maxTexHeight:%f angle:%f scale x:%f scale y:%f", [texture name], imageWidth, imageHeight, textureWidth, textureHeight, maxTexWidth, maxTexHeight, rotation, scale.x, scale.y];
 }
 
 
-- (Image*)getSubImageAtPoint:(CGPoint)aPoint subImageWidth:(GLuint)aImageWidth subImageHeight:(GLuint)aImageHeight scale:(float)aScale {
+- (Image*)getSubImageAtPoint:(CGPoint)aPoint subImageWidth:(GLuint)aImageWidth subImageHeight:(GLuint)aImageHeight scale:(Scale2f)aScale {
 	
 	//Create a new Image instance using the texture which has been assigned to the current instance
 	Image *subImage = [[Image alloc] initWithImage:imageName scale:aScale];
@@ -186,7 +189,7 @@
 }
 
 
-- (Image*)copyImageAtScale:(float)aScale {
+- (Image*)copyImageAtScale:(Scale2f)aScale {
 	
 	//Create a new Image instance using the texture which has been assigned to the current instance
 	Image *newImage = [[Image alloc] initWithImage:imageName scale:aScale];
@@ -294,8 +297,8 @@
 	
 	// Calculate the width and the height of the quad using the current image scale and the width and height
 	// of the image we are going to render
-	double quadWidth = aSubImageWidth * scale;
-	double quadHeight = aSubImageHeight * scale;
+	double quadWidth = aSubImageWidth * scale.x;
+	double quadHeight = aSubImageHeight * scale.y;
 	
 	// Define the vertices for each corner of the quad which is going to contain our image.
 	// We calculate the size of the quad to match the size of the subimage which has been defined.

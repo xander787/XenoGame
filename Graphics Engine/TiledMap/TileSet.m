@@ -30,7 +30,7 @@
 
 - (id)initWithImageNamed:(NSString*)aImage name:(NSString*)aTileSetName tileSetID:(int)tsID firstGID:(int)aFirstGlobalID tileWidth:(int)aTileWidth tileHeight:(int)aTileHeight spacing:(int)aSpacing {
 	if (self != nil) {
-		tiles = [[SpriteSheet alloc] initWithImageNamed:aImage spriteWidth:aTileWidth spriteHeight:aTileHeight spacing:aSpacing imageScale:1.0f];
+		tiles = [[SpriteSheet alloc] initWithImageNamed:aImage spriteWidth:aTileWidth spriteHeight:aTileHeight spacing:aSpacing imageScale:Scale2fOne];
 		tileSetID = tsID;
 		name = aTileSetName;
 		firstGID = aFirstGlobalID;

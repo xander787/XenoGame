@@ -83,7 +83,7 @@
 	NSUInteger		textureOffsetX;
 	NSUInteger		textureOffsetY;
 	float			rotation;
-	float			scale;
+	Scale2f			scale;
     uint            filter;
 	BOOL			flipHorizontally;
 	BOOL			flipVertically;
@@ -105,7 +105,7 @@
 @property(nonatomic) NSUInteger textureOffsetX;
 @property(nonatomic) NSUInteger textureOffsetY;
 @property(nonatomic) float rotation;
-@property(nonatomic) float scale;
+@property(nonatomic) Scale2f scale;
 @property(nonatomic) BOOL flipVertically;
 @property(nonatomic) BOOL flipHorizontally;
 @property(nonatomic) Quad2f *vertices;
@@ -121,20 +121,20 @@
 
 // Returns an Image instance which has been created using an image called |aImage|.  The returned
 // image has the scale provided.
-- (id)initWithImage:(NSString*)aImage scale:(float)aScale;
+- (id)initWithImage:(NSString*)aImage scale:(Scale2f)aScale;
 
 // Returns an Image instance which has been created using an image called |aImage|.  The returned
 // image has the scale and filter provided
-- (id)initWithImage:(NSString*)aImage scale:(float)aScale filter:(GLenum)aFilter;
+- (id)initWithImage:(NSString*)aImage scale:(Scale2f)aScale filter:(GLenum)aFilter;
 
 // Method which returns a new Image instance.  The returned image is configured to render only part of
 // the original image.  The part of the image to be rendered is based on |aPoint| and then |aImageWidth|
 // and |aImageHeight|.  The image will also be scaled using |aScale|.
-- (Image*)getSubImageAtPoint:(CGPoint)aPoint subImageWidth:(GLuint)aImageWidth subImageHeight:(GLuint)aImageHeight scale:(float)aScale;
+- (Image*)getSubImageAtPoint:(CGPoint)aPoint subImageWidth:(GLuint)aImageWidth subImageHeight:(GLuint)aImageHeight scale:(Scale2f)aScale;
 
 // Method which returns a new Image instance that is an exact copy of this Image instance but with the
 // specified scale.
-- (Image*)copyImageAtScale:(float)aScale;
+- (Image*)copyImageAtScale:(Scale2f)aScale;
 
 // Renders the Image at |aPoint|.  If |aCenter| is yes then then |aPoint| is taken to be the center of
 // the image.

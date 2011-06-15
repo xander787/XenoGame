@@ -38,7 +38,7 @@
 		_director = [Director sharedDirector];
 		
 		// Reference the font image which has been supplied and which contains the character bitmaps
-		image = [[Image alloc] initWithImage:fontImage scale:fontScale filter:filter];
+		image = [[Image alloc] initWithImage:fontImage scale:Scale2fMake(fontScale, fontScale) filter:filter];
 		// Set the scale to be used for the font
 		scale = fontScale;
 		
@@ -362,7 +362,7 @@
 
 - (void)setScale:(float)newScale {
 	scale = newScale;
-	[image setScale:newScale];
+	[image setScale:Scale2fMake(newScale, newScale)];
 }
 
 

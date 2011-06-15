@@ -36,7 +36,7 @@
 	// Spacing between each sprite
 	GLuint spacing;
 	// Scale of spritesheet
-	float scale;
+	Scale2f scale;
 	// Horizontal count
 	int horizontal;
 	// Vertcal count
@@ -51,7 +51,7 @@
 @property(nonatomic, readonly)GLuint spriteWidth;
 @property(nonatomic, readonly)GLuint spriteHeight;
 @property(nonatomic, readonly)GLuint spacing;
-@property(nonatomic, readonly)float scale;
+@property(nonatomic, readonly)Scale2f scale;
 @property(nonatomic, readonly)int horizontal;
 @property(nonatomic, readonly)int vertical;
 
@@ -60,7 +60,7 @@
 
 // Selector that allows a sprite sheet to be created based on the name of an image.  The image
 // name is used to create the image used by the sprite sheet class as a sprite sheet.
-- (id)initWithImageNamed:(NSString*)aImageName spriteWidth:(GLuint)aSpriteWidth spriteHeight:(GLuint)aSpriteHeight spacing:(GLuint)aSpacing imageScale:(float)scale;
+- (id)initWithImageNamed:(NSString*)aImageName spriteWidth:(GLuint)aSpriteWidth spriteHeight:(GLuint)aSpriteHeight spacing:(GLuint)aSpacing imageScale:(Scale2f)scale;
 
 // Returns the sprite image located at the x and y coordinates provided
 - (Image*)getSpriteAtX:(GLuint)x y:(GLuint)y;

@@ -107,7 +107,7 @@
 		shipAttack  = [[shipDictionary valueForKey:@"kShipAttack"] intValue];
 		shipStamina = [[shipDictionary valueForKey:@"kShipStamina"] intValue];
 		shipSpeed = [[shipDictionary valueForKey:@"kShipSpeed"] intValue];
-        mainImage = [[Image alloc] initWithImage:[shipDictionary valueForKey:@"kMainImage"] scale:1.0f];
+        mainImage = [[Image alloc] initWithImage:[shipDictionary valueForKey:@"kMainImage"] scale:Scale2fMake(2.0f, 1.0f)];
         shipWidth = [mainImage imageWidth];
         shipHeight = [mainImage imageHeight];
         

@@ -15,6 +15,7 @@
 
 #import <Foundation/Foundation.h>
 #import "SpriteSheet.h"
+#import "Common.h"
 
 // Class used to hold tilesets that are defined within a tile map configuration file.  This class
 // is responsible for holding the tileset sprite sheet as well as information about the global

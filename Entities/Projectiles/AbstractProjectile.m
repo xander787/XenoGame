@@ -136,7 +136,7 @@
                 break;
                 
             case kPlayerProjectile_Missile:
-                image = [[Image alloc] initWithImage:[projectileDictionary objectForKey:@"kProjectileImage"] scale:1.0f];
+                image = [[Image alloc] initWithImage:[projectileDictionary objectForKey:@"kProjectileImage"] scale:Scale2fOne];
                 missilePolygon = [[Polygon alloc] initWithPoints:collisionPoints andCount:collisionPointCount andShipPos:CGPointMake(turretPosition.x, turretPosition.y)];
                 isAlive = YES;
                 break;
@@ -206,7 +206,7 @@
                 break;
                 
             case kEnemyProjectile_Missile:
-                image = [[Image alloc] initWithImage:[projectileDictionary objectForKey:@"kProjectileImage"] scale:1.0f];
+                image = [[Image alloc] initWithImage:[projectileDictionary objectForKey:@"kProjectileImage"] scale:Scale2fOne];
                 missilePolygon = [[Polygon alloc] initWithPoints:collisionPoints andCount:collisionPointCount andShipPos:CGPointMake(turretPosition.x, turretPosition.y)];
                 isAlive = YES;
                 break;

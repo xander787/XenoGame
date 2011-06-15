@@ -207,7 +207,7 @@
         for(int i = 0; i < numberOfModules; i++){
             
             //Step one: get the image for the module, simple so it's first
-            modularObjects[i].moduleImage = [[Image alloc] initWithImage:[moduleImagesArray objectAtIndex:i] scale:1.0f];
+            modularObjects[i].moduleImage = [[Image alloc] initWithImage:[moduleImagesArray objectAtIndex:i] scale:Scale2fOne];
             
             modularObjects[i].rotation = 0;
             

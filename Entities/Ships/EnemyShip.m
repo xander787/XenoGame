@@ -274,7 +274,7 @@
         
         
         // Load images from spritesheet
-        Image *spriteSheetImage = [[Image alloc] initWithImage:[enemyDictionary valueForKey:@"kShipSpriteSheet"] scale:1.0f];
+        Image *spriteSheetImage = [[Image alloc] initWithImage:[enemyDictionary valueForKey:@"kShipSpriteSheet"] scale:Scale2fOne];
         enemySpriteSheet = [[SpriteSheet alloc] initWithImage:spriteSheetImage 
                                                   spriteWidth:[[enemyDictionary valueForKey:@"kSpriteSheetColumnWidth"] intValue]
                                                  spriteHeight:[[enemyDictionary valueForKey:@"kSpriteSheetRowHeight"] intValue]

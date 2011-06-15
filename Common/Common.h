@@ -114,6 +114,11 @@ typedef struct _Vector2f {
 	GLfloat y;
 } Vector2f;
 
+typedef struct _Scale2f {
+    GLfloat x;
+    GLfloat y;
+} Scale2f;
+
 typedef struct _Quad2f {
 	GLfloat bl_x, bl_y;
 	GLfloat br_x, br_y;
@@ -145,9 +150,16 @@ static const Color4f Color4fInit = {1.0f, 1.0f, 1.0f, 1.0f};
 
 static const Vector2f Vector2fZero = {0.0f, 0.0f};
 
+static const Scale2f Scale2fOne = {1.0f, 1.0f};
+
 static inline Vector2f Vector2fMake(GLfloat x, GLfloat y)
 {
 	return (Vector2f) {x, y};
+}
+
+static inline Scale2f Scale2fMake(GLfloat x, GLfloat y)
+{
+    return (Scale2f) {x, y};
 }
 
 static inline Color4f Color4fMake(GLfloat red, GLfloat green, GLfloat blue, GLfloat alpha)

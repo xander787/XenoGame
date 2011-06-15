@@ -82,7 +82,7 @@
 		// and we do not assign a texture, then a quad will be drawn instead
 		if(inTextureName) {		
 			// Create a new texture which is going to be used as the texture for the point sprites
-			texture = [[Image alloc] initWithImage:inTextureName scale:1.0f filter:GL_NEAREST];
+			texture = [[Image alloc] initWithImage:inTextureName scale:Scale2fOne filter:GL_NEAREST];
 		}
 		
 		// Take the parameters which have been passed into this particle emitter and set the emitters
