@@ -13,6 +13,10 @@
 //  Last Updated - 12/31/2010 @11AM - Alexander
 //  - Added projectilesSet and bossesSet NSSet's
 //  to hold projectiles and bosses currently in play
+//
+//  Last Updated - 12/31/2010 @11AM - Alexander
+//  - Added imagery for the health bar
+//
 
 #import <Foundation/Foundation.h>
 #import "ParticleEmitter.h"
@@ -38,6 +42,9 @@
     AngelCodeFont   *font;
     NSString        *playerScore;
     int             playerScoreNum;
+    
+    float             shipHealth;
+    Image           *healthBar;
     
     // Storing objects in play
     NSSet       *enemiesSet;

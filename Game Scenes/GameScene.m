@@ -44,6 +44,9 @@
 //  - Added starry background, and score string. Both are currently
 //  rendering
 //
+//  Last Updated - 6/13/11 @4PM - Alexander
+//  - Added health bar imagery
+//
 
 #import "GameScene.h"
 
@@ -112,6 +115,9 @@
 																	  particleSizeVariance:1.3
 																				  duration:-1
 																			 blendAdditive:NO];
+    
+    shipHealth = 100;
+    healthBar = [[Image alloc] initWithImage:@"HealthBar.png"];
 }
 
 - (void)updateWithDelta:(GLfloat)aDelta {
@@ -133,6 +139,7 @@
     // In-game graphics updating
     [backgroundParticleEmitter update:aDelta];
     playerScore = [NSString stringWithFormat:@"%09d", playerScoreNum];
+    [healthBar setScale:Scale2fMake((shipHealth / 100.0), 1.0f)];
     
     
     //Make sure that all of our ship objects get their update: called. Necessary.
@@ -161,6 +168,9 @@
 }
 
 - (void)updateWithTouchLocationBegan:(NSSet *)touches withEvent:(UIEvent *)event view:(UIView *)aView {
+    if(shipHealth > 0) shipHealth -= 10;
+    else shipHealth = 100;
+    
 	UITouch *touch = [[event touchesForView:aView] anyObject];
 	CGPoint location;
 	location = [touch locationInView:aView];
@@ -248,6 +258,7 @@
     // In-game graphics rendered first
     [backgroundParticleEmitter renderParticles];
     [font drawStringAt:CGPointMake(10.0, 465.0) text:playerScore];
+    [healthBar renderAtPoint:CGPointMake(255, 15.0) centerOfImage:NO];
     
     [testBoss render];
     [testEnemy render];
