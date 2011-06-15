@@ -43,7 +43,6 @@
     NSString        *playerScore;
     int             playerScoreNum;
     
-    float             shipHealth;
     Image           *healthBar;
     
     // Storing objects in play

@@ -47,6 +47,8 @@
 //  Last Updated - 6/13/11 @4PM - Alexander
 //  - Added health bar imagery
 //
+//  Last updated - 6/15/2011 @4:45PM - James
+//  - Made the health bar work with the actual player ship health
 
 #import "GameScene.h"
 
@@ -116,7 +118,6 @@
 																				  duration:-1
 																			 blendAdditive:NO];
     
-    shipHealth = 100;
     healthBar = [[Image alloc] initWithImage:@"HealthBar.png"];
 }
 
@@ -139,8 +140,7 @@
     // In-game graphics updating
     [backgroundParticleEmitter update:aDelta];
     playerScore = [NSString stringWithFormat:@"%09d", playerScoreNum];
-    [healthBar setScale:Scale2fMake((shipHealth / 100.0), 1.0f)];
-    
+    [healthBar setScale:Scale2fMake((float)testShip.shipHealth / testShip.shipMaxHealth, 1.0f)];
     
     //Make sure that all of our ship objects get their update: called. Necessary.
     [testShip update:aDelta];
@@ -168,9 +168,6 @@
 }
 
 - (void)updateWithTouchLocationBegan:(NSSet *)touches withEvent:(UIEvent *)event view:(UIView *)aView {
-    if(shipHealth > 0) shipHealth -= 10;
-    else shipHealth = 100;
-    
 	UITouch *touch = [[event touchesForView:aView] anyObject];
 	CGPoint location;
 	location = [touch locationInView:aView];
