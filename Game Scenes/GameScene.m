@@ -146,12 +146,12 @@
     [testShip update:aDelta];
     
     //TEMPORARY: Used only for testing death animation.
-    if(!testShip.shipIsDead){
+    /*if(!testShip.shipIsDead){
         [testShip hitShipWithDamage:1];
     }
     if(!testEnemy.shipIsDead){
         [testEnemy hitShipWithDamage:1];
-    }
+    }*/
     
     [testEnemy update:aDelta];
     [testBoss update:aDelta];

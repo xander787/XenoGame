@@ -56,7 +56,7 @@
 }
 
 - (id)initWithShipID:(EnemyShipID)aEnemyID initialLocation:(CGPoint)aPoint andPlayerShipRef:(PlayerShip *)aPlayership {
-    if(self = [super init]) {
+    if((self = [super init])) {
         enemyID = aEnemyID;
         currentLocation = aPoint;
         self.position = Vector2fMake(currentLocation.x, currentLocation.y); // Sets position for DidCollide use
@@ -364,6 +364,7 @@
     if(shipIsDead == TRUE){
         [deathAnimationEmitter renderParticles];
     }
+        
     
     if(DEBUG) {                
         glPushMatrix();
