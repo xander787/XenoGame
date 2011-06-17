@@ -149,6 +149,9 @@
     if(!testShip.shipIsDead){
         [testShip hitShipWithDamage:1];
     }
+    if(!testEnemy.shipIsDead){
+        [testEnemy hitShipWithDamage:1];
+    }
     
     [testEnemy update:aDelta];
     [testBoss update:aDelta];

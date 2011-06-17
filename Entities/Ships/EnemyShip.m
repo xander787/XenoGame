@@ -40,6 +40,9 @@
 //
 //	Last Updated - 6/15/2011 @ 3:30PM - Alexander
 //	- Support for new Scale2f vector scaling system
+//
+//  Last Updated - 6/16/2011 @8:15PM - James
+//  - Added simple health logic, death animation.
 
 #import "EnemyShip.h"
 
@@ -210,7 +213,7 @@
         [enemyShipsDictionary release];
         
         //Set the values for the ship based on those in the plist file
-        shipMaxHealth = 100;
+        shipMaxHealth = 300;
         shipHealth = shipMaxHealth; 
         shipAttack = [[enemyDictionary valueForKey:@"kShipAttack"] intValue];
         shipStamina = [[enemyDictionary valueForKey:@"kShipStamina"] intValue];
@@ -305,10 +308,62 @@
 - (void)update:(GLfloat)delta {
     [enemyAnimation update:delta];
     [collisionPolygon setPos:currentLocation];
+    
+    if(shipIsDead == TRUE){
+        [deathAnimationEmitter update:delta];
+        if(deathAnimationEmitter.particleCount == 0){
+            //Tell owner that emitter is done, okay to dealloc
+            
+        }
+    }
+}
+
+- (void)hitShipWithDamage:(int)damage {
+    //When the enemy ship takes damage
+    
+    shipHealth = shipHealth - damage;
+    
+    if(shipHealth <= 0){
+        //Ship loses all health, dies.
+        
+        shipIsDead = TRUE;
+        
+        for(AbstractProjectile *tempProj in projectilesArray){
+            [tempProj stopProjectile];
+        }
+        
+        deathAnimationEmitter = [[ParticleEmitter alloc] initParticleEmitterWithImageNamed:@"texture.png"
+                                                                                  position:Vector2fMake(currentLocation.x, currentLocation.y)
+                                                                    sourcePositionVariance:Vector2fZero
+                                                                                     speed:0.5
+                                                                             speedVariance:0.2
+                                                                          particleLifeSpan:0.2
+                                                                  particleLifespanVariance:0.1
+                                                                                     angle:0.0
+                                                                             angleVariance:360.0
+                                                                                   gravity:Vector2fZero
+                                                                                startColor:Color4fMake(0.7, 0.3, 0.3, 1.0)
+                                                                        startColorVariance:Color4fMake(0.3, 0.3, 0.3, 0.0)
+                                                                               finishColor:Color4fMake(0.7, 0.3, 0.3, 0.2)
+                                                                       finishColorVariance:Color4fMake(0.3, 0.3, 0.3, 0.0)
+                                                                              maxParticles:1000
+                                                                              particleSize:7.0
+                                                                        finishParticleSize:7.0
+                                                                      particleSizeVariance:0.0
+                                                                                  duration:0.1
+                                                                             blendAdditive:YES];
+        deathAnimationEmitter.fastEmission = YES;
+    }
 }
 
 - (void)render {
-    [enemyAnimation renderAtPoint:currentLocation];
+    if(shipIsDead == FALSE){
+        [enemyAnimation renderAtPoint:currentLocation];
+    }
+    
+    if(shipIsDead == TRUE){
+        [deathAnimationEmitter renderParticles];
+    }
     
     if(DEBUG) {                
         glPushMatrix();
