@@ -15,6 +15,7 @@
 		1164A6F712D29F7400B21071 /* kEnemyWaveShotLevelFourSpriteSheet.png in Resources */ = {isa = PBXBuildFile; fileRef = 1164A6F512D29F7400B21071 /* kEnemyWaveShotLevelFourSpriteSheet.png */; };
 		1169BA8213ABF7F1005FA11F /* Level_One.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1169BA8113ABF7F1005FA11F /* Level_One.plist */; };
 		1169BA8513ABFBEC005FA11F /* GameLevelScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 1169BA8413ABFBEC005FA11F /* GameLevelScene.m */; };
+		1169BA8713ABFFF2005FA11F /* LevelsIndex.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1169BA8613ABFFF2005FA11F /* LevelsIndex.plist */; };
 		1170E3AC12865A18000BF968 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1170E3AB12865A18000BF968 /* CoreMotion.framework */; };
 		1170E418128A1741000BF968 /* EnemyShip.m in Sources */ = {isa = PBXBuildFile; fileRef = 1170E417128A1741000BF968 /* EnemyShip.m */; };
 		1170EC68126FCB7E00721CF4 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1170EC67126FCB7E00721CF4 /* AudioToolbox.framework */; };
@@ -122,6 +123,7 @@
 		1169BA8113ABF7F1005FA11F /* Level_One.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Level_One.plist; path = "Game Resources/Game Levels/Level_One.plist"; sourceTree = SOURCE_ROOT; };
 		1169BA8313ABFBEC005FA11F /* GameLevelScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GameLevelScene.h; path = "Game Scenes/GameLevelScene.h"; sourceTree = "<group>"; };
 		1169BA8413ABFBEC005FA11F /* GameLevelScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GameLevelScene.m; path = "Game Scenes/GameLevelScene.m"; sourceTree = "<group>"; };
+		1169BA8613ABFFF2005FA11F /* LevelsIndex.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = LevelsIndex.plist; path = "Game Resources/Game Levels/LevelsIndex.plist"; sourceTree = SOURCE_ROOT; };
 		1170E3AB12865A18000BF968 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
 		1170E416128A1741000BF968 /* EnemyShip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EnemyShip.h; path = Entities/Ships/EnemyShip.h; sourceTree = "<group>"; };
 		1170E417128A1741000BF968 /* EnemyShip.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EnemyShip.m; path = Entities/Ships/EnemyShip.m; sourceTree = "<group>"; };
@@ -362,6 +364,7 @@
 		1169BA8013ABF7B1005FA11F /* Game Levels */ = {
 			isa = PBXGroup;
 			children = (
+				1169BA8613ABFFF2005FA11F /* LevelsIndex.plist */,
 				1169BA8113ABF7F1005FA11F /* Level_One.plist */,
 			);
 			name = "Game Levels";
@@ -879,6 +882,7 @@
 				B963267A12DD392E00FA1BA1 /* Projectiles.plist in Resources */,
 				11CF774313A96F8D00D9FF4C /* HealthBar.png in Resources */,
 				1169BA8213ABF7F1005FA11F /* Level_One.plist in Resources */,
+				1169BA8713ABFFF2005FA11F /* LevelsIndex.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
