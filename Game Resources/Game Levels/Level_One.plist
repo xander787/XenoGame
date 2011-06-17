@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>kLevelType</key>
+	<string>// i.e. boss level, miniboss level, or intermediary level</string>
+	<key>kLevelDifficultyRating</key>
+	<string>// difficulty of the current level (this should be for intermediary levels)</string>
+	<key>kEnemyShips</key>
+	<array>
+		<string>// An array of what enemies will be used in this level so we can pre-load them</string>
+	</array>
+	<key>kMiniBossShips</key>
+	<array/>
+	<key>kBossShips</key>
+	<array/>
+	<key>kNumWaves</key>
+	<string>// Number of waves of enemies that will occur in the level</string>
+	<key>kWaves</key>
+	<array>
+		<string>// An array of the waves (the enemies that comprise them</string>
+	</array>
+</dict>
+</plist>

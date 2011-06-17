@@ -139,7 +139,7 @@
     
     // In-game graphics updating
     [backgroundParticleEmitter update:aDelta];
-    playerScore = [NSString stringWithFormat:@"%09d", playerScoreNum];
+    playerScoreString = [NSString stringWithFormat:@"%09d", playerScore];
     [healthBar setScale:Scale2fMake((float)testShip.shipHealth / testShip.shipMaxHealth, 1.0f)];
     
     //Make sure that all of our ship objects get their update: called. Necessary.
@@ -160,6 +160,9 @@
     //Our method to check all collisions between the main
     //player ship and all other objects with polygons
     [self updateCollisions];
+    
+    if(playerScore <= 999999999) playerScore += 1111;
+    else playerScore = 999999999;
 }
 
 - (void)setSceneState:(uint)theState {
@@ -257,7 +260,7 @@
 - (void)render {
     // In-game graphics rendered first
     [backgroundParticleEmitter renderParticles];
-    [font drawStringAt:CGPointMake(10.0, 465.0) text:playerScore];
+    [font drawStringAt:CGPointMake(10.0, 465.0) text:playerScoreString];
     [healthBar renderAtPoint:CGPointMake(255, 15.0) centerOfImage:NO];
     
     [testBoss render];

@@ -40,8 +40,8 @@
     // In-game graphics
     ParticleEmitter *backgroundParticleEmitter;
     AngelCodeFont   *font;
-    NSString        *playerScore;
-    int             playerScoreNum;
+    NSString        *playerScoreString;
+    int             playerScore;
     
     Image           *healthBar;
     
