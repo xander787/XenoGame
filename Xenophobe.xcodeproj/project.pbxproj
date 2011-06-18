@@ -16,6 +16,8 @@
 		1169BA8213ABF7F1005FA11F /* Level_One.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1169BA8113ABF7F1005FA11F /* Level_One.plist */; };
 		1169BA8513ABFBEC005FA11F /* GameLevelScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 1169BA8413ABFBEC005FA11F /* GameLevelScene.m */; };
 		1169BA8713ABFFF2005FA11F /* LevelsIndex.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1169BA8613ABFFF2005FA11F /* LevelsIndex.plist */; };
+		1169BA9713AC432D005FA11F /* HealthBar.png in Resources */ = {isa = PBXBuildFile; fileRef = 1169BA9613AC432D005FA11F /* HealthBar.png */; };
+		1169BA9913AC43F0005FA11F /* HealthBarBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = 1169BA9813AC43F0005FA11F /* HealthBarBackground.png */; };
 		1170E3AC12865A18000BF968 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1170E3AB12865A18000BF968 /* CoreMotion.framework */; };
 		1170E418128A1741000BF968 /* EnemyShip.m in Sources */ = {isa = PBXBuildFile; fileRef = 1170E417128A1741000BF968 /* EnemyShip.m */; };
 		1170EC68126FCB7E00721CF4 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1170EC67126FCB7E00721CF4 /* AudioToolbox.framework */; };
@@ -44,7 +46,6 @@
 		11B1BE0D1283C69C006D085D /* GameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 11B1BE0C1283C69C006D085D /* GameScene.m */; };
 		11BE519312B297080043B786 /* GameObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 11BE519212B297080043B786 /* GameObject.m */; };
 		11BE519912B29CD40043B786 /* PhysicalObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 11BE519812B29CD40043B786 /* PhysicalObject.m */; };
-		11CF774313A96F8D00D9FF4C /* HealthBar.png in Resources */ = {isa = PBXBuildFile; fileRef = 11CF774213A96F8D00D9FF4C /* HealthBar.png */; };
 		11D3246812739BB400F01BB5 /* Animation.m in Sources */ = {isa = PBXBuildFile; fileRef = 11D3246512739BB400F01BB5 /* Animation.m */; };
 		11D3246912739BB400F01BB5 /* Frame.m in Sources */ = {isa = PBXBuildFile; fileRef = 11D3246712739BB400F01BB5 /* Frame.m */; };
 		11D3246C12739BBF00F01BB5 /* Texture2D.m in Sources */ = {isa = PBXBuildFile; fileRef = 11D3246B12739BBF00F01BB5 /* Texture2D.m */; };
@@ -124,6 +125,8 @@
 		1169BA8313ABFBEC005FA11F /* GameLevelScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GameLevelScene.h; path = "Game Scenes/GameLevelScene.h"; sourceTree = "<group>"; };
 		1169BA8413ABFBEC005FA11F /* GameLevelScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GameLevelScene.m; path = "Game Scenes/GameLevelScene.m"; sourceTree = "<group>"; };
 		1169BA8613ABFFF2005FA11F /* LevelsIndex.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = LevelsIndex.plist; path = "Game Resources/Game Levels/LevelsIndex.plist"; sourceTree = SOURCE_ROOT; };
+		1169BA9613AC432D005FA11F /* HealthBar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HealthBar.png; sourceTree = "<group>"; };
+		1169BA9813AC43F0005FA11F /* HealthBarBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HealthBarBackground.png; sourceTree = "<group>"; };
 		1170E3AB12865A18000BF968 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
 		1170E416128A1741000BF968 /* EnemyShip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EnemyShip.h; path = Entities/Ships/EnemyShip.h; sourceTree = "<group>"; };
 		1170E417128A1741000BF968 /* EnemyShip.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EnemyShip.m; path = Entities/Ships/EnemyShip.m; sourceTree = "<group>"; };
@@ -168,7 +171,6 @@
 		11BE519212B297080043B786 /* GameObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GameObject.m; path = "Entities/Physical Entities/GameObject.m"; sourceTree = "<group>"; };
 		11BE519712B29CD40043B786 /* PhysicalObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PhysicalObject.h; path = "Entities/Physical Entities/PhysicalObject.h"; sourceTree = "<group>"; };
 		11BE519812B29CD40043B786 /* PhysicalObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PhysicalObject.m; path = "Entities/Physical Entities/PhysicalObject.m"; sourceTree = "<group>"; };
-		11CF774213A96F8D00D9FF4C /* HealthBar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HealthBar.png; sourceTree = "<group>"; };
 		11D3246412739BB400F01BB5 /* Animation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Animation.h; path = "Graphics Engine/Animation/Animation.h"; sourceTree = "<group>"; };
 		11D3246512739BB400F01BB5 /* Animation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Animation.m; path = "Graphics Engine/Animation/Animation.m"; sourceTree = "<group>"; };
 		11D3246612739BB400F01BB5 /* Frame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Frame.h; path = "Graphics Engine/Animation/Frame.h"; sourceTree = "<group>"; };
@@ -692,7 +694,8 @@
 		11F3274212A0D8D5003CF17B /* Application Resources */ = {
 			isa = PBXGroup;
 			children = (
-				11CF774213A96F8D00D9FF4C /* HealthBar.png */,
+				1169BA9613AC432D005FA11F /* HealthBar.png */,
+				1169BA9813AC43F0005FA11F /* HealthBarBackground.png */,
 				11F3274312A0D8D5003CF17B /* about.png */,
 				11F3274412A0D8D5003CF17B /* backbutton.png */,
 				11F3274512A0D8D5003CF17B /* continue.png */,
@@ -880,9 +883,10 @@
 				1164A6F612D29F7400B21071 /* kEnemyKamikazeeLevelOne.png in Resources */,
 				1164A6F712D29F7400B21071 /* kEnemyWaveShotLevelFourSpriteSheet.png in Resources */,
 				B963267A12DD392E00FA1BA1 /* Projectiles.plist in Resources */,
-				11CF774313A96F8D00D9FF4C /* HealthBar.png in Resources */,
 				1169BA8213ABF7F1005FA11F /* Level_One.plist in Resources */,
 				1169BA8713ABFFF2005FA11F /* LevelsIndex.plist in Resources */,
+				1169BA9713AC432D005FA11F /* HealthBar.png in Resources */,
+				1169BA9913AC43F0005FA11F /* HealthBarBackground.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

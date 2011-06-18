@@ -54,7 +54,7 @@
 #pragma mark Initializations
 
 - (id)init {
-	if (self = [super init]) {
+	if ((self = [super init])) {
 		_sharedDirector = [Director sharedDirector];
 		_sharedResourceManager = [ResourceManager sharedResourceManager];
 		_sharedSoundManager = [SoundManager sharedSoundManager];
@@ -69,7 +69,13 @@
 		
 		[self initSettings];
 	}
-	
+    
+    settingsTitleString = @"Settings";
+    controlsSettingString = @"Controls";
+    soundSettingString = @"Sound";
+    musicSettingString = @"Music";
+
+    	
 	return self;
 }
 

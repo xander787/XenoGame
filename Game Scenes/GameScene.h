@@ -17,6 +17,10 @@
 //  Last Updated - 12/31/2010 @11AM - Alexander
 //  - Added imagery for the health bar
 //
+//  Last Updated - 6/17/11 @7:30PM - Alexander
+//  - Added a health bar background image to let users know how much
+//  health of theirs has diminished.
+
 
 #import <Foundation/Foundation.h>
 #import "ParticleEmitter.h"
@@ -44,6 +48,7 @@
     int             playerScore;
     
     Image           *healthBar;
+    Image           *healthBarBackground;
     
     // Storing objects in play
     NSSet       *enemiesSet;

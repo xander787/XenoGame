@@ -12,6 +12,10 @@
 //
 //	Last Updated - 11/21/2010 @ 11AM - Alexander
 //	- Added in testing code for the player ship in here
+//
+//  Last Updated - 6/17/11 @7:30PM - Alexander
+//  - Added some placeholder strings for the settings
+//  categories.
 
 #import <Foundation/Foundation.h>
 #import "AbstractScene.h"
@@ -20,6 +24,9 @@
 @interface SettingsScene : AbstractScene {
     AngelCodeFont   *font;
     NSString        *controlsSettingString;
+    NSString        *settingsTitleString;
+    NSString        *soundSettingString;
+    NSString        *musicSettingString;
 }
 
 @end

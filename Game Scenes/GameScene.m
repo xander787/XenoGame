@@ -10,23 +10,6 @@
 //	James Linnell - Software Engineer, Creative Design, Art Producer
 //	Tyler Newcomb - Creative Design, Art Producer
 //
-//  Last Updated - 12/30/2010 @ 9PM - James
-//  - Added in a second ship for better collision testing,
-//  everyhting seems A-okay :D, also took out the triangle
-//
-//  Last Updated - 12/31/2010 @ 10AM - Alexander
-//  - Removed a lot of uncessary crap, moved the polygon
-//  init stuff out of here, also removed the line drawing
-//  code out.
-//
-//  Last Updated - 12/31/2010 @ 7:30PM - Alexander
-//  - Memory management: added dealloc method and use it
-//  to deallocate our objects
-//
-//  Last Updated - 1/1/11 @ 9:50PM - James
-//  - Made the testShip follow the bounds of the screen
-//  and made selecting the bottom part of the testShip easier
-//
 //  Last Updated - 1/3/11 @5PM - Alexander
 //  - Moved a lot of external code to the polygon and internalized
 //  it into the class of the ships to make it more organized.
@@ -49,6 +32,10 @@
 //
 //  Last updated - 6/15/2011 @4:45PM - James
 //  - Made the health bar work with the actual player ship health
+//
+//  Last Updated - 6/17/11 @7:30PM - Alexander
+//  - Added a health bar background image to let users know how much
+//  health of theirs has diminished.
 
 #import "GameScene.h"
 
@@ -119,6 +106,7 @@
 																			 blendAdditive:NO];
     
     healthBar = [[Image alloc] initWithImage:@"HealthBar.png"];
+    healthBarBackground = [[Image alloc] initWithImage:@"HealthBarBackground.png"];
 }
 
 - (void)updateWithDelta:(GLfloat)aDelta {
@@ -261,6 +249,7 @@
     // In-game graphics rendered first
     [backgroundParticleEmitter renderParticles];
     [font drawStringAt:CGPointMake(10.0, 465.0) text:playerScoreString];
+    [healthBarBackground renderAtPoint:CGPointMake(254, 14.0) centerOfImage:NO];
     [healthBar renderAtPoint:CGPointMake(255, 15.0) centerOfImage:NO];
     
     [testBoss render];
