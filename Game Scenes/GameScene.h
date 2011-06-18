@@ -34,6 +34,12 @@
 #import "AngelCodeFont.h"
 #import "AbstractProjectile.h"
 
+typedef enum _LevelType {
+    kLevelType_Enemy = 0,
+    kLevelType_MiniBoss,
+    kLevelTpye_Boss
+} LevelType;
+
 @interface GameScene : AbstractScene {
     PlayerShip      *testShip;
     EnemyShip       *testEnemy;
@@ -59,5 +65,9 @@
     BOOL        touchOriginatedFromPlayerShip;
     BOOL        touchFromSecondShip;
 }
+
+- (void)initGameScene;
+- (void)initSound;
+- (void)loadLevelFiles;
 
 @end

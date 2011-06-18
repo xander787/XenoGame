@@ -62,6 +62,7 @@
         // Init sound
         [self initGameScene];
         [self initSound];
+        [self loadLevelFiles];
         
     }
 	
@@ -69,6 +70,10 @@
 }
 
 - (void)initSound {
+    
+}
+
+- (void)loadLevelFiles {
     
 }
 
