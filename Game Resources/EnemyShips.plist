@@ -6,12 +6,13 @@
 	<dict>
 		<key>kCollisionBoundingPoints</key>
 		<array>
-			<string>0,38</string>
-			<string>-28,17</string>
-			<string>-49,-21</string>
-			<string>0,-37</string>
-			<string>50,-22</string>
-			<string>30,17</string>
+			<string>0,14</string>
+			<string>11,6</string>
+			<string>19,-9</string>
+			<string>3,-15</string>
+			<string>-4,-15</string>
+			<string>-20,9</string>
+			<string>-12,6</string>
 		</array>
 		<key>kRotation</key>
 		<false/>
@@ -28,11 +29,11 @@
 		<key>kShipStamina</key>
 		<integer>2</integer>
 		<key>kSpriteSheetColumnWidth</key>
-		<integer>100</integer>
+		<integer>40</integer>
 		<key>kSpriteSheetNumColumns</key>
 		<integer>1</integer>
 		<key>kSpriteSheetRowHeight</key>
-		<integer>76</integer>
+		<integer>30</integer>
 		<key>kSpriteSheetRowNumber</key>
 		<integer>0</integer>
 		<key>kTurretPoints</key>
@@ -46,10 +47,10 @@
 	<dict>
 		<key>kCollisionBoundingPoints</key>
 		<array>
-			<string>20,21</string>
-			<string>20,-21</string>
-			<string>-21,-21</string>
-			<string>-21,21</string>
+			<string>20,1</string>
+			<string>38,20</string>
+			<string>20,38</string>
+			<string>1,20</string>
 		</array>
 		<key>kShipAttack</key>
 		<string>3</string>
@@ -62,11 +63,11 @@
 		<key>kShipStamina</key>
 		<string>2</string>
 		<key>kSpriteSheetColumnWidth</key>
-		<integer>42</integer>
+		<integer>40</integer>
 		<key>kSpriteSheetNumColumns</key>
-		<integer>12</integer>
+		<integer>1</integer>
 		<key>kSpriteSheetRowHeight</key>
-		<integer>42</integer>
+		<integer>40</integer>
 		<key>kSpriteSheetRowNumber</key>
 		<integer>0</integer>
 		<key>kTurretPoints</key>
@@ -81,10 +82,9 @@
 	<dict>
 		<key>kCollisionBoundingPoints</key>
 		<array>
-			<string>20,21</string>
-			<string>20,-21</string>
-			<string>-21,-21</string>
-			<string>-21,21</string>
+			<string>-1,12</string>
+			<string>19,-11</string>
+			<string>-20,-11</string>
 		</array>
 		<key>kRotation</key>
 		<false/>
@@ -101,11 +101,11 @@
 		<key>kShipStamina</key>
 		<string>2</string>
 		<key>kSpriteSheetColumnWidth</key>
-		<integer>42</integer>
+		<integer>40</integer>
 		<key>kSpriteSheetNumColumns</key>
 		<integer>1</integer>
 		<key>kSpriteSheetRowHeight</key>
-		<integer>42</integer>
+		<integer>40</integer>
 		<key>kSpriteSheetRowNumber</key>
 		<integer>0</integer>
 		<key>kTurretPoints</key>
@@ -120,13 +120,13 @@
 	<dict>
 		<key>kCollisionBoundingPoints</key>
 		<array>
-			<string>1,-43</string>
-			<string>26,-11</string>
-			<string>46,27</string>
-			<string>6,42</string>
-			<string>-6,42</string>
-			<string>-44,31</string>
-			<string>-24,-11</string>
+			<string>0,17</string>
+			<string>10,3</string>
+			<string>19,-14</string>
+			<string>3,-19</string>
+			<string>-3,-19</string>
+			<string>-20,-14</string>
+			<string>-11,3</string>
 		</array>
 		<key>kRotation</key>
 		<false/>
@@ -143,11 +143,55 @@
 		<key>kShipStamina</key>
 		<string>2</string>
 		<key>kSpriteSheetColumnWidth</key>
-		<integer>92</integer>
+		<integer>40</integer>
 		<key>kSpriteSheetNumColumns</key>
 		<integer>1</integer>
 		<key>kSpriteSheetRowHeight</key>
-		<integer>90</integer>
+		<integer>39</integer>
+		<key>kSpriteSheetRowNumber</key>
+		<integer>0</integer>
+		<key>kTurretPoints</key>
+		<array>
+			<string>30,50</string>
+			<string>50,49</string>
+			<string>75,48</string>
+			<string>94,49</string>
+		</array>
+	</dict>
+	<key>kShipTwoShot_Two</key>
+	<dict>
+		<key>kCollisionBoundingPoints</key>
+		<array>
+			<string>0,25</string>
+			<string>14,8</string>
+			<string>19,0</string>
+			<string>19,-24</string>
+			<string>16,-27</string>
+			<string>-17,-27</string>
+			<string>-19,-24</string>
+			<string>-19,0</string>
+			<string>-15,8</string>
+		</array>
+		<key>kRotation</key>
+		<false/>
+		<key>kRotationSpeed</key>
+		<integer>0</integer>
+		<key>kShipAttack</key>
+		<string>3</string>
+		<key>kShipCategory</key>
+		<string>kShipType_TwoShotLevelTwo</string>
+		<key>kShipSpeed</key>
+		<string>2</string>
+		<key>kShipSpriteSheet</key>
+		<string>kEnemyTwoShotLevelTwo.png</string>
+		<key>kShipStamina</key>
+		<string>2</string>
+		<key>kSpriteSheetColumnWidth</key>
+		<integer>40</integer>
+		<key>kSpriteSheetNumColumns</key>
+		<integer>1</integer>
+		<key>kSpriteSheetRowHeight</key>
+		<integer>54</integer>
 		<key>kSpriteSheetRowNumber</key>
 		<integer>0</integer>
 		<key>kTurretPoints</key>
@@ -162,13 +206,13 @@
 	<dict>
 		<key>kCollisionBoundingPoints</key>
 		<array>
-			<string>1,-43</string>
-			<string>26,-11</string>
-			<string>46,27</string>
-			<string>6,42</string>
-			<string>-6,42</string>
-			<string>-44,31</string>
-			<string>-24,-11</string>
+			<string>1,12</string>
+			<string>16,10</string>
+			<string>19,-1</string>
+			<string>16,-12</string>
+			<string>-16,-12</string>
+			<string>-20,-1</string>
+			<string>-17,10</string>
 		</array>
 		<key>kRotation</key>
 		<false/>
@@ -177,7 +221,7 @@
 		<key>kShipAttack</key>
 		<string>3</string>
 		<key>kShipCategory</key>
-		<string>kShipType_TwoShotLevelOne</string>
+		<string>kShipType_WaveShotLevelTwo</string>
 		<key>kShipSpeed</key>
 		<string>2</string>
 		<key>kShipSpriteSheet</key>
@@ -185,11 +229,11 @@
 		<key>kShipStamina</key>
 		<string>2</string>
 		<key>kSpriteSheetColumnWidth</key>
-		<integer>83</integer>
+		<integer>40</integer>
 		<key>kSpriteSheetNumColumns</key>
 		<integer>1</integer>
 		<key>kSpriteSheetRowHeight</key>
-		<integer>54</integer>
+		<integer>26</integer>
 		<key>kSpriteSheetRowNumber</key>
 		<integer>0</integer>
 		<key>kTurretPoints</key>
@@ -219,7 +263,7 @@
 		<key>kShipAttack</key>
 		<string>3</string>
 		<key>kShipCategory</key>
-		<string>kShipType_TwoShotLevelOne</string>
+		<string>kShipType_WaveShotLevelOne</string>
 		<key>kShipSpeed</key>
 		<string>2</string>
 		<key>kShipSpriteSheet</key>
@@ -227,11 +271,11 @@
 		<key>kShipStamina</key>
 		<string>2</string>
 		<key>kSpriteSheetColumnWidth</key>
-		<integer>143</integer>
+		<integer>40</integer>
 		<key>kSpriteSheetNumColumns</key>
 		<integer>1</integer>
 		<key>kSpriteSheetRowHeight</key>
-		<integer>90</integer>
+		<integer>25</integer>
 		<key>kSpriteSheetRowNumber</key>
 		<integer>0</integer>
 		<key>kTurretPoints</key>
@@ -246,13 +290,15 @@
 	<dict>
 		<key>kCollisionBoundingPoints</key>
 		<array>
-			<string>1,-43</string>
-			<string>26,-11</string>
-			<string>46,27</string>
-			<string>6,42</string>
-			<string>-6,42</string>
-			<string>-44,31</string>
-			<string>-24,-11</string>
+			<string>0,27</string>
+			<string>2,27</string>
+			<string>18,-8</string>
+			<string>16,-22</string>
+			<string>5,-29</string>
+			<string>-7,-29</string>
+			<string>-18,-22</string>
+			<string>-19,-8</string>
+			<string>-3,27</string>
 		</array>
 		<key>kRotation</key>
 		<false/>
@@ -261,7 +307,7 @@
 		<key>kShipAttack</key>
 		<string>3</string>
 		<key>kShipCategory</key>
-		<string>kShipType_TwoShotLevelOne</string>
+		<string>kShipType_OneShotLevelOne</string>
 		<key>kShipSpeed</key>
 		<string>2</string>
 		<key>kShipSpriteSheet</key>
@@ -269,11 +315,11 @@
 		<key>kShipStamina</key>
 		<string>2</string>
 		<key>kSpriteSheetColumnWidth</key>
-		<integer>68</integer>
+		<integer>40</integer>
 		<key>kSpriteSheetNumColumns</key>
 		<integer>1</integer>
 		<key>kSpriteSheetRowHeight</key>
-		<integer>100</integer>
+		<integer>59</integer>
 		<key>kSpriteSheetRowNumber</key>
 		<integer>0</integer>
 		<key>kTurretPoints</key>
@@ -288,18 +334,18 @@
 	<dict>
 		<key>kCollisionBoundingPoints</key>
 		<array>
-			<string>-5,-46</string>
-			<string>33,-32</string>
-			<string>45,-21</string>
-			<string>47,-5</string>
-			<string>32,33</string>
-			<string>22,45</string>
-			<string>6,47</string>
-			<string>-33,34</string>
-			<string>-46,22</string>
-			<string>-47,6</string>
-			<string>-33,-32</string>
-			<string>-21,-45</string>
+			<string>-3,-19</string>
+			<string>12,13</string>
+			<string>18,-8</string>
+			<string>18,-2</string>
+			<string>12,13</string>
+			<string>8,18</string>
+			<string>2,18</string>
+			<string>-13,13</string>
+			<string>-18,18</string>
+			<string>-19,2</string>
+			<string>-13,-13</string>
+			<string>-9,-19</string>
 		</array>
 		<key>kRotation</key>
 		<false/>
@@ -308,7 +354,7 @@
 		<key>kShipAttack</key>
 		<string>3</string>
 		<key>kShipCategory</key>
-		<string>kShipType_TwoShotLevelOne</string>
+		<string>kShipType_Kamikaze</string>
 		<key>kShipSpeed</key>
 		<string>2</string>
 		<key>kShipSpriteSheet</key>
@@ -316,11 +362,11 @@
 		<key>kShipStamina</key>
 		<string>2</string>
 		<key>kSpriteSheetColumnWidth</key>
-		<integer>103</integer>
+		<integer>40</integer>
 		<key>kSpriteSheetNumColumns</key>
 		<integer>1</integer>
 		<key>kSpriteSheetRowHeight</key>
-		<integer>103</integer>
+		<integer>40</integer>
 		<key>kSpriteSheetRowNumber</key>
 		<integer>0</integer>
 		<key>kTurretPoints</key>
@@ -335,19 +381,15 @@
 	<dict>
 		<key>kCollisionBoundingPoints</key>
 		<array>
-			<string>0,47</string>
-			<string>23,33</string>
-			<string>59,30</string>
-			<string>77,27</string>
-			<string>84,22</string>
-			<string>117,-39</string>
-			<string>27,-47</string>
-			<string>-28,-47</string>
-			<string>-119,-39</string>
-			<string>-85,22</string>
-			<string>-77,27</string>
-			<string>-60,30</string>
-			<string>-23,33</string>
+			<string>-1,11</string>
+			<string>15,7</string>
+			<string>20,6</string>
+			<string>28,-10</string>
+			<string>6,-12</string>
+			<string>-7,-12</string>
+			<string>-30,-10</string>
+			<string>-20,6</string>
+			<string>-6,7</string>
 		</array>
 		<key>kRotation</key>
 		<false/>
@@ -356,7 +398,7 @@
 		<key>kShipAttack</key>
 		<string>3</string>
 		<key>kShipCategory</key>
-		<string>kShipType_TwoShotLevelOne</string>
+		<string>kShipType_MissileBombShotLevelThree</string>
 		<key>kShipSpeed</key>
 		<string>2</string>
 		<key>kShipSpriteSheet</key>
@@ -364,11 +406,172 @@
 		<key>kShipStamina</key>
 		<string>2</string>
 		<key>kSpriteSheetColumnWidth</key>
-		<integer>238</integer>
+		<integer>60</integer>
 		<key>kSpriteSheetNumColumns</key>
 		<integer>1</integer>
 		<key>kSpriteSheetRowHeight</key>
-		<integer>99</integer>
+		<integer>25</integer>
+		<key>kSpriteSheetRowNumber</key>
+		<integer>0</integer>
+		<key>kTurretPoints</key>
+		<array>
+			<string>30,50</string>
+			<string>50,49</string>
+			<string>75,48</string>
+			<string>94,49</string>
+		</array>
+	</dict>
+	<key>kShipThreeShot_One</key>
+	<dict>
+		<key>kCollisionBoundingPoints</key>
+		<array>
+			<string>19,-15</string>
+			<string>4,-16</string>
+			<string>-20,9</string>
+			<string>-14,15</string>
+		</array>
+		<key>kRotation</key>
+		<false/>
+		<key>kRotationSpeed</key>
+		<integer>0</integer>
+		<key>kShipAttack</key>
+		<string>3</string>
+		<key>kShipCategory</key>
+		<string>kShipType_ThreeShotLevelOne</string>
+		<key>kShipSpeed</key>
+		<string>2</string>
+		<key>kShipSpriteSheet</key>
+		<string>kEnemyThreeShotLevelOne.png</string>
+		<key>kShipStamina</key>
+		<string>2</string>
+		<key>kSpriteSheetColumnWidth</key>
+		<integer>40</integer>
+		<key>kSpriteSheetNumColumns</key>
+		<integer>1</integer>
+		<key>kSpriteSheetRowHeight</key>
+		<integer>33</integer>
+		<key>kSpriteSheetRowNumber</key>
+		<integer>0</integer>
+		<key>kTurretPoints</key>
+		<array>
+			<string>30,50</string>
+			<string>50,49</string>
+			<string>75,48</string>
+			<string>94,49</string>
+		</array>
+	</dict>
+	<key>kShipKamikaze_BossTwo</key>
+	<dict>
+		<key>kCollisionBoundingPoints</key>
+		<array>
+			<string>0,-20</string>
+			<string>19,0</string>
+			<string>-1,19</string>
+			<string>-20,-1</string>
+		</array>
+		<key>kRotation</key>
+		<false/>
+		<key>kRotationSpeed</key>
+		<integer>0</integer>
+		<key>kShipAttack</key>
+		<string>3</string>
+		<key>kShipCategory</key>
+		<string>kShipType_Kamikaze</string>
+		<key>kShipSpeed</key>
+		<string>2</string>
+		<key>kShipSpriteSheet</key>
+		<string>kEnemyShipKamikazekBossNorthAmericaAssistTwo.png</string>
+		<key>kShipStamina</key>
+		<string>2</string>
+		<key>kSpriteSheetColumnWidth</key>
+		<integer>40</integer>
+		<key>kSpriteSheetNumColumns</key>
+		<integer>1</integer>
+		<key>kSpriteSheetRowHeight</key>
+		<integer>40</integer>
+		<key>kSpriteSheetRowNumber</key>
+		<integer>0</integer>
+		<key>kTurretPoints</key>
+		<array>
+			<string>30,50</string>
+			<string>50,49</string>
+			<string>75,48</string>
+			<string>94,49</string>
+		</array>
+	</dict>
+	<key>kShipTwoShot_BossOne</key>
+	<dict>
+		<key>kCollisionBoundingPoints</key>
+		<array>
+			<string>0,9</string>
+			<string>29,5</string>
+			<string>29,-7</string>
+			<string>6,-11</string>
+			<string>-5,-11</string>
+			<string>-29,-7</string>
+			<string>-30,5</string>
+		</array>
+		<key>kRotation</key>
+		<false/>
+		<key>kRotationSpeed</key>
+		<integer>0</integer>
+		<key>kShipAttack</key>
+		<string>3</string>
+		<key>kShipCategory</key>
+		<string>kShipType_TwoShotBossOne</string>
+		<key>kShipSpeed</key>
+		<string>2</string>
+		<key>kShipSpriteSheet</key>
+		<string>kEnemyShipTwoShotkBossAfricaAssistOne.png</string>
+		<key>kShipStamina</key>
+		<string>2</string>
+		<key>kSpriteSheetColumnWidth</key>
+		<integer>60</integer>
+		<key>kSpriteSheetNumColumns</key>
+		<integer>1</integer>
+		<key>kSpriteSheetRowHeight</key>
+		<integer>22</integer>
+		<key>kSpriteSheetRowNumber</key>
+		<integer>0</integer>
+		<key>kTurretPoints</key>
+		<array>
+			<string>30,50</string>
+			<string>50,49</string>
+			<string>75,48</string>
+			<string>94,49</string>
+		</array>
+	</dict>
+	<key>kShipMissileBombShot_BossTwo</key>
+	<dict>
+		<key>kCollisionBoundingPoints</key>
+		<array>
+			<string>0,20</string>
+			<string>8,11</string>
+			<string>18,-7</string>
+			<string>0,-19</string>
+			<string>-19,-7</string>
+			<string>-8,11</string>
+		</array>
+		<key>kRotation</key>
+		<false/>
+		<key>kRotationSpeed</key>
+		<integer>0</integer>
+		<key>kShipAttack</key>
+		<string>3</string>
+		<key>kShipCategory</key>
+		<string>kShipType_MissileBombShot</string>
+		<key>kShipSpeed</key>
+		<string>2</string>
+		<key>kShipSpriteSheet</key>
+		<string>kEnemyShipMissileBombShotkBossEuropeAssist.png</string>
+		<key>kShipStamina</key>
+		<string>2</string>
+		<key>kSpriteSheetColumnWidth</key>
+		<integer>40</integer>
+		<key>kSpriteSheetNumColumns</key>
+		<integer>1</integer>
+		<key>kSpriteSheetRowHeight</key>
+		<integer>42</integer>
 		<key>kSpriteSheetRowNumber</key>
 		<integer>0</integer>
 		<key>kTurretPoints</key>

@@ -186,7 +186,7 @@
                 enemyDictionary = [[NSMutableDictionary alloc] initWithDictionary:[enemyShipsDictionary objectForKey:@"kShipKamikaze_Three"]];
                 break;
             case kEnemyShip_KamikazeLevelFour:
-                enemyDictionary = [[NSMutableDictionary alloc] initWithDictionary:[enemyShipsDictionary objectForKey:@"kKamikaze_Four"]];
+                enemyDictionary = [[NSMutableDictionary alloc] initWithDictionary:[enemyShipsDictionary objectForKey:@"kShipKamikaze_Four"]];
                 break;
             case kEnemyShip_KamikazekBossNorthAmericaAssistOne:
                 enemyDictionary = [[NSMutableDictionary alloc] initWithDictionary:[enemyShipsDictionary objectForKey:@"kShipKamikaze_BossOne"]];

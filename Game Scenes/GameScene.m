@@ -79,7 +79,7 @@
 
 - (void)initGameScene {
     testShip = [[PlayerShip alloc] initWithShipID:kPlayerShip_Dev andInitialLocation:CGPointMake(155, 200)];
-    testEnemy = [[EnemyShip alloc] initWithShipID:kEnemyShip_KamikazeLevelThree initialLocation:CGPointMake(255, 150) andPlayerShipRef:testShip];
+    testEnemy = [[EnemyShip alloc] initWithShipID:kEnemyShip_MissileBombShotkBossEuropeAssist initialLocation:CGPointMake(255, 150) andPlayerShipRef:testShip];
     testBoss = [[BossShipAsia alloc] initWithLocation:CGPointMake(160, 330) andPlayerShipRef:testShip];
     enemiesSet = [[NSSet alloc] initWithObjects:testEnemy, nil];    
     
