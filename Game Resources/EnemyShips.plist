@@ -6,13 +6,13 @@
 	<dict>
 		<key>kCollisionBoundingPoints</key>
 		<array>
-			<string>0,14</string>
-			<string>11,6</string>
-			<string>19,-9</string>
-			<string>3,-15</string>
-			<string>-4,-15</string>
-			<string>-20,9</string>
-			<string>-12,6</string>
+			<string>0,-14</string>
+			<string>-11,-6</string>
+			<string>-19,9</string>
+			<string>-3,15</string>
+			<string>4,15</string>
+			<string>20,-9</string>
+			<string>12,-6</string>
 		</array>
 		<key>kRotation</key>
 		<false/>
@@ -47,10 +47,10 @@
 	<dict>
 		<key>kCollisionBoundingPoints</key>
 		<array>
-			<string>20,1</string>
-			<string>38,20</string>
-			<string>20,38</string>
-			<string>1,20</string>
+			<string>-20,-1</string>
+			<string>-38,-20</string>
+			<string>-20,-38</string>
+			<string>-1,-20</string>
 		</array>
 		<key>kShipAttack</key>
 		<string>3</string>
@@ -82,9 +82,9 @@
 	<dict>
 		<key>kCollisionBoundingPoints</key>
 		<array>
-			<string>-1,12</string>
-			<string>19,-11</string>
-			<string>-20,-11</string>
+			<string>1,-12</string>
+			<string>-19,11</string>
+			<string>20,11</string>
 		</array>
 		<key>kRotation</key>
 		<false/>
@@ -120,13 +120,13 @@
 	<dict>
 		<key>kCollisionBoundingPoints</key>
 		<array>
-			<string>0,17</string>
-			<string>10,3</string>
-			<string>19,-14</string>
-			<string>3,-19</string>
-			<string>-3,-19</string>
-			<string>-20,-14</string>
-			<string>-11,3</string>
+			<string>0,-17</string>
+			<string>-10,-3</string>
+			<string>-19,14</string>
+			<string>-3,19</string>
+			<string>3,19</string>
+			<string>20,14</string>
+			<string>11,-3</string>
 		</array>
 		<key>kRotation</key>
 		<false/>
@@ -162,15 +162,15 @@
 	<dict>
 		<key>kCollisionBoundingPoints</key>
 		<array>
-			<string>0,25</string>
-			<string>14,8</string>
-			<string>19,0</string>
-			<string>19,-24</string>
-			<string>16,-27</string>
-			<string>-17,-27</string>
-			<string>-19,-24</string>
+			<string>0,-25</string>
+			<string>-14,-8</string>
 			<string>-19,0</string>
-			<string>-15,8</string>
+			<string>-19,24</string>
+			<string>-16,27</string>
+			<string>17,27</string>
+			<string>19,24</string>
+			<string>19,0</string>
+			<string>15,-8</string>
 		</array>
 		<key>kRotation</key>
 		<false/>
@@ -206,13 +206,13 @@
 	<dict>
 		<key>kCollisionBoundingPoints</key>
 		<array>
-			<string>1,12</string>
-			<string>16,10</string>
-			<string>19,-1</string>
-			<string>16,-12</string>
-			<string>-16,-12</string>
-			<string>-20,-1</string>
-			<string>-17,10</string>
+			<string>-1,-12</string>
+			<string>-16,-10</string>
+			<string>-19,1</string>
+			<string>-16,12</string>
+			<string>16,12</string>
+			<string>20,1</string>
+			<string>17,-10</string>
 		</array>
 		<key>kRotation</key>
 		<false/>
@@ -248,13 +248,13 @@
 	<dict>
 		<key>kCollisionBoundingPoints</key>
 		<array>
-			<string>1,-43</string>
-			<string>26,-11</string>
-			<string>46,27</string>
-			<string>6,42</string>
-			<string>-6,42</string>
-			<string>-44,31</string>
-			<string>-24,-11</string>
+			<string>-1,43</string>
+			<string>-26,11</string>
+			<string>-46,-27</string>
+			<string>-6,-42</string>
+			<string>6,-42</string>
+			<string>44,-31</string>
+			<string>24,11</string>
 		</array>
 		<key>kRotation</key>
 		<false/>
@@ -290,15 +290,15 @@
 	<dict>
 		<key>kCollisionBoundingPoints</key>
 		<array>
-			<string>0,27</string>
-			<string>2,27</string>
-			<string>18,-8</string>
-			<string>16,-22</string>
-			<string>5,-29</string>
-			<string>-7,-29</string>
-			<string>-18,-22</string>
-			<string>-19,-8</string>
-			<string>-3,27</string>
+			<string>0,-27</string>
+			<string>-2,-27</string>
+			<string>-18,8</string>
+			<string>-16,22</string>
+			<string>-5,29</string>
+			<string>7,29</string>
+			<string>18,22</string>
+			<string>19,8</string>
+			<string>3,-27</string>
 		</array>
 		<key>kRotation</key>
 		<false/>
@@ -334,18 +334,18 @@
 	<dict>
 		<key>kCollisionBoundingPoints</key>
 		<array>
-			<string>-3,-19</string>
-			<string>12,13</string>
-			<string>18,-8</string>
-			<string>18,-2</string>
-			<string>12,13</string>
-			<string>8,18</string>
-			<string>2,18</string>
-			<string>-13,13</string>
-			<string>-18,18</string>
-			<string>-19,2</string>
-			<string>-13,-13</string>
-			<string>-9,-19</string>
+			<string>3,19</string>
+			<string>-12,-13</string>
+			<string>-18,8</string>
+			<string>-18,2</string>
+			<string>-12,-13</string>
+			<string>-8,-18</string>
+			<string>-2,-18</string>
+			<string>13,-13</string>
+			<string>18,-18</string>
+			<string>19,-2</string>
+			<string>13,13</string>
+			<string>9,19</string>
 		</array>
 		<key>kRotation</key>
 		<false/>
@@ -381,15 +381,17 @@
 	<dict>
 		<key>kCollisionBoundingPoints</key>
 		<array>
-			<string>-1,11</string>
-			<string>15,7</string>
-			<string>20,6</string>
-			<string>28,-10</string>
-			<string>6,-12</string>
-			<string>-7,-12</string>
-			<string>-30,-10</string>
-			<string>-20,6</string>
-			<string>-6,7</string>
+			<string>0,-11</string>
+			<string>-5,-8</string>
+			<string>-14,-7</string>
+			<string>-20,-6</string>
+			<string>-29,10</string>
+			<string>-6,12</string>
+			<string>7,12</string>
+			<string>30,10</string>
+			<string>20,-6</string>
+			<string>15,-7</string>
+			<string>6,-8</string>
 		</array>
 		<key>kRotation</key>
 		<false/>
@@ -425,10 +427,10 @@
 	<dict>
 		<key>kCollisionBoundingPoints</key>
 		<array>
-			<string>19,-15</string>
-			<string>4,-16</string>
-			<string>-20,9</string>
-			<string>-14,15</string>
+			<string>-19,15</string>
+			<string>-4,16</string>
+			<string>20,-9</string>
+			<string>14,-15</string>
 		</array>
 		<key>kRotation</key>
 		<false/>
@@ -464,10 +466,10 @@
 	<dict>
 		<key>kCollisionBoundingPoints</key>
 		<array>
-			<string>0,-20</string>
-			<string>19,0</string>
-			<string>-1,19</string>
-			<string>-20,-1</string>
+			<string>0,20</string>
+			<string>-19,0</string>
+			<string>1,-19</string>
+			<string>20,1</string>
 		</array>
 		<key>kRotation</key>
 		<false/>
@@ -503,13 +505,13 @@
 	<dict>
 		<key>kCollisionBoundingPoints</key>
 		<array>
-			<string>0,9</string>
-			<string>29,5</string>
-			<string>29,-7</string>
-			<string>6,-11</string>
-			<string>-5,-11</string>
-			<string>-29,-7</string>
-			<string>-30,5</string>
+			<string>0,-9</string>
+			<string>-29,-5</string>
+			<string>-29,7</string>
+			<string>-6,11</string>
+			<string>5,11</string>
+			<string>29,7</string>
+			<string>30,-5</string>
 		</array>
 		<key>kRotation</key>
 		<false/>
@@ -545,12 +547,12 @@
 	<dict>
 		<key>kCollisionBoundingPoints</key>
 		<array>
-			<string>0,20</string>
-			<string>8,11</string>
-			<string>18,-7</string>
-			<string>0,-19</string>
-			<string>-19,-7</string>
-			<string>-8,11</string>
+			<string>0,-20</string>
+			<string>-8,-11</string>
+			<string>-18,7</string>
+			<string>0,19</string>
+			<string>19,7</string>
+			<string>8,-11</string>
 		</array>
 		<key>kRotation</key>
 		<false/>
