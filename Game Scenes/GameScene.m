@@ -43,6 +43,10 @@
 //  Collisions, health, etc are all there now. Also delegated
 //  this class to that one as well. This class now keeps a copy
 //  of the index of level files in memory as well
+//
+//  Last Updated - 6/22/11 @5PM - Alexander & James
+//  - Fixed small error with loading Image classes. Needed to include
+//  scale parameter.
 
 
 #import "GameScene.h"
@@ -124,8 +128,8 @@
 																				  duration:-1
 																			 blendAdditive:NO];
     
-    healthBar = [[Image alloc] initWithImage:@"HealthBar.png"];
-    healthBarBackground = [[Image alloc] initWithImage:@"HealthBarBackground.png"];
+    healthBar = [[Image alloc] initWithImage:@"HealthBar.png" scale:Scale2fOne];
+    healthBarBackground = [[Image alloc] initWithImage:@"HealthBarBackground.png" scale:Scale2fOne];
 }
 
 - (void)updateWithDelta:(GLfloat)aDelta {
