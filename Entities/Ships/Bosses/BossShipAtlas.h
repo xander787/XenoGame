@@ -1,5 +1,5 @@
 //
-//  BossShipAsia.h
+//  BossShipAtlas.h
 //  Xenophobe
 //
 //  Created by Alexander on 10/20/10.
@@ -14,13 +14,16 @@
 //  - Initial write, added a bunch of stuff including
 //      • Cannon joint particle emitters
 //      • Objects for all of the modules
+//
+//  Last Updated - 6/22/11 @5PM - Alexander & James
+//  - Changed name of class to reflect new boss names
 
 #import <Foundation/Foundation.h>
 #import "BossShip.h"
 #import "ParticleEmitter.h"
 
 
-@interface BossShipAsia : BossShip {    
+@interface BossShipAtlas : BossShip {    
     ModularObject   *cannonLeft;
     ModularObject   *cannonRight;
     ModularObject   *turretLeft;

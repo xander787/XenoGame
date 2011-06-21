@@ -2,15 +2,30 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>kLevelType</key>
-	<string>kLevelType_Enemy</string>
-	<key>kEnemyShips</key>
-	<array/>
-	<key>kLevelDifficultyRating</key>
+	<key>kBossShips</key>
 	<string></string>
+	<key>kLevelDifficulty</key>
+	<string></string>
+	<key>kLevelType</key>
+	<string>kMiniBossLevel</string>
+	<key>kMiniBossShips</key>
+	<string>kBossShipAtlas</string>
+	<key>kOutroTransition</key>
+	<string>kShipFlyOff</string>
 	<key>kWaves</key>
-	<array/>
-	<key>kNumWaves</key>
-	<integer>0</integer>
+	<array>
+		<array>
+			<string>kShipOneShot_One</string>
+			<string>kShipOneShot_One</string>
+			<string>kShipTwoShot_One</string>
+			<string>kShipTwoShot_One</string>
+		</array>
+		<array>
+			<string>kShipTwoShot_One</string>
+			<string>kShipTwoShot_One</string>
+			<string>kShipThreeShot_One</string>
+			<string>kShipThreeShot_One</string>
+		</array>
+	</array>
 </dict>
 </plist>

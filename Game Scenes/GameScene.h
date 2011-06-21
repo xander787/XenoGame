@@ -20,6 +20,13 @@
 //  Last Updated - 6/17/11 @7:30PM - Alexander
 //  - Added a health bar background image to let users know how much
 //  health of theirs has diminished.
+//
+//  Last Updated - 6/22/11 @5PM - Alexander & James
+//  - Began implementation of GameLevelScene and also
+//  moved much of things from this class to that one.
+//  Collisions, health, etc are all there now. Also delegated
+//  this class to that one as well. This class now keeps a copy
+//  of the index of level files in memory as well
 
 
 #import <Foundation/Foundation.h>
@@ -29,45 +36,59 @@
 #import "PlayerShip.h"
 #import "EnemyShip.h"
 #import "BossShip.h"
-#import "BossShipAsia.h"
+#import "BossShipAtlas.h"
 #import "Collisions.h"
 #import "AngelCodeFont.h"
 #import "AbstractProjectile.h"
+#import "GameLevelScene.h"
 
-typedef enum _LevelType {
-    kLevelType_Enemy = 0,
-    kLevelType_MiniBoss,
-    kLevelTpye_Boss
-} LevelType;
+typedef enum _Level {
+    kLevel_OneOne = 0,
+    kLevel_OneTwo,
+    kLevel_OneThree,
+    kLevel_TwoOne,
+    kLevel_TwoTwo,
+    kLevel_TwoThree,
+    kLevel_ThreeOne,
+    kLevel_ThreeTwo,
+    kLevel_ThreeThree,
+    kLevel_FourOne,
+    kLevel_FourTwo,
+    kLevel_FiveOne,
+    kLevel_FiveTwo,
+    kLevel_FiveThree,
+    kLevel_SixOne,
+    kLevel_SixTwo,
+    kLevel_SixThree,
+    kLevel_SevenOne,
+    kLevel_SevenTwo,
+    kLevel_SevenThree,
+    kLevel_DevTest
+} Level;
 
-@interface GameScene : AbstractScene {
-    PlayerShip      *testShip;
-    EnemyShip       *testEnemy;
-    BossShipAsia    *testBoss;
-        
-    AbstractProjectile *bulletTest;
-    
+@interface GameScene : AbstractScene <GameLevelDelegate> {
     // In-game graphics
     ParticleEmitter *backgroundParticleEmitter;
     AngelCodeFont   *font;
     NSString        *playerScoreString;
     int             playerScore;
-    
     Image           *healthBar;
     Image           *healthBarBackground;
     
-    // Storing objects in play
-    NSSet       *enemiesSet;
-    NSSet       *projectilesSet;
-    NSSet       *bossesSet;
-    
     // Controlling the player ship
-    BOOL        touchOriginatedFromPlayerShip;
-    BOOL        touchFromSecondShip;
+    BOOL            touchOriginatedFromPlayerShip;
+    BOOL            touchFromSecondShip;
+    
+    // Loading levels sequentially
+    NSArray         *levelFileIndex;
+    
+    Level           currentLevel;
+
 }
 
 - (void)initGameScene;
 - (void)initSound;
-- (void)loadLevelFiles;
+- (void)loadLevelIndexFile;
+- (Level)convertToLevelEnum:(NSString *)received;
 
 @end

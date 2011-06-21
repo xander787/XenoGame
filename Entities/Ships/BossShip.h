@@ -23,6 +23,9 @@
 //
 //  Last Updated - 6/15/2011 @1:10PM - James
 //  - Removed some redundant variables, moved in AbstractShip class
+//
+//  Last Updated - 6/22/11 @5PM - Alexander & James
+//  - Changed enums to reflect new bosses
 
 #import <Foundation/Foundation.h>
 #import "Common.h"
@@ -39,42 +42,35 @@ typedef enum _BossType {
 } BossType;
 
 typedef enum _BossShipID {
-    kBoss_NorthAmerika = 0,
-    kBoss_SouthAmerika,
-    kBoss_Africa,
-    kBoss_Asia,
-    kBoss_Australia,
-    kBoss_Antarctica,
-    kBoss_Europe,
-    kBoss_Earth,
-    kMiniBoss_LosAngeles,
-    kMiniBoss_SanFrancisco,
-    kMiniBoss_MtRushmore,
-    kMiniBoss_Chicago,
-    kMiniBoss_NewYork,
-    kMiniBoss_MexicoCity,
-    kMiniBoss_AmazonRiver,
-    kMiniBoss_Santiago,
-    kMiniBoss_BeunosAires,
-    kMiniBoss_Sahara,
-    kMiniBoss_Johannesburg,
-    kMiniBoss_Cairo,
-    kMiniBoss_Baghdad,
-    kMiniBoss_NewDelhi,
-    kMiniBoss_HongKong,
-    kMiniBoss_Beijing,
-    kMiniBoss_Tokyo,
-    kMiniBoss_Jakarta,
-    kMiniBoss_Outback,
-    kMiniBoss_Melbourne,
-    kMiniBoss_Sydney,
-    kMiniBoss_AntarcticPeninsula,
-    kMiniBoss_SouthPole,
-    kMiniBoss_Moscow,
-    kMiniBoss_Madrid,
-    kMiniBoss_Berlin,
-    kMiniBoss_Paris,
-    kMiniBoss_London
+    kBoss_Themis = 0,
+    kBoss_Eos,
+    kBoss_Astraeus,
+    kBoss_Helios,
+    kBoss_Oceanus,
+    kBoss_Atlas,
+    kBoss_Hyperion,
+    kBoss_Kronos,
+    kBoss_AlphaWeapon,
+    kMiniBoss_OneOne,
+    kMiniBoss_OneTwo,
+    kMiniBoss_OneThree,
+    kMiniBoss_TwoOne,
+    kMiniBoss_TwoTwo,
+    kMiniBoss_TwoThree,
+    kMiniBoss_ThreeOne,
+    kMiniBoss_ThreeTwo,
+    kMiniBoss_ThreeThree,
+    kMiniBoss_FourOne,
+    kMiniBoss_FourTwo,
+    kMiniBoss_FiveOne,
+    kMiniBoss_FiveTwo,
+    kMiniBoss_FiveThree,
+    kMiniBoss_SixOne,
+    kMiniBoss_SixTwo,
+    kMiniBoss_SixThree,
+    kMiniBoss_SevenOne,
+    kMiniBoss_SevenTwo,
+    kMiniBoss_SevenThree
 } BossShipID;
 
 typedef enum _WeaponType {

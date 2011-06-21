@@ -37,6 +37,9 @@
 //
 //	Last Updated - 6/15/2011 @ 3:30PM - Alexander
 //	- Support for new Scale2f vector scaling system
+//
+//  Last Updated - 6/22/11 @5PM - Alexander & James
+//  - Changed enums to reflect new bosses
 
 #import "BossShip.h"
 
@@ -61,113 +64,92 @@
         [path release];
         
         switch (bossID) {
-            case kBoss_Africa:
-                bossDictionary = [[NSMutableDictionary alloc] initWithDictionary:[bossShipsDictionary objectForKey:@"kBossAfrica"]];
+            case kBoss_Themis:
+                bossDictionary = [[NSMutableDictionary alloc] initWithDictionary:[bossShipsDictionary objectForKey:@"kBossThemis"]];
                 break;
-            case kBoss_Antarctica:
-                bossDictionary = [[NSMutableDictionary alloc] initWithDictionary:[bossShipsDictionary objectForKey:@"kBossAntarctica"]];
+            case kBoss_Eos:
+                bossDictionary = [[NSMutableDictionary alloc] initWithDictionary:[bossShipsDictionary objectForKey:@"kBossEos"]];
                 break;
-            case kBoss_Asia:
-                bossDictionary = [[NSMutableDictionary alloc] initWithDictionary:[bossShipsDictionary objectForKey:@"kBossAsia"]];
+            case kBoss_Astraeus:
+                bossDictionary = [[NSMutableDictionary alloc] initWithDictionary:[bossShipsDictionary objectForKey:@"kBossAstraeus"]];
                 break;
-            case kBoss_Australia:
-                bossDictionary = [[NSMutableDictionary alloc] initWithDictionary:[bossShipsDictionary objectForKey:@"kBossAustralia"]];
+            case kBoss_Helios:
+                bossDictionary = [[NSMutableDictionary alloc] initWithDictionary:[bossShipsDictionary objectForKey:@"kBossHelios"]];
                 break;
-            case kBoss_Earth:
-                bossDictionary = [[NSMutableDictionary alloc] initWithDictionary:[bossShipsDictionary objectForKey:@"kBossEarth"]];
+            case kBoss_Oceanus:
+                bossDictionary = [[NSMutableDictionary alloc] initWithDictionary:[bossShipsDictionary objectForKey:@"kBossOceanus"]];
                 break;
-            case kBoss_Europe:
-                bossDictionary = [[NSMutableDictionary alloc] initWithDictionary:[bossShipsDictionary objectForKey:@"kBossEurope"]];
+            case kBoss_Atlas:
+                bossDictionary = [[NSMutableDictionary alloc] initWithDictionary:[bossShipsDictionary objectForKey:@"kBossAtlas"]];
                 break;
-            case kBoss_NorthAmerika:
-                bossDictionary = [[NSMutableDictionary alloc] initWithDictionary:[bossShipsDictionary objectForKey:@"kBossNorthAmerika"]];
+            case kBoss_Hyperion:
+                bossDictionary = [[NSMutableDictionary alloc] initWithDictionary:[bossShipsDictionary objectForKey:@"kBossHyperion"]];
                 break;
-            case kBoss_SouthAmerika:
-                bossDictionary = [[NSMutableDictionary alloc] initWithDictionary:[bossShipsDictionary objectForKey:@"kBossSouthAmerika"]];
+            case kBoss_Kronos:
+                bossDictionary = [[NSMutableDictionary alloc] initWithDictionary:[bossShipsDictionary objectForKey:@"kBossKronos"]];
                 break;
-            case kMiniBoss_AmazonRiver:
-                bossDictionary = [[NSMutableDictionary alloc] initWithDictionary:[bossShipsDictionary objectForKey:@"kMiniBossAmazonRiver"]];
+            case kBoss_AlphaWeapon:
+                bossDictionary = [[NSMutableDictionary alloc] initWithDictionary:[bossShipsDictionary objectForKey:@"kMiniBossAlphaWeapon"]];
                 break;
-            case kMiniBoss_AntarcticPeninsula:
-                bossDictionary = [[NSMutableDictionary alloc] initWithDictionary:[bossShipsDictionary objectForKey:@"kMiniBossAntarcticPeninsula"]];
+            case kMiniBoss_OneOne:
+                bossDictionary = [[NSMutableDictionary alloc] initWithDictionary:[bossShipsDictionary objectForKey:@"kMiniBossOneOne"]];
                 break;
-            case kMiniBoss_Baghdad:
-                bossDictionary = [[NSMutableDictionary alloc] initWithDictionary:[bossShipsDictionary objectForKey:@"kMiniBossBaghdad"]];
+            case kMiniBoss_OneTwo:
+                bossDictionary = [[NSMutableDictionary alloc] initWithDictionary:[bossShipsDictionary objectForKey:@"kMiniBossOneTwo"]];
                 break;
-            case kMiniBoss_Beijing:
-                bossDictionary = [[NSMutableDictionary alloc] initWithDictionary:[bossShipsDictionary objectForKey:@"kMiniBossBeijing"]];
+            case kMiniBoss_OneThree:
+                bossDictionary = [[NSMutableDictionary alloc] initWithDictionary:[bossShipsDictionary objectForKey:@"kMiniBossOneThree"]];
                 break;
-            case kMiniBoss_Berlin:
-                bossDictionary = [[NSMutableDictionary alloc] initWithDictionary:[bossShipsDictionary objectForKey:@"kMiniBossBerlin"]];
+            case kMiniBoss_TwoOne:
+                bossDictionary = [[NSMutableDictionary alloc] initWithDictionary:[bossShipsDictionary objectForKey:@"kMiniBossTwoOne"]];
                 break;
-            case kMiniBoss_BeunosAires:
-                bossDictionary = [[NSMutableDictionary alloc] initWithDictionary:[bossShipsDictionary objectForKey:@"kMiniBossBeunosAires"]];
+            case kMiniBoss_TwoTwo:
+                bossDictionary = [[NSMutableDictionary alloc] initWithDictionary:[bossShipsDictionary objectForKey:@"kMiniBossTwoTwo"]];
                 break;
-            case kMiniBoss_Cairo:
-                bossDictionary = [[NSMutableDictionary alloc] initWithDictionary:[bossShipsDictionary objectForKey:@"kMiniBossCairo"]];
+            case kMiniBoss_TwoThree:
+                bossDictionary = [[NSMutableDictionary alloc] initWithDictionary:[bossShipsDictionary objectForKey:@"kMiniBossTwoThree"]];
                 break;
-            case kMiniBoss_Chicago:
-                bossDictionary = [[NSMutableDictionary alloc] initWithDictionary:[bossShipsDictionary objectForKey:@"kMiniBossChicago"]];
+            case kMiniBoss_ThreeOne:
+                bossDictionary = [[NSMutableDictionary alloc] initWithDictionary:[bossShipsDictionary objectForKey:@"kMiniBossThreeOne"]];
                 break;
-            case kMiniBoss_HongKong:
-                bossDictionary = [[NSMutableDictionary alloc] initWithDictionary:[bossShipsDictionary objectForKey:@"kMiniBossHongKong"]];
+            case kMiniBoss_ThreeTwo:
+                bossDictionary = [[NSMutableDictionary alloc] initWithDictionary:[bossShipsDictionary objectForKey:@"kMiniBossThreeTwo"]];
                 break;
-            case kMiniBoss_Jakarta:
-                bossDictionary = [[NSMutableDictionary alloc] initWithDictionary:[bossShipsDictionary objectForKey:@"kMiniBossJakarta"]];
+            case kMiniBoss_ThreeThree:
+                bossDictionary = [[NSMutableDictionary alloc] initWithDictionary:[bossShipsDictionary objectForKey:@"kMiniBossThreeThree"]];
                 break;
-            case kMiniBoss_Johannesburg:
-                bossDictionary = [[NSMutableDictionary alloc] initWithDictionary:[bossShipsDictionary objectForKey:@"kMiniBossJohannesburg"]];
+            case kMiniBoss_FourOne:
+                bossDictionary = [[NSMutableDictionary alloc] initWithDictionary:[bossShipsDictionary objectForKey:@"kMiniBossFourOne"]];
                 break;
-            case kMiniBoss_London:
-                bossDictionary = [[NSMutableDictionary alloc] initWithDictionary:[bossShipsDictionary objectForKey:@"kMiniBossLondon"]];
+            case kMiniBoss_FourTwo:
+                bossDictionary = [[NSMutableDictionary alloc] initWithDictionary:[bossShipsDictionary objectForKey:@"kMiniBossFourTwo"]];
                 break;
-            case kMiniBoss_LosAngeles:
-                bossDictionary = [[NSMutableDictionary alloc] initWithDictionary:[bossShipsDictionary objectForKey:@"kMiniBossLosAngeles"]];
+            case kMiniBoss_FiveOne:
+                bossDictionary = [[NSMutableDictionary alloc] initWithDictionary:[bossShipsDictionary objectForKey:@"kMiniBossFiveOne"]];
                 break;
-            case kMiniBoss_Madrid:
-                bossDictionary = [[NSMutableDictionary alloc] initWithDictionary:[bossShipsDictionary objectForKey:@"kMiniBossMadrid"]];
+            case kMiniBoss_FiveTwo:
+                bossDictionary = [[NSMutableDictionary alloc] initWithDictionary:[bossShipsDictionary objectForKey:@"kMiniBossFiveTwo"]];
                 break;
-            case kMiniBoss_Melbourne:
-                bossDictionary = [[NSMutableDictionary alloc] initWithDictionary:[bossShipsDictionary objectForKey:@"kMiniBossMelbourne"]];
+            case kMiniBoss_FiveThree:
+                bossDictionary = [[NSMutableDictionary alloc] initWithDictionary:[bossShipsDictionary objectForKey:@"kMiniBossFiveThree"]];
                 break;
-            case kMiniBoss_MexicoCity:
-                bossDictionary = [[NSMutableDictionary alloc] initWithDictionary:[bossShipsDictionary objectForKey:@"kMiniBossMexicoCity"]];
+            case kMiniBoss_SixOne:
+                bossDictionary = [[NSMutableDictionary alloc] initWithDictionary:[bossShipsDictionary objectForKey:@"kMiniBossSixOne"]];
                 break;
-            case kMiniBoss_Moscow:
-                bossDictionary = [[NSMutableDictionary alloc] initWithDictionary:[bossShipsDictionary objectForKey:@"kMiniBossMoscow"]];
+            case kMiniBoss_SixTwo:
+                bossDictionary = [[NSMutableDictionary alloc] initWithDictionary:[bossShipsDictionary objectForKey:@"kMiniBossSixTwo"]];
                 break;
-            case kMiniBoss_MtRushmore:
-                bossDictionary = [[NSMutableDictionary alloc] initWithDictionary:[bossShipsDictionary objectForKey:@"kMiniBossMtRushmore"]];
+            case kMiniBoss_SixThree:
+                bossDictionary = [[NSMutableDictionary alloc] initWithDictionary:[bossShipsDictionary objectForKey:@"kMiniBossSixThree"]];
                 break;
-            case kMiniBoss_NewDelhi:
-                bossDictionary = [[NSMutableDictionary alloc] initWithDictionary:[bossShipsDictionary objectForKey:@"kMiniBossNewDelhi"]];
+            case kMiniBoss_SevenOne:
+                bossDictionary = [[NSMutableDictionary alloc] initWithDictionary:[bossShipsDictionary objectForKey:@"kMiniBossSevenOne"]];
                 break;
-            case kMiniBoss_NewYork:
-                bossDictionary = [[NSMutableDictionary alloc] initWithDictionary:[bossShipsDictionary objectForKey:@"kMiniBossNewYork"]];
+            case kMiniBoss_SevenTwo:
+                bossDictionary = [[NSMutableDictionary alloc] initWithDictionary:[bossShipsDictionary objectForKey:@"kMiniBossSevenTwo"]];
                 break;
-            case kMiniBoss_Outback:
-                bossDictionary = [[NSMutableDictionary alloc] initWithDictionary:[bossShipsDictionary objectForKey:@"kMiniBossOutback"]];
-                break;
-            case kMiniBoss_Paris:
-                bossDictionary = [[NSMutableDictionary alloc] initWithDictionary:[bossShipsDictionary objectForKey:@"kMiniBossParis"]];
-                break;
-            case kMiniBoss_Sahara:
-                bossDictionary = [[NSMutableDictionary alloc] initWithDictionary:[bossShipsDictionary objectForKey:@"kMiniBossSahara"]];
-                break;
-            case kMiniBoss_SanFrancisco:
-                bossDictionary = [[NSMutableDictionary alloc] initWithDictionary:[bossShipsDictionary objectForKey:@"kMiniBossSanFrancisco"]];
-                break;
-            case kMiniBoss_Santiago:
-                bossDictionary = [[NSMutableDictionary alloc] initWithDictionary:[bossShipsDictionary objectForKey:@"kMiniBossSantiago"]];
-                break;
-            case kMiniBoss_SouthPole:
-                bossDictionary = [[NSMutableDictionary alloc] initWithDictionary:[bossShipsDictionary objectForKey:@"kMiniBossSouthPole"]];
-                break;
-            case kMiniBoss_Sydney:
-                bossDictionary = [[NSMutableDictionary alloc] initWithDictionary:[bossShipsDictionary objectForKey:@"kMiniBossSydney"]];
-                break;
-            case kMiniBoss_Tokyo:
-                bossDictionary = [[NSMutableDictionary alloc] initWithDictionary:[bossShipsDictionary objectForKey:@"kMiniBossTokyo"]];
+            case kMiniBoss_SevenThree:
+                bossDictionary = [[NSMutableDictionary alloc] initWithDictionary:[bossShipsDictionary objectForKey:@"kMiniBossSevenThree"]];
                 break;
             default:
                 break;

@@ -1,5 +1,5 @@
 //
-//  BossShipAsia.m
+//  BossShipAtlas.m
 //  Xenophobe
 //
 //  Created by Alexander on 10/20/10.
@@ -19,18 +19,21 @@
 //  - Changed all modularObjects[x] references for the cannons
 //  to the cannonLeft and cannonRight objects for better 
 //  readability of the code
+//
+//  Last Updated - 6/22/11 @5PM - Alexander & James
+//  - Changed class name to reflect new boss names
 
-#import "BossShipAsia.h"
+#import "BossShipAtlas.h"
 
-@interface BossShipAsia(Private)
+@interface BossShipAtlas(Private)
 - (void)aimCannonsAtPlayer;
 @end
 
 
-@implementation BossShipAsia
+@implementation BossShipAtlas
 
 - (id)initWithLocation:(CGPoint)aPoint andPlayerShipRef:(PlayerShip *)playerRef {
-    if((self = [super initWithBossID:kBoss_Asia initialLocation:aPoint andPlayerShipRef:playerRef])){        
+    if((self = [super initWithBossID:kBoss_Atlas initialLocation:aPoint andPlayerShipRef:playerRef])){        
         mainBody = &self.modularObjects[0];
         turretLeft = &self.modularObjects[1];
         turretRight = &self.modularObjects[2];

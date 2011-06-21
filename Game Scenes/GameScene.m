@@ -36,6 +36,14 @@
 //  Last Updated - 6/17/11 @7:30PM - Alexander
 //  - Added a health bar background image to let users know how much
 //  health of theirs has diminished.
+//
+//  Last Updated - 6/22/11 @5PM - Alexander & James
+//  - Began implementation of GameLevelScene and also
+//  moved much of things from this class to that one.
+//  Collisions, health, etc are all there now. Also delegated
+//  this class to that one as well. This class now keeps a copy
+//  of the index of level files in memory as well
+
 
 #import "GameScene.h"
 
@@ -62,7 +70,7 @@
         // Init sound
         [self initGameScene];
         [self initSound];
-        [self loadLevelFiles];
+        [self loadLevelIndexFile];
         
     }
 	
@@ -73,19 +81,25 @@
     
 }
 
-- (void)loadLevelFiles {
+- (void)loadLevelIndexFile {
+    NSBundle *bundle = [NSBundle mainBundle];
+    NSString *path = [[NSString alloc] initWithString:[bundle pathForResource:@"LevelsIndex" ofType:@"plist"]];
+    NSMutableDictionary *levelFileIndexDict = [[NSMutableDictionary alloc] initWithContentsOfFile:path];
+    [bundle release];
+    [path release];
     
+    levelFileIndex = [[NSArray alloc] initWithArray:[levelFileIndexDict objectForKey:@"kLevelsFileIndex"]];
+    
+    NSLog(@"%@", levelFileIndex);
+    NSLog(@"%@", levelFileIndexDict);
+    
+    currentLevel = [self convertToLevelEnum:[levelFileIndex objectAtIndex:0]];    
+    
+    
+    [levelFileIndexDict release];
 }
 
 - (void)initGameScene {
-    testShip = [[PlayerShip alloc] initWithShipID:kPlayerShip_Dev andInitialLocation:CGPointMake(155, 200)];
-    testEnemy = [[EnemyShip alloc] initWithShipID:kEnemyShip_MissileBombShotkBossEuropeAssist initialLocation:CGPointMake(255, 150) andPlayerShipRef:testShip];
-    testBoss = [[BossShipAsia alloc] initWithLocation:CGPointMake(160, 330) andPlayerShipRef:testShip];
-    enemiesSet = [[NSSet alloc] initWithObjects:testEnemy, nil];    
-    
-    //Testing bullet
-    bulletTest = [[AbstractProjectile alloc] initWithProjectileID:kPlayerProjectile_Wave fromTurretPosition:Vector2fMake(250, 200) andAngle:90 emissionRate:2];
-    
     // In-game graphics
     font = [[AngelCodeFont alloc] initWithFontImageNamed:@"xenophobefont.png" controlFile:@"xenophobefont" scale:(1.0/3.0) filter:GL_LINEAR];
     
@@ -133,29 +147,7 @@
     // In-game graphics updating
     [backgroundParticleEmitter update:aDelta];
     playerScoreString = [NSString stringWithFormat:@"%09d", playerScore];
-    [healthBar setScale:Scale2fMake((float)testShip.shipHealth / testShip.shipMaxHealth, 1.0f)];
-    
-    //Make sure that all of our ship objects get their update: called. Necessary.
-    [testShip update:aDelta];
-    
-    //TEMPORARY: Used only for testing death animation.
-    /*if(!testShip.shipIsDead){
-        [testShip hitShipWithDamage:1];
-    }
-    if(!testEnemy.shipIsDead){
-        [testEnemy hitShipWithDamage:1];
-    }*/
-    
-    [testEnemy update:aDelta];
-    [testBoss update:aDelta];
-    [bulletTest update:aDelta];
-    
-    //Our method to check all collisions between the main
-    //player ship and all other objects with polygons
-    [self updateCollisions];
-    
-    if(playerScore <= 999999999) playerScore += 1111;
-    else playerScore = 999999999;
+    //[healthBar setScale:Scale2fMake((float)testShip.shipHealth / testShip.shipMaxHealth, 1.0f)];
 }
 
 - (void)setSceneState:(uint)theState {
@@ -173,25 +165,6 @@
     
 	// Flip the y location ready to check it against OpenGL coordinates
 	location.y = 480-location.y;
-
-    
-    //Gets a frame of the first player ship, adding a bit of width and
-    //30 pixels worth of height on the bottom half for ease of selection
-    CGRect shipFrame = CGRectMake(testShip.currentLocation.x - ((testShip.shipWidth * 1.4) / 2),
-                                  testShip.currentLocation.y - (testShip.shipHeight / 2) - 30,
-                                  testShip.shipWidth * 1.4,
-                                  testShip.shipHeight + 30);
-    
-    
-    //If the ship was actually selected, set a Bool for the
-    //updateWithTouchLocationMoved: method to allow the ship to move
-    if(CGRectContainsPoint(shipFrame, location)){
-        NSLog(@"Touched on Ship :D");
-        touchOriginatedFromPlayerShip = YES;
-    }
-    else {
-        touchOriginatedFromPlayerShip = NO;
-    }
 }
 
 - (void)updateWithTouchLocationMoved:(NSSet *)touches withEvent:(UIEvent *)event view:(UIView *)aView {
@@ -202,47 +175,89 @@
 	// Flip the y location ready to check it against OpenGL coordinates
 	location.y = 480-location.y;
     location.y += 30;
-    if(touchOriginatedFromPlayerShip){
-        //Checks the edges of the ship against the edges of the screen.
-        //Note: we check one edge at a time because if we simply use CGRectContainsRect,
-        //the ship would not be able to move along an edge once exiting
-        if(location.x - ([testShip shipWidth] / 2) < 0){
-            location.x = [testShip shipWidth] / 2;
-        }
-        if(location.x + ([testShip shipWidth] / 2) > _screenBounds.size.width){
-            location.x = _screenBounds.size.width - ([testShip shipWidth] / 2);
-        }
-        
-        if(location.y - ([testShip shipHeight] / 2) < 0){
-            location.y = [testShip shipHeight] / 2;
-        }
-        if(location.y + ([testShip shipHeight] / 2) > _screenBounds.size.height){
-            location.y = _screenBounds.size.height - ([testShip shipHeight] / 2);
-        }
-        [testShip setDesiredLocation:location];
-    }
-    
 }
 
-- (void)updateCollisions {
+- (Level)convertToLevelEnum:(NSString *)received {
+    if([received isEqualToString:@"Level_DevTest"]){
+        return kLevel_DevTest;
+    }
+    else if([received isEqualToString:@"Level_OneOne"]){
+        return kLevel_OneOne;
+    }
+    else if([received isEqualToString:@"Level_OneTwo"]){
+        return kLevel_OneTwo;
+    }
+    else if([received isEqualToString:@"Level_OneThree"]){
+        return kLevel_OneThree;
+    }
+    else if([received isEqualToString:@"Level_TwoOne"]){
+        return kLevel_TwoOne;
+    }
+    else if([received isEqualToString:@"Level_TwoTwo"]){
+        return kLevel_TwoTwo;
+    }
+    else if([received isEqualToString:@"Level_TwoThree"]){
+        return kLevel_TwoThree;
+    }
+    else if([received isEqualToString:@"Level_ThreeOne"]){
+        return kLevel_ThreeOne;
+    }
+    else if([received isEqualToString:@"Level_ThreeTwo"]){
+        return kLevel_ThreeTwo;
+    }
+    else if([received isEqualToString:@"Level_ThreeThree"]){
+        return kLevel_ThreeThree;
+    }
+    else if([received isEqualToString:@"Level_FourOne"]){
+        return kLevel_FourOne;
+    }
+    else if([received isEqualToString:@"Level_FourTwo"]){
+        return kLevel_FourTwo;
+    }
+    else if([received isEqualToString:@"Level_FiveOne"]){
+        return kLevel_FiveOne;
+    }
+    else if([received isEqualToString:@"Level_FiveTwo"]){
+        return kLevel_FiveTwo;
+    }
+    else if([received isEqualToString:@"Level_FiveThree"]){
+        return kLevel_FiveThree;
+    }
+    else if([received isEqualToString:@"Level_SixOne"]){
+        return kLevel_SixOne;
+    }
+    else if([received isEqualToString:@"Level_SixTwo"]){
+        return kLevel_SixTwo;
+    }
+    else if([received isEqualToString:@"Level_SixThree"]){
+        return kLevel_SixThree;
+    }
+    else if([received isEqualToString:@"Level_SevenOne"]){
+        return kLevel_SevenOne;
+    }
+    else if([received isEqualToString:@"Level_SevenTwo"]){
+        return kLevel_SevenTwo;
+    }
+    else if([received isEqualToString:@"Level_SevenThree"]){
+        return kLevel_SevenThree;
+    }
     
-    //So far we only check for collisions between the 1st ship and 2nd ship.
-    //When dealing with more obejcts, such as Enemies, we will loop through the NSSet's of loaded enemies.
-    
-    //result is a struct, containing intersect, willIntersect, and minimumTranslationVector.
-    //We will only be using intersect, as the other two are used for moving against polygons, not simple collisions.
-    PolygonCollisionResult result = [Collisions polygonCollision:testShip.collisionPolygon :testEnemy.collisionPolygon :Vector2fZero];
-    
-    if(result.intersect) NSLog(@"First Ship: Intersected");
-    
-    
-    //Collision for a single enemy, same as above.
-    result = [Collisions polygonCollision:testShip.collisionPolygon :testEnemy.collisionPolygon :Vector2fZero];
-    
-    if(result.intersect) NSLog(@"Enemy hit");
+    return 0;
 }
 
 - (void)updateWithAccelerometer:(UIAcceleration *)aAcceleration {
+    
+}
+
+- (void)levelEnded {
+    
+}
+
+- (void)scoreChangedBy:(int)scoreChange {
+    
+}
+
+- (void)playerHealthChangedBy:(int)healthChange {
     
 }
 
@@ -256,11 +271,7 @@
     [font drawStringAt:CGPointMake(10.0, 465.0) text:playerScoreString];
     [healthBarBackground renderAtPoint:CGPointMake(254, 14.0) centerOfImage:NO];
     [healthBar renderAtPoint:CGPointMake(255, 15.0) centerOfImage:NO];
-    
-    [testBoss render];
-    [testEnemy render];
-    [testShip render];
-    
+        
     if(DEBUG) {
         
         //Draw some text at the bottom-left corner indicating the current FPS.
@@ -269,14 +280,9 @@
 }
 
 - (void)dealloc {
-    [testShip release];
-    [testEnemy release];
-    [testBoss release];
     [font release];
     //[bulletTest release];
-    [enemiesSet release];
-    [projectilesSet release];
-    [bossesSet release];
+    [levelFileIndex release];
     [super dealloc];
 }
 

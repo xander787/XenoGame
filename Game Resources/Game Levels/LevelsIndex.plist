@@ -2,12 +2,10 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>kLevelsFIleIndex</key>
+	<key>kLevelsFileIndex</key>
 	<array>
 		<string>Level_DevTest</string>
-		<string>Level_One</string>
+		<string>Level_OneOne</string>
 	</array>
-	<key>kNumLevels</key>
-	<integer>1</integer>
 </dict>
 </plist>

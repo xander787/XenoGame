@@ -2,12 +2,12 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>kBossAsia</key>
+	<key>kBossAtlas</key>
 	<dict>
 		<key>kBossAttack</key>
 		<integer>10</integer>
 		<key>kBossID</key>
-		<string>kBossAsia</string>
+		<string>kBossAtlas</string>
 		<key>kBossSpeed</key>
 		<integer>10</integer>
 		<key>kBossStamina</key>

@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1130822712D907B1009C9502 /* MiniBossGeneral.m in Sources */ = {isa = PBXBuildFile; fileRef = 1130822612D907B1009C9502 /* MiniBossGeneral.m */; };
-		1130822A12D907CD009C9502 /* BossShipAsia.m in Sources */ = {isa = PBXBuildFile; fileRef = 1130822912D907CD009C9502 /* BossShipAsia.m */; };
+		1130822A12D907CD009C9502 /* BossShipAtlas.m in Sources */ = {isa = PBXBuildFile; fileRef = 1130822912D907CD009C9502 /* BossShipAtlas.m */; };
 		11336113129E54F300FE6A03 /* BossShips.plist in Resources */ = {isa = PBXBuildFile; fileRef = 11336112129E54F300FE6A03 /* BossShips.plist */; };
 		114A1A7412989C4B004769D4 /* PlayerShips.plist in Resources */ = {isa = PBXBuildFile; fileRef = 114A1A7312989C4B004769D4 /* PlayerShips.plist */; };
 		1164A6F612D29F7400B21071 /* kEnemyKamikazeeLevelOne.png in Resources */ = {isa = PBXBuildFile; fileRef = 1164A6F412D29F7400B21071 /* kEnemyKamikazeeLevelOne.png */; };
@@ -129,8 +129,8 @@
 /* Begin PBXFileReference section */
 		1130822512D907B1009C9502 /* MiniBossGeneral.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MiniBossGeneral.h; path = Entities/Ships/MiniBosses/MiniBossGeneral.h; sourceTree = "<group>"; };
 		1130822612D907B1009C9502 /* MiniBossGeneral.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MiniBossGeneral.m; path = Entities/Ships/MiniBosses/MiniBossGeneral.m; sourceTree = "<group>"; };
-		1130822812D907CD009C9502 /* BossShipAsia.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BossShipAsia.h; path = Entities/Ships/Bosses/BossShipAsia.h; sourceTree = "<group>"; };
-		1130822912D907CD009C9502 /* BossShipAsia.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BossShipAsia.m; path = Entities/Ships/Bosses/BossShipAsia.m; sourceTree = "<group>"; };
+		1130822812D907CD009C9502 /* BossShipAtlas.h */ = {isa = PBXFileReference; fileEncoding = 4; name = BossShipAtlas.h; path = Entities/Ships/Bosses/BossShipAtlas.h; sourceTree = "<group>"; };
+		1130822912D907CD009C9502 /* BossShipAtlas.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BossShipAtlas.m; path = Entities/Ships/Bosses/BossShipAtlas.m; sourceTree = "<group>"; };
 		11336112129E54F300FE6A03 /* BossShips.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = BossShips.plist; path = "Game Resources/BossShips.plist"; sourceTree = SOURCE_ROOT; };
 		114A1A7312989C4B004769D4 /* PlayerShips.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = PlayerShips.plist; path = "Game Resources/PlayerShips.plist"; sourceTree = SOURCE_ROOT; };
 		1164A6F412D29F7400B21071 /* kEnemyKamikazeeLevelOne.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = kEnemyKamikazeeLevelOne.png; path = "Game Resources/Images/Normal/Ships/Enemy Ships/kEnemyKamikazeeLevelOne.png"; sourceTree = SOURCE_ROOT; };
@@ -340,8 +340,8 @@
 		1130822312D83C96009C9502 /* Bosses */ = {
 			isa = PBXGroup;
 			children = (
-				1130822812D907CD009C9502 /* BossShipAsia.h */,
-				1130822912D907CD009C9502 /* BossShipAsia.m */,
+				1130822812D907CD009C9502 /* BossShipAtlas.h */,
+				1130822912D907CD009C9502 /* BossShipAtlas.m */,
 			);
 			name = Bosses;
 			sourceTree = "<group>";
@@ -997,7 +997,7 @@
 				118C4B6A12CDA5D50095B3D4 /* Collisions.m in Sources */,
 				118C4B6B12CDA5D50095B3D4 /* Polygon.m in Sources */,
 				1130822712D907B1009C9502 /* MiniBossGeneral.m in Sources */,
-				1130822A12D907CD009C9502 /* BossShipAsia.m in Sources */,
+				1130822A12D907CD009C9502 /* BossShipAtlas.m in Sources */,
 				1169BA8513ABFBEC005FA11F /* GameLevelScene.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
