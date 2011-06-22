@@ -23,7 +23,7 @@
 
 @synthesize delegate, playerShip;
 
-- (id)initGameLevelSceneWithLevelFile:(NSString *)levelFile withDelegate:(id <GameLevelDelegate>)del {
+- (id)initWithLevelFile:(NSString *)levelFile withDelegate:(id <GameLevelDelegate>)del {
     if((self = [super init])){		
         // Grab the bounds of the screen
 		screenBounds = [[UIScreen mainScreen] bounds];

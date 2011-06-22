@@ -94,13 +94,11 @@
     
     levelFileIndex = [[NSArray alloc] initWithArray:[levelFileIndexDict objectForKey:@"kLevelsFileIndex"]];
     
-    NSLog(@"%@", levelFileIndex);
-    NSLog(@"%@", levelFileIndexDict);
-    
-    currentLevel = [self convertToLevelEnum:[levelFileIndex objectAtIndex:0]];    
-    
-    
     [levelFileIndexDict release];
+    
+    currentLevel = [self convertToLevelEnum:[levelFileIndex objectAtIndex:0]];
+    
+    [self loadLevelForPlay:currentLevel];
 }
 
 - (void)initGameScene {
@@ -152,6 +150,11 @@
     [backgroundParticleEmitter update:aDelta];
     playerScoreString = [NSString stringWithFormat:@"%09d", playerScore];
     //[healthBar setScale:Scale2fMake((float)testShip.shipHealth / testShip.shipMaxHealth, 1.0f)];
+    
+    // Level
+    if(levelInProgress) {
+        [gameLevel update:aDelta];
+    }
 }
 
 - (void)setSceneState:(uint)theState {
@@ -253,6 +256,13 @@
     
 }
 
+- (void)loadLevelForPlay:(Level)level {
+    //  We use [levelFileIndex objectAtIndex:level] because currentLevel is an enum value so
+    //  it would (theoretically) correspond to the level it represents place in the levelFileIndex
+    gameLevel = [[GameLevelScene alloc] initWithLevelFile:[levelFileIndex objectAtIndex:level] withDelegate:self];
+    levelInProgress = YES;
+}
+
 - (void)levelEnded {
     
 }
@@ -275,6 +285,11 @@
     [font drawStringAt:CGPointMake(10.0, 465.0) text:playerScoreString];
     [healthBarBackground renderAtPoint:CGPointMake(254, 14.0) centerOfImage:NO];
     [healthBar renderAtPoint:CGPointMake(255, 15.0) centerOfImage:NO];
+    
+    // Level
+    if(levelInProgress) {
+        [gameLevel render];
+    }
         
     if(DEBUG) {
         

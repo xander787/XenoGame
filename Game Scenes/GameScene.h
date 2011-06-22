@@ -21,12 +21,17 @@
 //  - Added a health bar background image to let users know how much
 //  health of theirs has diminished.
 //
-//  Last Updated - 6/22/11 @5PM - Alexander & James
+//  Last Updated - 6/20/11 @5PM - Alexander & James
 //  - Began implementation of GameLevelScene and also
 //  moved much of things from this class to that one.
 //  Collisions, health, etc are all there now. Also delegated
 //  this class to that one as well. This class now keeps a copy
 //  of the index of level files in memory as well
+//
+//  Last Update - 6/21/11 @8PM - Alexander
+//  - Added gameLevel object which will be
+//  used and reused to handle levels and rendering
+//  them. Also added the method for loading that object.
 
 
 #import <Foundation/Foundation.h>
@@ -79,16 +84,17 @@ typedef enum _Level {
     BOOL            touchOriginatedFromPlayerShip;
     BOOL            touchFromSecondShip;
     
-    // Loading levels sequentially
+    // Level Loading
     NSArray         *levelFileIndex;
-    
     Level           currentLevel;
-
+    GameLevelScene  *gameLevel;
+    BOOL            levelInProgress;
 }
 
 - (void)initGameScene;
 - (void)initSound;
 - (void)loadLevelIndexFile;
+- (void)loadLevelForPlay:(Level)level;
 - (Level)convertToLevelEnum:(NSString *)received;
 
 @end

@@ -23,8 +23,6 @@
 #import "PlayerShip.h"
 #import "AbstractScene.h"
 
-@class GameScene;
-
 @protocol GameLevelDelegate <NSObject>
 @required
 - (void)levelEnded;
@@ -63,7 +61,7 @@ typedef enum _LevelType {
 @property (nonatomic, retain) id <GameLevelDelegate> delegate;
 @property (readonly, retain) PlayerShip *playerShip;
 
-- (id)initGameLevelSceneWithLevelFile:(NSString *)levelFile withDelegate:(id <GameLevelDelegate>)del;
+- (id)initWithLevelFile:(NSString *)levelFile withDelegate:(id <GameLevelDelegate>)del;
 
 - (void)update:(GLfloat)aDelta;
 - (void)updateCollisions;

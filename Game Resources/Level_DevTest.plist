@@ -2,13 +2,13 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>kBossShips</key>
+	<key>kBossShip</key>
 	<string></string>
 	<key>kLevelDifficulty</key>
 	<string></string>
 	<key>kLevelType</key>
 	<string>kMiniBossLevel</string>
-	<key>kMiniBossShips</key>
+	<key>kMiniBossShip</key>
 	<string>kBossShipAtlas</string>
 	<key>kOutroTransition</key>
 	<string>kShipFlyOff</string>
