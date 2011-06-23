@@ -28,6 +28,9 @@
 //  Last Updated - 6/23/2011 @ 3:30PM - James
 //  - Added enemy bullet -> player collision and
 //  player bullet -> enemy collision
+//
+//  Last Updated - 6/23/2011 @ 3:45PM - James
+//  - MAde it so enemies are only removed when death animation emitters are completed
 
 
 #import "GameLevelScene.h"
@@ -103,6 +106,17 @@
     //Make sure that all of our ship objects get their update: called. Necessary.
     [playerShip update:aDelta];
     
+    NSMutableSet *discardedEnemies = [[NSMutableSet alloc] init];
+    for(EnemyShip *enemyShip in enemiesSet){
+        [enemyShip update:aDelta];
+        
+        if(enemyShip.shipIsDead && enemyShip.deathAnimationEmitter.particleCount == 0){
+            [discardedEnemies addObject:enemyShip];
+        }
+    }
+    [enemiesSet minusSet:discardedEnemies];
+    [discardedEnemies release];
+    
     [self updateCollisions];
     
     if([enemiesSet count] == 0) {
@@ -116,7 +130,6 @@
 - (void)updateCollisions {
     // Temp array of enemies that will be removed from the set.
     // Can't remove them while iterating because that would cause a crash
-    NSMutableSet *discarededEnemies = [[NSMutableSet alloc] init];
     
     // First check direct ship-ship collisions between the player and enemies
     EnemyShip *enemyShip;
@@ -125,7 +138,7 @@
                 
         if(result.intersect) {
             NSLog(@"Collision occured with enemy ship");
-            [discarededEnemies addObject:enemyShip];
+            [enemyShip hitShipWithDamage:9999999];
         }
         
         //Enemy bullet -> player ship collision
@@ -142,10 +155,7 @@
             }
         }
     }
-    
-    [enemiesSet minusSet:discarededEnemies];
     [enemyShip release];
-    [discarededEnemies release];
     
     //Player Bullets->Enemy ship collision
     for(AbstractProjectile *playerShipProjectile in playerShip.projectilesArray){

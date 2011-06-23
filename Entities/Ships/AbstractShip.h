@@ -20,6 +20,8 @@
 //  Last Updated - 6/15/2011 @1:10PM - James
 //  - Added global variables that were each being defined in all
 //  the subclasses. Better organization.
+//  Last updated - 6/23/2011 @ 3:45PM - James
+//  - Synthesized the death emitter
 
 #import <Foundation/Foundation.h>
 #import "Image.h"
@@ -75,6 +77,7 @@
 @property (nonatomic, retain) Polygon *collisionPolygon;
 @property (nonatomic, retain) NSMutableArray *projectilesArray;
 @property (readonly) CGPoint currentLocation;
+@property (nonatomic, retain) ParticleEmitter *deathAnimationEmitter;
 
 - (void)update:(GLfloat)delta;
 - (void)render;
