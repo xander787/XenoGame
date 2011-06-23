@@ -5,7 +5,7 @@
 	<key>kBossShip</key>
 	<string></string>
 	<key>kLevelDifficulty</key>
-	<string></string>
+	<integer>0</integer>
 	<key>kLevelType</key>
 	<string>kMiniBossLevel</string>
 	<key>kMiniBossShip</key>

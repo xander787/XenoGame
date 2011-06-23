@@ -22,6 +22,7 @@
 #import "EnemyShip.h"
 #import "PlayerShip.h"
 #import "AbstractScene.h"
+#import "Collisions.h"
 
 @protocol GameLevelDelegate <NSObject>
 @required
@@ -36,6 +37,12 @@ typedef enum _LevelType {
     kLevelType_Cutscene
 } LevelType;
 
+
+typedef enum _OutroAnimation {
+    kOutroAnimation_Flyoff = 0,
+    kOutroAnimation_Nuke,
+    kOutroAnimation_Wormhole
+} OutroAnimation;
 
 @interface GameLevelScene : NSObject {
     id <GameLevelDelegate>  delegate;
@@ -52,16 +59,25 @@ typedef enum _LevelType {
     BOOL            touchFromSecondShip;
     
     // Storing objects in play
-    NSSet               *enemiesSet;
+    NSMutableSet               *enemiesSet;
     
     NSMutableDictionary *levelDictionary;
     LevelType           levelType;
+    int                 levelDifficulty;
+    OutroAnimation      outroAnimation;
+    NSArray             *wavesArray;
+    int                 numWaves;
+    int                 currentWave;
 }
 
 @property (nonatomic, retain) id <GameLevelDelegate> delegate;
 @property (readonly, retain) PlayerShip *playerShip;
 
 - (id)initWithLevelFile:(NSString *)levelFile withDelegate:(id <GameLevelDelegate>)del;
+
+- (EnemyShipID)convertToEnemyEnum:(NSString *)enemyString;
+
+- (void)loadWave:(int)wave;
 
 - (void)update:(GLfloat)aDelta;
 - (void)updateCollisions;

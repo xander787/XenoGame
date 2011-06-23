@@ -2,19 +2,19 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>kBossShips</key>
+	<key>kBossShip</key>
 	<string></string>
-	<key>kLevelDifficultyRating</key>
+	<key>kLevelDifficulty</key>
 	<string>// difficulty of the current level (this should be for intermediary levels)</string>
 	<key>kLevelType</key>
 	<string>// i.e. boss level, miniboss level, or intermediary level</string>
-	<key>kMiniBossShips</key>
+	<key>kMiniBossShip</key>
 	<string></string>
+	<key>kOutroTransition</key>
+	<string>// Nuke, wormhole, or fly-off</string>
 	<key>kWaves</key>
 	<array>
 		<array/>
 	</array>
-	<key>kOutroTransition</key>
-	<string>// Nuke, wormhole, or fly-off</string>
 </dict>
 </plist>

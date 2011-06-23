@@ -10,10 +10,16 @@
 //	James Linnell - Software Engineer, Creative Design, Art Producer
 //	Tyler Newcomb - Creative Design, Art Producer
 //
-//  Last Updated - 1/31/20101 @8PM - Alexander
+//  Last Updated - 6/21/11 @8PM - Alexander
 //  - Began implementing tasks necessary to load
 //  level files. Moved other tasks from GameScene
 //  to this class such as collisions and health
+//
+//  Last Updated - 6/22/11 @8PM - Alexander
+//  - Collision detection between playership and
+//  the entities in the enemiesSet
+//  - Preliminary wave-loading methods
+//
 
 
 #import "GameLevelScene.h"
@@ -49,33 +55,65 @@
             levelType = kLevelType_Cutscene;
         }
         
-        playerShip = [[PlayerShip alloc] initWithShipID:kPlayerShip_Dev andInitialLocation:CGPointMake(155, 200)];
+        wavesArray = [levelDictionary objectForKey:@"kWaves"];
+        numWaves = [wavesArray count];
+        currentWave = 0;
+        
+        enemiesSet = [[NSMutableSet alloc] init];
+        
+        [self loadWave:currentWave];
+        
+        playerShip = [[PlayerShip alloc] initWithShipID:kPlayerShip_Dev andInitialLocation:CGPointMake(155, 40)];
     }
     
     return self;
 }
 
+- (EnemyShipID)convertToEnemyEnum:(NSString *)enemyString {
+    if([enemyString isEqualToString:@"kShipOneShot_One"]) {
+        return kEnemyShip_OneShotLevelOne;
+    }
+    else if([enemyString isEqualToString:@"kShipTwoShot_One"]) {
+        return kEnemyShip_TwoShotLevelOne;
+    }
+    else if([enemyString isEqualToString:@"kShipThreeShot_One"]) {
+        return kEnemyShip_ThreeShotLevelOne;
+    }
+    
+    return 0;
+}
+
+- (void)loadWave:(int)wave {
+    for(int i = 0; i < [[wavesArray objectAtIndex:wave] count]; ++i) {
+        EnemyShip *enemy = [[EnemyShip alloc] initWithShipID:[self convertToEnemyEnum:[[wavesArray objectAtIndex:wave] objectAtIndex:i]] initialLocation:CGPointMake(100.0f + (50 * RANDOM_MINUS_1_TO_1()), 300.0f + (50 * RANDOM_MINUS_1_TO_1())) andPlayerShipRef:playerShip];
+        
+        [enemiesSet addObject:enemy];
+    }
+}
+
 - (void)update:(GLfloat)aDelta {
     //Make sure that all of our ship objects get their update: called. Necessary.
     [playerShip update:aDelta];
+    
+    [self updateCollisions];
+    
+    if([enemiesSet count] == 0) {
+        if(currentWave != (numWaves - 1)) {
+            currentWave++;
+            [self loadWave:currentWave];
+        }
+    }
 }
 
 - (void)updateCollisions {
-    
-    //So far we only check for collisions between the 1st ship and 2nd ship.
-    //When dealing with more obejcts, such as Enemies, we will loop through the NSSet's of loaded enemies.
-    
-    //result is a struct, containing intersect, willIntersect, and minimumTranslationVector.
-    //We will only be using intersect, as the other two are used for moving against polygons, not simple collisions.
-    //PolygonCollisionResult result = [Collisions polygonCollision:testShip.collisionPolygon :testEnemy.collisionPolygon :Vector2fZero];
-    
-   // if(result.intersect) NSLog(@"First Ship: Intersected");
-    
-    
-    //Collision for a single enemy, same as above.
-    //result = [Collisions polygonCollision:testShip.collisionPolygon :testEnemy.collisionPolygon :Vector2fZero];
-    
-    //if(result.intersect) NSLog(@"Enemy hit");
+    // First check direct ship-ship collisions between the player and enemies
+    for (EnemyShip *enemy in enemiesSet) {
+        PolygonCollisionResult result = [Collisions polygonCollision:playerShip.collisionPolygon :enemy.collisionPolygon :Vector2fZero];
+        
+        if(result.intersect) {
+            NSLog(@"Collision occured with enemy ship");
+        }
+    }
 }
 
 - (void)updateWithTouchLocationBegan:(NSSet *)touches withEvent:(UIEvent *)event view:(UIView *)aView {
@@ -136,6 +174,12 @@
 }
 
 - (void)render {
+    for (EnemyShip *enemyShip in enemiesSet) {
+        [enemyShip render];
+    }
+    
+    // Must always be rendered last so that the player is foreground
+    // to any other objects on the screen.
     [playerShip render];
 }
 

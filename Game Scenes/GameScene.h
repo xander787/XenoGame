@@ -48,7 +48,8 @@
 #import "GameLevelScene.h"
 
 typedef enum _Level {
-    kLevel_OneOne = 0,
+    kLevel_DevTest = 0,
+    kLevel_OneOne,
     kLevel_OneTwo,
     kLevel_OneThree,
     kLevel_TwoOne,
@@ -67,8 +68,7 @@ typedef enum _Level {
     kLevel_SixThree,
     kLevel_SevenOne,
     kLevel_SevenTwo,
-    kLevel_SevenThree,
-    kLevel_DevTest
+    kLevel_SevenThree
 } Level;
 
 @interface GameScene : AbstractScene <GameLevelDelegate> {

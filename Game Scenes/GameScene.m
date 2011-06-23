@@ -37,16 +37,20 @@
 //  - Added a health bar background image to let users know how much
 //  health of theirs has diminished.
 //
-//  Last Updated - 6/22/11 @5PM - Alexander & James
+//  Last Updated - 6/20/11 @5PM - Alexander & James
 //  - Began implementation of GameLevelScene and also
 //  moved much of things from this class to that one.
 //  Collisions, health, etc are all there now. Also delegated
 //  this class to that one as well. This class now keeps a copy
 //  of the index of level files in memory as well
 //
-//  Last Updated - 6/22/11 @5PM - Alexander & James
+//  Last Updated - 6/20/11 @5PM - Alexander & James
 //  - Fixed small error with loading Image classes. Needed to include
 //  scale parameter.
+//
+//  Last Updated - 6/22/11 @1PM - Alexander
+//  - Updating game level scene with touch information when level is
+//  in progress.
 
 
 #import "GameScene.h"
@@ -172,6 +176,10 @@
     
 	// Flip the y location ready to check it against OpenGL coordinates
 	location.y = 480-location.y;
+    
+    if(levelInProgress) {
+        [gameLevel updateWithTouchLocationBegan:touches withEvent:event view:aView];
+    }
 }
 
 - (void)updateWithTouchLocationMoved:(NSSet *)touches withEvent:(UIEvent *)event view:(UIView *)aView {
@@ -182,6 +190,10 @@
 	// Flip the y location ready to check it against OpenGL coordinates
 	location.y = 480-location.y;
     location.y += 30;
+    
+    if(levelInProgress) {
+        [gameLevel updateWithTouchLocationMoved:touches withEvent:event view:aView];
+    }
 }
 
 - (Level)convertToLevelEnum:(NSString *)received {
@@ -268,7 +280,7 @@
 }
 
 - (void)scoreChangedBy:(int)scoreChange {
-    
+    playerScore += scoreChange;
 }
 
 - (void)playerHealthChangedBy:(int)healthChange {
