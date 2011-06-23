@@ -59,11 +59,11 @@ typedef enum _ParticleID {
     //Particle Emitter specific variables
     ParticleEmitter *emitter;
     NSMutableArray  *polygonArray;
-    Polygon         *particlePolygon;
+//    Polygon         *particlePolygon;
     
     //Image specific variables
     Image           *image;
-    Polygon         *missilePolygon;
+//    Polygon         *missilePolygon;
     GLfloat         elapsedTime;
     BOOL            isAlive;
 }

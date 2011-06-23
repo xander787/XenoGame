@@ -29,6 +29,10 @@
 //
 //	Last Updated - 6/15/2011 @ 3:30PM - Alexander
 //	- Support for new Scale2f vector scaling system
+//
+//  Last updated  6/22/2011 @ 11PM - James
+//  - Deprecated missilePolygon and particlePolyon. Replaced with 
+//  using the first(0th) polygon object in the polygonsArray
 
 #import "AbstractProjectile.h"
 
@@ -140,7 +144,7 @@
                 
             case kPlayerProjectile_Missile:
                 image = [[Image alloc] initWithImage:[projectileDictionary objectForKey:@"kProjectileImage"] scale:Scale2fOne];
-                missilePolygon = [[Polygon alloc] initWithPoints:collisionPoints andCount:collisionPointCount andShipPos:CGPointMake(turretPosition.x, turretPosition.y)];
+                [polygonArray addObject:[[Polygon alloc] initWithPoints:collisionPoints andCount:collisionPointCount andShipPos:CGPointMake(turretPosition.x, turretPosition.y)]];
                 isAlive = YES;
                 break;
                 
@@ -210,7 +214,7 @@
                 
             case kEnemyProjectile_Missile:
                 image = [[Image alloc] initWithImage:[projectileDictionary objectForKey:@"kProjectileImage"] scale:Scale2fOne];
-                missilePolygon = [[Polygon alloc] initWithPoints:collisionPoints andCount:collisionPointCount andShipPos:CGPointMake(turretPosition.x, turretPosition.y)];
+                [polygonArray addObject:[[Polygon alloc] initWithPoints:collisionPoints andCount:collisionPointCount andShipPos:CGPointMake(turretPosition.x, turretPosition.y)]];
                 isAlive = YES;
                 break;
                 
@@ -283,7 +287,7 @@
         collisionPoints[3] = Vector2fMake(0, -1 * particleRadius);
         
         
-        particlePolygon = [[Polygon alloc] initWithPoints:collisionPoints andCount:collisionPointCount andShipPos:CGPointMake(currentLocation.x, currentLocation.y)];
+        [polygonArray addObject:[[Polygon alloc] initWithPoints:collisionPoints andCount:collisionPointCount andShipPos:CGPointMake(currentLocation.x, currentLocation.y)]];
         
         
         switch(particleID){
@@ -365,7 +369,7 @@
                 CGPoint vector = CGPointMake(cosf(newAngle), sinf(newAngle));
                 currentLocation.x += (projectileSpeed * 15) * aDelta * vector.x;
                 currentLocation.y += (projectileSpeed * 15) * aDelta * vector.y;
-                [missilePolygon setPos:CGPointMake(currentLocation.x, currentLocation.y)];
+                [[polygonArray objectAtIndex:0] setPos:CGPointMake(currentLocation.x, currentLocation.y)];
                 break;
                 
             case kPlayerProjectile_Wave:
@@ -431,7 +435,7 @@
                 CGPoint vector2 = CGPointMake(cosf(newAngle2), sinf(newAngle2));
                 currentLocation.x += (projectileSpeed * 15) * aDelta * vector2.x;
                 currentLocation.y += (projectileSpeed * 15) * aDelta * vector2.y;
-                [missilePolygon setPos:CGPointMake(currentLocation.x, currentLocation.y)];
+                [[polygonArray objectAtIndex:0] setPos:CGPointMake(currentLocation.x, currentLocation.y)];
                 break;
                 
             case kEnemyProjectile_Wave:
@@ -503,7 +507,7 @@
         tempPos.y += (projectileSpeed * 15) * aDelta * vector.y;
         emitter.sourcePosition = tempPos;
         
-        [particlePolygon setPos:CGPointMake(emitter.sourcePosition.x, emitter.sourcePosition.y)];
+        [[polygonArray objectAtIndex:0] setPos:CGPointMake(emitter.sourcePosition.x, emitter.sourcePosition.y)];
         
         [emitter update:aDelta];
 
@@ -583,10 +587,11 @@
                 glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
                 
                 //Loop through the all the lines except for the last
-                for(int i = 0; i < (missilePolygon.pointCount - 1); i++) {
+                Polygon *tempPolygonFromArray = [polygonArray objectAtIndex:0];
+                for(int i = 0; i < ([[polygonArray objectAtIndex:0] pointCount] - 1); i++) {
                     GLfloat line[] = {
-                        missilePolygon.points[i].x, missilePolygon.points[i].y,
-                        missilePolygon.points[i+1].x, missilePolygon.points[i+1].y,
+                        tempPolygonFromArray.points[i].x, tempPolygonFromArray.points[i].y,
+                        tempPolygonFromArray.points[i+1].x, tempPolygonFromArray.points[i+1].y,
                     };
                     
                     glVertexPointer(2, GL_FLOAT, 0, line);
@@ -597,8 +602,8 @@
                 
                 //Renders last line, we do this because of how arrays work.
                 GLfloat lineEnd[] = {
-                    missilePolygon.points[([missilePolygon pointCount] - 1)].x, missilePolygon.points[([missilePolygon pointCount] - 1)].y,
-                    missilePolygon.points[0].x, missilePolygon.points[0].y,
+                    tempPolygonFromArray.points[([tempPolygonFromArray pointCount] - 1)].x, tempPolygonFromArray.points[([tempPolygonFromArray pointCount] - 1)].y,
+                    tempPolygonFromArray.points[0].x, tempPolygonFromArray.points[0].y,
                 };
                 
                 glVertexPointer(2, GL_FLOAT, 0, lineEnd);
@@ -614,10 +619,11 @@
             glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
             
             //Loop through the all the lines except for the last
-            for(int i = 0; i < (particlePolygon.pointCount - 1); i++) {
+            Polygon *tempPolygonFromArray = [polygonArray objectAtIndex:0];
+            for(int i = 0; i < (tempPolygonFromArray.pointCount - 1); i++) {
                 GLfloat line[] = {
-                    particlePolygon.points[i].x, particlePolygon.points[i].y,
-                    particlePolygon.points[i+1].x, particlePolygon.points[i+1].y,
+                    tempPolygonFromArray.points[i].x, tempPolygonFromArray.points[i].y,
+                    tempPolygonFromArray.points[i+1].x, tempPolygonFromArray.points[i+1].y,
                 };
                 
                 glVertexPointer(2, GL_FLOAT, 0, line);
@@ -628,8 +634,8 @@
             
             //Renders last line, we do this because of how arrays work.
             GLfloat lineEnd[] = {
-                particlePolygon.points[([particlePolygon pointCount] - 1)].x, particlePolygon.points[([particlePolygon pointCount] - 1)].y,
-                particlePolygon.points[0].x, particlePolygon.points[0].y,
+                tempPolygonFromArray.points[([tempPolygonFromArray pointCount] - 1)].x, tempPolygonFromArray.points[([tempPolygonFromArray pointCount] - 1)].y,
+                tempPolygonFromArray.points[0].x, tempPolygonFromArray.points[0].y,
             };
             
             glVertexPointer(2, GL_FLOAT, 0, lineEnd);
@@ -647,8 +653,8 @@
     [polygonArray release];
     [idType release];
     [nameOfImage release];
-    [particlePolygon release];
-    [missilePolygon release];
+//    [particlePolygon release];
+//    [missilePolygon release];
     free(collisionPoints);
     [super dealloc];
 }
