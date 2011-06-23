@@ -43,6 +43,11 @@
 //
 //  Last Updated - 6/16/2011 @8:15PM - James
 //  - Added simple health logic, death animation.
+//
+//  Last Updated - 6/23/2011 @ 4:40PM - James
+//  - Added killShip method, moved death emitter init
+//  to regular init for less lag, made sure there's no
+//  more polygon after death
 
 #import "EnemyShip.h"
 
@@ -300,37 +305,8 @@
         
         [shipWeaponsArray release];
         [shipCollisionArray release];
-    }
-    
-    return self;
-}
-
-- (void)update:(GLfloat)delta {
-    [enemyAnimation update:delta];
-    [collisionPolygon setPos:currentLocation];
-    
-    if(shipIsDead == TRUE){
-        [deathAnimationEmitter update:delta];
-        if(deathAnimationEmitter.particleCount == 0){
-            //Tell owner that emitter is done, okay to dealloc
-            
-        }
-    }
-}
-
-- (void)hitShipWithDamage:(int)damage {
-    //When the enemy ship takes damage
-    
-    shipHealth = shipHealth - damage;
-    
-    if(shipHealth <= 0){
-        //Ship loses all health, dies.
         
-        shipIsDead = TRUE;
-        
-        for(AbstractProjectile *tempProj in projectilesArray){
-            [tempProj stopProjectile];
-        }
+        //Death animation emitter:
         
         deathAnimationEmitter = [[ParticleEmitter alloc] initParticleEmitterWithImageNamed:@"texture.png"
                                                                                   position:Vector2fMake(currentLocation.x, currentLocation.y)
@@ -354,6 +330,45 @@
                                                                              blendAdditive:YES];
         deathAnimationEmitter.fastEmission = YES;
     }
+    
+    return self;
+}
+
+- (void)update:(GLfloat)delta {
+    [enemyAnimation update:delta];
+    
+    if(!shipIsDead){
+        //If it is dead it get moved off screen so save cpu time on collisions
+        [collisionPolygon setPos:currentLocation];
+    }
+    
+    if(shipIsDead == TRUE){
+        [deathAnimationEmitter update:delta];
+        if(deathAnimationEmitter.particleCount == 0){
+            //Tell owner that emitter is done, okay to dealloc
+            
+        }
+    }
+}
+
+- (void)hitShipWithDamage:(int)damage {
+    //When the enemy ship takes damage
+    
+    shipHealth = shipHealth - damage;
+    
+    if(shipHealth <= 0){
+        //Ship loses all health, dies.
+        [self killShip];
+    }
+}
+
+- (void)killShip {
+    shipIsDead = TRUE;
+    
+    for(AbstractProjectile *tempProjectile in projectilesArray){
+        [tempProjectile stopProjectile];
+    }
+    [collisionPolygon setPos:CGPointMake(-500, -500)];
 }
 
 - (void)render {
@@ -402,6 +417,9 @@
     [enemySpriteSheet release];
     [enemyAnimation release];
     [playerShipRef release];
+    if(collisionPolygon){
+        [collisionPolygon release];
+    }
     [super dealloc];
 }
 

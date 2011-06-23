@@ -12,6 +12,9 @@
 //
 //	Last Updated - 11/21/2010 - Alexander
 //	- Added in methods for touch handling
+//
+//  Last Updated - 6/23/2011 - James
+//  - Added killShip method
 
 #import "AbstractShip.h"
 
@@ -32,6 +35,10 @@
 }
 
 - (void)hitShipWithDamage:(int)damage {
+    
+}
+
+- (void)killShip {
     
 }
 

@@ -60,6 +60,11 @@
 //
 //	Last Updated - 6/15/2011 @ 3:30PM - Alexander
 //	- Support for new Scale2f vector scaling system
+//
+//  Last Updated - 6/23/2011 @ 4:40PM - James
+//  - Added killShip method, moved death emitter init
+//  to regular init for less lag, made sure there's no
+//  more polygon after death
 
 #import "PlayerShip.h"
 
@@ -214,8 +219,8 @@
         // Add projectiles to our local projectile set for the weapon points on the ship
         projectilesArray = [[NSMutableArray alloc] init];
         for(int i = 0; i < numTurrets; i++) {
-            AbstractProjectile *projectile = [[AbstractProjectile alloc] initWithParticleID:kPlayerParticle fromTurretPosition:Vector2fMake(currentLocation.x + turretPoints[i].x, currentLocation.y + turretPoints[i].y) radius:10 rateOfFire:4 andAngle:90];
-            //AbstractProjectile *projectile = [[AbstractProjectile alloc] initWithProjectileID:kPlayerProjectile_Bullet fromTurretPosition:Vector2fMake(currentLocation.x + turretPoints[i].x, currentLocation.y + turretPoints[i].y) andAngle:90 emissionRate:4];
+            //AbstractProjectile *projectile = [[AbstractProjectile alloc] initWithParticleID:kPlayerParticle fromTurretPosition:Vector2fMake(currentLocation.x + turretPoints[i].x, currentLocation.y + turretPoints[i].y) radius:10 rateOfFire:4 andAngle:90];
+            AbstractProjectile *projectile = [[AbstractProjectile alloc] initWithProjectileID:kPlayerProjectile_Bullet fromTurretPosition:Vector2fMake(currentLocation.x + turretPoints[i].x, currentLocation.y + turretPoints[i].y) andAngle:90 emissionRate:4];
             [projectilesArray insertObject:projectile atIndex:i];
             [projectile release];
         }
@@ -225,6 +230,30 @@
         [shipThrusterArray release];
         [shipCollisionArray release];
         [shipDictionary release];
+        
+        
+        //Death animation emitter:
+        deathAnimationEmitter = [[ParticleEmitter alloc] initParticleEmitterWithImageNamed:@"texture.png"
+                                                                                  position:Vector2fMake(currentLocation.x, currentLocation.y)
+                                                                    sourcePositionVariance:Vector2fZero
+                                                                                     speed:0.8
+                                                                             speedVariance:0.2
+                                                                          particleLifeSpan:0.3
+                                                                  particleLifespanVariance:0.2
+                                                                                     angle:0.0
+                                                                             angleVariance:360.0
+                                                                                   gravity:Vector2fZero
+                                                                                startColor:Color4fMake(0.7, 0.7, 0.7, 1.0)
+                                                                        startColorVariance:Color4fMake(0.5, 0.5, 0.5, 0.0)
+                                                                               finishColor:Color4fMake(0.7, 0.7, 0.7, 0.2)
+                                                                       finishColorVariance:Color4fMake(0.5, 0.5, 0.5, 0.0)
+                                                                              maxParticles:1000
+                                                                              particleSize:10.0
+                                                                        finishParticleSize:10.0
+                                                                      particleSizeVariance:0.0
+                                                                                  duration:0.1
+                                                                             blendAdditive:YES];
+        deathAnimationEmitter.fastEmission = YES;
 	}
     
 	return self;
@@ -240,7 +269,9 @@
     currentLocation.y += ((desiredPosition.y - currentLocation.y) / shipSpeed) * (pow(1.584893192, shipSpeed)) * delta;
     
     //Update the points for our polygon
-    [collisionPolygon setPos:currentLocation];
+    if(!shipIsDead){
+        [collisionPolygon setPos:currentLocation];
+    }
     
     // Update all of our projectiles
     for(int i = 0; i < [projectilesArray count]; i++) {
@@ -265,39 +296,18 @@
     //NSLog(@"New ship health: %d", shipHealth);
     
     if(shipHealth <= 0){
-        
-        NSLog(@"Player Ship died");
-        //Player ship is offically dead
-        shipIsDead = TRUE;
-        
-        for(AbstractProjectile *tempProjectile in projectilesArray){
-            [tempProjectile stopProjectile];
-        }
-        
-        //TODO: Remove image, start particle death animation, etc
-        
-        deathAnimationEmitter = [[ParticleEmitter alloc] initParticleEmitterWithImageNamed:@"texture.png"
-                                                                                  position:Vector2fMake(currentLocation.x, currentLocation.y)
-                                                                    sourcePositionVariance:Vector2fZero
-                                                                                     speed:0.8
-                                                                             speedVariance:0.2
-                                                                          particleLifeSpan:0.3
-                                                                  particleLifespanVariance:0.2
-                                                                                     angle:0.0
-                                                                             angleVariance:360.0
-                                                                                   gravity:Vector2fZero
-                                                                                startColor:Color4fMake(0.7, 0.7, 0.7, 1.0)
-                                                                        startColorVariance:Color4fMake(0.5, 0.5, 0.5, 0.0)
-                                                                               finishColor:Color4fMake(0.7, 0.7, 0.7, 0.2)
-                                                                       finishColorVariance:Color4fMake(0.5, 0.5, 0.5, 0.0)
-                                                                              maxParticles:1000
-                                                                              particleSize:10.0
-                                                                        finishParticleSize:10.0
-                                                                      particleSizeVariance:0.0
-                                                                                  duration:0.1
-                                                                             blendAdditive:YES];
-        deathAnimationEmitter.fastEmission = YES;
+        [self killShip];
     }
+}
+
+- (void)killShip {
+    shipIsDead = TRUE;
+    
+    for(AbstractProjectile *tempProjectile in projectilesArray){
+        [tempProjectile stopProjectile];
+    }
+    
+    [collisionPolygon setPos:CGPointMake(-500, -500)];
 }
 
 - (void)render {    
@@ -315,7 +325,7 @@
         [[projectilesArray objectAtIndex:i] render];
     }
     
-    // For DEBUGging collisions
+    // For DEBUGing collisions
     if(DEBUG) {                
         glPushMatrix();
         
@@ -367,7 +377,9 @@
         [deathAnimationEmitter release];
     }
     [projectilesArray release];
-    [collisionPolygon release];
+    if(collisionPolygon){
+        [collisionPolygon release];
+    }
     free(turretPoints);
     free(thrusterPoints);
     [super dealloc];

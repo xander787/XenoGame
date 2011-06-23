@@ -138,7 +138,7 @@
                 
         if(result.intersect) {
             NSLog(@"Collision occured with enemy ship");
-            [enemyShip hitShipWithDamage:9999999];
+            [enemyShip killShip];
         }
         
         //Enemy bullet -> player ship collision

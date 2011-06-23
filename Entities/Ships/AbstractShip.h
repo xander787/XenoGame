@@ -86,5 +86,6 @@
 - (void)updateWithTouchLocationEnded:(NSSet*)touches withEvent:(UIEvent*)event view:(UIView*)aView;
 
 - (void)hitShipWithDamage:(int)damage;
+- (void)killShip;
 
 @end
