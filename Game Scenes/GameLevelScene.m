@@ -20,6 +20,10 @@
 //  the entities in the enemiesSet
 //  - Preliminary wave-loading methods
 //
+//  Last Updated - 6/22/11 @10:30PM - Alexander
+//  - Very early, buggy test of removing enemies from
+//  the enemiesSet when the player collides into them
+//  (Not realistic, but for testing purposes).
 
 
 #import "GameLevelScene.h"
@@ -76,8 +80,8 @@
     else if([enemyString isEqualToString:@"kShipTwoShot_One"]) {
         return kEnemyShip_TwoShotLevelOne;
     }
-    else if([enemyString isEqualToString:@"kShipThreeShot_One"]) {
-        return kEnemyShip_ThreeShotLevelOne;
+    else if([enemyString isEqualToString:@"kEnemyMissileBombLevelThree"]) {
+        return kEnemyShip_MissileBombShotLevelThree;
     }
     
     return 0;
@@ -106,14 +110,24 @@
 }
 
 - (void)updateCollisions {
+    // Temp array of enemies that will be removed from the set.
+    // Can't remove them while iterating because that would cause a crash
+    NSMutableSet *discarededEnemies = [[NSMutableSet alloc] init];
+    
     // First check direct ship-ship collisions between the player and enemies
-    for (EnemyShip *enemy in enemiesSet) {
-        PolygonCollisionResult result = [Collisions polygonCollision:playerShip.collisionPolygon :enemy.collisionPolygon :Vector2fZero];
-        
+    EnemyShip *enemyShip;
+    for (enemyShip in enemiesSet) {
+        PolygonCollisionResult result = [Collisions polygonCollision:playerShip.collisionPolygon :enemyShip.collisionPolygon :Vector2fZero];
+                
         if(result.intersect) {
             NSLog(@"Collision occured with enemy ship");
+            [discarededEnemies addObject:enemyShip];
         }
     }
+    
+    [enemiesSet minusSet:discarededEnemies];
+    [enemyShip release];
+    [discarededEnemies release];
 }
 
 - (void)updateWithTouchLocationBegan:(NSSet *)touches withEvent:(UIEvent *)event view:(UIView *)aView {
