@@ -24,6 +24,10 @@
 //  - Very early, buggy test of removing enemies from
 //  the enemiesSet when the player collides into them
 //  (Not realistic, but for testing purposes).
+//
+//  Last Updated - 6/23/2011 @ 3:30PM - James
+//  - Added enemy bullet -> player collision and
+//  player bullet -> enemy collision
 
 
 #import "GameLevelScene.h"
@@ -123,11 +127,42 @@
             NSLog(@"Collision occured with enemy ship");
             [discarededEnemies addObject:enemyShip];
         }
+        
+        //Enemy bullet -> player ship collision
+        for(AbstractProjectile *enemyProjectile in enemyShip.projectilesArray){
+            for(Polygon *enemyBulletPoly in enemyProjectile.polygonArray){
+                PolygonCollisionResult result2 = [Collisions polygonCollision:enemyBulletPoly :playerShip.collisionPolygon :Vector2fZero];
+                
+                if(result2.intersect){
+                    NSLog(@"Collision occured between enemy bullet and player ship");
+                    if(!playerShip.shipIsDead){
+                        [playerShip hitShipWithDamage:1];
+                    }
+                }
+            }
+        }
     }
     
     [enemiesSet minusSet:discarededEnemies];
     [enemyShip release];
     [discarededEnemies release];
+    
+    //Player Bullets->Enemy ship collision
+    for(AbstractProjectile *playerShipProjectile in playerShip.projectilesArray){
+        for(Polygon *playerBulletPoly in playerShipProjectile.polygonArray){
+            for(EnemyShip *tempEnemyShip in enemiesSet){
+                PolygonCollisionResult result = [Collisions polygonCollision:playerBulletPoly :tempEnemyShip.collisionPolygon :Vector2fZero];
+                
+                if(result.intersect){
+                    NSLog(@"Collision occured between player bullet and enemy ship");
+                    //Send damage to enemy ship
+                    if(!tempEnemyShip.shipIsDead){
+                        [tempEnemyShip hitShipWithDamage:1];
+                    }
+                }
+            }
+        }
+    }
 }
 
 - (void)updateWithTouchLocationBegan:(NSSet *)touches withEvent:(UIEvent *)event view:(UIView *)aView {

@@ -49,6 +49,8 @@ typedef enum _ParticleID {
     
     NSString        *nameOfImage;
     
+    NSMutableArray  *polygonArray;
+
     
 @private
     Vector2f        *collisionPoints;
@@ -58,7 +60,6 @@ typedef enum _ParticleID {
     
     //Particle Emitter specific variables
     ParticleEmitter *emitter;
-    NSMutableArray  *polygonArray;
 //    Polygon         *particlePolygon;
     
     //Image specific variables
@@ -75,6 +76,7 @@ typedef enum _ParticleID {
 @property (nonatomic)   int             projectileAngle;
 @property (nonatomic)   int             projectileSpeed;
 @property (nonatomic)   ProjectileID    projectileID;
+@property (nonatomic, retain) NSMutableArray *polygonArray;
 
 
 - (id)initWithProjectileID:(ProjectileID)aProjectileID fromTurretPosition:(Vector2f)aPosition andAngle:(int)aAngle emissionRate:(int)aRate;

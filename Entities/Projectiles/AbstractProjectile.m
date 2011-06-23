@@ -30,16 +30,19 @@
 //	Last Updated - 6/15/2011 @ 3:30PM - Alexander
 //	- Support for new Scale2f vector scaling system
 //
-//  Last updated  6/22/2011 @ 11PM - James
+//  Last updated - 6/22/2011 @ 11PM - James
 //  - Deprecated missilePolygon and particlePolyon. Replaced with 
 //  using the first(0th) polygon object in the polygonsArray
+//
+//  Last Updated - 6/23/2011 @ 3:30PM - James
+//  - Forgot to allocate polygons for missiles and particles :\
 
 #import "AbstractProjectile.h"
 
 
 @implementation AbstractProjectile
 
-@synthesize turretPosition, currentLocation, desiredLocation, isActive, projectileAngle, projectileSpeed, projectileID;
+@synthesize turretPosition, currentLocation, desiredLocation, isActive, projectileAngle, projectileSpeed, projectileID, polygonArray;
 
 - (id)initWithProjectileID:(ProjectileID)aProjectileID fromTurretPosition:(Vector2f)aPosition andAngle:(int)aAngle emissionRate:(int)aRate {
     if((self = [super init])){
@@ -143,6 +146,7 @@
                 break;
                 
             case kPlayerProjectile_Missile:
+                polygonArray = [[NSMutableArray alloc] init];
                 image = [[Image alloc] initWithImage:[projectileDictionary objectForKey:@"kProjectileImage"] scale:Scale2fOne];
                 [polygonArray addObject:[[Polygon alloc] initWithPoints:collisionPoints andCount:collisionPointCount andShipPos:CGPointMake(turretPosition.x, turretPosition.y)]];
                 isAlive = YES;
@@ -213,6 +217,7 @@
                 break;
                 
             case kEnemyProjectile_Missile:
+                polygonArray = [[NSMutableArray alloc] init];
                 image = [[Image alloc] initWithImage:[projectileDictionary objectForKey:@"kProjectileImage"] scale:Scale2fOne];
                 [polygonArray addObject:[[Polygon alloc] initWithPoints:collisionPoints andCount:collisionPointCount andShipPos:CGPointMake(turretPosition.x, turretPosition.y)]];
                 isAlive = YES;
@@ -286,8 +291,9 @@
         collisionPoints[2] = Vector2fMake(-1 * particleRadius, 0);
         collisionPoints[3] = Vector2fMake(0, -1 * particleRadius);
         
-        
+        polygonArray = [[NSMutableArray alloc] init];
         [polygonArray addObject:[[Polygon alloc] initWithPoints:collisionPoints andCount:collisionPointCount andShipPos:CGPointMake(currentLocation.x, currentLocation.y)]];
+        
         
         
         switch(particleID){
