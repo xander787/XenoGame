@@ -31,6 +31,11 @@
 //
 //  Last Updated - 6/23/2011 @ 3:45PM - James
 //  - MAde it so enemies are only removed when death animation emitters are completed
+//
+//  Last updated - 6/23/11 @ 5PM - Alexander
+//  - Typo in the enemy enum converter. Also set the default
+//  return value to -1 so that we can tell if a problem
+//  like this occurs again.
 
 
 #import "GameLevelScene.h"
@@ -87,11 +92,11 @@
     else if([enemyString isEqualToString:@"kShipTwoShot_One"]) {
         return kEnemyShip_TwoShotLevelOne;
     }
-    else if([enemyString isEqualToString:@"kEnemyMissileBombLevelThree"]) {
+    else if([enemyString isEqualToString:@"kEnemyMissileBombLevel_Three"]) {
         return kEnemyShip_MissileBombShotLevelThree;
     }
     
-    return 0;
+    return -1;
 }
 
 - (void)loadWave:(int)wave {
