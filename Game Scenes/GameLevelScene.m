@@ -59,6 +59,8 @@
         
         settings = [NSUserDefaults standardUserDefaults];
         
+        delegate = del;
+        
         NSBundle *bundle = [NSBundle mainBundle];
         NSString *path = [[NSString alloc] initWithString:[bundle pathForResource:levelFile ofType:@"plist"]];
         levelDictionary = [[NSMutableDictionary alloc] initWithContentsOfFile:path];
@@ -137,6 +139,9 @@
         if(currentWave != (numWaves - 1)) {
             currentWave++;
             [self loadWave:currentWave];
+        }
+        else {
+            [delegate levelEnded];
         }
     }
 }

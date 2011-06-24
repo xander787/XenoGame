@@ -10,34 +10,6 @@
 //	James Linnell - Software Engineer, Creative Design, Art Producer
 //	Tyler Newcomb - Creative Design, Art Producer
 //
-//	Last Updated - 11/22/2010 @8:20PM - Alexander
-//	- Added in first draft code for the enemy ship class
-//
-//  Last Updated - 11/25/10 @8PM - Alexander
-//  - Forgot to add properties for the public items
-//
-//  Last Updated - 12/17/10 @6PM - James
-//  - Assigned correct width and height measurements
-//  to the boundingBox variable, derived from
-//  the GameObject class.
-//
-//  Last Updated - 12/29/10 @12AM - Alexander
-//  - Added in code to load collision bounding points 
-//  from PLIST file.
-//
-//  Last Updated - 12/31/1010 @11AM - Alexander
-//  - Playing with the spritesheet timer
-//
-//  Last Updated - 12/31/2010 @7:30PM - Alexander
-//  - Memory management: Added dealloc method and put
-//  our deallocations in it.
-//
-//  Last Updated - 1/1/11 @9:30PM - Alexander
-//  - Added shipWidth and shipHeight properties
-//
-//  Last Updated - 2/15/11 @9PM - Alexander
-//  - Rewrote the init method to be more organized
-//
 //	Last Updated - 6/15/2011 @ 3:30PM - Alexander
 //	- Support for new Scale2f vector scaling system
 //
@@ -54,6 +26,9 @@
 //
 //  Last Updated - 6/23/11 @8PM - Alexander
 //  - Fixed the timing for the red filter. Looks good now.
+//
+//  Last Updated - 6/23/11 @8PM - Alexander
+//  - Softer caller for the filter applied when hit.
 
 #import "EnemyShip.h"
 
@@ -373,7 +348,7 @@
     
     // Apply temporary red filter to the ship to show damage
     hitFilter = YES;
-    [enemyAnimation setColorFilter:Color4fMake(0.8f, 0.5f, 0.5f, 1.0f)];
+    [enemyAnimation setColorFilter:Color4fMake(1.0f, 0.8f, 0.8f, 1.0f)];
     
     shipHealth = shipHealth - damage;
     

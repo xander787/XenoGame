@@ -23,6 +23,7 @@
 #import "PlayerShip.h"
 #import "AbstractScene.h"
 #import "Collisions.h"
+#import "BezierCurve.h"
 
 @protocol GameLevelDelegate <NSObject>
 @required
