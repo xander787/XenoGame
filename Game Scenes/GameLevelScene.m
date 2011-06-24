@@ -36,6 +36,9 @@
 //  - Typo in the enemy enum converter. Also set the default
 //  return value to -1 so that we can tell if a problem
 //  like this occurs again.
+//
+//  Last Updated - 6/12/11 @ 6:45PM - Alexander
+//  - Just added and removed some comments. Cleanup.
 
 
 #import "GameLevelScene.h"
@@ -111,6 +114,8 @@
     //Make sure that all of our ship objects get their update: called. Necessary.
     [playerShip update:aDelta];
     
+    // Loop through our enemies and remove those that have died and whose
+    // destruction animations have completed
     NSMutableSet *discardedEnemies = [[NSMutableSet alloc] init];
     for(EnemyShip *enemyShip in enemiesSet){
         [enemyShip update:aDelta];
@@ -132,10 +137,7 @@
     }
 }
 
-- (void)updateCollisions {
-    // Temp array of enemies that will be removed from the set.
-    // Can't remove them while iterating because that would cause a crash
-    
+- (void)updateCollisions {    
     // First check direct ship-ship collisions between the player and enemies
     EnemyShip *enemyShip;
     for (enemyShip in enemiesSet) {
