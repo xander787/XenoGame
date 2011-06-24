@@ -51,6 +51,9 @@
 //
 //  Last Updated - 6/23/11 @8PM - Alexander
 //  - Enemy ship now adds red filter when hit
+//
+//  Last Updated - 6/23/11 @8PM - Alexander
+//  - Fixed the timing for the red filter. Looks good now.
 
 #import "EnemyShip.h"
 
@@ -355,7 +358,7 @@
         }
     }
     
-    if(hitFilter && hitFilterEffectTime <= 0.01) {
+    if(hitFilter && hitFilterEffectTime <= 0.15) {
         hitFilterEffectTime += delta;
     }
     else {
