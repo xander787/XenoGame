@@ -42,7 +42,7 @@
 
 @implementation AbstractProjectile
 
-@synthesize turretPosition, currentLocation, desiredLocation, isActive, projectileAngle, projectileSpeed, projectileID, polygonArray;
+@synthesize turretPosition, currentLocation, desiredLocation, isActive, projectileAngle, projectileSpeed, projectileID, polygonArray, emitter;
 
 - (id)initWithProjectileID:(ProjectileID)aProjectileID fromTurretPosition:(Vector2f)aPosition andAngle:(int)aAngle emissionRate:(int)aRate {
     if((self = [super init])){

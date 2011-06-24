@@ -13,6 +13,9 @@
 //	Last Updated - 1/26/2011 @ 5:20PM - Alexander
 //  - Added ability to change location, and also added properties for
 //  public vars
+//
+//  Last Updated - 6/23/2011 @ 7:45PM - James
+//  - Synthesized emitter for use in collision detection
 
 #import <Foundation/Foundation.h>
 #import "PhysicalObject.h"
@@ -51,6 +54,8 @@ typedef enum _ParticleID {
     
     NSMutableArray  *polygonArray;
 
+    //Particle Emitter specific variables
+    ParticleEmitter *emitter;
     
 @private
     Vector2f        *collisionPoints;
@@ -58,13 +63,10 @@ typedef enum _ParticleID {
     int             rateOfFire;
     int             particleRadius;
     
-    //Particle Emitter specific variables
-    ParticleEmitter *emitter;
-//    Polygon         *particlePolygon;
     
     //Image specific variables
     Image           *image;
-//    Polygon         *missilePolygon;
+    
     GLfloat         elapsedTime;
     BOOL            isAlive;
 }
@@ -76,6 +78,7 @@ typedef enum _ParticleID {
 @property (nonatomic)   int             projectileAngle;
 @property (nonatomic)   int             projectileSpeed;
 @property (nonatomic)   ProjectileID    projectileID;
+@property (nonatomic, retain) ParticleEmitter *emitter;
 @property (nonatomic, retain) NSMutableArray *polygonArray;
 
 

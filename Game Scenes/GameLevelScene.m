@@ -39,6 +39,10 @@
 //
 //  Last Updated - 6/12/11 @ 6:45PM - Alexander
 //  - Just added and removed some comments. Cleanup.
+//
+//  Last Updated - 6/23/2011 @ 7:45PM - James
+//  - Moved particles, from projectiles, off screen
+//  when hitting enemy/player ships
 
 
 #import "GameLevelScene.h"
@@ -150,36 +154,40 @@
         
         //Enemy bullet -> player ship collision
         for(AbstractProjectile *enemyProjectile in enemyShip.projectilesArray){
-            for(Polygon *enemyBulletPoly in enemyProjectile.polygonArray){
+            Polygon *enemyBulletPoly;
+            for(int i = 0; i < [enemyProjectile.polygonArray count]; i++){
+                enemyBulletPoly = [enemyProjectile.polygonArray objectAtIndex:i];
                 PolygonCollisionResult result2 = [Collisions polygonCollision:enemyBulletPoly :playerShip.collisionPolygon :Vector2fZero];
                 
                 if(result2.intersect){
                     NSLog(@"Collision occured between enemy bullet and player ship");
                     if(!playerShip.shipIsDead){
-                        [playerShip hitShipWithDamage:1];
+                        [playerShip hitShipWithDamage:50];
+                        enemyProjectile.emitter.particles[i].position = Vector2fMake(500, 0);
+                    }
+                }
+            }
+        }
+        
+        //Player Bullets->Enemy ship collision
+        for(AbstractProjectile *playerShipProjectile in playerShip.projectilesArray){
+            Polygon *playerBulletPoly;
+            for(int i = 0; i < [playerShipProjectile.polygonArray count]; i++){
+                playerBulletPoly = [playerShipProjectile.polygonArray objectAtIndex:i];
+                PolygonCollisionResult result = [Collisions polygonCollision:playerBulletPoly :enemyShip.collisionPolygon :Vector2fZero];
+                    
+                if(result.intersect){
+                    NSLog(@"Collision occured between player bullet and enemy ship");
+                    //Send damage to enemy ship
+                    if(!enemyShip.shipIsDead){
+                        [enemyShip hitShipWithDamage:50];
+                        playerShipProjectile.emitter.particles[i].position = Vector2fMake(500, 50);
                     }
                 }
             }
         }
     }
     [enemyShip release];
-    
-    //Player Bullets->Enemy ship collision
-    for(AbstractProjectile *playerShipProjectile in playerShip.projectilesArray){
-        for(Polygon *playerBulletPoly in playerShipProjectile.polygonArray){
-            for(EnemyShip *tempEnemyShip in enemiesSet){
-                PolygonCollisionResult result = [Collisions polygonCollision:playerBulletPoly :tempEnemyShip.collisionPolygon :Vector2fZero];
-                
-                if(result.intersect){
-                    NSLog(@"Collision occured between player bullet and enemy ship");
-                    //Send damage to enemy ship
-                    if(!tempEnemyShip.shipIsDead){
-                        [tempEnemyShip hitShipWithDamage:1];
-                    }
-                }
-            }
-        }
-    }
 }
 
 - (void)updateWithTouchLocationBegan:(NSSet *)touches withEvent:(UIEvent *)event view:(UIView *)aView {
