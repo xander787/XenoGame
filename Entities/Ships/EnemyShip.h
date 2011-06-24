@@ -36,6 +36,9 @@
 //
 //  Last Updated - 6/15/2011 @1:10PM - James
 //  - Removed some redundant variables, moved in AbstractShip class
+//
+//  Last Updated - 6/23/11 @8PM - Alexander
+//  - Added some variables for the temporary red filter over ships when hit
 
 #import <Foundation/Foundation.h>
 #import "PlayerShip.h"
@@ -106,12 +109,15 @@ typedef enum _EnemyShipCategory {
 
 @interface EnemyShip : AbstractShip {
     
-    @private
+@private
     EnemyShipID             enemyID;
     EnemyShipCategory       enemyCategory;
     SpriteSheet             *enemySpriteSheet;
     Animation               *enemyAnimation;
     PlayerShip              *playerShipRef;
+    
+    float                   hitFilterEffectTime;
+    BOOL                    hitFilter;
 }
 
 - (id)initWithShipID:(EnemyShipID)aEnemyID initialLocation:(CGPoint)aPoint andPlayerShipRef:(PlayerShip *)aPlayership;

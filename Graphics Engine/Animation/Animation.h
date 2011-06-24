@@ -12,6 +12,9 @@
 //
 //	Last Updated - 10/20/2010 @ 6PM - Alexander
 //	- Initial Project Creation
+//
+//  Last Updated - 6/23/11 @8PM - Alexander
+//  - You can now add a color filter to the animation at any time
 
 #import <Foundation/Foundation.h>
 #import "SpriteSheet.h"
@@ -39,6 +42,8 @@ enum {
 	int direction;
 	// The current frame of animation
 	int currentFrame;
+    // Colour filter for the rendered image
+    Color4f colorFilter;
 }
 
 @property(nonatomic)BOOL repeat;
@@ -46,6 +51,7 @@ enum {
 @property(nonatomic)BOOL running;
 @property(nonatomic)int currentFrame;
 @property(nonatomic)int direction;
+@property(nonatomic)Color4f colorFilter;
 
 - (void)addFrameWithImage:(Image*)image delay:(float)delay;
 - (void)update:(float)delta;

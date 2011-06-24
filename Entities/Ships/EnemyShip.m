@@ -48,6 +48,9 @@
 //  - Added killShip method, moved death emitter init
 //  to regular init for less lag, made sure there's no
 //  more polygon after death
+//
+//  Last Updated - 6/23/11 @8PM - Alexander
+//  - Enemy ship now adds red filter when hit
 
 #import "EnemyShip.h"
 
@@ -66,6 +69,8 @@
         currentLocation = aPoint;
         self.position = Vector2fMake(currentLocation.x, currentLocation.y); // Sets position for DidCollide use
         playerShipRef = aPlayership;
+        hitFilter = NO;
+        hitFilterEffectTime = 0.0;
         
         //Load the PLIST with all enemy ship definitions in them
 		NSBundle *bundle = [NSBundle mainBundle];
@@ -291,7 +296,7 @@
                                                  spriteHeight:[[enemyDictionary valueForKey:@"kSpriteSheetRowHeight"] intValue]
                                                       spacing:0];
         [spriteSheetImage release];
-                                
+        
         
         // Load animation for the sprites
         enemyAnimation = [[Animation alloc] init];
@@ -349,10 +354,23 @@
             
         }
     }
+    
+    if(hitFilter && hitFilterEffectTime <= 0.01) {
+        hitFilterEffectTime += delta;
+    }
+    else {
+        hitFilter = NO;
+        hitFilterEffectTime = 0.0;
+        [enemyAnimation setColorFilter:Color4fMake(1.0f, 1.0f, 1.0f, 1.0f)];
+    }
 }
 
 - (void)hitShipWithDamage:(int)damage {
     //When the enemy ship takes damage
+    
+    // Apply temporary red filter to the ship to show damage
+    hitFilter = YES;
+    [enemyAnimation setColorFilter:Color4fMake(0.8f, 0.5f, 0.5f, 1.0f)];
     
     shipHealth = shipHealth - damage;
     
@@ -379,7 +397,7 @@
     if(shipIsDead == TRUE){
         [deathAnimationEmitter renderParticles];
     }
-        
+    
     
     if(DEBUG) {                
         glPushMatrix();

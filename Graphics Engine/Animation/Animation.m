@@ -17,7 +17,9 @@
 //  - Changed the rendering of the Frame to
 //  render at the center. Helps with DidCollide
 //  and other standards for this.
-
+//
+//  Last Updated - 6/23/11 @8PM - Alexander
+//  - You can now add a color filter to the animation at any time
 
 #import "Animation.h"
 
@@ -29,6 +31,7 @@
 @synthesize direction;
 @synthesize repeat;
 @synthesize pingPong;
+@synthesize colorFilter;
 
 - (id)init {
 	self = [super init];
@@ -43,6 +46,7 @@
 		repeat = NO;
 		pingPong = NO;
 		direction = kDirection_Forward;
+        colorFilter = Color4fMake(1.0f, 1.0f, 1.0f, 1.0f);
 	}
 	return self;
 }
@@ -145,6 +149,7 @@
 	
 	// Take the image for this frame and render it at the point provided, but default
 	// animations are rendered with their centre at the point provided
+    [[frame frameImage] setColourFilterRed:colorFilter.red green:colorFilter.green blue:colorFilter.blue alpha:colorFilter.alpha];
 	[[frame frameImage] renderAtPoint:point centerOfImage:YES];
 }
 
