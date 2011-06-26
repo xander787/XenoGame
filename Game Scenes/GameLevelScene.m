@@ -43,6 +43,9 @@
 //  Last Updated - 6/23/2011 @ 7:45PM - James
 //  - Moved particles, from projectiles, off screen
 //  when hitting enemy/player ships
+//
+//  Last Updated - 6/25/2011 @ 6:20PM - James
+//  - Added more definitions in the convertToEnemyEnum method
 
 
 #import "GameLevelScene.h"
@@ -101,9 +104,43 @@
     else if([enemyString isEqualToString:@"kShipTwoShot_One"]) {
         return kEnemyShip_TwoShotLevelOne;
     }
-    else if([enemyString isEqualToString:@"kEnemyMissileBombLevel_Three"]) {
+    else if([enemyString isEqualToString:@"kShipTwoShot_Two"]){
+        return kEnemyShip_TwoShotLevelTwo;
+    }
+    else if([enemyString isEqualToString:@"kShipTwoShot_BossOne"]){
+        return kEnemyShip_TwoShotkBossAfricaAssistOne;
+    }
+    else if([enemyString isEqualToString:@"kShipThreeShot_One"]){
+        return kEnemyShip_ThreeShotLevelOne;
+    }
+    else if([enemyString isEqualToString:@"kShipThreeShot_Three"]){
+        return kEnemyShip_ThreeShotLevelThree;
+    }
+    else if([enemyString isEqualToString:@"kShipWaveShot_One"]){
+        return kEnemyShip_WaveShotLevelOne;
+    }
+    else if([enemyString isEqualToString:@"kShipWaveShot_Two"]){
+        return kEnemyShip_WaveShotLevelTwo;
+    }
+    else if([enemyString isEqualToString:@"kShipWaveShot_Four"]){
+        return kEnemyShip_WaveShotLevelFour;
+    }
+    else if([enemyString isEqualToString:@"kShipMissileBombShot_Three"]) {
         return kEnemyShip_MissileBombShotLevelThree;
     }
+    else if([enemyString isEqualToString:@"kShipMissileBombShot_BossTwo"]){
+        return kEnemyShip_MissileBombShotkBossEuropeAssist;
+    }
+    else if([enemyString isEqualToString:@"kShipKamikaze_One"]){
+        return kEnemyShip_KamikazeLevelOne;
+    }
+    else if([enemyString isEqualToString:@"kShipKamikaze_Three"]){
+        return kEnemyShip_KamikazeLevelThree;
+    }
+    else if([enemyString isEqualToString:@"kShipKamikaze_BossTwo"]){
+        return kEnemyShip_KamikazekBossNorthAmericaAssistTwo;
+    }
+    
     
     return -1;
 }

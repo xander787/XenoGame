@@ -23,8 +23,8 @@
 		<array>
 			<string>kShipTwoShot_One</string>
 			<string>kShipTwoShot_One</string>
-			<string>kEnemyMissileBombLevel_Three</string>
-			<string>kEnemyMissileBombLevel_Three</string>
+			<string>kShipMissileBombShot_Three</string>
+			<string>kMissileBombShot_Three</string>
 		</array>
 	</array>
 </dict>
