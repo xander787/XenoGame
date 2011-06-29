@@ -17,14 +17,31 @@
 		<array>
 			<string>kShipOneShot_One</string>
 			<string>kShipOneShot_One</string>
+			<string>kShipOneShot_One</string>
+			<string>kShipOneShot_One</string>
+			<string>kShipOneShot_One</string>
+			<string>kShipMissileBombShot_Three</string>
+			<string>kShipMissileBombShot_Three</string>
+			<string>kShipMissileBombShot_Three</string>
+			<string>kShipTwoShot_One</string>
+			<string>kShipTwoShot_One</string>
+			<string>kShipTwoShot_One</string>
 			<string>kShipTwoShot_One</string>
 			<string>kShipTwoShot_One</string>
 		</array>
 		<array>
 			<string>kShipTwoShot_One</string>
 			<string>kShipTwoShot_One</string>
+			<string>kShipTwoShot_One</string>
+			<string>kShipTwoShot_One</string>
+			<string>kShipTwoShot_One</string>
+			<string>kShipTwoShot_One</string>
 			<string>kShipMissileBombShot_Three</string>
-			<string>kMissileBombShot_Three</string>
+			<string>kShipMissileBombShot_Three</string>
+			<string>kShipMissileBombShot_Three</string>
+			<string>kShipMissileBombShot_Three</string>
+			<string>kShipMissileBombShot_Three</string>
+			<string>kShipMissileBombShot_Three</string>
 		</array>
 	</array>
 </dict>
