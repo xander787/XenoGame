@@ -19,6 +19,8 @@
 
 @implementation BezierCurve
 
+@synthesize endPoint;
+
 - (id)initCurveFrom:(Vector2f)theStartPoint controlPoint1:(Vector2f)theControlPoint1 controlPoint2:(Vector2f)theControlPoint2 endPoint:(Vector2f)theEndPoint segments:(GLuint)theSegments {
 	self = [super init];
 	if (self != nil) {

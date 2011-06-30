@@ -39,6 +39,9 @@
 //
 //  Last Updated - 6/23/11 @8PM - Alexander
 //  - Added some variables for the temporary red filter over ships when hit
+//
+//  Last Updated - 6/29/11 @5PM - James
+//  - Setup paths for the ships when they come in
 
 #import <Foundation/Foundation.h>
 #import "PlayerShip.h"
@@ -47,6 +50,7 @@
 #import "SpriteSheet.h"
 #import "AbstractShip.h"
 #import "Polygon.h"
+#import "BezierCurve.h"
 
 typedef enum _EnemyShipID {
     kEnemyShip_OneShotLevelOne = 0,
@@ -107,6 +111,13 @@ typedef enum _EnemyShipCategory {
     kEnemyCategory_Kamikaze
 } EnemyShipCategory;
 
+typedef enum _PathType {
+    kPathType_Initial = 0,
+    kPathType_ToHolding,
+    kPathType_Holding, 
+    kPathType_Attacking
+} PathType;
+
 @interface EnemyShip : AbstractShip {
     
 @private
@@ -118,7 +129,18 @@ typedef enum _EnemyShipCategory {
     
     float                   hitFilterEffectTime;
     BOOL                    hitFilter;
+    
+    BezierCurve             *currentPath;
+    GLfloat                 pathTime;
+    
+    PathType                currentPathType;
+    
+    CGPoint                 desiredPosition;
 }
+@property(nonatomic, retain) BezierCurve *currentPath;
+@property(readwrite) PathType currentPathType;
+@property(readwrite) GLfloat pathTime;
+@property(readwrite) CGPoint desiredPosition;
 
 - (id)initWithShipID:(EnemyShipID)aEnemyID initialLocation:(CGPoint)aPoint andPlayerShipRef:(PlayerShip *)aPlayership;
 

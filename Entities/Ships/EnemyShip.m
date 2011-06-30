@@ -29,12 +29,16 @@
 //
 //  Last Updated - 6/23/11 @8PM - Alexander
 //  - Softer caller for the filter applied when hit.
+//
+//  Last Updated - 6/29/11 @5PM - James
+//  - Setup paths for the ships when they come in
 
 #import "EnemyShip.h"
 
 
 @implementation EnemyShip
 
+@synthesize currentPath, currentPathType, pathTime, desiredPosition;
 
 - (id)init {
     self = [super init];
@@ -319,6 +323,12 @@
 
 - (void)update:(GLfloat)delta {
     [enemyAnimation update:delta];
+    pathTime += delta;
+    
+    if(currentPathType == kPathType_Holding){
+        currentLocation.x += ((desiredPosition.x - currentLocation.x) / shipSpeed) * (pow(1.584893192, shipSpeed)) * delta;
+        currentLocation.y += ((desiredPosition.y - currentLocation.y) / shipSpeed) * (pow(1.584893192, shipSpeed)) * delta;
+    }
     
     if(!shipIsDead){
         //If it is dead it get moved off screen so save cpu time on collisions
@@ -332,6 +342,8 @@
             
         }
     }
+   
+    deathAnimationEmitter.sourcePosition = Vector2fMake(currentLocation.x, currentLocation.y);
     
     if(hitFilter && hitFilterEffectTime <= 0.15) {
         hitFilterEffectTime += delta;

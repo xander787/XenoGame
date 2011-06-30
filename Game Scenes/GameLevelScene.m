@@ -46,6 +46,9 @@
 //
 //  Last Updated - 6/25/2011 @ 6:20PM - James
 //  - Added more definitions in the convertToEnemyEnum method
+//
+//  Last Updated - 6/29/11 @5PM - James
+//  - Paths for incoming ships are setup now. Partially.
 
 
 #import "GameLevelScene.h"
@@ -148,9 +151,17 @@
 - (void)loadWave:(int)wave {
     for(int i = 0; i < [[wavesArray objectAtIndex:wave] count]; ++i) {
         EnemyShip *enemy = [[EnemyShip alloc] initWithShipID:[self convertToEnemyEnum:[[wavesArray objectAtIndex:wave] objectAtIndex:i]] initialLocation:CGPointMake(100.0f + (50 * RANDOM_MINUS_1_TO_1()), 300.0f + (50 * RANDOM_MINUS_1_TO_1())) andPlayerShipRef:playerShip];
-        
+        enemy.currentPath = [[BezierCurve alloc] initCurveFrom:Vector2fMake(0, 480) controlPoint1:Vector2fMake(320, 240) controlPoint2:Vector2fMake((5 * RANDOM_0_TO_1()), (240 + (10 * RANDOM_0_TO_1()))) endPoint:Vector2fMake(160, 100) segments:100];
+        enemy.currentPathType = kPathType_Initial;
         [enemiesSet addObject:enemy];
     }
+    
+    int multiplier = 1;
+    for(EnemyShip *enemyShip in enemiesSet){
+        enemyShip.pathTime -= (multiplier * 0.3);
+        multiplier++;
+    }
+
 }
 
 - (void)update:(GLfloat)aDelta {
@@ -162,8 +173,7 @@
     NSMutableSet *discardedEnemies = [[NSMutableSet alloc] init];
     for(EnemyShip *enemyShip in enemiesSet){
         [enemyShip update:aDelta];
-        
-        if(enemyShip.shipIsDead && enemyShip.deathAnimationEmitter.particleCount == 0){
+        if(enemyShip.shipIsDead) {
             [discardedEnemies addObject:enemyShip];
         }
     }
@@ -171,7 +181,7 @@
     [discardedEnemies release];
     
     [self updateCollisions];
-    
+        
     if([enemiesSet count] == 0) {
         if(currentWave != (numWaves - 1)) {
             currentWave++;
@@ -179,6 +189,44 @@
         }
         else {
             [delegate levelEnded];
+        }
+    }
+    
+    //PATH UPDATING
+    for(EnemyShip *enemyShip in enemiesSet){        
+        if(enemyShip.currentPathType == kPathType_Initial){
+            [enemyShip setCurrentLocation:CGPointMake([enemyShip.currentPath getPointAt:enemyShip.pathTime/2].x, [enemyShip.currentPath getPointAt:enemyShip.pathTime/2].y)];
+            
+            if(abs(enemyShip.currentLocation.x - enemyShip.currentPath.endPoint.x) < 5 && abs(enemyShip.currentLocation.y - enemyShip.currentPath.endPoint.y) < 5){
+                Vector2f oldEndPoint = enemyShip.currentPath.endPoint;
+                [[enemyShip currentPath] release];
+                enemyShip.currentPath = nil;
+                enemyShip.currentPath = [[BezierCurve alloc] initCurveFrom:Vector2fMake(oldEndPoint.x, oldEndPoint.y) controlPoint1:Vector2fMake(100, 100) controlPoint2:Vector2fMake(300, 300) endPoint:[self VectorRandomInRectWithVectors:Vector2fMake(320, 480) v2:Vector2fMake(0, 240)] segments:100];
+                enemyShip.pathTime = 0;
+                
+                enemyShip.currentPathType = kPathType_ToHolding;
+            }
+        }
+        else if(enemyShip.currentPathType == kPathType_ToHolding){
+            [enemyShip setCurrentLocation:CGPointMake([enemyShip.currentPath getPointAt:enemyShip.pathTime/2].x, [enemyShip.currentPath getPointAt:enemyShip.pathTime/2].y)];
+            
+            if(abs(enemyShip.currentLocation.x - enemyShip.currentPath.endPoint.x) < 5 && abs(enemyShip.currentLocation.y - enemyShip.currentPath.endPoint.y) < 5){
+                Vector2f oldEndPoint = enemyShip.currentPath.endPoint;
+                [[enemyShip currentPath] release];
+                enemyShip.currentPath = nil;
+                enemyShip.pathTime = 0;
+                enemyShip.currentPathType = kPathType_Holding;
+                enemyShip.desiredPosition = CGPointMake(oldEndPoint.x, oldEndPoint.y);
+            }
+        }
+        else if(enemyShip.currentPathType == kPathType_Holding){
+            if(enemyShip.pathTime > 2){
+                enemyShip.pathTime = 0;
+                enemyShip.desiredPosition = CGPointMake(enemyShip.currentLocation.x + (10 * RANDOM_MINUS_1_TO_1()), enemyShip.currentLocation.y + (10 * RANDOM_MINUS_1_TO_1()));
+            }
+        }
+        else if(enemyShip.currentPathType == kPathType_Attacking){
+            
         }
     }
 }
@@ -287,6 +335,16 @@
         }
         [playerShip setDesiredLocation:location];
     }    
+}
+
+-(Vector2f) VectorRandomInRectWithVectors:(Vector2f)v1 v2:(Vector2f)v2
+{
+    Vector2f randPoint;
+    randPoint.x = RANDOM_0_TO_1() * abs(v1.x - v2.x);
+    randPoint.y = RANDOM_0_TO_1() * abs(v1.y - v2.y) + 240;
+    return randPoint;
+    
+    printf("%f %f", randPoint.x, randPoint.y);
 }
 
 - (void)render {

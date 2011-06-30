@@ -69,6 +69,8 @@ typedef enum _OutroAnimation {
     NSArray             *wavesArray;
     int                 numWaves;
     int                 currentWave;
+    
+    BezierCurve         *initialPath;
 }
 
 @property (nonatomic, retain) id <GameLevelDelegate> delegate;
@@ -85,5 +87,6 @@ typedef enum _OutroAnimation {
 - (void)updateWithTouchLocationBegan:(NSSet *)touches withEvent:(UIEvent *)event view:(UIView *)aView;
 - (void)updateWithTouchLocationMoved:(NSSet *)touches withEvent:(UIEvent *)event view:(UIView *)aView;
 - (void)render;
+- (Vector2f)VectorRandomInRectWithVectors:(Vector2f)v1 v2:(Vector2f)v2;
 
 @end

@@ -22,6 +22,9 @@
 //  the subclasses. Better organization.
 //  Last updated - 6/23/2011 @ 3:45PM - James
 //  - Synthesized the death emitter
+//
+//  Last Updated - 6/29/11 @5PM - James
+//  - Changed currentLocation to readwrite
 
 #import <Foundation/Foundation.h>
 #import "Image.h"
@@ -76,7 +79,7 @@
 @property (readonly) int shipHeight;
 @property (nonatomic, retain) Polygon *collisionPolygon;
 @property (nonatomic, retain) NSMutableArray *projectilesArray;
-@property (readonly) CGPoint currentLocation;
+@property (readwrite) CGPoint currentLocation;
 @property (nonatomic, retain) ParticleEmitter *deathAnimationEmitter;
 
 - (void)update:(GLfloat)delta;

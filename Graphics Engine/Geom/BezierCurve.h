@@ -32,6 +32,7 @@
 	GLuint segments;
 	
 }
+@property(readonly) Vector2f endPoint;
 
 - (id)initCurveFrom:(Vector2f)theStartPoint controlPoint1:(Vector2f)theControlPoint1 controlPoint2:(Vector2f)theControlPoint2 endPoint:(Vector2f)theEndPoint segments:(GLuint)theSegments;
 - (Vector2f)getPointAt:(GLfloat)t;
