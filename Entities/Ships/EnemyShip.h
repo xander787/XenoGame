@@ -119,6 +119,7 @@ typedef enum _PathType {
 } PathType;
 
 @interface EnemyShip : AbstractShip {
+    CGPoint                 holdingPositionPoint;
     
 @private
     EnemyShipID             enemyID;
@@ -141,6 +142,7 @@ typedef enum _PathType {
 @property(readwrite) PathType currentPathType;
 @property(readwrite) GLfloat pathTime;
 @property(readwrite) CGPoint desiredPosition;
+@property(readwrite) CGPoint holdingPositionPoint;
 
 - (id)initWithShipID:(EnemyShipID)aEnemyID initialLocation:(CGPoint)aPoint andPlayerShipRef:(PlayerShip *)aPlayership;
 

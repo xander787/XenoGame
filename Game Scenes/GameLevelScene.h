@@ -14,6 +14,12 @@
 //  - Began implementing tasks necessary to load
 //  level files. Moved other tasks from GameScene
 //  to this class such as collisions and health
+//
+//  Last Updated - 6/29/11 @5PM - James
+//  - Paths for incoming ships are setup now. Partially.
+//
+//  Last Updated - 7/4/11 @4PM - Alexander
+//  - Holding points for the enemies are now pre-determined
 
 #import <Foundation/Foundation.h>
 #import "BossShip.h"

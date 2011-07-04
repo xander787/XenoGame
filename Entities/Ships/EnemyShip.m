@@ -38,7 +38,7 @@
 
 @implementation EnemyShip
 
-@synthesize currentPath, currentPathType, pathTime, desiredPosition;
+@synthesize currentPath, currentPathType, pathTime, desiredPosition, holdingPositionPoint;
 
 - (id)init {
     self = [super init];

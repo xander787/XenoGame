@@ -15,19 +15,64 @@
 	<key>kWaves</key>
 	<array>
 		<array>
-			<string>kShipOneShot_One</string>
-			<string>kShipOneShot_One</string>
-			<string>kShipMissileBombShot_Three</string>
-			<string>kShipTwoShot_One</string>
-			<string>kShipTwoShot_One</string>
+			<array>
+				<string>kShipOneShot_One</string>
+				<string>60,440</string>
+			</array>
+			<array>
+				<string>kShipOneShot_One</string>
+				<string>160,440</string>
+			</array>
+			<array>
+				<string>kShipOneShot_One</string>
+				<string>260,440</string>
+			</array>
+			<array>
+				<string>kShipTwoShot_One</string>
+				<string>60,370</string>
+			</array>
+			<array>
+				<string>kShipTwoShot_One</string>
+				<string>160,370</string>
+			</array>
+			<array>
+				<string>kShipTwoShot_One</string>
+				<string>260,370</string>
+			</array>
+			<array>
+				<string>kShipMissileBombShot_Three</string>
+				<string>160,310</string>
+			</array>
 		</array>
 		<array>
-			<string>kShipTwoShot_One</string>
-			<string>kShipTwoShot_One</string>
-			<string>kShipTwoShot_One</string>
-			<string>kShipMissileBombShot_Three</string>
-			<string>kShipMissileBombShot_Three</string>
-			<string>kShipMissileBombShot_Three</string>
+			<array>
+				<string>kShipOneShot_One</string>
+				<string>60,440</string>
+			</array>
+			<array>
+				<string>kShipOneShot_One</string>
+				<string>160,440</string>
+			</array>
+			<array>
+				<string>kShipOneShot_One</string>
+				<string>260,440</string>
+			</array>
+			<array>
+				<string>kShipTwoShot_One</string>
+				<string>60,370</string>
+			</array>
+			<array>
+				<string>kShipTwoShot_One</string>
+				<string>160,370</string>
+			</array>
+			<array>
+				<string>kShipTwoShot_One</string>
+				<string>260,370</string>
+			</array>
+			<array>
+				<string>kShipMissileBombShot_Three</string>
+				<string>160,310</string>
+			</array>
 		</array>
 	</array>
 </dict>

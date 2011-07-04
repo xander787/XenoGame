@@ -170,7 +170,6 @@
 			}
 		}        
         
-        
         //Fill a C array with Vector2f's of our ship's thruster points
         numThrusters = [shipThrusterArray count];
         thrusterPoints = malloc(sizeof(Vector2f) * [shipThrusterArray count]);

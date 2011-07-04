@@ -223,7 +223,7 @@
 	location = [touch locationInView:aView];
     
 	// Flip the y location ready to check it against OpenGL coordinates
-	NSLog(@"%f %f", location.x, location.y);
+	//NSLog(@"%f %f", location.x, location.y);
 	location.y = 480-location.y;
 	[menuItems makeObjectsPerformSelector:@selector(updateWithLocation:) withObject:NSStringFromCGPoint(location)];
 	NSLog(@"%f %f", location.x, location.y);
