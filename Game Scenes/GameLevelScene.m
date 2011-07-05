@@ -10,21 +10,6 @@
 //	James Linnell - Software Engineer, Creative Design, Art Producer
 //	Tyler Newcomb - Creative Design, Art Producer
 //
-//  Last Updated - 6/21/11 @8PM - Alexander
-//  - Began implementing tasks necessary to load
-//  level files. Moved other tasks from GameScene
-//  to this class such as collisions and health
-//
-//  Last Updated - 6/22/11 @8PM - Alexander
-//  - Collision detection between playership and
-//  the entities in the enemiesSet
-//  - Preliminary wave-loading methods
-//
-//  Last Updated - 6/22/11 @10:30PM - Alexander
-//  - Very early, buggy test of removing enemies from
-//  the enemiesSet when the player collides into them
-//  (Not realistic, but for testing purposes).
-//
 //  Last Updated - 6/23/2011 @ 3:30PM - James
 //  - Added enemy bullet -> player collision and
 //  player bullet -> enemy collision
@@ -52,6 +37,9 @@
 //
 //  Last Updated - 7/4/11 @4PM - Alexander
 //  - Holding points for the enemies are now pre-determined
+//  
+//  Last Updated - 7/4/11 @8:30PM - Alexander
+//  - Dialogue loading and current wave type (Dialoge vs fighting)
 
 #import "GameLevelScene.h"
 
@@ -151,22 +139,29 @@
 }
 
 - (void)loadWave:(int)wave {
-    for(int i = 0; i < [[wavesArray objectAtIndex:wave] count]; ++i) {
-        EnemyShip *enemy = [[EnemyShip alloc] initWithShipID:[self convertToEnemyEnum:[[[wavesArray objectAtIndex:wave] objectAtIndex:i] objectAtIndex:0]] initialLocation:CGPointMake(100.0f + (50 * RANDOM_MINUS_1_TO_1()), 300.0f + (50 * RANDOM_MINUS_1_TO_1())) andPlayerShipRef:playerShip];
-        enemy.currentPath = [[BezierCurve alloc] initCurveFrom:Vector2fMake(0, 480) controlPoint1:Vector2fMake(320, 240) controlPoint2:Vector2fMake((5 * RANDOM_0_TO_1()), (240 + (10 * RANDOM_0_TO_1()))) endPoint:Vector2fMake(160, 100) segments:100];
-        enemy.currentPathType = kPathType_Initial;
-        
-        //NSArray *enemyHoldingCoord = [[[[wavesArray objectAtIndex:wave] objectAtIndex:i] objectAtIndex:1] componentsSeparatedByString:@","];
-        //enemy.holdingPositionPoint = CGPointMake([[enemyHoldingCoord objectAtIndex:0] intValue], [[enemyHoldingCoord objectAtIndex:1] intValue]);
-        //[enemyHoldingCoord release];
-        
-        NSString *enemyHoldingCoordString = [[[wavesArray objectAtIndex:wave] objectAtIndex:i] objectAtIndex:1];
-        NSArray *enemyHoldingCoordArray = [enemyHoldingCoordString componentsSeparatedByString:@","];
-        enemy.holdingPositionPoint = CGPointMake([[enemyHoldingCoordArray objectAtIndex:0] intValue], [[enemyHoldingCoordArray objectAtIndex:1] intValue]);
-        
-        NSLog(@"HOLD PTS: %f %f", enemy.holdingPositionPoint.x, enemy.holdingPositionPoint.y);
-        
-        [enemiesSet addObject:enemy];
+    if(![[wavesArray objectAtIndex:wave] respondsToSelector:@selector(setString:)]) {
+        for(int i = 0; i < [[wavesArray objectAtIndex:wave] count]; ++i) {
+            currentWaveType = kWaveType_Fighting;
+            EnemyShip *enemy = [[EnemyShip alloc] initWithShipID:[self convertToEnemyEnum:[[[wavesArray objectAtIndex:wave] objectAtIndex:i] objectAtIndex:0]] initialLocation:CGPointMake(100.0f + (50 * RANDOM_MINUS_1_TO_1()), 300.0f + (50 * RANDOM_MINUS_1_TO_1())) andPlayerShipRef:playerShip];
+            enemy.currentPath = [[BezierCurve alloc] initCurveFrom:Vector2fMake(0, 480) controlPoint1:Vector2fMake(320, 240) controlPoint2:Vector2fMake((5 * RANDOM_0_TO_1()), (240 + (10 * RANDOM_0_TO_1()))) endPoint:Vector2fMake(160, 100) segments:100];
+            enemy.currentPathType = kPathType_Initial;
+            
+            //NSArray *enemyHoldingCoord = [[[[wavesArray objectAtIndex:wave] objectAtIndex:i] objectAtIndex:1] componentsSeparatedByString:@","];
+            //enemy.holdingPositionPoint = CGPointMake([[enemyHoldingCoord objectAtIndex:0] intValue], [[enemyHoldingCoord objectAtIndex:1] intValue]);
+            //[enemyHoldingCoord release];
+            
+            NSString *enemyHoldingCoordString = [[[wavesArray objectAtIndex:wave] objectAtIndex:i] objectAtIndex:1];
+            NSArray *enemyHoldingCoordArray = [enemyHoldingCoordString componentsSeparatedByString:@","];
+            enemy.holdingPositionPoint = CGPointMake([[enemyHoldingCoordArray objectAtIndex:0] intValue], [[enemyHoldingCoordArray objectAtIndex:1] intValue]);
+            
+            NSLog(@"HOLD PTS: %f %f", enemy.holdingPositionPoint.x, enemy.holdingPositionPoint.y);
+            
+            [enemiesSet addObject:enemy];
+        }
+    }
+    else {
+        currentWaveType = kWaveType_Dialogue;
+        dialogue = [[NSArray alloc] initWithArray:[[wavesArray objectAtIndex:wave] componentsSeparatedByString:@";"]];
     }
     
     int multiplier = 1;
@@ -194,7 +189,7 @@
     
     [self updateCollisions];
         
-    if([enemiesSet count] == 0) {
+    if(currentWaveType == kWaveType_Fighting && [enemiesSet count] == 0) {
         if(currentWave != (numWaves - 1)) {
             currentWave++;
             [self loadWave:currentWave];

@@ -20,6 +20,9 @@
 //
 //  Last Updated - 7/4/11 @4PM - Alexander
 //  - Holding points for the enemies are now pre-determined
+//  
+//  Last Updated - 7/4/11 @8:30PM - Alexander
+//  - Dialogue loading and current wave type (Dialoge vs fighting)
 
 #import <Foundation/Foundation.h>
 #import "BossShip.h"
@@ -44,6 +47,10 @@ typedef enum _LevelType {
     kLevelType_Cutscene
 } LevelType;
 
+typedef enum _WaveType {
+    kWaveType_Dialogue = 0,
+    kWaveType_Fighting
+} WaveType;
 
 typedef enum _OutroAnimation {
     kOutroAnimation_Flyoff = 0,
@@ -70,6 +77,8 @@ typedef enum _OutroAnimation {
     
     NSMutableDictionary *levelDictionary;
     LevelType           levelType;
+    WaveType            currentWaveType;
+    NSArray             *dialogue;
     int                 levelDifficulty;
     OutroAnimation      outroAnimation;
     NSArray             *wavesArray;
