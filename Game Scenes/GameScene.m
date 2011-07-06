@@ -207,8 +207,6 @@
 	UITouch *touch = [[event touchesForView:aView] anyObject];
 	CGPoint location;
 	location = [touch locationInView:aView];
-
-    [self scoreChangedBy:100];
     
 	// Flip the y location ready to check it against OpenGL coordinates
 	location.y = 480-location.y;
@@ -342,7 +340,6 @@
 - (void)render {
     // In-game graphics rendered first
     [backgroundParticleEmitter renderParticles];
-    [font drawStringAt:CGPointMake(10.0, 465.0) text:[NSString stringWithFormat:@"%09d", playerScore]];
     [healthBarBackground renderAtPoint:CGPointMake(254, 14.0) centerOfImage:NO];
     [healthBar renderAtPoint:CGPointMake(255, 15.0) centerOfImage:NO];
     
@@ -356,6 +353,8 @@
     if(!gameIsPaused){
         [pauseButton render];
     }
+    
+    [font drawStringAt:CGPointMake(10.0, 465.0) text:[NSString stringWithFormat:@"%09d", playerScore]];
         
     if(DEBUG) {
         
