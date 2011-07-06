@@ -40,6 +40,10 @@
 //  
 //  Last Updated - 7/4/11 @8:30PM - Alexander
 //  - Dialogue loading and current wave type (Dialoge vs fighting)
+//
+//  Last Updated - 7/5/2011 @10PM - James
+//  - Small bug fix where enemies were getting removed
+//  from the set too soon
 
 #import "GameLevelScene.h"
 
@@ -180,7 +184,7 @@
     NSMutableSet *discardedEnemies = [[NSMutableSet alloc] init];
     for(EnemyShip *enemyShip in enemiesSet){
         [enemyShip update:aDelta];
-        if(enemyShip.shipIsDead) {
+        if(enemyShip.shipIsDead && enemyShip.deathAnimationEmitter.particleCount == 0) {
             [discardedEnemies addObject:enemyShip];
         }
     }
