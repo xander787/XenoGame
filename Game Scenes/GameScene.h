@@ -32,6 +32,10 @@
 //  - Added gameLevel object which will be
 //  used and reused to handle levels and rendering
 //  them. Also added the method for loading that object.
+//
+//  Last Updated - 6/5/11 @11PM - Alexander
+//  - Removed playerScoreString because it was causing
+//  memory corruption and crashes.
 
 
 #import <Foundation/Foundation.h>
@@ -76,7 +80,6 @@ typedef enum _Level {
     // In-game graphics
     ParticleEmitter *backgroundParticleEmitter;
     AngelCodeFont   *font;
-    NSString        *playerScoreString;
     int             playerScore;
     Image           *healthBar;
     Image           *healthBarBackground;

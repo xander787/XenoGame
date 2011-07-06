@@ -54,6 +54,11 @@
 //
 //  Last Updated - 7/5/2011 @ 9:20PM - James
 //  - Initial pause screen code integrated
+//
+//  Last Updated - 6/5/11 @11PM - Alexander
+//  - Removed playerScoreString because it was causing
+//  memory corruption and crashes. The player score integer is now
+//  directly accessed and rendered by the AngelCodeFont font instance
 
 
 #import "GameScene.h"
@@ -167,7 +172,6 @@
     
     // In-game graphics updating
     [backgroundParticleEmitter update:aDelta];
-    playerScoreString = [NSString stringWithFormat:@"%09d", playerScore];
     //[healthBar setScale:Scale2fMake((float)testShip.shipHealth / testShip.shipMaxHealth, 1.0f)];
     
     // Level
@@ -203,6 +207,8 @@
 	UITouch *touch = [[event touchesForView:aView] anyObject];
 	CGPoint location;
 	location = [touch locationInView:aView];
+
+    [self scoreChangedBy:100];
     
 	// Flip the y location ready to check it against OpenGL coordinates
 	location.y = 480-location.y;
@@ -336,7 +342,7 @@
 - (void)render {
     // In-game graphics rendered first
     [backgroundParticleEmitter renderParticles];
-//    [font drawStringAt:CGPointMake(10.0, 465.0) text:playerScoreString];
+    [font drawStringAt:CGPointMake(10.0, 465.0) text:[NSString stringWithFormat:@"%09d", playerScore]];
     [healthBarBackground renderAtPoint:CGPointMake(254, 14.0) centerOfImage:NO];
     [healthBar renderAtPoint:CGPointMake(255, 15.0) centerOfImage:NO];
     
