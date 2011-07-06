@@ -46,6 +46,9 @@
  *  Last Updated - 6/15/2011 @ 3:30PM - Alexander
  *  - Added structures and methods for new Scale2f
  *  vector for scaling images
+ *
+ *  Last Updated - 7/4/2011 @ 6:45PM - James
+ *  - Added kControlType_MainMenu et al to the enum
  */
 
 #import <Foundation/Foundation.h>
@@ -84,6 +87,10 @@ enum {
 	kControlType_Settings,
 	kControlType_About,
 	kControlType_HighScores,
+    kControlType_MainMenu,
+    kControlType_ReturnToGame,
+    kControlType_Shop,
+    kControlType_Pause,
 	kControl_Idle,
 	kControl_Scaling,
 	kControl_Selected,

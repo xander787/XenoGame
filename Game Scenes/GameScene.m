@@ -51,6 +51,9 @@
 //  Last Updated - 6/22/11 @1PM - Alexander
 //  - Updating game level scene with touch information when level is
 //  in progress.
+//
+//  Last Updated - 7/5/2011 @ 9:20PM - James
+//  - Initial pause screen code integrated
 
 
 #import "GameScene.h"
@@ -132,6 +135,9 @@
     
     healthBar = [[Image alloc] initWithImage:@"HealthBar.png" scale:Scale2fOne];
     healthBarBackground = [[Image alloc] initWithImage:@"HealthBarBackground.png" scale:Scale2fOne];
+    
+    pauseButton = [[MenuControl alloc] initWithImageNamed:@"pause.png" location:Vector2fMake(285, 445) centerOfImage:YES type:kControlType_Pause];
+    pauseScreen = [[PauseMenuScene alloc] init];
 }
 
 - (void)updateWithDelta:(GLfloat)aDelta {
@@ -146,6 +152,15 @@
                 sceneState = kSceneState_Running;
             }
             break;
+        case kSceneState_TransitionOut:
+			sceneAlpha -= _sceneFadeSpeed * aDelta;
+            [_sharedDirector setGlobalAlpha:sceneAlpha];
+			if(sceneAlpha < 0)
+                // If the scene being transitioned to does not exist then transition
+                // this scene back in
+				if(![_sharedDirector setCurrentSceneToSceneWithKey:nextSceneKey])
+                    sceneState = kSceneState_TransitionIn;
+			break;
         default:
             break;
     }
@@ -156,8 +171,23 @@
     //[healthBar setScale:Scale2fMake((float)testShip.shipHealth / testShip.shipMaxHealth, 1.0f)];
     
     // Level
-    if(levelInProgress) {
+    if(levelInProgress && !gameIsPaused) {
         [gameLevel update:aDelta];
+    }
+    [pauseButton updateWithDelta:[NSNumber numberWithFloat:aDelta]];
+    if([pauseButton state] == kControl_Selected){
+        //Pause stuff
+        gameIsPaused = TRUE;
+        [pauseButton setState:kControl_Idle];
+    }
+    if(gameIsPaused){
+        [pauseScreen updateWithDelta:aDelta];
+        if([pauseScreen returnToGame] == TRUE){
+            gameIsPaused = FALSE;
+            [pauseButton setState:kControl_Idle];
+            [pauseScreen setReturnToGame:FALSE];
+            [self setSceneState:kSceneState_Running];
+        }
     }
 }
 
@@ -180,6 +210,12 @@
     if(levelInProgress) {
         [gameLevel updateWithTouchLocationBegan:touches withEvent:event view:aView];
     }
+    if(gameIsPaused){
+        [pauseScreen updateWithTouchLocationBegan:touches withEvent:event view:aView];
+    }
+    if(!gameIsPaused){
+        [pauseButton updateWithLocation:NSStringFromCGPoint(location)];
+    }
 }
 
 - (void)updateWithTouchLocationMoved:(NSSet *)touches withEvent:(UIEvent *)event view:(UIView *)aView {
@@ -193,6 +229,12 @@
     
     if(levelInProgress) {
         [gameLevel updateWithTouchLocationMoved:touches withEvent:event view:aView];
+    }
+    if(gameIsPaused){
+        [pauseScreen updateWithTouchLocationMoved:touches withEvent:event view:aView];
+    }
+    if(!gameIsPaused){
+        [pauseButton updateWithLocation:NSStringFromCGPoint(location)];
     }
 }
 
@@ -294,13 +336,19 @@
 - (void)render {
     // In-game graphics rendered first
     [backgroundParticleEmitter renderParticles];
-    [font drawStringAt:CGPointMake(10.0, 465.0) text:playerScoreString];
+//    [font drawStringAt:CGPointMake(10.0, 465.0) text:playerScoreString];
     [healthBarBackground renderAtPoint:CGPointMake(254, 14.0) centerOfImage:NO];
     [healthBar renderAtPoint:CGPointMake(255, 15.0) centerOfImage:NO];
     
     // Level
     if(levelInProgress) {
         [gameLevel render];
+    }
+    if(gameIsPaused){
+        [pauseScreen render];
+    }
+    if(!gameIsPaused){
+        [pauseButton render];
     }
         
     if(DEBUG) {

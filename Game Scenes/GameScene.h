@@ -46,6 +46,7 @@
 #import "AngelCodeFont.h"
 #import "AbstractProjectile.h"
 #import "GameLevelScene.h"
+#import "PauseMenuScene.h"
 
 typedef enum _Level {
     kLevel_DevTest = 0,
@@ -89,6 +90,11 @@ typedef enum _Level {
     Level           currentLevel;
     GameLevelScene  *gameLevel;
     BOOL            levelInProgress;
+    
+    //Pause Screen
+    PauseMenuScene  *pauseScreen;
+    BOOL            gameIsPaused;
+    MenuControl     *pauseButton;
 }
 
 - (void)initGameScene;

@@ -120,6 +120,10 @@
 		B9935E5013AC64F3005BBA67 /* kEnemyTwoShotLevelOne.png in Resources */ = {isa = PBXBuildFile; fileRef = B9935E4613AC64F3005BBA67 /* kEnemyTwoShotLevelOne.png */; };
 		B9935E5113AC64F3005BBA67 /* kEnemyWaveShotLevelOne.png in Resources */ = {isa = PBXBuildFile; fileRef = B9935E4713AC64F3005BBA67 /* kEnemyWaveShotLevelOne.png */; };
 		B9935E5213AC64F3005BBA67 /* kEnemyWaveShotLevelTwo.png in Resources */ = {isa = PBXBuildFile; fileRef = B9935E4813AC64F3005BBA67 /* kEnemyWaveShotLevelTwo.png */; };
+		B9C3AB7A13C29969003202BA /* PauseMenuScene.m in Sources */ = {isa = PBXBuildFile; fileRef = B9C3AB7913C29969003202BA /* PauseMenuScene.m */; };
+		B9C3AB7C13C2A7B4003202BA /* mainmenu.png in Resources */ = {isa = PBXBuildFile; fileRef = B9C3AB7B13C2A7B4003202BA /* mainmenu.png */; };
+		B9C3AB7E13C2AA50003202BA /* return.png in Resources */ = {isa = PBXBuildFile; fileRef = B9C3AB7D13C2AA50003202BA /* return.png */; };
+		B9C3AB8013C2BF8E003202BA /* pause.png in Resources */ = {isa = PBXBuildFile; fileRef = B9C3AB7F13C2BF8E003202BA /* pause.png */; };
 		B9EB2F3813AD2046003484B1 /* Level_DevTest.plist in Resources */ = {isa = PBXBuildFile; fileRef = B9EB2F3713AD2046003484B1 /* Level_DevTest.plist */; };
 		B9EB2F3C13AD3791003484B1 /* kEnemyShipTwoShotkBossAfricaAssistOne.png in Resources */ = {isa = PBXBuildFile; fileRef = B9EB2F3913AD3790003484B1 /* kEnemyShipTwoShotkBossAfricaAssistOne.png */; };
 		B9EB2F3D13AD3791003484B1 /* kEnemyTwoShotLevelTwo.png in Resources */ = {isa = PBXBuildFile; fileRef = B9EB2F3A13AD3790003484B1 /* kEnemyTwoShotLevelTwo.png */; };
@@ -129,7 +133,7 @@
 /* Begin PBXFileReference section */
 		1130822512D907B1009C9502 /* MiniBossGeneral.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MiniBossGeneral.h; path = Entities/Ships/MiniBosses/MiniBossGeneral.h; sourceTree = "<group>"; };
 		1130822612D907B1009C9502 /* MiniBossGeneral.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MiniBossGeneral.m; path = Entities/Ships/MiniBosses/MiniBossGeneral.m; sourceTree = "<group>"; };
-		1130822812D907CD009C9502 /* BossShipAtlas.h */ = {isa = PBXFileReference; fileEncoding = 4; name = BossShipAtlas.h; path = Entities/Ships/Bosses/BossShipAtlas.h; sourceTree = "<group>"; };
+		1130822812D907CD009C9502 /* BossShipAtlas.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BossShipAtlas.h; path = Entities/Ships/Bosses/BossShipAtlas.h; sourceTree = "<group>"; };
 		1130822912D907CD009C9502 /* BossShipAtlas.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BossShipAtlas.m; path = Entities/Ships/Bosses/BossShipAtlas.m; sourceTree = "<group>"; };
 		11336112129E54F300FE6A03 /* BossShips.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = BossShips.plist; path = "Game Resources/BossShips.plist"; sourceTree = SOURCE_ROOT; };
 		114A1A7312989C4B004769D4 /* PlayerShips.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = PlayerShips.plist; path = "Game Resources/PlayerShips.plist"; sourceTree = SOURCE_ROOT; };
@@ -292,6 +296,11 @@
 		B9935E4613AC64F3005BBA67 /* kEnemyTwoShotLevelOne.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = kEnemyTwoShotLevelOne.png; path = "Game Resources/Images/Normal/Ships/Enemy Ships/kEnemyTwoShotLevelOne.png"; sourceTree = SOURCE_ROOT; };
 		B9935E4713AC64F3005BBA67 /* kEnemyWaveShotLevelOne.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = kEnemyWaveShotLevelOne.png; path = "Game Resources/Images/Normal/Ships/Enemy Ships/kEnemyWaveShotLevelOne.png"; sourceTree = SOURCE_ROOT; };
 		B9935E4813AC64F3005BBA67 /* kEnemyWaveShotLevelTwo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = kEnemyWaveShotLevelTwo.png; path = "Game Resources/Images/Normal/Ships/Enemy Ships/kEnemyWaveShotLevelTwo.png"; sourceTree = SOURCE_ROOT; };
+		B9C3AB7813C29969003202BA /* PauseMenuScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PauseMenuScene.h; sourceTree = "<group>"; };
+		B9C3AB7913C29969003202BA /* PauseMenuScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PauseMenuScene.m; sourceTree = "<group>"; };
+		B9C3AB7B13C2A7B4003202BA /* mainmenu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mainmenu.png; sourceTree = "<group>"; };
+		B9C3AB7D13C2AA50003202BA /* return.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = return.png; sourceTree = "<group>"; };
+		B9C3AB7F13C2BF8E003202BA /* pause.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pause.png; sourceTree = "<group>"; };
 		B9EB2F3713AD2046003484B1 /* Level_DevTest.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Level_DevTest.plist; path = "Game Resources/Level_DevTest.plist"; sourceTree = SOURCE_ROOT; };
 		B9EB2F3913AD3790003484B1 /* kEnemyShipTwoShotkBossAfricaAssistOne.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = kEnemyShipTwoShotkBossAfricaAssistOne.png; path = "Game Resources/Images/Normal/Ships/Enemy Ships/kEnemyShipTwoShotkBossAfricaAssistOne.png"; sourceTree = SOURCE_ROOT; };
 		B9EB2F3A13AD3790003484B1 /* kEnemyTwoShotLevelTwo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = kEnemyTwoShotLevelTwo.png; path = "Game Resources/Images/Normal/Ships/Enemy Ships/kEnemyTwoShotLevelTwo.png"; sourceTree = SOURCE_ROOT; };
@@ -560,6 +569,8 @@
 				11B1B8CE1276B53B006D085D /* SettingsScene.m */,
 				11B1BBC8127A64E0006D085D /* HighScoresScene.h */,
 				11B1BBC9127A64E0006D085D /* HighScoresScene.m */,
+				B9C3AB7813C29969003202BA /* PauseMenuScene.h */,
+				B9C3AB7913C29969003202BA /* PauseMenuScene.m */,
 			);
 			name = "Game Scenes";
 			sourceTree = "<group>";
@@ -736,6 +747,9 @@
 		11F3274212A0D8D5003CF17B /* Application Resources */ = {
 			isa = PBXGroup;
 			children = (
+				B9C3AB7F13C2BF8E003202BA /* pause.png */,
+				B9C3AB7D13C2AA50003202BA /* return.png */,
+				B9C3AB7B13C2A7B4003202BA /* mainmenu.png */,
 				1169BA9613AC432D005FA11F /* HealthBar.png */,
 				1169BA9813AC43F0005FA11F /* HealthBarBackground.png */,
 				11F3274312A0D8D5003CF17B /* about.png */,
@@ -943,6 +957,9 @@
 				B9EB2F3C13AD3791003484B1 /* kEnemyShipTwoShotkBossAfricaAssistOne.png in Resources */,
 				B9EB2F3D13AD3791003484B1 /* kEnemyTwoShotLevelTwo.png in Resources */,
 				B9EB2F3E13AD3791003484B1 /* kEnemyWaveShotLevelFour.png in Resources */,
+				B9C3AB7C13C2A7B4003202BA /* mainmenu.png in Resources */,
+				B9C3AB7E13C2AA50003202BA /* return.png in Resources */,
+				B9C3AB8013C2BF8E003202BA /* pause.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -999,6 +1016,7 @@
 				1130822712D907B1009C9502 /* MiniBossGeneral.m in Sources */,
 				1130822A12D907CD009C9502 /* BossShipAtlas.m in Sources */,
 				1169BA8513ABFBEC005FA11F /* GameLevelScene.m in Sources */,
+				B9C3AB7A13C29969003202BA /* PauseMenuScene.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
