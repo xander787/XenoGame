@@ -10,19 +10,6 @@
 //	James Linnell - Software Engineer, Creative Design, Art Producer
 //	Tyler Newcomb - Creative Design, Art Producer
 //
-//  Last Updated - 1/3/11 @5PM - Alexander
-//  - Moved a lot of external code to the polygon and internalized
-//  it into the class of the ships to make it more organized.
-//
-//  Last Updatd - 1/5/11 @12:30AM - Alexander
-//  - Added really quick code to the render function that will
-//  print the game's framerate if DEBUG is set to on, thus helping
-//  us track performance later in development.
-//
-//  Last Updated - 5/29/11 @ 4PM - James
-//  - Changed the usage of testShip.boundingBox to .shipWidth/Height
-//  Note: boudingBox should be deprecated
-//
 //  Last Updated - 6/13/11 @3PM - Alexander
 //  - Added starry background, and score string. Both are currently
 //  rendering
@@ -59,6 +46,9 @@
 //  - Removed playerScoreString because it was causing
 //  memory corruption and crashes. The player score integer is now
 //  directly accessed and rendered by the AngelCodeFont font instance
+//
+//  Last Updated - 6/7/11 @9:30AM - Alexander
+//  - Changed the pause button position because the image is now smaller
 
 
 #import "GameScene.h"
@@ -141,7 +131,7 @@
     healthBar = [[Image alloc] initWithImage:@"HealthBar.png" scale:Scale2fOne];
     healthBarBackground = [[Image alloc] initWithImage:@"HealthBarBackground.png" scale:Scale2fOne];
     
-    pauseButton = [[MenuControl alloc] initWithImageNamed:@"pause.png" location:Vector2fMake(285, 445) centerOfImage:YES type:kControlType_Pause];
+    pauseButton = [[MenuControl alloc] initWithImageNamed:@"pause.png" location:Vector2fMake(305, 465) centerOfImage:YES type:kControlType_Pause];
     pauseScreen = [[PauseMenuScene alloc] init];
 }
 
