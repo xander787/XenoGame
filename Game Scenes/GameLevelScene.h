@@ -61,6 +61,7 @@ typedef enum _OutroAnimation {
 @interface GameLevelScene : NSObject {
     id <GameLevelDelegate>  delegate;
     
+    AngelCodeFont   *font;
     NSUserDefaults          *settings;
     CGRect                  screenBounds;
     
@@ -78,7 +79,33 @@ typedef enum _OutroAnimation {
     NSMutableDictionary *levelDictionary;
     LevelType           levelType;
     WaveType            currentWaveType;
+
+    // Dialogue Displaying
     NSArray             *dialogue;
+    NSMutableString     *dialogueBuffer;
+    NSString            *dialogueLineOne;
+    NSString            *dialogueLineTwo;
+    NSString            *dialogueLineThree;
+    NSString            *dialogueLineFour;
+    NSString            *dialogueLineFive;
+    NSString            *dialogueLineSix;
+    NSMutableString     *dialogueLineOneBuffer;
+    NSMutableString     *dialogueLineTwoBuffer;
+    NSMutableString     *dialogueLineThreeBuffer;
+    NSMutableString     *dialogueLineFourBuffer;
+    NSMutableString     *dialogueLineFiveBuffer;
+    NSMutableString     *dialogueLineSixBuffer;
+    NSString            *remainderDialogue;
+    BOOL                dialogueNeedsContinue;
+    int                 currentDialogueSpeakerIndex;
+    int                 currentDialogueDisplayLine;
+    int                 currentDialogueCharacterPosition;
+    int                 dialogueFirstSectionLength;
+    int                 currentNumberOfDialogueLinesToShow;
+    float               dialogueTypeTimeDelay;
+    Image               *dialogueBorder;
+    Image               *dialogueFastForwardButton;
+    
     int                 levelDifficulty;
     OutroAnimation      outroAnimation;
     NSArray             *wavesArray;
@@ -103,5 +130,7 @@ typedef enum _OutroAnimation {
 - (void)updateWithTouchLocationMoved:(NSSet *)touches withEvent:(UIEvent *)event view:(UIView *)aView;
 - (void)render;
 - (Vector2f)VectorRandomInRectWithVectors:(Vector2f)v1 v2:(Vector2f)v2;
+- (void)skipToNewPageOfText;
+
 
 @end

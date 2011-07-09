@@ -120,6 +120,8 @@
 		B9935E5013AC64F3005BBA67 /* kEnemyTwoShotLevelOne.png in Resources */ = {isa = PBXBuildFile; fileRef = B9935E4613AC64F3005BBA67 /* kEnemyTwoShotLevelOne.png */; };
 		B9935E5113AC64F3005BBA67 /* kEnemyWaveShotLevelOne.png in Resources */ = {isa = PBXBuildFile; fileRef = B9935E4713AC64F3005BBA67 /* kEnemyWaveShotLevelOne.png */; };
 		B9935E5213AC64F3005BBA67 /* kEnemyWaveShotLevelTwo.png in Resources */ = {isa = PBXBuildFile; fileRef = B9935E4813AC64F3005BBA67 /* kEnemyWaveShotLevelTwo.png */; };
+		B9A7053D13C83EBD004A486C /* DialogueBoxBorder.png in Resources */ = {isa = PBXBuildFile; fileRef = B9A7053B13C83EBC004A486C /* DialogueBoxBorder.png */; };
+		B9A7053E13C83EBD004A486C /* fastforward.png in Resources */ = {isa = PBXBuildFile; fileRef = B9A7053C13C83EBC004A486C /* fastforward.png */; };
 		B9C3AB7A13C29969003202BA /* PauseMenuScene.m in Sources */ = {isa = PBXBuildFile; fileRef = B9C3AB7913C29969003202BA /* PauseMenuScene.m */; };
 		B9C3AB7C13C2A7B4003202BA /* mainmenu.png in Resources */ = {isa = PBXBuildFile; fileRef = B9C3AB7B13C2A7B4003202BA /* mainmenu.png */; };
 		B9C3AB7E13C2AA50003202BA /* return.png in Resources */ = {isa = PBXBuildFile; fileRef = B9C3AB7D13C2AA50003202BA /* return.png */; };
@@ -296,6 +298,8 @@
 		B9935E4613AC64F3005BBA67 /* kEnemyTwoShotLevelOne.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = kEnemyTwoShotLevelOne.png; path = "Game Resources/Images/Normal/Ships/Enemy Ships/kEnemyTwoShotLevelOne.png"; sourceTree = SOURCE_ROOT; };
 		B9935E4713AC64F3005BBA67 /* kEnemyWaveShotLevelOne.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = kEnemyWaveShotLevelOne.png; path = "Game Resources/Images/Normal/Ships/Enemy Ships/kEnemyWaveShotLevelOne.png"; sourceTree = SOURCE_ROOT; };
 		B9935E4813AC64F3005BBA67 /* kEnemyWaveShotLevelTwo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = kEnemyWaveShotLevelTwo.png; path = "Game Resources/Images/Normal/Ships/Enemy Ships/kEnemyWaveShotLevelTwo.png"; sourceTree = SOURCE_ROOT; };
+		B9A7053B13C83EBC004A486C /* DialogueBoxBorder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DialogueBoxBorder.png; sourceTree = "<group>"; };
+		B9A7053C13C83EBC004A486C /* fastforward.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fastforward.png; sourceTree = "<group>"; };
 		B9C3AB7813C29969003202BA /* PauseMenuScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PauseMenuScene.h; sourceTree = "<group>"; };
 		B9C3AB7913C29969003202BA /* PauseMenuScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PauseMenuScene.m; sourceTree = "<group>"; };
 		B9C3AB7B13C2A7B4003202BA /* mainmenu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mainmenu.png; sourceTree = "<group>"; };
@@ -747,6 +751,8 @@
 		11F3274212A0D8D5003CF17B /* Application Resources */ = {
 			isa = PBXGroup;
 			children = (
+				B9A7053B13C83EBC004A486C /* DialogueBoxBorder.png */,
+				B9A7053C13C83EBC004A486C /* fastforward.png */,
 				B9C3AB7F13C2BF8E003202BA /* pause.png */,
 				B9C3AB7D13C2AA50003202BA /* return.png */,
 				B9C3AB7B13C2A7B4003202BA /* mainmenu.png */,
@@ -960,6 +966,8 @@
 				B9C3AB7C13C2A7B4003202BA /* mainmenu.png in Resources */,
 				B9C3AB7E13C2AA50003202BA /* return.png in Resources */,
 				B9C3AB8013C2BF8E003202BA /* pause.png in Resources */,
+				B9A7053D13C83EBD004A486C /* DialogueBoxBorder.png in Resources */,
+				B9A7053E13C83EBD004A486C /* fastforward.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

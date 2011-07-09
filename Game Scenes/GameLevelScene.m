@@ -44,9 +44,176 @@
 //  Last Updated - 7/5/2011 @10PM - James
 //  - Small bug fix where enemies were getting removed
 //  from the set too soon
+//
+//  Last Updated - 7/9/2011 @12:50AM - James
+//  - Added initial dialogue initializing, updating, and rendering
+//  code. Still has bugs like hud element rendering over dialogue
+//  stuff, no animation yet.This was a hell of an update, ver hard
+//  for both of us.
 
 #import "GameLevelScene.h"
 
+static const char *
+NextWord(const char *input)
+{
+    static       char  buffer[1024];
+    static const char *text = 0;
+    
+    char *endOfBuffer = buffer + sizeof(buffer) - 1;
+    char *pBuffer     = buffer;
+    
+    if (input) {
+        text = input;
+    }
+    
+    if (text) {
+        /* skip leading spaces */
+        while (isspace(*text)) {
+            ++text;
+        }
+        
+        /* copy the word to our static buffer */
+        while (*text && !isspace(*text) && pBuffer < endOfBuffer) {
+            *(pBuffer++) = *(text++);
+        }
+    }
+    
+    *pBuffer = 0;
+    
+    return buffer;
+}
+
+const char *
+WrapText( const char *text
+         , int         maxWidth
+         , const char *prefixFirst
+         , const char *prefixRest)
+{
+    const char *prefix = 0;
+    const char *s      = 0;
+    char       *wrap   = 0;
+    char       *w      = 0;
+    
+    int lineCount      = 0;
+    int lenBuffer      = 0;
+    int lenPrefixFirst = strlen(prefixFirst? prefixFirst: "");
+    int lenPrefixRest  = strlen(prefixRest ? prefixRest : "");
+    int spaceLeft      = maxWidth;
+    int wordsThisLine  = 0;
+    
+    if (maxWidth == 0) {
+        maxWidth = 78;
+    }
+    if (lenPrefixFirst + 5 > maxWidth) {
+        maxWidth = lenPrefixFirst + 5;
+    }
+    if (lenPrefixRest + 5 > maxWidth) {
+        maxWidth = lenPrefixRest + 5;
+    }
+    
+    /* two passes through the input. the first pass updates the buffer length.
+     * the second pass creates and populates the buffer
+     */
+    while (wrap == 0) {
+        lineCount = 0;
+        
+        if (lenBuffer) {
+            /* second pass, so create the wrapped buffer */
+            wrap = (char *)malloc(sizeof(char) * (lenBuffer + 1));
+            if (wrap == 0) {
+                break;
+            }
+        }
+        w = wrap;
+        
+        /* for each Word in Text
+         *   if Width(Word) > SpaceLeft
+         *     insert line break before Word in Text
+         *     SpaceLeft := LineWidth - Width(Word)
+         *   else
+         *     SpaceLeft := SpaceLeft - Width(Word) + SpaceWidth
+         */
+        s = NextWord(text);
+        while (*s) {
+            spaceLeft     = maxWidth;
+            wordsThisLine = 0;
+            
+            /* copy the prefix */
+            prefix = lineCount ? prefixRest : prefixFirst;
+            prefix = prefix ? prefix : "";
+            while (*prefix) {
+                if (w == 0) {
+                    ++lenBuffer;
+                } else {
+                    *(w++) = *prefix == '\n' ? ' ' : *prefix;
+                }
+                --spaceLeft;
+                ++prefix;
+            }
+            
+            /* force the first word to always be completely copied */
+            while (*s) {
+                if (w == 0) {
+                    ++lenBuffer;
+                } else {
+                    *(w++) = *s;
+                }
+                --spaceLeft;
+                ++s;
+            }
+            if (!*s) {
+                s = NextWord(0);
+            }
+            
+            /* copy as many words as will fit onto the current line */
+            while (*s && strlen(s) + 1 <= spaceLeft) {
+                /* will fit so add a space between the words */
+                if (w == 0) {
+                    ++lenBuffer;
+                } else {
+                    *(w++) = ' ';
+                }
+                --spaceLeft;
+                
+                /* then copy the word */
+                while (*s) {
+                    if (w == 0) {
+                        ++lenBuffer;
+                    } else {
+                        *(w++) = *s;
+                    }
+                    --spaceLeft;
+                    ++s;
+                }
+                if (!*s) {
+                    s = NextWord(0);
+                }
+            }
+            if (!*s) {
+                s = NextWord(0);
+            }
+            
+            if (*s) {
+                /* add a new line here */
+                if (w == 0) {
+                    ++lenBuffer;
+                } else {
+                    *(w++) = '\n';
+                }
+            }
+            
+            ++lineCount;
+        }
+        
+        lenBuffer += 2;
+        
+        if (w) {
+            *w = 0;
+        }
+    }
+    
+    return wrap;
+}
 
 @implementation GameLevelScene
 
@@ -89,6 +256,10 @@
         [self loadWave:currentWave];
         
         playerShip = [[PlayerShip alloc] initWithShipID:kPlayerShip_Dev andInitialLocation:CGPointMake(155, 40)];
+        
+        font = [[AngelCodeFont alloc] initWithFontImageNamed:@"xenophobefont.png" controlFile:@"xenophobefont" scale:(1.0/3.0) filter:GL_LINEAR];
+        dialogueBorder = [[Image alloc] initWithImage:@"DialogueBoxBorder.png" scale:Scale2fOne];
+        dialogueFastForwardButton = [[Image alloc] initWithImage:@"fastforward.png" scale:Scale2fOne];
     }
     
     return self;
@@ -166,6 +337,64 @@
     else {
         currentWaveType = kWaveType_Dialogue;
         dialogue = [[NSArray alloc] initWithArray:[[wavesArray objectAtIndex:wave] componentsSeparatedByString:@";"]];
+        currentDialogueSpeakerIndex = 0;
+        currentDialogueDisplayLine = 1;
+        currentDialogueCharacterPosition = 0;
+        dialogueBuffer = [[NSMutableString alloc] init];
+        dialogueLineOneBuffer = [[NSMutableString alloc] init];
+        dialogueLineTwoBuffer = [[NSMutableString alloc] init];
+        dialogueLineThreeBuffer = [[NSMutableString alloc] init];
+        dialogueLineFourBuffer = [[NSMutableString alloc] init];
+        dialogueLineFiveBuffer = [[NSMutableString alloc] init];
+        dialogueLineSixBuffer = [[NSMutableString alloc] init];
+        
+        //Fill the string with the necessary text
+        const char* wrappedText = WrapText([[[[dialogue objectAtIndex:0] componentsSeparatedByString:@":"] objectAtIndex:1] UTF8String], 22, "", "");
+        NSMutableArray *wrappedTextArray = [[NSMutableArray alloc] initWithArray:[[NSString stringWithCString:wrappedText encoding:NSASCIIStringEncoding] componentsSeparatedByString:@"\n"]];
+        NSLog(@"%@", wrappedTextArray);
+        dialogueLineOne = [[NSString alloc] initWithString:[wrappedTextArray objectAtIndex:0]];
+        currentNumberOfDialogueLinesToShow = 1;
+        if([wrappedTextArray count] > 1){
+            dialogueLineTwo = [[NSString alloc] initWithString:[wrappedTextArray objectAtIndex:1]];
+            currentNumberOfDialogueLinesToShow = 2;
+            if([wrappedTextArray count] > 2){
+                dialogueLineThree = [[NSString alloc] initWithString:[wrappedTextArray objectAtIndex:2]];
+                currentNumberOfDialogueLinesToShow = 3;
+                if([wrappedTextArray count] > 3){
+                    //Exceeding three lines, prep the stuff for a larger word wrap
+                    [wrappedTextArray removeObject:dialogueLineOne];
+                    [wrappedTextArray removeObject:dialogueLineTwo];
+                    [wrappedTextArray removeObject:dialogueLineThree];
+                    
+                    NSString *secondHalfString = [[NSString alloc] initWithString:[wrappedTextArray componentsJoinedByString:@" "]];
+                    NSLog(@"joined:\n%@", secondHalfString);
+                    const char* secondHalf = WrapText([secondHalfString UTF8String], 28, "", "");
+                    NSMutableArray *secondWrappedArray = [[NSMutableArray alloc] initWithArray:[[NSString stringWithCString:secondHalf encoding:NSASCIIStringEncoding] componentsSeparatedByString:@"\n"]];
+                    NSLog(@"%@", secondWrappedArray);
+                    dialogueLineFour = [[NSString alloc] initWithString:[secondWrappedArray objectAtIndex:0]];
+                    currentNumberOfDialogueLinesToShow = 4;
+                    if([secondWrappedArray count] > 1){
+                        dialogueLineFive = [[NSString alloc] initWithString:[secondWrappedArray objectAtIndex:1]];
+                        currentNumberOfDialogueLinesToShow = 5;
+                        if([secondWrappedArray count] > 2){
+                            dialogueLineSix = [[NSString alloc] initWithString:[secondWrappedArray objectAtIndex:2]];
+                            currentNumberOfDialogueLinesToShow = 6;
+                            if([secondWrappedArray count] >3){
+                                //Exceeds all six lines, fill the remainder string
+                                [secondWrappedArray removeObject:dialogueLineFour];
+                                [secondWrappedArray removeObject:dialogueLineFive];
+                                [secondWrappedArray removeObject:dialogueLineSix];
+                                
+                                remainderDialogue = [[NSString alloc] initWithString:[secondWrappedArray componentsJoinedByString:@" "]];
+                            }
+                        }
+                    }
+                    [secondWrappedArray release];
+                }
+            }
+        }
+        [wrappedTextArray release];
+        NSLog(@"\n%@\n%@\n%@\n%@\n%@\n%@\n\n%@", dialogueLineOne, dialogueLineTwo, dialogueLineThree, dialogueLineFour, dialogueLineFive, dialogueLineSix, remainderDialogue);
     }
     
     int multiplier = 1;
@@ -200,6 +429,84 @@
         }
         else {
             [delegate levelEnded];
+        }
+    }
+    else {
+        dialogueTypeTimeDelay += aDelta;
+        if (dialogueTypeTimeDelay > 0.1) {               
+            dialogueTypeTimeDelay = 0.0;
+            NSRange characterRange = {currentDialogueCharacterPosition, 1};
+            
+            switch(currentDialogueDisplayLine){
+                case 1:
+                    if(currentNumberOfDialogueLinesToShow >= 1){
+                        [dialogueLineOneBuffer appendString:[dialogueLineOne substringWithRange:characterRange]];
+                        currentDialogueCharacterPosition++;                    
+                        if([dialogueLineOne isEqualToString:dialogueLineOneBuffer]){
+                            currentDialogueDisplayLine++;
+                            currentDialogueCharacterPosition = 0;
+                        }
+                    }
+                    break;
+                    
+                case 2:
+                    if(currentNumberOfDialogueLinesToShow >= 2){
+                        [dialogueLineTwoBuffer appendString:[dialogueLineTwo substringWithRange:characterRange]];
+                        currentDialogueCharacterPosition++;
+                        if([dialogueLineTwo isEqualToString:dialogueLineTwoBuffer]){
+                            currentDialogueDisplayLine++;
+                            currentDialogueCharacterPosition = 0;
+                        }
+                    }
+                    break;
+                    
+                case 3:
+                    if(currentNumberOfDialogueLinesToShow >= 3){
+                        [dialogueLineThreeBuffer appendString:[dialogueLineThree substringWithRange:characterRange]];
+                        currentDialogueCharacterPosition++;
+                        if([dialogueLineThree isEqualToString:dialogueLineThreeBuffer]){
+                            currentDialogueDisplayLine++;
+                            currentDialogueCharacterPosition = 0;
+                        }
+                    }
+                    break;
+                    
+                case 4:
+                    if(currentNumberOfDialogueLinesToShow >= 4){
+                        [dialogueLineFourBuffer appendString:[dialogueLineFour substringWithRange:characterRange]];
+                        currentDialogueCharacterPosition++;
+                        if([dialogueLineFour isEqualToString:dialogueLineFourBuffer]){
+                            currentDialogueDisplayLine++;
+                            currentDialogueCharacterPosition = 0;
+                        }
+                    }
+                    break;
+                    
+                case 5:
+                    if(currentNumberOfDialogueLinesToShow >= 5){
+                        [dialogueLineFiveBuffer appendString:[dialogueLineFive substringWithRange:characterRange]];
+                        currentDialogueCharacterPosition++;
+                        if([dialogueLineFive isEqualToString:dialogueLineFiveBuffer]){
+                            currentDialogueDisplayLine++;
+                            currentDialogueCharacterPosition = 0;
+                        }
+                    }
+                    break;
+                    
+                case 6:
+                    if(currentNumberOfDialogueLinesToShow >= 6){
+                        [dialogueLineSixBuffer appendString:[dialogueLineSix substringWithRange:characterRange]];
+                        currentDialogueCharacterPosition++;
+                        if([dialogueLineSix isEqualToString:dialogueLineSixBuffer]){
+                            currentDialogueDisplayLine++;
+                            currentDialogueCharacterPosition = 0;
+                        }
+                    }
+                    break;
+                    
+                default:
+                    break;
+            }
         }
     }
     
@@ -291,6 +598,95 @@
     [enemyShip release];
 }
 
+- (void)skipToNewPageOfText {
+    if(currentWaveType != kWaveType_Dialogue) return;
+    
+    currentDialogueDisplayLine = 1;
+    currentDialogueCharacterPosition = 0;
+    currentNumberOfDialogueLinesToShow = 0;
+    
+    [dialogueLineOneBuffer setString:@""];
+    [dialogueLineTwoBuffer setString:@""];
+    [dialogueLineThreeBuffer setString:@""];
+    [dialogueLineFourBuffer setString:@""];
+    [dialogueLineFiveBuffer setString:@""];
+    [dialogueLineSixBuffer setString:@""];
+    
+    if(dialogueLineOne) [dialogueLineOne release];
+    dialogueLineOne = nil;
+    if(dialogueLineTwo) [dialogueLineTwo release];
+    dialogueLineTwo = nil;
+    if(dialogueLineThree) [dialogueLineThree release];
+    dialogueLineThree = nil;
+    if(dialogueLineFour) [dialogueLineFour release];
+    dialogueLineFour = nil;
+    if(dialogueLineFive) [dialogueLineFive release];
+    dialogueLineFive = nil;
+    if(dialogueLineSix) [dialogueLineSix release];
+    dialogueLineSix = nil;
+    
+    if(remainderDialogue == nil){
+        //If there is in fact no more dialogue for this wave
+        NSLog(@"END OF DIALOGUE");
+        if(currentWave != (numWaves - 1)) {
+            currentWave++;
+            [self loadWave:currentWave];
+        }
+        else {
+            [delegate levelEnded];
+        }
+    }
+    else {
+        const char* wrappedText = WrapText([remainderDialogue UTF8String], 22, "", "");
+        NSMutableArray *wrappedTextArray = [[NSMutableArray alloc] initWithArray:[[NSString stringWithCString:wrappedText encoding:NSASCIIStringEncoding] componentsSeparatedByString:@"\n"]];
+        
+        if(remainderDialogue) [remainderDialogue release];
+        remainderDialogue = nil;
+        if([wrappedTextArray count] > 0){
+            dialogueLineOne = [[NSString alloc] initWithString:[wrappedTextArray objectAtIndex:0]];
+            if([wrappedTextArray count] > 1){
+                dialogueLineTwo = [[NSString alloc] initWithString:[wrappedTextArray objectAtIndex:1]];
+                currentNumberOfDialogueLinesToShow = 2;
+                if([wrappedTextArray count] > 2){
+                    dialogueLineThree = [[NSString alloc] initWithString:[wrappedTextArray objectAtIndex:2]];
+                    currentNumberOfDialogueLinesToShow = 3;
+                    if([wrappedTextArray count] > 3){
+                        //Exceeding three lines, prep the stuff for a larger word wrap
+                        [wrappedTextArray removeObject:dialogueLineOne];
+                        [wrappedTextArray removeObject:dialogueLineTwo];
+                        [wrappedTextArray removeObject:dialogueLineThree];
+                        
+                        NSString *secondHalfString = [[NSString alloc] initWithString:[wrappedTextArray componentsJoinedByString:@" "]];
+                        NSLog(@"joined:\n%@", secondHalfString);
+                        const char* secondHalf = WrapText([secondHalfString UTF8String], 28, "", "");
+                        NSMutableArray *secondWrappedArray = [[NSMutableArray alloc] initWithArray:[[NSString stringWithCString:secondHalf encoding:NSASCIIStringEncoding] componentsSeparatedByString:@"\n"]];
+                        NSLog(@"%@", secondWrappedArray);
+                        dialogueLineFour = [[NSString alloc] initWithString:[secondWrappedArray objectAtIndex:0]];
+                        currentNumberOfDialogueLinesToShow = 4;
+                        if([secondWrappedArray count] > 1){
+                            dialogueLineFive = [[NSString alloc] initWithString:[secondWrappedArray objectAtIndex:1]];
+                            currentNumberOfDialogueLinesToShow = 5;
+                            if([secondWrappedArray count] > 2){
+                                dialogueLineSix = [[NSString alloc] initWithString:[secondWrappedArray objectAtIndex:2]];
+                                currentNumberOfDialogueLinesToShow = 6;
+                                if([secondWrappedArray count] >3){
+                                    //Exceeds all six lines, fill the remainder string
+                                    [secondWrappedArray removeObject:dialogueLineFour];
+                                    [secondWrappedArray removeObject:dialogueLineFive];
+                                    [secondWrappedArray removeObject:dialogueLineSix];
+                                    
+                                    remainderDialogue = [[NSString alloc] initWithString:[secondWrappedArray componentsJoinedByString:@" "]];
+                                }
+                            }
+                        }
+                        [secondWrappedArray release];
+                    }
+                }
+            }
+        }
+    }
+}
+
 - (void)updateWithTouchLocationBegan:(NSSet *)touches withEvent:(UIEvent *)event view:(UIView *)aView {
 	UITouch *touch = [[event touchesForView:aView] anyObject];
 	CGPoint location;
@@ -316,6 +712,9 @@
     }
     else {
         touchOriginatedFromPlayerShip = NO;
+    }
+    if(CGRectContainsPoint(CGRectMake(311, 1, 22, 22), location) && currentWaveType == kWaveType_Dialogue){
+        [self skipToNewPageOfText];
     }
 }
 
@@ -366,6 +765,18 @@
     // Must always be rendered last so that the player is foreground
     // to any other objects on the screen.
     [playerShip render];
+    
+    //Dialogue Related rendering
+    if(currentWaveType == kWaveType_Dialogue) {
+        [dialogueBorder renderAtPoint:CGPointMake(0.0f, 0.0f) centerOfImage:NO];
+        [dialogueFastForwardButton renderAtPoint:CGPointMake(310.0f, 10.0f) centerOfImage:YES];
+        [font drawStringAt:CGPointMake(80.0f, 135.0f) text:dialogueLineOneBuffer];
+        [font drawStringAt:CGPointMake(80.0f, 115.0f) text:dialogueLineTwoBuffer];
+        [font drawStringAt:CGPointMake(80.0f, 95.0f) text:dialogueLineThreeBuffer];
+        [font drawStringAt:CGPointMake(15.0f, 70.0f) text:dialogueLineFourBuffer];
+        [font drawStringAt:CGPointMake(15.0f, 50.0f) text:dialogueLineFiveBuffer];
+        [font drawStringAt:CGPointMake(15.0f, 30.0f) text:dialogueLineSixBuffer];
+    }
 }
 
 @end
