@@ -47,6 +47,21 @@ typedef enum _LevelType {
     kLevelType_Cutscene
 } LevelType;
 
+typedef enum _DialogueSpeaker {
+    kSpeaker_Player = 0,
+    kSpeaker_General,
+    kSpeaker_BossOne,
+    kSpeaker_BossTwo,
+    kSpeaker_BossThree,
+    kSpeaker_BossFour,
+    kSpeaker_BossFive,
+    kSpeaker_BossSix,
+    kSpeaker_BossSeven,
+    kSpeaker_Kronos,
+    kSpeaker_Singularity,
+    kSpeaker_AlienSwarm
+} DialogueSpeaker;
+
 typedef enum _WaveType {
     kWaveType_Dialogue = 0,
     kWaveType_Fighting
@@ -82,6 +97,7 @@ typedef enum _OutroAnimation {
 
     // Dialogue Displaying
     NSArray             *dialogue;
+    DialogueSpeaker     currentDialogueSpeaker;
     NSMutableString     *dialogueBuffer;
     NSString            *dialogueLineOne;
     NSString            *dialogueLineTwo;
@@ -122,6 +138,7 @@ typedef enum _OutroAnimation {
 - (id)initWithLevelFile:(NSString *)levelFile withDelegate:(id <GameLevelDelegate>)del;
 
 - (EnemyShipID)convertToEnemyEnum:(NSString *)enemyString;
+- (DialogueSpeaker)convertToSpeakerEnum:(NSString *)speaker;
 
 - (void)loadWave:(int)wave;
 

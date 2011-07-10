@@ -46,6 +46,10 @@
 //
 //  Last Updated - 7/9/2011 @9:20PM - Alexander
 //  - Changed the bounding box for the fast forward button.
+//
+//  Last Updated - 7/9/2011 @9:40PM - Alexander
+//  - Now storing the current speaker. Created a method to parse it
+//  and figure out who the speaker is. We'll use this to display it's icon.
 
 #import "GameLevelScene.h"
 
@@ -309,6 +313,47 @@ WrapText( const char *text
     return -1;
 }
 
+- (DialogueSpeaker)convertToSpeakerEnum:(NSString *)speaker {    
+    if ([speaker isEqualToString:@"PLAYER"]) {
+        return kSpeaker_Player;
+    }
+    else if([speaker isEqualToString:@"GENERAL"]) {
+        return kSpeaker_General;
+    }
+    else if([speaker isEqualToString:@"BOSSONE"]) {
+        return kSpeaker_BossOne;
+    }
+    else if([speaker isEqualToString:@"BOSSTWO"]) {
+        return kSpeaker_BossTwo;
+    }
+    else if([speaker isEqualToString:@"BOSSTHREE"]) {
+        return kSpeaker_BossThree;
+    }
+    else if([speaker isEqualToString:@"BOSSFOUR"]) {
+        return kSpeaker_BossFour;
+    }
+    else if([speaker isEqualToString:@"BOSSFIVE"]) {
+        return kSpeaker_BossFive;
+    }
+    else if([speaker isEqualToString:@"BOSSSIX"]) {
+        return kSpeaker_BossSix;
+    }
+    else if([speaker isEqualToString:@"BOSSSEVEN"]) {
+        return kSpeaker_BossSeven;
+    }
+    else if([speaker isEqualToString:@"KRONOS"]) {
+        return kSpeaker_Kronos;
+    }
+    else if([speaker isEqualToString:@"SINGULARITY"]) {
+        return kSpeaker_Singularity;
+    }
+    else if([speaker isEqualToString:@"ALIENSWARM"]) {
+        return kSpeaker_AlienSwarm;
+    }
+    
+    return -1;
+}
+
 - (void)loadWave:(int)wave {
     if(![[wavesArray objectAtIndex:wave] respondsToSelector:@selector(setString:)]) {
         for(int i = 0; i < [[wavesArray objectAtIndex:wave] count]; ++i) {
@@ -333,6 +378,7 @@ WrapText( const char *text
     else {
         currentWaveType = kWaveType_Dialogue;
         dialogue = [[NSArray alloc] initWithArray:[[wavesArray objectAtIndex:wave] componentsSeparatedByString:@";"]];
+        currentDialogueSpeaker = [self convertToSpeakerEnum:[dialogue objectAtIndex:0]];
         currentDialogueSpeakerIndex = 0;
         currentDialogueDisplayLine = 1;
         currentDialogueCharacterPosition = 0;
