@@ -10,18 +10,6 @@
 //	James Linnell - Software Engineer, Creative Design, Art Producer
 //	Tyler Newcomb - Creative Design, Art Producer
 //
-//  Last Updated - 6/23/2011 @ 3:30PM - James
-//  - Added enemy bullet -> player collision and
-//  player bullet -> enemy collision
-//
-//  Last Updated - 6/23/2011 @ 3:45PM - James
-//  - MAde it so enemies are only removed when death animation emitters are completed
-//
-//  Last updated - 6/23/11 @ 5PM - Alexander
-//  - Typo in the enemy enum converter. Also set the default
-//  return value to -1 so that we can tell if a problem
-//  like this occurs again.
-//
 //  Last Updated - 6/12/11 @ 6:45PM - Alexander
 //  - Just added and removed some comments. Cleanup.
 //
@@ -51,10 +39,13 @@
 //  stuff, no animation yet.This was a hell of an update, ver hard
 //  for both of us.
 //
-//  Last Updated - 7/0/2011 @9:10PM - James
+//  Last Updated - 7/9/2011 @9:10PM - James
 //  - Added Bool dialogueIsTyping, and had that work with
 //  the fast forward button to automatically show all text
 //  instead of skipping ahead.
+//
+//  Last Updated - 7/9/2011 @9:20PM - Alexander
+//  - Changed the bounding box for the fast forward button.
 
 #import "GameLevelScene.h"
 
@@ -741,7 +732,7 @@ WrapText( const char *text
     else {
         touchOriginatedFromPlayerShip = NO;
     }
-    if(CGRectContainsPoint(CGRectMake(311, 1, 22, 22), location) && currentWaveType == kWaveType_Dialogue){
+    if(CGRectContainsPoint(CGRectMake(305, 1, 25, 22), location) && currentWaveType == kWaveType_Dialogue){
         [self skipToNewPageOfText];
     }
 }
