@@ -134,6 +134,7 @@ typedef enum _OutroAnimation {
 
 @property (nonatomic, retain) id <GameLevelDelegate> delegate;
 @property (readonly, retain) PlayerShip *playerShip;
+@property (readonly) WaveType currentWaveType;
 
 - (id)initWithLevelFile:(NSString *)levelFile withDelegate:(id <GameLevelDelegate>)del;
 

@@ -49,6 +49,9 @@
 //
 //  Last Updated - 6/7/11 @9:30AM - Alexander
 //  - Changed the pause button position because the image is now smaller
+//
+//  Last Updated - 7/9/2011 @10PM - James
+//  -  Health bar no longer renders during dialogue waves
 
 
 #import "GameScene.h"
@@ -330,8 +333,10 @@
 - (void)render {
     // In-game graphics rendered first
     [backgroundParticleEmitter renderParticles];
-    [healthBarBackground renderAtPoint:CGPointMake(254, 14.0) centerOfImage:NO];
-    [healthBar renderAtPoint:CGPointMake(255, 15.0) centerOfImage:NO];
+    if(!gameLevel.currentWaveType == kWaveType_Dialogue){
+        [healthBarBackground renderAtPoint:CGPointMake(254, 14.0) centerOfImage:NO];
+        [healthBar renderAtPoint:CGPointMake(255, 15.0) centerOfImage:NO];
+    }
     
     // Level
     if(levelInProgress) {

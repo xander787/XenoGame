@@ -50,6 +50,10 @@
 //  Last Updated - 7/9/2011 @9:40PM - Alexander
 //  - Now storing the current speaker. Created a method to parse it
 //  and figure out who the speaker is. We'll use this to display it's icon.
+//
+//  Last Updated - 7/9/2011 @10PM - James
+//  - Added and ellipses to the end of dialogueLineSixbuffer when there is
+//  another page of text to read
 
 #import "GameLevelScene.h"
 
@@ -217,7 +221,7 @@ WrapText( const char *text
 
 @implementation GameLevelScene
 
-@synthesize delegate, playerShip;
+@synthesize delegate, playerShip, currentWaveType;
 
 - (id)initWithLevelFile:(NSString *)levelFile withDelegate:(id <GameLevelDelegate>)del {
     if((self = [super init])){		
@@ -411,7 +415,7 @@ WrapText( const char *text
                     
                     NSString *secondHalfString = [[NSString alloc] initWithString:[wrappedTextArray componentsJoinedByString:@" "]];
                     NSLog(@"joined:\n%@", secondHalfString);
-                    const char* secondHalf = WrapText([secondHalfString UTF8String], 28, "", "");
+                    const char* secondHalf = WrapText([secondHalfString UTF8String], 25, "", "");
                     NSMutableArray *secondWrappedArray = [[NSMutableArray alloc] initWithArray:[[NSString stringWithCString:secondHalf encoding:NSASCIIStringEncoding] componentsSeparatedByString:@"\n"]];
                     NSLog(@"%@", secondWrappedArray);
                     dialogueLineFour = [[NSString alloc] initWithString:[secondWrappedArray objectAtIndex:0]];
@@ -723,7 +727,7 @@ WrapText( const char *text
                         
                         NSString *secondHalfString = [[NSString alloc] initWithString:[wrappedTextArray componentsJoinedByString:@" "]];
                         NSLog(@"joined:\n%@", secondHalfString);
-                        const char* secondHalf = WrapText([secondHalfString UTF8String], 28, "", "");
+                        const char* secondHalf = WrapText([secondHalfString UTF8String], 25, "", "");
                         NSMutableArray *secondWrappedArray = [[NSMutableArray alloc] initWithArray:[[NSString stringWithCString:secondHalf encoding:NSASCIIStringEncoding] componentsSeparatedByString:@"\n"]];
                         NSLog(@"%@", secondWrappedArray);
                         dialogueLineFour = [[NSString alloc] initWithString:[secondWrappedArray objectAtIndex:0]];
@@ -840,7 +844,15 @@ WrapText( const char *text
         [font drawStringAt:CGPointMake(80.0f, 95.0f) text:dialogueLineThreeBuffer];
         [font drawStringAt:CGPointMake(15.0f, 70.0f) text:dialogueLineFourBuffer];
         [font drawStringAt:CGPointMake(15.0f, 50.0f) text:dialogueLineFiveBuffer];
-        [font drawStringAt:CGPointMake(15.0f, 30.0f) text:dialogueLineSixBuffer];
+        if(!remainderDialogue){
+            [font drawStringAt:CGPointMake(15.0f, 30.0f) text:dialogueLineSixBuffer];
+        }
+        else if(remainderDialogue && [dialogueLineSix isEqualToString:dialogueLineSixBuffer]){
+            [font drawStringAt:CGPointMake(15.0f, 30.0f) text:[NSString stringWithFormat:@"%@...", dialogueLineSixBuffer]];
+        }
+        else if(remainderDialogue){
+            [font drawStringAt:CGPointMake(15.0f, 30.0f) text:dialogueLineSixBuffer];
+        }
     }
 }
 
