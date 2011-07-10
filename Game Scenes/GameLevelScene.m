@@ -50,6 +50,11 @@
 //  code. Still has bugs like hud element rendering over dialogue
 //  stuff, no animation yet.This was a hell of an update, ver hard
 //  for both of us.
+//
+//  Last Updated - 7/0/2011 @9:10PM - James
+//  - Added Bool dialogueIsTyping, and had that work with
+//  the fast forward button to automatically show all text
+//  instead of skipping ahead.
 
 #import "GameLevelScene.h"
 
@@ -348,7 +353,8 @@ WrapText( const char *text
         dialogueLineFiveBuffer = [[NSMutableString alloc] init];
         dialogueLineSixBuffer = [[NSMutableString alloc] init];
         
-        //Fill the string with the necessary text
+        //What's going on here is It fills the necessary strings with the right text, strings 1-3 with 22 wrapped text,
+        //4-6 with 28 wrapped. It has to go through all those if statement because not all dialogue wil take all 6 six lines.
         const char* wrappedText = WrapText([[[[dialogue objectAtIndex:0] componentsSeparatedByString:@":"] objectAtIndex:1] UTF8String], 22, "", "");
         NSMutableArray *wrappedTextArray = [[NSMutableArray alloc] initWithArray:[[NSString stringWithCString:wrappedText encoding:NSASCIIStringEncoding] componentsSeparatedByString:@"\n"]];
         NSLog(@"%@", wrappedTextArray);
@@ -440,6 +446,7 @@ WrapText( const char *text
             switch(currentDialogueDisplayLine){
                 case 1:
                     if(currentNumberOfDialogueLinesToShow >= 1){
+                        dialogueIsTyping = TRUE;
                         [dialogueLineOneBuffer appendString:[dialogueLineOne substringWithRange:characterRange]];
                         currentDialogueCharacterPosition++;                    
                         if([dialogueLineOne isEqualToString:dialogueLineOneBuffer]){
@@ -451,6 +458,7 @@ WrapText( const char *text
                     
                 case 2:
                     if(currentNumberOfDialogueLinesToShow >= 2){
+                        dialogueIsTyping = TRUE;
                         [dialogueLineTwoBuffer appendString:[dialogueLineTwo substringWithRange:characterRange]];
                         currentDialogueCharacterPosition++;
                         if([dialogueLineTwo isEqualToString:dialogueLineTwoBuffer]){
@@ -462,6 +470,7 @@ WrapText( const char *text
                     
                 case 3:
                     if(currentNumberOfDialogueLinesToShow >= 3){
+                        dialogueIsTyping = TRUE;
                         [dialogueLineThreeBuffer appendString:[dialogueLineThree substringWithRange:characterRange]];
                         currentDialogueCharacterPosition++;
                         if([dialogueLineThree isEqualToString:dialogueLineThreeBuffer]){
@@ -473,6 +482,7 @@ WrapText( const char *text
                     
                 case 4:
                     if(currentNumberOfDialogueLinesToShow >= 4){
+                        dialogueIsTyping = TRUE;
                         [dialogueLineFourBuffer appendString:[dialogueLineFour substringWithRange:characterRange]];
                         currentDialogueCharacterPosition++;
                         if([dialogueLineFour isEqualToString:dialogueLineFourBuffer]){
@@ -484,6 +494,7 @@ WrapText( const char *text
                     
                 case 5:
                     if(currentNumberOfDialogueLinesToShow >= 5){
+                        dialogueIsTyping = TRUE;
                         [dialogueLineFiveBuffer appendString:[dialogueLineFive substringWithRange:characterRange]];
                         currentDialogueCharacterPosition++;
                         if([dialogueLineFive isEqualToString:dialogueLineFiveBuffer]){
@@ -495,11 +506,13 @@ WrapText( const char *text
                     
                 case 6:
                     if(currentNumberOfDialogueLinesToShow >= 6){
+                        dialogueIsTyping = TRUE;
                         [dialogueLineSixBuffer appendString:[dialogueLineSix substringWithRange:characterRange]];
                         currentDialogueCharacterPosition++;
                         if([dialogueLineSix isEqualToString:dialogueLineSixBuffer]){
                             currentDialogueDisplayLine++;
                             currentDialogueCharacterPosition = 0;
+                            dialogueIsTyping = FALSE;
                         }
                     }
                     break;
@@ -600,6 +613,21 @@ WrapText( const char *text
 
 - (void)skipToNewPageOfText {
     if(currentWaveType != kWaveType_Dialogue) return;
+    
+    if(dialogueIsTyping){
+        //It's still typing, only fill the buffers
+        if(dialogueLineOne) [dialogueLineOneBuffer setString:dialogueLineOne];
+        if(dialogueLineTwo) [dialogueLineTwoBuffer setString:dialogueLineTwo];
+        if(dialogueLineThree) [dialogueLineThreeBuffer setString:dialogueLineThree];
+        if(dialogueLineFour) [dialogueLineFourBuffer setString:dialogueLineFour];
+        if(dialogueLineFive) [dialogueLineFiveBuffer setString:dialogueLineFive];
+        if(dialogueLineSix) [dialogueLineSixBuffer setString:dialogueLineSix];
+        
+        currentDialogueDisplayLine = 7;
+        currentDialogueCharacterPosition = 0;
+        dialogueIsTyping = FALSE;
+        return;
+    }
     
     currentDialogueDisplayLine = 1;
     currentDialogueCharacterPosition = 0;

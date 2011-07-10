@@ -97,6 +97,7 @@ typedef enum _OutroAnimation {
     NSMutableString     *dialogueLineSixBuffer;
     NSString            *remainderDialogue;
     BOOL                dialogueNeedsContinue;
+    BOOL                dialogueIsTyping;
     int                 currentDialogueSpeakerIndex;
     int                 currentDialogueDisplayLine;
     int                 currentDialogueCharacterPosition;
