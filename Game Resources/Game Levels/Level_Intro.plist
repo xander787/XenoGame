@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>kBossShip</key>
+	<string></string>
+	<key>kLevelDifficulty</key>
+	<integer>0</integer>
+	<key>kLevelType</key>
+	<string>kLevelType_Cutscene</string>
+	<key>kMiniBossShip</key>
+	<string></string>
+	<key>kOutroTransition</key>
+	<string>kShipFlyOff</string>
+	<key>kWaves</key>
+	<array>
+		<string>GENERAL:This is Earth, 2584 CE. 89 years ago we humans decided to terraform MArs, as our planet was becoming too crowded to live on. During this process, we met the Martians who had revealed themselves to us. They appeared to be friendly, but we saw through their disguise. We opengly attacked them and they attacked us in retaliation. Unfortunately, due to political tension, we were unorganized and barely won the fight, losing many men and resources along the way. But the MArtians are all ogne now. And we are valiantly looking for a new home to live on.</string>
+		<string>PLAYER:Man I sure do love you little stuffed piggy, I don&apos;t know what I&apos;d do without you!</string>
+		<string>GENERAL:Pilot Alexander, stop messing around with your pigs and listen up.</string>
+		<string>PLAYER: What? Oh no! My piggy flew out the window! MY PIGGY!!!!!</string>
+		<string>GENERAL:Pay attention Pilot!</string>
+		<string>Player:Yes sir General Andreas... *sob*</string>
+		<string>GENERAL:Now, the scientists here think this new planet Gliese 581d might support life. I need you to go do some recon. It&apos;s a 20 year trek but I&apos;m sure you and your fancy new ship can manage. I&apos;m uploading the coordinates now. You copy Pilot X?</string>
+		<string>PLAYER:Copy sir, I&apos;m on my way there now. Over and out.</string>
+	</array>
+</dict>
+</plist>

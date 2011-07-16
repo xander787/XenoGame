@@ -5,16 +5,176 @@
 	<key>kBossShip</key>
 	<string></string>
 	<key>kLevelDifficulty</key>
-	<string>// difficulty of the current level (this should be for intermediary levels)</string>
+	<integer>0</integer>
 	<key>kLevelType</key>
-	<string>// i.e. boss level, miniboss level, or intermediary level</string>
+	<string>kLevelType_Cutscene</string>
 	<key>kMiniBossShip</key>
 	<string></string>
 	<key>kOutroTransition</key>
-	<string>// Nuke, wormhole, or fly-off</string>
+	<string>kShipFlyOff</string>
 	<key>kWaves</key>
 	<array>
-		<array/>
+		<string>PLAYER:Woah, what was that?</string>
+		<string>PLAYER:General A, do you copy I&apos;m under enemy fire, enemy origin is unknown!</string>
+		<string>GENERAL:I copy son, it seems large swarms of UFOs are on your tail. Earth is too ravaged to help you son. It seems you&apos;re on your own. Your ship is well quipped. Do your best to fight them off for Earth! Over and out.</string>
+		<string>PLAYER:Um...roger sir. I&apos;ll do my best...</string>
+		<array>
+			<array>
+				<string>x,x</string>
+				<string>kEnemy_OneOne</string>
+			</array>
+			<array>
+				<string>x,x</string>
+				<string>kEnemy_OneTwo</string>
+			</array>
+			<array>
+				<string>x,x</string>
+				<string>kEnemy_Onethree</string>
+			</array>
+			<array>
+				<string>x,x</string>
+				<string>kEnemy_OneFour</string>
+			</array>
+			<array>
+				<string>x,x</string>
+				<string>kEnemy_OneFive</string>
+			</array>
+			<array>
+				<string>x,x</string>
+				<string>kEnemy_OneSix</string>
+			</array>
+		</array>
+		<array>
+			<array>
+				<string>x,x</string>
+				<string>kEnemy_OneOne</string>
+			</array>
+			<array>
+				<string>x,x</string>
+				<string>kEnemy_OneTwo</string>
+			</array>
+			<array>
+				<string>x,x</string>
+				<string>kEnemy_Onethree</string>
+			</array>
+			<array>
+				<string>x,x</string>
+				<string>kEnemy_OneFour</string>
+			</array>
+			<array>
+				<string>x,x</string>
+				<string>kEnemy_OneFive</string>
+			</array>
+			<array>
+				<string>x,x</string>
+				<string>kEnemy_OneSix</string>
+			</array>
+		</array>
+		<array>
+			<array>
+				<string>x,x</string>
+				<string>kEnemy_OneOne</string>
+			</array>
+			<array>
+				<string>x,x</string>
+				<string>kEnemy_OneTwo</string>
+			</array>
+			<array>
+				<string>x,x</string>
+				<string>kEnemy_Onethree</string>
+			</array>
+			<array>
+				<string>x,x</string>
+				<string>kEnemy_OneFour</string>
+			</array>
+			<array>
+				<string>x,x</string>
+				<string>kEnemy_OneFive</string>
+			</array>
+			<array>
+				<string>x,x</string>
+				<string>kEnemy_OneSix</string>
+			</array>
+		</array>
+		<array>
+			<array>
+				<string>x,x</string>
+				<string>kEnemy_OneOne</string>
+			</array>
+			<array>
+				<string>x,x</string>
+				<string>kEnemy_OneTwo</string>
+			</array>
+			<array>
+				<string>x,x</string>
+				<string>kEnemy_Onethree</string>
+			</array>
+			<array>
+				<string>x,x</string>
+				<string>kEnemy_OneFour</string>
+			</array>
+			<array>
+				<string>x,x</string>
+				<string>kEnemy_OneFive</string>
+			</array>
+			<array>
+				<string>x,x</string>
+				<string>kEnemy_OneSix</string>
+			</array>
+		</array>
+		<array>
+			<array>
+				<string>x,x</string>
+				<string>kEnemy_OneOne</string>
+			</array>
+			<array>
+				<string>x,x</string>
+				<string>kEnemy_OneTwo</string>
+			</array>
+			<array>
+				<string>x,x</string>
+				<string>kEnemy_Onethree</string>
+			</array>
+			<array>
+				<string>x,x</string>
+				<string>kEnemy_OneFour</string>
+			</array>
+			<array>
+				<string>x,x</string>
+				<string>kEnemy_OneFive</string>
+			</array>
+			<array>
+				<string>x,x</string>
+				<string>kEnemy_OneSix</string>
+			</array>
+		</array>
+		<array>
+			<array>
+				<string>x,x</string>
+				<string>kEnemy_OneOne</string>
+			</array>
+			<array>
+				<string>x,x</string>
+				<string>kEnemy_OneTwo</string>
+			</array>
+			<array>
+				<string>x,x</string>
+				<string>kEnemy_Onethree</string>
+			</array>
+			<array>
+				<string>x,x</string>
+				<string>kEnemy_OneFour</string>
+			</array>
+			<array>
+				<string>x,x</string>
+				<string>kEnemy_OneFive</string>
+			</array>
+			<array>
+				<string>x,x</string>
+				<string>kEnemy_OneSix</string>
+			</array>
+		</array>
+		<string></string>
 	</array>
 </dict>
 </plist>

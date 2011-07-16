@@ -7,13 +7,23 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1129A19F13CA73F100BE73FA /* Level_Intro.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1129A19E13CA73F100BE73FA /* Level_Intro.plist */; };
+		1129A1A113CA933500BE73FA /* Level_One.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1129A1A013CA933400BE73FA /* Level_One.plist */; };
+		1129A1A413CACED900BE73FA /* BossShipThemis.m in Sources */ = {isa = PBXBuildFile; fileRef = 1129A1A313CACED900BE73FA /* BossShipThemis.m */; };
+		1129A1A713CACEFF00BE73FA /* BossShipEos.m in Sources */ = {isa = PBXBuildFile; fileRef = 1129A1A613CACEFF00BE73FA /* BossShipEos.m */; };
+		1129A1AA13CACF5F00BE73FA /* BossShipAstraeus.m in Sources */ = {isa = PBXBuildFile; fileRef = 1129A1A913CACF5F00BE73FA /* BossShipAstraeus.m */; };
+		1129A1AD13CACF7000BE73FA /* BossShipHelios.m in Sources */ = {isa = PBXBuildFile; fileRef = 1129A1AC13CACF7000BE73FA /* BossShipHelios.m */; };
+		1129A1B013CACF8A00BE73FA /* BossShipOceanus.m in Sources */ = {isa = PBXBuildFile; fileRef = 1129A1AF13CACF8A00BE73FA /* BossShipOceanus.m */; };
+		1129A1B313CACFA000BE73FA /* BossShipHyperion.m in Sources */ = {isa = PBXBuildFile; fileRef = 1129A1B213CACFA000BE73FA /* BossShipHyperion.m */; };
+		1129A1B613CACFB000BE73FA /* BossShipKronos.m in Sources */ = {isa = PBXBuildFile; fileRef = 1129A1B513CACFAF00BE73FA /* BossShipKronos.m */; };
+		1129A1B913CACFC500BE73FA /* BossShipAlphaWeapon.m in Sources */ = {isa = PBXBuildFile; fileRef = 1129A1B813CACFC500BE73FA /* BossShipAlphaWeapon.m */; };
 		1130822712D907B1009C9502 /* MiniBossGeneral.m in Sources */ = {isa = PBXBuildFile; fileRef = 1130822612D907B1009C9502 /* MiniBossGeneral.m */; };
 		1130822A12D907CD009C9502 /* BossShipAtlas.m in Sources */ = {isa = PBXBuildFile; fileRef = 1130822912D907CD009C9502 /* BossShipAtlas.m */; };
 		11336113129E54F300FE6A03 /* BossShips.plist in Resources */ = {isa = PBXBuildFile; fileRef = 11336112129E54F300FE6A03 /* BossShips.plist */; };
 		114A1A7412989C4B004769D4 /* PlayerShips.plist in Resources */ = {isa = PBXBuildFile; fileRef = 114A1A7312989C4B004769D4 /* PlayerShips.plist */; };
 		1164A6F612D29F7400B21071 /* kEnemyKamikazeeLevelOne.png in Resources */ = {isa = PBXBuildFile; fileRef = 1164A6F412D29F7400B21071 /* kEnemyKamikazeeLevelOne.png */; };
 		1164A6F712D29F7400B21071 /* kEnemyWaveShotLevelFourSpriteSheet.png in Resources */ = {isa = PBXBuildFile; fileRef = 1164A6F512D29F7400B21071 /* kEnemyWaveShotLevelFourSpriteSheet.png */; };
-		1169BA8213ABF7F1005FA11F /* Level_One.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1169BA8113ABF7F1005FA11F /* Level_One.plist */; };
+		1169BA8213ABF7F1005FA11F /* Level_Key.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1169BA8113ABF7F1005FA11F /* Level_Key.plist */; };
 		1169BA8513ABFBEC005FA11F /* GameLevelScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 1169BA8413ABFBEC005FA11F /* GameLevelScene.m */; };
 		1169BA8713ABFFF2005FA11F /* LevelsIndex.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1169BA8613ABFFF2005FA11F /* LevelsIndex.plist */; };
 		1169BA9713AC432D005FA11F /* HealthBar.png in Resources */ = {isa = PBXBuildFile; fileRef = 1169BA9613AC432D005FA11F /* HealthBar.png */; };
@@ -133,6 +143,24 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1129A19E13CA73F100BE73FA /* Level_Intro.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Level_Intro.plist; path = "Game Resources/Game Levels/Level_Intro.plist"; sourceTree = SOURCE_ROOT; };
+		1129A1A013CA933400BE73FA /* Level_One.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Level_One.plist; path = "Game Resources/Game Levels/Level_One.plist"; sourceTree = SOURCE_ROOT; };
+		1129A1A213CACED900BE73FA /* BossShipThemis.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BossShipThemis.h; path = Entities/Ships/Bosses/BossShipThemis.h; sourceTree = "<group>"; };
+		1129A1A313CACED900BE73FA /* BossShipThemis.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BossShipThemis.m; path = Entities/Ships/Bosses/BossShipThemis.m; sourceTree = "<group>"; };
+		1129A1A513CACEFF00BE73FA /* BossShipEos.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BossShipEos.h; path = Entities/Ships/Bosses/BossShipEos.h; sourceTree = "<group>"; };
+		1129A1A613CACEFF00BE73FA /* BossShipEos.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BossShipEos.m; path = Entities/Ships/Bosses/BossShipEos.m; sourceTree = "<group>"; };
+		1129A1A813CACF5F00BE73FA /* BossShipAstraeus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BossShipAstraeus.h; path = Entities/Ships/Bosses/BossShipAstraeus.h; sourceTree = "<group>"; };
+		1129A1A913CACF5F00BE73FA /* BossShipAstraeus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BossShipAstraeus.m; path = Entities/Ships/Bosses/BossShipAstraeus.m; sourceTree = "<group>"; };
+		1129A1AB13CACF7000BE73FA /* BossShipHelios.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BossShipHelios.h; path = Entities/Ships/Bosses/BossShipHelios.h; sourceTree = "<group>"; };
+		1129A1AC13CACF7000BE73FA /* BossShipHelios.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BossShipHelios.m; path = Entities/Ships/Bosses/BossShipHelios.m; sourceTree = "<group>"; };
+		1129A1AE13CACF8A00BE73FA /* BossShipOceanus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BossShipOceanus.h; path = Entities/Ships/Bosses/BossShipOceanus.h; sourceTree = "<group>"; };
+		1129A1AF13CACF8A00BE73FA /* BossShipOceanus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BossShipOceanus.m; path = Entities/Ships/Bosses/BossShipOceanus.m; sourceTree = "<group>"; };
+		1129A1B113CACFA000BE73FA /* BossShipHyperion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BossShipHyperion.h; path = Entities/Ships/Bosses/BossShipHyperion.h; sourceTree = "<group>"; };
+		1129A1B213CACFA000BE73FA /* BossShipHyperion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BossShipHyperion.m; path = Entities/Ships/Bosses/BossShipHyperion.m; sourceTree = "<group>"; };
+		1129A1B413CACFAF00BE73FA /* BossShipKronos.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BossShipKronos.h; path = Entities/Ships/Bosses/BossShipKronos.h; sourceTree = "<group>"; };
+		1129A1B513CACFAF00BE73FA /* BossShipKronos.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BossShipKronos.m; path = Entities/Ships/Bosses/BossShipKronos.m; sourceTree = "<group>"; };
+		1129A1B713CACFC500BE73FA /* BossShipAlphaWeapon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BossShipAlphaWeapon.h; path = Entities/Ships/Bosses/BossShipAlphaWeapon.h; sourceTree = "<group>"; };
+		1129A1B813CACFC500BE73FA /* BossShipAlphaWeapon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BossShipAlphaWeapon.m; path = Entities/Ships/Bosses/BossShipAlphaWeapon.m; sourceTree = "<group>"; };
 		1130822512D907B1009C9502 /* MiniBossGeneral.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MiniBossGeneral.h; path = Entities/Ships/MiniBosses/MiniBossGeneral.h; sourceTree = "<group>"; };
 		1130822612D907B1009C9502 /* MiniBossGeneral.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MiniBossGeneral.m; path = Entities/Ships/MiniBosses/MiniBossGeneral.m; sourceTree = "<group>"; };
 		1130822812D907CD009C9502 /* BossShipAtlas.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BossShipAtlas.h; path = Entities/Ships/Bosses/BossShipAtlas.h; sourceTree = "<group>"; };
@@ -141,7 +169,7 @@
 		114A1A7312989C4B004769D4 /* PlayerShips.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = PlayerShips.plist; path = "Game Resources/PlayerShips.plist"; sourceTree = SOURCE_ROOT; };
 		1164A6F412D29F7400B21071 /* kEnemyKamikazeeLevelOne.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = kEnemyKamikazeeLevelOne.png; path = "Game Resources/Images/Normal/Ships/Enemy Ships/kEnemyKamikazeeLevelOne.png"; sourceTree = SOURCE_ROOT; };
 		1164A6F512D29F7400B21071 /* kEnemyWaveShotLevelFourSpriteSheet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = kEnemyWaveShotLevelFourSpriteSheet.png; path = "Game Resources/Images/Normal/Ships/Enemy Ships/kEnemyWaveShotLevelFourSpriteSheet.png"; sourceTree = SOURCE_ROOT; };
-		1169BA8113ABF7F1005FA11F /* Level_One.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Level_One.plist; path = "Game Resources/Game Levels/Level_One.plist"; sourceTree = SOURCE_ROOT; };
+		1169BA8113ABF7F1005FA11F /* Level_Key.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Level_Key.plist; path = "Game Resources/Game Levels/Level_Key.plist"; sourceTree = SOURCE_ROOT; };
 		1169BA8313ABFBEC005FA11F /* GameLevelScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GameLevelScene.h; path = "Game Scenes/GameLevelScene.h"; sourceTree = "<group>"; };
 		1169BA8413ABFBEC005FA11F /* GameLevelScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GameLevelScene.m; path = "Game Scenes/GameLevelScene.m"; sourceTree = "<group>"; };
 		1169BA8613ABFFF2005FA11F /* LevelsIndex.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = LevelsIndex.plist; path = "Game Resources/Game Levels/LevelsIndex.plist"; sourceTree = SOURCE_ROOT; };
@@ -353,8 +381,24 @@
 		1130822312D83C96009C9502 /* Bosses */ = {
 			isa = PBXGroup;
 			children = (
+				1129A1A213CACED900BE73FA /* BossShipThemis.h */,
+				1129A1A313CACED900BE73FA /* BossShipThemis.m */,
+				1129A1A513CACEFF00BE73FA /* BossShipEos.h */,
+				1129A1A613CACEFF00BE73FA /* BossShipEos.m */,
+				1129A1A813CACF5F00BE73FA /* BossShipAstraeus.h */,
+				1129A1A913CACF5F00BE73FA /* BossShipAstraeus.m */,
+				1129A1AB13CACF7000BE73FA /* BossShipHelios.h */,
+				1129A1AC13CACF7000BE73FA /* BossShipHelios.m */,
+				1129A1AE13CACF8A00BE73FA /* BossShipOceanus.h */,
+				1129A1AF13CACF8A00BE73FA /* BossShipOceanus.m */,
 				1130822812D907CD009C9502 /* BossShipAtlas.h */,
 				1130822912D907CD009C9502 /* BossShipAtlas.m */,
+				1129A1B113CACFA000BE73FA /* BossShipHyperion.h */,
+				1129A1B213CACFA000BE73FA /* BossShipHyperion.m */,
+				1129A1B413CACFAF00BE73FA /* BossShipKronos.h */,
+				1129A1B513CACFAF00BE73FA /* BossShipKronos.m */,
+				1129A1B713CACFC500BE73FA /* BossShipAlphaWeapon.h */,
+				1129A1B813CACFC500BE73FA /* BossShipAlphaWeapon.m */,
 			);
 			name = Bosses;
 			sourceTree = "<group>";
@@ -421,7 +465,9 @@
 			isa = PBXGroup;
 			children = (
 				1169BA8613ABFFF2005FA11F /* LevelsIndex.plist */,
-				1169BA8113ABF7F1005FA11F /* Level_One.plist */,
+				1129A19E13CA73F100BE73FA /* Level_Intro.plist */,
+				1129A1A013CA933400BE73FA /* Level_One.plist */,
+				1169BA8113ABF7F1005FA11F /* Level_Key.plist */,
 				B9EB2F3713AD2046003484B1 /* Level_DevTest.plist */,
 			);
 			name = "Game Levels";
@@ -945,7 +991,7 @@
 				1164A6F612D29F7400B21071 /* kEnemyKamikazeeLevelOne.png in Resources */,
 				1164A6F712D29F7400B21071 /* kEnemyWaveShotLevelFourSpriteSheet.png in Resources */,
 				B963267A12DD392E00FA1BA1 /* Projectiles.plist in Resources */,
-				1169BA8213ABF7F1005FA11F /* Level_One.plist in Resources */,
+				1169BA8213ABF7F1005FA11F /* Level_Key.plist in Resources */,
 				1169BA8713ABFFF2005FA11F /* LevelsIndex.plist in Resources */,
 				1169BA9713AC432D005FA11F /* HealthBar.png in Resources */,
 				1169BA9913AC43F0005FA11F /* HealthBarBackground.png in Resources */,
@@ -968,6 +1014,8 @@
 				B9C3AB8013C2BF8E003202BA /* pause.png in Resources */,
 				B9A7053D13C83EBD004A486C /* DialogueBoxBorder.png in Resources */,
 				B9A7053E13C83EBD004A486C /* fastforward.png in Resources */,
+				1129A19F13CA73F100BE73FA /* Level_Intro.plist in Resources */,
+				1129A1A113CA933500BE73FA /* Level_One.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1025,6 +1073,14 @@
 				1130822A12D907CD009C9502 /* BossShipAtlas.m in Sources */,
 				1169BA8513ABFBEC005FA11F /* GameLevelScene.m in Sources */,
 				B9C3AB7A13C29969003202BA /* PauseMenuScene.m in Sources */,
+				1129A1A413CACED900BE73FA /* BossShipThemis.m in Sources */,
+				1129A1A713CACEFF00BE73FA /* BossShipEos.m in Sources */,
+				1129A1AA13CACF5F00BE73FA /* BossShipAstraeus.m in Sources */,
+				1129A1AD13CACF7000BE73FA /* BossShipHelios.m in Sources */,
+				1129A1B013CACF8A00BE73FA /* BossShipOceanus.m in Sources */,
+				1129A1B313CACFA000BE73FA /* BossShipHyperion.m in Sources */,
+				1129A1B613CACFB000BE73FA /* BossShipKronos.m in Sources */,
+				1129A1B913CACFC500BE73FA /* BossShipAlphaWeapon.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
