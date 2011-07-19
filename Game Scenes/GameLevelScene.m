@@ -41,6 +41,9 @@
 //
 //  Last Updated - 7/18/11 @9PM - Alexander
 //  - Fly off transition added
+//
+//  Last Updated - 7/19/11 @1PM - James
+//  - Player stops shooting during fly-off transition
 
 #import "GameLevelScene.h"
 
@@ -487,9 +490,22 @@ WrapText( const char *text
             [self loadWave:currentWave];
         }
         else {
+            for(AbstractProjectile *playerWeapon in playerShip.projectilesArray){
+                [playerWeapon stopProjectile];
+            }
             outroTransitionAnimating = YES;
             if (outroAnimationType == kOutroAnimation_Flyoff) {
-                [playerShip setDesiredLocation:CGPointMake(160.0f, playerShip.currentLocation.y + (outroAnimationTime * 40))];
+                if (abs(playerShip.currentLocation.x - 160.0f) < 5) {
+                    [playerShip setDesiredLocation:CGPointMake(160.0f, playerShip.currentLocation.y + (outroAnimationTime * 40))];
+                }
+                else {
+                    if(playerShip.currentLocation.x < 160.0f) {
+                        [playerShip setDesiredLocation:CGPointMake(playerShip.currentLocation.x + (outroAnimationTime * 20), playerShip.currentLocation.y + (outroAnimationTime * 40))];
+                    }
+                    else {
+                        [playerShip setDesiredLocation:CGPointMake(playerShip.currentLocation.x - (outroAnimationTime * 20), playerShip.currentLocation.y + (outroAnimationTime * 40))];
+                    }
+                }
             }
         }
     }
@@ -717,6 +733,11 @@ WrapText( const char *text
             [self loadWave:currentWave];
         }
         else {
+            NSLog(@"Ghg");
+            for(AbstractProjectile *playerWeapon in playerShip.projectilesArray){
+                [playerWeapon stopProjectile];
+                NSLog(@"gbhgth");
+            }
             [delegate levelEnded];
         }
     }
