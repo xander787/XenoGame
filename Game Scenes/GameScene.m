@@ -315,7 +315,7 @@
 }
 
 - (void)levelEnded {
-    
+    NSLog(@"Level over biatch");
 }
 
 - (void)scoreChangedBy:(int)scoreChange {

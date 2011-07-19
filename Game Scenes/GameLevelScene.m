@@ -238,6 +238,7 @@ WrapText( const char *text
         [bundle release];
         [path release];
         
+        // Load and save the level type for this level
         if([[levelDictionary objectForKey:@"kLevelType"] isEqualToString:@"kMiniBossLevel"]) {
             levelType = kLevelType_MiniBoss;
         }
@@ -250,6 +251,20 @@ WrapText( const char *text
         else if([[levelDictionary objectForKey:@"kLevelType"] isEqualToString:@"kCutsceneLevel"]) {
             levelType = kLevelType_Cutscene;
         }
+        
+        
+        // Load and save the outro transition for this level
+        if([[levelDictionary objectForKey:@"OutroTransition"] isEqualToString:@"kShipFlyOff"]) {
+            outroAnimationType = kOutroAnimation_Flyoff;
+        }
+        if([[levelDictionary objectForKey:@"OutroTransition"] isEqualToString:@"kNuke"]) {
+            outroAnimationType = kOutroAnimation_Nuke;
+        }
+        if([[levelDictionary objectForKey:@"OutroTransition"] isEqualToString:@"kWormhole"]) {
+            outroAnimationType = kOutroAnimation_Wormhole;
+        }
+        
+        outroTransitionAnimating = NO;
         
         wavesArray = [levelDictionary objectForKey:@"kWaves"];
         numWaves = [wavesArray count];
@@ -468,6 +483,16 @@ WrapText( const char *text
     [discardedEnemies release];
     
     [self updateCollisions];
+    
+    if(outroTransitionAnimating) {
+        outroAnimationTime+= aDelta;
+        if (outroAnimationType == kOutroAnimation_Flyoff) {
+            if (playerShip.currentLocation.y > 480.0f) {
+                outroTransitionAnimating = NO;
+                [delegate levelEnded];
+            }
+        }
+    }
         
     if(currentWaveType == kWaveType_Fighting && [enemiesSet count] == 0) {
         if(currentWave != (numWaves - 1)) {
@@ -475,7 +500,10 @@ WrapText( const char *text
             [self loadWave:currentWave];
         }
         else {
-            [delegate levelEnded];
+            outroTransitionAnimating = YES;
+            if (outroAnimationType == kOutroAnimation_Flyoff) {
+                [playerShip setDesiredLocation:CGPointMake(160.0f, playerShip.currentLocation.y + (outroAnimationTime * 40))];
+            }
         }
     }
     else {
@@ -830,11 +858,7 @@ WrapText( const char *text
     for (EnemyShip *enemyShip in enemiesSet) {
         [enemyShip render];
     }
-    
-    // Must always be rendered last so that the player is foreground
-    // to any other objects on the screen.
-    [playerShip render];
-    
+        
     //Dialogue Related rendering
     if(currentWaveType == kWaveType_Dialogue) {
         [dialogueBorder renderAtPoint:CGPointMake(0.0f, 0.0f) centerOfImage:NO];
@@ -853,6 +877,11 @@ WrapText( const char *text
         else if(remainderDialogue){
             [font drawStringAt:CGPointMake(15.0f, 30.0f) text:dialogueLineSixBuffer];
         }
+    }
+    else {
+        // Must always be rendered last so that the player is foreground
+        // to any other objects on the screen. Also not while dialogue is displayed.
+        [playerShip render];
     }
 }
 

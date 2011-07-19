@@ -76,7 +76,7 @@ typedef enum _OutroAnimation {
 @interface GameLevelScene : NSObject {
     id <GameLevelDelegate>  delegate;
     
-    AngelCodeFont   *font;
+    AngelCodeFont           *font;
     NSUserDefaults          *settings;
     CGRect                  screenBounds;
     
@@ -85,51 +85,54 @@ typedef enum _OutroAnimation {
     BossShip                *bossShip;
     
     // Controlling the player ship
-    BOOL            touchOriginatedFromPlayerShip;
-    BOOL            touchFromSecondShip;
+    BOOL                    touchOriginatedFromPlayerShip;
+    BOOL                    touchFromSecondShip;
     
     // Storing objects in play
-    NSMutableSet               *enemiesSet;
+    NSMutableSet            *enemiesSet;
     
-    NSMutableDictionary *levelDictionary;
-    LevelType           levelType;
-    WaveType            currentWaveType;
+    NSMutableDictionary     *levelDictionary;
+    LevelType               levelType;
+    WaveType                currentWaveType;
+    OutroAnimation          outroAnimationType;
+    BOOL                    outroTransitionAnimating;
+    float                   outroAnimationTime;
 
     // Dialogue Displaying
-    NSArray             *dialogue;
-    DialogueSpeaker     currentDialogueSpeaker;
-    NSMutableString     *dialogueBuffer;
-    NSString            *dialogueLineOne;
-    NSString            *dialogueLineTwo;
-    NSString            *dialogueLineThree;
-    NSString            *dialogueLineFour;
-    NSString            *dialogueLineFive;
-    NSString            *dialogueLineSix;
-    NSMutableString     *dialogueLineOneBuffer;
-    NSMutableString     *dialogueLineTwoBuffer;
-    NSMutableString     *dialogueLineThreeBuffer;
-    NSMutableString     *dialogueLineFourBuffer;
-    NSMutableString     *dialogueLineFiveBuffer;
-    NSMutableString     *dialogueLineSixBuffer;
-    NSString            *remainderDialogue;
-    BOOL                dialogueNeedsContinue;
-    BOOL                dialogueIsTyping;
-    int                 currentDialogueSpeakerIndex;
-    int                 currentDialogueDisplayLine;
-    int                 currentDialogueCharacterPosition;
-    int                 dialogueFirstSectionLength;
-    int                 currentNumberOfDialogueLinesToShow;
-    float               dialogueTypeTimeDelay;
-    Image               *dialogueBorder;
-    Image               *dialogueFastForwardButton;
+    NSArray                 *dialogue;
+    DialogueSpeaker         currentDialogueSpeaker;
+    NSMutableString         *dialogueBuffer;
+    NSString                *dialogueLineOne;
+    NSString                *dialogueLineTwo;
+    NSString                *dialogueLineThree;
+    NSString                *dialogueLineFour;
+    NSString                *dialogueLineFive;
+    NSString                *dialogueLineSix;
+    NSMutableString         *dialogueLineOneBuffer;
+    NSMutableString         *dialogueLineTwoBuffer;
+    NSMutableString         *dialogueLineThreeBuffer;
+    NSMutableString         *dialogueLineFourBuffer;
+    NSMutableString         *dialogueLineFiveBuffer;
+    NSMutableString         *dialogueLineSixBuffer;
+    NSString                *remainderDialogue;
+    BOOL                    dialogueNeedsContinue;
+    BOOL                    dialogueIsTyping;
+    int                     currentDialogueSpeakerIndex;
+    int                     currentDialogueDisplayLine;
+    int                     currentDialogueCharacterPosition;
+    int                     dialogueFirstSectionLength;
+    int                     currentNumberOfDialogueLinesToShow;
+    float                   dialogueTypeTimeDelay;
+    Image                   *dialogueBorder;
+    Image                   *dialogueFastForwardButton;
     
-    int                 levelDifficulty;
-    OutroAnimation      outroAnimation;
-    NSArray             *wavesArray;
-    int                 numWaves;
-    int                 currentWave;
+    int                     levelDifficulty;
+    OutroAnimation          outroAnimation;
+    NSArray                 *wavesArray;
+    int                     numWaves;
+    int                     currentWave;
     
-    BezierCurve         *initialPath;
+    BezierCurve             *initialPath;
 }
 
 @property (nonatomic, retain) id <GameLevelDelegate> delegate;
