@@ -17,7 +17,6 @@
 		1129A1B313CACFA000BE73FA /* BossShipHyperion.m in Sources */ = {isa = PBXBuildFile; fileRef = 1129A1B213CACFA000BE73FA /* BossShipHyperion.m */; };
 		1129A1B613CACFB000BE73FA /* BossShipKronos.m in Sources */ = {isa = PBXBuildFile; fileRef = 1129A1B513CACFAF00BE73FA /* BossShipKronos.m */; };
 		1129A1B913CACFC500BE73FA /* BossShipAlphaWeapon.m in Sources */ = {isa = PBXBuildFile; fileRef = 1129A1B813CACFC500BE73FA /* BossShipAlphaWeapon.m */; };
-		1129A1BC13D3E38200BE73FA /* kBossKronos.png in Resources */ = {isa = PBXBuildFile; fileRef = 1129A1BB13D3E38200BE73FA /* kBossKronos.png */; };
 		1130822712D907B1009C9502 /* MiniBossGeneral.m in Sources */ = {isa = PBXBuildFile; fileRef = 1130822612D907B1009C9502 /* MiniBossGeneral.m */; };
 		1130822A12D907CD009C9502 /* BossShipAtlas.m in Sources */ = {isa = PBXBuildFile; fileRef = 1130822912D907CD009C9502 /* BossShipAtlas.m */; };
 		11336113129E54F300FE6A03 /* BossShips.plist in Resources */ = {isa = PBXBuildFile; fileRef = 11336112129E54F300FE6A03 /* BossShips.plist */; };
@@ -157,7 +156,6 @@
 		1129A1B513CACFAF00BE73FA /* BossShipKronos.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BossShipKronos.m; path = Entities/Ships/Bosses/BossShipKronos.m; sourceTree = "<group>"; };
 		1129A1B713CACFC500BE73FA /* BossShipAlphaWeapon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BossShipAlphaWeapon.h; path = Entities/Ships/Bosses/BossShipAlphaWeapon.h; sourceTree = "<group>"; };
 		1129A1B813CACFC500BE73FA /* BossShipAlphaWeapon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BossShipAlphaWeapon.m; path = Entities/Ships/Bosses/BossShipAlphaWeapon.m; sourceTree = "<group>"; };
-		1129A1BB13D3E38200BE73FA /* kBossKronos.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = kBossKronos.png; path = "Game Resources/Images/Normal/Ships/Boss Ships/kBossKronos.png"; sourceTree = SOURCE_ROOT; };
 		1130822512D907B1009C9502 /* MiniBossGeneral.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MiniBossGeneral.h; path = Entities/Ships/MiniBosses/MiniBossGeneral.h; sourceTree = "<group>"; };
 		1130822612D907B1009C9502 /* MiniBossGeneral.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MiniBossGeneral.m; path = Entities/Ships/MiniBosses/MiniBossGeneral.m; sourceTree = "<group>"; };
 		1130822812D907CD009C9502 /* BossShipAtlas.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BossShipAtlas.h; path = Entities/Ships/Bosses/BossShipAtlas.h; sourceTree = "<group>"; };
@@ -368,14 +366,6 @@
 				1D3623250D0F684500981E51 /* XenophobeAppDelegate.m */,
 			);
 			path = Classes;
-			sourceTree = "<group>";
-		};
-		1129A1BA13D3E37500BE73FA /* Temp Imagery */ = {
-			isa = PBXGroup;
-			children = (
-				1129A1BB13D3E38200BE73FA /* kBossKronos.png */,
-			);
-			name = "Temp Imagery";
 			sourceTree = "<group>";
 		};
 		1130822312D83C96009C9502 /* Bosses */ = {
@@ -780,7 +770,6 @@
 		11E7DCE4129F00C00047E2FD /* Bosses */ = {
 			isa = PBXGroup;
 			children = (
-				1129A1BA13D3E37500BE73FA /* Temp Imagery */,
 				11E7DCE7129F00D90047E2FD /* kBossAsiaMainBody.png */,
 				11E7DCE8129F00D90047E2FD /* kBossAsiaTurretLeft.png */,
 				11E7DCE9129F00D90047E2FD /* kBossAsiaTurretRight.png */,
@@ -1007,7 +996,6 @@
 				B9A7053E13C83EBD004A486C /* fastforward.png in Resources */,
 				1129A19F13CA73F100BE73FA /* Level_Intro.plist in Resources */,
 				1129A1A113CA933500BE73FA /* Level_One.plist in Resources */,
-				1129A1BC13D3E38200BE73FA /* kBossKronos.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

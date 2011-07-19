@@ -17,4 +17,13 @@
 
 @implementation BossShipEos
 
+- (id)initWithLocation:(CGPoint)aPoint andPlayershipRef:(PlayerShip *)playerRef {
+    
+    return nil;
+}
+
+- (void)update:(GLfloat)delta {
+    
+}
+
 @end

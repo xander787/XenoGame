@@ -13,10 +13,18 @@
 
 #import <Foundation/Foundation.h>
 #import "BossShip.h"
+#import "ParticleEmitter.h"
 
 
 @interface BossShipEos : BossShip {
+    ModularObject   *floaterOne;
+    ModularObject   *floaterTwo;
+    ModularObject   *floaterThree;
     
+    ParticleEmitter *outerShieldEmitter;
 }
+
+- (id)initWithLocation:(CGPoint)aPoint andPlayershipRef:(PlayerShip *)playerRef;
+- (void)update:(GLfloat)delta;
 
 @end

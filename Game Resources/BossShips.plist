@@ -61,12 +61,12 @@
 			<string>14,44</string>
 		</array>
 	</dict>
-	<key>kBossEurope</key>
+	<key>kBossKronos</key>
 	<dict>
 		<key>kBossAttack</key>
 		<integer>10</integer>
 		<key>kBossID</key>
-		<string>kBossEurope</string>
+		<string>kBossKronos</string>
 		<key>kBossSpeed</key>
 		<integer>10</integer>
 		<key>kBossStamina</key>
@@ -75,17 +75,54 @@
 		<string>kBossTypeBoss</string>
 		<key>kCollisionBoundingPoints</key>
 		<array>
-			<string>10,0;20,0;30,0;40,0;</string>
-			<string>10,10;20,10;30,10;40,10;</string>
-			<string>10,20;20,20;30,20;40,20;</string>
-			<string>10,20;20,20;30,20;40,20;</string>
-			<string>10,20;20,20;30,20;40,20;</string>
+			<string>0,0;0,130;130,130;130,0</string>
+		</array>
+		<key>kModularDestructionOrder</key>
+		<array>
+			<array>
+				<integer>0</integer>
+			</array>
+		</array>
+		<key>kShipModuleImages</key>
+		<array>
+			<string>kBossKronos.png</string>
+		</array>
+		<key>kShipModulePoints</key>
+		<array>
+			<string>0,0</string>
+		</array>
+		<key>kShipTurretPoints</key>
+		<array>
+			<string>65,65</string>
+		</array>
+	</dict>
+	<key>kBossAstraeus</key>
+	<dict>
+		<key>kBossAttack</key>
+		<integer>10</integer>
+		<key>kBossID</key>
+		<string>kBossAtlas</string>
+		<key>kBossSpeed</key>
+		<integer>10</integer>
+		<key>kBossStamina</key>
+		<integer>10</integer>
+		<key>kBossType</key>
+		<string>kBossTypeBoss</string>
+		<key>kCollisionBoundingPoints</key>
+		<array>
+			<string>0,-64;-90,-5;-96,36;-27,66;27,66;95,36;89,-5</string>
+			<string>9,0;0,-9;-9,0;0,9</string>
+			<string>9,0;0,-9;-9,0;0,9</string>
+			<string>15,30;18,1;7,-27;-4,-30;-16,-27;-14,19</string>
+			<string>-15,30;-18,1;-7,-27;4,-30;16,-27;14,19</string>
 		</array>
 		<key>kModularDestructionOrder</key>
 		<array>
 			<array>
 				<integer>1</integer>
 				<integer>2</integer>
+			</array>
+			<array>
 				<integer>3</integer>
 				<integer>4</integer>
 			</array>
@@ -95,27 +132,27 @@
 		</array>
 		<key>kShipModuleImages</key>
 		<array>
-			<string>kBossEuropeMainBody.png</string>
-			<string>kBossEuropeWingLeft.png</string>
-			<string>kBossEuropeWingRight.png</string>
-			<string>kBossEuropeTailLeft.png</string>
-			<string>kBossEuropeTailRight.png</string>
+			<string>kBossAsiaMainBody.png</string>
+			<string>kBossAsiaTurretLeft.png</string>
+			<string>kBossAsiaTurretRight.png</string>
+			<string>kBossAsiaCannonRight.png</string>
+			<string>kBossAsiaCannonLeft.png</string>
 		</array>
 		<key>kShipModulePoints</key>
 		<array>
 			<string>0,0</string>
-			<string>-81,-36</string>
-			<string>81,-36</string>
-			<string>-28,-129</string>
-			<string>28,-129</string>
+			<string>59,5</string>
+			<string>-59,5</string>
+			<string>136,0</string>
+			<string>-136,0</string>
 		</array>
 		<key>kShipTurretPoints</key>
 		<array>
-			<string>31,188</string>
-			<string>36,65;59,69</string>
-			<string>10,68;32,65</string>
-			<string>nil</string>
-			<string>nil</string>
+			<string>22,80;31,80;160,80;169,80</string>
+			<string>45,55</string>
+			<string>45,55</string>
+			<string>22,44</string>
+			<string>14,44</string>
 		</array>
 	</dict>
 </dict>
