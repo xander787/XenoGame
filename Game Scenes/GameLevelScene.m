@@ -9,22 +9,6 @@
 //  Alexander Nabavi-Noori - Software Engineer, Game Architect
 //	James Linnell - Software Engineer, Creative Design, Art Producer
 //	Tyler Newcomb - Creative Design, Art Producer
-//
-//  Last Updated - 6/12/11 @ 6:45PM - Alexander
-//  - Just added and removed some comments. Cleanup.
-//
-//  Last Updated - 6/23/2011 @ 7:45PM - James
-//  - Moved particles, from projectiles, off screen
-//  when hitting enemy/player ships
-//
-//  Last Updated - 6/25/2011 @ 6:20PM - James
-//  - Added more definitions in the convertToEnemyEnum method
-//
-//  Last Updated - 6/29/11 @5PM - James
-//  - Paths for incoming ships are setup now. Partially.
-//
-//  Last Updated - 7/4/11 @4PM - Alexander
-//  - Holding points for the enemies are now pre-determined
 //  
 //  Last Updated - 7/4/11 @8:30PM - Alexander
 //  - Dialogue loading and current wave type (Dialoge vs fighting)
@@ -54,6 +38,9 @@
 //  Last Updated - 7/9/2011 @10PM - James
 //  - Added and ellipses to the end of dialogueLineSixbuffer when there is
 //  another page of text to read
+//
+//  Last Updated - 7/18/11 @9PM - Alexander
+//  - Fly off transition added
 
 #import "GameLevelScene.h"
 

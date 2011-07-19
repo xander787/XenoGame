@@ -23,6 +23,9 @@
 //  
 //  Last Updated - 7/4/11 @8:30PM - Alexander
 //  - Dialogue loading and current wave type (Dialoge vs fighting)
+//
+//  Last Updated - 7/18/11 @9PM - Alexander
+//  - Fly off transition added
 
 #import <Foundation/Foundation.h>
 #import "BossShip.h"
