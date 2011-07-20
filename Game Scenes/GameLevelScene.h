@@ -36,6 +36,7 @@
 #import "AbstractScene.h"
 #import "Collisions.h"
 #import "BezierCurve.h"
+#import "BossShipAstraeus.h"
 
 @protocol GameLevelDelegate <NSObject>
 @required
@@ -85,7 +86,7 @@ typedef enum _OutroAnimation {
     
     NSString                *currentLevelFile;
     PlayerShip              *playerShip;
-    BossShip                *bossShip;
+    //BossShip                *bossShip;
     
     // Controlling the player ship
     BOOL                    touchOriginatedFromPlayerShip;
@@ -136,6 +137,8 @@ typedef enum _OutroAnimation {
     int                     currentWave;
     
     BezierCurve             *initialPath;
+    
+    BossShipAstraeus        *bossShip;
 }
 
 @property (nonatomic, retain) id <GameLevelDelegate> delegate;

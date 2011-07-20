@@ -262,13 +262,16 @@ WrapText( const char *text
         
         enemiesSet = [[NSMutableSet alloc] init];
         
-        [self loadWave:currentWave];
+        //[self loadWave:currentWave];
         
         playerShip = [[PlayerShip alloc] initWithShipID:kPlayerShip_Dev andInitialLocation:CGPointMake(155, 40)];
         
         font = [[AngelCodeFont alloc] initWithFontImageNamed:@"xenophobefont.png" controlFile:@"xenophobefont" scale:(1.0/3.0) filter:GL_LINEAR];
         dialogueBorder = [[Image alloc] initWithImage:@"DialogueBoxBorder.png" scale:Scale2fOne];
         dialogueFastForwardButton = [[Image alloc] initWithImage:@"fastforward.png" scale:Scale2fOne];
+        
+        
+        bossShip = [[BossShipAstraeus alloc] initWithLocation:CGPointMake(160, 280) andPlayerShipRef:playerShip];
     }
     
     return self;
@@ -632,6 +635,8 @@ WrapText( const char *text
             
         }
     }
+    
+    [bossShip update:aDelta];
 }
 
 - (void)updateCollisions {    
@@ -821,6 +826,9 @@ WrapText( const char *text
     if(CGRectContainsPoint(CGRectMake(305, 1, 25, 22), location) && currentWaveType == kWaveType_Dialogue){
         [self skipToNewPageOfText];
     }
+    
+    bossShip.modularObjects[2].isDead = YES;
+    bossShip.modularObjects[1].isDead = YES;
 }
 
 - (void)updateWithTouchLocationMoved:(NSSet *)touches withEvent:(UIEvent *)event view:(UIView *)aView {
@@ -891,6 +899,8 @@ WrapText( const char *text
         // to any other objects on the screen. Also not while dialogue is displayed.
         [playerShip render];
     }
+    
+    [bossShip render];
 }
 
 @end

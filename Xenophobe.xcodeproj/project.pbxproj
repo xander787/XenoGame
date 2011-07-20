@@ -21,6 +21,15 @@
 		1130822A12D907CD009C9502 /* BossShipAtlas.m in Sources */ = {isa = PBXBuildFile; fileRef = 1130822912D907CD009C9502 /* BossShipAtlas.m */; };
 		11336113129E54F300FE6A03 /* BossShips.plist in Resources */ = {isa = PBXBuildFile; fileRef = 11336112129E54F300FE6A03 /* BossShips.plist */; };
 		114A1A7412989C4B004769D4 /* PlayerShips.plist in Resources */ = {isa = PBXBuildFile; fileRef = 114A1A7312989C4B004769D4 /* PlayerShips.plist */; };
+		114DEB3713D6299E0064C1D1 /* arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 114DEB2E13D6299E0064C1D1 /* arrow.png */; };
+		114DEB3813D6299E0064C1D1 /* arrow30.png in Resources */ = {isa = PBXBuildFile; fileRef = 114DEB2F13D6299E0064C1D1 /* arrow30.png */; };
+		114DEB3913D6299E0064C1D1 /* arrow30inverted.png in Resources */ = {isa = PBXBuildFile; fileRef = 114DEB3013D6299E0064C1D1 /* arrow30inverted.png */; };
+		114DEB3A13D6299E0064C1D1 /* arrow90.png in Resources */ = {isa = PBXBuildFile; fileRef = 114DEB3113D6299E0064C1D1 /* arrow90.png */; };
+		114DEB3B13D6299E0064C1D1 /* arrow90inverted.png in Resources */ = {isa = PBXBuildFile; fileRef = 114DEB3213D6299E0064C1D1 /* arrow90inverted.png */; };
+		114DEB3C13D6299E0064C1D1 /* arrow120.png in Resources */ = {isa = PBXBuildFile; fileRef = 114DEB3313D6299E0064C1D1 /* arrow120.png */; };
+		114DEB3D13D6299E0064C1D1 /* arrow120inverted.png in Resources */ = {isa = PBXBuildFile; fileRef = 114DEB3413D6299E0064C1D1 /* arrow120inverted.png */; };
+		114DEB3E13D6299E0064C1D1 /* arrowinverted.png in Resources */ = {isa = PBXBuildFile; fileRef = 114DEB3513D6299E0064C1D1 /* arrowinverted.png */; };
+		114DEB3F13D6299E0064C1D1 /* ship.png in Resources */ = {isa = PBXBuildFile; fileRef = 114DEB3613D6299E0064C1D1 /* ship.png */; };
 		1164A6F612D29F7400B21071 /* kEnemyKamikazeeLevelOne.png in Resources */ = {isa = PBXBuildFile; fileRef = 1164A6F412D29F7400B21071 /* kEnemyKamikazeeLevelOne.png */; };
 		1164A6F712D29F7400B21071 /* kEnemyWaveShotLevelFourSpriteSheet.png in Resources */ = {isa = PBXBuildFile; fileRef = 1164A6F512D29F7400B21071 /* kEnemyWaveShotLevelFourSpriteSheet.png */; };
 		1169BA8213ABF7F1005FA11F /* Level_Key.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1169BA8113ABF7F1005FA11F /* Level_Key.plist */; };
@@ -162,6 +171,15 @@
 		1130822912D907CD009C9502 /* BossShipAtlas.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BossShipAtlas.m; path = Entities/Ships/Bosses/BossShipAtlas.m; sourceTree = "<group>"; };
 		11336112129E54F300FE6A03 /* BossShips.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = BossShips.plist; path = "Game Resources/BossShips.plist"; sourceTree = SOURCE_ROOT; };
 		114A1A7312989C4B004769D4 /* PlayerShips.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = PlayerShips.plist; path = "Game Resources/PlayerShips.plist"; sourceTree = SOURCE_ROOT; };
+		114DEB2E13D6299E0064C1D1 /* arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = arrow.png; path = "Game Resources/Images/Normal/Ships/Boss Ships/arrow.png"; sourceTree = SOURCE_ROOT; };
+		114DEB2F13D6299E0064C1D1 /* arrow30.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = arrow30.png; path = "Game Resources/Images/Normal/Ships/Boss Ships/arrow30.png"; sourceTree = SOURCE_ROOT; };
+		114DEB3013D6299E0064C1D1 /* arrow30inverted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = arrow30inverted.png; path = "Game Resources/Images/Normal/Ships/Boss Ships/arrow30inverted.png"; sourceTree = SOURCE_ROOT; };
+		114DEB3113D6299E0064C1D1 /* arrow90.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = arrow90.png; path = "Game Resources/Images/Normal/Ships/Boss Ships/arrow90.png"; sourceTree = SOURCE_ROOT; };
+		114DEB3213D6299E0064C1D1 /* arrow90inverted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = arrow90inverted.png; path = "Game Resources/Images/Normal/Ships/Boss Ships/arrow90inverted.png"; sourceTree = SOURCE_ROOT; };
+		114DEB3313D6299E0064C1D1 /* arrow120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = arrow120.png; path = "Game Resources/Images/Normal/Ships/Boss Ships/arrow120.png"; sourceTree = SOURCE_ROOT; };
+		114DEB3413D6299E0064C1D1 /* arrow120inverted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = arrow120inverted.png; path = "Game Resources/Images/Normal/Ships/Boss Ships/arrow120inverted.png"; sourceTree = SOURCE_ROOT; };
+		114DEB3513D6299E0064C1D1 /* arrowinverted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = arrowinverted.png; path = "Game Resources/Images/Normal/Ships/Boss Ships/arrowinverted.png"; sourceTree = SOURCE_ROOT; };
+		114DEB3613D6299E0064C1D1 /* ship.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ship.png; path = "Game Resources/Images/Normal/Ships/Boss Ships/ship.png"; sourceTree = SOURCE_ROOT; };
 		1164A6F412D29F7400B21071 /* kEnemyKamikazeeLevelOne.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = kEnemyKamikazeeLevelOne.png; path = "Game Resources/Images/Normal/Ships/Enemy Ships/kEnemyKamikazeeLevelOne.png"; sourceTree = SOURCE_ROOT; };
 		1164A6F512D29F7400B21071 /* kEnemyWaveShotLevelFourSpriteSheet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = kEnemyWaveShotLevelFourSpriteSheet.png; path = "Game Resources/Images/Normal/Ships/Enemy Ships/kEnemyWaveShotLevelFourSpriteSheet.png"; sourceTree = SOURCE_ROOT; };
 		1169BA8113ABF7F1005FA11F /* Level_Key.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Level_Key.plist; path = "Game Resources/Game Levels/Level_Key.plist"; sourceTree = SOURCE_ROOT; };
@@ -405,6 +423,7 @@
 		11336114129EEE8D00FE6A03 /* Ships */ = {
 			isa = PBXGroup;
 			children = (
+				114DEB2D13D6298B0064C1D1 /* Test Ships */,
 				11336116129EEEA500FE6A03 /* Player Ships */,
 				11336117129EEEB000FE6A03 /* Enemy Ships */,
 				11336115129EEE9900FE6A03 /* Boss Ships */,
@@ -449,6 +468,22 @@
 				1164A6F512D29F7400B21071 /* kEnemyWaveShotLevelFourSpriteSheet.png */,
 			);
 			name = "Enemy Ships";
+			sourceTree = "<group>";
+		};
+		114DEB2D13D6298B0064C1D1 /* Test Ships */ = {
+			isa = PBXGroup;
+			children = (
+				114DEB2E13D6299E0064C1D1 /* arrow.png */,
+				114DEB2F13D6299E0064C1D1 /* arrow30.png */,
+				114DEB3013D6299E0064C1D1 /* arrow30inverted.png */,
+				114DEB3113D6299E0064C1D1 /* arrow90.png */,
+				114DEB3213D6299E0064C1D1 /* arrow90inverted.png */,
+				114DEB3313D6299E0064C1D1 /* arrow120.png */,
+				114DEB3413D6299E0064C1D1 /* arrow120inverted.png */,
+				114DEB3513D6299E0064C1D1 /* arrowinverted.png */,
+				114DEB3613D6299E0064C1D1 /* ship.png */,
+			);
+			name = "Test Ships";
 			sourceTree = "<group>";
 		};
 		1169BA8013ABF7B1005FA11F /* Game Levels */ = {
@@ -996,6 +1031,15 @@
 				B9A7053E13C83EBD004A486C /* fastforward.png in Resources */,
 				1129A19F13CA73F100BE73FA /* Level_Intro.plist in Resources */,
 				1129A1A113CA933500BE73FA /* Level_One.plist in Resources */,
+				114DEB3713D6299E0064C1D1 /* arrow.png in Resources */,
+				114DEB3813D6299E0064C1D1 /* arrow30.png in Resources */,
+				114DEB3913D6299E0064C1D1 /* arrow30inverted.png in Resources */,
+				114DEB3A13D6299E0064C1D1 /* arrow90.png in Resources */,
+				114DEB3B13D6299E0064C1D1 /* arrow90inverted.png in Resources */,
+				114DEB3C13D6299E0064C1D1 /* arrow120.png in Resources */,
+				114DEB3D13D6299E0064C1D1 /* arrow120inverted.png in Resources */,
+				114DEB3E13D6299E0064C1D1 /* arrowinverted.png in Resources */,
+				114DEB3F13D6299E0064C1D1 /* ship.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

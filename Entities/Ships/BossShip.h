@@ -26,6 +26,9 @@
 //
 //  Last Updated - 6/22/11 @5PM - Alexander & James
 //  - Changed enums to reflect new bosses
+//
+//  Last Updated - 7/19/11 @5PM - Alexander
+//  - Modules now have default and current location
 
 #import <Foundation/Foundation.h>
 #import "Common.h"
@@ -96,12 +99,17 @@ typedef struct _ModularObject {
     int             destructionOrder;
     int             drawingOrder;
     Vector2f        location;
+    Vector2f        defaultLocation;
     Image           *moduleImage;
     
     Vector2f        *collisionDetectionBoundingPoints;
     Polygon         *collisionPolygon;
     int             collisionPointsCount;
     float           rotation;
+    
+    float           moduleMaxHealth;
+    float           moduleHealth;
+    BOOL            isDead;
 } ModularObject;
 
 
