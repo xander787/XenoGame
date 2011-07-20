@@ -44,6 +44,10 @@
 //
 //  Last Updated - 7/19/11 @1PM - James
 //  - Player stops shooting during fly-off transition
+//
+//  Last Updated - 7/20/11 @4:30PM - James
+//  - Removed the hover code for enemies, done now in
+//  enemy class
 
 #import "GameLevelScene.h"
 
@@ -626,10 +630,6 @@ WrapText( const char *text
             }
         }
         else if(enemyShip.currentPathType == kPathType_Holding){
-            if(enemyShip.pathTime > 2){
-                enemyShip.pathTime = 0;
-                enemyShip.desiredPosition = CGPointMake(enemyShip.currentLocation.x + (10 * RANDOM_MINUS_1_TO_1()), enemyShip.currentLocation.y + (10 * RANDOM_MINUS_1_TO_1()));
-            }
         }
         else if(enemyShip.currentPathType == kPathType_Attacking){
             
@@ -895,7 +895,7 @@ WrapText( const char *text
         [playerShip render];
     }
     
-    [bossShip render];
+//    [bossShip render];
 }
 
 @end

@@ -32,9 +32,18 @@
 //
 //  Last Updated - 6/29/11 @5PM - James
 //  - Setup paths for the ships when they come in
+//
+//  Last Updated - 7/20/11 @4:30PM - James
+//  - Added code to make the enemy 'hover' around
+//  its holding position. Bounding box editable in the
+//  two #defines
 
 #import "EnemyShip.h"
 
+//The +- limits for how far away an enemy ship can
+//stray from their respective holding points
+#define HOLDING_LIMIT_X 15
+#define HOLDING_LIMIT_Y 15
 
 @implementation EnemyShip
 
@@ -323,11 +332,25 @@
 
 - (void)update:(GLfloat)delta {
     [enemyAnimation update:delta];
-    pathTime += delta;
+    if(currentPathType != kPathType_Holding) pathTime += delta;
     
     if(currentPathType == kPathType_Holding){
         currentLocation.x += ((desiredPosition.x - currentLocation.x) / shipSpeed) * (pow(1.584893192, shipSpeed)) * delta;
         currentLocation.y += ((desiredPosition.y - currentLocation.y) / shipSpeed) * (pow(1.584893192, shipSpeed)) * delta;
+        
+        holdingTimer += delta;
+        if(holdingTimer >= 0.5){
+            holdingTimer = 0;
+            desiredPosition.x = currentLocation.x + (RANDOM_MINUS_1_TO_1() * HOLDING_LIMIT_X * 2);
+            desiredPosition.y = currentLocation.y + (RANDOM_MINUS_1_TO_1() * HOLDING_LIMIT_Y * 2);
+        }
+        
+        //Make sure the ship doesn't fall out of it's bounds
+        if(currentLocation.x < (holdingPositionPoint.x - HOLDING_LIMIT_X)) currentLocation.x = (holdingPositionPoint.x - HOLDING_LIMIT_X);
+        if(currentLocation.x > (holdingPositionPoint.x + HOLDING_LIMIT_X)) currentLocation.x = (holdingPositionPoint.x + HOLDING_LIMIT_X);
+        
+        if(currentLocation.y < (holdingPositionPoint.y - HOLDING_LIMIT_Y)) currentLocation.y = (holdingPositionPoint.y - HOLDING_LIMIT_Y);
+        if(currentLocation.y > (holdingPositionPoint.y + HOLDING_LIMIT_Y)) currentLocation.y = (holdingPositionPoint.y + HOLDING_LIMIT_Y);
     }
     
     if(!shipIsDead){

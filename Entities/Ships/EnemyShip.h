@@ -137,6 +137,9 @@ typedef enum _PathType {
     PathType                currentPathType;
     
     CGPoint                 desiredPosition;
+    
+    CGPoint                 holdingDirection;
+    GLfloat                 holdingTimer;
 }
 @property(nonatomic, retain) BezierCurve *currentPath;
 @property(readwrite) PathType currentPathType;

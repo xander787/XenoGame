@@ -1126,7 +1126,7 @@
 				INFOPLIST_FILE = "Xenophobe-Info.plist";
 				OTHER_LDFLAGS = "-lxml2";
 				PRODUCT_NAME = Xenophobe;
-				SDKROOT = iphonesimulator4.0;
+				SDKROOT = iphoneos4.3;
 				USER_HEADER_SEARCH_PATHS = /usr/include/libxml2;
 			};
 			name = Debug;
@@ -1143,7 +1143,7 @@
 				INFOPLIST_FILE = "Xenophobe-Info.plist";
 				OTHER_LDFLAGS = "-lxml2";
 				PRODUCT_NAME = Xenophobe;
-				SDKROOT = iphonesimulator4.0;
+				SDKROOT = iphoneos4.3;
 				USER_HEADER_SEARCH_PATHS = /usr/include/libxml2;
 				VALIDATE_PRODUCT = YES;
 			};
