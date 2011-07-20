@@ -537,7 +537,6 @@
 - (void)stopProjectile {
     //Used when we want to stop updating AND rendering our projectile.
     //The owner of the class uses this so it doesn't have to deallocate the projectile on ship death
-    NSLog(@"Stopped");
     isDead = YES;
 }
 

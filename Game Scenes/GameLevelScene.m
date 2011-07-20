@@ -738,11 +738,6 @@ WrapText( const char *text
             [self loadWave:currentWave];
         }
         else {
-            NSLog(@"Ghg");
-            for(AbstractProjectile *playerWeapon in playerShip.projectilesArray){
-                [playerWeapon stopProjectile];
-                NSLog(@"gbhgth");
-            }
             [delegate levelEnded];
         }
     }
