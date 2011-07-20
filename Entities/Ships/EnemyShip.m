@@ -42,8 +42,8 @@
 
 //The +- limits for how far away an enemy ship can
 //stray from their respective holding points
-#define HOLDING_LIMIT_X 15
-#define HOLDING_LIMIT_Y 15
+#define HOLDING_LIMIT_X 8
+#define HOLDING_LIMIT_Y 8
 
 @implementation EnemyShip
 
@@ -339,10 +339,10 @@
         currentLocation.y += ((desiredPosition.y - currentLocation.y) / shipSpeed) * (pow(1.584893192, shipSpeed)) * delta;
         
         holdingTimer += delta;
-        if(holdingTimer >= 0.5){
+        if(holdingTimer >= 1.00){
             holdingTimer = 0;
-            desiredPosition.x = currentLocation.x + (RANDOM_MINUS_1_TO_1() * HOLDING_LIMIT_X * 2);
-            desiredPosition.y = currentLocation.y + (RANDOM_MINUS_1_TO_1() * HOLDING_LIMIT_Y * 2);
+            desiredPosition.x = currentLocation.x + (RANDOM_MINUS_1_TO_1() * HOLDING_LIMIT_X);
+            desiredPosition.y = currentLocation.y + (RANDOM_MINUS_1_TO_1() * HOLDING_LIMIT_Y);
         }
         
         //Make sure the ship doesn't fall out of it's bounds
