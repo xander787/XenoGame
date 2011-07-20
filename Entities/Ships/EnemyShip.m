@@ -42,8 +42,8 @@
 
 //The +- limits for how far away an enemy ship can
 //stray from their respective holding points
-#define HOLDING_LIMIT_X 8
-#define HOLDING_LIMIT_Y 8
+#define HOLDING_LIMIT_X 5
+#define HOLDING_LIMIT_Y 5
 
 @implementation EnemyShip
 
