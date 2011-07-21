@@ -65,6 +65,9 @@
 //  - Added killShip method, moved death emitter init
 //  to regular init for less lag, made sure there's no
 //  more polygon after death
+//
+//  Last Updated - 7/20/11 @9PM - James
+//  - Small bug with death animation appearing in wrong place fixed
 
 #import "PlayerShip.h"
 
@@ -266,6 +269,8 @@
 - (void)update:(GLfloat)delta {
     currentLocation.x += ((desiredPosition.x - currentLocation.x) / shipSpeed) * (pow(1.584893192, shipSpeed)) * delta;
     currentLocation.y += ((desiredPosition.y - currentLocation.y) / shipSpeed) * (pow(1.584893192, shipSpeed)) * delta;
+
+    deathAnimationEmitter.sourcePosition = Vector2fMake(currentLocation.x, currentLocation.y);
     
     //Update the points for our polygon
     if(!shipIsDead){

@@ -59,6 +59,9 @@
 //
 //  Last updated - 7/20/11 @8:15PM - James
 //  - Fixed a crash on collision detection with boss
+//
+//  Last Updated - 7/20/11 @9PM - James
+//  - Added plaership vs. boss module collision detection
 
 #import "GameLevelScene.h"
 
@@ -770,6 +773,12 @@ WrapText( const char *text
         
         if (currentWaveType == kWaveType_Boss) {
             for (int i = 0; i < bossShip.numberOfModules; ++i) {
+                PolygonCollisionResult playerShipResult = [Collisions polygonCollision:[playerShip collisionPolygon] :bossShip.modularObjects[i].collisionPolygon :Vector2fZero];
+                
+                if(playerShipResult.intersect){
+                    NSLog(@"Collision occured between player ship and boss module");
+                    [playerShip killShip];
+                }
                 
                 //Player Bullets->Boss ship module collision
                 for(AbstractProjectile *playerShipProjectile in playerShip.projectilesArray){
@@ -777,7 +786,7 @@ WrapText( const char *text
                         PolygonCollisionResult result = [Collisions polygonCollision:playerBulletPoly :bossShip.modularObjects[i].collisionPolygon :Vector2fZero];
                         
                         if(result.intersect){
-                            NSLog(@"Collision occured between player bullet and boss ship module");
+//                            NSLog(@"Collision occured between player bullet and boss ship module");
                             [bossShip hitModule:i withDamage:5];
                         }
                     }
