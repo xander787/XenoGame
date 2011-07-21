@@ -43,13 +43,17 @@
 //
 //  Last Updated - 7/19/11 @5PM - Alexander
 //  - Modules now have default and current location
+//
+//  Last Updated - 7/19/11 @5:30PM - Alexander
+//  - Added readonly properties for numberOfModules, bossID, and bossType
+//  - Added new method to hit modules with damage
 
 #import "BossShip.h"
 
 
 @implementation BossShip
 
-@synthesize bossHealth, bossAttack, bossStamina, bossSpeed, modularObjects;
+@synthesize bossHealth, bossAttack, bossStamina, bossSpeed, modularObjects, numberOfModules, bossID, bossType;
 
 - (id)initWithBossID:(BossShipID)aBossID initialLocation:(CGPoint)aPoint andPlayerShipRef:(PlayerShip *)aPlayerShip {
     if((self = [super init])) {
@@ -299,8 +303,13 @@
     desiredLocation = aPoint;
 }
 
-- (void)update:(GLfloat)delta {
+- (void)hitModule:(int)module withDamage:(int)damage {
     
+}
+
+- (void)update:(GLfloat)delta {
+    currentLocation.x += ((desiredLocation.x - currentLocation.x) / shipSpeed) * (pow(1.584893192, shipSpeed)) * delta;
+    currentLocation.y += ((desiredLocation.y - currentLocation.y) / shipSpeed) * (pow(1.584893192, shipSpeed)) * delta;
 }
 
 - (void)render {

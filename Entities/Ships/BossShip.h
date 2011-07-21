@@ -29,6 +29,10 @@
 //
 //  Last Updated - 7/19/11 @5PM - Alexander
 //  - Modules now have default and current location
+//
+//  Last Updated - 7/19/11 @5:30PM - Alexander
+//  - Added readonly properties for numberOfModules, bossID, and bossType
+//  - Added new method to hit moduels with damage
 
 #import <Foundation/Foundation.h>
 #import "Common.h"
@@ -133,9 +137,13 @@ typedef struct _ModularObject {
 @property(nonatomic, readonly) int bossAttack;
 @property(nonatomic, readonly) int bossStamina;
 @property(nonatomic, readonly) int bossSpeed;
-@property(readonly) ModularObject   *modularObjects;
+@property(readonly) ModularObject  *modularObjects;
+@property(readonly) int            numberOfModules;
+@property(readonly) BossShipID     bossID;
+@property(readonly) BossType       bossType;
 
 - (id)initWithBossID:(BossShipID)aBossID initialLocation:(CGPoint)aPoint andPlayerShipRef:(PlayerShip *)aPlayerShip;
 - (void)setDesiredLocation:(CGPoint)aPoint;
+- (void)hitModule:(int)module withDamage:(int)damage;
 
 @end

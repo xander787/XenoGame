@@ -48,6 +48,14 @@
 //  Last Updated - 7/20/11 @4:30PM - James
 //  - Removed the hover code for enemies, done now in
 //  enemy class
+//
+//  Last Updated - 7/19/11 @6PM - Alexander
+//  - Cleaned up the update method to only do necessary tasks during
+//  the appropriate wave type
+//  - Cleaned up the collision update method to only do necessary tasks
+//  during the appropriate wave type as well as added collision support
+//  for player projectiles -> boss modules
+//  - Boss ships now fly in after the waves have been completed
 
 #import "GameLevelScene.h"
 
@@ -239,13 +247,21 @@ WrapText( const char *text
         else if([[levelDictionary objectForKey:@"kLevelType"] isEqualToString:@"kBossLevel"]) {
             levelType = kLevelType_Boss;
             if([[levelDictionary objectForKey:@"kBossShip"] isEqualToString:@"kBossAtlas"]) {
-                bossShip = [[BossShipAtlas alloc] initWithLocation:CGPointMake(0.0f, 0.0f) andPlayerShipRef:playerShip];
+                //bossShip = [[BossShipAtlas alloc] initWithLocation:CGPointMake(0.0f, 0.0f) andPlayerShipRef:playerShip];
+                bossShipID = kBoss_Atlas;
             }
         }
         else if([[levelDictionary objectForKey:@"kLevelType"] isEqualToString:@"kCutsceneLevel"]) {
             levelType = kLevelType_Cutscene;
         }
         
+        NSArray *bossDefaultLocationArray = [[NSArray alloc] initWithArray:[[levelDictionary objectForKey:@"kBossDefaultPoint"] componentsSeparatedByString:@","]];
+        bossShipDefaultLocation = CGPointMake([[bossDefaultLocationArray objectAtIndex:0] floatValue], [[bossDefaultLocationArray objectAtIndex:1] floatValue]);
+        [bossDefaultLocationArray release];
+        
+        bossShipIsDisplayed = NO;
+        bossShipReadyToAnimate = NO;
+        bossShipIntroAnimationTime = 0.0;
         
         // Load and save the outro transition for this level
         if([[levelDictionary objectForKey:@"OutroTransition"] isEqualToString:@"kShipFlyOff"]) {
@@ -266,16 +282,13 @@ WrapText( const char *text
         
         enemiesSet = [[NSMutableSet alloc] init];
         
-        //[self loadWave:currentWave];
+        [self loadWave:currentWave];
         
         playerShip = [[PlayerShip alloc] initWithShipID:kPlayerShip_Dev andInitialLocation:CGPointMake(155, 40)];
         
         font = [[AngelCodeFont alloc] initWithFontImageNamed:@"xenophobefont.png" controlFile:@"xenophobefont" scale:(1.0/3.0) filter:GL_LINEAR];
         dialogueBorder = [[Image alloc] initWithImage:@"DialogueBoxBorder.png" scale:Scale2fOne];
         dialogueFastForwardButton = [[Image alloc] initWithImage:@"fastforward.png" scale:Scale2fOne];
-        
-        
-        bossShip = [[BossShipAstraeus alloc] initWithLocation:CGPointMake(160, 280) andPlayerShipRef:playerShip];
     }
     
     return self;
@@ -373,7 +386,7 @@ WrapText( const char *text
 - (void)loadWave:(int)wave {
     if(![[wavesArray objectAtIndex:wave] respondsToSelector:@selector(setString:)]) {
         for(int i = 0; i < [[wavesArray objectAtIndex:wave] count]; ++i) {
-            currentWaveType = kWaveType_Fighting;
+            currentWaveType = kWaveType_Enemy;
             EnemyShip *enemy = [[EnemyShip alloc] initWithShipID:[self convertToEnemyEnum:[[[wavesArray objectAtIndex:wave] objectAtIndex:i] objectAtIndex:0]] initialLocation:CGPointMake(100.0f + (50 * RANDOM_MINUS_1_TO_1()), 300.0f + (50 * RANDOM_MINUS_1_TO_1())) andPlayerShipRef:playerShip];
             enemy.currentPath = [[BezierCurve alloc] initCurveFrom:Vector2fMake(0, 480) controlPoint1:Vector2fMake(320, 240) controlPoint2:Vector2fMake((5 * RANDOM_0_TO_1()), (240 + (10 * RANDOM_0_TO_1()))) endPoint:Vector2fMake(160, 100) segments:100];
             enemy.currentPathType = kPathType_Initial;
@@ -463,24 +476,105 @@ WrapText( const char *text
     }
 }
 
-- (void)update:(GLfloat)aDelta {
-    //Make sure that all of our ship objects get their update: called. Necessary.
-    [playerShip update:aDelta];
-    
-    // Loop through our enemies and remove those that have died and whose
-    // destruction animations have completed
-    NSMutableSet *discardedEnemies = [[NSMutableSet alloc] init];
-    for(EnemyShip *enemyShip in enemiesSet){
-        [enemyShip update:aDelta];
-        if(enemyShip.shipIsDead && enemyShip.deathAnimationEmitter.particleCount == 0) {
-            [discardedEnemies addObject:enemyShip];
-        }
+- (void)loadBoss {
+    if (bossShipID == kBoss_Atlas) {
+        NSLog(@"Loading Atlas");
+        bossShip = [[BossShipAtlas alloc] initWithLocation:CGPointMake(160.0f, 600.0f) andPlayerShipRef:playerShip];
     }
-    [enemiesSet minusSet:discardedEnemies];
-    [discardedEnemies release];
     
-    [self updateCollisions];
+    bossShipReadyToAnimate = YES;
     
+    NSLog(@"Loaded Atlas");
+}
+
+- (void)update:(GLfloat)aDelta {    
+    
+    // We are currently in a "fighting" wave. Update accordingly.
+    if (currentWaveType == kWaveType_Enemy || currentWaveType == kWaveType_Boss) {
+        //Make sure that all of our ship objects get their update: called. Necessary.
+        [playerShip update:aDelta];
+        
+        if (currentWaveType == kWaveType_Enemy) {
+            // Loop through our enemies and remove those that have died and whose
+            // destruction animations have completed
+            NSMutableSet *discardedEnemies = [[NSMutableSet alloc] init];
+            for(EnemyShip *enemyShip in enemiesSet){
+                [enemyShip update:aDelta];
+                if(enemyShip.shipIsDead && enemyShip.deathAnimationEmitter.particleCount == 0) {
+                    [discardedEnemies addObject:enemyShip];
+                }
+            }
+            [enemiesSet minusSet:discardedEnemies];
+            [discardedEnemies release];
+            
+            //Update the enemies' movement paths
+            for(EnemyShip *enemyShip in enemiesSet){        
+                if(enemyShip.currentPathType == kPathType_Initial){
+                    [enemyShip setCurrentLocation:CGPointMake([enemyShip.currentPath getPointAt:enemyShip.pathTime/2].x, [enemyShip.currentPath getPointAt:enemyShip.pathTime/2].y)];
+                    
+                    if(abs(enemyShip.currentLocation.x - enemyShip.currentPath.endPoint.x) < 5 && abs(enemyShip.currentLocation.y - enemyShip.currentPath.endPoint.y) < 5){
+                        Vector2f oldEndPoint = enemyShip.currentPath.endPoint;
+                        [[enemyShip currentPath] release];
+                        enemyShip.currentPath = nil;
+                        enemyShip.currentPath = [[BezierCurve alloc] initCurveFrom:Vector2fMake(oldEndPoint.x, oldEndPoint.y) controlPoint1:Vector2fMake(100, 100) controlPoint2:Vector2fMake(300, 300) endPoint:Vector2fMake(enemyShip.holdingPositionPoint.x, enemyShip.holdingPositionPoint.y) segments:100];
+                        enemyShip.pathTime = 0;
+                        
+                        enemyShip.currentPathType = kPathType_ToHolding;
+                    }
+                }
+                else if(enemyShip.currentPathType == kPathType_ToHolding){
+                    [enemyShip setCurrentLocation:CGPointMake([enemyShip.currentPath getPointAt:enemyShip.pathTime/2].x, [enemyShip.currentPath getPointAt:enemyShip.pathTime/2].y)];
+                    
+                    if(abs(enemyShip.currentLocation.x - enemyShip.currentPath.endPoint.x) < 5 && abs(enemyShip.currentLocation.y - enemyShip.currentPath.endPoint.y) < 5){
+                        Vector2f oldEndPoint = enemyShip.currentPath.endPoint;
+                        [[enemyShip currentPath] release];
+                        enemyShip.currentPath = nil;
+                        enemyShip.pathTime = 0;
+                        enemyShip.currentPathType = kPathType_Holding;
+                        enemyShip.desiredPosition = CGPointMake(oldEndPoint.x, oldEndPoint.y);
+                    }
+                }
+                else if(enemyShip.currentPathType == kPathType_Holding){
+                    
+                }
+                else if(enemyShip.currentPathType == kPathType_Attacking){
+                    
+                }
+            }
+        }
+        
+        if (currentWaveType == kWaveType_Boss) {
+
+            // Animating the boss onto the screen
+            if (!bossShipIsDisplayed && bossShipReadyToAnimate && bossShip) {
+                
+                NSLog(@"Animating Boss X: %f Y: %f", bossShip.currentLocation.x, bossShip.currentLocation.y);
+                
+                bossShipIntroAnimationTime += aDelta;
+                if (bossShip.currentLocation.y > bossShipDefaultLocation.y) {
+                    [bossShip setDesiredLocation:CGPointMake(bossShip.currentLocation.x, bossShip.currentLocation.y - (bossShipIntroAnimationTime))];
+                }
+                if (bossShip.currentLocation.x > bossShipDefaultLocation.x) {
+                    [bossShip setDesiredLocation:CGPointMake(bossShip.currentLocation.x - (bossShipIntroAnimationTime), bossShip.currentLocation.y)];
+                }
+                if (bossShip.currentLocation.x < bossShipDefaultLocation.x) {
+                    [bossShip setDesiredLocation:CGPointMake(bossShip.currentLocation.x + (bossShipIntroAnimationTime), bossShip.currentLocation.y)];
+                }
+                
+                if (abs(bossShip.currentLocation.x - bossShipDefaultLocation.x) < 3 && abs(bossShip.currentLocation.y - bossShipDefaultLocation.y) < 3) {
+                    bossShipIntroAnimationTime = 0.0;
+                    bossShipIsDisplayed = YES;
+                }
+            }
+            
+            [bossShip update:aDelta];
+        }
+        
+        // Need to update all collision objects on the screen
+        [self updateCollisions];
+    }
+    
+    // Level is ending and animating out
     if(outroTransitionAnimating) {
         outroAnimationTime+= aDelta;
         if (outroAnimationType == kOutroAnimation_Flyoff) {
@@ -490,13 +584,24 @@ WrapText( const char *text
             }
         }
     }
+     
+    // We're out of enemies on the screen. Load next wave or boss level if none exists
+    if(currentWaveType == kWaveType_Enemy && [enemiesSet count] == 0) {
         
-    if(currentWaveType == kWaveType_Fighting && [enemiesSet count] == 0) {
+        // More waves are available
         if(currentWave != (numWaves - 1)) {
             currentWave++;
             [self loadWave:currentWave];
         }
-        else {
+        
+        // No waves available, boss level time.
+        else if(currentWaveType != kWaveType_Boss) {
+            currentWaveType = kWaveType_Boss;
+            [self loadBoss];
+        }
+        
+        // Boss is finished, end level time
+        else if(currentWaveType == kWaveType_Finished) {
             for(AbstractProjectile *playerWeapon in playerShip.projectilesArray){
                 [playerWeapon stopProjectile];
             }
@@ -516,6 +621,8 @@ WrapText( const char *text
             }
         }
     }
+    
+    // This is a dialogue wave, display it.
     else {
         dialogueTypeTimeDelay += aDelta;
         if (dialogueTypeTimeDelay > 0.1) {               
@@ -601,91 +708,84 @@ WrapText( const char *text
             }
         }
     }
-    
-    //PATH UPDATING
-    for(EnemyShip *enemyShip in enemiesSet){        
-        if(enemyShip.currentPathType == kPathType_Initial){
-            [enemyShip setCurrentLocation:CGPointMake([enemyShip.currentPath getPointAt:enemyShip.pathTime/2].x, [enemyShip.currentPath getPointAt:enemyShip.pathTime/2].y)];
-            
-            if(abs(enemyShip.currentLocation.x - enemyShip.currentPath.endPoint.x) < 5 && abs(enemyShip.currentLocation.y - enemyShip.currentPath.endPoint.y) < 5){
-                Vector2f oldEndPoint = enemyShip.currentPath.endPoint;
-                [[enemyShip currentPath] release];
-                enemyShip.currentPath = nil;
-                enemyShip.currentPath = [[BezierCurve alloc] initCurveFrom:Vector2fMake(oldEndPoint.x, oldEndPoint.y) controlPoint1:Vector2fMake(100, 100) controlPoint2:Vector2fMake(300, 300) endPoint:Vector2fMake(enemyShip.holdingPositionPoint.x, enemyShip.holdingPositionPoint.y) segments:100];
-                enemyShip.pathTime = 0;
-                
-                enemyShip.currentPathType = kPathType_ToHolding;
-            }
-        }
-        else if(enemyShip.currentPathType == kPathType_ToHolding){
-            [enemyShip setCurrentLocation:CGPointMake([enemyShip.currentPath getPointAt:enemyShip.pathTime/2].x, [enemyShip.currentPath getPointAt:enemyShip.pathTime/2].y)];
-            
-            if(abs(enemyShip.currentLocation.x - enemyShip.currentPath.endPoint.x) < 5 && abs(enemyShip.currentLocation.y - enemyShip.currentPath.endPoint.y) < 5){
-                Vector2f oldEndPoint = enemyShip.currentPath.endPoint;
-                [[enemyShip currentPath] release];
-                enemyShip.currentPath = nil;
-                enemyShip.pathTime = 0;
-                enemyShip.currentPathType = kPathType_Holding;
-                enemyShip.desiredPosition = CGPointMake(oldEndPoint.x, oldEndPoint.y);
-            }
-        }
-        else if(enemyShip.currentPathType == kPathType_Holding){
-        }
-        else if(enemyShip.currentPathType == kPathType_Attacking){
-            
-        }
-    }
-    
-    [bossShip update:aDelta];
 }
 
-- (void)updateCollisions {    
-    // First check direct ship-ship collisions between the player and enemies
-    EnemyShip *enemyShip;
-    for (enemyShip in enemiesSet) {
-        PolygonCollisionResult result = [Collisions polygonCollision:playerShip.collisionPolygon :enemyShip.collisionPolygon :Vector2fZero];
-                
-        if(result.intersect) {
-            NSLog(@"Collision occured with enemy ship");
-            [enemyShip killShip];
-        }
+- (void)updateCollisions {
+    
+    // We are currently in a "fighting" wave so we must update collisions
+    if (currentWaveType == kWaveType_Enemy || currentWaveType == kWaveType_Boss) {
         
-        //Enemy bullet -> player ship collision
-        for(AbstractProjectile *enemyProjectile in enemyShip.projectilesArray){
-            Polygon *enemyBulletPoly;
-            for(int i = 0; i < [enemyProjectile.polygonArray count]; i++){
-                enemyBulletPoly = [enemyProjectile.polygonArray objectAtIndex:i];
-                PolygonCollisionResult result2 = [Collisions polygonCollision:enemyBulletPoly :playerShip.collisionPolygon :Vector2fZero];
+        if (currentWaveType == kWaveType_Enemy) {
+            
+            EnemyShip *enemyShip;
+            for (enemyShip in enemiesSet) {
                 
-                if(result2.intersect){
-                    NSLog(@"Collision occured between enemy bullet and player ship");
-                    if(!playerShip.shipIsDead){
-                        [playerShip hitShipWithDamage:50];
-                        enemyProjectile.emitter.particles[i].position = Vector2fMake(500, 0);
+                // For debugging levels, the player-ship acts as a god who destroys everything it touches by giving it an uncontrollable orgasm
+                if (DEBUG) {
+                    PolygonCollisionResult result = [Collisions polygonCollision:playerShip.collisionPolygon :enemyShip.collisionPolygon :Vector2fZero];
+                    
+                    if(result.intersect) [enemyShip killShip];
+                }
+                
+                //Enemy bullet -> player ship collision
+                for(AbstractProjectile *enemyProjectile in enemyShip.projectilesArray){
+                    Polygon *enemyBulletPoly;
+                    for(int i = 0; i < [enemyProjectile.polygonArray count]; i++){
+                        enemyBulletPoly = [enemyProjectile.polygonArray objectAtIndex:i];
+                        PolygonCollisionResult result2 = [Collisions polygonCollision:enemyBulletPoly :playerShip.collisionPolygon :Vector2fZero];
+                        
+                        if(result2.intersect){
+                            NSLog(@"Collision occured between enemy bullet and player ship");
+                            if(!playerShip.shipIsDead){
+                                [playerShip hitShipWithDamage:50];
+                                enemyProjectile.emitter.particles[i].position = Vector2fMake(500, 0);
+                            }
+                        }
+                    }
+                }
+                
+                //Player Bullets->Enemy ship collision
+                for(AbstractProjectile *playerShipProjectile in playerShip.projectilesArray){
+                    Polygon *playerBulletPoly;
+                    for(int i = 0; i < [playerShipProjectile.polygonArray count]; i++){
+                        playerBulletPoly = [playerShipProjectile.polygonArray objectAtIndex:i];
+                        PolygonCollisionResult result = [Collisions polygonCollision:playerBulletPoly :enemyShip.collisionPolygon :Vector2fZero];
+                        
+                        if(result.intersect){
+                            NSLog(@"Collision occured between player bullet and enemy ship");
+                            //Send damage to enemy ship
+                            if(!enemyShip.shipIsDead){
+                                [enemyShip hitShipWithDamage:50];
+                                playerShipProjectile.emitter.particles[i].position = Vector2fMake(500, 50);
+                            }
+                        }
                     }
                 }
             }
+            [enemyShip release];
         }
         
-        //Player Bullets->Enemy ship collision
-        for(AbstractProjectile *playerShipProjectile in playerShip.projectilesArray){
-            Polygon *playerBulletPoly;
-            for(int i = 0; i < [playerShipProjectile.polygonArray count]; i++){
-                playerBulletPoly = [playerShipProjectile.polygonArray objectAtIndex:i];
-                PolygonCollisionResult result = [Collisions polygonCollision:playerBulletPoly :enemyShip.collisionPolygon :Vector2fZero];
-                    
-                if(result.intersect){
-                    NSLog(@"Collision occured between player bullet and enemy ship");
-                    //Send damage to enemy ship
-                    if(!enemyShip.shipIsDead){
-                        [enemyShip hitShipWithDamage:50];
-                        playerShipProjectile.emitter.particles[i].position = Vector2fMake(500, 50);
+        if (currentWaveType == kWaveType_Boss) {
+            for (int i = 0; bossShip.numberOfModules; ++i) {
+                
+                //Player Bullets->Boss ship module collision
+                for(AbstractProjectile *playerShipProjectile in playerShip.projectilesArray){
+                    Polygon *playerBulletPoly;
+                    for(int i = 0; i < [playerShipProjectile.polygonArray count]; i++){
+                        playerBulletPoly = [playerShipProjectile.polygonArray objectAtIndex:i];
+                        PolygonCollisionResult result = [Collisions polygonCollision:playerBulletPoly :bossShip.modularObjects[i].collisionPolygon :Vector2fZero];
+                        
+                        if(result.intersect){
+                            NSLog(@"Collision occured between player bullet and boss ship module");
+                            [bossShip hitModule:i withDamage:5];
+                        }
                     }
                 }
+                
             }
         }
     }
-    [enemyShip release];
+    
 }
 
 - (void)skipToNewPageOfText {
@@ -821,9 +921,6 @@ WrapText( const char *text
     if(CGRectContainsPoint(CGRectMake(305, 1, 25, 22), location) && currentWaveType == kWaveType_Dialogue){
         [self skipToNewPageOfText];
     }
-    
-    bossShip.modularObjects[2].isDead = YES;
-    bossShip.modularObjects[1].isDead = YES;
 }
 
 - (void)updateWithTouchLocationMoved:(NSSet *)touches withEvent:(UIEvent *)event view:(UIView *)aView {
@@ -866,8 +963,15 @@ WrapText( const char *text
 }
 
 - (void)render {
-    for (EnemyShip *enemyShip in enemiesSet) {
-        [enemyShip render];
+    
+    if (currentWaveType == kWaveType_Enemy) {
+        for (EnemyShip *enemyShip in enemiesSet) {
+            [enemyShip render];
+        }
+    }
+    
+    if (currentWaveType == kWaveType_Boss) {
+        [bossShip render];
     }
         
     //Dialogue Related rendering
@@ -894,8 +998,6 @@ WrapText( const char *text
         // to any other objects on the screen. Also not while dialogue is displayed.
         [playerShip render];
     }
-    
-//    [bossShip render];
 }
 
 @end

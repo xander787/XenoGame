@@ -26,6 +26,14 @@
 //
 //  Last Updated - 7/18/11 @9PM - Alexander
 //  - Fly off transition added
+//
+//  Last Updated - 7/19/11 @6PM - Alexander
+//  - Cleaned up the update method to only do necessary tasks during
+//  the appropriate wave type
+//  - Cleaned up the collision update method to only do necessary tasks
+//  during the appropriate wave type as well as added collision support
+//  for player projectiles -> boss modules
+//  - Boss ships now fly in after the waves have been completed
 
 #import <Foundation/Foundation.h>
 #import "BossShip.h"
@@ -68,7 +76,9 @@ typedef enum _DialogueSpeaker {
 
 typedef enum _WaveType {
     kWaveType_Dialogue = 0,
-    kWaveType_Fighting
+    kWaveType_Enemy,
+    kWaveType_Boss,
+    kWaveType_Finished
 } WaveType;
 
 typedef enum _OutroAnimation {
@@ -86,7 +96,12 @@ typedef enum _OutroAnimation {
     
     NSString                *currentLevelFile;
     PlayerShip              *playerShip;
-    //BossShip                *bossShip;
+    BossShip                *bossShip;
+    CGPoint                 bossShipDefaultLocation;
+    BossShipID              bossShipID;
+    BOOL                    bossShipIsDisplayed;
+    float                   bossShipIntroAnimationTime;
+    BOOL                    bossShipReadyToAnimate;
     
     // Controlling the player ship
     BOOL                    touchOriginatedFromPlayerShip;
@@ -137,8 +152,6 @@ typedef enum _OutroAnimation {
     int                     currentWave;
     
     BezierCurve             *initialPath;
-    
-    BossShipAstraeus        *bossShip;
 }
 
 @property (nonatomic, retain) id <GameLevelDelegate> delegate;
@@ -151,6 +164,7 @@ typedef enum _OutroAnimation {
 - (DialogueSpeaker)convertToSpeakerEnum:(NSString *)speaker;
 
 - (void)loadWave:(int)wave;
+- (void)loadBoss;
 
 - (void)update:(GLfloat)aDelta;
 - (void)updateCollisions;
