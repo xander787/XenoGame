@@ -56,6 +56,9 @@
 //  during the appropriate wave type as well as added collision support
 //  for player projectiles -> boss modules
 //  - Boss ships now fly in after the waves have been completed
+//
+//  Last updated - 7/20/11 @8:15PM - James
+//  - Fixed a crash on collision detection with boss
 
 #import "GameLevelScene.h"
 
@@ -766,13 +769,11 @@ WrapText( const char *text
         }
         
         if (currentWaveType == kWaveType_Boss) {
-            for (int i = 0; bossShip.numberOfModules; ++i) {
+            for (int i = 0; i < bossShip.numberOfModules; ++i) {
                 
                 //Player Bullets->Boss ship module collision
                 for(AbstractProjectile *playerShipProjectile in playerShip.projectilesArray){
-                    Polygon *playerBulletPoly;
-                    for(int i = 0; i < [playerShipProjectile.polygonArray count]; i++){
-                        playerBulletPoly = [playerShipProjectile.polygonArray objectAtIndex:i];
+                    for(Polygon *playerBulletPoly in playerShipProjectile.polygonArray){
                         PolygonCollisionResult result = [Collisions polygonCollision:playerBulletPoly :bossShip.modularObjects[i].collisionPolygon :Vector2fZero];
                         
                         if(result.intersect){
