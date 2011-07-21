@@ -37,8 +37,8 @@ typedef enum _ParticleID {
 } ParticleID;
 
 @interface AbstractProjectile : PhysicalObject {    
-    int             projectileAngle;
-    int             projectileSpeed;
+    GLfloat         projectileAngle;
+    GLfloat         projectileSpeed;
     ProjectileID    projectileID;
     ParticleID      particleID;
     NSString        *idType;
@@ -75,8 +75,8 @@ typedef enum _ParticleID {
 @property (readonly)    Vector2f        currentLocation;
 @property (nonatomic)   Vector2f        desiredLocation;
 @property (nonatomic)   BOOL            isActive;
-@property (nonatomic)   int             projectileAngle;
-@property (nonatomic)   int             projectileSpeed;
+@property (nonatomic)   GLfloat         projectileAngle;
+@property (nonatomic)   GLfloat         projectileSpeed;
 @property (nonatomic)   ProjectileID    projectileID;
 @property (nonatomic, retain) ParticleEmitter *emitter;
 @property (nonatomic, retain) NSMutableArray *polygonArray;

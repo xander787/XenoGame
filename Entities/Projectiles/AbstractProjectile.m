@@ -36,6 +36,11 @@
 //
 //  Last Updated - 6/23/2011 @ 3:30PM - James
 //  - Forgot to allocate polygons for missiles and particles :\
+//
+//  Last Updated - 7/20/11 @5:40PM - James
+//  - Adjusted size/speed of Player/Enemy bullets, enabled blend
+//  additive, for bullets the emitter renders twice to get the blend additive
+//  to look nice and bright.
 
 #import "AbstractProjectile.h"
 
@@ -88,7 +93,7 @@
         [dictionaryPlist release];
         
         
-        projectileSpeed = [[projectileDictionary objectForKey:@"kProjectileSpeed"] intValue];
+        projectileSpeed = [[projectileDictionary objectForKey:@"kProjectileSpeed"] floatValue];
         
         
         //Loop through the collision points, put them in a C array
@@ -125,16 +130,16 @@
                                                                                angle:projectileAngle
                                                                        angleVariance:0.0
                                                                              gravity:Vector2fZero
-                                                                          startColor:Color4fMake(1.0, 1.0, 1.0, 1.0)
+                                                                          startColor:Color4fMake(0.8, 0.8, 1.0, 1.0)
                                                                   startColorVariance:Color4fMake(0.0, 0.0, 0.0, 0.0)
-                                                                         finishColor:Color4fMake(1.0, 1.0, 1.0, 0.5)
+                                                                         finishColor:Color4fMake(0.8, 0.8, 1.0, 1.0)
                                                                  finishColorVariance:Color4fMake(0.0, 0.0, 0.0, 0.0)
                                                                         maxParticles:10.0
-                                                                        particleSize:10.0
-                                                                  finishParticleSize:10.0
+                                                                        particleSize:15.0
+                                                                  finishParticleSize:15.0
                                                                 particleSizeVariance:0.0
                                                                             duration:-1.0
-                                                                       blendAdditive:NO];
+                                                                       blendAdditive:YES];
                 //Set up the Polygons for each particle
                 polygonArray = [[NSMutableArray alloc] init];
                 for(int i = 0; i < [emitter maxParticles]; i++){
@@ -201,11 +206,11 @@
                                                                          finishColor:Color4fMake(1.0, 0.0, 0.0, 1.0) 
                                                                  finishColorVariance:Color4fMake(0.0, 0.0, 0.0, 0.0) 
                                                                         maxParticles:15.0
-                                                                        particleSize:10.0
-                                                                  finishParticleSize:10.0
+                                                                        particleSize:15.0
+                                                                  finishParticleSize:15.0
                                                                 particleSizeVariance:0.0
                                                                             duration:-1.0
-                                                                       blendAdditive:NO];
+                                                                       blendAdditive:YES];
                 //Set up the Polygons for each particle
                 polygonArray = [[NSMutableArray alloc] init];
                 for(int i = 0; i < [emitter maxParticles]; i++){
@@ -243,7 +248,7 @@
                                                                   finishParticleSize:15.0
                                                                 particleSizeVariance:0.0
                                                                             duration:0.01
-                                                                       blendAdditive:NO];
+                                                                       blendAdditive:YES];
                 emitter.fastEmission = YES;
                 polygonArray = [[NSMutableArray alloc] init];
                 for(int i = 0; i < emitter.maxParticles; i++){
@@ -469,7 +474,7 @@
                                                                       finishParticleSize:15.0
                                                                     particleSizeVariance:0.0
                                                                                 duration:0.01
-                                                                           blendAdditive:NO];
+                                                                           blendAdditive:YES];
                     emitter.fastEmission = YES;
                     
                     elapsedTime = 0;
@@ -545,6 +550,10 @@
     
     if(projectileID == kPlayerProjectile_Bullet || projectileID == kPlayerProjectile_Wave || projectileID == kEnemyProjectile_Bullet || projectileID == kEnemyProjectile_Wave){
         [emitter renderParticles];
+        if(projectileID == kPlayerProjectile_Bullet || projectileID == kEnemyProjectile_Bullet){
+            //Re-render is to make them look brighter using the BlendAdditive option
+            [emitter renderParticles];
+        }
     }
     else if(projectileID == kPlayerProjectile_Missile || projectileID == kEnemyProjectile_Missile){
         if(isAlive == YES){
