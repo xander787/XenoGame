@@ -62,6 +62,10 @@
 //
 //  Last Updated - 7/20/11 @9PM - James
 //  - Added plaership vs. boss module collision detection
+//
+//  Last Updated - 7/21/11 @4:40PM - James
+//  - Added Attack paths to ships, every 4 second a ship gets
+//  a half chance of attacking
 
 #import "GameLevelScene.h"
 
@@ -541,10 +545,36 @@ WrapText( const char *text
                     }
                 }
                 else if(enemyShip.currentPathType == kPathType_Holding){
-                    
+                    holdingTimeBeforeAttack += aDelta;
+                    if(holdingTimeBeforeAttack >= 4){
+                        holdingTimeBeforeAttack = 0;
+                        if(RANDOM_0_TO_1() > 0.5){
+                            if([attackingEnemies count] < 3){
+                                [attackingEnemies addObject:enemyShip];
+                                enemyShip.currentPathType = kPathType_Attacking;
+                            }
+                        }
+                    }
                 }
                 else if(enemyShip.currentPathType == kPathType_Attacking){
-                    
+                    if(!enemyShip.currentPath){
+                        NSLog(@"Creating new attack path");
+                        enemyShip.currentPath = [[BezierCurve alloc] initCurveFrom:Vector2fMake([enemyShip currentLocation].x, [enemyShip currentLocation].y) 
+                                               controlPoint1:Vector2fMake(-50, 50)
+                                               controlPoint2:Vector2fMake(370, 50)
+                                                    endPoint:Vector2fMake([enemyShip currentLocation].x, [enemyShip currentLocation].y)
+                                                                            segments:50];
+                    }
+                    [enemyShip setCurrentLocation:CGPointMake([enemyShip.currentPath getPointAt:enemyShip.pathTime/2].x, [enemyShip.currentPath getPointAt:enemyShip.pathTime/2].y)];
+                    if(enemyShip.pathTime > 1){
+                        if(abs(enemyShip.currentLocation.x - enemyShip.currentPath.endPoint.x) < 5 && abs(enemyShip.currentLocation.y - enemyShip.currentPath.endPoint.y) < 5){
+                            [[enemyShip currentPath] release];
+                            enemyShip.currentPath = nil;
+                            enemyShip.pathTime = 0;
+                            enemyShip.currentPathType = kPathType_Holding;
+                            [attackingEnemies removeObject:enemyShip];
+                        }
+                    }
                 }
             }
         }

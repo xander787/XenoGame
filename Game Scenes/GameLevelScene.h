@@ -152,6 +152,9 @@ typedef enum _OutroAnimation {
     int                     currentWave;
     
     BezierCurve             *initialPath;
+    
+    GLfloat                 holdingTimeBeforeAttack;
+    NSMutableSet            *attackingEnemies;
 }
 
 @property (nonatomic, retain) id <GameLevelDelegate> delegate;
