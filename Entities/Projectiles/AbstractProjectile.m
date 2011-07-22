@@ -537,6 +537,7 @@
     //Reverses the ffect of pauseProjectile, mainly for when pause screen goes away
     
     isActive = YES;
+    isDead = NO;
 }
 
 - (void)stopProjectile {

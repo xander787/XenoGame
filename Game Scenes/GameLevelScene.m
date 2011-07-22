@@ -71,6 +71,11 @@
 //  - Player ship bullets dissapear when hitting boss modules,
 //  but only when the modules are currently in line to be destroyed
 //  thus eliminating the problem of modules inside of modules.
+//
+//  Last Updated - 7/21/11 @9PM - James
+//  - Fixed bug where Enemies would momentarily appear in middle of screen,
+//  stopped player bullets when boss flies onto screen, upgraded collision detection
+//  to only detect when hitting living modules
 
 #import "GameLevelScene.h"
 
@@ -402,7 +407,7 @@ WrapText( const char *text
     if(![[wavesArray objectAtIndex:wave] respondsToSelector:@selector(setString:)]) {
         for(int i = 0; i < [[wavesArray objectAtIndex:wave] count]; ++i) {
             currentWaveType = kWaveType_Enemy;
-            EnemyShip *enemy = [[EnemyShip alloc] initWithShipID:[self convertToEnemyEnum:[[[wavesArray objectAtIndex:wave] objectAtIndex:i] objectAtIndex:0]] initialLocation:CGPointMake(100.0f + (50 * RANDOM_MINUS_1_TO_1()), 300.0f + (50 * RANDOM_MINUS_1_TO_1())) andPlayerShipRef:playerShip];
+            EnemyShip *enemy = [[EnemyShip alloc] initWithShipID:[self convertToEnemyEnum:[[[wavesArray objectAtIndex:wave] objectAtIndex:i] objectAtIndex:0]] initialLocation:CGPointMake(-50, 400) andPlayerShipRef:playerShip];
             enemy.currentPath = [[BezierCurve alloc] initCurveFrom:Vector2fMake(0, 480) controlPoint1:Vector2fMake(320, 240) controlPoint2:Vector2fMake((5 * RANDOM_0_TO_1()), (240 + (10 * RANDOM_0_TO_1()))) endPoint:Vector2fMake(160, 100) segments:100];
             enemy.currentPathType = kPathType_Initial;
             
@@ -588,7 +593,9 @@ WrapText( const char *text
 
             // Animating the boss onto the screen
             if (!bossShipIsDisplayed && bossShipReadyToAnimate && bossShip) {
-                
+                for(AbstractProjectile *tempProj in [playerShip projectilesArray]){
+                    [tempProj stopProjectile];
+                }
                 NSLog(@"Animating Boss X: %f Y: %f", bossShip.currentLocation.x, bossShip.currentLocation.y);
                 
                 bossShipIntroAnimationTime += aDelta;
@@ -605,6 +612,9 @@ WrapText( const char *text
                 if (abs(bossShip.currentLocation.x - bossShipDefaultLocation.x) < 3 && abs(bossShip.currentLocation.y - bossShipDefaultLocation.y) < 3) {
                     bossShipIntroAnimationTime = 0.0;
                     bossShipIsDisplayed = YES;
+                    for(AbstractProjectile *tempProj in [playerShip projectilesArray]){
+                        [tempProj playProjectile];
+                    }
                 }
             }
             
@@ -807,17 +817,18 @@ WrapText( const char *text
         }
         
         if (currentWaveType == kWaveType_Boss) {
-            for (int i = 0; i < bossShip.numberOfModules; ++i) {
-                PolygonCollisionResult playerShipResult = [Collisions polygonCollision:[playerShip collisionPolygon] :bossShip.modularObjects[i].collisionPolygon :Vector2fZero];
-                
-                if(playerShipResult.intersect){
-                    NSLog(@"Collision occured between player ship and boss module");
-                    [playerShip killShip];
+            for (int i = 0; i < bossShip.numberOfModules; i++) {
+                if(bossShip.modularObjects[i].isDead == NO){
+                    PolygonCollisionResult playerShipResult = [Collisions polygonCollision:[playerShip collisionPolygon] :bossShip.modularObjects[i].collisionPolygon :Vector2fZero];
+                    
+                    if(playerShipResult.intersect){
+                        NSLog(@"Collision occured between player ship and boss module");
+                        [playerShip killShip];
+                    }
                 }
                 
                 //Player Bullets->Boss ship module collision
                 for(AbstractProjectile *playerShipProjectile in playerShip.projectilesArray){
-                    
                     Polygon *playerBulletPoly;
                     for(int j = 0; j < [playerShipProjectile.polygonArray count]; j++){
                         playerBulletPoly = [playerShipProjectile.polygonArray objectAtIndex:j];
@@ -825,9 +836,9 @@ WrapText( const char *text
                         
                         if(result.intersect){
                             
-                            if (bossShip.modularObjects[i].destructionOrder == bossShip.currentDestructionOrder) {
+                            if (bossShip.modularObjects[i].destructionOrder == bossShip.currentDestructionOrder && bossShip.modularObjects[i].isDead == NO) {
                                 NSLog(@"Module Order: %d Current Order: %d", bossShip.modularObjects[i].destructionOrder, bossShip.currentDestructionOrder);
-                                [bossShip hitModule:i withDamage:5];
+                                [bossShip hitModule:i withDamage:500];
                                 playerShipProjectile.emitter.particles[j].position = Vector2fMake(500, 50);
                             }
                             

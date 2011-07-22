@@ -51,6 +51,9 @@
 //  Last Updated - 7/20/11 @7:30PM - Alexander
 //  - Added currentDestructionOrder for the ship to keep track of
 //  which modules can currently be hit
+//
+//  Last Updated - 7/21/11 @9PM - James
+//  - Added basic health logic, logic for destruction order
 
 #import "BossShip.h"
 
@@ -206,6 +209,9 @@
             //Step one: get the image for the module, simple so it's first
             modularObjects[i].moduleImage = [[Image alloc] initWithImage:[moduleImagesArray objectAtIndex:i] scale:Scale2fOne];
             
+            modularObjects[i].moduleMaxHealth = 100;
+            modularObjects[i].moduleHealth = modularObjects[i].moduleMaxHealth;
+            
             modularObjects[i].rotation = 0;
             
             //Set the width & height for later use in super class handling this ship
@@ -309,7 +315,25 @@
 }
 
 - (void)hitModule:(int)module withDamage:(int)damage {
-    
+    modularObjects[module].moduleHealth -= damage;
+    if(modularObjects[module].moduleHealth <= 0){
+        modularObjects[module].isDead = YES;
+        NSLog(@"Module Died");
+        //See if all mmodules with this destructionOrder are dead, if so, bump up the current
+        BOOL increment = YES;
+        for(int i = 0; i < numberOfModules; i++){
+            if(module != i){
+                if(modularObjects[i].isDead == NO){
+                    if(modularObjects[i].destructionOrder == currentDestructionOrder){
+                        increment = NO;
+                    }
+                }
+            }
+        }
+        if(increment){
+            currentDestructionOrder++;
+        }
+    }
 }
 
 - (void)update:(GLfloat)delta {

@@ -22,6 +22,11 @@
 //
 //  Last Updated - 6/22/11 @5PM - Alexander & James
 //  - Changed class name to reflect new boss names
+//
+//  Last updated - 7/21/11 @9PM - James
+//  - Made sure to only update/render modules when they're
+//  alive, and emitter joints. Small bug with modules not matching
+//  up. Todo: death animations
 
 #import "BossShipAtlas.h"
 
@@ -93,13 +98,22 @@
     
     //Set the centers of the polygons so they get rendered properly
     for(int i = 0; i < numberOfModules; i++){
-        [modularObjects[i].collisionPolygon setPos:CGPointMake(modularObjects[i].location.x + currentLocation.x, modularObjects[i].location.y + currentLocation.y)];  
+        if(modularObjects[i].isDead == NO){
+            [modularObjects[i].collisionPolygon setPos:CGPointMake(modularObjects[i].location.x + currentLocation.x, modularObjects[i].location.y + currentLocation.y)];
+        }
+        else {
+            //Death Animation Update Emitter
+        }
     }
         
     [rightCannonEmitterJoint setSourcePosition:Vector2fMake(currentLocation.x + (-105), currentLocation.y)];
     [leftCannonEmitterJoint setSourcePosition:Vector2fMake(currentLocation.x + 105, currentLocation.y)];
-    [rightCannonEmitterJoint update:delta];
-    [leftCannonEmitterJoint update:delta];
+    if(cannonRight->isDead == NO){
+        [rightCannonEmitterJoint update:delta];
+    }
+    if(cannonLeft->isDead == NO){
+        [leftCannonEmitterJoint update:delta];
+    }
 }
 
 - (void)aimCannonsAtPlayer {
@@ -153,12 +167,21 @@
 
 - (void)render {
     for(int i = 0; i < numberOfModules; i++) {
-        [modularObjects[i].moduleImage setRotation:modularObjects[i].rotation];
-        [modularObjects[i].moduleImage renderAtPoint:CGPointMake(currentLocation.x - modularObjects[i].location.x, currentLocation.y + modularObjects[i].location.y) centerOfImage:YES];
+        if(modularObjects[i].isDead == NO){
+            [modularObjects[i].moduleImage setRotation:modularObjects[i].rotation];
+            [modularObjects[i].moduleImage renderAtPoint:CGPointMake(currentLocation.x - modularObjects[i].location.x, currentLocation.y + modularObjects[i].location.y) centerOfImage:YES];
+        }
+        else {
+            //Render death animation emitter
+        }
     }
     
-    [rightCannonEmitterJoint renderParticles];
-    [leftCannonEmitterJoint renderParticles];
+    if(cannonRight->isDead == NO){
+        [rightCannonEmitterJoint renderParticles];
+    }
+    if(cannonLeft->isDead == NO){
+        [leftCannonEmitterJoint renderParticles];
+    }
     
     /*
     glPushMatrix();
@@ -183,25 +206,27 @@
         glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
         
         for(int i = 0; i < numberOfModules; i++) {
-            for(int j = 0; j < (modularObjects[i].collisionPointsCount - 1); j++) {
-                GLfloat line[] = {
-                    modularObjects[i].collisionPolygon.points[j].x, modularObjects[i].collisionPolygon.points[j].y,
-                    modularObjects[i].collisionPolygon.points[j+1].x, modularObjects[i].collisionPolygon.points[j+1].y,
-                };
+            if(modularObjects[i].isDead == NO){
+                for(int j = 0; j < (modularObjects[i].collisionPointsCount - 1); j++) {
+                        GLfloat line[] = {
+                            modularObjects[i].collisionPolygon.points[j].x, modularObjects[i].collisionPolygon.points[j].y,
+                            modularObjects[i].collisionPolygon.points[j+1].x, modularObjects[i].collisionPolygon.points[j+1].y,
+                        };
+                        
+                        glVertexPointer(2, GL_FLOAT, 0, line);
+                        glEnableClientState(GL_VERTEX_ARRAY);
+                        glDrawArrays(GL_LINES, 0, 2);
+                }
                 
-                glVertexPointer(2, GL_FLOAT, 0, line);
+                GLfloat lineEnd[] = {
+                    modularObjects[i].collisionPolygon.points[(modularObjects[i].collisionPointsCount - 1)].x, modularObjects[i].collisionPolygon.points[(modularObjects[i].collisionPointsCount - 1)].y,
+                        modularObjects[i].collisionPolygon.points[0].x, modularObjects[i].collisionPolygon.points[0].y,
+                };
+            
+                glVertexPointer(2, GL_FLOAT, 0, lineEnd);
                 glEnableClientState(GL_VERTEX_ARRAY);
                 glDrawArrays(GL_LINES, 0, 2);
             }
-            
-            GLfloat lineEnd[] = {
-                modularObjects[i].collisionPolygon.points[(modularObjects[i].collisionPointsCount - 1)].x, modularObjects[i].collisionPolygon.points[(modularObjects[i].collisionPointsCount - 1)].y,
-                modularObjects[i].collisionPolygon.points[0].x, modularObjects[i].collisionPolygon.points[0].y,
-            };
-            
-            glVertexPointer(2, GL_FLOAT, 0, lineEnd);
-            glEnableClientState(GL_VERTEX_ARRAY);
-            glDrawArrays(GL_LINES, 0, 2);
         }
         
         glPopMatrix();
