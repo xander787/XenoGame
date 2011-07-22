@@ -47,13 +47,17 @@
 //  Last Updated - 7/19/11 @5:30PM - Alexander
 //  - Added readonly properties for numberOfModules, bossID, and bossType
 //  - Added new method to hit modules with damage
+//
+//  Last Updated - 7/20/11 @7:30PM - Alexander
+//  - Added currentDestructionOrder for the ship to keep track of
+//  which modules can currently be hit
 
 #import "BossShip.h"
 
 
 @implementation BossShip
 
-@synthesize bossHealth, bossAttack, bossStamina, bossSpeed, modularObjects, numberOfModules, bossID, bossType;
+@synthesize bossHealth, bossAttack, bossStamina, bossSpeed, modularObjects, numberOfModules, currentDestructionOrder, bossID, bossType;
 
 - (id)initWithBossID:(BossShipID)aBossID initialLocation:(CGPoint)aPoint andPlayerShipRef:(PlayerShip *)aPlayerShip {
     if((self = [super init])) {
@@ -187,6 +191,7 @@
         
         //Set a global number of modules we have for the boss ship, better to use than getting the count of an array multiple times
         numberOfModules = [moduleImagesArray count];
+        currentDestructionOrder = 0;
         
         //Alloc memory for each module, old C style
         modularObjects = malloc(sizeof(ModularObject) * numberOfModules);

@@ -33,6 +33,10 @@
 //  Last Updated - 7/19/11 @5:30PM - Alexander
 //  - Added readonly properties for numberOfModules, bossID, and bossType
 //  - Added new method to hit moduels with damage
+//
+//  Last Updated - 7/20/11 @7:30PM - Alexander
+//  - Added currentDestructionOrder for the ship to keep track of
+//  which modules can currently be hit
 
 #import <Foundation/Foundation.h>
 #import "Common.h"
@@ -129,6 +133,7 @@ typedef struct _ModularObject {
     PlayerShip      *playerShipRef;
     
     int             numberOfModules;
+    int             currentDestructionOrder;
     BossShipID      bossID;
     BossType        bossType;
 }
@@ -139,6 +144,7 @@ typedef struct _ModularObject {
 @property(nonatomic, readonly) int bossSpeed;
 @property(readonly) ModularObject  *modularObjects;
 @property(readonly) int            numberOfModules;
+@property(readonly) int            currentDestructionOrder;
 @property(readonly) BossShipID     bossID;
 @property(readonly) BossType       bossType;
 

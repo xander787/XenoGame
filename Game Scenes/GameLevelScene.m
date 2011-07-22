@@ -66,6 +66,11 @@
 //  Last Updated - 7/21/11 @4:40PM - James
 //  - Added Attack paths to ships, every 4 second a ship gets
 //  a half chance of attacking
+//
+//  Last Updated - 7/20/11 @7:30 PM - Alexander
+//  - Player ship bullets dissapear when hitting boss modules,
+//  but only when the modules are currently in line to be destroyed
+//  thus eliminating the problem of modules inside of modules.
 
 #import "GameLevelScene.h"
 
@@ -812,14 +817,23 @@ WrapText( const char *text
                 
                 //Player Bullets->Boss ship module collision
                 for(AbstractProjectile *playerShipProjectile in playerShip.projectilesArray){
-                    for(Polygon *playerBulletPoly in playerShipProjectile.polygonArray){
+                    
+                    Polygon *playerBulletPoly;
+                    for(int j = 0; j < [playerShipProjectile.polygonArray count]; j++){
+                        playerBulletPoly = [playerShipProjectile.polygonArray objectAtIndex:j];
                         PolygonCollisionResult result = [Collisions polygonCollision:playerBulletPoly :bossShip.modularObjects[i].collisionPolygon :Vector2fZero];
                         
                         if(result.intersect){
-//                            NSLog(@"Collision occured between player bullet and boss ship module");
-                            [bossShip hitModule:i withDamage:5];
+                            
+                            if (bossShip.modularObjects[i].destructionOrder == bossShip.currentDestructionOrder) {
+                                NSLog(@"Module Order: %d Current Order: %d", bossShip.modularObjects[i].destructionOrder, bossShip.currentDestructionOrder);
+                                [bossShip hitModule:i withDamage:5];
+                                playerShipProjectile.emitter.particles[j].position = Vector2fMake(500, 50);
+                            }
+                            
                         }
                     }
+                    
                 }
                 
             }
