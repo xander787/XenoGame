@@ -10,23 +10,6 @@
 //	James Linnell - Software Engineer, Creative Design, Art Producer
 //	Tyler Newcomb - Creative Design, Art Producer
 //
-//	Last Updated - 11/25/2010 @8PM - Alexander
-//	- Wrote the first-draft initializer code (fuckin complicated)
-//  for the Boss class.
-//
-//	Last Updated - 11/26/2010 @3:30PM - Alexander
-//	- Fixed the problems in the boss initialization. Should work now
-//
-//  Last Updated - 11/26/2010 @6PM - Alexander
-//  - Added rendering code, and fixed some other crashing bugs
-//
-//  Last Updated - 12/19/2010 @5PM - Alexander
-//  - Added collision point loading code from PLIST
-//
-//  Last Updated - 12/31/2010 @7:30PM - Alexander
-//  - Memory management: added dealloc method and use it
-//  to deallocate our objects
-//
 //  Last updated - 1/19/11 @ &PM - James
 //  - Rewrote hte majority of the initialization, mainly
 //  for loading information fomr the BossShips.plist file
@@ -54,9 +37,12 @@
 //
 //  Last Updated - 7/21/11 @9PM - James
 //  - Added basic health logic, logic for destruction order
+//
+//  Last Updated - 7/22/11 @9PM - Alexander
+//  - Module color filter change when hit
 
 #import "BossShip.h"
-
+#import "BossShipAtlas.h"
 
 @implementation BossShip
 
@@ -316,6 +302,10 @@
 
 - (void)hitModule:(int)module withDamage:(int)damage {
     modularObjects[module].moduleHealth -= damage;
+    
+    modularObjects[module].hitFilter = YES;
+    [modularObjects[module].moduleImage setColourFilterRed:1.0f green:0.5f blue:0.5f alpha:1.0f];
+    
     if(modularObjects[module].moduleHealth <= 0){
         modularObjects[module].isDead = YES;
         NSLog(@"Module Died");
@@ -336,9 +326,18 @@
     }
 }
 
-- (void)update:(GLfloat)delta {
-    currentLocation.x += ((desiredLocation.x - currentLocation.x) / shipSpeed) * (pow(1.584893192, shipSpeed)) * delta;
-    currentLocation.y += ((desiredLocation.y - currentLocation.y) / shipSpeed) * (pow(1.584893192, shipSpeed)) * delta;
+- (void)update:(GLfloat)delta {    
+    for (int i = 0; i < numberOfModules; ++i) {
+        if (modularObjects[i].hitFilter && modularObjects[i].hitFilterEffectTime <= 0.15) {
+            NSLog(@"%f", modularObjects[i].hitFilterEffectTime);
+            modularObjects[i].hitFilterEffectTime += delta;
+        }
+        else {
+            modularObjects[i].hitFilter = NO;
+            modularObjects[i].hitFilterEffectTime = 0.0;
+            [modularObjects[i].moduleImage setColourFilterRed:1.0f green:1.0f blue:1.0f alpha:1.0f];
+        }        
+    }
 }
 
 - (void)render {

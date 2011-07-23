@@ -37,6 +37,9 @@
 //  Last Updated - 7/20/11 @7:30PM - Alexander
 //  - Added currentDestructionOrder for the ship to keep track of
 //  which modules can currently be hit
+//
+//  Last Updated - 7/22/11 @9PM - Alexander
+//  - Module color filter change when hit
 
 #import <Foundation/Foundation.h>
 #import "Common.h"
@@ -118,6 +121,8 @@ typedef struct _ModularObject {
     float           moduleMaxHealth;
     float           moduleHealth;
     BOOL            isDead;
+    BOOL            hitFilter;
+    float           hitFilterEffectTime;
 } ModularObject;
 
 

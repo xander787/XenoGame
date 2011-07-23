@@ -36,6 +36,8 @@
 }
 
 - (void)update:(GLfloat)delta {
+    [super update:delta];
+    
     {
         // Left Cannon Aiming
         float playerXPosition = (currentLocation.x + cannonFrontLeft->location.x) - playerShipRef.currentLocation.x;

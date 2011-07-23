@@ -838,7 +838,7 @@ WrapText( const char *text
                             
                             if (bossShip.modularObjects[i].destructionOrder == bossShip.currentDestructionOrder && bossShip.modularObjects[i].isDead == NO) {
                                 NSLog(@"Module Order: %d Current Order: %d", bossShip.modularObjects[i].destructionOrder, bossShip.currentDestructionOrder);
-                                [bossShip hitModule:i withDamage:500];
+                                [bossShip hitModule:i withDamage:10];
                                 playerShipProjectile.emitter.particles[j].position = Vector2fMake(500, 50);
                             }
                             
