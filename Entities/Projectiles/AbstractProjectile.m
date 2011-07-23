@@ -41,6 +41,9 @@
 //  - Adjusted size/speed of Player/Enemy bullets, enabled blend
 //  additive, for bullets the emitter renders twice to get the blend additive
 //  to look nice and bright.
+//
+//  Last Updated - 7/22/11 @5PM - James
+//  - Made sure to move emitter bullets off screen when stopping projectile
 
 #import "AbstractProjectile.h"
 
@@ -544,6 +547,10 @@
     //Used when we want to stop updating AND rendering our projectile.
     //The owner of the class uses this so it doesn't have to deallocate the projectile on ship death
     isDead = YES;
+    for(int i = 0; i < emitter.maxParticles; i++){
+        emitter.particles[i].position = Vector2fMake(500, 0);
+        [[polygonArray objectAtIndex:i] setPos:CGPointMake(emitter.particles[i].position.x, emitter.particles[i].position.y)];
+    }
 }
 
 - (void)render {
