@@ -27,6 +27,10 @@
 //  - Made sure to only update/render modules when they're
 //  alive, and emitter joints. Small bug with modules not matching
 //  up. Todo: death animations
+//
+//  Last Updated - 7/23/11 @12:10PM - James
+//  - Fixed bug where module images would render at the wrong points,
+//  and by fixing that messed up cannons and the aiming, fixed that.
 
 #import "BossShipAtlas.h"
 
@@ -129,7 +133,9 @@
     angleToPlayer = 90 - angleToPlayer;
     if(angleToPlayer < 0) angleToPlayer += 360;
     
-    if(angleToPlayer < 340) angleToPlayer = 340;
+    if(angleToPlayer > 20) angleToPlayer = 20;
+    
+    NSLog(@"Angle to player 'left': %f", angleToPlayer);
     
     
     // Right Cannon aiming
@@ -142,13 +148,13 @@
     angleToPlayer2 = 90 - angleToPlayer2;
     if(angleToPlayer2 < 0) angleToPlayer2 += 360;
     
-    if(angleToPlayer2 > 20) angleToPlayer2 = 20;
+    if(angleToPlayer2 < 340) angleToPlayer2 = 340;
     
     
     //Rotation for polygons to match the rotation of the cannons
     for(int i = 0; i < cannonLeft->collisionPolygon.pointCount; i++){
         Vector2f tempPoint = cannonLeft->collisionPolygon.originalPoints[i];
-        double tempAngle = DEGREES_TO_RADIANS(cannonRight->rotation - angleToPlayer);
+        double tempAngle = DEGREES_TO_RADIANS(cannonLeft->rotation - angleToPlayer);
         cannonLeft->collisionPolygon.originalPoints[i] = Vector2fMake((tempPoint.x * cos(tempAngle)) - (tempPoint.y * sin(tempAngle)),
                                                                             (tempPoint.x * sin(tempAngle)) + (tempPoint.y * cos(tempAngle)));
     }
@@ -156,22 +162,22 @@
 
     for(int i = 0; i < cannonRight->collisionPolygon.pointCount; i++){
         Vector2f tempPoint = cannonRight->collisionPolygon.originalPoints[i];
-        double tempAngle = DEGREES_TO_RADIANS(cannonLeft->rotation - angleToPlayer2);
+        double tempAngle = DEGREES_TO_RADIANS(cannonRight->rotation - angleToPlayer2);
         cannonRight->collisionPolygon.originalPoints[i] = Vector2fMake((tempPoint.x * cos(tempAngle)) - (tempPoint.y * sin(tempAngle)),
                                                                             (tempPoint.x * sin(tempAngle)) + (tempPoint.y * cos(tempAngle)));
     }
     [cannonRight->collisionPolygon buildEdges];
 
     
-    cannonRight->rotation = angleToPlayer;
-    cannonLeft->rotation = angleToPlayer2;
+    cannonRight->rotation = angleToPlayer2;
+    cannonLeft->rotation = angleToPlayer;
 }
 
 - (void)render {
     for(int i = 0; i < numberOfModules; i++) {
         if(modularObjects[i].isDead == NO){
             [modularObjects[i].moduleImage setRotation:modularObjects[i].rotation];
-            [modularObjects[i].moduleImage renderAtPoint:CGPointMake(currentLocation.x - modularObjects[i].location.x, currentLocation.y + modularObjects[i].location.y) centerOfImage:YES];
+            [modularObjects[i].moduleImage renderAtPoint:CGPointMake(currentLocation.x + modularObjects[i].location.x, currentLocation.y + modularObjects[i].location.y) centerOfImage:YES];
         }
         else {
             //Render death animation emitter

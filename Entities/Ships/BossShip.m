@@ -210,7 +210,7 @@
             
             //Step two:  get the locations for each module relative to the center of the ship
             NSArray *moduleLocationCoords = [[NSArray alloc] initWithArray:[[moduleLocationsArray objectAtIndex:i] componentsSeparatedByString:@","]];
-            modularObjects[i].location = Vector2fMake([[moduleLocationCoords objectAtIndex:0] intValue], [[moduleLocationCoords objectAtIndex:1] floatValue]);
+            modularObjects[i].location = Vector2fMake([[moduleLocationCoords objectAtIndex:0] floatValue], [[moduleLocationCoords objectAtIndex:1] floatValue]);
             modularObjects[i].defaultLocation = modularObjects[i].location;
             [moduleLocationCoords release];
             
