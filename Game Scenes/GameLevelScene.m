@@ -76,6 +76,10 @@
 //  - Fixed bug where Enemies would momentarily appear in middle of screen,
 //  stopped player bullets when boss flies onto screen, upgraded collision detection
 //  to only detect when hitting living modules
+//
+//  Last Updated - 7/22/11 @9:30PM - James
+//  - Improved enemy's attack code. Total number of concurrent attacking
+//  enemies limited to 3, 50% chance of going left or right, timing improved.
 
 #import "GameLevelScene.h"
 
@@ -309,6 +313,8 @@ WrapText( const char *text
         font = [[AngelCodeFont alloc] initWithFontImageNamed:@"xenophobefont.png" controlFile:@"xenophobefont" scale:(1.0/3.0) filter:GL_LINEAR];
         dialogueBorder = [[Image alloc] initWithImage:@"DialogueBoxBorder.png" scale:Scale2fOne];
         dialogueFastForwardButton = [[Image alloc] initWithImage:@"fastforward.png" scale:Scale2fOne];
+        
+        attackingEnemies = [[NSMutableSet alloc] init];
     }
     
     return self;
@@ -423,6 +429,7 @@ WrapText( const char *text
             
             [enemiesSet addObject:enemy];
         }
+        holdingTimeTarget = (RANDOM_0_TO_1() * 4);
     }
     else {
         currentWaveType = kWaveType_Dialogue;
@@ -522,6 +529,10 @@ WrapText( const char *text
                 [enemyShip update:aDelta];
                 if(enemyShip.shipIsDead && enemyShip.deathAnimationEmitter.particleCount == 0) {
                     [discardedEnemies addObject:enemyShip];
+                    if([attackingEnemies containsObject:enemyShip]){
+                        [attackingEnemies removeObject:enemyShip];
+                        NSLog(@"Attacking enemies: %d", [attackingEnemies count]);
+                    }
                 }
             }
             [enemiesSet minusSet:discardedEnemies];
@@ -555,12 +566,14 @@ WrapText( const char *text
                     }
                 }
                 else if(enemyShip.currentPathType == kPathType_Holding){
-                    holdingTimeBeforeAttack += aDelta;
-                    if(holdingTimeBeforeAttack >= 4){
+                    holdingTimeBeforeAttack += (aDelta / [enemiesSet count]) * 2;
+                    if(holdingTimeBeforeAttack >= holdingTimeTarget){
                         holdingTimeBeforeAttack = 0;
-                        if(RANDOM_0_TO_1() > 0.5){
+                        holdingTimeTarget = (RANDOM_0_TO_1() * 2);
+                        if(RANDOM_0_TO_1() >= 0.5){
                             if([attackingEnemies count] < 3){
                                 [attackingEnemies addObject:enemyShip];
+                                NSLog(@"Attacking enemies: %d", [attackingEnemies count]);
                                 enemyShip.currentPathType = kPathType_Attacking;
                             }
                         }
@@ -568,14 +581,24 @@ WrapText( const char *text
                 }
                 else if(enemyShip.currentPathType == kPathType_Attacking){
                     if(!enemyShip.currentPath){
-                        NSLog(@"Creating new attack path");
-                        enemyShip.currentPath = [[BezierCurve alloc] initCurveFrom:Vector2fMake([enemyShip currentLocation].x, [enemyShip currentLocation].y) 
-                                               controlPoint1:Vector2fMake(-50, 50)
-                                               controlPoint2:Vector2fMake(370, 50)
-                                                    endPoint:Vector2fMake([enemyShip currentLocation].x, [enemyShip currentLocation].y)
-                                                                            segments:50];
+                        
+                        if(RANDOM_0_TO_1() > 0.5){
+                            //Randomize the direction enemis will fly
+                            enemyShip.currentPath = [[BezierCurve alloc] initCurveFrom:Vector2fMake([enemyShip currentLocation].x, [enemyShip currentLocation].y) 
+                                                                         controlPoint1:Vector2fMake((160 - 350), 50)
+                                                                         controlPoint2:Vector2fMake((160 + 350), 50)
+                                                                              endPoint:Vector2fMake([enemyShip currentLocation].x, [enemyShip currentLocation].y)
+                                                                              segments:50];
+                        }
+                        else {
+                            enemyShip.currentPath = [[BezierCurve alloc] initCurveFrom:Vector2fMake([enemyShip currentLocation].x, [enemyShip currentLocation].y) 
+                                                                         controlPoint1:Vector2fMake((160 + 350), 50)
+                                                                         controlPoint2:Vector2fMake((160 - 350), 50)
+                                                                              endPoint:Vector2fMake([enemyShip currentLocation].x, [enemyShip currentLocation].y)
+                                                                              segments:50];
+                        }
                     }
-                    [enemyShip setCurrentLocation:CGPointMake([enemyShip.currentPath getPointAt:enemyShip.pathTime/2].x, [enemyShip.currentPath getPointAt:enemyShip.pathTime/2].y)];
+                    [enemyShip setCurrentLocation:CGPointMake([enemyShip.currentPath getPointAt:enemyShip.pathTime/4].x, [enemyShip.currentPath getPointAt:enemyShip.pathTime/4].y)];
                     if(enemyShip.pathTime > 1){
                         if(abs(enemyShip.currentLocation.x - enemyShip.currentPath.endPoint.x) < 5 && abs(enemyShip.currentLocation.y - enemyShip.currentPath.endPoint.y) < 5){
                             [[enemyShip currentPath] release];
@@ -583,6 +606,7 @@ WrapText( const char *text
                             enemyShip.pathTime = 0;
                             enemyShip.currentPathType = kPathType_Holding;
                             [attackingEnemies removeObject:enemyShip];
+                            NSLog(@"Attacking enemies: %d", [attackingEnemies count]);
                         }
                     }
                 }

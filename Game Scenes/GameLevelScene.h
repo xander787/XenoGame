@@ -154,6 +154,7 @@ typedef enum _OutroAnimation {
     BezierCurve             *initialPath;
     
     GLfloat                 holdingTimeBeforeAttack;
+    GLfloat                 holdingTimeTarget;
     NSMutableSet            *attackingEnemies;
 }
 
