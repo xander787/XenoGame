@@ -304,7 +304,7 @@
     modularObjects[module].moduleHealth -= damage;
     
     modularObjects[module].hitFilter = YES;
-    [modularObjects[module].moduleImage setColourFilterRed:1.0f green:0.5f blue:0.5f alpha:1.0f];
+    [modularObjects[module].moduleImage setColourFilterRed:1.0f green:0.0f blue:0.0f alpha:0.5f];
     
     if(modularObjects[module].moduleHealth <= 0){
         modularObjects[module].isDead = YES;
