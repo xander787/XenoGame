@@ -134,9 +134,7 @@
     if(angleToPlayer < 0) angleToPlayer += 360;
     
     if(angleToPlayer > 20) angleToPlayer = 20;
-    
-    NSLog(@"Angle to player 'left': %f", angleToPlayer);
-    
+        
     
     // Right Cannon aiming
     playerXPosition = (currentLocation.x + cannonRight->location.x) - playerShipRef.currentLocation.x;
