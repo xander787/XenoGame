@@ -9,19 +9,6 @@
 //  Alexander Nabavi-Noori - Software Engineer, Game Architect
 //	James Linnell - Software Engineer, Creative Design, Art Producer
 //	Tyler Newcomb - Creative Design, Art Producer
-//  
-//  Last Updated - 7/4/11 @8:30PM - Alexander
-//  - Dialogue loading and current wave type (Dialoge vs fighting)
-//
-//  Last Updated - 7/5/2011 @10PM - James
-//  - Small bug fix where enemies were getting removed
-//  from the set too soon
-//
-//  Last Updated - 7/9/2011 @12:50AM - James
-//  - Added initial dialogue initializing, updating, and rendering
-//  code. Still has bugs like hud element rendering over dialogue
-//  stuff, no animation yet.This was a hell of an update, ver hard
-//  for both of us.
 //
 //  Last Updated - 7/9/2011 @9:10PM - James
 //  - Added Bool dialogueIsTyping, and had that work with

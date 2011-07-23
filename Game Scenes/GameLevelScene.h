@@ -144,6 +144,7 @@ typedef enum _OutroAnimation {
     float                   dialogueTypeTimeDelay;
     Image                   *dialogueBorder;
     Image                   *dialogueFastForwardButton;
+    Image                   *speakerImage;
     
     int                     levelDifficulty;
     OutroAnimation          outroAnimation;
