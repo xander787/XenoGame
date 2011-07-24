@@ -326,6 +326,10 @@
     
 }
 
+- (void)creditAmountChangedBy:(int)creditChange {
+    
+}
+
 - (void)transitionToSceneWithKey:(NSString *)aKey {
 	sceneState = kSceneState_TransitionOut;
 }

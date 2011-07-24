@@ -74,6 +74,10 @@
 //  Last Updated - 7/23/11 @5:50PM - James
 //  - Added basic functionality for drops and powerups,
 //  50% chance of dropping a credit
+//
+//  Last Updated - 7/23/11 @11:45PM - James
+//  - Added a quick template for drop types on player pickup,
+//  made delegate call to add credits
 
 #import "GameLevelScene.h"
 
@@ -564,7 +568,61 @@ WrapText( const char *text
             if((drop.location.x - playerShip.currentLocation.x) < 16 &&
                (drop.location.y - playerShip.currentLocation.y) < 16){
                 //Drop picked up
-                
+                switch (drop.dropType) {
+                    case kDropType_Credit:
+                    {
+                        [delegate creditAmountChangedBy:100];
+                        break;
+                    }
+                        
+                    case kDropType_Shield:
+                    {
+                        break;
+                    }
+                        
+                    case kDropType_DamageMultiplier:
+                    {
+                        break;
+                    }
+                        
+                    case kDropType_ScoreMultiplier:
+                    {
+                        break;
+                    }
+                        
+                    case kDropType_EnemyRepel:
+                    {
+                        break;
+                    }
+                        
+                    case kDropType_DropsMagnet:
+                    {
+                        break;
+                    }
+                        
+                    case kDropType_Slowmo:
+                    {
+                        break;
+                    }
+                        
+                    case kDropType_ProximityDamage:
+                    {
+                        break;
+                    }
+                        
+                    case kDropType_Health:
+                    {
+                        break;
+                    }
+                        
+                    case kDropType_Nuke:
+                    {
+                        break;
+                    }
+                        
+                    default:
+                        break;
+                }
                 [dropsToBeRemoved addObject:drop];
             }
         }

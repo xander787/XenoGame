@@ -52,6 +52,7 @@
 - (void)levelEnded;
 - (void)scoreChangedBy:(int)scoreChange;
 - (void)playerHealthChangedBy:(int)healthChange;
+- (void)creditAmountChangedBy:(int)creditChange;
 @end
 
 typedef enum _LevelType {
