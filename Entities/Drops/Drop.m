@@ -10,6 +10,10 @@
 //
 //  Last Updated - 7/24/11 @2:15PM - James
 //  - Accidentally forgot to set the dropType so correct type
+//
+//  Last Updated - 7/23/11 @3:15PM - James
+//  - Made drops slowly move downwards to the bottom of
+//  the screen, 50pixels per second
 
 #import "Drop.h"
 
@@ -91,6 +95,9 @@
     if(magnetActivated){
         location.x += ((playerShipRef.currentLocation.x - location.x) / 3) * (pow(1.584893192, 1)) * delta / 2;
         location.y += ((playerShipRef.currentLocation.y - location.y) / 3) * (pow(1.584893192, 1)) * delta / 2;
+    }
+    else {
+        location.y -= 50 * delta;
     }
     
     switch (dropType) {
