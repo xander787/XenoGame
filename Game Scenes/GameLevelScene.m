@@ -70,6 +70,10 @@
 //
 //  Last updated - 7/23/11 @6PM - alexander
 //  - Dialogue now displays icon of speaker
+//
+//  Last Updated - 7/23/11 @5:50PM - James
+//  - Added basic functionality for drops and powerups,
+//  50% chance of dropping a credit
 
 #import "GameLevelScene.h"
 
@@ -305,6 +309,7 @@ WrapText( const char *text
         dialogueFastForwardButton = [[Image alloc] initWithImage:@"fastforward.png" scale:Scale2fOne];
         
         attackingEnemies = [[NSMutableSet alloc] init];
+        droppedPowerUpSet = [[NSMutableSet alloc] init];
     }
     
     return self;
@@ -549,6 +554,23 @@ WrapText( const char *text
         //Make sure that all of our ship objects get their update: called. Necessary.
         [playerShip update:aDelta];
         
+        //Update the drops, as some enemies may appear in both enemy and boss waves
+        NSMutableSet *dropsToBeRemoved = [[NSMutableSet alloc] init];
+        for(Drop *drop in droppedPowerUpSet){
+            [drop update:aDelta];
+            if(drop.magnetActivated != powerUpMagnetActivated){
+                drop.magnetActivated = powerUpMagnetActivated;
+            }
+            if((drop.location.x - playerShip.currentLocation.x) < 16 &&
+               (drop.location.y - playerShip.currentLocation.y) < 16){
+                //Drop picked up
+                
+                [dropsToBeRemoved addObject:drop];
+            }
+        }
+        [droppedPowerUpSet minusSet:dropsToBeRemoved];
+        [dropsToBeRemoved release];
+        
         if (currentWaveType == kWaveType_Enemy) {
             // Loop through our enemies and remove those that have died and whose
             // destruction animations have completed
@@ -567,7 +589,21 @@ WrapText( const char *text
             [discardedEnemies release];
             
             //Update the enemies' movement paths
-            for(EnemyShip *enemyShip in enemiesSet){        
+            for(EnemyShip *enemyShip in enemiesSet){
+                if(enemyShip.shipHealth <= 0 && enemyShip.powerUpDropped == NO){
+                    //Calculate which type of powerup to drop
+                    if(RANDOM_0_TO_1() >= 0.5){
+                        //Drop a credit
+                        Drop *tempCredit = [[Drop alloc] initWithDropType:kDropType_Credit
+                                                                 position:Vector2fMake(enemyShip.currentLocation.x, enemyShip.currentLocation.y)
+                                                         andPlayerShipRef:playerShip];
+                        tempCredit.magnetActivated = powerUpMagnetActivated;
+                        [droppedPowerUpSet addObject:tempCredit];
+                        [tempCredit release];
+                        enemyShip.powerUpDropped = YES;
+                    }
+                }
+                
                 if(enemyShip.currentPathType == kPathType_Initial){
                     [enemyShip setCurrentLocation:CGPointMake([enemyShip.currentPath getPointAt:enemyShip.pathTime/2].x, [enemyShip.currentPath getPointAt:enemyShip.pathTime/2].y)];
                     
@@ -1080,6 +1116,9 @@ WrapText( const char *text
 }
 
 - (void)render {
+    for(Drop *drop in droppedPowerUpSet){
+        [drop render];
+    }
     
     if (currentWaveType == kWaveType_Enemy) {
         for (EnemyShip *enemyShip in enemiesSet) {

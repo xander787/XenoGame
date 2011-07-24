@@ -45,6 +45,7 @@
 #import "Collisions.h"
 #import "BezierCurve.h"
 #import "BossShipAstraeus.h"
+#import "Drop.h"
 
 @protocol GameLevelDelegate <NSObject>
 @required
@@ -157,6 +158,10 @@ typedef enum _OutroAnimation {
     GLfloat                 holdingTimeBeforeAttack;
     GLfloat                 holdingTimeTarget;
     NSMutableSet            *attackingEnemies;
+    
+    //Drops stuff
+    NSMutableSet            *droppedPowerUpSet;
+    BOOL                    powerUpMagnetActivated;
 }
 
 @property (nonatomic, retain) id <GameLevelDelegate> delegate;

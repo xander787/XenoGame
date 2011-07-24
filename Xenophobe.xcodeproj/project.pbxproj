@@ -151,6 +151,8 @@
 		B9C3AB7C13C2A7B4003202BA /* mainmenu.png in Resources */ = {isa = PBXBuildFile; fileRef = B9C3AB7B13C2A7B4003202BA /* mainmenu.png */; };
 		B9C3AB7E13C2AA50003202BA /* return.png in Resources */ = {isa = PBXBuildFile; fileRef = B9C3AB7D13C2AA50003202BA /* return.png */; };
 		B9C3AB8013C2BF8E003202BA /* pause.png in Resources */ = {isa = PBXBuildFile; fileRef = B9C3AB7F13C2BF8E003202BA /* pause.png */; };
+		B9E3319B13DBA4830019C2E2 /* Credit.png in Resources */ = {isa = PBXBuildFile; fileRef = B9E3319A13DBA4830019C2E2 /* Credit.png */; };
+		B9E3319F13DBA4A30019C2E2 /* Drop.m in Sources */ = {isa = PBXBuildFile; fileRef = B9E3319E13DBA4A30019C2E2 /* Drop.m */; };
 		B9EB2F3813AD2046003484B1 /* Level_DevTest.plist in Resources */ = {isa = PBXBuildFile; fileRef = B9EB2F3713AD2046003484B1 /* Level_DevTest.plist */; };
 		B9EB2F3C13AD3791003484B1 /* kEnemyShipTwoShotkBossAfricaAssistOne.png in Resources */ = {isa = PBXBuildFile; fileRef = B9EB2F3913AD3790003484B1 /* kEnemyShipTwoShotkBossAfricaAssistOne.png */; };
 		B9EB2F3D13AD3791003484B1 /* kEnemyTwoShotLevelTwo.png in Resources */ = {isa = PBXBuildFile; fileRef = B9EB2F3A13AD3790003484B1 /* kEnemyTwoShotLevelTwo.png */; };
@@ -364,6 +366,9 @@
 		B9C3AB7B13C2A7B4003202BA /* mainmenu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mainmenu.png; sourceTree = "<group>"; };
 		B9C3AB7D13C2AA50003202BA /* return.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = return.png; sourceTree = "<group>"; };
 		B9C3AB7F13C2BF8E003202BA /* pause.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pause.png; sourceTree = "<group>"; };
+		B9E3319A13DBA4830019C2E2 /* Credit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Credit.png; path = "Game Resources/Images/Normal/Drops/Credit.png"; sourceTree = SOURCE_ROOT; };
+		B9E3319D13DBA4A30019C2E2 /* Drop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Drop.h; path = Entities/Drops/Drop.h; sourceTree = "<group>"; };
+		B9E3319E13DBA4A30019C2E2 /* Drop.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Drop.m; path = Entities/Drops/Drop.m; sourceTree = "<group>"; };
 		B9EB2F3713AD2046003484B1 /* Level_DevTest.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Level_DevTest.plist; path = "Game Resources/Level_DevTest.plist"; sourceTree = SOURCE_ROOT; };
 		B9EB2F3913AD3790003484B1 /* kEnemyShipTwoShotkBossAfricaAssistOne.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = kEnemyShipTwoShotkBossAfricaAssistOne.png; path = "Game Resources/Images/Normal/Ships/Enemy Ships/kEnemyShipTwoShotkBossAfricaAssistOne.png"; sourceTree = SOURCE_ROOT; };
 		B9EB2F3A13AD3790003484B1 /* kEnemyTwoShotLevelTwo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = kEnemyTwoShotLevelTwo.png; path = "Game Resources/Images/Normal/Ships/Enemy Ships/kEnemyTwoShotLevelTwo.png"; sourceTree = SOURCE_ROOT; };
@@ -754,6 +759,7 @@
 		1170EE6112724FAC00721CF4 /* Normal */ = {
 			isa = PBXGroup;
 			children = (
+				B9E3319913DBA47B0019C2E2 /* Drops */,
 				11F3274212A0D8D5003CF17B /* Application Resources */,
 				11336114129EEE8D00FE6A03 /* Ships */,
 			);
@@ -785,6 +791,7 @@
 		11B1BD5812822400006D085D /* Entities */ = {
 			isa = PBXGroup;
 			children = (
+				B9E3319C13DBA4930019C2E2 /* Drops */,
 				B97013C612BC3BF0000369D9 /* Projectiles */,
 				11A0968E12B2959C002CC270 /* Physical Entities */,
 				11B1BD601282247B006D085D /* Ships */,
@@ -958,6 +965,23 @@
 			name = Projectiles;
 			sourceTree = "<group>";
 		};
+		B9E3319913DBA47B0019C2E2 /* Drops */ = {
+			isa = PBXGroup;
+			children = (
+				B9E3319A13DBA4830019C2E2 /* Credit.png */,
+			);
+			name = Drops;
+			sourceTree = "<group>";
+		};
+		B9E3319C13DBA4930019C2E2 /* Drops */ = {
+			isa = PBXGroup;
+			children = (
+				B9E3319D13DBA4A30019C2E2 /* Drop.h */,
+				B9E3319E13DBA4A30019C2E2 /* Drop.m */,
+			);
+			name = Drops;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1089,6 +1113,7 @@
 				111D62F213DBA04E005045D4 /* KronosIcon.png in Resources */,
 				111D62F313DBA04E005045D4 /* PilotXIcon.png in Resources */,
 				111D62F413DBA04E005045D4 /* TheSingularityIcon.png in Resources */,
+				B9E3319B13DBA4830019C2E2 /* Credit.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1154,6 +1179,7 @@
 				1129A1B313CACFA000BE73FA /* BossShipHyperion.m in Sources */,
 				1129A1B613CACFB000BE73FA /* BossShipKronos.m in Sources */,
 				1129A1B913CACFC500BE73FA /* BossShipAlphaWeapon.m in Sources */,
+				B9E3319F13DBA4A30019C2E2 /* Drop.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -140,12 +140,15 @@ typedef enum _PathType {
     
     CGPoint                 holdingDirection;
     GLfloat                 holdingTimer;
+    
+    BOOL                    powerUpDropped;
 }
 @property(nonatomic, retain) BezierCurve *currentPath;
 @property(readwrite) PathType currentPathType;
 @property(readwrite) GLfloat pathTime;
 @property(readwrite) CGPoint desiredPosition;
 @property(readwrite) CGPoint holdingPositionPoint;
+@property(readwrite) BOOL powerUpDropped;
 
 - (id)initWithShipID:(EnemyShipID)aEnemyID initialLocation:(CGPoint)aPoint andPlayerShipRef:(PlayerShip *)aPlayership;
 
