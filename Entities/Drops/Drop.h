@@ -27,6 +27,7 @@ typedef enum _DropType {
 @interface Drop : NSObject {
     DropType    dropType;
     GLfloat     timeAlive;
+    BOOL        dropShouldBeRemoved;
     Image       *dropImage;
     Vector2f    location;
     

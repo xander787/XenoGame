@@ -153,6 +153,8 @@
 		B9C3AB8013C2BF8E003202BA /* pause.png in Resources */ = {isa = PBXBuildFile; fileRef = B9C3AB7F13C2BF8E003202BA /* pause.png */; };
 		B9E3319B13DBA4830019C2E2 /* Credit.png in Resources */ = {isa = PBXBuildFile; fileRef = B9E3319A13DBA4830019C2E2 /* Credit.png */; };
 		B9E3319F13DBA4A30019C2E2 /* Drop.m in Sources */ = {isa = PBXBuildFile; fileRef = B9E3319E13DBA4A30019C2E2 /* Drop.m */; };
+		B9E331A113DCB6660019C2E2 /* Shield.png in Resources */ = {isa = PBXBuildFile; fileRef = B9E331A013DCB6660019C2E2 /* Shield.png */; };
+		B9E331A313DCBF8A0019C2E2 /* PlayerShield.png in Resources */ = {isa = PBXBuildFile; fileRef = B9E331A213DCBF8A0019C2E2 /* PlayerShield.png */; };
 		B9EB2F3813AD2046003484B1 /* Level_DevTest.plist in Resources */ = {isa = PBXBuildFile; fileRef = B9EB2F3713AD2046003484B1 /* Level_DevTest.plist */; };
 		B9EB2F3C13AD3791003484B1 /* kEnemyShipTwoShotkBossAfricaAssistOne.png in Resources */ = {isa = PBXBuildFile; fileRef = B9EB2F3913AD3790003484B1 /* kEnemyShipTwoShotkBossAfricaAssistOne.png */; };
 		B9EB2F3D13AD3791003484B1 /* kEnemyTwoShotLevelTwo.png in Resources */ = {isa = PBXBuildFile; fileRef = B9EB2F3A13AD3790003484B1 /* kEnemyTwoShotLevelTwo.png */; };
@@ -369,6 +371,8 @@
 		B9E3319A13DBA4830019C2E2 /* Credit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Credit.png; path = "Game Resources/Images/Normal/Drops/Credit.png"; sourceTree = SOURCE_ROOT; };
 		B9E3319D13DBA4A30019C2E2 /* Drop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Drop.h; path = Entities/Drops/Drop.h; sourceTree = "<group>"; };
 		B9E3319E13DBA4A30019C2E2 /* Drop.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Drop.m; path = Entities/Drops/Drop.m; sourceTree = "<group>"; };
+		B9E331A013DCB6660019C2E2 /* Shield.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Shield.png; path = "Game Resources/Images/Normal/Drops/Shield.png"; sourceTree = SOURCE_ROOT; };
+		B9E331A213DCBF8A0019C2E2 /* PlayerShield.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = PlayerShield.png; path = "Game Resources/Images/Normal/Drops/PlayerShield.png"; sourceTree = SOURCE_ROOT; };
 		B9EB2F3713AD2046003484B1 /* Level_DevTest.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Level_DevTest.plist; path = "Game Resources/Level_DevTest.plist"; sourceTree = SOURCE_ROOT; };
 		B9EB2F3913AD3790003484B1 /* kEnemyShipTwoShotkBossAfricaAssistOne.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = kEnemyShipTwoShotkBossAfricaAssistOne.png; path = "Game Resources/Images/Normal/Ships/Enemy Ships/kEnemyShipTwoShotkBossAfricaAssistOne.png"; sourceTree = SOURCE_ROOT; };
 		B9EB2F3A13AD3790003484B1 /* kEnemyTwoShotLevelTwo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = kEnemyTwoShotLevelTwo.png; path = "Game Resources/Images/Normal/Ships/Enemy Ships/kEnemyTwoShotLevelTwo.png"; sourceTree = SOURCE_ROOT; };
@@ -968,6 +972,8 @@
 		B9E3319913DBA47B0019C2E2 /* Drops */ = {
 			isa = PBXGroup;
 			children = (
+				B9E331A213DCBF8A0019C2E2 /* PlayerShield.png */,
+				B9E331A013DCB6660019C2E2 /* Shield.png */,
 				B9E3319A13DBA4830019C2E2 /* Credit.png */,
 			);
 			name = Drops;
@@ -1114,6 +1120,8 @@
 				111D62F313DBA04E005045D4 /* PilotXIcon.png in Resources */,
 				111D62F413DBA04E005045D4 /* TheSingularityIcon.png in Resources */,
 				B9E3319B13DBA4830019C2E2 /* Credit.png in Resources */,
+				B9E331A113DCB6660019C2E2 /* Shield.png in Resources */,
+				B9E331A313DCBF8A0019C2E2 /* PlayerShield.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

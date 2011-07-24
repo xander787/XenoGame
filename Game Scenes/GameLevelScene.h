@@ -162,7 +162,10 @@ typedef enum _OutroAnimation {
     
     //Drops stuff
     NSMutableSet            *droppedPowerUpSet;
+    GLfloat                 powerUpTimer;
     BOOL                    powerUpMagnetActivated;
+    BOOL                    shieldEnabled;
+    Image                   *shieldImage;
 }
 
 @property (nonatomic, retain) id <GameLevelDelegate> delegate;

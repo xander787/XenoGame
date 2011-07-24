@@ -7,6 +7,9 @@
 //
 //  Last Updated - 7/23/11 @6:10PM - James
 //  - Adjusted magnet speed
+//
+//  Last Updated - 7/24/11 @2:15PM - James
+//  - Accidentally forgot to set the dropType so correct type
 
 #import "Drop.h"
 
@@ -20,16 +23,18 @@
     if (self) {
         location = position;
         playerShipRef = aPlayerShip;
+        dropType = type;
         
         switch (type) {
             case kDropType_Credit:
             {
-                dropImage = [[Image alloc] initWithImage:@"Credit.png" scale:Scale2fMake(1, 1)];
+                dropImage = [[Image alloc] initWithImage:@"Credit.png" scale:Scale2fOne];
                 break;
             }
                 
             case kDropType_Shield:
             {
+                dropImage = [[Image alloc] initWithImage:@"Shield.png" scale:Scale2fOne];
                 break;
             }
                 
@@ -86,6 +91,21 @@
     if(magnetActivated){
         location.x += ((playerShipRef.currentLocation.x - location.x) / 3) * (pow(1.584893192, 1)) * delta / 2;
         location.y += ((playerShipRef.currentLocation.y - location.y) / 3) * (pow(1.584893192, 1)) * delta / 2;
+    }
+    
+    switch (dropType) {
+        case kDropType_Credit:
+        {
+            break;
+        }
+        
+        case kDropType_Shield:
+        {
+            break;
+        }
+            
+        default:
+            break;
     }
 }
 

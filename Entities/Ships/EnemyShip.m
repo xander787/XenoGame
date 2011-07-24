@@ -37,6 +37,9 @@
 //  - Added code to make the enemy 'hover' around
 //  its holding position. Bounding box editable in the
 //  two #defines
+//
+//  Last updated - 7/24/11 @2:10PM - James
+//  - Made killShip lso make health zero.
 
 #import "EnemyShip.h"
 
@@ -395,7 +398,7 @@
 
 - (void)killShip {
     shipIsDead = TRUE;
-    
+    shipHealth = 0;
     for(AbstractProjectile *tempProjectile in projectilesArray){
         [tempProjectile stopProjectile];
     }

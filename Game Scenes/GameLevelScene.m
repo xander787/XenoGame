@@ -78,6 +78,10 @@
 //  Last Updated - 7/23/11 @11:45PM - James
 //  - Added a quick template for drop types on player pickup,
 //  made delegate call to add credits
+//
+//  Last Updated - 7/24/11 @2:20PM - James
+//  - Added shield powerUp functionality
+
 
 #import "GameLevelScene.h"
 
@@ -314,6 +318,7 @@ WrapText( const char *text
         
         attackingEnemies = [[NSMutableSet alloc] init];
         droppedPowerUpSet = [[NSMutableSet alloc] init];
+        shieldImage = [[Image alloc] initWithImage:@"PlayerShield.png" scale:Scale2fOne];
     }
     
     return self;
@@ -558,6 +563,16 @@ WrapText( const char *text
         //Make sure that all of our ship objects get their update: called. Necessary.
         [playerShip update:aDelta];
         
+        if(shieldEnabled){
+            //If any powerups are picked up and enabled
+            powerUpTimer += aDelta;
+            if(powerUpTimer >= 5){
+                //Reset timer and all power ups
+                powerUpTimer = 0;
+                shieldEnabled = NO;
+            }
+        }
+        
         //Update the drops, as some enemies may appear in both enemy and boss waves
         NSMutableSet *dropsToBeRemoved = [[NSMutableSet alloc] init];
         for(Drop *drop in droppedPowerUpSet){
@@ -565,8 +580,9 @@ WrapText( const char *text
             if(drop.magnetActivated != powerUpMagnetActivated){
                 drop.magnetActivated = powerUpMagnetActivated;
             }
-            if((drop.location.x - playerShip.currentLocation.x) < 16 &&
-               (drop.location.y - playerShip.currentLocation.y) < 16){
+            
+            if(abs(drop.location.x - playerShip.currentLocation.x) < 20 &&
+               abs(drop.location.y - playerShip.currentLocation.y) < 20){
                 //Drop picked up
                 switch (drop.dropType) {
                     case kDropType_Credit:
@@ -577,6 +593,8 @@ WrapText( const char *text
                         
                     case kDropType_Shield:
                     {
+                        shieldEnabled = YES;
+                        powerUpTimer = 0;
                         break;
                     }
                         
@@ -653,6 +671,16 @@ WrapText( const char *text
                     if(RANDOM_0_TO_1() >= 0.5){
                         //Drop a credit
                         Drop *tempCredit = [[Drop alloc] initWithDropType:kDropType_Credit
+                                                                 position:Vector2fMake(enemyShip.currentLocation.x, enemyShip.currentLocation.y)
+                                                         andPlayerShipRef:playerShip];
+                        tempCredit.magnetActivated = powerUpMagnetActivated;
+                        [droppedPowerUpSet addObject:tempCredit];
+                        [tempCredit release];
+                        enemyShip.powerUpDropped = YES;
+                    }
+                    else {
+                        //Drop a shield powerup
+                        Drop *tempCredit = [[Drop alloc] initWithDropType:kDropType_Shield
                                                                  position:Vector2fMake(enemyShip.currentLocation.x, enemyShip.currentLocation.y)
                                                          andPlayerShipRef:playerShip];
                         tempCredit.magnetActivated = powerUpMagnetActivated;
@@ -1176,6 +1204,9 @@ WrapText( const char *text
 - (void)render {
     for(Drop *drop in droppedPowerUpSet){
         [drop render];
+    }
+    if(shieldEnabled == TRUE){
+        [shieldImage renderAtPoint:playerShip.currentLocation centerOfImage:YES];
     }
     
     if (currentWaveType == kWaveType_Enemy) {
