@@ -5,6 +5,8 @@
 //  Created by James Linnell on 7/23/11.
 //  Copyright 2011 PDHS. All rights reserved.
 //
+//  Last Updated - 7/23/11 @6:10PM - James
+//  - Adjusted magnet speed
 
 #import "Drop.h"
 
@@ -82,8 +84,8 @@
 - (void)update:(GLfloat)delta {
     timeAlive += delta;
     if(magnetActivated){
-        location.x += ((playerShipRef.currentLocation.x - location.x) / 1) * (pow(1.584893192, 1)) * delta / 2;
-        location.y += ((playerShipRef.currentLocation.y - location.y) / 1) * (pow(1.584893192, 1)) * delta / 2;
+        location.x += ((playerShipRef.currentLocation.x - location.x) / 3) * (pow(1.584893192, 1)) * delta / 2;
+        location.y += ((playerShipRef.currentLocation.y - location.y) / 3) * (pow(1.584893192, 1)) * delta / 2;
     }
 }
 
