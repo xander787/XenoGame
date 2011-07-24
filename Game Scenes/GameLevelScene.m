@@ -67,6 +67,9 @@
 //  Last Updated - 7/22/11 @9:30PM - James
 //  - Improved enemy's attack code. Total number of concurrent attacking
 //  enemies limited to 3, 50% chance of going left or right, timing improved.
+//
+//  Last updated - 7/23/11 @6PM - alexander
+//  - Dialogue now displays icon of speaker
 
 #import "GameLevelScene.h"
 
@@ -421,7 +424,7 @@ WrapText( const char *text
     else {
         currentWaveType = kWaveType_Dialogue;
         dialogue = [[NSArray alloc] initWithArray:[[wavesArray objectAtIndex:wave] componentsSeparatedByString:@";"]];
-        currentDialogueSpeaker = [self convertToSpeakerEnum:[dialogue objectAtIndex:0]];
+        currentDialogueSpeaker = [self convertToSpeakerEnum:[[[dialogue objectAtIndex:0] componentsSeparatedByString:@":"] objectAtIndex:0]];
         currentDialogueSpeakerIndex = 0;
         currentDialogueDisplayLine = 1;
         currentDialogueCharacterPosition = 0;
@@ -432,6 +435,44 @@ WrapText( const char *text
         dialogueLineFourBuffer = [[NSMutableString alloc] init];
         dialogueLineFiveBuffer = [[NSMutableString alloc] init];
         dialogueLineSixBuffer = [[NSMutableString alloc] init];
+                
+        // Load speaker icon
+        if (currentDialogueSpeaker == kSpeaker_Player) {
+            speakerImage = [[Image alloc] initWithImage:@"PilotXIcon.png" scale:Scale2fOne];
+        }
+        else if (currentDialogueSpeaker == kSpeaker_General) {
+            speakerImage = [[Image alloc] initWithImage:@"GeneralAIcon.png" scale:Scale2fOne];
+        }
+        else if (currentDialogueSpeaker == kSpeaker_BossOne) {
+            speakerImage = [[Image alloc] initWithImage:@"BossOneIcon.png" scale:Scale2fOne];
+        }
+        else if (currentDialogueSpeaker == kSpeaker_BossTwo) {
+            speakerImage = [[Image alloc] initWithImage:@"BossTwoIcon.png" scale:Scale2fOne];
+        }
+        else if (currentDialogueSpeaker == kSpeaker_BossThree) {
+            speakerImage = [[Image alloc] initWithImage:@"BossThreeIcon.png" scale:Scale2fOne];
+        }
+        else if (currentDialogueSpeaker == kSpeaker_BossFour) {
+            speakerImage = [[Image alloc] initWithImage:@"BossFourIcon.png" scale:Scale2fOne];
+        }
+        else if (currentDialogueSpeaker == kSpeaker_BossFive) {
+            speakerImage = [[Image alloc] initWithImage:@"BossFiveIcon.png" scale:Scale2fOne];
+        }
+        else if (currentDialogueSpeaker == kSpeaker_BossSix) {
+            speakerImage = [[Image alloc] initWithImage:@"BossSixIcon.png" scale:Scale2fOne];
+        }
+        else if (currentDialogueSpeaker == kSpeaker_BossSeven) {
+            speakerImage = [[Image alloc] initWithImage:@"BossSevenIcon.png" scale:Scale2fOne];
+        }
+        else if (currentDialogueSpeaker == kSpeaker_Kronos) {
+            speakerImage = [[Image alloc] initWithImage:@"KronosIcon.png" scale:Scale2fOne];
+        }
+        else if (currentDialogueSpeaker == kSpeaker_Singularity) {
+            speakerImage = [[Image alloc] initWithImage:@"TheSingularityIcon.png" scale:Scale2fOne];
+        }
+        else if (currentDialogueSpeaker == kSpeaker_AlienSwarm) {
+            speakerImage = [[Image alloc] initWithImage:@"AlienSwarmIcon.png" scale:Scale2fOne];
+        }
         
         //What's going on here is It fills the necessary strings with the right text, strings 1-3 with 22 wrapped text,
         //4-6 with 28 wrapped. It has to go through all those if statement because not all dialogue wil take all 6 six lines.
@@ -1053,6 +1094,7 @@ WrapText( const char *text
     //Dialogue Related rendering
     if(currentWaveType == kWaveType_Dialogue) {
         [dialogueBorder renderAtPoint:CGPointMake(0.0f, 0.0f) centerOfImage:NO];
+        [speakerImage renderAtPoint:CGPointMake(4, 82) centerOfImage:NO];
         [dialogueFastForwardButton renderAtPoint:CGPointMake(310.0f, 10.0f) centerOfImage:YES];
         [font drawStringAt:CGPointMake(80.0f, 135.0f) text:dialogueLineOneBuffer];
         [font drawStringAt:CGPointMake(80.0f, 115.0f) text:dialogueLineTwoBuffer];

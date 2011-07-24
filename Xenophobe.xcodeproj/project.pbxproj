@@ -7,6 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		111D62E913DBA04E005045D4 /* AlienSwarmIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 111D62DD13DBA04E005045D4 /* AlienSwarmIcon.png */; };
+		111D62EA13DBA04E005045D4 /* BossFiveIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 111D62DE13DBA04E005045D4 /* BossFiveIcon.png */; };
+		111D62EB13DBA04E005045D4 /* BossFourIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 111D62DF13DBA04E005045D4 /* BossFourIcon.png */; };
+		111D62EC13DBA04E005045D4 /* BossOneIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 111D62E013DBA04E005045D4 /* BossOneIcon.png */; };
+		111D62ED13DBA04E005045D4 /* BossSevenIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 111D62E113DBA04E005045D4 /* BossSevenIcon.png */; };
+		111D62EE13DBA04E005045D4 /* BossSixIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 111D62E213DBA04E005045D4 /* BossSixIcon.png */; };
+		111D62EF13DBA04E005045D4 /* BossThreeIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 111D62E313DBA04E005045D4 /* BossThreeIcon.png */; };
+		111D62F013DBA04E005045D4 /* BossTwoIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 111D62E413DBA04E005045D4 /* BossTwoIcon.png */; };
+		111D62F113DBA04E005045D4 /* GernalAIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 111D62E513DBA04E005045D4 /* GernalAIcon.png */; };
+		111D62F213DBA04E005045D4 /* KronosIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 111D62E613DBA04E005045D4 /* KronosIcon.png */; };
+		111D62F313DBA04E005045D4 /* PilotXIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 111D62E713DBA04E005045D4 /* PilotXIcon.png */; };
+		111D62F413DBA04E005045D4 /* TheSingularityIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 111D62E813DBA04E005045D4 /* TheSingularityIcon.png */; };
 		1129A19F13CA73F100BE73FA /* Level_Intro.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1129A19E13CA73F100BE73FA /* Level_Intro.plist */; };
 		1129A1A113CA933500BE73FA /* Level_One.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1129A1A013CA933400BE73FA /* Level_One.plist */; };
 		1129A1A413CACED900BE73FA /* BossShipThemis.m in Sources */ = {isa = PBXBuildFile; fileRef = 1129A1A313CACED900BE73FA /* BossShipThemis.m */; };
@@ -146,6 +158,18 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		111D62DD13DBA04E005045D4 /* AlienSwarmIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AlienSwarmIcon.png; sourceTree = "<group>"; };
+		111D62DE13DBA04E005045D4 /* BossFiveIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BossFiveIcon.png; sourceTree = "<group>"; };
+		111D62DF13DBA04E005045D4 /* BossFourIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BossFourIcon.png; sourceTree = "<group>"; };
+		111D62E013DBA04E005045D4 /* BossOneIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BossOneIcon.png; sourceTree = "<group>"; };
+		111D62E113DBA04E005045D4 /* BossSevenIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BossSevenIcon.png; sourceTree = "<group>"; };
+		111D62E213DBA04E005045D4 /* BossSixIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BossSixIcon.png; sourceTree = "<group>"; };
+		111D62E313DBA04E005045D4 /* BossThreeIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BossThreeIcon.png; sourceTree = "<group>"; };
+		111D62E413DBA04E005045D4 /* BossTwoIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BossTwoIcon.png; sourceTree = "<group>"; };
+		111D62E513DBA04E005045D4 /* GernalAIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GernalAIcon.png; sourceTree = "<group>"; };
+		111D62E613DBA04E005045D4 /* KronosIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = KronosIcon.png; sourceTree = "<group>"; };
+		111D62E713DBA04E005045D4 /* PilotXIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PilotXIcon.png; sourceTree = "<group>"; };
+		111D62E813DBA04E005045D4 /* TheSingularityIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TheSingularityIcon.png; sourceTree = "<group>"; };
 		1129A19E13CA73F100BE73FA /* Level_Intro.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Level_Intro.plist; path = "Game Resources/Game Levels/Level_Intro.plist"; sourceTree = SOURCE_ROOT; };
 		1129A1A013CA933400BE73FA /* Level_One.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Level_One.plist; path = "Game Resources/Game Levels/Level_One.plist"; sourceTree = SOURCE_ROOT; };
 		1129A1A213CACED900BE73FA /* BossShipThemis.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BossShipThemis.h; path = Entities/Ships/Bosses/BossShipThemis.h; sourceTree = "<group>"; };
@@ -815,6 +839,18 @@
 		11F3274212A0D8D5003CF17B /* Application Resources */ = {
 			isa = PBXGroup;
 			children = (
+				111D62DD13DBA04E005045D4 /* AlienSwarmIcon.png */,
+				111D62DE13DBA04E005045D4 /* BossFiveIcon.png */,
+				111D62DF13DBA04E005045D4 /* BossFourIcon.png */,
+				111D62E013DBA04E005045D4 /* BossOneIcon.png */,
+				111D62E113DBA04E005045D4 /* BossSevenIcon.png */,
+				111D62E213DBA04E005045D4 /* BossSixIcon.png */,
+				111D62E313DBA04E005045D4 /* BossThreeIcon.png */,
+				111D62E413DBA04E005045D4 /* BossTwoIcon.png */,
+				111D62E513DBA04E005045D4 /* GernalAIcon.png */,
+				111D62E613DBA04E005045D4 /* KronosIcon.png */,
+				111D62E713DBA04E005045D4 /* PilotXIcon.png */,
+				111D62E813DBA04E005045D4 /* TheSingularityIcon.png */,
 				B9A7053B13C83EBC004A486C /* DialogueBoxBorder.png */,
 				B9A7053C13C83EBC004A486C /* fastforward.png */,
 				B9C3AB7F13C2BF8E003202BA /* pause.png */,
@@ -1041,6 +1077,18 @@
 				114DEB3D13D6299E0064C1D1 /* arrow120inverted.png in Resources */,
 				114DEB3E13D6299E0064C1D1 /* arrowinverted.png in Resources */,
 				114DEB3F13D6299E0064C1D1 /* ship.png in Resources */,
+				111D62E913DBA04E005045D4 /* AlienSwarmIcon.png in Resources */,
+				111D62EA13DBA04E005045D4 /* BossFiveIcon.png in Resources */,
+				111D62EB13DBA04E005045D4 /* BossFourIcon.png in Resources */,
+				111D62EC13DBA04E005045D4 /* BossOneIcon.png in Resources */,
+				111D62ED13DBA04E005045D4 /* BossSevenIcon.png in Resources */,
+				111D62EE13DBA04E005045D4 /* BossSixIcon.png in Resources */,
+				111D62EF13DBA04E005045D4 /* BossThreeIcon.png in Resources */,
+				111D62F013DBA04E005045D4 /* BossTwoIcon.png in Resources */,
+				111D62F113DBA04E005045D4 /* GernalAIcon.png in Resources */,
+				111D62F213DBA04E005045D4 /* KronosIcon.png in Resources */,
+				111D62F313DBA04E005045D4 /* PilotXIcon.png in Resources */,
+				111D62F413DBA04E005045D4 /* TheSingularityIcon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
