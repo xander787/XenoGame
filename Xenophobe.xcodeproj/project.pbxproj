@@ -155,6 +155,14 @@
 		B9E3319F13DBA4A30019C2E2 /* Drop.m in Sources */ = {isa = PBXBuildFile; fileRef = B9E3319E13DBA4A30019C2E2 /* Drop.m */; };
 		B9E331A113DCB6660019C2E2 /* Shield.png in Resources */ = {isa = PBXBuildFile; fileRef = B9E331A013DCB6660019C2E2 /* Shield.png */; };
 		B9E331A313DCBF8A0019C2E2 /* PlayerShield.png in Resources */ = {isa = PBXBuildFile; fileRef = B9E331A213DCBF8A0019C2E2 /* PlayerShield.png */; };
+		B9E331A513DD36C30019C2E2 /* DamageMultiplier.png in Resources */ = {isa = PBXBuildFile; fileRef = B9E331A413DD36C30019C2E2 /* DamageMultiplier.png */; };
+		B9E331AD13DD36D00019C2E2 /* EnemyRepel.png in Resources */ = {isa = PBXBuildFile; fileRef = B9E331A613DD36CF0019C2E2 /* EnemyRepel.png */; };
+		B9E331AE13DD36D00019C2E2 /* Health.png in Resources */ = {isa = PBXBuildFile; fileRef = B9E331A713DD36CF0019C2E2 /* Health.png */; };
+		B9E331AF13DD36D00019C2E2 /* Magnet.png in Resources */ = {isa = PBXBuildFile; fileRef = B9E331A813DD36CF0019C2E2 /* Magnet.png */; };
+		B9E331B013DD36D00019C2E2 /* Nuke.png in Resources */ = {isa = PBXBuildFile; fileRef = B9E331A913DD36CF0019C2E2 /* Nuke.png */; };
+		B9E331B113DD36D00019C2E2 /* ProximityDamage.png in Resources */ = {isa = PBXBuildFile; fileRef = B9E331AA13DD36CF0019C2E2 /* ProximityDamage.png */; };
+		B9E331B213DD36D00019C2E2 /* ScoreMultiplier.png in Resources */ = {isa = PBXBuildFile; fileRef = B9E331AB13DD36CF0019C2E2 /* ScoreMultiplier.png */; };
+		B9E331B313DD36D00019C2E2 /* Slowmo.png in Resources */ = {isa = PBXBuildFile; fileRef = B9E331AC13DD36D00019C2E2 /* Slowmo.png */; };
 		B9EB2F3813AD2046003484B1 /* Level_DevTest.plist in Resources */ = {isa = PBXBuildFile; fileRef = B9EB2F3713AD2046003484B1 /* Level_DevTest.plist */; };
 		B9EB2F3C13AD3791003484B1 /* kEnemyShipTwoShotkBossAfricaAssistOne.png in Resources */ = {isa = PBXBuildFile; fileRef = B9EB2F3913AD3790003484B1 /* kEnemyShipTwoShotkBossAfricaAssistOne.png */; };
 		B9EB2F3D13AD3791003484B1 /* kEnemyTwoShotLevelTwo.png in Resources */ = {isa = PBXBuildFile; fileRef = B9EB2F3A13AD3790003484B1 /* kEnemyTwoShotLevelTwo.png */; };
@@ -373,6 +381,14 @@
 		B9E3319E13DBA4A30019C2E2 /* Drop.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Drop.m; path = Entities/Drops/Drop.m; sourceTree = "<group>"; };
 		B9E331A013DCB6660019C2E2 /* Shield.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Shield.png; path = "Game Resources/Images/Normal/Drops/Shield.png"; sourceTree = SOURCE_ROOT; };
 		B9E331A213DCBF8A0019C2E2 /* PlayerShield.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = PlayerShield.png; path = "Game Resources/Images/Normal/Drops/PlayerShield.png"; sourceTree = SOURCE_ROOT; };
+		B9E331A413DD36C30019C2E2 /* DamageMultiplier.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = DamageMultiplier.png; path = "Game Resources/Images/Normal/Drops/DamageMultiplier.png"; sourceTree = SOURCE_ROOT; };
+		B9E331A613DD36CF0019C2E2 /* EnemyRepel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = EnemyRepel.png; path = "Game Resources/Images/Normal/Drops/EnemyRepel.png"; sourceTree = SOURCE_ROOT; };
+		B9E331A713DD36CF0019C2E2 /* Health.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Health.png; path = "Game Resources/Images/Normal/Drops/Health.png"; sourceTree = SOURCE_ROOT; };
+		B9E331A813DD36CF0019C2E2 /* Magnet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Magnet.png; path = "Game Resources/Images/Normal/Drops/Magnet.png"; sourceTree = SOURCE_ROOT; };
+		B9E331A913DD36CF0019C2E2 /* Nuke.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Nuke.png; path = "Game Resources/Images/Normal/Drops/Nuke.png"; sourceTree = SOURCE_ROOT; };
+		B9E331AA13DD36CF0019C2E2 /* ProximityDamage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ProximityDamage.png; path = "Game Resources/Images/Normal/Drops/ProximityDamage.png"; sourceTree = SOURCE_ROOT; };
+		B9E331AB13DD36CF0019C2E2 /* ScoreMultiplier.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ScoreMultiplier.png; path = "Game Resources/Images/Normal/Drops/ScoreMultiplier.png"; sourceTree = SOURCE_ROOT; };
+		B9E331AC13DD36D00019C2E2 /* Slowmo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Slowmo.png; path = "Game Resources/Images/Normal/Drops/Slowmo.png"; sourceTree = SOURCE_ROOT; };
 		B9EB2F3713AD2046003484B1 /* Level_DevTest.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Level_DevTest.plist; path = "Game Resources/Level_DevTest.plist"; sourceTree = SOURCE_ROOT; };
 		B9EB2F3913AD3790003484B1 /* kEnemyShipTwoShotkBossAfricaAssistOne.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = kEnemyShipTwoShotkBossAfricaAssistOne.png; path = "Game Resources/Images/Normal/Ships/Enemy Ships/kEnemyShipTwoShotkBossAfricaAssistOne.png"; sourceTree = SOURCE_ROOT; };
 		B9EB2F3A13AD3790003484B1 /* kEnemyTwoShotLevelTwo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = kEnemyTwoShotLevelTwo.png; path = "Game Resources/Images/Normal/Ships/Enemy Ships/kEnemyTwoShotLevelTwo.png"; sourceTree = SOURCE_ROOT; };
@@ -972,6 +988,14 @@
 		B9E3319913DBA47B0019C2E2 /* Drops */ = {
 			isa = PBXGroup;
 			children = (
+				B9E331A613DD36CF0019C2E2 /* EnemyRepel.png */,
+				B9E331A713DD36CF0019C2E2 /* Health.png */,
+				B9E331A813DD36CF0019C2E2 /* Magnet.png */,
+				B9E331A913DD36CF0019C2E2 /* Nuke.png */,
+				B9E331AA13DD36CF0019C2E2 /* ProximityDamage.png */,
+				B9E331AB13DD36CF0019C2E2 /* ScoreMultiplier.png */,
+				B9E331AC13DD36D00019C2E2 /* Slowmo.png */,
+				B9E331A413DD36C30019C2E2 /* DamageMultiplier.png */,
 				B9E331A213DCBF8A0019C2E2 /* PlayerShield.png */,
 				B9E331A013DCB6660019C2E2 /* Shield.png */,
 				B9E3319A13DBA4830019C2E2 /* Credit.png */,
@@ -1122,6 +1146,14 @@
 				B9E3319B13DBA4830019C2E2 /* Credit.png in Resources */,
 				B9E331A113DCB6660019C2E2 /* Shield.png in Resources */,
 				B9E331A313DCBF8A0019C2E2 /* PlayerShield.png in Resources */,
+				B9E331A513DD36C30019C2E2 /* DamageMultiplier.png in Resources */,
+				B9E331AD13DD36D00019C2E2 /* EnemyRepel.png in Resources */,
+				B9E331AE13DD36D00019C2E2 /* Health.png in Resources */,
+				B9E331AF13DD36D00019C2E2 /* Magnet.png in Resources */,
+				B9E331B013DD36D00019C2E2 /* Nuke.png in Resources */,
+				B9E331B113DD36D00019C2E2 /* ProximityDamage.png in Resources */,
+				B9E331B213DD36D00019C2E2 /* ScoreMultiplier.png in Resources */,
+				B9E331B313DD36D00019C2E2 /* Slowmo.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

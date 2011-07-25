@@ -17,6 +17,9 @@
 //
 //  Last Updated - 7/24/11 @3:17PM - James
 //  - Made sure magnet activated drops move at same speed
+//
+//  Last Updated - 7/24/11 @11PM - James
+//  - Added more images and image loading
 
 #import "Drop.h"
 
@@ -47,41 +50,49 @@
                 
             case kDropType_DamageMultiplier:
             {
+                dropImage = [[Image alloc] initWithImage:@"DamageMultiplier.png" scale:Scale2fOne];
                 break;
             }
                 
             case kDropType_ScoreMultiplier:
             {
+                dropImage = [[Image alloc] initWithImage:@"ScoreMultiplier.png" scale:Scale2fOne];
                 break;
             }
                 
             case kDropType_EnemyRepel:
             {
+                dropImage = [[Image alloc] initWithImage:@"EnemyRepel.png" scale:Scale2fOne];
                 break;
             }
                 
             case kDropType_DropsMagnet:
             {
+                dropImage = [[Image alloc] initWithImage:@"Magnet.png" scale:Scale2fOne];
                 break;
             }
                 
             case kDropType_Slowmo:
             {
+                dropImage = [[Image alloc] initWithImage:@"Slowmo.png" scale:Scale2fOne];
                 break;
             }
                 
             case kDropType_ProximityDamage:
             {
+                dropImage = [[Image alloc] initWithImage:@"ProximityDamage.png" scale:Scale2fOne];
                 break;
             }
                 
             case kDropType_Health:
             {
+                dropImage = [[Image alloc] initWithImage:@"Health.png" scale:Scale2fOne];
                 break;
             }
                 
             case kDropType_Nuke:
             {
+                dropImage = [[Image alloc] initWithImage:@"Nuke.png" scale:Scale2fOne];
                 break;
             }
                 

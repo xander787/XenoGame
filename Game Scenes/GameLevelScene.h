@@ -163,8 +163,14 @@ typedef enum _OutroAnimation {
     //Drops stuff
     NSMutableSet            *droppedPowerUpSet;
     GLfloat                 powerUpTimer;
-    BOOL                    powerUpMagnetActivated;
     BOOL                    shieldEnabled;
+    BOOL                    damageMultiplierOn;
+    BOOL                    scoreMultiplierOn;
+    BOOL                    enemyRepelOn;
+    BOOL                    powerUpMagnetActivated;
+    BOOL                    slowmoActivated;
+    BOOL                    proximityDamageActivated;
+    BOOL                    nukeReadyForUse;
     Image                   *shieldImage;
 }
 

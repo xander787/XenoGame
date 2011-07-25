@@ -81,6 +81,9 @@
 //
 //  Last Updated - 7/24/11 @2:20PM - James
 //  - Added shield powerUp functionality
+//
+//  Last Updated - 7/24/11 @11PM - James
+//  - Started implementation of more Drops, only shield and Magnet work
 
 
 #import "GameLevelScene.h"
@@ -563,13 +566,21 @@ WrapText( const char *text
         //Make sure that all of our ship objects get their update: called. Necessary.
         [playerShip update:aDelta];
         
-        if(shieldEnabled){
+        if(shieldEnabled || damageMultiplierOn || scoreMultiplierOn ||
+           enemyRepelOn || powerUpMagnetActivated || slowmoActivated ||
+           proximityDamageActivated){
             //If any powerups are picked up and enabled
             powerUpTimer += aDelta;
             if(powerUpTimer >= 5){
                 //Reset timer and all power ups
                 powerUpTimer = 0;
                 shieldEnabled = NO;
+                damageMultiplierOn = NO;
+                scoreMultiplierOn = NO;
+                enemyRepelOn = NO;
+                powerUpMagnetActivated = NO;
+                slowmoActivated = NO;
+                proximityDamageActivated = NO;
             }
         }
         
@@ -581,8 +592,8 @@ WrapText( const char *text
                 drop.magnetActivated = powerUpMagnetActivated;
             }
             
-            if(abs(drop.location.x - playerShip.currentLocation.x) < 20 &&
-               abs(drop.location.y - playerShip.currentLocation.y) < 20){
+            if(abs(drop.location.x - playerShip.currentLocation.x) < 32 &&
+               abs(drop.location.y - playerShip.currentLocation.y) < 32){
                 //Drop picked up
                 switch (drop.dropType) {
                     case kDropType_Credit:
@@ -600,41 +611,53 @@ WrapText( const char *text
                         
                     case kDropType_DamageMultiplier:
                     {
+                        damageMultiplierOn = YES;
+                        powerUpTimer = 0;
                         break;
                     }
                         
                     case kDropType_ScoreMultiplier:
                     {
+                        scoreMultiplierOn = YES;
+                        powerUpTimer = 0;
                         break;
                     }
                         
                     case kDropType_EnemyRepel:
                     {
+                        enemyRepelOn = YES;
+                        powerUpTimer = 0;
                         break;
                     }
                         
                     case kDropType_DropsMagnet:
                     {
+                        powerUpMagnetActivated = YES;
+                        powerUpTimer = 0;
                         break;
                     }
                         
                     case kDropType_Slowmo:
                     {
+                        slowmoActivated = YES;
                         break;
                     }
                         
                     case kDropType_ProximityDamage:
                     {
+                        proximityDamageActivated = YES;
                         break;
                     }
                         
                     case kDropType_Health:
                     {
+                        [delegate playerHealthChangedBy:10];
                         break;
                     }
                         
                     case kDropType_Nuke:
                     {
+                        nukeReadyForUse = YES;
                         break;
                     }
                         
@@ -668,19 +691,9 @@ WrapText( const char *text
             for(EnemyShip *enemyShip in enemiesSet){
                 if(enemyShip.shipHealth <= 0 && enemyShip.powerUpDropped == NO){
                     //Calculate which type of powerup to drop
-                    if(RANDOM_0_TO_1() >= 0.5){
+                    if(TRUE){
                         //Drop a credit
-                        Drop *tempCredit = [[Drop alloc] initWithDropType:kDropType_Credit
-                                                                 position:Vector2fMake(enemyShip.currentLocation.x, enemyShip.currentLocation.y)
-                                                         andPlayerShipRef:playerShip];
-                        tempCredit.magnetActivated = powerUpMagnetActivated;
-                        [droppedPowerUpSet addObject:tempCredit];
-                        [tempCredit release];
-                        enemyShip.powerUpDropped = YES;
-                    }
-                    else {
-                        //Drop a shield powerup
-                        Drop *tempCredit = [[Drop alloc] initWithDropType:kDropType_Shield
+                        Drop *tempCredit = [[Drop alloc] initWithDropType:MAX(0, (int)(RANDOM_0_TO_1()*10))
                                                                  position:Vector2fMake(enemyShip.currentLocation.x, enemyShip.currentLocation.y)
                                                          andPlayerShipRef:playerShip];
                         tempCredit.magnetActivated = powerUpMagnetActivated;
