@@ -84,6 +84,10 @@
 //
 //  Last Updated - 7/24/11 @11PM - James
 //  - Started implementation of more Drops, only shield and Magnet work
+//
+//  Last Updated - 7/25/11 @3:20PM - James
+//  - Added first implementation of kamikaze attacks,
+//  doens't go straight to player though
 
 
 #import "GameLevelScene.h"
@@ -745,23 +749,41 @@ WrapText( const char *text
                 else if(enemyShip.currentPathType == kPathType_Attacking){
                     if(!enemyShip.currentPath){
                         
-                        if(RANDOM_0_TO_1() > 0.5){
-                            //Randomize the direction enemis will fly
-                            enemyShip.currentPath = [[BezierCurve alloc] initCurveFrom:Vector2fMake([enemyShip currentLocation].x, [enemyShip currentLocation].y) 
-                                                                         controlPoint1:Vector2fMake((160 - 350), 50)
-                                                                         controlPoint2:Vector2fMake((160 + 350), 50)
-                                                                              endPoint:Vector2fMake([enemyShip currentLocation].x, [enemyShip currentLocation].y)
-                                                                              segments:50];
+                        //Differentiate between regular and kamikaze type attack paths
+                        if([enemyShip isKamikazeShip] == NO){
+                            if(RANDOM_0_TO_1() > 0.5){
+                                //Randomize the direction enemis will fly
+                                enemyShip.currentPath = [[BezierCurve alloc] initCurveFrom:Vector2fMake([enemyShip currentLocation].x, [enemyShip currentLocation].y) 
+                                                                             controlPoint1:Vector2fMake((160 - 350), 50)
+                                                                             controlPoint2:Vector2fMake((160 + 350), 50)
+                                                                                  endPoint:Vector2fMake([enemyShip currentLocation].x, [enemyShip currentLocation].y)
+                                                                                  segments:50];
+                            }
+                            else {
+                                enemyShip.currentPath = [[BezierCurve alloc] initCurveFrom:Vector2fMake([enemyShip currentLocation].x, [enemyShip currentLocation].y) 
+                                                                             controlPoint1:Vector2fMake((160 + 350), 50)
+                                                                             controlPoint2:Vector2fMake((160 - 350), 50)
+                                                                                  endPoint:Vector2fMake([enemyShip currentLocation].x, [enemyShip currentLocation].y)
+                                                                                  segments:50];
+                            }
                         }
                         else {
-                            enemyShip.currentPath = [[BezierCurve alloc] initCurveFrom:Vector2fMake([enemyShip currentLocation].x, [enemyShip currentLocation].y) 
-                                                                         controlPoint1:Vector2fMake((160 + 350), 50)
-                                                                         controlPoint2:Vector2fMake((160 - 350), 50)
-                                                                              endPoint:Vector2fMake([enemyShip currentLocation].x, [enemyShip currentLocation].y)
+                            enemyShip.currentPath = [[BezierCurve alloc] initCurveFrom:Vector2fMake(enemyShip.currentLocation.x, enemyShip.currentLocation.y)
+                                                                         controlPoint1:Vector2fMake(playerShip.currentLocation.x + 200, playerShip.currentLocation.y - 1000)
+                                                                         controlPoint2:Vector2fMake(enemyShip.currentLocation.x - 1000, enemyShip.currentLocation.y)
+                                                                              endPoint:Vector2fMake(enemyShip.currentLocation.x, enemyShip.currentLocation.y)
                                                                               segments:50];
                         }
                     }
-                    [enemyShip setCurrentLocation:CGPointMake([enemyShip.currentPath getPointAt:enemyShip.pathTime/4].x, [enemyShip.currentPath getPointAt:enemyShip.pathTime/4].y)];
+                    
+                    //Kamikaze paths need to go slower due to larger control points
+                    if([enemyShip isKamikazeShip] == NO){
+                        [enemyShip setCurrentLocation:CGPointMake([enemyShip.currentPath getPointAt:enemyShip.pathTime/4].x, [enemyShip.currentPath getPointAt:enemyShip.pathTime/4].y)];
+                    }
+                    else {
+                        [enemyShip setCurrentLocation:CGPointMake([enemyShip.currentPath getPointAt:enemyShip.pathTime/6].x, [enemyShip.currentPath getPointAt:enemyShip.pathTime/6].y)];
+                    }
+                    
                     if(enemyShip.pathTime > 1){
                         if(abs(enemyShip.currentLocation.x - enemyShip.currentPath.endPoint.x) < 5 && abs(enemyShip.currentLocation.y - enemyShip.currentPath.endPoint.y) < 5){
                             [[enemyShip currentPath] release];

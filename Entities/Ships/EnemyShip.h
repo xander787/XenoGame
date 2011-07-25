@@ -149,8 +149,10 @@ typedef enum _PathType {
 @property(readwrite) CGPoint desiredPosition;
 @property(readwrite) CGPoint holdingPositionPoint;
 @property(readwrite) BOOL powerUpDropped;
+@property(readonly) EnemyShipID enemyID;
 
 - (id)initWithShipID:(EnemyShipID)aEnemyID initialLocation:(CGPoint)aPoint andPlayerShipRef:(PlayerShip *)aPlayership;
+- (BOOL)isKamikazeShip;
 
 
 @end

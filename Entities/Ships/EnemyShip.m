@@ -40,6 +40,9 @@
 //
 //  Last updated - 7/24/11 @2:10PM - James
 //  - Made killShip lso make health zero.
+//
+//  Last Updated - 7/25/11 @3:15PM - James
+//  - Synthesized enemyID, added isKamikazeShip method
 
 #import "EnemyShip.h"
 
@@ -50,7 +53,7 @@
 
 @implementation EnemyShip
 
-@synthesize currentPath, currentPathType, pathTime, desiredPosition, holdingPositionPoint, powerUpDropped;
+@synthesize currentPath, currentPathType, pathTime, desiredPosition, holdingPositionPoint, powerUpDropped, enemyID;
 
 - (id)init {
     self = [super init];
@@ -403,6 +406,22 @@
         [tempProjectile stopProjectile];
     }
     [collisionPolygon setPos:CGPointMake(-500, -500)];
+}
+
+- (BOOL)isKamikazeShip {
+    if(enemyID == kEnemyShip_KamikazeLevelOne ||
+       enemyID == kEnemyShip_KamikazeLevelTwo ||
+       enemyID == kEnemyShip_KamikazeLevelThree ||
+       enemyID == kEnemyShip_KamikazeLevelFour ||
+       enemyID == kEnemyShip_KamikazekBossNorthAmericaAssistOne ||
+       enemyID == kEnemyShip_KamikazekBossNorthAmericaAssistTwo ||
+       enemyID == kEnemyShip_KamikazekBossSouthAmericaAssist ||
+       enemyID == kEnemyShip_KamikazekBossEuropeAssist ||
+       enemyID == kEnemyShip_KamikazekBossAustraliaAssist ||
+       enemyID == kEnemyShip_KamikazekBossAntarcticaAssist){
+        return YES;
+    }
+    else return NO;
 }
 
 - (void)render {
