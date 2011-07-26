@@ -76,10 +76,11 @@
         
         _sceneFadeSpeed = 1.0f;
         
-        // Init sound
+        // Init
         [self initGameScene];
-        [self initSound];
         [self loadLevelIndexFile];
+        soundInitialized = NO;
+        settingsDB = [NSUserDefaults standardUserDefaults];
         
     }
 	
@@ -87,7 +88,11 @@
 }
 
 - (void)initSound {
-    
+    soundManager = [SoundManager sharedSoundManager];
+    [soundManager setMusicVolume:0.0f];
+    [soundManager playMusicWithKey:@"game_theme" timesToRepeat:10000];
+    [soundManager fadeMusicVolumeFrom:0.0f toVolume:[settingsDB floatForKey:kSetting_MusicVolume] duration:2.0f stop:NO];
+    soundInitialized = YES;
 }
 
 - (void)loadLevelIndexFile {
@@ -118,7 +123,7 @@
 																		  particleLifeSpan:5.0
 																  particleLifespanVariance:2.0
 																					 angle:200.0
-																			 angleVariance:0.0
+																			 angleVariance:0.0		
 																				   gravity:Vector2fMake(0.0, 0.0)
 																				startColor:Color4fMake(1.0, 1.0, 1.0, 0.58)
 																		startColorVariance:Color4fMake(0.0, 0.0, 0.0, 0.0)
@@ -166,6 +171,10 @@
     // In-game graphics updating
     [backgroundParticleEmitter update:aDelta];
     //[healthBar setScale:Scale2fMake((float)testShip.shipHealth / testShip.shipMaxHealth, 1.0f)];
+    
+    if (!soundInitialized) {
+        [self initSound];
+    }
     
     // Level
     if(levelInProgress && !gameIsPaused) {

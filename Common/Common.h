@@ -78,6 +78,16 @@
 // Macro which converts coordinate rise / run to particle emitter angle
 // ;#define SLOPE_TO_DEGREES(__SLOPE__) (DEGREES_TO_RADIANS(atan(__SLOPE__)))
 
+// Settings keys
+#define kSetting_SoundVolume @"xeno_sound_volume"
+#define kSetting_MusicVolume @"xeno_music_volume"
+#define kSetting_ControlType @"xeno_control_type"
+#define kSetting_TactileFeedback @"xeno_tactile_feedback"
+#define kSetting_TwitterCredentials @"xeno_twitter_credentials"
+#define kSetting_FirstTimeRun @"xeno_has_run_before"
+
+#define kSettingValue_ControlType_Touch @"TOUCH"
+#define kSettingValue_ControlType_Accelerometer @"ACCEL"
 
 #pragma mark -
 #pragma mark Enumerations

@@ -76,6 +76,8 @@
 	[menuControl release];
 	
 	logoImage = [[Image alloc] initWithImage:[NSString stringWithString:@"xenophobe.png"]];
+    
+    settingsDB = [NSUserDefaults standardUserDefaults];
 		
 	backgroundParticleEmitter = [[ParticleEmitter alloc] initParticleEmitterWithImageNamed:@"texture.png"
 																				  position:Vector2fMake(160.0, 259.76)
@@ -118,6 +120,23 @@
 																 particleSizeVariance:10.0
 																			 duration:-1
 																		blendAdditive:YES];
+    
+    if (![[settingsDB stringForKey:kSetting_FirstTimeRun] isEqualToString:@"NO"]) {
+        [settingsDB setValue:@"" forKey:kSetting_TwitterCredentials];
+        [settingsDB setBool:YES forKey:kSetting_TactileFeedback];
+        [settingsDB setFloat:0.75 forKey:kSetting_SoundVolume];
+        [settingsDB setFloat:0.50 forKey:kSetting_MusicVolume];
+        [settingsDB setValue:kSettingValue_ControlType_Touch forKey:kSetting_ControlType];
+    }
+    
+    soundManager = [SoundManager sharedSoundManager];
+    [soundManager setFxVolume:[settingsDB floatForKey:kSetting_SoundVolume]];
+    [soundManager setMusicVolume:[settingsDB floatForKey:kSetting_MusicVolume]];
+    [soundManager loadMusicWithKey:@"menu_theme" musicFile:@"menu_theme.mp3"];
+    [soundManager loadMusicWithKey:@"game_theme" musicFile:@"game_theme.mp3"];
+    [soundManager playMusicWithKey:@"menu_theme" timesToRepeat:1000];
+    //[soundManager setFxVolume:[settingsDB floatForKey:kSetting_SoundVolume]];
+    //[soundManager setMusicVolume:[settingsDB floatForKey:kSetting_MusicVolume]];
 }
 
 #pragma mark -
@@ -168,7 +187,7 @@
 			// I'm not using the delta value here as the large map being loaded causes
             // the first delta to be passed in to be very big which takes the alpha
             // to over 1.0 immediately, so I've got a fixed delta for the fade in.
-            sceneAlpha += _sceneFadeSpeed * 0.1f;
+			sceneAlpha += _sceneFadeSpeed * aDelta;
             [_sharedDirector setGlobalAlpha:sceneAlpha];
 			if(sceneAlpha >= 1.0f) {
 				sceneState = kSceneState_Running;

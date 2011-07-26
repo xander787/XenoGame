@@ -19,6 +19,10 @@
 		111D62F213DBA04E005045D4 /* KronosIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 111D62E613DBA04E005045D4 /* KronosIcon.png */; };
 		111D62F313DBA04E005045D4 /* PilotXIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 111D62E713DBA04E005045D4 /* PilotXIcon.png */; };
 		111D62F413DBA04E005045D4 /* TheSingularityIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 111D62E813DBA04E005045D4 /* TheSingularityIcon.png */; };
+		111D631B13DE3177005045D4 /* menu_theme.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 111D631A13DE3177005045D4 /* menu_theme.mp3 */; };
+		111D631E13DE5A9C005045D4 /* Volume_high.png in Resources */ = {isa = PBXBuildFile; fileRef = 111D631C13DE5A9C005045D4 /* Volume_high.png */; };
+		111D631F13DE5A9C005045D4 /* Volume_low.png in Resources */ = {isa = PBXBuildFile; fileRef = 111D631D13DE5A9C005045D4 /* Volume_low.png */; };
+		111D632113DF58A4005045D4 /* game_theme.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 111D632013DF58A4005045D4 /* game_theme.mp3 */; };
 		1129A19F13CA73F100BE73FA /* Level_Intro.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1129A19E13CA73F100BE73FA /* Level_Intro.plist */; };
 		1129A1A113CA933500BE73FA /* Level_One.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1129A1A013CA933400BE73FA /* Level_One.plist */; };
 		1129A1A413CACED900BE73FA /* BossShipThemis.m in Sources */ = {isa = PBXBuildFile; fileRef = 1129A1A313CACED900BE73FA /* BossShipThemis.m */; };
@@ -182,6 +186,10 @@
 		111D62E613DBA04E005045D4 /* KronosIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = KronosIcon.png; sourceTree = "<group>"; };
 		111D62E713DBA04E005045D4 /* PilotXIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PilotXIcon.png; sourceTree = "<group>"; };
 		111D62E813DBA04E005045D4 /* TheSingularityIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TheSingularityIcon.png; sourceTree = "<group>"; };
+		111D631A13DE3177005045D4 /* menu_theme.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = menu_theme.mp3; sourceTree = "<group>"; };
+		111D631C13DE5A9C005045D4 /* Volume_high.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Volume_high.png; sourceTree = "<group>"; };
+		111D631D13DE5A9C005045D4 /* Volume_low.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Volume_low.png; sourceTree = "<group>"; };
+		111D632013DF58A4005045D4 /* game_theme.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = game_theme.mp3; sourceTree = "<group>"; };
 		1129A19E13CA73F100BE73FA /* Level_Intro.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Level_Intro.plist; path = "Game Resources/Game Levels/Level_Intro.plist"; sourceTree = SOURCE_ROOT; };
 		1129A1A013CA933400BE73FA /* Level_One.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Level_One.plist; path = "Game Resources/Game Levels/Level_One.plist"; sourceTree = SOURCE_ROOT; };
 		1129A1A213CACED900BE73FA /* BossShipThemis.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BossShipThemis.h; path = Entities/Ships/Bosses/BossShipThemis.h; sourceTree = "<group>"; };
@@ -432,6 +440,16 @@
 			);
 			path = Classes;
 			sourceTree = "<group>";
+		};
+		111D631913DE3177005045D4 /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				111D631A13DE3177005045D4 /* menu_theme.mp3 */,
+				111D632013DF58A4005045D4 /* game_theme.mp3 */,
+			);
+			name = Sounds;
+			path = "Game Resources/Sounds";
+			sourceTree = SOURCE_ROOT;
 		};
 		1130822312D83C96009C9502 /* Bosses */ = {
 			isa = PBXGroup;
@@ -736,6 +754,7 @@
 				11336112129E54F300FE6A03 /* BossShips.plist */,
 				1169BA8013ABF7B1005FA11F /* Game Levels */,
 				11D72CC213557DAF00C6C99A /* Particle Emitters */,
+				111D631913DE3177005045D4 /* Sounds */,
 				1170EE5612724F6600721CF4 /* Images */,
 				1170EE5712724F6B00721CF4 /* Sounds */,
 				1170EE5812724F7100721CF4 /* Fonts */,
@@ -866,6 +885,8 @@
 		11F3274212A0D8D5003CF17B /* Application Resources */ = {
 			isa = PBXGroup;
 			children = (
+				111D631C13DE5A9C005045D4 /* Volume_high.png */,
+				111D631D13DE5A9C005045D4 /* Volume_low.png */,
 				111D62DD13DBA04E005045D4 /* AlienSwarmIcon.png */,
 				111D62DE13DBA04E005045D4 /* BossFiveIcon.png */,
 				111D62DF13DBA04E005045D4 /* BossFourIcon.png */,
@@ -1154,6 +1175,10 @@
 				B9E331B113DD36D00019C2E2 /* ProximityDamage.png in Resources */,
 				B9E331B213DD36D00019C2E2 /* ScoreMultiplier.png in Resources */,
 				B9E331B313DD36D00019C2E2 /* Slowmo.png in Resources */,
+				111D631B13DE3177005045D4 /* menu_theme.mp3 in Resources */,
+				111D631E13DE5A9C005045D4 /* Volume_high.png in Resources */,
+				111D631F13DE5A9C005045D4 /* Volume_low.png in Resources */,
+				111D632113DF58A4005045D4 /* game_theme.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

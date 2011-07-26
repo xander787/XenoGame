@@ -27,6 +27,11 @@
     NSString        *settingsTitleString;
     NSString        *soundSettingString;
     NSString        *musicSettingString;
+    Image           *backButton;
+    NSUserDefaults  *settingsDB;
+    
+    UISlider        *soundSlider;
+    UISlider        *musicSlider;
 }
 
 @end

@@ -80,7 +80,9 @@
 }
 
 - (void)initSettings {
-    
+    font = [[AngelCodeFont alloc] initWithFontImageNamed:@"xenophobefont.png" controlFile:@"xenophobefont" scale:0.50f filter:GL_LINEAR];
+    backButton = [[Image alloc] initWithImage:[NSString stringWithString:@"backbutton.png"] scale:Scale2fMake(0.5f, 0.5f)];
+    settingsDB = [NSUserDefaults standardUserDefaults];
 }
 
 #pragma mark -
@@ -120,6 +122,11 @@
     
 	// Flip the y location ready to check it against OpenGL coordinates
 	location.y = 480-location.y;
+    
+    if(CGRectContainsPoint(CGRectMake(15, 440, backButton.imageWidth, backButton.imageHeight), location)){
+        sceneState = kSceneState_TransitionOut;
+        nextSceneKey = @"menu";
+    }
 }
 
 - (void)updateWithTouchLocationMoved:(NSSet *)touches withEvent:(UIEvent *)event view:(UIView *)aView {
@@ -139,7 +146,10 @@
 }
 
 - (void)render {
-    
+    [backButton renderAtPoint:CGPointMake(15, 440) centerOfImage:NO];
+    [font drawStringAt:CGPointMake(15.0f, 420.0f) text:soundSettingString];
+    [font drawStringAt:CGPointMake(15.0f, 350.0f) text:musicSettingString];
+    [font drawStringAt:CGPointMake(15.0f, 280.0f) text:controlsSettingString];
 }
 
 @end

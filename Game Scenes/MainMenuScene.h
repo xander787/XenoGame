@@ -16,6 +16,8 @@
 #import <Foundation/Foundation.h>
 #import "AbstractScene.h"
 #import "MenuControl.h"
+#import "SoundManager.h"
+#import "SettingsScene.h"
 
 
 @interface MainMenuScene : AbstractScene {
@@ -24,6 +26,8 @@
 	Image				*logoImage;
 	ParticleEmitter		*backgroundParticleEmitter;
 	ParticleEmitter		*cometParticleEmitter;
+    SoundManager        *soundManager;
+    NSUserDefaults      *settingsDB;
 }
 
 @end

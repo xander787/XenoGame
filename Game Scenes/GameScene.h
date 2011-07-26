@@ -39,6 +39,7 @@
 
 
 #import <Foundation/Foundation.h>
+#import "Common.h"
 #import "ParticleEmitter.h"
 #import "AbstractScene.h"
 #import "Image.h"
@@ -97,7 +98,11 @@ typedef enum _Level {
     //Pause Screen
     PauseMenuScene  *pauseScreen;
     BOOL            gameIsPaused;
-    MenuControl     *pauseButton;
+    MenuControl     *pauseButton; 
+    
+    BOOL            soundInitialized;
+    SoundManager    *soundManager;
+    NSUserDefaults  *settingsDB;
 }
 
 - (void)initGameScene;
