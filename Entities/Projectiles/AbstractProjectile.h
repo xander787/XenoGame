@@ -48,7 +48,6 @@ typedef enum _ParticleID {
     Vector2f        desiredLocation;
     
     BOOL            isActive;
-    BOOL            isDead;
     
     NSString        *nameOfImage;
     

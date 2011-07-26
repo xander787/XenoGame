@@ -43,6 +43,9 @@
 //
 //  Last Updated - 7/25/11 @3:15PM - James
 //  - Synthesized enemyID, added isKamikazeShip method
+//
+//  Last Updated - 7/26/11 @2:20PM - James
+//  - Fixed laoding of turrets and projectiles
 
 #import "EnemyShip.h"
 
@@ -248,7 +251,8 @@
             enemyCategory = kEnemyCategory_Kamikaze;
         }
         
-        NSArray *shipWeaponsArray = [[NSArray alloc] initWithArray:[enemyDictionary objectForKey:@"kWeaponPoints"]];
+        NSArray *shipWeaponsArray = [[NSArray alloc] initWithArray:[enemyDictionary objectForKey:@"kTurretPoints"]];
+        numTurrets = [shipWeaponsArray count];
         NSArray *shipCollisionArray = [[NSArray alloc] initWithArray:[enemyDictionary objectForKey:@"kCollisionBoundingPoints"]];
         
         //Fill a C array with the weapon points on the enemy
@@ -302,6 +306,15 @@
         }
         [enemyAnimation setRunning:YES];
         [enemyAnimation setRepeat:YES];
+        
+        projectilesArray = [[NSMutableArray alloc] init];
+        for(int i = 0; i < numTurrets; i++) {
+            //AbstractProjectile *projectile = [[AbstractProjectile alloc] initWithParticleID:kPlayerParticle fromTurretPosition:Vector2fMake(currentLocation.x + turretPoints[i].x, currentLocation.y + turretPoints[i].y) radius:10 rateOfFire:4 andAngle:90];
+            AbstractProjectile *projectile = [[AbstractProjectile alloc] initWithProjectileID:kEnemyProjectile_Bullet fromTurretPosition:Vector2fMake(currentLocation.x + turretPoints[i].x, currentLocation.y + turretPoints[i].y) andAngle:-90 emissionRate:4];
+            [projectile stopProjectile];
+            [projectilesArray insertObject:projectile atIndex:i];
+            [projectile release];
+        }
         
         [enemyDictionary release];
         
@@ -382,6 +395,12 @@
         hitFilterEffectTime = 0.0;
         [enemyAnimation setColorFilter:Color4fMake(1.0f, 1.0f, 1.0f, 1.0f)];
     }
+    
+    for(int i = 0; i < [projectilesArray count]; i++) {
+        NSLog(@"Enemy proj updated");
+        [[projectilesArray objectAtIndex:i] update:delta];
+        [[projectilesArray objectAtIndex:i] setTurretPosition:Vector2fMake(currentLocation.x + turretPoints[i].x, currentLocation.y + turretPoints[i].y)];
+    }
 }
 
 - (void)hitShipWithDamage:(int)damage {
@@ -424,7 +443,29 @@
     else return NO;
 }
 
+- (void)stopAllProjectiles {
+    for(AbstractProjectile *enemyProj in projectilesArray){
+        [enemyProj stopProjectile];
+    }
+}
+
+- (void)pauseAllProjectiles {
+    for(AbstractProjectile *enemyProj in projectilesArray){
+        [enemyProj pauseProjectile];
+    }
+}
+
+- (void)playAllProjectiles {
+    for(AbstractProjectile *enemyProj in projectilesArray){
+        [enemyProj playProjectile];
+    }
+}
+
 - (void)render {
+    for(AbstractProjectile *enemyProj in projectilesArray){
+        [enemyProj render];
+    }
+    
     if(shipIsDead == FALSE){
         [enemyAnimation renderAtPoint:currentLocation];
     }

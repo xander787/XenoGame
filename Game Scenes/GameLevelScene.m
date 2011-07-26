@@ -88,6 +88,9 @@
 //  Last Updated - 7/25/11 @3:20PM - James
 //  - Added first implementation of kamikaze attacks,
 //  doens't go straight to player though
+//
+//  Last Updated - 7/26/11 @2:20PM - James
+//  - Enemies now fire when attacking
 
 
 #import "GameLevelScene.h"
@@ -774,6 +777,7 @@ WrapText( const char *text
                                                                               endPoint:Vector2fMake(enemyShip.currentLocation.x, enemyShip.currentLocation.y)
                                                                               segments:50];
                         }
+                        [enemyShip playAllProjectiles];
                     }
                     
                     //Kamikaze paths need to go slower due to larger control points
@@ -790,6 +794,7 @@ WrapText( const char *text
                             enemyShip.currentPath = nil;
                             enemyShip.pathTime = 0;
                             enemyShip.currentPathType = kPathType_Holding;
+                            [enemyShip stopAllProjectiles];
                             [attackingEnemies removeObject:enemyShip];
                             NSLog(@"Attacking enemies: %d", [attackingEnemies count]);
                         }

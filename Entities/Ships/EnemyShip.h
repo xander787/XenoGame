@@ -153,6 +153,9 @@ typedef enum _PathType {
 
 - (id)initWithShipID:(EnemyShipID)aEnemyID initialLocation:(CGPoint)aPoint andPlayerShipRef:(PlayerShip *)aPlayership;
 - (BOOL)isKamikazeShip;
+- (void)stopAllProjectiles;
+- (void)pauseAllProjectiles;
+- (void)playAllProjectiles;
 
 
 @end

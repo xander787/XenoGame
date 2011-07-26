@@ -107,8 +107,13 @@
 - (void)update:(GLfloat)delta {
     timeAlive += delta;
     if(magnetActivated){
-        location.x += ((playerShipRef.currentLocation.x - location.x) / 3) * (pow(1.584893192, 1)) * delta / 2;
-        location.y -= 50 * delta;
+        location.x += ((playerShipRef.currentLocation.x - location.x) / 1) * (pow(1.584893192, 1)) * delta / 2;
+        if(playerShipRef.currentLocation.y < location.y){
+            location.y -= 50 * delta;
+        }
+        else {
+            location.y += 50 * delta;
+        }
     }
     else {
         location.y -= 50 * delta;

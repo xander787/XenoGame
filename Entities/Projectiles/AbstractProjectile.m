@@ -44,6 +44,9 @@
 //
 //  Last Updated - 7/22/11 @5PM - James
 //  - Made sure to move emitter bullets off screen when stopping projectile
+//
+//  Last updated - 7/26/11 @2PM - James
+//  - Adjusted stopProjectile to stop them efficiently-er
 
 #import "AbstractProjectile.h"
 
@@ -208,7 +211,7 @@
                                                                   startColorVariance:Color4fMake(0.0, 0.0, 0.0, 0.0) 
                                                                          finishColor:Color4fMake(1.0, 0.0, 0.0, 1.0) 
                                                                  finishColorVariance:Color4fMake(0.0, 0.0, 0.0, 0.0) 
-                                                                        maxParticles:15.0
+                                                                        maxParticles:5.0
                                                                         particleSize:15.0
                                                                   finishParticleSize:15.0
                                                                 particleSizeVariance:0.0
@@ -360,7 +363,7 @@
 }
 
 - (void)update:(CGFloat)aDelta {
-    if(isActive == NO || isDead == YES) return;
+    if(isActive == NO) return;
     //Switch between projectile or particle
     if([idType isEqualToString:@"Projectile"] == TRUE){
         switch(projectileID){
@@ -540,21 +543,20 @@
     //Reverses the ffect of pauseProjectile, mainly for when pause screen goes away
     
     isActive = YES;
-    isDead = NO;
+    emitter.active = YES;
 }
 
 - (void)stopProjectile {
     //Used when we want to stop updating AND rendering our projectile.
     //The owner of the class uses this so it doesn't have to deallocate the projectile on ship death
-    isDead = YES;
-    for(int i = 0; i < emitter.maxParticles; i++){
+    /*for(int i = 0; i < emitter.maxParticles; i++){
         emitter.particles[i].position = Vector2fMake(500, 0);
         [[polygonArray objectAtIndex:i] setPos:CGPointMake(emitter.particles[i].position.x, emitter.particles[i].position.y)];
-    }
+    }*/
+    [emitter stopParticleEmitter];
 }
 
 - (void)render {
-    if(isDead == YES) return;
     
     if(projectileID == kPlayerProjectile_Bullet || projectileID == kPlayerProjectile_Wave || projectileID == kEnemyProjectile_Bullet || projectileID == kEnemyProjectile_Wave){
         [emitter renderParticles];
