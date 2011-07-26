@@ -95,6 +95,7 @@ typedef enum _OutroAnimation {
     AngelCodeFont           *font;
     NSUserDefaults          *settings;
     CGRect                  screenBounds;
+    ParticleEmitter         *transitionParticleEmitter;
     
     NSString                *currentLevelFile;
     PlayerShip              *playerShip;

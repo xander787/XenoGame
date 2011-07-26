@@ -85,6 +85,11 @@
 #define kSetting_TactileFeedback @"xeno_tactile_feedback"
 #define kSetting_TwitterCredentials @"xeno_twitter_credentials"
 #define kSetting_FirstTimeRun @"xeno_has_run_before"
+#define kSetting_SaveGameLevelProgress @"xeno_game_level_progress"
+#define kSetting_SaveGameScore @"xeno_game_score"
+#define kSetting_SaveGameHealth @"xeno_game_health"
+#define kSetting_SaveGameNukeHold @"xeno_game_nuke_hold"
+#define kSetting_SaveGameShip @"xeno_game_ship"
 
 #define kSettingValue_ControlType_Touch @"TOUCH"
 #define kSettingValue_ControlType_Accelerometer @"ACCEL"

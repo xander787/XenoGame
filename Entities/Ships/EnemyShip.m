@@ -397,7 +397,6 @@
     }
     
     for(int i = 0; i < [projectilesArray count]; i++) {
-        NSLog(@"Enemy proj updated");
         [[projectilesArray objectAtIndex:i] update:delta];
         [[projectilesArray objectAtIndex:i] setTurretPosition:Vector2fMake(currentLocation.x + turretPoints[i].x, currentLocation.y + turretPoints[i].y)];
     }

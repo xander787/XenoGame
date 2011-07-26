@@ -158,7 +158,7 @@
         [bossShipsDictionary release];
         
         //Set the values for the ship based on those in the plist file
-        bossHealth = 100;
+        bossHealth = 1;
         bossAttack = [[bossDictionary valueForKey:@"kBossAttack"] intValue];
         bossStamina = [[bossDictionary valueForKey:@"kBossStamina"] intValue];
         bossSpeed = [[bossDictionary valueForKey:@"kBossSpeed"] intValue];
@@ -195,7 +195,7 @@
             //Step one: get the image for the module, simple so it's first
             modularObjects[i].moduleImage = [[Image alloc] initWithImage:[moduleImagesArray objectAtIndex:i] scale:Scale2fOne];
             
-            modularObjects[i].moduleMaxHealth = 100;
+            modularObjects[i].moduleMaxHealth = 1;
             modularObjects[i].moduleHealth = modularObjects[i].moduleMaxHealth;
             
             modularObjects[i].rotation = 0;
@@ -329,7 +329,6 @@
 - (void)update:(GLfloat)delta {    
     for (int i = 0; i < numberOfModules; ++i) {
         if (modularObjects[i].hitFilter && modularObjects[i].hitFilterEffectTime <= 0.15) {
-            NSLog(@"%f", modularObjects[i].hitFilterEffectTime);
             modularObjects[i].hitFilterEffectTime += delta;
         }
         else {

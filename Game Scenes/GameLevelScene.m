@@ -300,13 +300,33 @@ WrapText( const char *text
         bossShipIntroAnimationTime = 0.0;
         
         // Load and save the outro transition for this level
-        if([[levelDictionary objectForKey:@"OutroTransition"] isEqualToString:@"kShipFlyOff"]) {
+        if([[levelDictionary objectForKey:@"kOutroTransition"] isEqualToString:@"kShipFlyOff"]) {
             outroAnimationType = kOutroAnimation_Flyoff;
         }
-        if([[levelDictionary objectForKey:@"OutroTransition"] isEqualToString:@"kNuke"]) {
+        if([[levelDictionary objectForKey:@"kOutroTransition"] isEqualToString:@"kNuke"]) {
             outroAnimationType = kOutroAnimation_Nuke;
+            transitionParticleEmitter = [[ParticleEmitter alloc] initParticleEmitterWithImageNamed:@"texture.png"
+                                                                                          position:Vector2fMake(160, 240)
+                                                                            sourcePositionVariance:Vector2fZero
+                                                                                             speed:2.0f
+                                                                                     speedVariance:0.25f
+                                                                                  particleLifeSpan:4.5f 
+                                                                          particleLifespanVariance:0.5f 
+                                                                                             angle:0.0f 
+                                                                                     angleVariance:360.0f 
+                                                                                           gravity:Vector2fZero
+                                                                                        startColor:Color4fMake(0.05f, 0.0f, 1.0f, 1.0f)
+                                                                                startColorVariance:Color4fMake(0.0f, 0.0f, 0.0f, 0.0f)
+                                                                                       finishColor:Color4fMake(0.03f, 0.11f, 0.0f, 0.0f)
+                                                                               finishColorVariance:Color4fMake(0.0f, 0.0f, 0.0f, 0.0f)
+                                                                                      maxParticles:500 
+                                                                                      particleSize:48.0f 
+                                                                                finishParticleSize:0.0f 
+                                                                              particleSizeVariance:16.0f 
+                                                                                          duration:0.3f 
+                                                                                     blendAdditive:YES];
         }
-        if([[levelDictionary objectForKey:@"OutroTransition"] isEqualToString:@"kWormhole"]) {
+        if([[levelDictionary objectForKey:@"kOutroTransition"] isEqualToString:@"kWormhole"]) {
             outroAnimationType = kOutroAnimation_Wormhole;
         }
         
@@ -567,11 +587,13 @@ WrapText( const char *text
 }
 
 - (void)update:(GLfloat)aDelta {    
+    if(currentWaveType == kWaveType_Enemy || currentWaveType == kWaveType_Boss || currentWaveType == kWaveType_Finished){
+        [playerShip update:aDelta];
+    }
     
     // We are currently in a "fighting" wave. Update accordingly.
     if (currentWaveType == kWaveType_Enemy || currentWaveType == kWaveType_Boss) {
         //Make sure that all of our ship objects get their update: called. Necessary.
-        [playerShip update:aDelta];
         
         if(shieldEnabled || damageMultiplierOn || scoreMultiplierOn ||
            enemyRepelOn || powerUpMagnetActivated || slowmoActivated ||
@@ -693,7 +715,7 @@ WrapText( const char *text
             }
             [enemiesSet minusSet:discardedEnemies];
             [discardedEnemies release];
-            
+                        
             //Update the enemies' movement paths
             for(EnemyShip *enemyShip in enemiesSet){
                 if(enemyShip.shipHealth <= 0 && enemyShip.powerUpDropped == NO){
@@ -810,7 +832,6 @@ WrapText( const char *text
                 for(AbstractProjectile *tempProj in [playerShip projectilesArray]){
                     [tempProj stopProjectile];
                 }
-                NSLog(@"Animating Boss X: %f Y: %f", bossShip.currentLocation.x, bossShip.currentLocation.y);
                 
                 bossShipIntroAnimationTime += aDelta;
                 if (bossShip.currentLocation.y > bossShipDefaultLocation.y) {
@@ -848,6 +869,11 @@ WrapText( const char *text
                 [delegate levelEnded];
             }
         }
+        else if (outroAnimation == kOutroAnimation_Nuke) {
+            if (transitionParticleEmitter.particleCount == 0) {
+                outroTransitionAnimating = NO;
+            }
+        }
     }
      
     // We're out of enemies on the screen. Load next wave or boss level if none exists
@@ -860,30 +886,46 @@ WrapText( const char *text
         }
         
         // No waves available, boss level time.
-        else if(currentWaveType != kWaveType_Boss) {
+        else if(currentWaveType != kWaveType_Boss && currentWaveType != kWaveType_Finished) {
             currentWaveType = kWaveType_Boss;
             [self loadBoss];
         }
-        
-        // Boss is finished, end level time
-        else if(currentWaveType == kWaveType_Finished) {
-            for(AbstractProjectile *playerWeapon in playerShip.projectilesArray){
-                [playerWeapon stopProjectile];
+    }
+    
+    if(currentWaveType == kWaveType_Finished) {
+        for(AbstractProjectile *playerWeapon in playerShip.projectilesArray){
+            [playerWeapon stopProjectile];
+        }
+        outroTransitionAnimating = YES;
+        if (outroAnimationType == kOutroAnimation_Flyoff) {
+            if (abs(playerShip.currentLocation.x - 160.0f) < 5) {
+                [playerShip setDesiredLocation:CGPointMake(160.0f, playerShip.currentLocation.y + (outroAnimationTime * 40))];
             }
-            outroTransitionAnimating = YES;
-            if (outroAnimationType == kOutroAnimation_Flyoff) {
-                if (abs(playerShip.currentLocation.x - 160.0f) < 5) {
-                    [playerShip setDesiredLocation:CGPointMake(160.0f, playerShip.currentLocation.y + (outroAnimationTime * 40))];
+            else {
+                if(playerShip.currentLocation.x < 160.0f) {
+                    [playerShip setDesiredLocation:CGPointMake(playerShip.currentLocation.x + (outroAnimationTime * 20), playerShip.currentLocation.y + (outroAnimationTime * 40))];
                 }
                 else {
-                    if(playerShip.currentLocation.x < 160.0f) {
-                        [playerShip setDesiredLocation:CGPointMake(playerShip.currentLocation.x + (outroAnimationTime * 20), playerShip.currentLocation.y + (outroAnimationTime * 40))];
-                    }
-                    else {
-                        [playerShip setDesiredLocation:CGPointMake(playerShip.currentLocation.x - (outroAnimationTime * 20), playerShip.currentLocation.y + (outroAnimationTime * 40))];
-                    }
+                    [playerShip setDesiredLocation:CGPointMake(playerShip.currentLocation.x - (outroAnimationTime * 20), playerShip.currentLocation.y + (outroAnimationTime * 40))];
                 }
             }
+        }
+        else if (outroAnimationType == kOutroAnimation_Nuke) {
+            [transitionParticleEmitter update:aDelta];
+        }
+    }
+    
+    if (currentWaveType == kWaveType_Boss) {
+        BOOL bossShipModulesAlive = NO;
+        for (int i = 0; i < bossShip.numberOfModules; i++) {
+            if (!bossShip.modularObjects[i].isDead) {
+                bossShipModulesAlive = YES;
+                break;
+            }
+        }
+        
+        if (!bossShipModulesAlive) {
+            currentWaveType = kWaveType_Finished;
         }
     }
     
@@ -1192,6 +1234,7 @@ WrapText( const char *text
     //updateWithTouchLocationMoved: method to allow the ship to move
     if(CGRectContainsPoint(shipFrame, location)){
         NSLog(@"Touched on Ship :D");
+        NSLog(@"Current Wave Type: %d", currentWaveType);
         touchOriginatedFromPlayerShip = YES;
     }
     else {
@@ -1283,6 +1326,10 @@ WrapText( const char *text
         // Must always be rendered last so that the player is foreground
         // to any other objects on the screen. Also not while dialogue is displayed.
         [playerShip render];
+    }
+    
+    if (outroTransitionAnimating) {
+        [transitionParticleEmitter renderParticles];
     }
 }
 
