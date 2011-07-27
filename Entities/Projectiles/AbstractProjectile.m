@@ -371,7 +371,12 @@
                 [emitter setSourcePosition:Vector2fMake(turretPosition.x, turretPosition.y)];
                 [emitter update:aDelta];
                 for(int i = 0; i < [emitter maxParticles]; i++){
-                    [[polygonArray objectAtIndex:i] setPos:CGPointMake(emitter.particles[i].position.x, emitter.particles[i].position.y)];
+                    if(emitter.active > 0){
+                        [[polygonArray objectAtIndex:i] setPos:CGPointMake(emitter.particles[i].position.x, emitter.particles[i].position.y)];
+                    }
+                    else {
+                        [[polygonArray objectAtIndex:i] setPos:CGPointMake(-50, -50)];
+                    }
                 }
                 break;
                 

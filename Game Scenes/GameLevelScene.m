@@ -326,7 +326,7 @@ WrapText( const char *text
                                                                                       particleSize:48.0f 
                                                                                 finishParticleSize:48.0f 
                                                                               particleSizeVariance:16.0f 
-                                                                                          duration:3.3f 
+                                                                                          duration:0.3f 
                                                                                      blendAdditive:YES];
         }
         if([[levelDictionary objectForKey:@"kOutroTransition"] isEqualToString:@"kWormhole"]) {
