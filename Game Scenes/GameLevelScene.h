@@ -49,7 +49,7 @@
 
 @protocol GameLevelDelegate <NSObject>
 @required
-- (void)levelEnded;
+- (void)levelEnded:(NSDictionary *)stats;
 - (void)scoreChangedBy:(int)scoreChange;
 - (void)playerHealthChangedBy:(int)healthChange;
 - (void)creditAmountChangedBy:(int)creditChange;
@@ -174,6 +174,12 @@ typedef enum _OutroAnimation {
     BOOL                    proximityDamageActivated;
     BOOL                    nukeReadyForUse;
     Image                   *shieldImage;
+    
+    // Stats
+    float                   levelTime;
+    int                     scoreEarned;
+    int                     numDropPickups;
+    int                     enemiesKilled;
 }
 
 @property (nonatomic, retain) id <GameLevelDelegate> delegate;

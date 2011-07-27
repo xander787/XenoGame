@@ -10,7 +10,7 @@
 
 @implementation GameStatsScene
 
-@synthesize continueGame;
+@synthesize continueGame, statsDictionary;
 
 - (id)init
 {

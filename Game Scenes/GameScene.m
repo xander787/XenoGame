@@ -339,10 +339,10 @@
     levelInProgress = YES;
 }
 
-- (void)levelEnded {
-    NSLog(@"Level over biatch");
+- (void)levelEnded:(NSDictionary *)stats {
     showStatsScene = YES;
     levelInProgress = NO;
+    [statsScene setStatsDictionary:stats];
 }
 
 - (void)scoreChangedBy:(int)scoreChange {

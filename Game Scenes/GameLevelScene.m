@@ -591,6 +591,8 @@ WrapText( const char *text
 }
 
 - (void)update:(GLfloat)aDelta {    
+    levelTime+= aDelta;
+    
     if(currentWaveType == kWaveType_Enemy || currentWaveType == kWaveType_Boss || currentWaveType == kWaveType_Finished){
         [playerShip update:aDelta];
     }
@@ -627,6 +629,8 @@ WrapText( const char *text
             
             if(abs(drop.location.x - playerShip.currentLocation.x) < 32 &&
                abs(drop.location.y - playerShip.currentLocation.y) < 32){
+                numDropPickups++;
+                
                 //Drop picked up
                 switch (drop.dropType) {
                     case kDropType_Credit:
@@ -710,6 +714,7 @@ WrapText( const char *text
             for(EnemyShip *enemyShip in enemiesSet){
                 [enemyShip update:aDelta];
                 if(enemyShip.shipIsDead && enemyShip.deathAnimationEmitter.particleCount == 0) {
+                    enemiesKilled++;
                     [discardedEnemies addObject:enemyShip];
                     if([attackingEnemies containsObject:enemyShip]){
                         [attackingEnemies removeObject:enemyShip];
@@ -870,7 +875,16 @@ WrapText( const char *text
         if (outroAnimationType == kOutroAnimation_Flyoff) {
             if (playerShip.currentLocation.y > 480.0f) {
                 outroTransitionAnimating = NO;
-                [delegate levelEnded];
+                
+                NSMutableDictionary *statsDict = [[NSMutableDictionary alloc] init];
+                [statsDict setValue:[NSString stringWithFormat:@"%d", numDropPickups] forKey:@"DROPS"];
+                [statsDict setValue:[NSString stringWithFormat:@"%d", enemiesKilled] forKey:@"ENEMIES"];
+                [statsDict setValue:[NSString stringWithFormat:@"%f", levelTime] forKey:@"TIME"];
+                [statsDict setValue:[NSString stringWithFormat:@"%d", scoreEarned] forKey:@"SCORE"];
+                
+                [delegate levelEnded:statsDict];
+                
+                [statsDict release];
             }
         }
         else if (outroAnimationType == kOutroAnimation_Nuke) {
@@ -879,8 +893,16 @@ WrapText( const char *text
                 outroDelay += aDelta;
                 if(outroDelay > 3){
                     outroTransitionAnimating = NO;
-                    NSLog(@"nuke emitter done");
-                    [delegate levelEnded];
+                    
+                    NSMutableDictionary *statsDict = [[NSMutableDictionary alloc] init];
+                    [statsDict setValue:[NSString stringWithFormat:@"%d", numDropPickups] forKey:@"DROPS"];
+                    [statsDict setValue:[NSString stringWithFormat:@"%d", enemiesKilled] forKey:@"ENEMIES"];
+                    [statsDict setValue:[NSString stringWithFormat:@"%f", levelTime] forKey:@"TIME"];
+                    [statsDict setValue:[NSString stringWithFormat:@"%d", scoreEarned] forKey:@"SCORE"];
+                    
+                    [delegate levelEnded:statsDict];
+                    
+                    [statsDict release];
                 }
             }
         }
@@ -934,6 +956,7 @@ WrapText( const char *text
         }
         
         if (!bossShipModulesAlive) {
+            enemiesKilled++;
             currentWaveType = kWaveType_Finished;
         }
     }
@@ -1168,7 +1191,15 @@ WrapText( const char *text
             [self loadWave:currentWave];
         }
         else {
-            [delegate levelEnded];
+            NSMutableDictionary *statsDict = [[NSMutableDictionary alloc] init];
+            [statsDict setValue:[NSString stringWithFormat:@"%d", numDropPickups] forKey:@"DROPS"];
+            [statsDict setValue:[NSString stringWithFormat:@"%d", enemiesKilled] forKey:@"ENEMIES"];
+            [statsDict setValue:[NSString stringWithFormat:@"%f", levelTime] forKey:@"TIME"];
+            [statsDict setValue:[NSString stringWithFormat:@"%d", scoreEarned] forKey:@"SCORE"];
+            
+            [delegate levelEnded:statsDict];
+            
+            [statsDict release];
         }
     }
     else {

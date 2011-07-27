@@ -17,9 +17,12 @@
     MenuControl     *optionsButton;
     MenuControl     *continueGameButton;
     
+    NSDictionary    *statsDictionary;
+    
     BOOL            continueGame;
 }
 
 @property(readwrite) BOOL continueGame;
+@property(nonatomic, retain) NSDictionary *statsDictionary;
 
 @end

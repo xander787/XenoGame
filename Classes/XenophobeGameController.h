@@ -20,6 +20,7 @@
 #import "SettingsScene.h"
 #import "HighScoresScene.h"
 #import "GameScene.h"
+#import "StoreScene.h"
 
 @class EAGLView;
 
