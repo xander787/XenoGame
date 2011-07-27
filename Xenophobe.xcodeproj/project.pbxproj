@@ -137,6 +137,8 @@
 		28FD14FE0DC6FC130079059D /* EAGLView.m in Sources */ = {isa = PBXBuildFile; fileRef = 28FD14FD0DC6FC130079059D /* EAGLView.m */; };
 		28FD15000DC6FC520079059D /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28FD14FF0DC6FC520079059D /* OpenGLES.framework */; };
 		28FD15080DC6FC5B0079059D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28FD15070DC6FC5B0079059D /* QuartzCore.framework */; };
+		B9503D8D13DF917200456E84 /* GameStatsScene.m in Sources */ = {isa = PBXBuildFile; fileRef = B9503D8A13DF917200456E84 /* GameStatsScene.m */; };
+		B9503D8E13DF917200456E84 /* PauseMenuScene.m in Sources */ = {isa = PBXBuildFile; fileRef = B9503D8C13DF917200456E84 /* PauseMenuScene.m */; };
 		B963267A12DD392E00FA1BA1 /* Projectiles.plist in Resources */ = {isa = PBXBuildFile; fileRef = B963267912DD392E00FA1BA1 /* Projectiles.plist */; };
 		B97A805612C964AD005FBB61 /* AbstractProjectile.m in Sources */ = {isa = PBXBuildFile; fileRef = B97A805512C964AD005FBB61 /* AbstractProjectile.m */; };
 		B9935E4913AC64F3005BBA67 /* kEnemyKamikazeeLevelThree.png in Resources */ = {isa = PBXBuildFile; fileRef = B9935E3F13AC64F3005BBA67 /* kEnemyKamikazeeLevelThree.png */; };
@@ -151,7 +153,6 @@
 		B9935E5213AC64F3005BBA67 /* kEnemyWaveShotLevelTwo.png in Resources */ = {isa = PBXBuildFile; fileRef = B9935E4813AC64F3005BBA67 /* kEnemyWaveShotLevelTwo.png */; };
 		B9A7053D13C83EBD004A486C /* DialogueBoxBorder.png in Resources */ = {isa = PBXBuildFile; fileRef = B9A7053B13C83EBC004A486C /* DialogueBoxBorder.png */; };
 		B9A7053E13C83EBD004A486C /* fastforward.png in Resources */ = {isa = PBXBuildFile; fileRef = B9A7053C13C83EBC004A486C /* fastforward.png */; };
-		B9C3AB7A13C29969003202BA /* PauseMenuScene.m in Sources */ = {isa = PBXBuildFile; fileRef = B9C3AB7913C29969003202BA /* PauseMenuScene.m */; };
 		B9C3AB7C13C2A7B4003202BA /* mainmenu.png in Resources */ = {isa = PBXBuildFile; fileRef = B9C3AB7B13C2A7B4003202BA /* mainmenu.png */; };
 		B9C3AB7E13C2AA50003202BA /* return.png in Resources */ = {isa = PBXBuildFile; fileRef = B9C3AB7D13C2AA50003202BA /* return.png */; };
 		B9C3AB8013C2BF8E003202BA /* pause.png in Resources */ = {isa = PBXBuildFile; fileRef = B9C3AB7F13C2BF8E003202BA /* pause.png */; };
@@ -364,6 +365,10 @@
 		28FD14FD0DC6FC130079059D /* EAGLView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EAGLView.m; sourceTree = "<group>"; };
 		28FD14FF0DC6FC520079059D /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		28FD15070DC6FC5B0079059D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		B9503D8913DF917100456E84 /* GameStatsScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GameStatsScene.h; path = "Game Scenes/GameStatsScene.h"; sourceTree = "<group>"; };
+		B9503D8A13DF917200456E84 /* GameStatsScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GameStatsScene.m; path = "Game Scenes/GameStatsScene.m"; sourceTree = "<group>"; };
+		B9503D8B13DF917200456E84 /* PauseMenuScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PauseMenuScene.h; path = "Game Scenes/PauseMenuScene.h"; sourceTree = "<group>"; };
+		B9503D8C13DF917200456E84 /* PauseMenuScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PauseMenuScene.m; path = "Game Scenes/PauseMenuScene.m"; sourceTree = "<group>"; };
 		B963267912DD392E00FA1BA1 /* Projectiles.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Projectiles.plist; path = "Game Resources/Projectiles.plist"; sourceTree = SOURCE_ROOT; };
 		B97A805412C964AD005FBB61 /* AbstractProjectile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AbstractProjectile.h; path = Entities/Projectiles/AbstractProjectile.h; sourceTree = "<group>"; };
 		B97A805512C964AD005FBB61 /* AbstractProjectile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AbstractProjectile.m; path = Entities/Projectiles/AbstractProjectile.m; sourceTree = "<group>"; };
@@ -379,8 +384,6 @@
 		B9935E4813AC64F3005BBA67 /* kEnemyWaveShotLevelTwo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = kEnemyWaveShotLevelTwo.png; path = "Game Resources/Images/Normal/Ships/Enemy Ships/kEnemyWaveShotLevelTwo.png"; sourceTree = SOURCE_ROOT; };
 		B9A7053B13C83EBC004A486C /* DialogueBoxBorder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DialogueBoxBorder.png; sourceTree = "<group>"; };
 		B9A7053C13C83EBC004A486C /* fastforward.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fastforward.png; sourceTree = "<group>"; };
-		B9C3AB7813C29969003202BA /* PauseMenuScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PauseMenuScene.h; sourceTree = "<group>"; };
-		B9C3AB7913C29969003202BA /* PauseMenuScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PauseMenuScene.m; sourceTree = "<group>"; };
 		B9C3AB7B13C2A7B4003202BA /* mainmenu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mainmenu.png; sourceTree = "<group>"; };
 		B9C3AB7D13C2AA50003202BA /* return.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = return.png; sourceTree = "<group>"; };
 		B9C3AB7F13C2BF8E003202BA /* pause.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pause.png; sourceTree = "<group>"; };
@@ -709,8 +712,10 @@
 				11B1B8CE1276B53B006D085D /* SettingsScene.m */,
 				11B1BBC8127A64E0006D085D /* HighScoresScene.h */,
 				11B1BBC9127A64E0006D085D /* HighScoresScene.m */,
-				B9C3AB7813C29969003202BA /* PauseMenuScene.h */,
-				B9C3AB7913C29969003202BA /* PauseMenuScene.m */,
+				B9503D8B13DF917200456E84 /* PauseMenuScene.h */,
+				B9503D8C13DF917200456E84 /* PauseMenuScene.m */,
+				B9503D8913DF917100456E84 /* GameStatsScene.h */,
+				B9503D8A13DF917200456E84 /* GameStatsScene.m */,
 			);
 			name = "Game Scenes";
 			sourceTree = "<group>";
@@ -1235,7 +1240,6 @@
 				1130822712D907B1009C9502 /* MiniBossGeneral.m in Sources */,
 				1130822A12D907CD009C9502 /* BossShipAtlas.m in Sources */,
 				1169BA8513ABFBEC005FA11F /* GameLevelScene.m in Sources */,
-				B9C3AB7A13C29969003202BA /* PauseMenuScene.m in Sources */,
 				1129A1A413CACED900BE73FA /* BossShipThemis.m in Sources */,
 				1129A1A713CACEFF00BE73FA /* BossShipEos.m in Sources */,
 				1129A1AA13CACF5F00BE73FA /* BossShipAstraeus.m in Sources */,
@@ -1245,6 +1249,8 @@
 				1129A1B613CACFB000BE73FA /* BossShipKronos.m in Sources */,
 				1129A1B913CACFC500BE73FA /* BossShipAlphaWeapon.m in Sources */,
 				B9E3319F13DBA4A30019C2E2 /* Drop.m in Sources */,
+				B9503D8D13DF917200456E84 /* GameStatsScene.m in Sources */,
+				B9503D8E13DF917200456E84 /* PauseMenuScene.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

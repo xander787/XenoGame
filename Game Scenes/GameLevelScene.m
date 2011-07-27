@@ -862,6 +862,7 @@ WrapText( const char *text
     
     // Level is ending and animating out
     if(outroTransitionAnimating) {
+        NSLog(@"hgfyt");
         outroAnimationTime+= aDelta;
         if (outroAnimationType == kOutroAnimation_Flyoff) {
             if (playerShip.currentLocation.y > 480.0f) {
@@ -869,9 +870,12 @@ WrapText( const char *text
                 [delegate levelEnded];
             }
         }
-        else if (outroAnimation == kOutroAnimation_Nuke) {
+        else if (outroAnimationType == kOutroAnimation_Nuke) {
+            NSLog(@"transition animating");
             if (transitionParticleEmitter.particleCount == 0) {
                 outroTransitionAnimating = NO;
+                NSLog(@"nuke emitter done");
+                [delegate levelEnded];
             }
         }
     }

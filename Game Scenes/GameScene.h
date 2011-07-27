@@ -52,6 +52,7 @@
 #import "AbstractProjectile.h"
 #import "GameLevelScene.h"
 #import "PauseMenuScene.h"
+#import "GameStatsScene.h"
 
 typedef enum _Level {
     kLevel_DevTest = 0,
@@ -103,6 +104,9 @@ typedef enum _Level {
     BOOL            soundInitialized;
     SoundManager    *soundManager;
     NSUserDefaults  *settingsDB;
+    
+    BOOL            showStatsScene;
+    GameStatsScene  *statsScene;
 }
 
 - (void)initGameScene;

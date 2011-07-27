@@ -141,6 +141,8 @@
     
     pauseButton = [[MenuControl alloc] initWithImageNamed:@"pause.png" location:Vector2fMake(305, 465) centerOfImage:YES type:kControlType_Pause];
     pauseScreen = [[PauseMenuScene alloc] init];
+    
+    statsScene = [[GameStatsScene alloc] init];
 }
 
 - (void)updateWithDelta:(GLfloat)aDelta {
@@ -179,6 +181,14 @@
     // Level
     if(levelInProgress && !gameIsPaused) {
         [gameLevel update:aDelta];
+    }
+    else if(showStatsScene){
+        [statsScene updateWithDelta:aDelta];
+        if([statsScene continueGame] == YES){
+            statsScene.continueGame = NO;
+            showStatsScene = NO;
+            levelInProgress = YES;
+        }
     }
     [pauseButton updateWithDelta:[NSNumber numberWithFloat:aDelta]];
     if([pauseButton state] == kControl_Selected){
@@ -222,6 +232,9 @@
     if(!gameIsPaused){
         [pauseButton updateWithLocation:NSStringFromCGPoint(location)];
     }
+    if(showStatsScene){
+        [statsScene updateWithTouchLocationBegan:touches withEvent:event view:aView];
+    }
 }
 
 - (void)updateWithTouchLocationMoved:(NSSet *)touches withEvent:(UIEvent *)event view:(UIView *)aView {
@@ -241,6 +254,9 @@
     }
     if(!gameIsPaused){
         [pauseButton updateWithLocation:NSStringFromCGPoint(location)];
+    }
+    if(showStatsScene){
+        [statsScene updateWithTouchLocationMoved:touches withEvent:event view:aView];
     }
 }
 
@@ -325,6 +341,8 @@
 
 - (void)levelEnded {
     NSLog(@"Level over biatch");
+    showStatsScene = YES;
+    levelInProgress = NO;
 }
 
 - (void)scoreChangedBy:(int)scoreChange {
@@ -360,6 +378,9 @@
     }
     if(!gameIsPaused){
         [pauseButton render];
+    }
+    if(showStatsScene){
+        [statsScene render];
     }
     
     [font drawStringAt:CGPointMake(10.0, 465.0) text:[NSString stringWithFormat:@"%09d", playerScore]];

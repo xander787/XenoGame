@@ -52,6 +52,7 @@
 @synthesize duration;
 @synthesize blendAdditive;
 @synthesize fastEmission;
+@synthesize particleIndex;
 
 @synthesize particles;
 

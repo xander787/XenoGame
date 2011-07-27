@@ -90,6 +90,7 @@
 @property(nonatomic, assign) GLfloat duration;
 @property(nonatomic, assign) BOOL blendAdditive;
 @property(readwrite) BOOL fastEmission;
+@property(readonly) GLint particleIndex;
 
 @property(nonatomic, assign) Particle *particles;
 
