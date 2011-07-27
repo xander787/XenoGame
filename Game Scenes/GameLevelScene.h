@@ -151,6 +151,7 @@ typedef enum _OutroAnimation {
     
     int                     levelDifficulty;
     OutroAnimation          outroAnimation;
+    GLfloat                 outroDelay;
     NSArray                 *wavesArray;
     int                     numWaves;
     int                     currentWave;

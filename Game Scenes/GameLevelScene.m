@@ -311,22 +311,22 @@ WrapText( const char *text
             transitionParticleEmitter = [[ParticleEmitter alloc] initParticleEmitterWithImageNamed:@"texture.png"
                                                                                           position:Vector2fMake(160, 240)
                                                                             sourcePositionVariance:Vector2fZero
-                                                                                             speed:2.0f
-                                                                                     speedVariance:0.25f
+                                                                                             speed:0.8f
+                                                                                     speedVariance:0.05f
                                                                                   particleLifeSpan:4.5f 
                                                                           particleLifespanVariance:0.5f 
                                                                                              angle:0.0f 
                                                                                      angleVariance:360.0f 
                                                                                            gravity:Vector2fZero
-                                                                                        startColor:Color4fMake(0.05f, 0.0f, 1.0f, 1.0f)
+                                                                                        startColor:Color4fMake(0.1f, 0.0f, 0.7f, 1.0f)
                                                                                 startColorVariance:Color4fMake(0.0f, 0.0f, 0.0f, 0.0f)
-                                                                                       finishColor:Color4fMake(0.03f, 0.11f, 0.0f, 1.0f)
+                                                                                       finishColor:Color4fMake(0.03f, 0.11f, 0.0f, 0.5f)
                                                                                finishColorVariance:Color4fMake(0.0f, 0.0f, 0.0f, 0.0f)
-                                                                                      maxParticles:500 
+                                                                                      maxParticles:1000 
                                                                                       particleSize:48.0f 
                                                                                 finishParticleSize:48.0f 
                                                                               particleSizeVariance:16.0f 
-                                                                                          duration:0.3f 
+                                                                                          duration:0.2f 
                                                                                      blendAdditive:YES];
         }
         if([[levelDictionary objectForKey:@"kOutroTransition"] isEqualToString:@"kWormhole"]) {
@@ -465,6 +465,7 @@ WrapText( const char *text
             NSLog(@"HOLD PTS: %f %f", enemy.holdingPositionPoint.x, enemy.holdingPositionPoint.y);
             
             [enemiesSet addObject:enemy];
+            outroDelay = 0;
         }
         holdingTimeTarget = (RANDOM_0_TO_1() * 4);
     }
@@ -875,9 +876,12 @@ WrapText( const char *text
         else if (outroAnimationType == kOutroAnimation_Nuke) {
             [transitionParticleEmitter update:aDelta];
             if (transitionParticleEmitter.active == NO) {
-                outroTransitionAnimating = NO;
-                NSLog(@"nuke emitter done");
-                [delegate levelEnded];
+                outroDelay += aDelta;
+                if(outroDelay > 3){
+                    outroTransitionAnimating = NO;
+                    NSLog(@"nuke emitter done");
+                    [delegate levelEnded];
+                }
             }
         }
     }
