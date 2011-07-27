@@ -211,7 +211,7 @@
                                                                   startColorVariance:Color4fMake(0.0, 0.0, 0.0, 0.0) 
                                                                          finishColor:Color4fMake(1.0, 0.0, 0.0, 1.0) 
                                                                  finishColorVariance:Color4fMake(0.0, 0.0, 0.0, 0.0) 
-                                                                        maxParticles:5.0
+                                                                        maxParticles:3.0
                                                                         particleSize:15.0
                                                                   finishParticleSize:15.0
                                                                 particleSizeVariance:0.0

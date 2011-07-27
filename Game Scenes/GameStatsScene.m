@@ -12,6 +12,9 @@
 //
 //	Last Updated - 7/26/2011 @ 11PM - Alexander
 //  - Stats are now displayed
+//
+//  Last Updated - 7/26/11 @11:30PM - James
+//  - Fixed bug with displaying time
 
 #import "GameStatsScene.h"
 
@@ -136,10 +139,8 @@
     [font drawStringAt:CGPointMake(25.0f, 360.0f) text:[NSString stringWithFormat:@"Drops collected: %@", [statsDictionary valueForKey:@"DROPS"]]];
     [font drawStringAt:CGPointMake(25.0f, 330.0f) text:[NSString stringWithFormat:@"Score earned: %@", [statsDictionary valueForKey:@"SCORE"]]]; 
     float time = [[statsDictionary valueForKey:@"TIME"] floatValue];
-    NSMutableString *timeString = [[NSMutableString alloc] initWithString:[NSString stringWithFormat:@"%dm%ds", floor(time / 60), (int)((time - floor(time)) * 60)]];
-    
-    [font drawStringAt:CGPointMake(25.0f, 300.0f) text:timeString];
-    [timeString release];
+    NSLog(@"%f", time);    
+    [font drawStringAt:CGPointMake(25.0f, 300.0f) text:[NSString stringWithFormat:@"Time taken: %dm %ds", ((int)floor(time / 60)), ((int)floor(time - (floor(time / 60) * 60)))]];
     
     [font setScale:0.75f];
 }

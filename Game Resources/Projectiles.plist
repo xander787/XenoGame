@@ -14,7 +14,7 @@
 		<key>kProjectileImage</key>
 		<string>texture.png</string>
 		<key>kProjectileSpeed</key>
-		<real>1.5</real>
+		<integer>1</integer>
 	</dict>
 	<key>kEnemyProjectile_Missile</key>
 	<dict>
