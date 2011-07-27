@@ -53,7 +53,7 @@
 
 @implementation AbstractProjectile
 
-@synthesize turretPosition, currentLocation, desiredLocation, isActive, projectileAngle, projectileSpeed, projectileID, polygonArray, emitter;
+@synthesize turretPosition, currentLocation, desiredLocation, isActive, projectileAngle, projectileSpeed, projectileID, polygonArray, emitter, isStopped;
 
 - (id)initWithProjectileID:(ProjectileID)aProjectileID fromTurretPosition:(Vector2f)aPosition andAngle:(int)aAngle emissionRate:(int)aRate {
     if((self = [super init])){
@@ -370,13 +370,11 @@
             case kPlayerProjectile_Bullet:
                 [emitter setSourcePosition:Vector2fMake(turretPosition.x, turretPosition.y)];
                 [emitter update:aDelta];
-                for(int i = 0; i < [emitter maxParticles]; i++){
-                    if(emitter.active == YES){
-                        [[polygonArray objectAtIndex:i] setPos:CGPointMake(emitter.particles[i].position.x, emitter.particles[i].position.y)];
-                    }
-                    else {
-                        [[polygonArray objectAtIndex:i] setPos:CGPointMake(-50, -50)];
-                    }
+                for(Polygon *tempPoly in polygonArray){
+                    [tempPoly setPos:CGPointMake(-50, -50)];
+                }
+                for(int i = 0; i < [emitter particleIndex]; i++){
+                    [[polygonArray objectAtIndex:i] setPos:CGPointMake(emitter.particles[i].position.x, emitter.particles[i].position.y)];
                 }
                 break;
                 
@@ -441,13 +439,11 @@
             case kEnemyProjectile_Bullet:
                 [emitter setSourcePosition:Vector2fMake(turretPosition.x, turretPosition.y)];
                 [emitter update:aDelta];
-                for(int i = 0; i < [emitter maxParticles]; i++){
-                    if(emitter.active == YES){
-                        [[polygonArray objectAtIndex:i] setPos:CGPointMake(emitter.particles[i].position.x, emitter.particles[i].position.y)];
-                    }
-                    else {
-                        [[polygonArray objectAtIndex:i] setPos:CGPointMake(-50, -70)];
-                    }
+                for(Polygon *tempPoly in polygonArray){
+                    [tempPoly setPos:CGPointMake(-50, -50)];
+                }
+                for(int i = 0; i < [emitter particleIndex]; i++){
+                    [[polygonArray objectAtIndex:i] setPos:CGPointMake(emitter.particles[i].position.x, emitter.particles[i].position.y)];
                 }
                 break;
                 
@@ -554,15 +550,13 @@
     
     isActive = YES;
     emitter.active = YES;
+    isStopped = NO;
 }
 
 - (void)stopProjectile {
     //Used when we want to stop updating AND rendering our projectile.
     //The owner of the class uses this so it doesn't have to deallocate the projectile on ship death
-    /*for(int i = 0; i < emitter.maxParticles; i++){
-        emitter.particles[i].position = Vector2fMake(500, 0);
-        [[polygonArray objectAtIndex:i] setPos:CGPointMake(emitter.particles[i].position.x, emitter.particles[i].position.y)];
-    }*/
+    isStopped = YES;
     [emitter stopParticleEmitter];
 }
 

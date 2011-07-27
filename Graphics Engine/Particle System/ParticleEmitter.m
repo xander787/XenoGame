@@ -323,8 +323,8 @@
 
 - (void)stopParticleEmitter {
 	active = NO;
-	elapsedTime = 0;
-	emitCounter = 0;
+//	elapsedTime = 0;
+//	emitCounter = 0;
 }
 
 - (void)renderParticles {

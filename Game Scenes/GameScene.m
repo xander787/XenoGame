@@ -180,14 +180,15 @@
     
     // Level
     if(levelInProgress && !gameIsPaused) {
-        [gameLevel update:aDelta];
+        if(gameLevel) [gameLevel update:aDelta];
     }
     else if(showStatsScene){
         [statsScene updateWithDelta:aDelta];
         if([statsScene continueGame] == YES){
             statsScene.continueGame = NO;
             showStatsScene = NO;
-            levelInProgress = YES;
+            //Current Level ++
+            [self loadLevelForPlay:currentLevel];
         }
     }
     [pauseButton updateWithDelta:[NSNumber numberWithFloat:aDelta]];
@@ -224,7 +225,7 @@
 	location.y = 480-location.y;
     
     if(levelInProgress) {
-        [gameLevel updateWithTouchLocationBegan:touches withEvent:event view:aView];
+        if(gameLevel) [gameLevel updateWithTouchLocationBegan:touches withEvent:event view:aView];
     }
     if(gameIsPaused){
         [pauseScreen updateWithTouchLocationBegan:touches withEvent:event view:aView];
@@ -247,7 +248,7 @@
     location.y += 30;
     
     if(levelInProgress) {
-        [gameLevel updateWithTouchLocationMoved:touches withEvent:event view:aView];
+        if(gameLevel) [gameLevel updateWithTouchLocationMoved:touches withEvent:event view:aView];
     }
     if(gameIsPaused){
         [pauseScreen updateWithTouchLocationMoved:touches withEvent:event view:aView];
@@ -340,6 +341,8 @@
 }
 
 - (void)levelEnded:(NSDictionary *)stats {
+    [gameLevel release];
+    gameLevel = nil;
     showStatsScene = YES;
     levelInProgress = NO;
     [statsScene setStatsDictionary:stats];
@@ -364,27 +367,29 @@
 - (void)render {
     // In-game graphics rendered first
     [backgroundParticleEmitter renderParticles];
-    if(!gameLevel.currentWaveType == kWaveType_Dialogue){
+    if(!gameLevel.currentWaveType == kWaveType_Dialogue && !showStatsScene){
         [healthBarBackground renderAtPoint:CGPointMake(254, 14.0) centerOfImage:NO];
         [healthBar renderAtPoint:CGPointMake(255, 15.0) centerOfImage:NO];
     }
     
     // Level
     if(levelInProgress) {
-        [gameLevel render];
+        if(gameLevel) [gameLevel render];
     }
     if(gameIsPaused){
         [pauseScreen render];
     }
-    if(!gameIsPaused){
+    if(!gameIsPaused && !showStatsScene){
         [pauseButton render];
     }
     if(showStatsScene){
         [statsScene render];
     }
     
-    [font drawStringAt:CGPointMake(10.0, 465.0) text:[NSString stringWithFormat:@"%09d", playerScore]];
-        
+    if(!showStatsScene){
+        [font drawStringAt:CGPointMake(10.0, 465.0) text:[NSString stringWithFormat:@"%09d", playerScore]];
+    }
+    
     if(DEBUG) {
         
         //Draw some text at the bottom-left corner indicating the current FPS.
@@ -396,6 +401,8 @@
     [font release];
     //[bulletTest release];
     [levelFileIndex release];
+    if(statsScene) [statsScene release];
+    if(gameLevel) [gameLevel release];
     [super dealloc];
 }
 

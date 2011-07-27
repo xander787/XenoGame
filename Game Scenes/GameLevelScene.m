@@ -1365,7 +1365,9 @@ WrapText( const char *text
     else {
         // Must always be rendered last so that the player is foreground
         // to any other objects on the screen. Also not while dialogue is displayed.
-        [playerShip render];
+        if(!outroTransitionAnimating && outroAnimationType == kOutroAnimation_Nuke){
+            [playerShip render];
+        }
     }
     
     if (outroTransitionAnimating) {
