@@ -139,7 +139,6 @@
     [font drawStringAt:CGPointMake(25.0f, 360.0f) text:[NSString stringWithFormat:@"Drops collected: %@", [statsDictionary valueForKey:@"DROPS"]]];
     [font drawStringAt:CGPointMake(25.0f, 330.0f) text:[NSString stringWithFormat:@"Score earned: %@", [statsDictionary valueForKey:@"SCORE"]]]; 
     float time = [[statsDictionary valueForKey:@"TIME"] floatValue];
-    NSLog(@"%f", time);    
     [font drawStringAt:CGPointMake(25.0f, 300.0f) text:[NSString stringWithFormat:@"Time taken: %dm %ds", ((int)floor(time / 60)), ((int)floor(time - (floor(time / 60) * 60)))]];
     
     [font setScale:0.75f];

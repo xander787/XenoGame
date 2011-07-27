@@ -53,6 +53,8 @@
 - (void)scoreChangedBy:(int)scoreChange;
 - (void)playerHealthChangedBy:(int)healthChange;
 - (void)creditAmountChangedBy:(int)creditChange;
+- (void)powerUpPickedUp:(DropType)pickedUp;
+- (void)clearAllPowerUpsPickedUp;
 @end
 
 typedef enum _LevelType {
@@ -201,6 +203,7 @@ typedef enum _OutroAnimation {
 - (void)render;
 - (Vector2f)VectorRandomInRectWithVectors:(Vector2f)v1 v2:(Vector2f)v2;
 - (void)skipToNewPageOfText;
+- (void)nukeButtonPushed;
 
 
 @end

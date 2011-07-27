@@ -52,7 +52,10 @@
 //
 //  Last Updated - 7/9/2011 @10PM - James
 //  -  Health bar no longer renders during dialogue waves
-
+//
+//  Last Updated - 7/27/11 @4:20PM - James
+//  - Implemented a sidebar for powerups that have been picked up,
+//  nuke button, made stats scene fade in
 
 #import "GameScene.h"
 
@@ -143,6 +146,17 @@
     pauseScreen = [[PauseMenuScene alloc] init];
     
     statsScene = [[GameStatsScene alloc] init];
+    
+    shieldImage = [[Image alloc] initWithImage:@"Shield.png" scale:Scale2fOne];
+    damageMultiplierImage = [[Image alloc] initWithImage:@"DamageMultiplier.png" scale:Scale2fOne];
+    scoreMultiplierImage = [[Image alloc] initWithImage:@"ScoreMultiplier.png" scale:Scale2fOne];
+    enemyRepelImage = [[Image alloc] initWithImage:@"EnemyRepel.png" scale:Scale2fOne];
+    magnetImage = [[Image alloc] initWithImage:@"Magnet.png" scale:Scale2fOne];
+    slowmoImage = [[Image alloc] initWithImage:@"Slowmo.png" scale:Scale2fOne];
+    proximityDamageImage = [[Image alloc] initWithImage:@"ProximityDamage.png" scale:Scale2fOne];
+    nukeImage = [[Image alloc] initWithImage:@"Nuke.png" scale:Scale2fOne];
+    
+    enabledPowerUpsArray = [[NSMutableArray alloc] init];
 }
 
 - (void)updateWithDelta:(GLfloat)aDelta {
@@ -172,7 +186,7 @@
     
     // In-game graphics updating
     [backgroundParticleEmitter update:aDelta];
-    //[healthBar setScale:Scale2fMake((float)testShip.shipHealth / testShip.shipMaxHealth, 1.0f)];
+    [healthBar setScale:Scale2fMake((GLfloat)gameLevel.playerShip.shipHealth / gameLevel.playerShip.shipMaxHealth, 1.0f)];
     
     if (!soundInitialized) {
         [self initSound];
@@ -226,6 +240,12 @@
     
     if(levelInProgress) {
         if(gameLevel) [gameLevel updateWithTouchLocationBegan:touches withEvent:event view:aView];
+        if(nukePowerUpReady){
+            if(location.x < 40 && location.y < 55){
+                [gameLevel nukeButtonPushed];
+                nukePowerUpReady = NO;
+            }
+        }
     }
     if(gameIsPaused){
         [pauseScreen updateWithTouchLocationBegan:touches withEvent:event view:aView];
@@ -344,8 +364,10 @@
     [gameLevel release];
     gameLevel = nil;
     showStatsScene = YES;
+    [statsScene setSceneState:kSceneState_TransitionIn];
     levelInProgress = NO;
     [statsScene setStatsDictionary:stats];
+    nukePowerUpReady = NO;
 }
 
 - (void)scoreChangedBy:(int)scoreChange {
@@ -358,6 +380,19 @@
 
 - (void)creditAmountChangedBy:(int)creditChange {
     
+}
+
+- (void)powerUpPickedUp:(DropType)pickedUp {
+    if([enabledPowerUpsArray containsObject:[NSNumber numberWithInt:pickedUp]] == NO && pickedUp != kDropType_Nuke){
+        [enabledPowerUpsArray addObject:[NSNumber numberWithInt:pickedUp]];
+    }
+    if(pickedUp == kDropType_Nuke){
+        nukePowerUpReady = YES;
+    }
+}
+
+- (void)clearAllPowerUpsPickedUp {
+    [enabledPowerUpsArray removeAllObjects];
 }
 
 - (void)transitionToSceneWithKey:(NSString *)aKey {
@@ -376,6 +411,69 @@
     if(levelInProgress) {
         if(gameLevel) [gameLevel render];
     }
+    
+    if(!showStatsScene && levelInProgress){
+        int powerUpNumberToRender = 0;
+        for(NSNumber *powerUpTypeToRender in enabledPowerUpsArray){
+            switch ([powerUpTypeToRender intValue]) {
+                case kDropType_Shield:
+                {
+                    [shieldImage renderAtPoint:CGPointMake(15, 200 - (powerUpNumberToRender * 20)) centerOfImage:YES];
+                    powerUpNumberToRender++;
+                    break;
+                }
+                    
+                case kDropType_DamageMultiplier:
+                {
+                    [damageMultiplierImage renderAtPoint:CGPointMake(15, 200 - (powerUpNumberToRender * 20)) centerOfImage:YES];
+                    powerUpNumberToRender++;
+                    break;
+                }
+                    
+                case kDropType_ScoreMultiplier:
+                {
+                    [scoreMultiplierImage renderAtPoint:CGPointMake(15, 200 - (powerUpNumberToRender * 20)) centerOfImage:YES];
+                    powerUpNumberToRender++;
+                    break;
+                }
+                    
+                case kDropType_EnemyRepel:
+                {
+                    [enemyRepelImage renderAtPoint:CGPointMake(15, 200 - (powerUpNumberToRender * 20)) centerOfImage:YES];
+                    powerUpNumberToRender++;
+                    break;
+                }
+                    
+                case kDropType_DropsMagnet:
+                {
+                    [magnetImage renderAtPoint:CGPointMake(15, 200 - (powerUpNumberToRender * 20)) centerOfImage:YES];
+                    powerUpNumberToRender++;
+                    break;
+                }
+                    
+                case kDropType_Slowmo:
+                {
+                    [slowmoImage renderAtPoint:CGPointMake(15, 200 - (powerUpNumberToRender * 20)) centerOfImage:YES];
+                    powerUpNumberToRender++;
+                    break;
+                }
+                    
+                case kDropType_ProximityDamage:
+                {
+                    [proximityDamageImage renderAtPoint:CGPointMake(15, 200 - (powerUpNumberToRender * 20)) centerOfImage:YES];
+                    powerUpNumberToRender++;
+                    break;
+                }
+                    
+                default:
+                    break;
+            }
+        }
+        if(nukePowerUpReady){
+            [nukeImage renderAtPoint:CGPointMake(15, 30) centerOfImage:YES];
+        }
+    }
+    
     if(gameIsPaused){
         [pauseScreen render];
     }

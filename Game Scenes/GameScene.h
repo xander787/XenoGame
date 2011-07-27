@@ -107,6 +107,20 @@ typedef enum _Level {
     
     BOOL            showStatsScene;
     GameStatsScene  *statsScene;
+    
+    //In-game powerup notfications
+//    int             numberOfPowerUps;
+    Image           *shieldImage;
+    Image           *damageMultiplierImage;
+    Image           *scoreMultiplierImage;
+    Image           *enemyRepelImage;
+    Image           *magnetImage;
+    Image           *slowmoImage;
+    Image           *proximityDamageImage;
+    Image           *nukeImage;
+    
+    NSMutableArray  *enabledPowerUpsArray;
+    BOOL            nukePowerUpReady;
 }
 
 - (void)initGameScene;

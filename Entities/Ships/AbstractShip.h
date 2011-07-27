@@ -70,7 +70,7 @@
 }
 
 @property (readonly) BOOL shipIsDead;
-@property (readonly) int shipHealth;
+@property (readwrite) int shipHealth;
 @property (readonly) int shipMaxHealth;
 @property (readonly) int shipAttack;
 @property (readonly) int shipStamina;

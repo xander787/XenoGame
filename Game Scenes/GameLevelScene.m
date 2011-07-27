@@ -94,6 +94,9 @@
 //
 //  Last Updated - 7/26/11 @7:20M - James
 //  - Fixed bug where it'd prematurely show the stats scene
+//
+//  Last Updated - 7/27/11 @4:20PM - James
+//  - Bug fixes mainly
 
 
 #import "GameLevelScene.h"
@@ -606,7 +609,7 @@ WrapText( const char *text
            proximityDamageActivated){
             //If any powerups are picked up and enabled
             powerUpTimer += aDelta;
-            if(powerUpTimer >= 5){
+            if(powerUpTimer >= 8){
                 //Reset timer and all power ups
                 powerUpTimer = 0;
                 shieldEnabled = NO;
@@ -616,6 +619,7 @@ WrapText( const char *text
                 powerUpMagnetActivated = NO;
                 slowmoActivated = NO;
                 proximityDamageActivated = NO;
+                [delegate clearAllPowerUpsPickedUp];
             }
         }
         
@@ -643,6 +647,7 @@ WrapText( const char *text
                     {
                         shieldEnabled = YES;
                         powerUpTimer = 0;
+                        [delegate powerUpPickedUp:kDropType_Shield];
                         break;
                     }
                         
@@ -650,6 +655,7 @@ WrapText( const char *text
                     {
                         damageMultiplierOn = YES;
                         powerUpTimer = 0;
+                        [delegate powerUpPickedUp:kDropType_DamageMultiplier];
                         break;
                     }
                         
@@ -657,6 +663,7 @@ WrapText( const char *text
                     {
                         scoreMultiplierOn = YES;
                         powerUpTimer = 0;
+                        [delegate powerUpPickedUp:kDropType_ScoreMultiplier];
                         break;
                     }
                         
@@ -664,6 +671,7 @@ WrapText( const char *text
                     {
                         enemyRepelOn = YES;
                         powerUpTimer = 0;
+                        [delegate powerUpPickedUp:kDropType_EnemyRepel];
                         break;
                     }
                         
@@ -671,23 +679,28 @@ WrapText( const char *text
                     {
                         powerUpMagnetActivated = YES;
                         powerUpTimer = 0;
+                        [delegate powerUpPickedUp:kDropType_DropsMagnet];
                         break;
                     }
                         
                     case kDropType_Slowmo:
                     {
                         slowmoActivated = YES;
+                        powerUpTimer = 0;
+                        [delegate powerUpPickedUp:kDropType_Slowmo];
                         break;
                     }
                         
                     case kDropType_ProximityDamage:
                     {
                         proximityDamageActivated = YES;
+                        [delegate powerUpPickedUp:kDropType_ProximityDamage];
                         break;
                     }
                         
                     case kDropType_Health:
                     {
+                        playerShip.shipHealth += 10;
                         [delegate playerHealthChangedBy:10];
                         break;
                     }
@@ -695,6 +708,7 @@ WrapText( const char *text
                     case kDropType_Nuke:
                     {
                         nukeReadyForUse = YES;
+                        [delegate powerUpPickedUp:kDropType_Nuke];
                         break;
                     }
                         
@@ -943,6 +957,7 @@ WrapText( const char *text
             }
         }
         else if (outroAnimationType == kOutroAnimation_Nuke) {
+            [playerShip setDesiredLocation:CGPointMake(playerShip.currentLocation.x, -40)];
         }
     }
     
@@ -1075,8 +1090,8 @@ WrapText( const char *text
                         
                         if(result2.intersect){
                             NSLog(@"Collision occured between enemy bullet and player ship");
-                            if(!playerShip.shipIsDead){
-                                [playerShip hitShipWithDamage:50];
+                            if(!playerShip.shipIsDead && !shieldEnabled){
+                                [playerShip hitShipWithDamage:30];
                                 enemyProjectile.emitter.particles[i].position = Vector2fMake(500, 0);
                             }
                         }
@@ -1094,7 +1109,7 @@ WrapText( const char *text
                             NSLog(@"Collision occured between player bullet and enemy ship");
                             //Send damage to enemy ship
                             if(!enemyShip.shipIsDead){
-                                [enemyShip hitShipWithDamage:50];
+                                [enemyShip hitShipWithDamage:50 + (50 * (int)damageMultiplierOn)];
                                 playerShipProjectile.emitter.particles[i].position = Vector2fMake(500, 50);
                             }
                         }
@@ -1123,13 +1138,13 @@ WrapText( const char *text
                         PolygonCollisionResult result = [Collisions polygonCollision:playerBulletPoly :bossShip.modularObjects[i].collisionPolygon :Vector2fZero];
                         
                         if(result.intersect){
-                            
-                            if (bossShip.modularObjects[i].destructionOrder == bossShip.currentDestructionOrder && bossShip.modularObjects[i].isDead == NO) {
-                                NSLog(@"Module Order: %d Current Order: %d", bossShip.modularObjects[i].destructionOrder, bossShip.currentDestructionOrder);
-                                [bossShip hitModule:i withDamage:10];
-                                playerShipProjectile.emitter.particles[j].position = Vector2fMake(500, 50);
+                            if(bossShipIsDisplayed){
+                                if (bossShip.modularObjects[i].destructionOrder == bossShip.currentDestructionOrder && bossShip.modularObjects[i].isDead == NO) {
+                                    NSLog(@"Module Order: %d Current Order: %d", bossShip.modularObjects[i].destructionOrder, bossShip.currentDestructionOrder);
+                                    [bossShip hitModule:i withDamage:10];
+                                    playerShipProjectile.emitter.particles[j].position = Vector2fMake(500, 50);
+                                }
                             }
-                            
                         }
                     }
                     
@@ -1253,6 +1268,10 @@ WrapText( const char *text
     }
 }
 
+- (void)nukeButtonPushed {
+    
+}
+
 - (void)updateWithTouchLocationBegan:(NSSet *)touches withEvent:(UIEvent *)event view:(UIView *)aView {
 	UITouch *touch = [[event touchesForView:aView] anyObject];
 	CGPoint location;
@@ -1365,9 +1384,9 @@ WrapText( const char *text
     else {
         // Must always be rendered last so that the player is foreground
         // to any other objects on the screen. Also not while dialogue is displayed.
-        if(!outroTransitionAnimating && outroAnimationType == kOutroAnimation_Nuke){
+//        if(!outroTransitionAnimating && outroAnimationType == kOutroAnimation_Nuke){
             [playerShip render];
-        }
+//        }
     }
     
     if (outroTransitionAnimating) {
