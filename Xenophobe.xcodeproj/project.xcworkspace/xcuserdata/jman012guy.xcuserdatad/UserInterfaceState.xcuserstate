@@ -8267,9 +8267,9 @@
 		<string>PrimaryDocumentVisibleCharacterRange</string>
 		<string>HideAllIssues</string>
 		<string>PrimaryDocumentSelectedCharacterRange</string>
-		<real>333426488.66730797</real>
-		<string>{23157, 2732}</string>
-		<string>{23634, 0}</string>
+		<real>333426615.81413299</real>
+		<string>{23039, 4193}</string>
+		<string>{23641, 0}</string>
 		<dict>
 			<key>$class</key>
 			<dict>
@@ -23084,7 +23084,7 @@
 			<array>
 				<dict>
 					<key>CF$UID</key>
-					<integer>1346</integer>
+					<integer>16</integer>
 				</dict>
 				<dict>
 					<key>CF$UID</key>
@@ -23795,9 +23795,9 @@
 				</dict>
 			</array>
 		</dict>
-		<real>333426488.67002898</real>
-		<string>{23157, 2732}</string>
-		<string>{23634, 0}</string>
+		<real>333426615.816576</real>
+		<string>{23039, 4193}</string>
+		<string>{23641, 0}</string>
 		<string>-update:</string>
 		<string>Xcode.IDEKit.EditorDocument.SourceCode</string>
 		<dict>
@@ -23832,7 +23832,7 @@
 				</dict>
 			</array>
 		</dict>
-		<string>{{0, 0}, {1420, 634}}</string>
+		<string>{{0, 0}, {1420, 913}}</string>
 		<dict>
 			<key>$class</key>
 			<dict>
