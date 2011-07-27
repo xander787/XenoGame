@@ -91,6 +91,9 @@
 //
 //  Last Updated - 7/26/11 @2:20PM - James
 //  - Enemies now fire when attacking
+//
+//  Last Updated - 7/26/11 @7:20M - James
+//  - Fixed bug where it'd prematurely show the stats scene
 
 
 #import "GameLevelScene.h"
@@ -317,13 +320,13 @@ WrapText( const char *text
                                                                                            gravity:Vector2fZero
                                                                                         startColor:Color4fMake(0.05f, 0.0f, 1.0f, 1.0f)
                                                                                 startColorVariance:Color4fMake(0.0f, 0.0f, 0.0f, 0.0f)
-                                                                                       finishColor:Color4fMake(0.03f, 0.11f, 0.0f, 0.0f)
+                                                                                       finishColor:Color4fMake(0.03f, 0.11f, 0.0f, 1.0f)
                                                                                finishColorVariance:Color4fMake(0.0f, 0.0f, 0.0f, 0.0f)
                                                                                       maxParticles:500 
                                                                                       particleSize:48.0f 
-                                                                                finishParticleSize:0.0f 
+                                                                                finishParticleSize:48.0f 
                                                                               particleSizeVariance:16.0f 
-                                                                                          duration:0.3f 
+                                                                                          duration:3.3f 
                                                                                      blendAdditive:YES];
         }
         if([[levelDictionary objectForKey:@"kOutroTransition"] isEqualToString:@"kWormhole"]) {
@@ -862,7 +865,6 @@ WrapText( const char *text
     
     // Level is ending and animating out
     if(outroTransitionAnimating) {
-        NSLog(@"hgfyt");
         outroAnimationTime+= aDelta;
         if (outroAnimationType == kOutroAnimation_Flyoff) {
             if (playerShip.currentLocation.y > 480.0f) {
@@ -871,8 +873,8 @@ WrapText( const char *text
             }
         }
         else if (outroAnimationType == kOutroAnimation_Nuke) {
-            NSLog(@"transition animating");
-            if (transitionParticleEmitter.particleCount == 0) {
+            [transitionParticleEmitter update:aDelta];
+            if (transitionParticleEmitter.active == NO) {
                 outroTransitionAnimating = NO;
                 NSLog(@"nuke emitter done");
                 [delegate levelEnded];
@@ -915,7 +917,6 @@ WrapText( const char *text
             }
         }
         else if (outroAnimationType == kOutroAnimation_Nuke) {
-            [transitionParticleEmitter update:aDelta];
         }
     }
     
