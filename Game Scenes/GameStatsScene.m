@@ -2,9 +2,16 @@
 //  GameStatsScene.m
 //  Xenophobe
 //
-//  Created by James Linnell on 7/26/11.
-//  Copyright 2011 PDHS. All rights reserved.
+//  Created by Alexander on 10/20/10.
+//  Copyright 2010 Alexander Nabavi-Noori, XanderNet Inc. All rights reserved.
+//  
+//  Team:
+//  Alexander Nabavi-Noori - Software Engineer, Game Architect
+//	James Linnell - Software Engineer, Creative Design, Art Producer
+//	Tyler Newcomb - Creative Design, Art Producer
 //
+//	Last Updated - 7/26/2011 @ 11PM - Alexander
+//  - Stats are now displayed
 
 #import "GameStatsScene.h"
 
@@ -28,6 +35,8 @@
         mainMenuButton = [[MenuControl alloc] initWithImageNamed:@"mainmenu.png" location:Vector2fMake(160, 100) centerOfImage:YES type:kControlType_MainMenu];
         continueGameButton = [[MenuControl alloc] initWithImageNamed:@"continue.png" location:Vector2fMake(160, 145) centerOfImage:YES type:kControlType_ReturnToGame];
         optionsButton = [[MenuControl alloc] initWithImageNamed:@"settings.png" location:Vector2fMake(160, 55) centerOfImage:YES type:kControlType_Settings];
+        
+        font = [[AngelCodeFont alloc] initWithFontImageNamed:@"xenophobefont.png" controlFile:@"xenophobefont" scale:0.75f filter:GL_LINEAR];
     }
     
     return self;
@@ -118,6 +127,21 @@
     [mainMenuButton render];
     [optionsButton render];
     [continueGameButton render];
+    
+    [font drawStringAt:CGPointMake(25.0f, 455.0f) text:@"Stats"];
+    
+    [font setScale:0.45f];
+    
+    [font drawStringAt:CGPointMake(25.0f, 390.0f) text:[NSString stringWithFormat:@"Enemies killed: %@", [statsDictionary valueForKey:@"ENEMIES"]]];
+    [font drawStringAt:CGPointMake(25.0f, 360.0f) text:[NSString stringWithFormat:@"Drops collected: %@", [statsDictionary valueForKey:@"DROPS"]]];
+    [font drawStringAt:CGPointMake(25.0f, 330.0f) text:[NSString stringWithFormat:@"Score earned: %@", [statsDictionary valueForKey:@"SCORE"]]]; 
+    float time = [[statsDictionary valueForKey:@"TIME"] floatValue];
+    NSMutableString *timeString = [[NSMutableString alloc] initWithString:[NSString stringWithFormat:@"%dm%ds", floor(time / 60), (int)((time - floor(time)) * 60)]];
+    
+    [font drawStringAt:CGPointMake(25.0f, 300.0f) text:timeString];
+    [timeString release];
+    
+    [font setScale:0.75f];
 }
 
 - (void)dealloc {

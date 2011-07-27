@@ -2,9 +2,16 @@
 //  GameStatsScene.h
 //  Xenophobe
 //
-//  Created by James Linnell on 7/26/11.
-//  Copyright 2011 PDHS. All rights reserved.
+//  Created by Alexander on 10/20/10.
+//  Copyright 2010 Alexander Nabavi-Noori, XanderNet Inc. All rights reserved.
+//  
+//  Team:
+//  Alexander Nabavi-Noori - Software Engineer, Game Architect
+//	James Linnell - Software Engineer, Creative Design, Art Producer
+//	Tyler Newcomb - Creative Design, Art Producer
 //
+//	Last Updated - 7/26/2011 @ 11PM - Alexander
+//  - Stats are now displayed
 
 #import "AbstractScene.h"
 #import "Common.h"
@@ -16,6 +23,8 @@
     MenuControl     *mainMenuButton;
     MenuControl     *optionsButton;
     MenuControl     *continueGameButton;
+    
+    AngelCodeFont   *font;
     
     NSDictionary    *statsDictionary;
     
