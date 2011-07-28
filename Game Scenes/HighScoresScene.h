@@ -36,6 +36,8 @@
     Image               *nextButton;
     
     int                 selectedButtonIndex;
+    
+    ParticleEmitter     *backgroundParticleEmitter;
 }
 
 @end

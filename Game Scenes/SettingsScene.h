@@ -43,6 +43,8 @@
     Image           *controlTypeAccelerometerImage;
     Image           *controlTypeTouchImageGlow;
     Image           *controlTypeAccelerometerImageGlow;
+    
+    ParticleEmitter		*backgroundParticleEmitter;
 }
 
 @end

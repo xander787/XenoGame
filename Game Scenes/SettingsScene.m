@@ -99,6 +99,27 @@
     controlTypeAccelerometerImage = [[Image alloc] initWithImage:@"AccelerometerOff.png" scale:Scale2fOne];
     controlTypeTouchImageGlow = [[Image alloc] initWithImage:@"TouchOn.png" scale:Scale2fOne];
     controlTypeAccelerometerImageGlow = [[Image alloc] initWithImage:@"AccelerometerOn.png" scale:Scale2fOne];
+    
+    backgroundParticleEmitter = [[ParticleEmitter alloc] initParticleEmitterWithImageNamed:@"texture.png"
+																				  position:Vector2fMake(160.0, 259.76)
+																	sourcePositionVariance:Vector2fMake(373.5, 240.0)
+																					 speed:0.1
+																			 speedVariance:0.01
+																		  particleLifeSpan:5.0
+																  particleLifespanVariance:2.0
+																					 angle:200.0
+																			 angleVariance:0.0
+																				   gravity:Vector2fMake(0.0, 0.0)
+																				startColor:Color4fMake(1.0, 1.0, 1.0, 0.58)
+																		startColorVariance:Color4fMake(0.0, 0.0, 0.0, 0.0)
+																			   finishColor:Color4fMake(0.5, 0.5, 0.5, 0.34)
+																	   finishColorVariance:Color4fMake(0.0, 0.0, 0.0, 0.0)
+																			  maxParticles:2000
+																			  particleSize:3.0
+																		finishParticleSize:3.0
+																	  particleSizeVariance:1.3
+																				  duration:-1
+																			 blendAdditive:NO];
 }
 
 #pragma mark -
@@ -107,6 +128,7 @@
 - (void)updateWithDelta:(GLfloat)aDelta {
 	switch (sceneState) {
 		case kSceneState_Running:
+            [backgroundParticleEmitter update:aDelta];
 			break;
 			
 		case kSceneState_TransitionOut:
@@ -195,6 +217,8 @@
 }
 
 - (void)render {
+    [backgroundParticleEmitter renderParticles];
+    
     [backButton renderAtPoint:CGPointMake(15, 440) centerOfImage:NO];
     [font drawStringAt:CGPointMake(15.0f, 420.0f) text:soundSettingString];
     [font drawStringAt:CGPointMake(15.0f, 350.0f) text:musicSettingString];
