@@ -84,7 +84,7 @@
 
 - (void)initSettings {
     font = [[AngelCodeFont alloc] initWithFontImageNamed:@"xenophobefont.png" controlFile:@"xenophobefont" scale:0.50f filter:GL_LINEAR];
-    backButton = [[Image alloc] initWithImage:[NSString stringWithString:@"backbutton.png"] scale:Scale2fMake(0.5f, 0.5f)];
+    backButton = [[Image alloc] initWithImage:[NSString stringWithString:@"backbutton.png"] scale:Scale2fOne];
     settingsDB = [NSUserDefaults standardUserDefaults];
     
     sliderImage = [[Image alloc] initWithImage:@"Slider.png" scale:Scale2fOne];
