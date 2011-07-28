@@ -56,6 +56,9 @@
 //  Last Updated - 7/27/11 @4:20PM - James
 //  - Implemented a sidebar for powerups that have been picked up,
 //  nuke button, made stats scene fade in
+//
+//  Last Updated - 7/27/11 @9:30AM - Alexander
+//  - Changing music based on if level is in progress or not
 
 #import "GameScene.h"
 
@@ -188,7 +191,7 @@
     [backgroundParticleEmitter update:aDelta];
     [healthBar setScale:Scale2fMake((GLfloat)gameLevel.playerShip.shipHealth / gameLevel.playerShip.shipMaxHealth, 1.0f)];
     
-    if (!soundInitialized) {
+    if (levelInProgress && !soundInitialized) {
         [self initSound];
     }
     
@@ -361,6 +364,10 @@
 }
 
 - (void)levelEnded:(NSDictionary *)stats {
+    [soundManager setMusicVolume:0.0f];
+    [soundManager playMusicWithKey:@"menu_theme" timesToRepeat:10000];
+    [soundManager fadeMusicVolumeFrom:0.0f toVolume:[settingsDB floatForKey:kSetting_MusicVolume] duration:2.0f stop:NO];
+
     [gameLevel release];
     gameLevel = nil;
     showStatsScene = YES;
