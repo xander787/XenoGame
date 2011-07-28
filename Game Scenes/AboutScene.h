@@ -12,6 +12,7 @@
 
 @interface AboutScene : AbstractScene {
     AngelCodeFont       *font;
+    Image               *backButton;
     ParticleEmitter		*backgroundParticleEmitter;
 }
 

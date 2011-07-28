@@ -39,6 +39,7 @@
 
 - (void)initAboutScene {
     font = [[AngelCodeFont alloc] initWithFontImageNamed:@"xenophobefont.png" controlFile:@"xenophobefont" scale:0.300f filter:GL_LINEAR];
+    backButton = [[Image alloc] initWithImage:[NSString stringWithString:@"backbutton.png"] scale:Scale2fMake(0.5f, 0.5f)];
     backgroundParticleEmitter = [[ParticleEmitter alloc] initParticleEmitterWithImageNamed:@"texture.png"
 																				  position:Vector2fMake(160.0, 259.76)
 																	sourcePositionVariance:Vector2fMake(373.5, 240.0)
@@ -99,6 +100,11 @@
     
 	// Flip the y location ready to check it against OpenGL coordinates
 	location.y = 480-location.y;
+    
+    if(CGRectContainsPoint(CGRectMake(15, 440, backButton.imageWidth, backButton.imageHeight), location)){
+        sceneState = kSceneState_TransitionOut;
+        nextSceneKey = [_sharedDirector getLastSceneUsed];
+    }
 }
 
 - (void)updateWithTouchLocationMoved:(NSSet *)touches withEvent:(UIEvent *)event view:(UIView *)aView {
@@ -119,8 +125,9 @@
 
 - (void)render {
     [backgroundParticleEmitter renderParticles];
+    [backButton renderAtPoint:CGPointMake(15.0f, 445.0f) centerOfImage:NO];
     
-    [font drawStringAt:CGPointMake(15.0f, 455.0f) text:@"About"];
+    [font drawStringAt:CGPointMake(60.0f, 455.0f) text:@"About"];
 
     [font setScale:0.30f];
     
