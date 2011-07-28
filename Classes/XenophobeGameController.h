@@ -21,6 +21,7 @@
 #import "HighScoresScene.h"
 #import "GameScene.h"
 #import "StoreScene.h"
+#import "AboutScene.h"
 
 @class EAGLView;
 
