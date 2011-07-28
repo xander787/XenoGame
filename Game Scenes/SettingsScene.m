@@ -83,6 +83,14 @@
     font = [[AngelCodeFont alloc] initWithFontImageNamed:@"xenophobefont.png" controlFile:@"xenophobefont" scale:0.50f filter:GL_LINEAR];
     backButton = [[Image alloc] initWithImage:[NSString stringWithString:@"backbutton.png"] scale:Scale2fMake(0.5f, 0.5f)];
     settingsDB = [NSUserDefaults standardUserDefaults];
+    
+    sliderImage = [[Image alloc] initWithImage:@"Slider.png" scale:Scale2fOne];
+    sliderBarImage = [[Image alloc] initWithImage:@"SliderBar.png" scale:Scale2fOne];
+    volumeLowImage = [[Image alloc] initWithImage:@"Volume_low.png" scale:Scale2fMake(0.75, 0.75)];
+    volumeHighImage = [[Image alloc] initWithImage:@"Volume_high.png" scale:Scale2fMake(0.75, 0.75)];
+    
+    soundVolume = 100;
+    musicVolume = 50;
 }
 
 #pragma mark -
@@ -127,6 +135,30 @@
         sceneState = kSceneState_TransitionOut;
         nextSceneKey = [_sharedDirector getLastSceneUsed];
     }
+    if(CGRectContainsPoint(CGRectMake(90, 398, 29, 26), location)){
+        //Sound volume low pushed
+        soundVolume -= 10;
+        soundVolume = MAX(0, soundVolume);
+        soundVolume = MIN(soundVolume, 100);
+    }
+    if(CGRectContainsPoint(CGRectMake(90, 328, 29, 26), location)){
+        //Music volume low pushed
+        musicVolume -= 10;
+        musicVolume = MAX(0, musicVolume);
+        musicVolume = MIN(musicVolume, 100);
+    }
+    if(CGRectContainsPoint(CGRectMake(280, 398, 39, 26), location)){
+        //Sound volume high pushed
+        soundVolume += 10;
+        soundVolume = MAX(0, soundVolume);
+        soundVolume = MIN(soundVolume, 100);
+    }
+    if(CGRectContainsPoint(CGRectMake(280, 328, 39, 26), location)){
+        //Music volume high pushed
+        musicVolume += 10;
+        musicVolume = MAX(0, musicVolume);
+        musicVolume = MIN(musicVolume, 100);
+    }
 }
 
 - (void)updateWithTouchLocationMoved:(NSSet *)touches withEvent:(UIEvent *)event view:(UIView *)aView {
@@ -150,6 +182,18 @@
     [font drawStringAt:CGPointMake(15.0f, 420.0f) text:soundSettingString];
     [font drawStringAt:CGPointMake(15.0f, 350.0f) text:musicSettingString];
     [font drawStringAt:CGPointMake(15.0f, 280.0f) text:controlsSettingString];
+    
+    [volumeLowImage renderAtPoint:CGPointMake(110, 412) centerOfImage:YES];
+    [volumeLowImage renderAtPoint:CGPointMake(110, 342) centerOfImage:YES];
+    [volumeHighImage renderAtPoint:CGPointMake(300, 412) centerOfImage:YES];
+    [volumeHighImage renderAtPoint:CGPointMake(300, 342) centerOfImage:YES];
+    
+    [sliderImage renderAtPoint:CGPointMake(200, 412) centerOfImage:YES];
+    [sliderImage renderAtPoint:CGPointMake(200, 342) centerOfImage:YES];
+    [sliderBarImage setScale:Scale2fMake(soundVolume / 100, 1.0)];
+    [sliderBarImage renderAtPoint:CGPointMake(125 + (6 - (sliderBarImage.scale.x * 6)), 402) centerOfImage:NO];
+    [sliderBarImage setScale:Scale2fMake(musicVolume / 100, 1.0)];
+    [sliderBarImage renderAtPoint:CGPointMake(125 + (6 - (sliderBarImage.scale.x * 6)), 332) centerOfImage:NO];
 }
 
 @end

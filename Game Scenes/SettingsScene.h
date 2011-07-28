@@ -30,8 +30,14 @@
     Image           *backButton;
     NSUserDefaults  *settingsDB;
     
-    UISlider        *soundSlider;
-    UISlider        *musicSlider;
+    Image           *sliderImage;
+    Image           *sliderBarImage;
+    Image           *volumeLowImage;
+    Image           *volumeHighImage;
+    BOOL            soundBarTouched;
+    BOOL            musicBarTouched;
+    float           soundVolume;
+    float           musicVolume;
 }
 
 @end

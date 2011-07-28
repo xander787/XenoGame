@@ -143,6 +143,8 @@
 		B9503D8E13DF917200456E84 /* PauseMenuScene.m in Sources */ = {isa = PBXBuildFile; fileRef = B9503D8C13DF917200456E84 /* PauseMenuScene.m */; };
 		B963267A12DD392E00FA1BA1 /* Projectiles.plist in Resources */ = {isa = PBXBuildFile; fileRef = B963267912DD392E00FA1BA1 /* Projectiles.plist */; };
 		B969707E13E104FA002EC552 /* store.png in Resources */ = {isa = PBXBuildFile; fileRef = B969707D13E104F3002EC552 /* store.png */; };
+		B969708B13E1335B002EC552 /* Slider.png in Resources */ = {isa = PBXBuildFile; fileRef = B969708913E1335B002EC552 /* Slider.png */; };
+		B969708C13E1335B002EC552 /* SliderBar.png in Resources */ = {isa = PBXBuildFile; fileRef = B969708A13E1335B002EC552 /* SliderBar.png */; };
 		B97A805612C964AD005FBB61 /* AbstractProjectile.m in Sources */ = {isa = PBXBuildFile; fileRef = B97A805512C964AD005FBB61 /* AbstractProjectile.m */; };
 		B9935E4913AC64F3005BBA67 /* kEnemyKamikazeeLevelThree.png in Resources */ = {isa = PBXBuildFile; fileRef = B9935E3F13AC64F3005BBA67 /* kEnemyKamikazeeLevelThree.png */; };
 		B9935E4A13AC64F3005BBA67 /* kEnemyMissileBombLevelThree.png in Resources */ = {isa = PBXBuildFile; fileRef = B9935E4013AC64F3005BBA67 /* kEnemyMissileBombLevelThree.png */; };
@@ -378,6 +380,8 @@
 		B9503D8C13DF917200456E84 /* PauseMenuScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PauseMenuScene.m; path = "Game Scenes/PauseMenuScene.m"; sourceTree = "<group>"; };
 		B963267912DD392E00FA1BA1 /* Projectiles.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Projectiles.plist; path = "Game Resources/Projectiles.plist"; sourceTree = SOURCE_ROOT; };
 		B969707D13E104F3002EC552 /* store.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = store.png; sourceTree = "<group>"; };
+		B969708913E1335B002EC552 /* Slider.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Slider.png; sourceTree = "<group>"; };
+		B969708A13E1335B002EC552 /* SliderBar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SliderBar.png; sourceTree = "<group>"; };
 		B97A805412C964AD005FBB61 /* AbstractProjectile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AbstractProjectile.h; path = Entities/Projectiles/AbstractProjectile.h; sourceTree = "<group>"; };
 		B97A805512C964AD005FBB61 /* AbstractProjectile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AbstractProjectile.m; path = Entities/Projectiles/AbstractProjectile.m; sourceTree = "<group>"; };
 		B9935E3F13AC64F3005BBA67 /* kEnemyKamikazeeLevelThree.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = kEnemyKamikazeeLevelThree.png; path = "Game Resources/Images/Normal/Ships/Enemy Ships/kEnemyKamikazeeLevelThree.png"; sourceTree = SOURCE_ROOT; };
@@ -902,6 +906,8 @@
 		11F3274212A0D8D5003CF17B /* Application Resources */ = {
 			isa = PBXGroup;
 			children = (
+				B969708913E1335B002EC552 /* Slider.png */,
+				B969708A13E1335B002EC552 /* SliderBar.png */,
 				B969707D13E104F3002EC552 /* store.png */,
 				111D631C13DE5A9C005045D4 /* Volume_high.png */,
 				111D631D13DE5A9C005045D4 /* Volume_low.png */,
@@ -1198,6 +1204,8 @@
 				111D631F13DE5A9C005045D4 /* Volume_low.png in Resources */,
 				111D632113DF58A4005045D4 /* game_theme.mp3 in Resources */,
 				B969707E13E104FA002EC552 /* store.png in Resources */,
+				B969708B13E1335B002EC552 /* Slider.png in Resources */,
+				B969708C13E1335B002EC552 /* SliderBar.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
