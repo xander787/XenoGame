@@ -31,8 +31,10 @@
 	GLuint currentGameState;
 	// Current scene
 	AbstractScene *currentScene;
-    // Last used scene
-    AbstractScene *lastScene;
+    // Current Scene key
+    NSString *currentSceneKey;
+    // Last scene key
+    NSString *lastSceneKey;
 	// Dictionary of scenes
 	NSMutableDictionary *_scenes;
 	// Global alpha
@@ -51,7 +53,7 @@
 + (Director*)sharedDirector;
 - (void)addSceneWithKey:(NSString*)aSceneKey scene:(AbstractScene*)aScene;
 - (BOOL)setCurrentSceneToSceneWithKey:(NSString*)aSceneKey;
-- (BOOL)setCurrentSceneToLastSceneUsed;
 - (BOOL)transitionToSceneWithKey:(NSString*)aSceneKey;
+- (NSString *)getLastSceneUsed;
 
 @end

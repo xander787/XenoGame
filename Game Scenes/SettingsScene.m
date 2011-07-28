@@ -125,7 +125,7 @@
     
     if(CGRectContainsPoint(CGRectMake(15, 440, backButton.imageWidth, backButton.imageHeight), location)){
         sceneState = kSceneState_TransitionOut;
-        nextSceneKey = @"menu";
+        nextSceneKey = [_sharedDirector getLastSceneUsed];
     }
 }
 

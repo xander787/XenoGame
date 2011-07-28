@@ -35,7 +35,8 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(Director);
 	// Initialize the arrays to be used within the state manager
 	_scenes = [[NSMutableDictionary alloc] init];
 	currentScene = nil;
-    lastScene = nil;
+    currentSceneKey = nil;
+    lastSceneKey = nil;
 	globalAlpha = 1.0f;
 	return self;
 }
@@ -51,38 +52,20 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(Director);
 		if(DEBUG) NSLog(@"ERROR: Scene with key '%@' not found.", aSceneKey);
         return NO;
     }
-	
-    if (!lastScene) {
-        lastScene = [_scenes objectForKey:aSceneKey];
-    }
-    else {
-        lastScene = currentScene;
-    }
+    
+    lastSceneKey = currentSceneKey;
     
     currentScene = [_scenes objectForKey:aSceneKey];
+    currentSceneKey = aSceneKey;
 	[currentScene setSceneAlpha:0.0f];
 	[currentScene setSceneState:kSceneState_TransitionIn];
     
     return YES;
 }
 
-- (BOOL)setCurrentSceneToLastSceneUsed {
-    if(!lastScene) {
-		if(DEBUG) NSLog(@"ERROR: No lastScene variable available");
-        return NO;
-    }
-    
-    AbstractScene *scene = currentScene;
-    currentScene = lastScene;
-    lastScene = scene;
-    [scene release];
-    
-	[currentScene setSceneAlpha:0.0f];
-	[currentScene setSceneState:kSceneState_TransitionIn];
-    
-    return YES;
+- (NSString *)getLastSceneUsed {
+    return lastSceneKey;
 }
-
 
 - (BOOL)transitionToSceneWithKey:(NSString*)aSceneKey {
 	

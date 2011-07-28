@@ -123,7 +123,8 @@
     
     if(CGRectContainsPoint(CGRectMake(15, 440, backButton.imageWidth, backButton.imageHeight), location)){
         sceneState = kSceneState_TransitionOut;
-        nextSceneKey = @"menu";
+        nextSceneKey = [_sharedDirector getLastSceneUsed];
+        NSLog(@"%@", nextSceneKey);
     }
     if(CGRectContainsPoint(CGRectMake(12, 395, todayButton.imageWidth, todayButton.imageHeight), location)){
         [self todayButtonPressed];
