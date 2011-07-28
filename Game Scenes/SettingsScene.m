@@ -41,6 +41,9 @@
 //  - Removed all testing code for the ships etc.
 //  to the GameScene class. Also moving the above commit
 //  comments to that file as well for reference.
+//
+//	Last Updated - 7/28/11 @ 3:30PM - Alexander
+//	- Control type setting now works
 
 #import "SettingsScene.h"
 
@@ -89,8 +92,13 @@
     volumeLowImage = [[Image alloc] initWithImage:@"Volume_low.png" scale:Scale2fMake(0.75, 0.75)];
     volumeHighImage = [[Image alloc] initWithImage:@"Volume_high.png" scale:Scale2fMake(0.75, 0.75)];
     
-    soundVolume = 100;
-    musicVolume = 50;
+    soundVolume = [settingsDB floatForKey:kSetting_SoundVolume] * 100;
+    musicVolume = [settingsDB floatForKey:kSetting_MusicVolume] * 100;
+    
+    controlTypeTouchImage = [[Image alloc] initWithImage:@"TouchOff.png" scale:Scale2fOne];
+    controlTypeAccelerometerImage = [[Image alloc] initWithImage:@"AccelerometerOff.png" scale:Scale2fOne];
+    controlTypeTouchImageGlow = [[Image alloc] initWithImage:@"TouchOn.png" scale:Scale2fOne];
+    controlTypeAccelerometerImageGlow = [[Image alloc] initWithImage:@"AccelerometerOn.png" scale:Scale2fOne];
 }
 
 #pragma mark -
@@ -159,6 +167,15 @@
         musicVolume = MAX(0, musicVolume);
         musicVolume = MIN(musicVolume, 100);
     }
+    
+    if (CGRectContainsPoint(CGRectMake(20.0f, 220.0f, 105.0f, 48.0f), location)) {
+        NSLog(@"Touch");
+        [settingsDB setValue:kSettingValue_ControlType_Touch forKey:kSetting_ControlType];
+    }
+    if (CGRectContainsPoint(CGRectMake(130.0f, 220.0f, 180.0f, 48.0f), location)) {
+        NSLog(@"Accel");
+        [settingsDB setValue:kSettingValue_ControlType_Accelerometer forKey:kSetting_ControlType];
+    }
 }
 
 - (void)updateWithTouchLocationMoved:(NSSet *)touches withEvent:(UIEvent *)event view:(UIView *)aView {
@@ -194,6 +211,15 @@
     [sliderBarImage renderAtPoint:CGPointMake(125 + (6 - (sliderBarImage.scale.x * 6)), 402) centerOfImage:NO];
     [sliderBarImage setScale:Scale2fMake(musicVolume / 100, 1.0)];
     [sliderBarImage renderAtPoint:CGPointMake(125 + (6 - (sliderBarImage.scale.x * 6)), 332) centerOfImage:NO];
+    
+    if ([settingsDB valueForKey:kSetting_ControlType] == kSettingValue_ControlType_Touch) {
+        [controlTypeTouchImageGlow renderAtPoint:CGPointMake(70.0f, 240.0f) centerOfImage:YES];
+        [controlTypeAccelerometerImage renderAtPoint:CGPointMake(210.0f, 240.0f) centerOfImage:YES];
+    }
+    else {
+        [controlTypeTouchImage renderAtPoint:CGPointMake(70.0f, 240.0f) centerOfImage:YES];
+        [controlTypeAccelerometerImageGlow renderAtPoint:CGPointMake(210.0f, 240.0f) centerOfImage:YES];
+    }
 }
 
 @end

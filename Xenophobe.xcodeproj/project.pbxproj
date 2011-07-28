@@ -66,6 +66,10 @@
 		118C4B6B12CDA5D50095B3D4 /* Polygon.m in Sources */ = {isa = PBXBuildFile; fileRef = 118C4B6912CDA5D50095B3D4 /* Polygon.m */; };
 		119949E513DFB36900D501E8 /* StoreScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 119949E413DFB36900D501E8 /* StoreScene.m */; };
 		11994A2013E1234B00D501E8 /* AboutScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 11994A1F13E1234A00D501E8 /* AboutScene.m */; };
+		11994A2B13E215E700D501E8 /* AccelerometerOff.png in Resources */ = {isa = PBXBuildFile; fileRef = 11994A2713E215E700D501E8 /* AccelerometerOff.png */; };
+		11994A2C13E215E700D501E8 /* AccelerometerOn.png in Resources */ = {isa = PBXBuildFile; fileRef = 11994A2813E215E700D501E8 /* AccelerometerOn.png */; };
+		11994A2D13E215E700D501E8 /* TouchOff.png in Resources */ = {isa = PBXBuildFile; fileRef = 11994A2913E215E700D501E8 /* TouchOff.png */; };
+		11994A2E13E215E700D501E8 /* TouchOn.png in Resources */ = {isa = PBXBuildFile; fileRef = 11994A2A13E215E700D501E8 /* TouchOn.png */; };
 		119FCF01129B528C00D3256A /* EnemyShips.plist in Resources */ = {isa = PBXBuildFile; fileRef = 119FCF00129B528C00D3256A /* EnemyShips.plist */; };
 		11B1B8CF1276B53B006D085D /* SettingsScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 11B1B8CE1276B53B006D085D /* SettingsScene.m */; };
 		11B1BBCA127A64E0006D085D /* HighScoresScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 11B1BBC9127A64E0006D085D /* HighScoresScene.m */; };
@@ -257,6 +261,10 @@
 		119949E413DFB36900D501E8 /* StoreScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StoreScene.m; path = "Game Scenes/StoreScene.m"; sourceTree = "<group>"; };
 		11994A1E13E1234A00D501E8 /* AboutScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AboutScene.h; path = "Game Scenes/AboutScene.h"; sourceTree = "<group>"; };
 		11994A1F13E1234A00D501E8 /* AboutScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AboutScene.m; path = "Game Scenes/AboutScene.m"; sourceTree = "<group>"; };
+		11994A2713E215E700D501E8 /* AccelerometerOff.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AccelerometerOff.png; sourceTree = "<group>"; };
+		11994A2813E215E700D501E8 /* AccelerometerOn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AccelerometerOn.png; sourceTree = "<group>"; };
+		11994A2913E215E700D501E8 /* TouchOff.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TouchOff.png; sourceTree = "<group>"; };
+		11994A2A13E215E700D501E8 /* TouchOn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = TouchOn.png; sourceTree = "<group>"; };
 		119FCF00129B528C00D3256A /* EnemyShips.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = EnemyShips.plist; path = "Game Resources/EnemyShips.plist"; sourceTree = SOURCE_ROOT; };
 		11B1B8CD1276B53B006D085D /* SettingsScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SettingsScene.h; path = "Game Scenes/SettingsScene.h"; sourceTree = "<group>"; };
 		11B1B8CE1276B53B006D085D /* SettingsScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SettingsScene.m; path = "Game Scenes/SettingsScene.m"; sourceTree = "<group>"; };
@@ -906,6 +914,10 @@
 		11F3274212A0D8D5003CF17B /* Application Resources */ = {
 			isa = PBXGroup;
 			children = (
+				11994A2713E215E700D501E8 /* AccelerometerOff.png */,
+				11994A2813E215E700D501E8 /* AccelerometerOn.png */,
+				11994A2913E215E700D501E8 /* TouchOff.png */,
+				11994A2A13E215E700D501E8 /* TouchOn.png */,
 				B969708913E1335B002EC552 /* Slider.png */,
 				B969708A13E1335B002EC552 /* SliderBar.png */,
 				B969707D13E104F3002EC552 /* store.png */,
@@ -1206,6 +1218,10 @@
 				B969707E13E104FA002EC552 /* store.png in Resources */,
 				B969708B13E1335B002EC552 /* Slider.png in Resources */,
 				B969708C13E1335B002EC552 /* SliderBar.png in Resources */,
+				11994A2B13E215E700D501E8 /* AccelerometerOff.png in Resources */,
+				11994A2C13E215E700D501E8 /* AccelerometerOn.png in Resources */,
+				11994A2D13E215E700D501E8 /* TouchOff.png in Resources */,
+				11994A2E13E215E700D501E8 /* TouchOn.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

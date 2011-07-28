@@ -38,6 +38,11 @@
     BOOL            musicBarTouched;
     float           soundVolume;
     float           musicVolume;
+    
+    Image           *controlTypeTouchImage;
+    Image           *controlTypeAccelerometerImage;
+    Image           *controlTypeTouchImageGlow;
+    Image           *controlTypeAccelerometerImageGlow;
 }
 
 @end
