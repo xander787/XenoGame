@@ -12,6 +12,9 @@
 //
 //	Last Updated - 10/20/2010 @ 6PM - Alexander
 //	- Initial Project Creation
+//
+//  Last Updated - 7/27/11 @ 8PM - Alexander
+//  - Added ability to switch to last used scene key
 
 #import <Foundation/Foundation.h>
 #import <OpenGLES/ES1/gl.h>
@@ -28,6 +31,8 @@
 	GLuint currentGameState;
 	// Current scene
 	AbstractScene *currentScene;
+    // Last used scene
+    AbstractScene *lastScene;
 	// Dictionary of scenes
 	NSMutableDictionary *_scenes;
 	// Global alpha
@@ -46,6 +51,7 @@
 + (Director*)sharedDirector;
 - (void)addSceneWithKey:(NSString*)aSceneKey scene:(AbstractScene*)aScene;
 - (BOOL)setCurrentSceneToSceneWithKey:(NSString*)aSceneKey;
+- (BOOL)setCurrentSceneToLastSceneUsed;
 - (BOOL)transitionToSceneWithKey:(NSString*)aSceneKey;
 
 @end

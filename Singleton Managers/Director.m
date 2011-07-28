@@ -12,6 +12,9 @@
 //
 //	Last Updated - 10/20/2010 @ 6PM - Alexander
 //	- Initial Project Creation
+//
+//  Last Updated - 7/27/11 @ 8PM - Alexander
+//  - Added ability to switch to last used scene key
 
 #import "Director.h"
 #import "AbstractScene.h"
@@ -32,6 +35,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(Director);
 	// Initialize the arrays to be used within the state manager
 	_scenes = [[NSMutableDictionary alloc] init];
 	currentScene = nil;
+    lastScene = nil;
 	globalAlpha = 1.0f;
 	return self;
 }
@@ -48,7 +52,31 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(Director);
         return NO;
     }
 	
+    if (!lastScene) {
+        lastScene = [_scenes objectForKey:aSceneKey];
+    }
+    else {
+        lastScene = currentScene;
+    }
+    
     currentScene = [_scenes objectForKey:aSceneKey];
+	[currentScene setSceneAlpha:0.0f];
+	[currentScene setSceneState:kSceneState_TransitionIn];
+    
+    return YES;
+}
+
+- (BOOL)setCurrentSceneToLastSceneUsed {
+    if(!lastScene) {
+		if(DEBUG) NSLog(@"ERROR: No lastScene variable available");
+        return NO;
+    }
+    
+    AbstractScene *scene = currentScene;
+    currentScene = lastScene;
+    lastScene = scene;
+    [scene release];
+    
 	[currentScene setSceneAlpha:0.0f];
 	[currentScene setSceneState:kSceneState_TransitionIn];
     
