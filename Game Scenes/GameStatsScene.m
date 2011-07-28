@@ -35,7 +35,7 @@
         
         _sceneFadeSpeed = 1.0f;
         
-        mainMenuButton = [[MenuControl alloc] initWithImageNamed:@"mainmenu.png" location:Vector2fMake(160, 100) centerOfImage:YES type:kControlType_MainMenu];
+        storeButton = [[MenuControl alloc] initWithImageNamed:@"store.png" location:Vector2fMake(160, 100) centerOfImage:YES type:kControlType_Shop];
         continueGameButton = [[MenuControl alloc] initWithImageNamed:@"continue.png" location:Vector2fMake(160, 145) centerOfImage:YES type:kControlType_ReturnToGame];
         optionsButton = [[MenuControl alloc] initWithImageNamed:@"settings.png" location:Vector2fMake(160, 55) centerOfImage:YES type:kControlType_Settings];
         
@@ -70,13 +70,13 @@
             break;
     }
     
-    [mainMenuButton updateWithDelta:[NSNumber numberWithFloat:aDelta]];
+    [storeButton updateWithDelta:[NSNumber numberWithFloat:aDelta]];
     [continueGameButton updateWithDelta:[NSNumber numberWithFloat:aDelta]];
     [optionsButton updateWithDelta:[NSNumber numberWithFloat:aDelta]];
     
-    if([mainMenuButton state] == kControl_Selected){
-        [mainMenuButton setState:kControl_Idle];
-        nextSceneKey = @"menu";
+    if([storeButton state] == kControl_Selected){
+        [storeButton setState:kControl_Idle];
+        nextSceneKey = @"store";
         if(![_sharedDirector setCurrentSceneToSceneWithKey:nextSceneKey])
             sceneState = kSceneState_TransitionOut;
     }
@@ -100,7 +100,7 @@
 	// Flip the y location ready to check it against OpenGL coordinates
 	//NSLog(@"%f %f", location.x, location.y);
 	location.y = 480-location.y;
-    [mainMenuButton updateWithLocation:NSStringFromCGPoint(location)];
+    [storeButton updateWithLocation:NSStringFromCGPoint(location)];
     [continueGameButton updateWithLocation:NSStringFromCGPoint(location)];
     [optionsButton updateWithLocation:NSStringFromCGPoint(location)];
 	NSLog(@"%f %f", location.x, location.y);
@@ -113,7 +113,7 @@
     
 	// Flip the y location ready to check it against OpenGL coordinates
 	location.y = 480-location.y;
-    [mainMenuButton updateWithLocation:NSStringFromCGPoint(location)];
+    [storeButton updateWithLocation:NSStringFromCGPoint(location)];
     [continueGameButton updateWithLocation:NSStringFromCGPoint(location)];
     [optionsButton updateWithLocation:NSStringFromCGPoint(location)];
 }
@@ -127,7 +127,7 @@
 }
 
 - (void)render {
-    [mainMenuButton render];
+    [storeButton render];
     [optionsButton render];
     [continueGameButton render];
     
@@ -148,7 +148,7 @@
     [super dealloc];
     
     [continueGameButton release];
-    [mainMenuButton release];
+    [storeButton release];
     [optionsButton release];
 }
 

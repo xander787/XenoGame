@@ -20,7 +20,7 @@
 #import "Image.h"
 
 @interface GameStatsScene : AbstractScene {
-    MenuControl     *mainMenuButton;
+    MenuControl     *storeButton;
     MenuControl     *optionsButton;
     MenuControl     *continueGameButton;
     
