@@ -34,6 +34,9 @@
 //  during the appropriate wave type as well as added collision support
 //  for player projectiles -> boss modules
 //  - Boss ships now fly in after the waves have been completed
+//
+//  Last Updated - 7/28/11 @5:30PM - Alexander
+//  - New delegate method for saving progress
 
 #import <Foundation/Foundation.h>
 #import "BossShip.h"
@@ -50,6 +53,7 @@
 @protocol GameLevelDelegate <NSObject>
 @required
 - (void)levelEnded:(NSDictionary *)stats;
+- (void)playerReachedSavePoint:(NSString *)savePoint;
 - (void)scoreChangedBy:(int)scoreChange;
 - (void)playerHealthChangedBy:(int)healthChange;
 - (void)creditAmountChangedBy:(int)creditChange;
@@ -95,7 +99,7 @@ typedef enum _OutroAnimation {
     id <GameLevelDelegate>  delegate;
     
     AngelCodeFont           *font;
-    NSUserDefaults          *settings;
+    NSUserDefaults          *settingsDB;
     CGRect                  screenBounds;
     ParticleEmitter         *transitionParticleEmitter;
     

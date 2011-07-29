@@ -97,6 +97,9 @@
 //
 //  Last Updated - 7/27/11 @4:20PM - James
 //  - Bug fixes mainly
+//
+//  Last Updated - 7/28/11 @5:30PM - Alexander
+//  - New delegate method for saving progress
 
 
 #import "GameLevelScene.h"
@@ -272,7 +275,7 @@ WrapText( const char *text
         // Grab the bounds of the screen
 		screenBounds = [[UIScreen mainScreen] bounds];
         
-        settings = [NSUserDefaults standardUserDefaults];
+        settingsDB = [NSUserDefaults standardUserDefaults];
         
         delegate = del;
         
@@ -449,7 +452,9 @@ WrapText( const char *text
     return -1;
 }
 
-- (void)loadWave:(int)wave {
+- (void)loadWave:(int)wave {    
+    [delegate playerReachedSavePoint:[NSString stringWithFormat:@"%d", wave]];
+    
     if(![[wavesArray objectAtIndex:wave] respondsToSelector:@selector(setString:)]) {
         for(int i = 0; i < [[wavesArray objectAtIndex:wave] count]; ++i) {
             currentWaveType = kWaveType_Enemy;

@@ -36,7 +36,9 @@
 //  Last Updated - 6/5/11 @11PM - Alexander
 //  - Removed playerScoreString because it was causing
 //  memory corruption and crashes.
-
+//
+//  Last Updated - 7/28/11 @5:30PM - Alexander
+//  - Game saving implemented
 
 #import <Foundation/Foundation.h>
 #import "Common.h"
@@ -83,6 +85,7 @@ typedef enum _Level {
     ParticleEmitter *backgroundParticleEmitter;
     AngelCodeFont   *font;
     int             playerScore;
+    float           playerHealth;
     Image           *healthBar;
     Image           *healthBarBackground;
     
@@ -93,6 +96,7 @@ typedef enum _Level {
     // Level Loading
     NSArray         *levelFileIndex;
     Level           currentLevel;
+    int             currentLevelIndex;
     GameLevelScene  *gameLevel;
     BOOL            levelInProgress;
     

@@ -59,6 +59,9 @@
 //
 //  Last Updated - 7/27/11 @9:30AM - Alexander
 //  - Changing music based on if level is in progress or not
+//
+//  Last Updated - 7/28/11 @5:30PM - Alexander
+//  - Game saving implemented
 
 #import "GameScene.h"
 
@@ -113,6 +116,7 @@
     [levelFileIndexDict release];
     
     currentLevel = [self convertToLevelEnum:[levelFileIndex objectAtIndex:0]];
+    currentLevelIndex = 0;
     
     [self loadLevelForPlay:currentLevel];
 }
@@ -375,6 +379,12 @@
     levelInProgress = NO;
     [statsScene setStatsDictionary:stats];
     nukePowerUpReady = NO;
+}
+
+- (void)playerReachedSavePoint:(NSString *)savePoint {
+    [settingsDB setValue:[NSString stringWithFormat:@"%@;%d", currentLevelIndex, savePoint] forKey:kSetting_SaveGameLevelProgress];
+    [settingsDB setInteger:playerScore forKey:kSetting_SaveGameScore];
+    [settingsDB setFloat:gameLevel.playerShip.shipHealth forKey:kSetting_SaveGameHealth];
 }
 
 - (void)scoreChangedBy:(int)scoreChange {
