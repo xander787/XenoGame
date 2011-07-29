@@ -150,7 +150,6 @@ WrapText( const char *text
     int lenPrefixFirst = strlen(prefixFirst? prefixFirst: "");
     int lenPrefixRest  = strlen(prefixRest ? prefixRest : "");
     int spaceLeft      = maxWidth;
-    int wordsThisLine  = 0;
     
     if (maxWidth == 0) {
         maxWidth = 78;
@@ -187,7 +186,6 @@ WrapText( const char *text
         s = NextWord(text);
         while (*s) {
             spaceLeft     = maxWidth;
-            wordsThisLine = 0;
             
             /* copy the prefix */
             prefix = lineCount ? prefixRest : prefixFirst;
@@ -573,6 +571,7 @@ WrapText( const char *text
                         }
                     }
                     [secondWrappedArray release];
+                    [secondHalfString release];
                 }
             }
         }
@@ -1266,10 +1265,12 @@ WrapText( const char *text
                             }
                         }
                         [secondWrappedArray release];
+                        [secondHalfString release];
                     }
                 }
             }
         }
+        [wrappedTextArray release];
     }
 }
 

@@ -147,7 +147,7 @@
 	vertices = calloc( totalQuads, sizeof( Quad2f ) );
 	indices = calloc( totalQuads * 6, sizeof( GLushort ) );
 	
-	for( NSUInteger i=0;i<totalQuads;i++) {
+	for(NSUInteger i=0; i<totalQuads; i++) {
 		indices[i*6+0] = i*4+0;
 		indices[i*6+1] = i*4+1;
 		indices[i*6+2] = i*4+2;

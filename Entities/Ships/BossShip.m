@@ -168,14 +168,15 @@
         else if([bossDictionary valueForKey:@"kBossType"] == @"kBossTypeMini") {
             bossType = kBossType_Mini;
         }
-        
-        
+                
         //Pre allocate all of the arrays from our BossShips.plist
         NSArray *moduleImagesArray = [[NSArray alloc] initWithArray:[bossDictionary objectForKey:@"kShipModuleImages"]];
         NSArray *moduleLocationsArray = [[NSArray alloc] initWithArray:[bossDictionary objectForKey:@"kShipModulePoints"]];
         NSArray *moduleTurretPointsArray = [[NSArray alloc] initWithArray:[bossDictionary objectForKey:@"kShipTurretPoints"]];
         NSArray *moduleCollisionPointsArray = [[NSArray alloc] initWithArray:[bossDictionary objectForKey:@"kCollisionBoundingPoints"]];
         NSArray *moduleDestructionOrder = [[NSArray alloc] initWithArray:[bossDictionary objectForKey:@"kModularDestructionOrder"]];
+        
+        [bossDictionary release];
         
         //Set a global number of modules we have for the boss ship, better to use than getting the count of an array multiple times
         numberOfModules = [moduleImagesArray count];
