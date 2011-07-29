@@ -47,6 +47,9 @@
 //
 //	Last Updated - 7/28/11 @ 6:30PM - Alexander
 //	- Sound actually saves to preferences file now
+//
+//	Last Updated - 7/28/11 @ 6:30PM - Alexander
+//	- Sound is updated in real time based on the sound sliders
 
 #import "SettingsScene.h"
 
@@ -97,6 +100,8 @@
     
     soundVolume = [settingsDB floatForKey:kSetting_SoundVolume] * 100;
     musicVolume = [settingsDB floatForKey:kSetting_MusicVolume] * 100;
+    
+    soundManager = [SoundManager sharedSoundManager];
     
     controlTypeTouchImage = [[Image alloc] initWithImage:@"TouchOff.png" scale:Scale2fOne];
     controlTypeAccelerometerImage = [[Image alloc] initWithImage:@"AccelerometerOff.png" scale:Scale2fOne];
@@ -178,6 +183,7 @@
         soundVolume = MAX(0, soundVolume);
         soundVolume = MIN(soundVolume, 100);
         [settingsDB setFloat:(soundVolume/100) forKey:kSetting_SoundVolume];
+        soundManager.fxVolume = soundVolume / 100;
     }
     if(CGRectContainsPoint(CGRectMake(90, 328, 29, 26), location)){
         //Music volume low pushed
@@ -185,6 +191,7 @@
         musicVolume = MAX(0, musicVolume);
         musicVolume = MIN(musicVolume, 100);
         [settingsDB setFloat:(musicVolume/100) forKey:kSetting_MusicVolume];
+        soundManager.musicVolume = musicVolume / 100;
     }
     if(CGRectContainsPoint(CGRectMake(280, 398, 39, 26), location)){
         //Sound volume high pushed
@@ -192,6 +199,7 @@
         soundVolume = MAX(0, soundVolume);
         soundVolume = MIN(soundVolume, 100);
         [settingsDB setFloat:(soundVolume/100) forKey:kSetting_SoundVolume];
+        soundManager.fxVolume = soundVolume / 100;
     }
     if(CGRectContainsPoint(CGRectMake(280, 328, 39, 26), location)){
         //Music volume high pushed
@@ -199,6 +207,7 @@
         musicVolume = MAX(0, musicVolume);
         musicVolume = MIN(musicVolume, 100);
         [settingsDB setFloat:(musicVolume/100) forKey:kSetting_MusicVolume];
+        soundManager.musicVolume = musicVolume / 100;
     }
     
     if (CGRectContainsPoint(CGRectMake(20.0f, 220.0f, 105.0f, 48.0f), location)) {

@@ -22,6 +22,10 @@
 //  11/23/2010 @ 12AM - James
 //  - Fixed annoying bug todo with initializing the logoImage
 //  by adding a [NSString stringW/String wrap around
+//
+//	7/28/11 @ 6:30PM - Alexander
+//	- Fixed a bug where the settings were being overwritten during
+//  each launch because I forgot to change the value for the firstTimeLaunch setting
 
 #import "MainMenuScene.h"
 #import "Image.h"
@@ -127,6 +131,7 @@
         [settingsDB setFloat:0.75 forKey:kSetting_SoundVolume];
         [settingsDB setFloat:0.50 forKey:kSetting_MusicVolume];
         [settingsDB setValue:kSettingValue_ControlType_Touch forKey:kSetting_ControlType];
+        [settingsDB setValue:@"NO" forKey:kSetting_FirstTimeRun];
     }
     
     soundManager = [SoundManager sharedSoundManager];

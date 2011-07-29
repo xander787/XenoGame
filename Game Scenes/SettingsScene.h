@@ -50,6 +50,8 @@
     BOOL            clearAllDataButtonPushed;
     
     ParticleEmitter		*backgroundParticleEmitter;
+    
+    SoundManager    *soundManager;
 }
 
 @end
