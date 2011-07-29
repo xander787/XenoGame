@@ -375,17 +375,7 @@
 }
 
 - (void)dealloc {
-    free(collisionDetectionBoundingPoints);
-    [Image release];
-    if(deathAnimationEmitter){
-        [deathAnimationEmitter release];
-    }
-    [projectilesArray release];
-    if(collisionPolygon){
-        [collisionPolygon release];
-    }
-    free(turretPoints);
-    free(thrusterPoints);
+    [mainImage release];
     [super dealloc];
 }
 

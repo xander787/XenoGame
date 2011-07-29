@@ -139,4 +139,10 @@
     [dropImage renderAtPoint:CGPointMake(location.x, location.y) centerOfImage:YES];
 }
 
+- (void)dealloc {
+    [super dealloc];
+    [dropImage release];
+    
+}
+
 @end

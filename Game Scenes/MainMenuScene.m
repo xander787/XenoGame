@@ -278,4 +278,11 @@
 	[menuItems makeObjectsPerformSelector:@selector(render)];
 }
 
+- (void)dealloc {
+    [super dealloc];
+    [menuItems release];
+    [logoImage release];
+    [backgroundParticleEmitter release];
+}
+
 @end

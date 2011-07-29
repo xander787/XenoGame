@@ -60,7 +60,6 @@
         NSString *path = [[NSString alloc] initWithString:[bundle pathForResource:@"BossShips" ofType:@"plist"]];
         NSMutableDictionary *bossShipsDictionary = [[NSMutableDictionary alloc] initWithContentsOfFile:path];
         NSMutableDictionary *bossDictionary;
-        [bundle release];
         [path release];
         
         switch (bossID) {
@@ -239,9 +238,7 @@
             }
             else {
                 modularObjects[i].numberOfWeapons = 0;
-            }
-            [turretString release];
-            
+            }            
             
             
             //Collision detection points time!
@@ -344,7 +341,7 @@
 }
 
 - (void)dealloc {
-    [playerShipRef release];
+    free(modularObjects);
     [super dealloc];
 }
 

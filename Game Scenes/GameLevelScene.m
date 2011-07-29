@@ -282,7 +282,6 @@ WrapText( const char *text
         NSBundle *bundle = [NSBundle mainBundle];
         NSString *path = [[NSString alloc] initWithString:[bundle pathForResource:levelFile ofType:@"plist"]];
         levelDictionary = [[NSMutableDictionary alloc] initWithContentsOfFile:path];
-        [bundle release];
         [path release];
         
         // Load and save the level type for this level
@@ -474,6 +473,7 @@ WrapText( const char *text
             
             [enemiesSet addObject:enemy];
             outroDelay = 0;
+            [enemy release];
         }
         holdingTimeTarget = (RANDOM_0_TO_1() * 4);
     }
@@ -1397,6 +1397,44 @@ WrapText( const char *text
     if (outroTransitionAnimating) {
         [transitionParticleEmitter renderParticles];
     }
+}
+
+- (void)dealloc {
+    [super dealloc];
+    //Its crashing
+    /*
+    if(font) [font release];
+    if(transitionParticleEmitter) [transitionParticleEmitter release];
+    [currentLevelFile release];
+    [playerShip release];
+    if(bossShip) [bossShip release];
+    if(enemiesSet) [enemiesSet release];
+    
+    if(dialogue) [dialogue release];
+    if(dialogueBuffer) [dialogueBuffer release];
+    if(dialogueLineOne) [dialogueLineOne release];
+    if(dialogueLineTwo) [dialogueLineTwo release];
+    if(dialogueLineThree) [dialogueLineThree release];
+    if(dialogueLineFour) [dialogueLineFour release];
+    if(dialogueLineFive) [dialogueLineFive release];
+    if(dialogueLineSix) [dialogueLineSix release];
+    if(dialogueLineOneBuffer) [dialogueLineOneBuffer release];
+    if(dialogueLineTwoBuffer) [dialogueLineTwoBuffer release];
+    if(dialogueLineThreeBuffer) [dialogueLineThreeBuffer release];
+    if(dialogueLineFourBuffer) [dialogueLineFourBuffer release];
+    if(dialogueLineFiveBuffer) [dialogueLineFiveBuffer release];
+    if(dialogueLineSixBuffer) [dialogueLineSixBuffer release];
+    if(remainderDialogue) [remainderDialogue release];
+    
+    if(dialogueBorder) [dialogueBorder release];
+    if(dialogueFastForwardButton) [dialogueFastForwardButton release];
+    if(speakerImage) [speakerImage release];
+    if(wavesArray) [wavesArray release];
+    if(initialPath) [initialPath release];
+    if(attackingEnemies) [attackingEnemies release];
+    [droppedPowerUpSet release];
+    if(shieldImage) [shieldImage release];
+     */
 }
 
 @end

@@ -303,7 +303,7 @@
         collisionPoints[3] = Vector2fMake(0, -1 * particleRadius);
         
         polygonArray = [[NSMutableArray alloc] init];
-        [polygonArray addObject:[[Polygon alloc] initWithPoints:collisionPoints andCount:collisionPointCount andShipPos:CGPointMake(currentLocation.x, currentLocation.y)]];
+        [polygonArray addObject:[[[Polygon alloc] initWithPoints:collisionPoints andCount:collisionPointCount andShipPos:CGPointMake(currentLocation.x, currentLocation.y)] autorelease]];
         
         
         
@@ -681,8 +681,6 @@
     [polygonArray release];
     [idType release];
     [nameOfImage release];
-//    [particlePolygon release];
-//    [missilePolygon release];
     free(collisionPoints);
     [super dealloc];
 }

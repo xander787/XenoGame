@@ -146,7 +146,7 @@
 
 - (void)dealloc {
     [super dealloc];
-    
+    [font release];
     [continueGameButton release];
     [storeButton release];
     [optionsButton release];

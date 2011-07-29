@@ -26,4 +26,9 @@
     
 }
 
+- (void)dealloc {
+    [super dealloc];
+    [outerShieldEmitter release];
+}
+
 @end

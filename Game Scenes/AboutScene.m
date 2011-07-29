@@ -173,4 +173,11 @@
     [font setScale:0.75f];
 }
 
+- (void)dealloc {
+    [super dealloc];
+    [font release];
+    [backButton release];
+    [backgroundParticleEmitter release];
+}
+
 @end

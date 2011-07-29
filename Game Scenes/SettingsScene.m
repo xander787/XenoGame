@@ -77,13 +77,13 @@
 //		nextSceneKey = nil;
 		
 		[self initSettings];
-	}
-    
-    settingsTitleString = @"Settings";
-    controlsSettingString = @"Controls";
-    soundSettingString = @"Sound";
-    musicSettingString = @"Music";
+        
+        settingsTitleString = @"Settings";
+        controlsSettingString = @"Controls";
+        soundSettingString = @"Sound";
+        musicSettingString = @"Music";
 
+	}
     	
 	return self;
 }
@@ -289,6 +289,24 @@
         [controlTypeYesButtonImage renderAtPoint:CGPointMake(80, 96) centerOfImage:YES];
         [controlTypeNoButtonImage renderAtPoint:CGPointMake(240, 96) centerOfImage:YES];
     }
+}
+
+- (void)dealloc {
+    [super dealloc];
+    [font release];
+    [backButton release];
+    [sliderImage release];
+    [sliderBarImage release];
+    [volumeLowImage release];
+    [volumeHighImage release];
+    [controlTypeTouchImage release];
+    [controlTypeAccelerometerImage release];
+    [controlTypeTouchImageGlow release];
+    [controlTypeAccelerometerImageGlow release];
+    [controlTypeClearAllSavedDataImage release];
+    [controlTypeYesButtonImage release];
+    [controlTypeNoButtonImage release];
+    [backgroundParticleEmitter release];
 }
 
 @end

@@ -240,7 +240,8 @@
 }
 
 - (void)dealloc {
-    
+    [leftCannonEmitterJoint release];
+    [rightCannonEmitterJoint release];
     [super dealloc];
 }
 

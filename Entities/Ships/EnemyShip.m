@@ -505,14 +505,9 @@
 }
 
 - (void)dealloc {
-    free(turretPoints);
-    free(collisionDetectionBoundingPoints);
     [enemySpriteSheet release];
     [enemyAnimation release];
-    [playerShipRef release];
-    if(collisionPolygon){
-        [collisionPolygon release];
-    }
+    [currentPath release];
     [super dealloc];
 }
 

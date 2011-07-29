@@ -108,7 +108,6 @@
     NSBundle *bundle = [NSBundle mainBundle];
     NSString *path = [[NSString alloc] initWithString:[bundle pathForResource:@"LevelsIndex" ofType:@"plist"]];
     NSMutableDictionary *levelFileIndexDict = [[NSMutableDictionary alloc] initWithContentsOfFile:path];
-    [bundle release];
     [path release];
     
     levelFileIndex = [[NSArray alloc] initWithArray:[levelFileIndexDict objectForKey:@"kLevelsFileIndex"]];
@@ -371,8 +370,13 @@
     [soundManager setMusicVolume:0.0f];
     [soundManager playMusicWithKey:@"menu_theme" timesToRepeat:10000];
     [soundManager fadeMusicVolumeFrom:0.0f toVolume:[settingsDB floatForKey:kSetting_MusicVolume] duration:2.0f stop:NO];
-
-    [gameLevel release];
+    
+    @try{
+        if(gameLevel) [gameLevel release];
+    }
+    @catch (NSException *e) {
+        NSLog(@"%e", e);
+    }
     gameLevel = nil;
     showStatsScene = YES;
     [statsScene setSceneState:kSceneState_TransitionIn];
@@ -513,6 +517,22 @@
 }
 
 - (void)dealloc {
+    [backgroundParticleEmitter release];
+    [healthBar release];
+    [healthBarBackground release];
+    [pauseScreen release];
+    [pauseButton release];
+    
+    [shieldImage release];
+    [damageMultiplierImage release];
+    [scoreMultiplierImage release];
+    [enemyRepelImage release];
+    [magnetImage release];
+    [slowmoImage release];
+    [proximityDamageImage release];
+    [nukeImage release];
+    [enabledPowerUpsArray release];
+    
     [font release];
     //[bulletTest release];
     [levelFileIndex release];

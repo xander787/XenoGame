@@ -100,4 +100,9 @@
     
 }
 
+- (void)dealloc {
+    [super dealloc];
+    [font release];
+}
+
 @end

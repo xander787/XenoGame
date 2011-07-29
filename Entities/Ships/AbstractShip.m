@@ -62,4 +62,14 @@
 	
 }
 
+- (void)dealloc {
+    [super dealloc];
+    free(collisionPolygon);
+    free(collisionDetectionBoundingPoints);
+    free(turretPoints);
+    free(thrusterPoints);
+    [projectilesArray release];
+    [deathAnimationEmitter release];
+}
+
 @end

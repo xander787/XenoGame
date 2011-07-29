@@ -241,4 +241,20 @@
     
 }
 
+- (void)dealloc {
+    [super dealloc];
+    [leaderboardsTitle release];
+    [highscoresTable release];
+    [todayButton release];
+    [todayButtonGlow release];
+    [thisWeekButton release];
+    [thisWeekButtonGlow release];
+    [allTimeButton release];
+    [allTimeButtonGlow release];
+    [backButton release];
+    [previousButton release];
+    [nextButton release];
+    [backgroundParticleEmitter release];
+}
+
 @end

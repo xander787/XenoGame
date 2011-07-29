@@ -43,4 +43,8 @@
 - (void)render {
 }
 
+- (void)dealloc {
+    [super dealloc];
+}
+
 @end

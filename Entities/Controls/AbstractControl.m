@@ -34,4 +34,9 @@
 	
 }
 
+- (void)dealloc {
+    [super dealloc];
+    [image release];
+}
+
 @end
