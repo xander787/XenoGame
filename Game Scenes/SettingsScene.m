@@ -44,6 +44,9 @@
 //
 //	Last Updated - 7/28/11 @ 3:30PM - Alexander
 //	- Control type setting now works
+//
+//	Last Updated - 7/28/11 @ 6:30PM - Alexander
+//	- Sound actually saves to preferences file now
 
 #import "SettingsScene.h"
 
@@ -174,24 +177,28 @@
         soundVolume -= 10;
         soundVolume = MAX(0, soundVolume);
         soundVolume = MIN(soundVolume, 100);
+        [settingsDB setFloat:(soundVolume/100) forKey:kSetting_SoundVolume];
     }
     if(CGRectContainsPoint(CGRectMake(90, 328, 29, 26), location)){
         //Music volume low pushed
         musicVolume -= 10;
         musicVolume = MAX(0, musicVolume);
         musicVolume = MIN(musicVolume, 100);
+        [settingsDB setFloat:(musicVolume/100) forKey:kSetting_MusicVolume];
     }
     if(CGRectContainsPoint(CGRectMake(280, 398, 39, 26), location)){
         //Sound volume high pushed
         soundVolume += 10;
         soundVolume = MAX(0, soundVolume);
         soundVolume = MIN(soundVolume, 100);
+        [settingsDB setFloat:(soundVolume/100) forKey:kSetting_SoundVolume];
     }
     if(CGRectContainsPoint(CGRectMake(280, 328, 39, 26), location)){
         //Music volume high pushed
         musicVolume += 10;
         musicVolume = MAX(0, musicVolume);
         musicVolume = MIN(musicVolume, 100);
+        [settingsDB setFloat:(musicVolume/100) forKey:kSetting_MusicVolume];
     }
     
     if (CGRectContainsPoint(CGRectMake(20.0f, 220.0f, 105.0f, 48.0f), location)) {
@@ -210,7 +217,11 @@
         if(CGRectContainsPoint(CGRectMake(30, 80, 100, 32), location)){
             NSLog(@"Yes");
             clearAllDataButtonPushed = NO;
-            //Make settings default
+            [settingsDB setValue:@"" forKey:kSetting_TwitterCredentials];
+            [settingsDB setBool:YES forKey:kSetting_TactileFeedback];
+            [settingsDB setFloat:0.75 forKey:kSetting_SoundVolume];
+            [settingsDB setFloat:0.50 forKey:kSetting_MusicVolume];
+            [settingsDB setValue:kSettingValue_ControlType_Touch forKey:kSetting_ControlType];
         }
         if(CGRectContainsPoint(CGRectMake(190, 80, 100, 32), location)){
             NSLog(@"No");
