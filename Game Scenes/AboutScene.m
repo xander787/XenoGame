@@ -39,7 +39,7 @@
 
 - (void)initAboutScene {
     font = [[AngelCodeFont alloc] initWithFontImageNamed:@"xenophobefont.png" controlFile:@"xenophobefont" scale:0.300f filter:GL_LINEAR];
-    backButton = [[Image alloc] initWithImage:[NSString stringWithString:@"backbutton.png"] scale:Scale2fMake(0.5f, 0.5f)];
+    backButton = [[Image alloc] initWithImage:[NSString stringWithString:@"backbutton.png"] scale:Scale2fOne];
     backgroundParticleEmitter = [[ParticleEmitter alloc] initParticleEmitterWithImageNamed:@"texture.png"
 																				  position:Vector2fMake(160.0, 259.76)
 																	sourcePositionVariance:Vector2fMake(373.5, 240.0)
