@@ -100,6 +100,10 @@
     controlTypeTouchImageGlow = [[Image alloc] initWithImage:@"TouchOn.png" scale:Scale2fOne];
     controlTypeAccelerometerImageGlow = [[Image alloc] initWithImage:@"AccelerometerOn.png" scale:Scale2fOne];
     
+    controlTypeClearAllSavedDataImage = [[Image alloc] initWithImage:@"ClearAllSavedDataButton.png" scale:Scale2fOne];
+    controlTypeYesButtonImage = [[Image alloc] initWithImage:@"YesButton.png" scale:Scale2fOne];
+    controlTypeNoButtonImage = [[Image alloc] initWithImage:@"NoButton.png" scale:Scale2fOne];
+    
     backgroundParticleEmitter = [[ParticleEmitter alloc] initParticleEmitterWithImageNamed:@"texture.png"
 																				  position:Vector2fMake(160.0, 259.76)
 																	sourcePositionVariance:Vector2fMake(373.5, 240.0)
@@ -198,6 +202,21 @@
         NSLog(@"Accel");
         [settingsDB setValue:kSettingValue_ControlType_Accelerometer forKey:kSetting_ControlType];
     }
+    if(CGRectContainsPoint(CGRectMake(0, 0, 320, 64), location)){
+        NSLog(@"Clear All");
+        clearAllDataButtonPushed = YES;
+    }
+    if(clearAllDataButtonPushed){
+        if(CGRectContainsPoint(CGRectMake(30, 80, 100, 32), location)){
+            NSLog(@"Yes");
+            clearAllDataButtonPushed = NO;
+            //Make settings default
+        }
+        if(CGRectContainsPoint(CGRectMake(190, 80, 100, 32), location)){
+            NSLog(@"No");
+            clearAllDataButtonPushed = NO;
+        }
+    }
 }
 
 - (void)updateWithTouchLocationMoved:(NSSet *)touches withEvent:(UIEvent *)event view:(UIView *)aView {
@@ -243,6 +262,12 @@
     else {
         [controlTypeTouchImage renderAtPoint:CGPointMake(70.0f, 240.0f) centerOfImage:YES];
         [controlTypeAccelerometerImageGlow renderAtPoint:CGPointMake(210.0f, 240.0f) centerOfImage:YES];
+    }
+    
+    [controlTypeClearAllSavedDataImage renderAtPoint:CGPointMake(0, 0) centerOfImage:NO];
+    if(clearAllDataButtonPushed){
+        [controlTypeYesButtonImage renderAtPoint:CGPointMake(80, 96) centerOfImage:YES];
+        [controlTypeNoButtonImage renderAtPoint:CGPointMake(240, 96) centerOfImage:YES];
     }
 }
 

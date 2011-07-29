@@ -43,6 +43,11 @@
     Image           *controlTypeAccelerometerImage;
     Image           *controlTypeTouchImageGlow;
     Image           *controlTypeAccelerometerImageGlow;
+    Image           *controlTypeClearAllSavedDataImage;
+    Image           *controlTypeYesButtonImage;
+    Image           *controlTypeNoButtonImage;
+    
+    BOOL            clearAllDataButtonPushed;
     
     ParticleEmitter		*backgroundParticleEmitter;
 }

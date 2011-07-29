@@ -162,6 +162,9 @@
 		B9935E5213AC64F3005BBA67 /* kEnemyWaveShotLevelTwo.png in Resources */ = {isa = PBXBuildFile; fileRef = B9935E4813AC64F3005BBA67 /* kEnemyWaveShotLevelTwo.png */; };
 		B9A7053D13C83EBD004A486C /* DialogueBoxBorder.png in Resources */ = {isa = PBXBuildFile; fileRef = B9A7053B13C83EBC004A486C /* DialogueBoxBorder.png */; };
 		B9A7053E13C83EBD004A486C /* fastforward.png in Resources */ = {isa = PBXBuildFile; fileRef = B9A7053C13C83EBC004A486C /* fastforward.png */; };
+		B9AFC0A013E239B900E4570A /* NoButton.png in Resources */ = {isa = PBXBuildFile; fileRef = B9AFC09D13E239B900E4570A /* NoButton.png */; };
+		B9AFC0A113E239B900E4570A /* YesButton.png in Resources */ = {isa = PBXBuildFile; fileRef = B9AFC09E13E239B900E4570A /* YesButton.png */; };
+		B9AFC0A313E23BAC00E4570A /* ClearAllSavedDataButton.png in Resources */ = {isa = PBXBuildFile; fileRef = B9AFC0A213E23BAC00E4570A /* ClearAllSavedDataButton.png */; };
 		B9C3AB7C13C2A7B4003202BA /* mainmenu.png in Resources */ = {isa = PBXBuildFile; fileRef = B9C3AB7B13C2A7B4003202BA /* mainmenu.png */; };
 		B9C3AB7E13C2AA50003202BA /* return.png in Resources */ = {isa = PBXBuildFile; fileRef = B9C3AB7D13C2AA50003202BA /* return.png */; };
 		B9C3AB8013C2BF8E003202BA /* pause.png in Resources */ = {isa = PBXBuildFile; fileRef = B9C3AB7F13C2BF8E003202BA /* pause.png */; };
@@ -404,6 +407,9 @@
 		B9935E4813AC64F3005BBA67 /* kEnemyWaveShotLevelTwo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = kEnemyWaveShotLevelTwo.png; path = "Game Resources/Images/Normal/Ships/Enemy Ships/kEnemyWaveShotLevelTwo.png"; sourceTree = SOURCE_ROOT; };
 		B9A7053B13C83EBC004A486C /* DialogueBoxBorder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DialogueBoxBorder.png; sourceTree = "<group>"; };
 		B9A7053C13C83EBC004A486C /* fastforward.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fastforward.png; sourceTree = "<group>"; };
+		B9AFC09D13E239B900E4570A /* NoButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NoButton.png; sourceTree = "<group>"; };
+		B9AFC09E13E239B900E4570A /* YesButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = YesButton.png; sourceTree = "<group>"; };
+		B9AFC0A213E23BAC00E4570A /* ClearAllSavedDataButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ClearAllSavedDataButton.png; sourceTree = "<group>"; };
 		B9C3AB7B13C2A7B4003202BA /* mainmenu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mainmenu.png; sourceTree = "<group>"; };
 		B9C3AB7D13C2AA50003202BA /* return.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = return.png; sourceTree = "<group>"; };
 		B9C3AB7F13C2BF8E003202BA /* pause.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pause.png; sourceTree = "<group>"; };
@@ -914,6 +920,9 @@
 		11F3274212A0D8D5003CF17B /* Application Resources */ = {
 			isa = PBXGroup;
 			children = (
+				B9AFC0A213E23BAC00E4570A /* ClearAllSavedDataButton.png */,
+				B9AFC09D13E239B900E4570A /* NoButton.png */,
+				B9AFC09E13E239B900E4570A /* YesButton.png */,
 				11994A2713E215E700D501E8 /* AccelerometerOff.png */,
 				11994A2813E215E700D501E8 /* AccelerometerOn.png */,
 				11994A2913E215E700D501E8 /* TouchOff.png */,
@@ -1222,6 +1231,9 @@
 				11994A2C13E215E700D501E8 /* AccelerometerOn.png in Resources */,
 				11994A2D13E215E700D501E8 /* TouchOff.png in Resources */,
 				11994A2E13E215E700D501E8 /* TouchOn.png in Resources */,
+				B9AFC0A013E239B900E4570A /* NoButton.png in Resources */,
+				B9AFC0A113E239B900E4570A /* YesButton.png in Resources */,
+				B9AFC0A313E23BAC00E4570A /* ClearAllSavedDataButton.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
