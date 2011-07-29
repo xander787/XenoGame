@@ -67,19 +67,14 @@
 
 - (void)initMenu {
     MenuControl *menuControl;
-    
-    NSLog(@"%@", [settingsDB valueForKey:kSetting_SaveGameLevelProgress]);
-    
-    if (![settingsDB valueForKey:kSetting_SaveGameLevelProgress]) {
-        menuControl = [[MenuControl alloc] initWithImageNamed:@"newgame.png" location:Vector2fMake(165, 225) centerOfImage:YES type:kControlType_NewGame];
-        [menuItems addObject:menuControl];
-        [menuControl release];
+    if([[settingsDB stringForKey:kSetting_SaveGameLevelProgress] isEqualToString:@""]){
+        newGameContinueControl = [[MenuControl alloc] initWithImageNamed:@"newgame.png" location:Vector2fMake(165, 225) centerOfImage:YES type:kControlType_NewGame];
     }
     else {
-        menuControl = [[MenuControl alloc] initWithImageNamed:@"continue.png" location:Vector2fMake(165, 225) centerOfImage:YES type:kControlType_NewGame];
-        [menuItems addObject:menuControl];
-        [menuControl release];
+        newGameContinueControl = [[MenuControl alloc] initWithImageNamed:@"continue.png" location:Vector2fMake(165, 225) centerOfImage:YES type:kControlType_NewGame];
+
     }
+	[menuItems addObject:newGameContinueControl];
     
 	menuControl = [[MenuControl alloc] initWithImageNamed:@"highscores.png" location:Vector2fMake(165, 175) centerOfImage:YES type:kControlType_HighScores];
 	[menuItems addObject:menuControl];
@@ -202,7 +197,17 @@
 			break;
 			
 		case kSceneState_TransitionIn:
-			
+            if ([[settingsDB stringForKey:kSetting_SaveGameLevelProgress] isEqualToString:@""]) {
+                [menuItems removeObject:newGameContinueControl];
+                newGameContinueControl = [[MenuControl alloc] initWithImageNamed:@"newgame.png" location:Vector2fMake(165, 225) centerOfImage:YES type:kControlType_NewGame];
+                [menuItems addObject:newGameContinueControl];
+            }
+            else {
+                NSLog(@"AERGERGER");
+                [menuItems removeObject:newGameContinueControl];
+                newGameContinueControl = [[MenuControl alloc] initWithImageNamed:@"continue.png" location:Vector2fMake(165, 225) centerOfImage:YES type:kControlType_NewGame];
+                [menuItems addObject:newGameContinueControl];
+            }
 			// I'm not using the delta value here as the large map being loaded causes
             // the first delta to be passed in to be very big which takes the alpha
             // to over 1.0 immediately, so I've got a fixed delta for the fade in.

@@ -231,6 +231,7 @@
             [settingsDB setFloat:0.75 forKey:kSetting_SoundVolume];
             [settingsDB setFloat:0.50 forKey:kSetting_MusicVolume];
             [settingsDB setValue:kSettingValue_ControlType_Touch forKey:kSetting_ControlType];
+            [settingsDB setValue:@"" forKey:kSetting_SaveGameLevelProgress];
         }
         if(CGRectContainsPoint(CGRectMake(190, 80, 100, 32), location)){
             NSLog(@"No");

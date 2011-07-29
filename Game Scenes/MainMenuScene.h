@@ -28,6 +28,8 @@
 	ParticleEmitter		*cometParticleEmitter;
     SoundManager        *soundManager;
     NSUserDefaults      *settingsDB;
+    
+    MenuControl         *newGameContinueControl;
 }
 
 @end
