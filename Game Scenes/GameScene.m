@@ -386,9 +386,11 @@
 }
 
 - (void)playerReachedSavePoint:(NSString *)savePoint {
-    [settingsDB setValue:[NSString stringWithFormat:@"%@;%d", currentLevelIndex, savePoint] forKey:kSetting_SaveGameLevelProgress];
+    [settingsDB setValue:[NSString stringWithFormat:@"%d;%@", currentLevelIndex, savePoint] forKey:kSetting_SaveGameLevelProgress];
     [settingsDB setInteger:playerScore forKey:kSetting_SaveGameScore];
     [settingsDB setFloat:gameLevel.playerShip.shipHealth forKey:kSetting_SaveGameHealth];
+    
+    NSLog(@"%@", [settingsDB valueForKey:kSetting_SaveGameLevelProgress]);
 }
 
 - (void)scoreChangedBy:(int)scoreChange {

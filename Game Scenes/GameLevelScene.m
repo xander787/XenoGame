@@ -449,7 +449,7 @@ WrapText( const char *text
     return -1;
 }
 
-- (void)loadWave:(int)wave {    
+- (void)loadWave:(int)wave {  
     [delegate playerReachedSavePoint:[NSString stringWithFormat:@"%d", wave]];
     
     if(![[wavesArray objectAtIndex:wave] respondsToSelector:@selector(setString:)]) {
@@ -466,8 +466,6 @@ WrapText( const char *text
             NSString *enemyHoldingCoordString = [[[wavesArray objectAtIndex:wave] objectAtIndex:i] objectAtIndex:1];
             NSArray *enemyHoldingCoordArray = [enemyHoldingCoordString componentsSeparatedByString:@","];
             enemy.holdingPositionPoint = CGPointMake([[enemyHoldingCoordArray objectAtIndex:0] intValue], [[enemyHoldingCoordArray objectAtIndex:1] intValue]);
-            
-            NSLog(@"HOLD PTS: %f %f", enemy.holdingPositionPoint.x, enemy.holdingPositionPoint.y);
             
             [enemiesSet addObject:enemy];
             outroDelay = 0;
@@ -532,7 +530,7 @@ WrapText( const char *text
         //4-6 with 28 wrapped. It has to go through all those if statement because not all dialogue wil take all 6 six lines.
         const char* wrappedText = WrapText([[[[dialogue objectAtIndex:0] componentsSeparatedByString:@":"] objectAtIndex:1] UTF8String], 22, "", "");
         NSMutableArray *wrappedTextArray = [[NSMutableArray alloc] initWithArray:[[NSString stringWithCString:wrappedText encoding:NSASCIIStringEncoding] componentsSeparatedByString:@"\n"]];
-        NSLog(@"%@", wrappedTextArray);
+        //NSLog(@"%@", wrappedTextArray);
         dialogueLineOne = [[NSString alloc] initWithString:[wrappedTextArray objectAtIndex:0]];
         currentNumberOfDialogueLinesToShow = 1;
         if([wrappedTextArray count] > 1){
@@ -548,10 +546,10 @@ WrapText( const char *text
                     [wrappedTextArray removeObject:dialogueLineThree];
                     
                     NSString *secondHalfString = [[NSString alloc] initWithString:[wrappedTextArray componentsJoinedByString:@" "]];
-                    NSLog(@"joined:\n%@", secondHalfString);
+                    //NSLog(@"joined:\n%@", secondHalfString);
                     const char* secondHalf = WrapText([secondHalfString UTF8String], 25, "", "");
                     NSMutableArray *secondWrappedArray = [[NSMutableArray alloc] initWithArray:[[NSString stringWithCString:secondHalf encoding:NSASCIIStringEncoding] componentsSeparatedByString:@"\n"]];
-                    NSLog(@"%@", secondWrappedArray);
+                    //NSLog(@"%@", secondWrappedArray);
                     dialogueLineFour = [[NSString alloc] initWithString:[secondWrappedArray objectAtIndex:0]];
                     currentNumberOfDialogueLinesToShow = 4;
                     if([secondWrappedArray count] > 1){
@@ -576,7 +574,7 @@ WrapText( const char *text
             }
         }
         [wrappedTextArray release];
-        NSLog(@"\n%@\n%@\n%@\n%@\n%@\n%@\n\n%@", dialogueLineOne, dialogueLineTwo, dialogueLineThree, dialogueLineFour, dialogueLineFive, dialogueLineSix, remainderDialogue);
+        //NSLog(@"\n%@\n%@\n%@\n%@\n%@\n%@\n\n%@", dialogueLineOne, dialogueLineTwo, dialogueLineThree, dialogueLineFour, dialogueLineFive, dialogueLineSix, remainderDialogue);
     }
     
     int multiplier = 1;
@@ -588,13 +586,10 @@ WrapText( const char *text
 
 - (void)loadBoss {
     if (bossShipID == kBoss_Atlas) {
-        NSLog(@"Loading Atlas");
         bossShip = [[BossShipAtlas alloc] initWithLocation:CGPointMake(160.0f, 600.0f) andPlayerShipRef:playerShip];
     }
     
     bossShipReadyToAnimate = YES;
-    
-    NSLog(@"Loaded Atlas");
 }
 
 - (void)update:(GLfloat)aDelta {    
@@ -736,7 +731,6 @@ WrapText( const char *text
                     [discardedEnemies addObject:enemyShip];
                     if([attackingEnemies containsObject:enemyShip]){
                         [attackingEnemies removeObject:enemyShip];
-                        NSLog(@"Attacking enemies: %d", [attackingEnemies count]);
                     }
                 }
             }
@@ -792,7 +786,6 @@ WrapText( const char *text
                         if(RANDOM_0_TO_1() >= 0.5){
                             if([attackingEnemies count] < 3){
                                 [attackingEnemies addObject:enemyShip];
-                                NSLog(@"Attacking enemies: %d", [attackingEnemies count]);
                                 enemyShip.currentPathType = kPathType_Attacking;
                             }
                         }
@@ -845,7 +838,6 @@ WrapText( const char *text
                             enemyShip.currentPathType = kPathType_Holding;
                             [enemyShip stopAllProjectiles];
                             [attackingEnemies removeObject:enemyShip];
-                            NSLog(@"Attacking enemies: %d", [attackingEnemies count]);
                         }
                     }
                 }
@@ -1093,7 +1085,6 @@ WrapText( const char *text
                         PolygonCollisionResult result2 = [Collisions polygonCollision:enemyBulletPoly :playerShip.collisionPolygon :Vector2fZero];
                         
                         if(result2.intersect){
-                            NSLog(@"Collision occured between enemy bullet and player ship");
                             if(!playerShip.shipIsDead && !shieldEnabled){
                                 [playerShip hitShipWithDamage:30];
                                 enemyProjectile.emitter.particles[i].position = Vector2fMake(500, 0);
@@ -1110,7 +1101,6 @@ WrapText( const char *text
                         PolygonCollisionResult result = [Collisions polygonCollision:playerBulletPoly :enemyShip.collisionPolygon :Vector2fZero];
                         
                         if(result.intersect){
-                            NSLog(@"Collision occured between player bullet and enemy ship");
                             //Send damage to enemy ship
                             if(!enemyShip.shipIsDead){
                                 [enemyShip hitShipWithDamage:50 + (50 * (int)damageMultiplierOn)];
@@ -1129,7 +1119,6 @@ WrapText( const char *text
                     PolygonCollisionResult playerShipResult = [Collisions polygonCollision:[playerShip collisionPolygon] :bossShip.modularObjects[i].collisionPolygon :Vector2fZero];
                     
                     if(playerShipResult.intersect){
-                        NSLog(@"Collision occured between player ship and boss module");
                         [playerShip killShip];
                     }
                 }
@@ -1144,7 +1133,6 @@ WrapText( const char *text
                         if(result.intersect){
                             if(bossShipIsDisplayed){
                                 if (bossShip.modularObjects[i].destructionOrder == bossShip.currentDestructionOrder && bossShip.modularObjects[i].isDead == NO) {
-                                    NSLog(@"Module Order: %d Current Order: %d", bossShip.modularObjects[i].destructionOrder, bossShip.currentDestructionOrder);
                                     [bossShip hitModule:i withDamage:10];
                                     playerShipProjectile.emitter.particles[j].position = Vector2fMake(500, 50);
                                 }
@@ -1204,7 +1192,7 @@ WrapText( const char *text
     
     if(remainderDialogue == nil){
         //If there is in fact no more dialogue for this wave
-        NSLog(@"END OF DIALOGUE");
+        //NSLog(@"END OF DIALOGUE");
         if(currentWave != (numWaves - 1)) {
             currentWave++;
             [self loadWave:currentWave];
@@ -1242,10 +1230,10 @@ WrapText( const char *text
                         [wrappedTextArray removeObject:dialogueLineThree];
                         
                         NSString *secondHalfString = [[NSString alloc] initWithString:[wrappedTextArray componentsJoinedByString:@" "]];
-                        NSLog(@"joined:\n%@", secondHalfString);
+                        //NSLog(@"joined:\n%@", secondHalfString);
                         const char* secondHalf = WrapText([secondHalfString UTF8String], 25, "", "");
                         NSMutableArray *secondWrappedArray = [[NSMutableArray alloc] initWithArray:[[NSString stringWithCString:secondHalf encoding:NSASCIIStringEncoding] componentsSeparatedByString:@"\n"]];
-                        NSLog(@"%@", secondWrappedArray);
+                        //NSLog(@"%@", secondWrappedArray);
                         dialogueLineFour = [[NSString alloc] initWithString:[secondWrappedArray objectAtIndex:0]];
                         currentNumberOfDialogueLinesToShow = 4;
                         if([secondWrappedArray count] > 1){
@@ -1298,8 +1286,6 @@ WrapText( const char *text
     //If the ship was actually selected, set a Bool for the
     //updateWithTouchLocationMoved: method to allow the ship to move
     if(CGRectContainsPoint(shipFrame, location)){
-        NSLog(@"Touched on Ship :D");
-        NSLog(@"Current Wave Type: %d", currentWaveType);
         touchOriginatedFromPlayerShip = YES;
     }
     else {

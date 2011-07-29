@@ -103,7 +103,6 @@
     [storeButton updateWithLocation:NSStringFromCGPoint(location)];
     [continueGameButton updateWithLocation:NSStringFromCGPoint(location)];
     [optionsButton updateWithLocation:NSStringFromCGPoint(location)];
-	NSLog(@"%f %f", location.x, location.y);
 }
 
 - (void)updateWithMovedLocation:(NSSet*)touches withEvent:(UIEvent*)event view:(UIView*)aView {

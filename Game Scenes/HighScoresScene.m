@@ -169,7 +169,6 @@
 }
 
 - (void)todayButtonPressed {
-    NSLog(@"Today");
     selectedButtonIndex = 0;
         
     GKLeaderboard *leaderboardRequest = [[GKLeaderboard alloc] init];
@@ -196,12 +195,10 @@
 }
 
 - (void)weekButtonPressed {
-    NSLog(@"Week");
     selectedButtonIndex = 1;
 }
 
 - (void)allTimeButtonPressed {
-    NSLog(@"All Time");
     selectedButtonIndex = 2;
 }
 

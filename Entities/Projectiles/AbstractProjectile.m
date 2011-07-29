@@ -116,7 +116,6 @@
                 NSLog(@"Exception thrown: %@", e);
             }
             @finally {
-                NSLog(@"Bullet Coll Coord: %f, %f", collisionPoints[i].x, collisionPoints[i].y);
             }
             [coords release];
         }

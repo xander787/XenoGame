@@ -306,7 +306,6 @@
     
     if(modularObjects[module].moduleHealth <= 0){
         modularObjects[module].isDead = YES;
-        NSLog(@"Module Died");
         //See if all mmodules with this destructionOrder are dead, if so, bump up the current
         BOOL increment = YES;
         for(int i = 0; i < numberOfModules; i++){

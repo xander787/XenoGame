@@ -26,6 +26,9 @@
 //	7/28/11 @ 6:30PM - Alexander
 //	- Fixed a bug where the settings were being overwritten during
 //  each launch because I forgot to change the value for the firstTimeLaunch setting
+//
+//	7/28/11 @ 9:40PM - Alexander
+//	- Supposed to be able to switch out "new game" for continue. Not quite done yet
 
 #import "MainMenuScene.h"
 #import "Image.h"
@@ -63,10 +66,21 @@
 }
 
 - (void)initMenu {
-	MenuControl *menuControl = [[MenuControl alloc] initWithImageNamed:@"newgame.png" location:Vector2fMake(165, 225) centerOfImage:YES type:kControlType_NewGame];
-	[menuItems addObject:menuControl];
-	[menuControl release];
-	
+    MenuControl *menuControl;
+    
+    NSLog(@"%@", [settingsDB valueForKey:kSetting_SaveGameLevelProgress]);
+    
+    if (![settingsDB valueForKey:kSetting_SaveGameLevelProgress]) {
+        menuControl = [[MenuControl alloc] initWithImageNamed:@"newgame.png" location:Vector2fMake(165, 225) centerOfImage:YES type:kControlType_NewGame];
+        [menuItems addObject:menuControl];
+        [menuControl release];
+    }
+    else {
+        menuControl = [[MenuControl alloc] initWithImageNamed:@"continue.png" location:Vector2fMake(165, 225) centerOfImage:YES type:kControlType_NewGame];
+        [menuItems addObject:menuControl];
+        [menuControl release];
+    }
+    
 	menuControl = [[MenuControl alloc] initWithImageNamed:@"highscores.png" location:Vector2fMake(165, 175) centerOfImage:YES type:kControlType_HighScores];
 	[menuItems addObject:menuControl];
 	[menuControl release];

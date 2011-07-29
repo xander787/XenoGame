@@ -281,7 +281,6 @@
             }
             @finally {
                 Vector2f vector = collisionDetectionBoundingPoints[i];
-                NSLog(@"Collision Point: %f %f", vector.x, vector.y);
             }
             [coords release];
         }

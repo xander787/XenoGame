@@ -169,7 +169,6 @@
 			}
 			@finally {
 				Vector2f vector = turretPoints[i];
-				NSLog(@"Turret: %f %f", vector.x, vector.y);
 			}
 		}        
         
@@ -188,7 +187,6 @@
             }
             @finally {
                 Vector2f vector = thrusterPoints[i];
-				NSLog(@"Thruster: %f %f", vector.x, vector.y);
             }
             [coords release];
         }        
@@ -209,7 +207,6 @@
             }
             @finally {
                 Vector2f vector = collisionDetectionBoundingPoints[i];
-                NSLog(@"Collision Point: %f %f", vector.x, vector.y);
             }
             [coords release];
         }        
