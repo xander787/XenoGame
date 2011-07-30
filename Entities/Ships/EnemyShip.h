@@ -156,6 +156,8 @@ typedef enum _PathType {
 - (void)stopAllProjectiles;
 - (void)pauseAllProjectiles;
 - (void)playAllProjectiles;
+- (void)makeNewPathFrom:(Vector2f)startPoint controlPoint1:(Vector2f)ctrlPoint1 controlPoint2:(Vector2f)ctrlPoint2 toEndPoint:(Vector2f)endPoint withPathType:(PathType)type;
+- (void)resetPathWithNewPathType:(PathType)type;
 
 
 @end

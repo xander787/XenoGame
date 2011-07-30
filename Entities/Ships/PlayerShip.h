@@ -103,6 +103,9 @@ typedef enum _PlayerShipTemporaryMiscUpgrade {
 - (void)shipWasHitWithProjectile:(AbstractProjectile *)projectile;
 - (void)fireWeapons;
 - (void)destroyShip;
+- (void)stopAllProjectiles;
+- (void)pauseAllProjectiles;
+- (void)playAllProjectiles;
 
 
 @property PlayerShipTemporaryWeaponUpgrade	shipTemporaryWeaponUpgrade;

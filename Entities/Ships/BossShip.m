@@ -323,6 +323,24 @@
     }
 }
 
+- (void)stopAllProjectiles {
+    for(AbstractProjectile *bossProj in projectilesArray){
+        [bossProj stopProjectile];
+    }
+}
+
+- (void)pauseAllProjectiles {
+    for(AbstractProjectile *bossProj in projectilesArray){
+        [bossProj pauseProjectile];
+    }
+}
+
+- (void)playAllProjectiles {
+    for(AbstractProjectile *bossProj in projectilesArray){
+        [bossProj playProjectile];
+    }
+}
+
 - (void)update:(GLfloat)delta {    
     for (int i = 0; i < numberOfModules; ++i) {
         if (modularObjects[i].hitFilter && modularObjects[i].hitFilterEffectTime <= 0.15) {

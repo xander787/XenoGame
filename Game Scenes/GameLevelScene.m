@@ -100,6 +100,9 @@
 //
 //  Last Updated - 7/28/11 @5:30PM - Alexander
 //  - New delegate method for saving progress
+//
+//  Last Updated - 7/30/11 @5PM - James
+//  - Bug fixes, optimization, slightly trimmed down update:
 
 
 #import "GameLevelScene.h"
@@ -721,11 +724,15 @@ WrapText( const char *text
         [dropsToBeRemoved release];
         
         if (currentWaveType == kWaveType_Enemy) {
-            // Loop through our enemies and remove those that have died and whose
-            // destruction animations have completed
             NSMutableSet *discardedEnemies = [[NSMutableSet alloc] init];
+            //Update the enemies' movement paths
             for(EnemyShip *enemyShip in enemiesSet){
+                
+                //Main update for enemies
                 [enemyShip update:aDelta];
+                
+                // Loop through our enemies and remove those that have died and whose
+                // destruction animations have completed
                 if(enemyShip.shipIsDead && enemyShip.deathAnimationEmitter.particleCount == 0) {
                     enemiesKilled++;
                     [discardedEnemies addObject:enemyShip];
@@ -733,12 +740,7 @@ WrapText( const char *text
                         [attackingEnemies removeObject:enemyShip];
                     }
                 }
-            }
-            [enemiesSet minusSet:discardedEnemies];
-            [discardedEnemies release];
-                        
-            //Update the enemies' movement paths
-            for(EnemyShip *enemyShip in enemiesSet){
+                
                 if(enemyShip.shipHealth <= 0 && enemyShip.powerUpDropped == NO){
                     //Calculate which type of powerup to drop
                     if(TRUE){
@@ -753,104 +755,105 @@ WrapText( const char *text
                     }
                 }
                 
-                if(enemyShip.currentPathType == kPathType_Initial){
-                    [enemyShip setCurrentLocation:CGPointMake([enemyShip.currentPath getPointAt:enemyShip.pathTime/2].x, [enemyShip.currentPath getPointAt:enemyShip.pathTime/2].y)];
+                if(enemyShip.shipIsDead == NO){
+                    //Skip dead enemies, no need to waste cpu
                     
-                    if(abs(enemyShip.currentLocation.x - enemyShip.currentPath.endPoint.x) < 5 && abs(enemyShip.currentLocation.y - enemyShip.currentPath.endPoint.y) < 5){
-                        Vector2f oldEndPoint = enemyShip.currentPath.endPoint;
-                        [[enemyShip currentPath] release];
-                        enemyShip.currentPath = nil;
-                        enemyShip.currentPath = [[BezierCurve alloc] initCurveFrom:Vector2fMake(oldEndPoint.x, oldEndPoint.y) controlPoint1:Vector2fMake(100, 100) controlPoint2:Vector2fMake(300, 300) endPoint:Vector2fMake(enemyShip.holdingPositionPoint.x, enemyShip.holdingPositionPoint.y) segments:100];
-                        enemyShip.pathTime = 0;
-                        
-                        enemyShip.currentPathType = kPathType_ToHolding;
-                    }
-                }
-                else if(enemyShip.currentPathType == kPathType_ToHolding){
-                    [enemyShip setCurrentLocation:CGPointMake([enemyShip.currentPath getPointAt:enemyShip.pathTime/2].x, [enemyShip.currentPath getPointAt:enemyShip.pathTime/2].y)];
+                    //Path updating:
+                    if(enemyShip.currentPathType == kPathType_Initial){
+                        [enemyShip setCurrentLocation:CGPointMake([enemyShip.currentPath getPointAt:enemyShip.pathTime/2].x, [enemyShip.currentPath getPointAt:enemyShip.pathTime/2].y)];
                     
-                    if(abs(enemyShip.currentLocation.x - enemyShip.currentPath.endPoint.x) < 5 && abs(enemyShip.currentLocation.y - enemyShip.currentPath.endPoint.y) < 5){
-                        Vector2f oldEndPoint = enemyShip.currentPath.endPoint;
-                        [[enemyShip currentPath] release];
-                        enemyShip.currentPath = nil;
-                        enemyShip.pathTime = 0;
-                        enemyShip.currentPathType = kPathType_Holding;
-                        enemyShip.desiredPosition = CGPointMake(oldEndPoint.x, oldEndPoint.y);
+                        if(abs(enemyShip.currentLocation.x - enemyShip.currentPath.endPoint.x) < 5 && abs(enemyShip.currentLocation.y - enemyShip.currentPath.endPoint.y) < 5){
+                            Vector2f oldEndPoint = enemyShip.currentPath.endPoint;
+                            //Make a new path for ToHolding
+                            [enemyShip makeNewPathFrom:Vector2fMake(oldEndPoint.x, oldEndPoint.y) controlPoint1:Vector2fMake(100, 100) controlPoint2:Vector2fMake(300, 300) toEndPoint:Vector2fMake(enemyShip.holdingPositionPoint.x, enemyShip.holdingPositionPoint.y) withPathType:kPathType_ToHolding];
+                        }
                     }
-                }
-                else if(enemyShip.currentPathType == kPathType_Holding){
-                    holdingTimeBeforeAttack += (aDelta / [enemiesSet count]) * 2;
-                    if(holdingTimeBeforeAttack >= holdingTimeTarget){
-                        holdingTimeBeforeAttack = 0;
-                        holdingTimeTarget = (RANDOM_0_TO_1() * 2);
-                        if(RANDOM_0_TO_1() >= 0.5){
-                            if([attackingEnemies count] < 3){
-                                [attackingEnemies addObject:enemyShip];
-                                enemyShip.currentPathType = kPathType_Attacking;
+                    else if(enemyShip.currentPathType == kPathType_ToHolding){
+                        [enemyShip setCurrentLocation:CGPointMake([enemyShip.currentPath getPointAt:enemyShip.pathTime/2].x, [enemyShip.currentPath getPointAt:enemyShip.pathTime/2].y)];
+                    
+                        if(abs(enemyShip.currentLocation.x - enemyShip.currentPath.endPoint.x) < 5 && abs(enemyShip.currentLocation.y - enemyShip.currentPath.endPoint.y) < 5){
+                            Vector2f oldEndPoint = enemyShip.currentPath.endPoint;
+                            [enemyShip resetPathWithNewPathType:kPathType_Holding];
+                            enemyShip.desiredPosition = CGPointMake(oldEndPoint.x, oldEndPoint.y);
+                        }
+                    }
+                    else if(enemyShip.currentPathType == kPathType_Holding){
+                        holdingTimeBeforeAttack += (aDelta / [enemiesSet count]) * 2;
+                        if(holdingTimeBeforeAttack >= holdingTimeTarget){
+                            holdingTimeBeforeAttack = 0;
+                            holdingTimeTarget = (RANDOM_0_TO_1() * 2);
+                            if(RANDOM_0_TO_1() >= 0.5){
+                                if([attackingEnemies count] < 3){
+                                    [attackingEnemies addObject:enemyShip];
+                                    enemyShip.currentPathType = kPathType_Attacking;
+                                }
                             }
                         }
                     }
-                }
-                else if(enemyShip.currentPathType == kPathType_Attacking){
-                    if(!enemyShip.currentPath){
-                        
-                        //Differentiate between regular and kamikaze type attack paths
-                        if([enemyShip isKamikazeShip] == NO){
-                            if(RANDOM_0_TO_1() > 0.5){
-                                //Randomize the direction enemis will fly
-                                enemyShip.currentPath = [[BezierCurve alloc] initCurveFrom:Vector2fMake([enemyShip currentLocation].x, [enemyShip currentLocation].y) 
-                                                                             controlPoint1:Vector2fMake((160 - 350), 50)
-                                                                             controlPoint2:Vector2fMake((160 + 350), 50)
-                                                                                  endPoint:Vector2fMake([enemyShip currentLocation].x, [enemyShip currentLocation].y)
-                                                                                  segments:50];
+                    else if(enemyShip.currentPathType == kPathType_Attacking){
+                        if(!enemyShip.currentPath){
+
+                            //Differentiate between regular and kamikaze type attack paths
+                            if([enemyShip isKamikazeShip] == NO){
+                                if(RANDOM_0_TO_1() > 0.5){
+                                    //Randomize the direction enemis will fly
+                                    enemyShip.currentPath = [[BezierCurve alloc] initCurveFrom:Vector2fMake([enemyShip currentLocation].x, [enemyShip currentLocation].y) 
+                                                                                 controlPoint1:Vector2fMake((160 - 350), 50)
+                                                                                 controlPoint2:Vector2fMake((160 + 350), 50)
+                                                                                      endPoint:Vector2fMake([enemyShip currentLocation].x, [enemyShip currentLocation].y)
+                                                                                      segments:50];
+                                }
+                                else {
+                                    //Second direction
+                                    enemyShip.currentPath = [[BezierCurve alloc] initCurveFrom:Vector2fMake([enemyShip currentLocation].x, [enemyShip currentLocation].y) 
+                                                                                 controlPoint1:Vector2fMake((160 + 350), 50)
+                                                                                 controlPoint2:Vector2fMake((160 - 350), 50)
+                                                                                      endPoint:Vector2fMake([enemyShip currentLocation].x, [enemyShip currentLocation].y)
+                                                                                      segments:50];
+                                }
                             }
                             else {
-                                enemyShip.currentPath = [[BezierCurve alloc] initCurveFrom:Vector2fMake([enemyShip currentLocation].x, [enemyShip currentLocation].y) 
-                                                                             controlPoint1:Vector2fMake((160 + 350), 50)
-                                                                             controlPoint2:Vector2fMake((160 - 350), 50)
-                                                                                  endPoint:Vector2fMake([enemyShip currentLocation].x, [enemyShip currentLocation].y)
+                                //Kamikaze attack pattern
+                                enemyShip.currentPath = [[BezierCurve alloc] initCurveFrom:Vector2fMake(enemyShip.currentLocation.x, enemyShip.currentLocation.y)
+                                                                             controlPoint1:Vector2fMake(playerShip.currentLocation.x + 200, playerShip.currentLocation.y - 1000)
+                                                                             controlPoint2:Vector2fMake(enemyShip.currentLocation.x - 1000, enemyShip.currentLocation.y)
+                                                                                  endPoint:Vector2fMake(enemyShip.currentLocation.x, enemyShip.currentLocation.y)
                                                                                   segments:50];
                             }
+                            [enemyShip playAllProjectiles];
+                        }
+                        
+                        //Kamikaze paths need to go slower due to larger control points
+                        if([enemyShip isKamikazeShip] == NO){
+                            //Regular update speed
+                            [enemyShip setCurrentLocation:CGPointMake([enemyShip.currentPath getPointAt:enemyShip.pathTime/4].x, [enemyShip.currentPath getPointAt:enemyShip.pathTime/4].y)];
                         }
                         else {
-                            enemyShip.currentPath = [[BezierCurve alloc] initCurveFrom:Vector2fMake(enemyShip.currentLocation.x, enemyShip.currentLocation.y)
-                                                                         controlPoint1:Vector2fMake(playerShip.currentLocation.x + 200, playerShip.currentLocation.y - 1000)
-                                                                         controlPoint2:Vector2fMake(enemyShip.currentLocation.x - 1000, enemyShip.currentLocation.y)
-                                                                              endPoint:Vector2fMake(enemyShip.currentLocation.x, enemyShip.currentLocation.y)
-                                                                              segments:50];
+                            //Update more slowly for kamikaze pattern else it moves too fast
+                            [enemyShip setCurrentLocation:CGPointMake([enemyShip.currentPath getPointAt:enemyShip.pathTime/6].x, [enemyShip.currentPath getPointAt:enemyShip.pathTime/6].y)];
                         }
-                        [enemyShip playAllProjectiles];
-                    }
                     
-                    //Kamikaze paths need to go slower due to larger control points
-                    if([enemyShip isKamikazeShip] == NO){
-                        [enemyShip setCurrentLocation:CGPointMake([enemyShip.currentPath getPointAt:enemyShip.pathTime/4].x, [enemyShip.currentPath getPointAt:enemyShip.pathTime/4].y)];
-                    }
-                    else {
-                        [enemyShip setCurrentLocation:CGPointMake([enemyShip.currentPath getPointAt:enemyShip.pathTime/6].x, [enemyShip.currentPath getPointAt:enemyShip.pathTime/6].y)];
-                    }
-                    
-                    if(enemyShip.pathTime > 1){
-                        if(abs(enemyShip.currentLocation.x - enemyShip.currentPath.endPoint.x) < 5 && abs(enemyShip.currentLocation.y - enemyShip.currentPath.endPoint.y) < 5){
-                            [[enemyShip currentPath] release];
-                            enemyShip.currentPath = nil;
-                            enemyShip.pathTime = 0;
-                            enemyShip.currentPathType = kPathType_Holding;
-                            [enemyShip stopAllProjectiles];
-                            [attackingEnemies removeObject:enemyShip];
+                        if(enemyShip.pathTime > 1){
+                            if(abs(enemyShip.currentLocation.x - enemyShip.currentPath.endPoint.x) < 5 && abs(enemyShip.currentLocation.y - enemyShip.currentPath.endPoint.y) < 5){
+                                //If it reached the end
+                                [enemyShip resetPathWithNewPathType:kPathType_Holding];
+                                [enemyShip stopAllProjectiles];
+                                [attackingEnemies removeObject:enemyShip];
+                            }
                         }
                     }
                 }
             }
+            //For loop is done, discard any dead enemies
+            [enemiesSet minusSet:discardedEnemies];
+            [discardedEnemies release];
         }
         
         if (currentWaveType == kWaveType_Boss) {
 
             // Animating the boss onto the screen
             if (!bossShipIsDisplayed && bossShipReadyToAnimate && bossShip) {
-                for(AbstractProjectile *tempProj in [playerShip projectilesArray]){
-                    [tempProj stopProjectile];
-                }
+                [playerShip stopAllProjectiles];
                 
                 bossShipIntroAnimationTime += aDelta;
                 if (bossShip.currentLocation.y > bossShipDefaultLocation.y) {
@@ -866,9 +869,7 @@ WrapText( const char *text
                 if (abs(bossShip.currentLocation.x - bossShipDefaultLocation.x) < 3 && abs(bossShip.currentLocation.y - bossShipDefaultLocation.y) < 3) {
                     bossShipIntroAnimationTime = 0.0;
                     bossShipIsDisplayed = YES;
-                    for(AbstractProjectile *tempProj in [playerShip projectilesArray]){
-                        [tempProj playProjectile];
-                    }
+                    [playerShip playAllProjectiles];
                 }
             }
             
@@ -935,9 +936,8 @@ WrapText( const char *text
     }
     
     if(currentWaveType == kWaveType_Finished) {
-        for(AbstractProjectile *playerWeapon in playerShip.projectilesArray){
-            [playerWeapon stopProjectile];
-        }
+        [playerShip stopAllProjectiles];
+        
         outroTransitionAnimating = YES;
         if (outroAnimationType == kOutroAnimation_Flyoff) {
             if (abs(playerShip.currentLocation.x - 160.0f) < 5) {
@@ -975,7 +975,7 @@ WrapText( const char *text
     // This is a dialogue wave, display it.
     else {
         dialogueTypeTimeDelay += aDelta;
-        if (dialogueTypeTimeDelay > 0.1) {               
+        if (dialogueTypeTimeDelay > 0.05) {               
             dialogueTypeTimeDelay = 0.0;
             NSRange characterRange = {currentDialogueCharacterPosition, 1};
             
@@ -1116,36 +1116,35 @@ WrapText( const char *text
         if (currentWaveType == kWaveType_Boss) {
             for (int i = 0; i < bossShip.numberOfModules; i++) {
                 if(bossShip.modularObjects[i].isDead == NO){
+                    
+                    //Player -> boss module
                     PolygonCollisionResult playerShipResult = [Collisions polygonCollision:[playerShip collisionPolygon] :bossShip.modularObjects[i].collisionPolygon :Vector2fZero];
                     
                     if(playerShipResult.intersect){
                         [playerShip killShip];
                     }
-                }
                 
-                //Player Bullets->Boss ship module collision
-                for(AbstractProjectile *playerShipProjectile in playerShip.projectilesArray){
-                    Polygon *playerBulletPoly;
-                    for(int j = 0; j < [playerShipProjectile.polygonArray count]; j++){
-                        playerBulletPoly = [playerShipProjectile.polygonArray objectAtIndex:j];
-                        PolygonCollisionResult result = [Collisions polygonCollision:playerBulletPoly :bossShip.modularObjects[i].collisionPolygon :Vector2fZero];
-                        
-                        if(result.intersect){
-                            if(bossShipIsDisplayed){
-                                if (bossShip.modularObjects[i].destructionOrder == bossShip.currentDestructionOrder && bossShip.modularObjects[i].isDead == NO) {
-                                    [bossShip hitModule:i withDamage:10];
-                                    playerShipProjectile.emitter.particles[j].position = Vector2fMake(500, 50);
+                    //Player Bullets->Boss ship module collision
+                    for(AbstractProjectile *playerShipProjectile in playerShip.projectilesArray){
+                        Polygon *playerBulletPoly;
+                        for(int j = 0; j < [playerShipProjectile.polygonArray count]; j++){
+                            playerBulletPoly = [playerShipProjectile.polygonArray objectAtIndex:j];
+                            PolygonCollisionResult result = [Collisions polygonCollision:playerBulletPoly :bossShip.modularObjects[i].collisionPolygon :Vector2fZero];
+                            
+                            if(result.intersect){
+                                if(bossShipIsDisplayed){
+                                    if (bossShip.modularObjects[i].destructionOrder == bossShip.currentDestructionOrder && bossShip.modularObjects[i].isDead == NO) {
+                                        [bossShip hitModule:i withDamage:10];
+                                        playerShipProjectile.emitter.particles[j].position = Vector2fMake(500, 50);
+                                    }
                                 }
                             }
                         }
                     }
-                    
                 }
-                
             }
         }
     }
-    
 }
 
 - (void)skipToNewPageOfText {
@@ -1263,7 +1262,9 @@ WrapText( const char *text
 }
 
 - (void)nukeButtonPushed {
-    
+    for(EnemyShip *enemyShip in enemiesSet){
+        [enemyShip killShip];
+    }
 }
 
 - (void)updateWithTouchLocationBegan:(NSSet *)touches withEvent:(UIEvent *)event view:(UIView *)aView {
@@ -1321,8 +1322,10 @@ WrapText( const char *text
         if(location.y + ([playerShip shipHeight] / 2) > screenBounds.size.height){
             location.y = screenBounds.size.height - ([playerShip shipHeight] / 2);
         }
-        [playerShip setDesiredLocation:location];
-    }    
+        if(!outroTransitionAnimating){
+            [playerShip setDesiredLocation:location];
+        }
+    }
 }
 
 -(Vector2f) VectorRandomInRectWithVectors:(Vector2f)v1 v2:(Vector2f)v2

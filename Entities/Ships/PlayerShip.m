@@ -167,9 +167,6 @@
 			@catch (NSException * e) {
 				NSLog(@"Exception thrown: %@", e);
 			}
-			@finally {
-				Vector2f vector = turretPoints[i];
-			}
 		}        
         
         //Fill a C array with Vector2f's of our ship's thruster points
@@ -184,9 +181,6 @@
             }
             @catch (NSException * e) {
                 NSLog(@"Exception thrown: %@", e);
-            }
-            @finally {
-                Vector2f vector = thrusterPoints[i];
             }
             [coords release];
         }        
@@ -204,9 +198,6 @@
             }
             @catch (NSException * e) {
                 NSLog(@"Exception thrown: %@", e);
-            }
-            @finally {
-                Vector2f vector = collisionDetectionBoundingPoints[i];
             }
             [coords release];
         }        
@@ -309,6 +300,24 @@
     }
     
     [collisionPolygon setPos:CGPointMake(-500, -500)];
+}
+
+- (void)stopAllProjectiles {
+    for(AbstractProjectile *playerProj in projectilesArray){
+        [playerProj stopProjectile];
+    }
+}
+
+- (void)pauseAllProjectiles {
+    for(AbstractProjectile *playerProj in projectilesArray){
+        [playerProj pauseProjectile];
+    }
+}
+
+- (void)playAllProjectiles {
+    for(AbstractProjectile *playerProj in projectilesArray){
+        [playerProj playProjectile];
+    }
 }
 
 - (void)render {    

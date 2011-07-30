@@ -279,9 +279,6 @@
             @catch (NSException * e) {
                 NSLog(@"Exception thrown: %@", e);
             }
-            @finally {
-                Vector2f vector = collisionDetectionBoundingPoints[i];
-            }
             [coords release];
         }
         
@@ -419,9 +416,7 @@
 - (void)killShip {
     shipIsDead = TRUE;
     shipHealth = 0;
-    for(AbstractProjectile *tempProjectile in projectilesArray){
-        [tempProjectile stopProjectile];
-    }
+    [self stopAllProjectiles];
     [collisionPolygon setPos:CGPointMake(-500, -500)];
 }
 
@@ -457,6 +452,22 @@
     for(AbstractProjectile *enemyProj in projectilesArray){
         [enemyProj playProjectile];
     }
+}
+
+- (void)makeNewPathFrom:(Vector2f)startPoint controlPoint1:(Vector2f)ctrlPoint1 controlPoint2:(Vector2f)ctrlPoint2 toEndPoint:(Vector2f)endPoint withPathType:(PathType)type {
+    if(currentPath) [currentPath release];
+    currentPath = nil;
+    currentPath = [[BezierCurve alloc] initCurveFrom:startPoint controlPoint1:ctrlPoint1 controlPoint2:ctrlPoint2 endPoint:endPoint segments:50];
+    pathTime = 0;
+    currentPathType = type;
+}
+
+- (void)resetPathWithNewPathType:(PathType)type {
+    [currentPath release];
+    currentPath = nil;
+    pathTime = 0;
+    
+    currentPathType = type;
 }
 
 - (void)render {

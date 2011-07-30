@@ -203,7 +203,6 @@
                 [menuItems addObject:newGameContinueControl];
             }
             else {
-                NSLog(@"AERGERGER");
                 [menuItems removeObject:newGameContinueControl];
                 newGameContinueControl = [[MenuControl alloc] initWithImageNamed:@"continue.png" location:Vector2fMake(165, 225) centerOfImage:YES type:kControlType_NewGame];
                 [menuItems addObject:newGameContinueControl];
