@@ -50,6 +50,9 @@
 //
 //	Last Updated - 7/28/11 @ 6:30PM - Alexander
 //	- Sound is updated in real time based on the sound sliders
+//
+//  Last Updated - 7/31/11 @5PM - James
+//  - Added tactile feedback option, some bug fixes, etc
 
 #import "SettingsScene.h"
 
@@ -82,6 +85,7 @@
         controlsSettingString = @"Controls";
         soundSettingString = @"Sound";
         musicSettingString = @"Music";
+        vibrateSettingString = @"Vibrate";
 
 	}
     	
@@ -100,6 +104,11 @@
     
     soundVolume = [settingsDB floatForKey:kSetting_SoundVolume] * 100;
     musicVolume = [settingsDB floatForKey:kSetting_MusicVolume] * 100;
+    vibrateSettingOn = [settingsDB boolForKey:kSetting_TactileFeedback];
+    
+    animateYesNoButtons = NO;
+    yesButtonX = -60;
+    noButtonX = 380;
     
     soundManager = [SoundManager sharedSoundManager];
     
@@ -132,6 +141,8 @@
 																	  particleSizeVariance:1.3
 																				  duration:-1
 																			 blendAdditive:NO];
+    
+    NSLog(@"TOUCHACCEL SETING: %@", [settingsDB valueForKey:kSetting_ControlType]);
 }
 
 #pragma mark -
@@ -163,6 +174,23 @@
 		default:
 			break;
 	}
+    
+    if(animateYesNoButtons){
+        if(!(yesButtonX >= 80)) yesButtonX += 250 * aDelta;
+        if(!(noButtonX <= 240)) noButtonX -= 250 * aDelta;
+        
+        if(yesButtonX >= 80 && noButtonX <= 240){
+            animateYesNoButtons = NO;
+        }
+    }
+    else if(animateYesNoButtonsReverse){
+        if(!(yesButtonX <= -60)) yesButtonX -= 250 * aDelta;
+        if(!(noButtonX >= 380)) noButtonX += 250 * aDelta;
+        
+        if(yesButtonX <= -50 && noButtonX >= 380){
+            animateYesNoButtonsReverse = NO;
+        }
+    }
 }
 
 - (void)updateWithTouchLocationBegan:(NSSet *)touches withEvent:(UIEvent *)event view:(UIView *)aView {
@@ -184,6 +212,7 @@
         soundVolume = MIN(soundVolume, 100);
         [settingsDB setFloat:(soundVolume/100) forKey:kSetting_SoundVolume];
         soundManager.fxVolume = soundVolume / 100;
+        [settingsDB synchronize];
     }
     if(CGRectContainsPoint(CGRectMake(90, 328, 29, 26), location)){
         //Music volume low pushed
@@ -192,6 +221,7 @@
         musicVolume = MIN(musicVolume, 100);
         [settingsDB setFloat:(musicVolume/100) forKey:kSetting_MusicVolume];
         soundManager.musicVolume = musicVolume / 100;
+        [settingsDB synchronize];
     }
     if(CGRectContainsPoint(CGRectMake(280, 398, 39, 26), location)){
         //Sound volume high pushed
@@ -200,6 +230,7 @@
         soundVolume = MIN(soundVolume, 100);
         [settingsDB setFloat:(soundVolume/100) forKey:kSetting_SoundVolume];
         soundManager.fxVolume = soundVolume / 100;
+        [settingsDB synchronize];
     }
     if(CGRectContainsPoint(CGRectMake(280, 328, 39, 26), location)){
         //Music volume high pushed
@@ -208,35 +239,54 @@
         musicVolume = MIN(musicVolume, 100);
         [settingsDB setFloat:(musicVolume/100) forKey:kSetting_MusicVolume];
         soundManager.musicVolume = musicVolume / 100;
+        [settingsDB synchronize];
     }
     
     if (CGRectContainsPoint(CGRectMake(20.0f, 220.0f, 105.0f, 48.0f), location)) {
-        NSLog(@"Touch");
+        //Touch
         [settingsDB setValue:kSettingValue_ControlType_Touch forKey:kSetting_ControlType];
+        [settingsDB synchronize];
     }
     if (CGRectContainsPoint(CGRectMake(130.0f, 220.0f, 180.0f, 48.0f), location)) {
-        NSLog(@"Accel");
+        //Accel
         [settingsDB setValue:kSettingValue_ControlType_Accelerometer forKey:kSetting_ControlType];
+        [settingsDB synchronize];
     }
-    if(CGRectContainsPoint(CGRectMake(0, 0, 320, 64), location)){
-        NSLog(@"Clear All");
+    if(CGRectContainsPoint(CGRectMake(0, 0, 320, 64), location) && !animateYesNoButtonsReverse && !animateYesNoButtons){
+        //Clear all
         clearAllDataButtonPushed = YES;
+        animateYesNoButtons = YES;
     }
-    if(clearAllDataButtonPushed){
+    if(clearAllDataButtonPushed && !animateYesNoButtons){
         if(CGRectContainsPoint(CGRectMake(30, 80, 100, 32), location)){
             NSLog(@"Yes");
             clearAllDataButtonPushed = NO;
+            animateYesNoButtonsReverse = YES;
             [settingsDB setValue:@"" forKey:kSetting_TwitterCredentials];
             [settingsDB setBool:YES forKey:kSetting_TactileFeedback];
             [settingsDB setFloat:0.75 forKey:kSetting_SoundVolume];
             [settingsDB setFloat:0.50 forKey:kSetting_MusicVolume];
             [settingsDB setValue:kSettingValue_ControlType_Touch forKey:kSetting_ControlType];
             [settingsDB setValue:@"" forKey:kSetting_SaveGameLevelProgress];
+            
+            [settingsDB synchronize];
+            
+            soundVolume = [settingsDB floatForKey:kSetting_SoundVolume] * 100;
+            soundManager.fxVolume = soundVolume / 100;
+            musicVolume = [settingsDB floatForKey:kSetting_MusicVolume] * 100;
+            soundManager.musicVolume = musicVolume / 100;
+            vibrateSettingOn = [settingsDB boolForKey:kSetting_TactileFeedback];
         }
         if(CGRectContainsPoint(CGRectMake(190, 80, 100, 32), location)){
             NSLog(@"No");
             clearAllDataButtonPushed = NO;
+            animateYesNoButtonsReverse = YES;
         }
+    }
+    if(CGRectContainsPoint(CGRectMake(150, 145, 100, 32), location)){
+        vibrateSettingOn = !vibrateSettingOn;
+        [settingsDB setBool:vibrateSettingOn forKey:kSetting_TactileFeedback];
+        [settingsDB synchronize];
     }
 }
 
@@ -263,6 +313,7 @@
     [font drawStringAt:CGPointMake(15.0f, 420.0f) text:soundSettingString];
     [font drawStringAt:CGPointMake(15.0f, 350.0f) text:musicSettingString];
     [font drawStringAt:CGPointMake(15.0f, 280.0f) text:controlsSettingString];
+    [font drawStringAt:CGPointMake(15.0f, 170.0f) text:vibrateSettingString];
     
     [volumeLowImage renderAtPoint:CGPointMake(110, 412) centerOfImage:YES];
     [volumeLowImage renderAtPoint:CGPointMake(110, 342) centerOfImage:YES];
@@ -276,19 +327,25 @@
     [sliderBarImage setScale:Scale2fMake(musicVolume / 100, 1.0)];
     [sliderBarImage renderAtPoint:CGPointMake(125 + (6 - (sliderBarImage.scale.x * 6)), 332) centerOfImage:NO];
     
-    if ([settingsDB valueForKey:kSetting_ControlType] == kSettingValue_ControlType_Touch) {
+    if ([[settingsDB valueForKey:kSetting_ControlType] isEqualToString:kSettingValue_ControlType_Touch]) {
         [controlTypeTouchImageGlow renderAtPoint:CGPointMake(70.0f, 240.0f) centerOfImage:YES];
         [controlTypeAccelerometerImage renderAtPoint:CGPointMake(210.0f, 240.0f) centerOfImage:YES];
     }
-    else {
+    else if([[settingsDB valueForKey:kSetting_ControlType] isEqualToString:kSettingValue_ControlType_Accelerometer]){
         [controlTypeTouchImage renderAtPoint:CGPointMake(70.0f, 240.0f) centerOfImage:YES];
         [controlTypeAccelerometerImageGlow renderAtPoint:CGPointMake(210.0f, 240.0f) centerOfImage:YES];
     }
     
     [controlTypeClearAllSavedDataImage renderAtPoint:CGPointMake(0, 0) centerOfImage:NO];
-    if(clearAllDataButtonPushed){
-        [controlTypeYesButtonImage renderAtPoint:CGPointMake(80, 96) centerOfImage:YES];
-        [controlTypeNoButtonImage renderAtPoint:CGPointMake(240, 96) centerOfImage:YES];
+    if(clearAllDataButtonPushed || animateYesNoButtonsReverse){
+        [controlTypeYesButtonImage renderAtPoint:CGPointMake(yesButtonX, 96) centerOfImage:YES];
+        [controlTypeNoButtonImage renderAtPoint:CGPointMake(noButtonX, 96) centerOfImage:YES];
+    }
+    if([settingsDB boolForKey:kSetting_TactileFeedback]){
+        [controlTypeYesButtonImage renderAtPoint:CGPointMake(150, 145) centerOfImage:NO];
+    }
+    else {
+        [controlTypeNoButtonImage renderAtPoint:CGPointMake(150, 145) centerOfImage:NO];
     }
 }
 

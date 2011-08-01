@@ -27,6 +27,7 @@
     NSString        *settingsTitleString;
     NSString        *soundSettingString;
     NSString        *musicSettingString;
+    NSString        *vibrateSettingString;
     Image           *backButton;
     NSUserDefaults  *settingsDB;
     
@@ -48,8 +49,14 @@
     Image           *controlTypeNoButtonImage;
     
     BOOL            clearAllDataButtonPushed;
+    BOOL            vibrateSettingOn;
     
-    ParticleEmitter		*backgroundParticleEmitter;
+    BOOL            animateYesNoButtons;
+    BOOL            animateYesNoButtonsReverse;
+    GLfloat         yesButtonX;
+    GLfloat         noButtonX;
+    
+    ParticleEmitter	*backgroundParticleEmitter;
     
     SoundManager    *soundManager;
 }

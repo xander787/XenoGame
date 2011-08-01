@@ -66,6 +66,8 @@
 }
 
 - (void)initMenu {
+    settingsDB = [NSUserDefaults standardUserDefaults];
+    
     MenuControl *menuControl;
     if([[settingsDB stringForKey:kSetting_SaveGameLevelProgress] isEqualToString:@""]){
         newGameContinueControl = [[MenuControl alloc] initWithImageNamed:@"newgame.png" location:Vector2fMake(165, 225) centerOfImage:YES type:kControlType_NewGame];
@@ -90,8 +92,6 @@
 	
 	logoImage = [[Image alloc] initWithImage:[NSString stringWithString:@"xenophobe.png"]];
     
-    settingsDB = [NSUserDefaults standardUserDefaults];
-		
 	backgroundParticleEmitter = [[ParticleEmitter alloc] initParticleEmitterWithImageNamed:@"texture.png"
 																				  position:Vector2fMake(160.0, 259.76)
 																	sourcePositionVariance:Vector2fMake(373.5, 240.0)
@@ -141,6 +141,7 @@
         [settingsDB setFloat:0.50 forKey:kSetting_MusicVolume];
         [settingsDB setValue:kSettingValue_ControlType_Touch forKey:kSetting_ControlType];
         [settingsDB setValue:@"NO" forKey:kSetting_FirstTimeRun];
+        [settingsDB synchronize];
     }
     
     soundManager = [SoundManager sharedSoundManager];
