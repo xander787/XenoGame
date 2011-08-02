@@ -11,7 +11,7 @@
 	<key>kLevelType</key>
 	<string>kBossLevel</string>
 	<key>kOutroTransition</key>
-	<string>kNuke</string>
+	<string>kShipFlyoff</string>
 	<key>kWaves</key>
 	<array>
 		<string>PLAYER:Hello I&apos;m player and this is player cuz i&apos;m player. My name is Xander and I traverse the solar system defeating evil Xenos in hopes of idk killing em or something.;BOSS:Hell I&apos;m boss and this is boss because i&apos;m boss</string>

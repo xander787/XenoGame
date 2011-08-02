@@ -68,27 +68,27 @@
 		</array>
 		<key>kShipModuleImages</key>
 		<array>
-			<string>ship.png</string>
-			<string>arrow.png</string>
-			<string>arrowinverted.png</string>
-			<string>arrow30.png</string>
-			<string>arrow30inverted.png</string>
-			<string>arrow90.png</string>
-			<string>arrow90inverted.png</string>
-			<string>arrow120.png</string>
-			<string>arrow120inverted.png</string>
+			<string>kBossAstraeusMainBody.png</string>
+			<string>kBossAstraeusCannonLeft.png</string>
+			<string>kBossAstraeusCannonRight.png</string>
+			<string>kBossAstraeusCannon30Left.png</string>
+			<string>kBossAstraeusCannon30Right.png</string>
+			<string>kBossAstraeusCannon90Left.png</string>
+			<string>kBossAstraeusCannon90Right.png</string>
+			<string>kBossAstraeusCannon120Left.png</string>
+			<string>kBossAstraeusCannon120Right.png</string>
 		</array>
 		<key>kShipModulePoints</key>
 		<array>
 			<string>0,0</string>
-			<string>-61,-118</string>
-			<string>61,-118</string>
-			<string>106,-61</string>
-			<string>-106,-61</string>
-			<string>122,0</string>
-			<string>-122,0</string>
-			<string>122,61</string>
-			<string>-122,61</string>
+			<string>50,-125</string>
+			<string>-50,-125</string>
+			<string>117,-88</string>
+			<string>-117,-88</string>
+			<string>145,-14</string>
+			<string>-145,-14</string>
+			<string>128,62</string>
+			<string>-128,62</string>
 		</array>
 		<key>kShipTurretPoints</key>
 		<array>

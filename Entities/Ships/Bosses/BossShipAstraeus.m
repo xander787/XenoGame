@@ -38,6 +38,9 @@
 - (void)update:(GLfloat)delta {
     [super update:delta];
     
+    currentLocation.x += ((desiredLocation.x - currentLocation.x) / bossSpeed) * (pow(1.584893192, bossSpeed)) * delta;
+    currentLocation.y += ((desiredLocation.y - currentLocation.y) / bossSpeed) * (pow(1.584893192, bossSpeed)) * delta;
+    
     {
         // Left Cannon Aiming
         float playerXPosition = (currentLocation.x + cannonFrontLeft->location.x) - playerShipRef.currentLocation.x;
