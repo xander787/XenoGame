@@ -1118,30 +1118,36 @@ WrapText( const char *text
                 if(bossShip.modularObjects[i].isDead == NO){
                     
                     //Player -> boss module
-                    PolygonCollisionResult playerShipResult = [Collisions polygonCollision:[playerShip collisionPolygon] :bossShip.modularObjects[i].collisionPolygon :Vector2fZero];
-                    
-                    if(playerShipResult.intersect){
-                        [playerShip killShip];
-                    }
-                
-                    //Player Bullets->Boss ship module collision
-                    for(AbstractProjectile *playerShipProjectile in playerShip.projectilesArray){
-                        Polygon *playerBulletPoly;
-                        for(int j = 0; j < [playerShipProjectile.polygonArray count]; j++){
-                            playerBulletPoly = [playerShipProjectile.polygonArray objectAtIndex:j];
-                            PolygonCollisionResult result = [Collisions polygonCollision:playerBulletPoly :bossShip.modularObjects[i].collisionPolygon :Vector2fZero];
-                            
-                            if(result.intersect){
-                                if(bossShipIsDisplayed){
-                                    if (bossShip.modularObjects[i].destructionOrder == bossShip.currentDestructionOrder && bossShip.modularObjects[i].isDead == NO) {
-                                        [bossShip hitModule:i withDamage:10];
-                                        playerShipProjectile.emitter.particles[j].position = Vector2fMake(500, 50);
+                    for(int k = 0; k < [bossShip.modularObjects[i].collisionPolygonArray count]; k++){
+                        PolygonCollisionResult playerShipResult = [Collisions polygonCollision:[playerShip collisionPolygon]
+                                                                                              :[bossShip.modularObjects[i].collisionPolygonArray objectAtIndex:k]
+                                                                                              :Vector2fZero];
+                        
+                        if(playerShipResult.intersect){
+                            [playerShip killShip];
+                        }
+                        
+                        //Player Bullets->Boss ship module collision
+                        for(AbstractProjectile *playerShipProjectile in playerShip.projectilesArray){
+                            Polygon *playerBulletPoly;
+                            for(int j = 0; j < [playerShipProjectile.polygonArray count]; j++){
+                                playerBulletPoly = [playerShipProjectile.polygonArray objectAtIndex:j];
+                                PolygonCollisionResult result = [Collisions polygonCollision:playerBulletPoly
+                                                                                            :[bossShip.modularObjects[i].collisionPolygonArray objectAtIndex:k]
+                                                                                            :Vector2fZero];
+                                
+                                if(result.intersect){
+                                    if(bossShipIsDisplayed){
+                                        if (bossShip.modularObjects[i].destructionOrder == bossShip.currentDestructionOrder && bossShip.modularObjects[i].isDead == NO) {
+                                            [bossShip hitModule:i withDamage:10];
+                                            playerShipProjectile.emitter.particles[j].position = Vector2fMake(500, 50);
+                                        }
                                     }
                                 }
                             }
                         }
                     }
-                }
+                }   
             }
         }
     }

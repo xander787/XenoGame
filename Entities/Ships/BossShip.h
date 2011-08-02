@@ -113,9 +113,7 @@ typedef struct _ModularObject {
     Vector2f        defaultLocation;
     Image           *moduleImage;
     
-    Vector2f        *collisionDetectionBoundingPoints;
-    Polygon         *collisionPolygon;
-    int             collisionPointsCount;
+    NSMutableArray  *collisionPolygonArray;
     float           rotation;
     
     float           moduleMaxHealth;

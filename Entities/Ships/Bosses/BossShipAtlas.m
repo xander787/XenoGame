@@ -105,7 +105,9 @@
     //Set the centers of the polygons so they get rendered properly
     for(int i = 0; i < numberOfModules; i++){
         if(modularObjects[i].isDead == NO){
-            [modularObjects[i].collisionPolygon setPos:CGPointMake(modularObjects[i].location.x + currentLocation.x, modularObjects[i].location.y + currentLocation.y)];
+            for(Polygon *modulePoly in modularObjects[i].collisionPolygonArray){
+                [modulePoly setPos:CGPointMake(modularObjects[i].location.x + currentLocation.x, modularObjects[i].location.y + currentLocation.y)];
+            }
         }
         else {
             //Death Animation Update Emitter
@@ -150,22 +152,25 @@
     
     
     //Rotation for polygons to match the rotation of the cannons
-    for(int i = 0; i < cannonLeft->collisionPolygon.pointCount; i++){
-        Vector2f tempPoint = cannonLeft->collisionPolygon.originalPoints[i];
-        double tempAngle = DEGREES_TO_RADIANS(cannonLeft->rotation - angleToPlayer);
-        cannonLeft->collisionPolygon.originalPoints[i] = Vector2fMake((tempPoint.x * cos(tempAngle)) - (tempPoint.y * sin(tempAngle)),
-                                                                            (tempPoint.x * sin(tempAngle)) + (tempPoint.y * cos(tempAngle)));
+    for(int k = 0; k < [cannonLeft->collisionPolygonArray count]; k++){
+        for(int i = 0; i < [[cannonLeft->collisionPolygonArray objectAtIndex:k] pointCount]; i++){
+            Vector2f tempPoint = [[cannonLeft->collisionPolygonArray objectAtIndex:k] originalPoints][i];
+            double tempAngle = DEGREES_TO_RADIANS(cannonLeft->rotation - angleToPlayer);
+            [[cannonLeft->collisionPolygonArray objectAtIndex:k] originalPoints][i] = Vector2fMake((tempPoint.x * cos(tempAngle)) - (tempPoint.y * sin(tempAngle)),
+                                                                          (tempPoint.x * sin(tempAngle)) + (tempPoint.y * cos(tempAngle)));
+        }
+        [[cannonLeft->collisionPolygonArray objectAtIndex:k] buildEdges];
     }
-    [cannonLeft->collisionPolygon buildEdges];
 
-    for(int i = 0; i < cannonRight->collisionPolygon.pointCount; i++){
-        Vector2f tempPoint = cannonRight->collisionPolygon.originalPoints[i];
-        double tempAngle = DEGREES_TO_RADIANS(cannonRight->rotation - angleToPlayer2);
-        cannonRight->collisionPolygon.originalPoints[i] = Vector2fMake((tempPoint.x * cos(tempAngle)) - (tempPoint.y * sin(tempAngle)),
-                                                                            (tempPoint.x * sin(tempAngle)) + (tempPoint.y * cos(tempAngle)));
+    for(int k = 0; k < [cannonLeft->collisionPolygonArray count]; k++){
+        for(int i = 0; i < [[cannonRight->collisionPolygonArray objectAtIndex:k] pointCount]; i++){
+            Vector2f tempPoint = [[cannonRight->collisionPolygonArray objectAtIndex:k] originalPoints][i];
+            double tempAngle = DEGREES_TO_RADIANS(cannonRight->rotation - angleToPlayer2);
+            [[cannonRight->collisionPolygonArray objectAtIndex:k] originalPoints][i] = Vector2fMake((tempPoint.x * cos(tempAngle)) - (tempPoint.y * sin(tempAngle)),
+                                                                           (tempPoint.x * sin(tempAngle)) + (tempPoint.y * cos(tempAngle)));
+        }
+        [[cannonRight->collisionPolygonArray objectAtIndex:k] buildEdges];
     }
-    [cannonRight->collisionPolygon buildEdges];
-
     
     cannonRight->rotation = angleToPlayer2;
     cannonLeft->rotation = angleToPlayer;
@@ -213,25 +218,27 @@
         
         for(int i = 0; i < numberOfModules; i++) {
             if(modularObjects[i].isDead == NO){
-                for(int j = 0; j < (modularObjects[i].collisionPointsCount - 1); j++) {
-                        GLfloat line[] = {
-                            modularObjects[i].collisionPolygon.points[j].x, modularObjects[i].collisionPolygon.points[j].y,
-                            modularObjects[i].collisionPolygon.points[j+1].x, modularObjects[i].collisionPolygon.points[j+1].y,
-                        };
-                        
-                        glVertexPointer(2, GL_FLOAT, 0, line);
-                        glEnableClientState(GL_VERTEX_ARRAY);
-                        glDrawArrays(GL_LINES, 0, 2);
-                }
+                for(int k = 0; k < [modularObjects[i].collisionPolygonArray count]; k++){
+                    for(int j = 0; j < ([[modularObjects[i].collisionPolygonArray objectAtIndex:k] pointCount] - 1); j++) {
+                            GLfloat line[] = {
+                                [[modularObjects[i].collisionPolygonArray objectAtIndex:k] points][j].x, [[modularObjects[i].collisionPolygonArray objectAtIndex:k] points][j].y,
+                                [[modularObjects[i].collisionPolygonArray objectAtIndex:k] points][j+1].x, [[modularObjects[i].collisionPolygonArray objectAtIndex:k] points][j+1].y,
+                            };
+                            
+                            glVertexPointer(2, GL_FLOAT, 0, line);
+                            glEnableClientState(GL_VERTEX_ARRAY);
+                            glDrawArrays(GL_LINES, 0, 2);
+                    }
                 
-                GLfloat lineEnd[] = {
-                    modularObjects[i].collisionPolygon.points[(modularObjects[i].collisionPointsCount - 1)].x, modularObjects[i].collisionPolygon.points[(modularObjects[i].collisionPointsCount - 1)].y,
-                        modularObjects[i].collisionPolygon.points[0].x, modularObjects[i].collisionPolygon.points[0].y,
-                };
+                    GLfloat lineEnd[] = {
+                        [[modularObjects[i].collisionPolygonArray objectAtIndex:k] points][([[modularObjects[i].collisionPolygonArray objectAtIndex:k] pointCount] - 1)].x, [[modularObjects[i].collisionPolygonArray objectAtIndex:k] points][([[modularObjects[i].collisionPolygonArray objectAtIndex:k] pointCount] - 1)].y,
+                        [[modularObjects[i].collisionPolygonArray objectAtIndex:k] points][0].x, [[modularObjects[i].collisionPolygonArray objectAtIndex:k] points][0].y,
+                    };
             
-                glVertexPointer(2, GL_FLOAT, 0, lineEnd);
-                glEnableClientState(GL_VERTEX_ARRAY);
-                glDrawArrays(GL_LINES, 0, 2);
+                    glVertexPointer(2, GL_FLOAT, 0, lineEnd);
+                    glEnableClientState(GL_VERTEX_ARRAY);
+                    glDrawArrays(GL_LINES, 0, 2);
+                }
             }
         }
         

@@ -40,6 +40,11 @@
 //
 //  Last Updated - 7/22/11 @9PM - Alexander
 //  - Module color filter change when hit
+//
+//  Last Updated - 8/2/11 @12AM - James
+//  - Changed some modular stuff so each module can have
+//  mutliple polygons, specifically for Astraeus but allows
+//  more flexbility
 
 #import "BossShip.h"
 #import "BossShipAtlas.h"
@@ -191,6 +196,8 @@
         
         //This is our main loop, getting the unique info for each module at a time
         for(int i = 0; i < numberOfModules; i++){
+            //Quickly init an array for later
+            modularObjects[i].collisionPolygonArray = [[NSMutableArray alloc] init];
             
             //Step one: get the image for the module, simple so it's first
             modularObjects[i].moduleImage = [[Image alloc] initWithImage:[moduleImagesArray objectAtIndex:i] scale:Scale2fOne];
@@ -243,30 +250,39 @@
             
             
             //Collision detection points time!
-            NSArray *collisionCoordPairs = [[NSArray alloc] initWithArray:[[moduleCollisionPointsArray objectAtIndex:i] componentsSeparatedByString:@";"]];
-            
-            modularObjects[i].collisionDetectionBoundingPoints = malloc(sizeof(Vector2f) * [collisionCoordPairs count]);
-            bzero(modularObjects[i].collisionDetectionBoundingPoints, sizeof(Vector2f) * [collisionCoordPairs count]);
-            
-            //Loop through the pairs of coordinates and apply them
-            for(int j = 0; j < [collisionCoordPairs count]; j++){
-                NSArray *coords = [[NSArray alloc] initWithArray:[[collisionCoordPairs objectAtIndex:j] componentsSeparatedByString:@","]];
+            NSArray *coordsArray = [moduleCollisionPointsArray objectAtIndex:i];
+            for(int k = 0; k < [coordsArray count]; k++){
+                //Loop throug hit, several polygons may have to be used for a module
+                NSString *tempCollisionCoordString = [coordsArray objectAtIndex:k];
                 
-                modularObjects[i].collisionDetectionBoundingPoints[j] = Vector2fMake([[coords objectAtIndex:0] floatValue], [[coords objectAtIndex:1] floatValue]);
-                [coords release];
+                NSArray *collisionCoordPairs = [[NSArray alloc] initWithArray:[tempCollisionCoordString componentsSeparatedByString:@";"]];
+            
+                Vector2f *localCollisionDetectionBoundingPoints = malloc(sizeof(Vector2f) * [collisionCoordPairs count]);
+                bzero(localCollisionDetectionBoundingPoints, sizeof(Vector2f) * [collisionCoordPairs count]);
+                
+                //Loop through the pairs of coordinates and apply them
+                for(int j = 0; j < [collisionCoordPairs count]; j++){
+                    NSArray *coords = [[NSArray alloc] initWithArray:[[collisionCoordPairs objectAtIndex:j] componentsSeparatedByString:@","]];
+                    
+                    localCollisionDetectionBoundingPoints[j] = Vector2fMake([[coords objectAtIndex:0] floatValue], [[coords objectAtIndex:1] floatValue]);
+                    [coords release];
+                }
+                
+                //We need the number of points for polygons
+                int localCollisionPointsCount = [collisionCoordPairs count];
+                [collisionCoordPairs release];
+                
+                //Finally create our polygon, for each module of course
+                Polygon *tempCollisionPolygon = [[Polygon alloc] initWithPoints:localCollisionDetectionBoundingPoints
+                                                                       andCount:localCollisionPointsCount
+                                                                     andShipPos:currentLocation];
+                
+                //Update the position of the polygon to the center of the module
+                [tempCollisionPolygon setPos:CGPointMake(currentLocation.x + modularObjects[i].location.x, currentLocation.y + modularObjects[i].location.y)];
+                [modularObjects[i].collisionPolygonArray addObject:tempCollisionPolygon];
+                [tempCollisionPolygon release];
             }
-            
-            //We need the number of points for polygons
-            modularObjects[i].collisionPointsCount = [collisionCoordPairs count];
-            [collisionCoordPairs release];
-            
-            //Finally create our polygon, for each module of course
-            modularObjects[i].collisionPolygon = [[Polygon alloc] initWithPoints:modularObjects[i].collisionDetectionBoundingPoints
-                                                                        andCount:modularObjects[i].collisionPointsCount
-                                                                      andShipPos:currentLocation];
-            //Update the position of the polygon to the center of the module
-            [modularObjects[i].collisionPolygon setPos:CGPointMake(currentLocation.x + modularObjects[i].location.x, currentLocation.y + modularObjects[i].location.y)];
-            
+            NSLog(@"Module num %d collision coords aray:\n%@", i, modularObjects[i].collisionPolygonArray);
             
         }
         
