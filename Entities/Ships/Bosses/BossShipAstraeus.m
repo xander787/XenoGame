@@ -12,12 +12,18 @@
 //
 //	Last Updated - 7/19/2011 @5PM - Alexander
 //  - Cannons rotate and also shift positions and everything
+//
+//  Last Updated - 8/2/11 @8PM - James
+//  - Fixed a bunch of bugs, mainly with copying the old and broken
+//  angle conde and etc form Atlas. Fixed now
 
 #import "BossShipAstraeus.h"
 #import "BossShip.h"
 
 
 @implementation BossShipAstraeus
+
+@synthesize leftSideTransitionComplete, rightSideTransitionComplete;
 
 - (id)initWithLocation:(CGPoint)aPoint andPlayerShipRef:(PlayerShip *)playerRef {
     if((self = [super initWithBossID:kBoss_Astraeus initialLocation:aPoint andPlayerShipRef:playerRef])){
@@ -40,6 +46,18 @@
     
     currentLocation.x += ((desiredLocation.x - currentLocation.x) / bossSpeed) * (pow(1.584893192, bossSpeed)) * delta;
     currentLocation.y += ((desiredLocation.y - currentLocation.y) / bossSpeed) * (pow(1.584893192, bossSpeed)) * delta;
+    
+    //Set the centers of the polygons so they get rendered properly
+    for(int i = 0; i < numberOfModules; i++){
+        if(modularObjects[i].isDead == NO){
+            for(Polygon *modulePoly in modularObjects[i].collisionPolygonArray){
+                [modulePoly setPos:CGPointMake(modularObjects[i].location.x + currentLocation.x, modularObjects[i].location.y + currentLocation.y)];
+            }
+        }
+        else {
+            //Death Animation Update Emitter
+        }
+    }
     
     {
         // Left Cannon Aiming
@@ -74,42 +92,42 @@
         for(int k = 0; k < [cannonFrontLeft->collisionPolygonArray count]; k++){
             for(int i = 0; i < [[cannonFrontLeft->collisionPolygonArray objectAtIndex:k] pointCount]; i++){
                 Vector2f tempPoint = [[cannonFrontLeft->collisionPolygonArray objectAtIndex:k] originalPoints][i];
-                double tempAngle = DEGREES_TO_RADIANS(cannonFrontRight->rotation - angleToPlayer);
-                [[cannonFrontLeft->collisionPolygonArray objectAtIndex:k] originalPoints][i] = Vector2fMake((tempPoint.x * cos(tempAngle)) - (tempPoint.y * sin(tempAngle)),
-                                                                                   (tempPoint.x * sin(tempAngle)) + (tempPoint.y * cos(tempAngle)));
+                double tempAngle = DEGREES_TO_RADIANS(cannonFrontLeft->rotation - angleToPlayer);
+                [[cannonFrontLeft->collisionPolygonArray objectAtIndex:k] originalPoints][i] = Vector2fMake((tempPoint.x * cos(tempAngle)) - (tempPoint.y * sin(tempAngle)), (tempPoint.x * sin(tempAngle)) + (tempPoint.y * cos(tempAngle)));
             }
             [[cannonFrontLeft->collisionPolygonArray objectAtIndex:k] buildEdges];
-            
+        }
+        
+        for(int k = 0; k < [cannonFrontRight->collisionPolygonArray count]; k++){
             for(int i = 0; i < [[cannonFrontRight->collisionPolygonArray objectAtIndex:k] pointCount]; i++){
                 Vector2f tempPoint = [[cannonFrontRight->collisionPolygonArray objectAtIndex:k] originalPoints][i];
-                double tempAngle = DEGREES_TO_RADIANS(cannonFrontLeft->rotation - angleToPlayer2);
-                [[cannonFrontRight->collisionPolygonArray objectAtIndex:k] originalPoints][i] = Vector2fMake((tempPoint.x * cos(tempAngle)) - (tempPoint.y * sin(tempAngle)),
-                                                                                    (tempPoint.x * sin(tempAngle)) + (tempPoint.y * cos(tempAngle)));
+                double tempAngle = DEGREES_TO_RADIANS(cannonFrontRight->rotation - angleToPlayer2);
+                [[cannonFrontRight->collisionPolygonArray objectAtIndex:k] originalPoints][i] = Vector2fMake((tempPoint.x * cos(tempAngle)) - (tempPoint.y * sin(tempAngle)), (tempPoint.x * sin(tempAngle)) + (tempPoint.y * cos(tempAngle)));
             }
             [[cannonFrontRight->collisionPolygonArray objectAtIndex:k] buildEdges];
-        
         }
-        cannonFrontRight->rotation = angleToPlayer;
-        cannonFrontLeft->rotation = angleToPlayer2;
+
+        cannonFrontRight->rotation = angleToPlayer2;
+        cannonFrontLeft->rotation = angleToPlayer;
 
     }
     
     if(cannonFrontLeft->isDead) {
         timeSinceFrontLeftDied+= delta;
         leftSideTransitionComplete = NO;
-        if(cannonReplacementOneLeft->location.x > cannonFrontLeft->defaultLocation.x) cannonReplacementOneLeft->location.x = cannonReplacementOneLeft->location.x - (timeSinceFrontLeftDied * 0.5);
+        if(cannonReplacementOneLeft->location.x < cannonFrontLeft->defaultLocation.x) cannonReplacementOneLeft->location.x = cannonReplacementOneLeft->location.x + (timeSinceFrontLeftDied * 0.5);
         if(cannonReplacementOneLeft->location.y > cannonFrontLeft->defaultLocation.y) cannonReplacementOneLeft->location.y = cannonReplacementOneLeft->location.y - (timeSinceFrontLeftDied * 0.5);
         if(cannonReplacementOneLeft->rotation > -cannonFrontLeft->rotation) cannonReplacementOneLeft->rotation -= (timeSinceFrontLeftDied * 0.5);
         
-        if(cannonReplacementTwoLeft->location.x > cannonReplacementOneLeft->defaultLocation.x) cannonReplacementTwoLeft->location.x = cannonReplacementTwoLeft->location.x - (timeSinceFrontLeftDied * 0.5);
+        if(cannonReplacementTwoLeft->location.x < cannonReplacementOneLeft->defaultLocation.x) cannonReplacementTwoLeft->location.x = cannonReplacementTwoLeft->location.x + (timeSinceFrontLeftDied * 0.5);
         if(cannonReplacementTwoLeft->location.y > cannonReplacementOneLeft->defaultLocation.y) cannonReplacementTwoLeft->location.y = cannonReplacementTwoLeft->location.y - (timeSinceFrontLeftDied * 0.5);
-        if(cannonReplacementTwoLeft->rotation > -60) cannonReplacementTwoLeft->rotation -= (timeSinceFrontLeftDied * 0.5);
+        if(cannonReplacementTwoLeft->rotation > -30) cannonReplacementTwoLeft->rotation -= (timeSinceFrontLeftDied * 0.5);
         
-        if(cannonReplacementThreeLeft->location.x > cannonReplacementTwoLeft->defaultLocation.x) cannonReplacementThreeLeft->location.x = cannonReplacementThreeLeft->location.x - (timeSinceFrontLeftDied * 0.5);
+        if(cannonReplacementThreeLeft->location.x < cannonReplacementTwoLeft->defaultLocation.x) cannonReplacementThreeLeft->location.x = cannonReplacementThreeLeft->location.x + (timeSinceFrontLeftDied * 0.5);
         if(cannonReplacementThreeLeft->location.y > cannonReplacementTwoLeft->defaultLocation.y) cannonReplacementThreeLeft->location.y = cannonReplacementThreeLeft->location.y - (timeSinceFrontLeftDied * 0.5);
         if(cannonReplacementThreeLeft->rotation > -30) cannonReplacementThreeLeft->rotation -= (timeSinceFrontLeftDied * 0.5);
         
-        if(!(cannonReplacementOneLeft->location.x > cannonFrontLeft->defaultLocation.x) && !(cannonReplacementOneLeft->location.y > cannonFrontLeft->defaultLocation.y) && !(cannonReplacementTwoLeft->location.x > cannonReplacementOneLeft->defaultLocation.x) && !(cannonReplacementTwoLeft->location.y > cannonReplacementOneLeft->defaultLocation.y) && !(cannonReplacementThreeLeft->location.x > cannonReplacementTwoLeft->defaultLocation.x) && !(cannonReplacementThreeLeft->location.y > cannonReplacementTwoLeft->defaultLocation.y)) {
+        if(!(cannonReplacementOneLeft->location.x < cannonFrontLeft->defaultLocation.x) && !(cannonReplacementOneLeft->location.y > cannonFrontLeft->defaultLocation.y) && !(cannonReplacementTwoLeft->location.x < cannonReplacementOneLeft->defaultLocation.x) && !(cannonReplacementTwoLeft->location.y > cannonReplacementOneLeft->defaultLocation.y) && !(cannonReplacementThreeLeft->location.x < cannonReplacementTwoLeft->defaultLocation.x) && !(cannonReplacementThreeLeft->location.y > cannonReplacementTwoLeft->defaultLocation.y)) {
             leftSideTransitionComplete = YES;
         }
     }
@@ -117,19 +135,19 @@
     if(cannonFrontRight->isDead) {
         timeSinceFrontRightDied+= delta;
         rightSideTransitionComplete = NO;
-        if(cannonReplacementOneRight->location.x < cannonFrontRight->defaultLocation.x) cannonReplacementOneRight->location.x = cannonReplacementOneRight->location.x + (timeSinceFrontRightDied * 0.5);
+        if(cannonReplacementOneRight->location.x > cannonFrontRight->defaultLocation.x) cannonReplacementOneRight->location.x = cannonReplacementOneRight->location.x - (timeSinceFrontRightDied * 0.5);
         if(cannonReplacementOneRight->location.y > cannonFrontRight->defaultLocation.y) cannonReplacementOneRight->location.y = cannonReplacementOneRight->location.y - (timeSinceFrontRightDied * 0.5);
         if(cannonReplacementOneRight->rotation > -cannonFrontRight->rotation) cannonReplacementOneRight->rotation += (timeSinceFrontRightDied * 0.5);
         
-        if(cannonReplacementTwoRight->location.x < cannonReplacementOneRight->defaultLocation.x) cannonReplacementTwoRight->location.x = cannonReplacementTwoRight->location.x + (timeSinceFrontRightDied * 0.5);
+        if(cannonReplacementTwoRight->location.x > cannonReplacementOneRight->defaultLocation.x) cannonReplacementTwoRight->location.x = cannonReplacementTwoRight->location.x - (timeSinceFrontRightDied * 0.5);
         if(cannonReplacementTwoRight->location.y > cannonReplacementOneRight->defaultLocation.y) cannonReplacementTwoRight->location.y = cannonReplacementTwoRight->location.y - (timeSinceFrontRightDied * 0.5);
-        if(cannonReplacementTwoRight->rotation < 60) cannonReplacementTwoRight->rotation += (timeSinceFrontRightDied * 0.5);
+        if(cannonReplacementTwoRight->rotation < 30) cannonReplacementTwoRight->rotation += (timeSinceFrontRightDied * 0.5);
 
-        if(cannonReplacementThreeRight->location.x < cannonReplacementTwoRight->defaultLocation.x) cannonReplacementThreeRight->location.x = cannonReplacementThreeRight->location.x + (timeSinceFrontRightDied * 0.5);
+        if(cannonReplacementThreeRight->location.x > cannonReplacementTwoRight->defaultLocation.x) cannonReplacementThreeRight->location.x = cannonReplacementThreeRight->location.x - (timeSinceFrontRightDied * 0.5);
         if(cannonReplacementThreeRight->location.y > cannonReplacementTwoRight->defaultLocation.y) cannonReplacementThreeRight->location.y = cannonReplacementThreeRight->location.y - (timeSinceFrontRightDied * 0.5);
         if(cannonReplacementThreeRight->rotation < 30) cannonReplacementThreeRight->rotation += (timeSinceFrontRightDied * 0.5);
 
-        if(!(cannonReplacementOneRight->location.x < cannonFrontRight->defaultLocation.x) && !(cannonReplacementOneRight->location.y > cannonFrontRight->defaultLocation.y) && !(cannonReplacementTwoRight->location.x < cannonReplacementOneRight->defaultLocation.x) && !(cannonReplacementTwoRight->location.y > cannonReplacementOneRight->defaultLocation.y) && !(cannonReplacementThreeRight->location.x < cannonReplacementTwoRight->defaultLocation.x) && !(cannonReplacementThreeRight->location.y > cannonReplacementTwoRight->defaultLocation.y)) {
+        if(!(cannonReplacementOneRight->location.x > cannonFrontRight->defaultLocation.x) && !(cannonReplacementOneRight->location.y > cannonFrontRight->defaultLocation.y) && !(cannonReplacementTwoRight->location.x > cannonReplacementOneRight->defaultLocation.x) && !(cannonReplacementTwoRight->location.y > cannonReplacementOneRight->defaultLocation.y) && !(cannonReplacementThreeRight->location.x > cannonReplacementTwoRight->defaultLocation.x) && !(cannonReplacementThreeRight->location.y > cannonReplacementTwoRight->defaultLocation.y)) {
             rightSideTransitionComplete = YES;
         }
     }
@@ -189,7 +207,7 @@
     for(int i = 0; i < numberOfModules; i++) {
         if (!modularObjects[i].isDead) {
             [modularObjects[i].moduleImage setRotation:modularObjects[i].rotation];
-            [modularObjects[i].moduleImage renderAtPoint:CGPointMake(currentLocation.x - modularObjects[i].location.x, currentLocation.y + modularObjects[i].location.y) centerOfImage:YES];
+            [modularObjects[i].moduleImage renderAtPoint:CGPointMake(currentLocation.x + modularObjects[i].location.x, currentLocation.y + modularObjects[i].location.y) centerOfImage:YES];
         }
     }
     

@@ -33,6 +33,8 @@
     BOOL            leftSideTransitionComplete;
     BOOL            rightSideTransitionComplete;
 }
+@property(readonly) BOOL leftSideTransitionComplete;
+@property(readonly) BOOL rightSideTransitionComplete;
 
 - (id)initWithLocation:(CGPoint)aPoint andPlayerShipRef:(PlayerShip *)playerRef;
 - (void)update:(GLfloat)delta;
