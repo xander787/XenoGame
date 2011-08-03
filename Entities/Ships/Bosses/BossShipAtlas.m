@@ -156,8 +156,7 @@
         for(int i = 0; i < [[cannonLeft->collisionPolygonArray objectAtIndex:k] pointCount]; i++){
             Vector2f tempPoint = [[cannonLeft->collisionPolygonArray objectAtIndex:k] originalPoints][i];
             double tempAngle = DEGREES_TO_RADIANS(cannonLeft->rotation - angleToPlayer);
-            [[cannonLeft->collisionPolygonArray objectAtIndex:k] originalPoints][i] = Vector2fMake((tempPoint.x * cos(tempAngle)) - (tempPoint.y * sin(tempAngle)),
-                                                                          (tempPoint.x * sin(tempAngle)) + (tempPoint.y * cos(tempAngle)));
+            [[cannonLeft->collisionPolygonArray objectAtIndex:k] originalPoints][i] = Vector2fMake((tempPoint.x * cos(tempAngle)) - (tempPoint.y * sin(tempAngle)), (tempPoint.x * sin(tempAngle)) + (tempPoint.y * cos(tempAngle)));
         }
         [[cannonLeft->collisionPolygonArray objectAtIndex:k] buildEdges];
     }
@@ -166,8 +165,7 @@
         for(int i = 0; i < [[cannonRight->collisionPolygonArray objectAtIndex:k] pointCount]; i++){
             Vector2f tempPoint = [[cannonRight->collisionPolygonArray objectAtIndex:k] originalPoints][i];
             double tempAngle = DEGREES_TO_RADIANS(cannonRight->rotation - angleToPlayer2);
-            [[cannonRight->collisionPolygonArray objectAtIndex:k] originalPoints][i] = Vector2fMake((tempPoint.x * cos(tempAngle)) - (tempPoint.y * sin(tempAngle)),
-                                                                           (tempPoint.x * sin(tempAngle)) + (tempPoint.y * cos(tempAngle)));
+            [[cannonRight->collisionPolygonArray objectAtIndex:k] originalPoints][i] = Vector2fMake((tempPoint.x * cos(tempAngle)) - (tempPoint.y * sin(tempAngle)), (tempPoint.x * sin(tempAngle)) + (tempPoint.y * cos(tempAngle)));
         }
         [[cannonRight->collisionPolygonArray objectAtIndex:k] buildEdges];
     }

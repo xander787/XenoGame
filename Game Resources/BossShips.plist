@@ -17,31 +17,36 @@
 		<key>kCollisionBoundingPoints</key>
 		<array>
 			<array>
-				<string>0,-64;-90,-5;-96,36;-27,66;27,66;95,36;89,-5</string>
+				<string>0,90;-29,25;-22,-16;-12,-33;13,-33;22,-16;28,25</string>
+				<string>-38,-30;-55,-55;-34,-95;33,-95;54,-55;38,-30</string>
+				<string>-68,-14;-72,1;-71,-14;-68,-17</string>
+				<string>68,-14;72,1;71,-14;68,-17</string>
+				<string>-41,-34;-69,-16;-67,-15;-39,-29</string>
+				<string>41,-34;69,-16;67,-15;39,-29</string>
 			</array>
 			<array>
-				<string>0,-64;-90,-5;-96,36;-27,66;27,66;95,36;89,-5</string>
+				<string>-4,31;-15,4;-15,-17;0,-44;15,-17;15,43</string>
 			</array>
 			<array>
-				<string>0,-64;-90,-5;-96,36;-27,66;27,66;95,36;89,-5</string>
+				<string>4,31;15,4;15,-17;0,-44;-15,-17;-15,43</string>
 			</array>
 			<array>
-				<string>0,-64;-90,-5;-96,36;-27,66;27,66;95,36;89,-5</string>
+				<string>-31,21;-33,6;-14,-17;5,-28;35,-28;21,-3</string>
 			</array>
 			<array>
-				<string>0,-64;-90,-5;-96,36;-27,66;27,66;95,36;89,-5</string>
+				<string>31,21;33,6;14,-17;-5,-28;-35,-28;-21,-3</string>
 			</array>
 			<array>
-				<string>0,-64;-90,-5;-96,36;-27,66;27,66;95,36;89,-5</string>
+				<string>-33,-6;-4,-16;13,-16;42,-2;15,14;-44,14</string>
 			</array>
 			<array>
-				<string>0,-64;-90,-5;-96,36;-27,66;27,66;95,36;89,-5</string>
+				<string>33,-6;4,-16;-13,-16;-42,-2;-15,14;44,14</string>
 			</array>
 			<array>
-				<string>0,-64;-90,-5;-96,36;-27,66;27,66;95,36;89,-5</string>
+				<string>-42,-15;-23,-28;6,-21;25,-9;40,15;8,14</string>
 			</array>
 			<array>
-				<string>0,-64;-90,-5;-96,36;-27,66;27,66;95,36;89,-5</string>
+				<string>42,-15;23,-28;-6,-21;-25,-9;-40,15;-8,14</string>
 			</array>
 		</array>
 		<key>kModularDestructionOrder</key>
@@ -69,8 +74,8 @@
 		<key>kShipModuleImages</key>
 		<array>
 			<string>kBossAstraeusMainBody.png</string>
-			<string>kBossAstraeusCannonLeft.png</string>
 			<string>kBossAstraeusCannonRight.png</string>
+			<string>kBossAstraeusCannonLeft.png</string>
 			<string>kBossAstraeusCannon30Left.png</string>
 			<string>kBossAstraeusCannon30Right.png</string>
 			<string>kBossAstraeusCannon90Left.png</string>
@@ -81,14 +86,14 @@
 		<key>kShipModulePoints</key>
 		<array>
 			<string>0,0</string>
-			<string>50,-125</string>
-			<string>-50,-125</string>
-			<string>117,-88</string>
-			<string>-117,-88</string>
-			<string>145,-14</string>
-			<string>-145,-14</string>
-			<string>128,62</string>
-			<string>-128,62</string>
+			<string>-40,-112</string>
+			<string>40,-112</string>
+			<string>77,-74</string>
+			<string>-77,-74</string>
+			<string>107,-13</string>
+			<string>-107,-13</string>
+			<string>109,44</string>
+			<string>-109,44</string>
 		</array>
 		<key>kShipTurretPoints</key>
 		<array>
