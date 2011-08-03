@@ -198,6 +198,7 @@
         for(int i = 0; i < numberOfModules; i++){
             //Quickly init an array for later
             modularObjects[i].collisionPolygonArray = [[NSMutableArray alloc] init];
+            modularObjects[i].shouldTakeDamage = YES;
             
             //Step one: get the image for the module, simple so it's first
             modularObjects[i].moduleImage = [[Image alloc] initWithImage:[moduleImagesArray objectAtIndex:i] scale:Scale2fOne];

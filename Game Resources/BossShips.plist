@@ -54,17 +54,11 @@
 			<array>
 				<integer>1</integer>
 				<integer>2</integer>
-			</array>
-			<array>
-				<integer>3</integer>
-				<integer>4</integer>
-			</array>
-			<array>
-				<integer>5</integer>
+				<string>3</string>
+				<string>4</string>
+				<string>5</string>
 				<string>6</string>
-			</array>
-			<array>
-				<integer>7</integer>
+				<string>7</string>
 				<string>8</string>
 			</array>
 			<array>

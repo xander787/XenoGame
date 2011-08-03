@@ -1144,9 +1144,11 @@ WrapText( const char *text
                                 
                                 if(result.intersect){
                                     if(bossShipIsDisplayed){
-                                        if (bossShip.modularObjects[i].destructionOrder == bossShip.currentDestructionOrder && bossShip.modularObjects[i].isDead == NO) {
-                                            [bossShip hitModule:i withDamage:10];
-                                            playerShipProjectile.emitter.particles[j].position = Vector2fMake(500, 50);
+                                        if(bossShip.modularObjects[i].shouldTakeDamage == YES){
+                                            if (bossShip.modularObjects[i].destructionOrder == bossShip.currentDestructionOrder && bossShip.modularObjects[i].isDead == NO) {
+                                                [bossShip hitModule:i withDamage:10];
+                                                playerShipProjectile.emitter.particles[j].position = Vector2fMake(500, 50);
+                                            }
                                         }
                                     }
                                 }

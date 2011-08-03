@@ -121,6 +121,8 @@ typedef struct _ModularObject {
     BOOL            isDead;
     BOOL            hitFilter;
     float           hitFilterEffectTime;
+    
+    BOOL            shouldTakeDamage;
 } ModularObject;
 
 

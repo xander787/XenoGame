@@ -16,6 +16,9 @@
 //  Last Updated - 8/2/11 @8PM - James
 //  - Fixed a bunch of bugs, mainly with copying the old and broken
 //  angle conde and etc form Atlas. Fixed now
+//
+//  Last Updated - 8/2/11 @11PM - James
+//  - Fixed nasty bug with cannons being killed too fast and causing problems
 
 #import "BossShipAstraeus.h"
 #import "BossShip.h"
@@ -36,6 +39,13 @@
         cannonReplacementTwoRight = &self.modularObjects[6];
         cannonReplacementThreeLeft = &self.modularObjects[7];
         cannonReplacementThreeRight = &self.modularObjects[8];
+        
+        cannonReplacementOneLeft->shouldTakeDamage = NO;
+        cannonReplacementOneRight->shouldTakeDamage = NO;
+        cannonReplacementTwoLeft->shouldTakeDamage = NO;
+        cannonReplacementTwoRight->shouldTakeDamage = NO;
+        cannonReplacementThreeLeft->shouldTakeDamage = NO;
+        cannonReplacementThreeRight->shouldTakeDamage = NO;
     }
     
     return self;
@@ -113,47 +123,56 @@
     }
     
     if(cannonFrontLeft->isDead) {
-        timeSinceFrontLeftDied+= delta;
-        leftSideTransitionComplete = NO;
-        if(cannonReplacementOneLeft->location.x < cannonFrontLeft->defaultLocation.x) cannonReplacementOneLeft->location.x = cannonReplacementOneLeft->location.x + (timeSinceFrontLeftDied * 0.5);
-        if(cannonReplacementOneLeft->location.y > cannonFrontLeft->defaultLocation.y) cannonReplacementOneLeft->location.y = cannonReplacementOneLeft->location.y - (timeSinceFrontLeftDied * 0.5);
-        if(cannonReplacementOneLeft->rotation > -cannonFrontLeft->rotation) cannonReplacementOneLeft->rotation -= (timeSinceFrontLeftDied * 0.5);
+        if(cannonReplacementOneLeft->isDead == NO || cannonReplacementTwoLeft->isDead == NO || cannonReplacementThreeLeft->isDead == NO){
+            //Check to make sure that there are others to animate in
+            timeSinceFrontLeftDied+= delta;
+            leftSideTransitionComplete = NO;
+            cannonFrontLeft->shouldTakeDamage = NO;
+            if(cannonReplacementOneLeft->location.x < cannonFrontLeft->defaultLocation.x) cannonReplacementOneLeft->location.x = cannonReplacementOneLeft->location.x + (timeSinceFrontLeftDied * 0.5);
+            if(cannonReplacementOneLeft->location.y > cannonFrontLeft->defaultLocation.y) cannonReplacementOneLeft->location.y = cannonReplacementOneLeft->location.y - (timeSinceFrontLeftDied * 0.5);
+            if(cannonReplacementOneLeft->rotation > -cannonFrontLeft->rotation) cannonReplacementOneLeft->rotation -= (timeSinceFrontLeftDied * 0.5);
         
-        if(cannonReplacementTwoLeft->location.x < cannonReplacementOneLeft->defaultLocation.x) cannonReplacementTwoLeft->location.x = cannonReplacementTwoLeft->location.x + (timeSinceFrontLeftDied * 0.5);
-        if(cannonReplacementTwoLeft->location.y > cannonReplacementOneLeft->defaultLocation.y) cannonReplacementTwoLeft->location.y = cannonReplacementTwoLeft->location.y - (timeSinceFrontLeftDied * 0.5);
-        if(cannonReplacementTwoLeft->rotation > -30) cannonReplacementTwoLeft->rotation -= (timeSinceFrontLeftDied * 0.5);
+            if(cannonReplacementTwoLeft->location.x < cannonReplacementOneLeft->defaultLocation.x) cannonReplacementTwoLeft->location.x = cannonReplacementTwoLeft->location.x + (timeSinceFrontLeftDied * 0.5);
+            if(cannonReplacementTwoLeft->location.y > cannonReplacementOneLeft->defaultLocation.y) cannonReplacementTwoLeft->location.y = cannonReplacementTwoLeft->location.y - (timeSinceFrontLeftDied * 0.5);
+            if(cannonReplacementTwoLeft->rotation > -30) cannonReplacementTwoLeft->rotation -= (timeSinceFrontLeftDied * 0.5);
         
-        if(cannonReplacementThreeLeft->location.x < cannonReplacementTwoLeft->defaultLocation.x) cannonReplacementThreeLeft->location.x = cannonReplacementThreeLeft->location.x + (timeSinceFrontLeftDied * 0.5);
-        if(cannonReplacementThreeLeft->location.y > cannonReplacementTwoLeft->defaultLocation.y) cannonReplacementThreeLeft->location.y = cannonReplacementThreeLeft->location.y - (timeSinceFrontLeftDied * 0.5);
-        if(cannonReplacementThreeLeft->rotation > -30) cannonReplacementThreeLeft->rotation -= (timeSinceFrontLeftDied * 0.5);
-        
-        if(!(cannonReplacementOneLeft->location.x < cannonFrontLeft->defaultLocation.x) && !(cannonReplacementOneLeft->location.y > cannonFrontLeft->defaultLocation.y) && !(cannonReplacementTwoLeft->location.x < cannonReplacementOneLeft->defaultLocation.x) && !(cannonReplacementTwoLeft->location.y > cannonReplacementOneLeft->defaultLocation.y) && !(cannonReplacementThreeLeft->location.x < cannonReplacementTwoLeft->defaultLocation.x) && !(cannonReplacementThreeLeft->location.y > cannonReplacementTwoLeft->defaultLocation.y)) {
-            leftSideTransitionComplete = YES;
+            if(cannonReplacementThreeLeft->location.x < cannonReplacementTwoLeft->defaultLocation.x) cannonReplacementThreeLeft->location.x = cannonReplacementThreeLeft->location.x + (timeSinceFrontLeftDied * 0.5);
+            if(cannonReplacementThreeLeft->location.y > cannonReplacementTwoLeft->defaultLocation.y) cannonReplacementThreeLeft->location.y = cannonReplacementThreeLeft->location.y - (timeSinceFrontLeftDied * 0.5);
+            if(cannonReplacementThreeLeft->rotation > -30) cannonReplacementThreeLeft->rotation -= (timeSinceFrontLeftDied * 0.5);
+            
+            if(!(cannonReplacementOneLeft->location.x < cannonFrontLeft->defaultLocation.x) && !(cannonReplacementOneLeft->location.y > cannonFrontLeft->defaultLocation.y) && !(cannonReplacementTwoLeft->location.x < cannonReplacementOneLeft->defaultLocation.x) && !(cannonReplacementTwoLeft->location.y > cannonReplacementOneLeft->defaultLocation.y) && !(cannonReplacementThreeLeft->location.x < cannonReplacementTwoLeft->defaultLocation.x) && !(cannonReplacementThreeLeft->location.y > cannonReplacementTwoLeft->defaultLocation.y)) {
+                leftSideTransitionComplete = YES;
+            }
         }
     }
     
     if(cannonFrontRight->isDead) {
-        timeSinceFrontRightDied+= delta;
-        rightSideTransitionComplete = NO;
-        if(cannonReplacementOneRight->location.x > cannonFrontRight->defaultLocation.x) cannonReplacementOneRight->location.x = cannonReplacementOneRight->location.x - (timeSinceFrontRightDied * 0.5);
-        if(cannonReplacementOneRight->location.y > cannonFrontRight->defaultLocation.y) cannonReplacementOneRight->location.y = cannonReplacementOneRight->location.y - (timeSinceFrontRightDied * 0.5);
-        if(cannonReplacementOneRight->rotation > -cannonFrontRight->rotation) cannonReplacementOneRight->rotation += (timeSinceFrontRightDied * 0.5);
+        if(cannonReplacementOneRight->isDead == NO || cannonReplacementTwoRight->isDead == NO || cannonReplacementThreeLeft->isDead == NO){
+            timeSinceFrontRightDied+= delta;
+            rightSideTransitionComplete = NO;
+            cannonFrontRight->shouldTakeDamage = NO;
+            if(cannonReplacementOneRight->location.x > cannonFrontRight->defaultLocation.x) cannonReplacementOneRight->location.x = cannonReplacementOneRight->location.x - (timeSinceFrontRightDied * 0.5);
+            if(cannonReplacementOneRight->location.y > cannonFrontRight->defaultLocation.y) cannonReplacementOneRight->location.y = cannonReplacementOneRight->location.y - (timeSinceFrontRightDied * 0.5);
+            if(cannonReplacementOneRight->rotation > -cannonFrontRight->rotation) cannonReplacementOneRight->rotation += (timeSinceFrontRightDied * 0.5);
         
-        if(cannonReplacementTwoRight->location.x > cannonReplacementOneRight->defaultLocation.x) cannonReplacementTwoRight->location.x = cannonReplacementTwoRight->location.x - (timeSinceFrontRightDied * 0.5);
-        if(cannonReplacementTwoRight->location.y > cannonReplacementOneRight->defaultLocation.y) cannonReplacementTwoRight->location.y = cannonReplacementTwoRight->location.y - (timeSinceFrontRightDied * 0.5);
-        if(cannonReplacementTwoRight->rotation < 30) cannonReplacementTwoRight->rotation += (timeSinceFrontRightDied * 0.5);
-
-        if(cannonReplacementThreeRight->location.x > cannonReplacementTwoRight->defaultLocation.x) cannonReplacementThreeRight->location.x = cannonReplacementThreeRight->location.x - (timeSinceFrontRightDied * 0.5);
-        if(cannonReplacementThreeRight->location.y > cannonReplacementTwoRight->defaultLocation.y) cannonReplacementThreeRight->location.y = cannonReplacementThreeRight->location.y - (timeSinceFrontRightDied * 0.5);
-        if(cannonReplacementThreeRight->rotation < 30) cannonReplacementThreeRight->rotation += (timeSinceFrontRightDied * 0.5);
-
-        if(!(cannonReplacementOneRight->location.x > cannonFrontRight->defaultLocation.x) && !(cannonReplacementOneRight->location.y > cannonFrontRight->defaultLocation.y) && !(cannonReplacementTwoRight->location.x > cannonReplacementOneRight->defaultLocation.x) && !(cannonReplacementTwoRight->location.y > cannonReplacementOneRight->defaultLocation.y) && !(cannonReplacementThreeRight->location.x > cannonReplacementTwoRight->defaultLocation.x) && !(cannonReplacementThreeRight->location.y > cannonReplacementTwoRight->defaultLocation.y)) {
-            rightSideTransitionComplete = YES;
+            if(cannonReplacementTwoRight->location.x > cannonReplacementOneRight->defaultLocation.x) cannonReplacementTwoRight->location.x = cannonReplacementTwoRight->location.x - (timeSinceFrontRightDied * 0.5);
+            if(cannonReplacementTwoRight->location.y > cannonReplacementOneRight->defaultLocation.y) cannonReplacementTwoRight->location.y = cannonReplacementTwoRight->location.y - (timeSinceFrontRightDied * 0.5);
+            if(cannonReplacementTwoRight->rotation < 30) cannonReplacementTwoRight->rotation += (timeSinceFrontRightDied * 0.5);
+            
+            if(cannonReplacementThreeRight->location.x > cannonReplacementTwoRight->defaultLocation.x) cannonReplacementThreeRight->location.x = cannonReplacementThreeRight->location.x - (timeSinceFrontRightDied * 0.5);
+            if(cannonReplacementThreeRight->location.y > cannonReplacementTwoRight->defaultLocation.y) cannonReplacementThreeRight->location.y = cannonReplacementThreeRight->location.y - (timeSinceFrontRightDied * 0.5);
+            if(cannonReplacementThreeRight->rotation < 30) cannonReplacementThreeRight->rotation += (timeSinceFrontRightDied * 0.5);
+            
+            if(!(cannonReplacementOneRight->location.x > cannonFrontRight->defaultLocation.x) && !(cannonReplacementOneRight->location.y > cannonFrontRight->defaultLocation.y) && !(cannonReplacementTwoRight->location.x > cannonReplacementOneRight->defaultLocation.x) && !(cannonReplacementTwoRight->location.y > cannonReplacementOneRight->defaultLocation.y) && !(cannonReplacementThreeRight->location.x > cannonReplacementTwoRight->defaultLocation.x) && !(cannonReplacementThreeRight->location.y > cannonReplacementTwoRight->defaultLocation.y)) {
+                rightSideTransitionComplete = YES;
+            }
         }
     }
     
     if(rightSideTransitionComplete) {
         cannonFrontRight->isDead = NO;
+        cannonFrontRight->moduleHealth = cannonFrontRight->moduleMaxHealth;
+        cannonFrontRight->shouldTakeDamage = YES;
         rightSideTransitionComplete = NO;
         timeSinceFrontRightDied = 0.0f;
         
@@ -179,6 +198,8 @@
     
     if(leftSideTransitionComplete) {
         cannonFrontLeft->isDead = NO;
+        cannonFrontLeft->moduleHealth = cannonFrontLeft->moduleMaxHealth;
+        cannonFrontLeft->shouldTakeDamage = YES;
         leftSideTransitionComplete = NO;
         timeSinceFrontLeftDied = 0.0f;
         
