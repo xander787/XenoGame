@@ -113,13 +113,13 @@
         
         leftCannonProjectile = [[AbstractProjectile alloc] initWithParticleID:kEnemyParticle 
                                                            fromTurretPosition:Vector2fZero
-                                                                       radius:10 
-                                                                   rateOfFire:2
+                                                                       radius:14
+                                                                   rateOfFire:4
                                                                      andAngle:270];
         rightCannonProjectile = [[AbstractProjectile alloc] initWithParticleID:kEnemyParticle
                                                             fromTurretPosition:Vector2fZero
-                                                                        radius:10 
-                                                                    rateOfFire:2
+                                                                        radius:14 
+                                                                    rateOfFire:4
                                                                       andAngle:270];
     }
     
@@ -153,9 +153,6 @@
     
     leftSideDeathEmitter.sourcePosition = Vector2fMake(cannonFrontLeft->location.x + currentLocation.x, cannonFrontLeft->location.y + currentLocation.y);
     rightSideDeathEmitter.sourcePosition = Vector2fMake(cannonFrontRight->location.x + currentLocation.x, cannonFrontRight->location.y + currentLocation.y);
-    
-    leftCannonProjectile.turretPosition = Vector2fMake(currentLocation.x + cannonFrontLeft->weapons[0].weaponCoord.x + cannonFrontLeft->location.x, currentLocation.y + cannonFrontLeft->weapons[0].weaponCoord.y + cannonFrontLeft->location.y);
-    rightCannonProjectile.turretPosition = Vector2fMake(currentLocation.x + cannonFrontRight->weapons[0].weaponCoord.x + cannonFrontRight->location.x, currentLocation.y + cannonFrontRight->weapons[0].weaponCoord.y + cannonFrontRight->location.y);
     
     {
         // Left Cannon Aiming
@@ -213,10 +210,6 @@
 
         cannonFrontRight->rotation = angleToPlayer2;
         cannonFrontLeft->rotation = angleToPlayer;
-        
-        leftCannonProjectile.projectileAngle = 270 - cannonFrontLeft->rotation;
-        rightCannonProjectile.projectileAngle = 270 - cannonFrontRight->rotation;
-        
     }
     
     if(cannonFrontLeft->isDead) {
@@ -277,31 +270,44 @@
     }
     
     if(rightSideTransitionComplete) {
-        cannonFrontRight->isDead = NO;
-        cannonFrontRight->moduleHealth = cannonFrontRight->moduleMaxHealth;
-        cannonFrontRight->shouldTakeDamage = YES;
         rightSideTransitionComplete = NO;
         timeSinceFrontRightDied = 0.0f;
         
+        [rightCannonProjectile release];
+        rightCannonProjectile = nil;
         if(cannonReplacementThreeRight->isDead == NO) {
             cannonReplacementThreeRight->isDead = YES;
             cannonReplacementOneRight->location = cannonReplacementOneRight->defaultLocation;
             cannonReplacementTwoRight->location = cannonReplacementTwoRight->defaultLocation;
             cannonReplacementOneRight->rotation = 0;
             cannonReplacementTwoRight->rotation = 0;
+            
+            cannonFrontRight->isDead = NO;
+            cannonFrontRight->moduleHealth = cannonFrontRight->moduleMaxHealth;
+            cannonFrontRight->shouldTakeDamage = YES;
+            rightCannonProjectile = [[AbstractProjectile alloc] initWithParticleID:kEnemyParticle fromTurretPosition:Vector2fZero radius:11 rateOfFire:3 andAngle:270];
         }
         else if(cannonReplacementTwoRight->isDead == NO) {
             cannonReplacementTwoRight->isDead = YES;
             cannonReplacementOneRight->location = cannonReplacementOneRight->defaultLocation;
             cannonReplacementOneRight->rotation = 0;
+            
+            cannonFrontRight->isDead = NO;
+            cannonFrontRight->moduleHealth = cannonFrontRight->moduleMaxHealth;
+            cannonFrontRight->shouldTakeDamage = YES;
+            rightCannonProjectile = [[AbstractProjectile alloc] initWithParticleID:kEnemyParticle fromTurretPosition:Vector2fZero radius:8 rateOfFire:2 andAngle:270];
         }
         else if(cannonReplacementOneRight->isDead == NO) {
             cannonReplacementOneRight->isDead = YES;
+            
+            cannonFrontRight->isDead = NO;
+            cannonFrontRight->moduleHealth = cannonFrontRight->moduleMaxHealth;
+            cannonFrontRight->shouldTakeDamage = YES;
+            rightCannonProjectile = [[AbstractProjectile alloc] initWithParticleID:kEnemyParticle fromTurretPosition:Vector2fZero radius:5 rateOfFire:1 andAngle:270];
         }
         else {
             // All cannons are dead
         }
-        [rightCannonProjectile playProjectile];
         [rightSideDeathEmitter release];
         
         rightSideDeathEmitter = [[ParticleEmitter alloc] initParticleEmitterWithImageNamed:@"texture.png"
@@ -324,12 +330,10 @@
                                                                       particleSizeVariance:0.0
                                                                                   duration:0.1
                                                                              blendAdditive:YES];
+        
     }
     
     if(leftSideTransitionComplete) {
-        cannonFrontLeft->isDead = NO;
-        cannonFrontLeft->moduleHealth = cannonFrontLeft->moduleMaxHealth;
-        cannonFrontLeft->shouldTakeDamage = YES;
         leftSideTransitionComplete = NO;
         timeSinceFrontLeftDied = 0.0f;
         
@@ -339,19 +343,33 @@
             cannonReplacementTwoLeft->location = cannonReplacementTwoLeft->defaultLocation;
             cannonReplacementOneLeft->rotation = 0;
             cannonReplacementTwoLeft->rotation = 0;
+            
+            cannonFrontLeft->isDead = NO;
+            cannonFrontLeft->moduleHealth = cannonFrontLeft->moduleMaxHealth;
+            cannonFrontLeft->shouldTakeDamage = YES;
+            leftCannonProjectile = [[AbstractProjectile alloc] initWithParticleID:kEnemyParticle fromTurretPosition:Vector2fZero radius:11 rateOfFire:3 andAngle:270];
         }
         else if(cannonReplacementTwoLeft->isDead == NO) {
             cannonReplacementTwoLeft->isDead = YES;
             cannonReplacementOneLeft->location = cannonReplacementOneLeft->defaultLocation;
             cannonReplacementOneLeft->rotation = 0;
+            
+            cannonFrontLeft->isDead = NO;
+            cannonFrontLeft->moduleHealth = cannonFrontLeft->moduleMaxHealth;
+            cannonFrontLeft->shouldTakeDamage = YES;
+            leftCannonProjectile = [[AbstractProjectile alloc] initWithParticleID:kEnemyParticle fromTurretPosition:Vector2fZero radius:8 rateOfFire:2 andAngle:270];
         }
         else if(cannonReplacementOneLeft->isDead == NO) {
             cannonReplacementOneLeft->isDead = YES;
+            
+            cannonFrontLeft->isDead = NO;
+            cannonFrontLeft->moduleHealth = cannonFrontLeft->moduleMaxHealth;
+            cannonFrontLeft->shouldTakeDamage = YES;
+            leftCannonProjectile = [[AbstractProjectile alloc] initWithParticleID:kEnemyParticle fromTurretPosition:Vector2fZero radius:5 rateOfFire:1 andAngle:270];
         }
         else {
             // All cannons are dead
         }
-        [leftCannonProjectile playProjectile];
         [leftSideDeathEmitter release];
         
         leftSideDeathEmitter = [[ParticleEmitter alloc] initParticleEmitterWithImageNamed:@"texture.png"
@@ -379,6 +397,15 @@
     if(cannonReplacementOneLeft->isDead && cannonReplacementTwoLeft->isDead && cannonReplacementThreeLeft->isDead &&
        cannonReplacementOneRight->isDead && cannonReplacementTwoRight->isDead && cannonReplacementThreeRight->isDead){
         allReplacementsDead = YES;
+    }
+    
+    if(cannonReplacementOneLeft->isDead && cannonReplacementTwoLeft->isDead && cannonReplacementThreeLeft->isDead && cannonFrontLeft->isDead){
+        [leftCannonProjectile release];
+        leftCannonProjectile = nil;
+    }
+    if(cannonReplacementOneRight->isDead && cannonReplacementTwoRight->isDead && cannonReplacementThreeRight->isDead && cannonFrontRight->isDead){
+        [rightCannonProjectile release];
+        rightCannonProjectile = nil;
     }
     
     if(allReplacementsDead){
@@ -420,8 +447,16 @@
     }
     
     if(shipIsDeployed){
-        [leftCannonProjectile update:delta];
-        [rightCannonProjectile update:delta];
+        if(leftCannonProjectile){
+            [leftCannonProjectile update:delta];
+            leftCannonProjectile.projectileAngle = 270 - cannonFrontLeft->rotation;
+            leftCannonProjectile.turretPosition = Vector2fMake(currentLocation.x + cannonFrontLeft->weapons[0].weaponCoord.x + cannonFrontLeft->location.x, currentLocation.y + cannonFrontLeft->weapons[0].weaponCoord.y + cannonFrontLeft->location.y);
+        }
+        if(rightCannonProjectile){
+            [rightCannonProjectile update:delta];
+            rightCannonProjectile.projectileAngle = 270 - cannonFrontRight->rotation;
+            rightCannonProjectile.turretPosition = Vector2fMake(currentLocation.x + cannonFrontRight->weapons[0].weaponCoord.x + cannonFrontRight->location.x, currentLocation.y + cannonFrontRight->weapons[0].weaponCoord.y + cannonFrontRight->location.y);
+        }
     }
 }
 

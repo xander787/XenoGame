@@ -323,8 +323,8 @@
                                                                          finishColor:Color4fMake(0.1, 0.1, 0.5, 1.0)
                                                                  finishColorVariance:Color4fMake(0.05, 0.05, 0.3, 0.0)
                                                                         maxParticles:40.0
-                                                                        particleSize:25.0
-                                                                  finishParticleSize:25.0
+                                                                        particleSize:particleAngle * 2.5
+                                                                  finishParticleSize:particleAngle * 2.5
                                                                 particleSizeVariance:0.0
                                                                             duration:-1.0
                                                                        blendAdditive:YES];
@@ -346,8 +346,8 @@
                                                                          finishColor:Color4fMake(0.5, 0.1, 0.1, 1.0)
                                                                  finishColorVariance:Color4fMake(0.3, 0.05, 0.05, 0.0)
                                                                         maxParticles:40.0
-                                                                        particleSize:35.0
-                                                                  finishParticleSize:35.0
+                                                                        particleSize:particleRadius * 2.5
+                                                                  finishParticleSize:particleRadius * 2.5
                                                                 particleSizeVariance:0.0
                                                                             duration:-1.0
                                                                        blendAdditive:YES];

@@ -68,8 +68,8 @@
 		<key>kShipModuleImages</key>
 		<array>
 			<string>kBossAstraeusMainBody.png</string>
-			<string>kBossAstraeusCannonRight.png</string>
-			<string>kBossAstraeusCannonLeft.png</string>
+			<string>kBossAstraeusCannonFrontRight.png</string>
+			<string>kBossAstraeusCannonFrontLeft.png</string>
 			<string>kBossAstraeusCannon30Left.png</string>
 			<string>kBossAstraeusCannon30Right.png</string>
 			<string>kBossAstraeusCannon90Left.png</string>
