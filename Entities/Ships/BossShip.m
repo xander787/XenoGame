@@ -51,7 +51,7 @@
 
 @implementation BossShip
 
-@synthesize bossHealth, bossAttack, bossStamina, bossSpeed, modularObjects, numberOfModules, currentDestructionOrder, bossID, bossType;
+@synthesize bossHealth, bossAttack, bossStamina, bossSpeed, modularObjects, numberOfModules, currentDestructionOrder, bossID, bossType, shipIsDeployed;
 
 - (id)initWithBossID:(BossShipID)aBossID initialLocation:(CGPoint)aPoint andPlayerShipRef:(PlayerShip *)aPlayerShip {
     if((self = [super init])) {

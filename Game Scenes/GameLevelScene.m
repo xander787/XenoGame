@@ -881,6 +881,7 @@ WrapText( const char *text
                 if (abs(bossShip.currentLocation.x - bossShipDefaultLocation.x) < 3 && abs(bossShip.currentLocation.y - bossShipDefaultLocation.y) < 3) {
                     bossShipIntroAnimationTime = 0.0;
                     bossShipIsDisplayed = YES;
+                    bossShip.shipIsDeployed = YES;
                     [playerShip playAllProjectiles];
                 }
             }

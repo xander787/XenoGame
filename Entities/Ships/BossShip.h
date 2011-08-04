@@ -141,6 +141,8 @@ typedef struct _ModularObject {
     int             currentDestructionOrder;
     BossShipID      bossID;
     BossType        bossType;
+    
+    BOOL            shipIsDeployed;
 }
 
 @property(nonatomic, readonly) int bossHealth;
@@ -152,6 +154,7 @@ typedef struct _ModularObject {
 @property(readonly) int            currentDestructionOrder;
 @property(readonly) BossShipID     bossID;
 @property(readonly) BossType       bossType;
+@property(readwrite) BOOL          shipIsDeployed;
 
 - (id)initWithBossID:(BossShipID)aBossID initialLocation:(CGPoint)aPoint andPlayerShipRef:(PlayerShip *)aPlayerShip;
 - (void)setDesiredLocation:(CGPoint)aPoint;

@@ -32,9 +32,10 @@
 
 - (void)update:(GLfloat)delta {
     [super update:delta];
-    
-    currentLocation.x += ((desiredLocation.x - currentLocation.x) / bossSpeed/2) * (pow(1.584893192, bossSpeed)) * delta;
-    currentLocation.y += ((desiredLocation.y - currentLocation.y) / bossSpeed/2) * (pow(1.584893192, bossSpeed)) * delta;
+    if(!shipIsDeployed){
+        currentLocation.x += ((desiredLocation.x - currentLocation.x) / bossSpeed) * (pow(1.584893192, bossSpeed)) * delta;
+        currentLocation.y += ((desiredLocation.y - currentLocation.y) / bossSpeed) * (pow(1.584893192, bossSpeed)) * delta;
+    }
     
     //Set the centers of the polygons so they get rendered properly
     for(int i = 0; i < numberOfModules; i++){
@@ -49,17 +50,19 @@
     }
     
     //Code to move side to side
-    if(currentLocation.x < 190 && moveLeft == NO){
-        desiredLocation.x = 200;
-    }
-    else {
-        moveLeft = YES;
-    }
-    if(currentLocation.x > 130 && moveLeft == YES){
-        desiredLocation.x = 120;
-    }
-    else {
-        moveLeft = NO;
+    if(shipIsDeployed){
+        if(currentLocation.x < 235 && moveLeft == NO){
+            currentLocation.x += 70 * delta;
+        }
+        else {
+            moveLeft = YES;
+        }
+        if(currentLocation.x > 85 && moveLeft == YES){
+            currentLocation.x -= 70 * delta;
+        }
+        else {
+            moveLeft = NO;
+        }
     }
 }
 
