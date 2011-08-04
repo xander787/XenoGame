@@ -32,6 +32,7 @@
     
     ParticleEmitter *leftCannonEmitterJoint;
     ParticleEmitter *rightCannonEmitterJoint;
+    ParticleEmitter *backEngineEnergyEmitter;
 }
 
 - (id)initWithLocation:(CGPoint)aPoint andPlayerShipRef:(PlayerShip *)playerRef;

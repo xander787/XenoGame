@@ -90,7 +90,28 @@
                                                                        particleSizeVariance:2
                                                                                    duration:-1
                                                                               blendAdditive:YES];
-    }
+        
+        backEngineEnergyEmitter = [[ParticleEmitter alloc] initParticleEmitterWithImageNamed:@"texture.png"
+                                                                                    position:Vector2fMake(currentLocation.x, currentLocation.y + 30)
+                                                                      sourcePositionVariance:Vector2fMake(0,0)
+                                                                                       speed:0.01f
+                                                                               speedVariance:0.0f
+                                                                            particleLifeSpan:1.0f
+                                                                    particleLifespanVariance:1.0f
+                                                                                       angle:360.0f
+                                                                               angleVariance:0
+                                                                                     gravity:Vector2fMake(0.0f, 0.0f)
+                                                                                  startColor:Color4fMake(0.3f, 1.0f, 0.66f, 1.0f)
+                                                                          startColorVariance:Color4fMake(0.0f, 0.2f, 0.2f, 0.5f)
+                                                                                 finishColor:Color4fMake(0.16f, 0.0f, 0.0f, 1.0f)
+                                                                         finishColorVariance:Color4fMake(0.0f, 0.0f, 0.0f, 1.0f)
+                                                                                maxParticles:10
+                                                                                particleSize:25
+                                                                          finishParticleSize:25
+                                                                        particleSizeVariance:2
+                                                                                    duration:-1
+                                                                               blendAdditive:YES];
+   }
     return self;
 }
 
@@ -114,13 +135,18 @@
         }
     }
         
-    [rightCannonEmitterJoint setSourcePosition:Vector2fMake(currentLocation.x + (-105), currentLocation.y)];
-    [leftCannonEmitterJoint setSourcePosition:Vector2fMake(currentLocation.x + 105, currentLocation.y)];
+    [rightCannonEmitterJoint setSourcePosition:Vector2fMake(currentLocation.x + (-115), currentLocation.y - 30)];
+    [leftCannonEmitterJoint setSourcePosition:Vector2fMake(currentLocation.x + 115, currentLocation.y - 30)];
+    [backEngineEnergyEmitter setSourcePosition:Vector2fMake(currentLocation.x, currentLocation.y + 30)];
+    
     if(cannonRight->isDead == NO){
         [rightCannonEmitterJoint update:delta];
     }
     if(cannonLeft->isDead == NO){
         [leftCannonEmitterJoint update:delta];
+    }
+    if(mainBody->isDead == NO) {
+        [backEngineEnergyEmitter update:delta];
     }
 }
 
@@ -192,6 +218,9 @@
     }
     if(cannonLeft->isDead == NO){
         [leftCannonEmitterJoint renderParticles];
+    }
+    if(mainBody->isDead == NO){
+        [backEngineEnergyEmitter renderParticles];
     }
     
     /*
