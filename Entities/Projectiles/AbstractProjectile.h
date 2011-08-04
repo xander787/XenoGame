@@ -69,6 +69,9 @@ typedef enum _ParticleID {
     GLfloat         elapsedTime;
     BOOL            isAlive;
     BOOL            isStopped;
+    
+    float           particleAngle;
+    CGPoint         particleVector;
 }
 
 @property (nonatomic)   Vector2f        turretPosition;

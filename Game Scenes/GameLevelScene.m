@@ -887,6 +887,20 @@ WrapText( const char *text
             }
             
             [bossShip update:aDelta];
+            
+            
+            BOOL bossShipModulesAlive = NO;
+            for (int i = 0; i < bossShip.numberOfModules; i++) {
+                if (!bossShip.modularObjects[i].isDead) {
+                    bossShipModulesAlive = YES;
+                    break;
+                }
+            }
+            
+            if (!bossShipModulesAlive) {
+                enemiesKilled++;
+                currentWaveType = kWaveType_Finished;
+            }
         }
         
         // Need to update all collision objects on the screen
@@ -967,21 +981,6 @@ WrapText( const char *text
         }
         else if (outroAnimationType == kOutroAnimation_Nuke) {
             [playerShip setDesiredLocation:CGPointMake(playerShip.currentLocation.x, -40)];
-        }
-    }
-    
-    if (currentWaveType == kWaveType_Boss) {
-        BOOL bossShipModulesAlive = NO;
-        for (int i = 0; i < bossShip.numberOfModules; i++) {
-            if (!bossShip.modularObjects[i].isDead) {
-                bossShipModulesAlive = YES;
-                break;
-            }
-        }
-        
-        if (!bossShipModulesAlive) {
-            enemiesKilled++;
-            currentWaveType = kWaveType_Finished;
         }
     }
     

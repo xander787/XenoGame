@@ -322,7 +322,7 @@
                                                                   startColorVariance:Color4fMake(0.0, 0.0, 0.0, 0.0)
                                                                          finishColor:Color4fMake(0.1, 0.1, 0.5, 1.0)
                                                                  finishColorVariance:Color4fMake(0.05, 0.05, 0.3, 0.0)
-                                                                        maxParticles:20.0
+                                                                        maxParticles:40.0
                                                                         particleSize:25.0
                                                                   finishParticleSize:25.0
                                                                 particleSizeVariance:0.0
@@ -335,8 +335,8 @@
                                                                             position:turretPosition
                                                               sourcePositionVariance:Vector2fZero
                                                                                speed:0.6
-                                                                       speedVariance:0.0
-                                                                    particleLifeSpan:0.3
+                                                                       speedVariance:0.1
+                                                                    particleLifeSpan:0.2
                                                             particleLifespanVariance:0.1
                                                                                angle:projectileAngle
                                                                        angleVariance:0.0
@@ -345,9 +345,9 @@
                                                                   startColorVariance:Color4fMake(0.0, 0.0, 0.0, 0.0)
                                                                          finishColor:Color4fMake(0.5, 0.1, 0.1, 1.0)
                                                                  finishColorVariance:Color4fMake(0.3, 0.05, 0.05, 0.0)
-                                                                        maxParticles:20.0
-                                                                        particleSize:25.0
-                                                                  finishParticleSize:25.0
+                                                                        maxParticles:40.0
+                                                                        particleSize:35.0
+                                                                  finishParticleSize:35.0
                                                                 particleSizeVariance:0.0
                                                                             duration:-1.0
                                                                        blendAdditive:YES];
@@ -521,18 +521,18 @@
                 default:
                     break;
             }
+            particleAngle = DEGREES_TO_RADIANS(projectileAngle);
+            particleVector = CGPointMake(cosf(particleAngle), sinf(particleAngle));
+            emitter.angle = projectileAngle;
         }
-        float newAngle = DEGREES_TO_RADIANS(projectileAngle);
-        CGPoint vector = CGPointMake(cosf(newAngle), sinf(newAngle));
         Vector2f tempPos = emitter.sourcePosition;
-        tempPos.x += (projectileSpeed * 15) * aDelta * vector.x;
-        tempPos.y += (projectileSpeed * 15) * aDelta * vector.y;
+        tempPos.x += (projectileSpeed * 15) * aDelta * particleVector.x;
+        tempPos.y += (projectileSpeed * 15) * aDelta * particleVector.y;
         emitter.sourcePosition = tempPos;
         
         [[polygonArray objectAtIndex:0] setPos:CGPointMake(emitter.sourcePosition.x, emitter.sourcePosition.y)];
         
         [emitter update:aDelta];
-
     }
     
 }
@@ -560,19 +560,24 @@
 }
 
 - (void)render {
-    
-    if(projectileID == kPlayerProjectile_Bullet || projectileID == kPlayerProjectile_Wave || projectileID == kEnemyProjectile_Bullet || projectileID == kEnemyProjectile_Wave){
-        [emitter renderParticles];
-        if(projectileID == kPlayerProjectile_Bullet || projectileID == kEnemyProjectile_Bullet){
-            //Re-render is to make them look brighter using the BlendAdditive option
+    if([idType isEqualToString:@"Projectile"] == TRUE){
+        if(projectileID == kPlayerProjectile_Bullet || projectileID == kPlayerProjectile_Wave || projectileID == kEnemyProjectile_Bullet || projectileID == kEnemyProjectile_Wave){
             [emitter renderParticles];
+            if(projectileID == kPlayerProjectile_Bullet || projectileID == kEnemyProjectile_Bullet){
+                //Re-render is to make them look brighter using the BlendAdditive option
+                [emitter renderParticles];
+            }
+        }
+        else if(projectileID == kPlayerProjectile_Missile || projectileID == kEnemyProjectile_Missile){
+            if(isAlive == YES){
+                [image renderAtPoint:CGPointMake(currentLocation.x, currentLocation.y) centerOfImage:YES];
+            }
         }
     }
-    else if(projectileID == kPlayerProjectile_Missile || projectileID == kEnemyProjectile_Missile){
-        if(isAlive == YES){
-            [image renderAtPoint:CGPointMake(currentLocation.x, currentLocation.y) centerOfImage:YES];
-        }
+    else if([idType isEqualToString:@"Particle"] == TRUE){
+        [emitter renderParticles];
     }
+    
     //From PlayerShip class
     if(DEBUG) {
         if([idType isEqualToString:@"Projectile"] == TRUE){

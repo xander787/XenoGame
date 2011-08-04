@@ -203,7 +203,7 @@
             //Step one: get the image for the module, simple so it's first
             modularObjects[i].moduleImage = [[Image alloc] initWithImage:[moduleImagesArray objectAtIndex:i] scale:Scale2fOne];
             
-            modularObjects[i].moduleMaxHealth = 1;
+            modularObjects[i].moduleMaxHealth = 40;
             modularObjects[i].moduleHealth = modularObjects[i].moduleMaxHealth;
             
             modularObjects[i].rotation = 0;

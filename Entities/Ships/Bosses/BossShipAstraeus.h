@@ -18,20 +18,31 @@
 
 
 @interface BossShipAstraeus : BossShip {
-    ModularObject   *ship;
-    ModularObject   *cannonFrontLeft;
-    ModularObject   *cannonFrontRight;
-    ModularObject   *cannonReplacementOneLeft;
-    ModularObject   *cannonReplacementOneRight;
-    ModularObject   *cannonReplacementTwoLeft;
-    ModularObject   *cannonReplacementTwoRight;
-    ModularObject   *cannonReplacementThreeLeft;
-    ModularObject   *cannonReplacementThreeRight;
+    ModularObject       *ship;
+    ModularObject       *cannonFrontLeft;
+    ModularObject       *cannonFrontRight;
+    ModularObject       *cannonReplacementOneLeft;
+    ModularObject       *cannonReplacementOneRight;
+    ModularObject       *cannonReplacementTwoLeft;
+    ModularObject       *cannonReplacementTwoRight;
+    ModularObject       *cannonReplacementThreeLeft;
+    ModularObject       *cannonReplacementThreeRight;
     
-    float           timeSinceFrontLeftDied;
-    float           timeSinceFrontRightDied;
-    BOOL            leftSideTransitionComplete;
-    BOOL            rightSideTransitionComplete;
+    float               timeSinceFrontLeftDied;
+    float               timeSinceFrontRightDied;
+    BOOL                leftSideTransitionComplete;
+    BOOL                rightSideTransitionComplete;
+    
+    BOOL                allReplacementsDead;
+    GLfloat             holdingTimer;
+    
+    ParticleEmitter     *leftSideDeathEmitter;
+    ParticleEmitter     *rightSideDeathEmitter;
+    ParticleEmitter     *mainbodyDeathEmitter;
+    BOOL                updateMainBodyDeathEmitter;
+    
+    AbstractProjectile  *leftCannonProjectile;
+    AbstractProjectile  *rightCannonProjectile;
 }
 @property(readonly) BOOL leftSideTransitionComplete;
 @property(readonly) BOOL rightSideTransitionComplete;

@@ -46,6 +46,81 @@
         cannonReplacementTwoRight->shouldTakeDamage = NO;
         cannonReplacementThreeLeft->shouldTakeDamage = NO;
         cannonReplacementThreeRight->shouldTakeDamage = NO;
+        
+        holdingTimer = 1.0;
+        
+        leftSideDeathEmitter = [[ParticleEmitter alloc] initParticleEmitterWithImageNamed:@"texture.png"
+                                                                                 position:Vector2fMake(currentLocation.x, currentLocation.y)
+                                                                   sourcePositionVariance:Vector2fZero
+                                                                                    speed:0.8
+                                                                            speedVariance:0.2
+                                                                         particleLifeSpan:0.4
+                                                                 particleLifespanVariance:0.2
+                                                                                    angle:0
+                                                                            angleVariance:360
+                                                                                  gravity:Vector2fZero
+                                                                               startColor:Color4fMake(1.0, 0.2, 0.2, 1.0)
+                                                                       startColorVariance:Color4fMake(0.1, 0.1, 0.1, 0.0)
+                                                                              finishColor:Color4fMake(0.2, 0.2, 0.2, 1.0)
+                                                                      finishColorVariance:Color4fMake(0.1, 0.1, 0.1, 0.0)
+                                                                             maxParticles:1000
+                                                                             particleSize:12.0
+                                                                       finishParticleSize:12.0
+                                                                     particleSizeVariance:0.0
+                                                                                 duration:0.1
+                                                                            blendAdditive:YES];
+        rightSideDeathEmitter = [[ParticleEmitter alloc] initParticleEmitterWithImageNamed:@"texture.png"
+                                                                                 position:Vector2fMake(currentLocation.x, currentLocation.y)
+                                                                   sourcePositionVariance:Vector2fZero
+                                                                                    speed:0.8
+                                                                            speedVariance:0.2
+                                                                         particleLifeSpan:0.4
+                                                                 particleLifespanVariance:0.2
+                                                                                    angle:0
+                                                                            angleVariance:360
+                                                                                  gravity:Vector2fZero
+                                                                               startColor:Color4fMake(1.0, 0.2, 0.2, 1.0)
+                                                                       startColorVariance:Color4fMake(0.1, 0.1, 0.1, 0.0)
+                                                                              finishColor:Color4fMake(0.2, 0.2, 0.2, 1.0)
+                                                                      finishColorVariance:Color4fMake(0.1, 0.1, 0.1, 0.0)
+                                                                             maxParticles:1000
+                                                                             particleSize:12.0
+                                                                       finishParticleSize:12.0
+                                                                     particleSizeVariance:0.0
+                                                                                 duration:0.1
+                                                                            blendAdditive:YES];
+        
+        mainbodyDeathEmitter = [[ParticleEmitter alloc] initParticleEmitterWithImageNamed:@"texture.png"
+                                                                                  position:Vector2fMake(currentLocation.x, currentLocation.y)
+                                                                    sourcePositionVariance:Vector2fZero
+                                                                                     speed:0.8
+                                                                             speedVariance:0.2
+                                                                          particleLifeSpan:1.0
+                                                                  particleLifespanVariance:0.2
+                                                                                     angle:0
+                                                                             angleVariance:360
+                                                                                   gravity:Vector2fZero
+                                                                                startColor:Color4fMake(0.8, 0.1, 0.1, 1.0)
+                                                                        startColorVariance:Color4fMake(0.1, 0.1, 0.1, 0.0)
+                                                                               finishColor:Color4fMake(0.1, 0.1, 0.1, 1.0)
+                                                                       finishColorVariance:Color4fMake(0.1, 0.1, 0.1, 0.0)
+                                                                              maxParticles:1500
+                                                                              particleSize:20.0
+                                                                        finishParticleSize:20.0
+                                                                      particleSizeVariance:0.0
+                                                                                  duration:0.8
+                                                                             blendAdditive:YES];
+        
+        leftCannonProjectile = [[AbstractProjectile alloc] initWithParticleID:kEnemyParticle 
+                                                           fromTurretPosition:Vector2fZero
+                                                                       radius:10 
+                                                                   rateOfFire:2
+                                                                     andAngle:270];
+        rightCannonProjectile = [[AbstractProjectile alloc] initWithParticleID:kEnemyParticle
+                                                            fromTurretPosition:Vector2fZero
+                                                                        radius:10 
+                                                                    rateOfFire:2
+                                                                      andAngle:270];
     }
     
     return self;
@@ -54,8 +129,15 @@
 - (void)update:(GLfloat)delta {
     [super update:delta];
     
-    currentLocation.x += ((desiredLocation.x - currentLocation.x) / bossSpeed) * (pow(1.584893192, bossSpeed)) * delta;
-    currentLocation.y += ((desiredLocation.y - currentLocation.y) / bossSpeed) * (pow(1.584893192, bossSpeed)) * delta;
+    if(!shipIsDeployed){
+        currentLocation.x += ((desiredLocation.x - currentLocation.x) / bossSpeed) * (pow(1.584893192, bossSpeed)) * delta;
+        currentLocation.y += ((desiredLocation.y - currentLocation.y) / bossSpeed) * (pow(1.584893192, bossSpeed)) * delta;
+    }
+    else if(!updateMainBodyDeathEmitter){
+        //Move slower when is moves around
+        currentLocation.x += ((desiredLocation.x - currentLocation.x) / bossSpeed) * (pow(1.584893192, bossSpeed/2)) * delta;
+        currentLocation.y += ((desiredLocation.y - currentLocation.y) / bossSpeed) * (pow(1.584893192, bossSpeed/2)) * delta;
+    }
     
     //Set the centers of the polygons so they get rendered properly
     for(int i = 0; i < numberOfModules; i++){
@@ -68,6 +150,12 @@
             //Death Animation Update Emitter
         }
     }
+    
+    leftSideDeathEmitter.sourcePosition = Vector2fMake(cannonFrontLeft->location.x + currentLocation.x, cannonFrontLeft->location.y + currentLocation.y);
+    rightSideDeathEmitter.sourcePosition = Vector2fMake(cannonFrontRight->location.x + currentLocation.x, cannonFrontRight->location.y + currentLocation.y);
+    
+    leftCannonProjectile.turretPosition = Vector2fMake(currentLocation.x + cannonFrontLeft->weapons[0].weaponCoord.x + cannonFrontLeft->location.x, currentLocation.y + cannonFrontLeft->weapons[0].weaponCoord.y + cannonFrontLeft->location.y);
+    rightCannonProjectile.turretPosition = Vector2fMake(currentLocation.x + cannonFrontRight->weapons[0].weaponCoord.x + cannonFrontRight->location.x, currentLocation.y + cannonFrontRight->weapons[0].weaponCoord.y + cannonFrontRight->location.y);
     
     {
         // Left Cannon Aiming
@@ -107,6 +195,9 @@
             }
             [[cannonFrontLeft->collisionPolygonArray objectAtIndex:k] buildEdges];
         }
+        Vector2f tempPoint = cannonFrontLeft->weapons[0].weaponCoord;
+        double tempAngle = DEGREES_TO_RADIANS(cannonFrontLeft->rotation - angleToPlayer);
+        cannonFrontLeft->weapons[0].weaponCoord = Vector2fMake((tempPoint.x * cos(tempAngle)) - (tempPoint.y * sin(tempAngle)), (tempPoint.x * sin(tempAngle)) + (tempPoint.y * cos(tempAngle)));
         
         for(int k = 0; k < [cannonFrontRight->collisionPolygonArray count]; k++){
             for(int i = 0; i < [[cannonFrontRight->collisionPolygonArray objectAtIndex:k] pointCount]; i++){
@@ -116,55 +207,71 @@
             }
             [[cannonFrontRight->collisionPolygonArray objectAtIndex:k] buildEdges];
         }
+        Vector2f tempPoint2 = cannonFrontLeft->weapons[0].weaponCoord;
+        double tempAngle2 = DEGREES_TO_RADIANS(cannonFrontLeft->rotation - angleToPlayer2);
+        cannonFrontRight->weapons[0].weaponCoord = Vector2fMake((tempPoint2.x * cos(tempAngle2)) - (tempPoint2.y * sin(tempAngle2)), (tempPoint2.x * sin(tempAngle2)) + (tempPoint2.y * cos(tempAngle2)));
 
         cannonFrontRight->rotation = angleToPlayer2;
         cannonFrontLeft->rotation = angleToPlayer;
-
+        
+        leftCannonProjectile.projectileAngle = 270 - cannonFrontLeft->rotation;
+        rightCannonProjectile.projectileAngle = 270 - cannonFrontRight->rotation;
+        
     }
     
     if(cannonFrontLeft->isDead) {
-        if(cannonReplacementOneLeft->isDead == NO || cannonReplacementTwoLeft->isDead == NO || cannonReplacementThreeLeft->isDead == NO){
-            //Check to make sure that there are others to animate in
-            timeSinceFrontLeftDied+= delta;
-            leftSideTransitionComplete = NO;
-            cannonFrontLeft->shouldTakeDamage = NO;
-            if(cannonReplacementOneLeft->location.x < cannonFrontLeft->defaultLocation.x) cannonReplacementOneLeft->location.x = cannonReplacementOneLeft->location.x + (timeSinceFrontLeftDied * 0.5);
-            if(cannonReplacementOneLeft->location.y > cannonFrontLeft->defaultLocation.y) cannonReplacementOneLeft->location.y = cannonReplacementOneLeft->location.y - (timeSinceFrontLeftDied * 0.5);
-            if(cannonReplacementOneLeft->rotation > -cannonFrontLeft->rotation) cannonReplacementOneLeft->rotation -= (timeSinceFrontLeftDied * 0.5);
+        [leftSideDeathEmitter update:delta];
+        if(leftSideDeathEmitter.particleCount == 0){
+            //When the emitter is dead
+            if(cannonReplacementOneLeft->isDead == NO || cannonReplacementTwoLeft->isDead == NO || cannonReplacementThreeLeft->isDead == NO){
+                //Check to make sure that there are others to animate in
+                timeSinceFrontLeftDied+= delta;
+                leftSideTransitionComplete = NO;
+                [leftCannonProjectile stopProjectile];
+                cannonFrontLeft->shouldTakeDamage = NO;
+                if(cannonReplacementOneLeft->location.x < cannonFrontLeft->defaultLocation.x) cannonReplacementOneLeft->location.x = cannonReplacementOneLeft->location.x + (timeSinceFrontLeftDied * 0.5);
+                if(cannonReplacementOneLeft->location.y > cannonFrontLeft->defaultLocation.y) cannonReplacementOneLeft->location.y = cannonReplacementOneLeft->location.y - (timeSinceFrontLeftDied * 0.5);
+                if(cannonReplacementOneLeft->rotation > -cannonFrontLeft->rotation) cannonReplacementOneLeft->rotation -= (timeSinceFrontLeftDied * 0.5);
         
-            if(cannonReplacementTwoLeft->location.x < cannonReplacementOneLeft->defaultLocation.x) cannonReplacementTwoLeft->location.x = cannonReplacementTwoLeft->location.x + (timeSinceFrontLeftDied * 0.5);
-            if(cannonReplacementTwoLeft->location.y > cannonReplacementOneLeft->defaultLocation.y) cannonReplacementTwoLeft->location.y = cannonReplacementTwoLeft->location.y - (timeSinceFrontLeftDied * 0.5);
-            if(cannonReplacementTwoLeft->rotation > -30) cannonReplacementTwoLeft->rotation -= (timeSinceFrontLeftDied * 0.5);
+                if(cannonReplacementTwoLeft->location.x < cannonReplacementOneLeft->defaultLocation.x) cannonReplacementTwoLeft->location.x = cannonReplacementTwoLeft->location.x + (timeSinceFrontLeftDied * 0.5);
+                if(cannonReplacementTwoLeft->location.y > cannonReplacementOneLeft->defaultLocation.y) cannonReplacementTwoLeft->location.y = cannonReplacementTwoLeft->location.y - (timeSinceFrontLeftDied * 0.5);
+                if(cannonReplacementTwoLeft->rotation > -30) cannonReplacementTwoLeft->rotation -= (timeSinceFrontLeftDied * 0.5);
         
-            if(cannonReplacementThreeLeft->location.x < cannonReplacementTwoLeft->defaultLocation.x) cannonReplacementThreeLeft->location.x = cannonReplacementThreeLeft->location.x + (timeSinceFrontLeftDied * 0.5);
-            if(cannonReplacementThreeLeft->location.y > cannonReplacementTwoLeft->defaultLocation.y) cannonReplacementThreeLeft->location.y = cannonReplacementThreeLeft->location.y - (timeSinceFrontLeftDied * 0.5);
-            if(cannonReplacementThreeLeft->rotation > -30) cannonReplacementThreeLeft->rotation -= (timeSinceFrontLeftDied * 0.5);
+                if(cannonReplacementThreeLeft->location.x < cannonReplacementTwoLeft->defaultLocation.x) cannonReplacementThreeLeft->location.x = cannonReplacementThreeLeft->location.x + (timeSinceFrontLeftDied * 0.5);
+                if(cannonReplacementThreeLeft->location.y > cannonReplacementTwoLeft->defaultLocation.y) cannonReplacementThreeLeft->location.y = cannonReplacementThreeLeft->location.y - (timeSinceFrontLeftDied * 0.5);
+                if(cannonReplacementThreeLeft->rotation > -30) cannonReplacementThreeLeft->rotation -= (timeSinceFrontLeftDied * 0.5);
             
-            if(!(cannonReplacementOneLeft->location.x < cannonFrontLeft->defaultLocation.x) && !(cannonReplacementOneLeft->location.y > cannonFrontLeft->defaultLocation.y) && !(cannonReplacementTwoLeft->location.x < cannonReplacementOneLeft->defaultLocation.x) && !(cannonReplacementTwoLeft->location.y > cannonReplacementOneLeft->defaultLocation.y) && !(cannonReplacementThreeLeft->location.x < cannonReplacementTwoLeft->defaultLocation.x) && !(cannonReplacementThreeLeft->location.y > cannonReplacementTwoLeft->defaultLocation.y)) {
-                leftSideTransitionComplete = YES;
+                if(!(cannonReplacementOneLeft->location.x < cannonFrontLeft->defaultLocation.x) && !(cannonReplacementOneLeft->location.y > cannonFrontLeft->defaultLocation.y) && !(cannonReplacementTwoLeft->location.x < cannonReplacementOneLeft->defaultLocation.x) && !(cannonReplacementTwoLeft->location.y > cannonReplacementOneLeft->defaultLocation.y) && !(cannonReplacementThreeLeft->location.x < cannonReplacementTwoLeft->defaultLocation.x) && !(cannonReplacementThreeLeft->location.y > cannonReplacementTwoLeft->defaultLocation.y)) {
+                    leftSideTransitionComplete = YES;
+                }
             }
         }
     }
     
     if(cannonFrontRight->isDead) {
-        if(cannonReplacementOneRight->isDead == NO || cannonReplacementTwoRight->isDead == NO || cannonReplacementThreeLeft->isDead == NO){
-            timeSinceFrontRightDied+= delta;
-            rightSideTransitionComplete = NO;
-            cannonFrontRight->shouldTakeDamage = NO;
-            if(cannonReplacementOneRight->location.x > cannonFrontRight->defaultLocation.x) cannonReplacementOneRight->location.x = cannonReplacementOneRight->location.x - (timeSinceFrontRightDied * 0.5);
-            if(cannonReplacementOneRight->location.y > cannonFrontRight->defaultLocation.y) cannonReplacementOneRight->location.y = cannonReplacementOneRight->location.y - (timeSinceFrontRightDied * 0.5);
-            if(cannonReplacementOneRight->rotation > -cannonFrontRight->rotation) cannonReplacementOneRight->rotation += (timeSinceFrontRightDied * 0.5);
-        
-            if(cannonReplacementTwoRight->location.x > cannonReplacementOneRight->defaultLocation.x) cannonReplacementTwoRight->location.x = cannonReplacementTwoRight->location.x - (timeSinceFrontRightDied * 0.5);
-            if(cannonReplacementTwoRight->location.y > cannonReplacementOneRight->defaultLocation.y) cannonReplacementTwoRight->location.y = cannonReplacementTwoRight->location.y - (timeSinceFrontRightDied * 0.5);
-            if(cannonReplacementTwoRight->rotation < 30) cannonReplacementTwoRight->rotation += (timeSinceFrontRightDied * 0.5);
+        [rightSideDeathEmitter update:delta];
+        if(rightSideDeathEmitter.particleCount == 0){
             
-            if(cannonReplacementThreeRight->location.x > cannonReplacementTwoRight->defaultLocation.x) cannonReplacementThreeRight->location.x = cannonReplacementThreeRight->location.x - (timeSinceFrontRightDied * 0.5);
-            if(cannonReplacementThreeRight->location.y > cannonReplacementTwoRight->defaultLocation.y) cannonReplacementThreeRight->location.y = cannonReplacementThreeRight->location.y - (timeSinceFrontRightDied * 0.5);
-            if(cannonReplacementThreeRight->rotation < 30) cannonReplacementThreeRight->rotation += (timeSinceFrontRightDied * 0.5);
-            
-            if(!(cannonReplacementOneRight->location.x > cannonFrontRight->defaultLocation.x) && !(cannonReplacementOneRight->location.y > cannonFrontRight->defaultLocation.y) && !(cannonReplacementTwoRight->location.x > cannonReplacementOneRight->defaultLocation.x) && !(cannonReplacementTwoRight->location.y > cannonReplacementOneRight->defaultLocation.y) && !(cannonReplacementThreeRight->location.x > cannonReplacementTwoRight->defaultLocation.x) && !(cannonReplacementThreeRight->location.y > cannonReplacementTwoRight->defaultLocation.y)) {
-                rightSideTransitionComplete = YES;
+            if(cannonReplacementOneRight->isDead == NO || cannonReplacementTwoRight->isDead == NO || cannonReplacementThreeLeft->isDead == NO){
+                timeSinceFrontRightDied+= delta;
+                rightSideTransitionComplete = NO;
+                [rightCannonProjectile stopProjectile];
+                cannonFrontRight->shouldTakeDamage = NO;
+                if(cannonReplacementOneRight->location.x > cannonFrontRight->defaultLocation.x) cannonReplacementOneRight->location.x = cannonReplacementOneRight->location.x - (timeSinceFrontRightDied * 0.5);
+                if(cannonReplacementOneRight->location.y > cannonFrontRight->defaultLocation.y) cannonReplacementOneRight->location.y = cannonReplacementOneRight->location.y - (timeSinceFrontRightDied * 0.5);
+                if(cannonReplacementOneRight->rotation > -cannonFrontRight->rotation) cannonReplacementOneRight->rotation += (timeSinceFrontRightDied * 0.5);
+                
+                if(cannonReplacementTwoRight->location.x > cannonReplacementOneRight->defaultLocation.x) cannonReplacementTwoRight->location.x = cannonReplacementTwoRight->location.x - (timeSinceFrontRightDied * 0.5);
+                if(cannonReplacementTwoRight->location.y > cannonReplacementOneRight->defaultLocation.y) cannonReplacementTwoRight->location.y = cannonReplacementTwoRight->location.y - (timeSinceFrontRightDied * 0.5);
+                if(cannonReplacementTwoRight->rotation < 30) cannonReplacementTwoRight->rotation += (timeSinceFrontRightDied * 0.5);
+                
+                if(cannonReplacementThreeRight->location.x > cannonReplacementTwoRight->defaultLocation.x) cannonReplacementThreeRight->location.x = cannonReplacementThreeRight->location.x - (timeSinceFrontRightDied * 0.5);
+                if(cannonReplacementThreeRight->location.y > cannonReplacementTwoRight->defaultLocation.y) cannonReplacementThreeRight->location.y = cannonReplacementThreeRight->location.y - (timeSinceFrontRightDied * 0.5);
+                if(cannonReplacementThreeRight->rotation < 30) cannonReplacementThreeRight->rotation += (timeSinceFrontRightDied * 0.5);
+                
+                if(!(cannonReplacementOneRight->location.x > cannonFrontRight->defaultLocation.x) && !(cannonReplacementOneRight->location.y > cannonFrontRight->defaultLocation.y) && !(cannonReplacementTwoRight->location.x > cannonReplacementOneRight->defaultLocation.x) && !(cannonReplacementTwoRight->location.y > cannonReplacementOneRight->defaultLocation.y) && !(cannonReplacementThreeRight->location.x > cannonReplacementTwoRight->defaultLocation.x) && !(cannonReplacementThreeRight->location.y > cannonReplacementTwoRight->defaultLocation.y)) {
+                    rightSideTransitionComplete = YES;
+                }
             }
         }
     }
@@ -194,6 +301,29 @@
         else {
             // All cannons are dead
         }
+        [rightCannonProjectile playProjectile];
+        [rightSideDeathEmitter release];
+        
+        rightSideDeathEmitter = [[ParticleEmitter alloc] initParticleEmitterWithImageNamed:@"texture.png"
+                                                                                  position:Vector2fMake(currentLocation.x, currentLocation.y)
+                                                                    sourcePositionVariance:Vector2fZero
+                                                                                     speed:0.8
+                                                                             speedVariance:0.2
+                                                                          particleLifeSpan:0.4
+                                                                  particleLifespanVariance:0.2
+                                                                                     angle:0
+                                                                             angleVariance:360
+                                                                                   gravity:Vector2fZero
+                                                                                startColor:Color4fMake(1.0, 0.2, 0.2, 1.0)
+                                                                        startColorVariance:Color4fMake(0.1, 0.1, 0.1, 0.0)
+                                                                               finishColor:Color4fMake(0.2, 0.2, 0.2, 1.0)
+                                                                       finishColorVariance:Color4fMake(0.1, 0.1, 0.1, 0.0)
+                                                                              maxParticles:1000
+                                                                              particleSize:12.0
+                                                                        finishParticleSize:12.0
+                                                                      particleSizeVariance:0.0
+                                                                                  duration:0.1
+                                                                             blendAdditive:YES];
     }
     
     if(leftSideTransitionComplete) {
@@ -221,15 +351,107 @@
         else {
             // All cannons are dead
         }
+        [leftCannonProjectile playProjectile];
+        [leftSideDeathEmitter release];
+        
+        leftSideDeathEmitter = [[ParticleEmitter alloc] initParticleEmitterWithImageNamed:@"texture.png"
+                                                                                  position:Vector2fMake(currentLocation.x, currentLocation.y)
+                                                                    sourcePositionVariance:Vector2fZero
+                                                                                     speed:0.8
+                                                                             speedVariance:0.2
+                                                                          particleLifeSpan:0.4
+                                                                  particleLifespanVariance:0.2
+                                                                                     angle:0
+                                                                             angleVariance:360
+                                                                                   gravity:Vector2fZero
+                                                                                startColor:Color4fMake(1.0, 0.2, 0.2, 1.0)
+                                                                        startColorVariance:Color4fMake(0.1, 0.1, 0.1, 0.0)
+                                                                               finishColor:Color4fMake(0.2, 0.2, 0.2, 1.0)
+                                                                       finishColorVariance:Color4fMake(0.1, 0.1, 0.1, 0.0)
+                                                                              maxParticles:1000
+                                                                              particleSize:12.0
+                                                                        finishParticleSize:12.0
+                                                                      particleSizeVariance:0.0
+                                                                                  duration:0.1
+                                                                             blendAdditive:YES];
+    }
+    
+    if(cannonReplacementOneLeft->isDead && cannonReplacementTwoLeft->isDead && cannonReplacementThreeLeft->isDead &&
+       cannonReplacementOneRight->isDead && cannonReplacementTwoRight->isDead && cannonReplacementThreeRight->isDead){
+        allReplacementsDead = YES;
+    }
+    
+    if(allReplacementsDead){
+        holdingTimer += delta;
+        
+        if(holdingTimer >= 1.4){
+            holdingTimer = 0.0;
+            
+            if(currentLocation.x <= 160){
+                desiredLocation.x = (MAX(0.4, RANDOM_0_TO_1()) * 160) + 160;
+            }
+            else if(currentLocation.x >= 160){
+                desiredLocation.x = (MIN(0.6, RANDOM_0_TO_1()) * 160);
+            }
+            
+            desiredLocation.y = currentLocation.y + (RANDOM_MINUS_1_TO_1() * 150);
+            
+            desiredLocation.x = MAX(50, desiredLocation.x);
+            desiredLocation.y = MAX(320, desiredLocation.y);
+            
+            desiredLocation.x = MIN(desiredLocation.x, 270);
+            desiredLocation.y = MIN(desiredLocation.y, 430);
+        }
+    }
+    
+    if(ship->isDead){
+        ship->isDead = NO;
+        updateMainBodyDeathEmitter = YES;
+        NSLog(@"Toggled shipIsdead, %d %d", ship->isDead, updateMainBodyDeathEmitter);
+    }
+    if(updateMainBodyDeathEmitter){
+        NSLog(@"updating death emitter");
+        mainbodyDeathEmitter.sourcePosition = Vector2fMake(ship->location.x + currentLocation.x, ship->location.y + currentLocation.y);
+        [mainbodyDeathEmitter update:delta];
+        if(mainbodyDeathEmitter.particleCount == 0){
+            ship->isDead = YES;
+            updateMainBodyDeathEmitter = NO;
+        }
+    }
+    
+    if(shipIsDeployed){
+        [leftCannonProjectile update:delta];
+        [rightCannonProjectile update:delta];
     }
 }
 
 - (void)render {
+    [leftCannonProjectile render];
+    [rightCannonProjectile render];
+    
     for(int i = 0; i < numberOfModules; i++) {
         if (!modularObjects[i].isDead) {
-            [modularObjects[i].moduleImage setRotation:modularObjects[i].rotation];
-            [modularObjects[i].moduleImage renderAtPoint:CGPointMake(currentLocation.x + modularObjects[i].location.x, currentLocation.y + modularObjects[i].location.y) centerOfImage:YES];
+            if(i != 0){
+                [modularObjects[i].moduleImage setRotation:modularObjects[i].rotation];
+                [modularObjects[i].moduleImage renderAtPoint:CGPointMake(currentLocation.x + modularObjects[i].location.x, currentLocation.y + modularObjects[i].location.y) centerOfImage:YES];
+            }
+            else {
+                //Special rendering for the main body
+                if(!updateMainBodyDeathEmitter){
+                    [ship->moduleImage renderAtPoint:CGPointMake(currentLocation.x + ship->location.x, currentLocation.y + ship->location.y) centerOfImage:YES];
+                }
+            }
         }
+    }
+    
+    if(cannonFrontLeft->isDead){
+        [leftSideDeathEmitter renderParticles];
+    }
+    if(cannonFrontRight->isDead){
+        [rightSideDeathEmitter renderParticles];
+    }
+    if(updateMainBodyDeathEmitter){
+        [mainbodyDeathEmitter renderParticles];
     }
     
     if(DEBUG) {
