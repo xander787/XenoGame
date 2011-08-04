@@ -135,7 +135,8 @@
     angleToPlayer = 90 - angleToPlayer;
     if(angleToPlayer < 0) angleToPlayer += 360;
     
-    if(angleToPlayer > 20) angleToPlayer = 20;
+    if(angleToPlayer > 20 && angleToPlayer < 180) angleToPlayer = 20;
+    if(angleToPlayer < 340 && angleToPlayer > 180) angleToPlayer = 340;
         
     
     // Right Cannon aiming
@@ -148,7 +149,8 @@
     angleToPlayer2 = 90 - angleToPlayer2;
     if(angleToPlayer2 < 0) angleToPlayer2 += 360;
     
-    if(angleToPlayer2 < 340) angleToPlayer2 = 340;
+    if(angleToPlayer2 > 20 && angleToPlayer2 < 180) angleToPlayer2 = 20;
+    if(angleToPlayer2 < 340 && angleToPlayer2 > 180) angleToPlayer2 = 340;
     
     
     //Rotation for polygons to match the rotation of the cannons

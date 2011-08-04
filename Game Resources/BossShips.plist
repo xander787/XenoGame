@@ -117,19 +117,26 @@
 		<key>kCollisionBoundingPoints</key>
 		<array>
 			<array>
-				<string>0,-64;-90,-5;-96,36;-27,66;27,66;95,36;89,-5</string>
+				<string>0,-84;18,-67;31,-45;12,-5;0,16;-32,-45;-18,-67</string>
+				<string>33,-40;74,-40;104,-19;117,5;78,24;14,-8</string>
+				<string>-33,-40;-74,-40;-104,-19;-117,5;-78,24;-14,-8</string>
+				<string>27,-54;38,-48;39,-39</string>
+				<string>-27,-54;-38,-48;-39,-39</string>
 			</array>
 			<array>
-				<string>9,0;0,-9;-9,0;0,9</string>
+				<string>13,-11;3,-13;-11,-10;-14,4;-12,14</string>
 			</array>
 			<array>
-				<string>9,0;0,-9;-9,0;0,9</string>
+				<string>-13,-11;-3,-13;11,-10;14,4;12,14</string>
 			</array>
 			<array>
-				<string>-15,30;-18,1;-7,-27;4,-30;16,-27;14,19</string>
+				<string>0,-29;9,-25;12,-18;11,8;5,27;-5,30;-10,19;-11,-12;-9,-25</string>
 			</array>
 			<array>
-				<string>15,30;18,1;7,-27;-4,-30;-16,-27;-14,19</string>
+				<string>0,-29;-9,-25;-12,-18;-11,8;-5,27;5,30;10,19;11,-12;9,-25</string>
+			</array>
+			<array>
+				<string>3,-13;9,-5;7,9;0,15;-7,9;-9,-5;-2,-13</string>
 			</array>
 		</array>
 		<key>kModularDestructionOrder</key>
@@ -137,6 +144,7 @@
 			<array>
 				<integer>1</integer>
 				<integer>2</integer>
+				<string>5</string>
 			</array>
 			<array>
 				<integer>3</integer>
@@ -148,27 +156,30 @@
 		</array>
 		<key>kShipModuleImages</key>
 		<array>
-			<string>kBossAsiaMainBody.png</string>
-			<string>kBossAsiaTurretLeft.png</string>
-			<string>kBossAsiaTurretRight.png</string>
-			<string>kBossAsiaCannonRight.png</string>
-			<string>kBossAsiaCannonLeft.png</string>
+			<string>kBossAtlasMainBody.png</string>
+			<string>kBossAtlasFrontTurretLeft.png</string>
+			<string>kBossAtlasFrontTurretRight.png</string>
+			<string>kBossAtlasCannonRight.png</string>
+			<string>kBossAtlasCannonLeft.png</string>
+			<string>kBossAtlasFrontTurretCenter.png</string>
 		</array>
 		<key>kShipModulePoints</key>
 		<array>
 			<string>0,0</string>
-			<string>59,5</string>
-			<string>-59,5</string>
-			<string>-136,0</string>
-			<string>136,0</string>
+			<string>-25,-88</string>
+			<string>25,-88</string>
+			<string>136,-32</string>
+			<string>-136,-32</string>
+			<string>0,-117</string>
 		</array>
 		<key>kShipTurretPoints</key>
 		<array>
 			<string>22,80;31,80;160,80;169,80</string>
-			<string>45,55</string>
-			<string>45,55</string>
-			<string>22,44</string>
-			<string>14,44</string>
+			<string>-9,-9</string>
+			<string>9,-9</string>
+			<string>0,-24</string>
+			<string>0,-24</string>
+			<string>0,-11</string>
 		</array>
 	</dict>
 	<key>kBossKronos</key>

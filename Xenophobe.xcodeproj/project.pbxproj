@@ -167,6 +167,12 @@
 		B9AFC0A013E239B900E4570A /* NoButton.png in Resources */ = {isa = PBXBuildFile; fileRef = B9AFC09D13E239B900E4570A /* NoButton.png */; };
 		B9AFC0A113E239B900E4570A /* YesButton.png in Resources */ = {isa = PBXBuildFile; fileRef = B9AFC09E13E239B900E4570A /* YesButton.png */; };
 		B9AFC0A313E23BAC00E4570A /* ClearAllSavedDataButton.png in Resources */ = {isa = PBXBuildFile; fileRef = B9AFC0A213E23BAC00E4570A /* ClearAllSavedDataButton.png */; };
+		B9B09F5F13EA285200DE220B /* kBossAtlasCannonLeft.png in Resources */ = {isa = PBXBuildFile; fileRef = B9B09F5913EA285200DE220B /* kBossAtlasCannonLeft.png */; };
+		B9B09F6013EA285200DE220B /* kBossAtlasCannonRight.png in Resources */ = {isa = PBXBuildFile; fileRef = B9B09F5A13EA285200DE220B /* kBossAtlasCannonRight.png */; };
+		B9B09F6113EA285200DE220B /* kBossAtlasFrontTurretCenter.png in Resources */ = {isa = PBXBuildFile; fileRef = B9B09F5B13EA285200DE220B /* kBossAtlasFrontTurretCenter.png */; };
+		B9B09F6213EA285200DE220B /* kBossAtlasFrontTurretLeft.png in Resources */ = {isa = PBXBuildFile; fileRef = B9B09F5C13EA285200DE220B /* kBossAtlasFrontTurretLeft.png */; };
+		B9B09F6313EA285200DE220B /* kBossAtlasFrontTurretRight.png in Resources */ = {isa = PBXBuildFile; fileRef = B9B09F5D13EA285200DE220B /* kBossAtlasFrontTurretRight.png */; };
+		B9B09F6413EA285200DE220B /* kBossAtlasMainBody.png in Resources */ = {isa = PBXBuildFile; fileRef = B9B09F5E13EA285200DE220B /* kBossAtlasMainBody.png */; };
 		B9C3AB7C13C2A7B4003202BA /* mainmenu.png in Resources */ = {isa = PBXBuildFile; fileRef = B9C3AB7B13C2A7B4003202BA /* mainmenu.png */; };
 		B9C3AB7E13C2AA50003202BA /* return.png in Resources */ = {isa = PBXBuildFile; fileRef = B9C3AB7D13C2AA50003202BA /* return.png */; };
 		B9C3AB8013C2BF8E003202BA /* pause.png in Resources */ = {isa = PBXBuildFile; fileRef = B9C3AB7F13C2BF8E003202BA /* pause.png */; };
@@ -418,6 +424,12 @@
 		B9AFC09D13E239B900E4570A /* NoButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NoButton.png; sourceTree = "<group>"; };
 		B9AFC09E13E239B900E4570A /* YesButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = YesButton.png; sourceTree = "<group>"; };
 		B9AFC0A213E23BAC00E4570A /* ClearAllSavedDataButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ClearAllSavedDataButton.png; sourceTree = "<group>"; };
+		B9B09F5913EA285200DE220B /* kBossAtlasCannonLeft.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = kBossAtlasCannonLeft.png; path = "Game Resources/Images/Normal/Ships/Boss Ships/kBossAtlasCannonLeft.png"; sourceTree = SOURCE_ROOT; };
+		B9B09F5A13EA285200DE220B /* kBossAtlasCannonRight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = kBossAtlasCannonRight.png; path = "Game Resources/Images/Normal/Ships/Boss Ships/kBossAtlasCannonRight.png"; sourceTree = SOURCE_ROOT; };
+		B9B09F5B13EA285200DE220B /* kBossAtlasFrontTurretCenter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = kBossAtlasFrontTurretCenter.png; path = "Game Resources/Images/Normal/Ships/Boss Ships/kBossAtlasFrontTurretCenter.png"; sourceTree = SOURCE_ROOT; };
+		B9B09F5C13EA285200DE220B /* kBossAtlasFrontTurretLeft.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = kBossAtlasFrontTurretLeft.png; path = "Game Resources/Images/Normal/Ships/Boss Ships/kBossAtlasFrontTurretLeft.png"; sourceTree = SOURCE_ROOT; };
+		B9B09F5D13EA285200DE220B /* kBossAtlasFrontTurretRight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = kBossAtlasFrontTurretRight.png; path = "Game Resources/Images/Normal/Ships/Boss Ships/kBossAtlasFrontTurretRight.png"; sourceTree = SOURCE_ROOT; };
+		B9B09F5E13EA285200DE220B /* kBossAtlasMainBody.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = kBossAtlasMainBody.png; path = "Game Resources/Images/Normal/Ships/Boss Ships/kBossAtlasMainBody.png"; sourceTree = SOURCE_ROOT; };
 		B9C3AB7B13C2A7B4003202BA /* mainmenu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mainmenu.png; sourceTree = "<group>"; };
 		B9C3AB7D13C2AA50003202BA /* return.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = return.png; sourceTree = "<group>"; };
 		B9C3AB7F13C2BF8E003202BA /* pause.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pause.png; sourceTree = "<group>"; };
@@ -903,6 +915,12 @@
 		11E7DCE4129F00C00047E2FD /* Bosses */ = {
 			isa = PBXGroup;
 			children = (
+				B9B09F5913EA285200DE220B /* kBossAtlasCannonLeft.png */,
+				B9B09F5A13EA285200DE220B /* kBossAtlasCannonRight.png */,
+				B9B09F5B13EA285200DE220B /* kBossAtlasFrontTurretCenter.png */,
+				B9B09F5C13EA285200DE220B /* kBossAtlasFrontTurretLeft.png */,
+				B9B09F5D13EA285200DE220B /* kBossAtlasFrontTurretRight.png */,
+				B9B09F5E13EA285200DE220B /* kBossAtlasMainBody.png */,
 				B9F2841313E9FF4900E8F8A4 /* kBossHeliosMainBody.png */,
 				B9F2841413E9FF4C00E8F8A4 /* kBossHeliosTail.png */,
 				B9F2841513E9FF4F00E8F8A4 /* kBossHeliosWingLeft.png */,
@@ -1250,6 +1268,12 @@
 				B9F2841813E9FF5700E8F8A4 /* kBossHeliosTail.png in Resources */,
 				B9F2841913E9FF5700E8F8A4 /* kBossHeliosWingLeft.png in Resources */,
 				B9F2841A13E9FF5700E8F8A4 /* kBossHeliosWingRight.png in Resources */,
+				B9B09F5F13EA285200DE220B /* kBossAtlasCannonLeft.png in Resources */,
+				B9B09F6013EA285200DE220B /* kBossAtlasCannonRight.png in Resources */,
+				B9B09F6113EA285200DE220B /* kBossAtlasFrontTurretCenter.png in Resources */,
+				B9B09F6213EA285200DE220B /* kBossAtlasFrontTurretLeft.png in Resources */,
+				B9B09F6313EA285200DE220B /* kBossAtlasFrontTurretRight.png in Resources */,
+				B9B09F6413EA285200DE220B /* kBossAtlasMainBody.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
