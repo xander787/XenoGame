@@ -16,7 +16,15 @@
 
 
 @interface BossShipHelios : BossShip {
+    ModularObject       *mainBody;
+    ModularObject       *tail;
+    ModularObject       *leftWing;
+    ModularObject       *rightwing;
     
+    BOOL                moveLeft;
 }
+
+- (id)initWithLocation:(CGPoint)aPoint andPlayerShipRef:(PlayerShip *)playerRef;
+- (void)update:(GLfloat)delta;
 
 @end

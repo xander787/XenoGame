@@ -7,7 +7,7 @@
 		<key>kBossAttack</key>
 		<integer>10</integer>
 		<key>kBossID</key>
-		<string>kBossAtlas</string>
+		<string>kBossAstraeus</string>
 		<key>kBossSpeed</key>
 		<integer>10</integer>
 		<key>kBossStamina</key>
@@ -91,15 +91,15 @@
 		</array>
 		<key>kShipTurretPoints</key>
 		<array>
-			<string>22,80;31,80;160,80;169,80</string>
-			<string>22,80;31,80;160,80;169,80</string>
-			<string>22,80;31,80;160,80;169,80</string>
-			<string>22,80;31,80;160,80;169,80</string>
-			<string>22,80;31,80;160,80;169,80</string>
-			<string>22,80;31,80;160,80;169,80</string>
-			<string>22,80;31,80;160,80;169,80</string>
-			<string>22,80;31,80;160,80;169,80</string>
-			<string>22,80;31,80;160,80;169,80</string>
+			<string>-71,8;69,8;0,-23;-4,-24</string>
+			<string>-3,-26</string>
+			<string>5,-26</string>
+			<string>0,0</string>
+			<string>0,0</string>
+			<string>0,0</string>
+			<string>0,0</string>
+			<string>0,0</string>
+			<string>0,0</string>
 		</array>
 	</dict>
 	<key>kBossAtlas</key>
@@ -204,6 +204,78 @@
 		<key>kShipTurretPoints</key>
 		<array>
 			<string>65,65</string>
+		</array>
+	</dict>
+	<key>kBossHelios</key>
+	<dict>
+		<key>kBossAttack</key>
+		<integer>10</integer>
+		<key>kBossID</key>
+		<string>kBossHelios</string>
+		<key>kBossSpeed</key>
+		<integer>10</integer>
+		<key>kBossStamina</key>
+		<integer>10</integer>
+		<key>kBossType</key>
+		<string>kBossTypeBoss</string>
+		<key>kCollisionBoundingPoints</key>
+		<array>
+			<array>
+				<string>0,-72;13,-42;18,-14;14,-5;-15,-5;-20,-14;-15,-42</string>
+				<string>-1,-6;-29,3;-43,24;-41,45;-20,73;18,73;39,45;41,24;26,3;13,-6</string>
+			</array>
+			<array>
+				<string>-1,-3;-24,-6;-29,-21;28,-21;22,-6</string>
+				<string>0,25;14,21;10,-1;-11,-1;-15,21</string>
+			</array>
+			<array>
+				<string>14,-43;7,-18;8,-9;12,-3;21,-14;19,-43</string>
+				<string>21,-36;21,38;26,44;26,-30</string>
+				<string>-4,-10;-8,3;4,13</string>
+				<string>12,-1;-26,41;12,29</string>
+				<string>-27,-10;-18,17;-8,4</string>
+				<string>-18,16;-25,25;-25,39;-9,30</string>
+			</array>
+			<array>
+				<string>-14,-43;-7,-18;-8,-9;-12,-3;-21,-14;-19,-43</string>
+				<string>-21,-36;-21,38;-26,44;-26,-30</string>
+				<string>4,-10;8,3;-4,13</string>
+				<string>-12,-1;26,41;-12,29</string>
+				<string>27,-10;18,17;8,4</string>
+				<string>18,16;25,25;25,39;9,30</string>
+			</array>
+		</array>
+		<key>kModularDestructionOrder</key>
+		<array>
+			<array>
+				<string>2</string>
+				<string>3</string>
+			</array>
+			<array>
+				<integer>0</integer>
+				<string>1</string>
+			</array>
+		</array>
+		<key>kShipModuleImages</key>
+		<array>
+			<string>kBossHeliosMainBody.png</string>
+			<string>kBossHeliosTail.png</string>
+			<string>kBossHeliosWingLeft.png</string>
+			<string>kBossHeliosWingRight.png</string>
+		</array>
+		<key>kShipModulePoints</key>
+		<array>
+			<string>0,0</string>
+			<string>0,110</string>
+			<string>-75,50</string>
+			<string>75,50</string>
+		</array>
+		<key>kShipTurretPoints</key>
+		<array>
+			<string>30,9;-32,9;6,-55;-10,-55</string>
+			<string>15,22;0,24;-15,22</string>
+			<string>6,-43;-26,-9</string>
+			<string>-6,-43;26,-9</string>
 		</array>
 	</dict>
 </dict>

@@ -186,6 +186,10 @@
 		B9EB2F3C13AD3791003484B1 /* kEnemyShipTwoShotkBossAfricaAssistOne.png in Resources */ = {isa = PBXBuildFile; fileRef = B9EB2F3913AD3790003484B1 /* kEnemyShipTwoShotkBossAfricaAssistOne.png */; };
 		B9EB2F3D13AD3791003484B1 /* kEnemyTwoShotLevelTwo.png in Resources */ = {isa = PBXBuildFile; fileRef = B9EB2F3A13AD3790003484B1 /* kEnemyTwoShotLevelTwo.png */; };
 		B9EB2F3E13AD3791003484B1 /* kEnemyWaveShotLevelFour.png in Resources */ = {isa = PBXBuildFile; fileRef = B9EB2F3B13AD3791003484B1 /* kEnemyWaveShotLevelFour.png */; };
+		B9F2841713E9FF5700E8F8A4 /* kBossHeliosMainBody.png in Resources */ = {isa = PBXBuildFile; fileRef = B9F2841313E9FF4900E8F8A4 /* kBossHeliosMainBody.png */; };
+		B9F2841813E9FF5700E8F8A4 /* kBossHeliosTail.png in Resources */ = {isa = PBXBuildFile; fileRef = B9F2841413E9FF4C00E8F8A4 /* kBossHeliosTail.png */; };
+		B9F2841913E9FF5700E8F8A4 /* kBossHeliosWingLeft.png in Resources */ = {isa = PBXBuildFile; fileRef = B9F2841513E9FF4F00E8F8A4 /* kBossHeliosWingLeft.png */; };
+		B9F2841A13E9FF5700E8F8A4 /* kBossHeliosWingRight.png in Resources */ = {isa = PBXBuildFile; fileRef = B9F2841613E9FF5500E8F8A4 /* kBossHeliosWingRight.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -434,6 +438,10 @@
 		B9EB2F3913AD3790003484B1 /* kEnemyShipTwoShotkBossAfricaAssistOne.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = kEnemyShipTwoShotkBossAfricaAssistOne.png; path = "Game Resources/Images/Normal/Ships/Enemy Ships/kEnemyShipTwoShotkBossAfricaAssistOne.png"; sourceTree = SOURCE_ROOT; };
 		B9EB2F3A13AD3790003484B1 /* kEnemyTwoShotLevelTwo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = kEnemyTwoShotLevelTwo.png; path = "Game Resources/Images/Normal/Ships/Enemy Ships/kEnemyTwoShotLevelTwo.png"; sourceTree = SOURCE_ROOT; };
 		B9EB2F3B13AD3791003484B1 /* kEnemyWaveShotLevelFour.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = kEnemyWaveShotLevelFour.png; path = "Game Resources/Images/Normal/Ships/Enemy Ships/kEnemyWaveShotLevelFour.png"; sourceTree = SOURCE_ROOT; };
+		B9F2841313E9FF4900E8F8A4 /* kBossHeliosMainBody.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = kBossHeliosMainBody.png; path = "Game Resources/Images/Normal/Ships/Boss Ships/kBossHeliosMainBody.png"; sourceTree = SOURCE_ROOT; };
+		B9F2841413E9FF4C00E8F8A4 /* kBossHeliosTail.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = kBossHeliosTail.png; path = "Game Resources/Images/Normal/Ships/Boss Ships/kBossHeliosTail.png"; sourceTree = SOURCE_ROOT; };
+		B9F2841513E9FF4F00E8F8A4 /* kBossHeliosWingLeft.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = kBossHeliosWingLeft.png; path = "Game Resources/Images/Normal/Ships/Boss Ships/kBossHeliosWingLeft.png"; sourceTree = SOURCE_ROOT; };
+		B9F2841613E9FF5500E8F8A4 /* kBossHeliosWingRight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = kBossHeliosWingRight.png; path = "Game Resources/Images/Normal/Ships/Boss Ships/kBossHeliosWingRight.png"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -895,6 +903,10 @@
 		11E7DCE4129F00C00047E2FD /* Bosses */ = {
 			isa = PBXGroup;
 			children = (
+				B9F2841313E9FF4900E8F8A4 /* kBossHeliosMainBody.png */,
+				B9F2841413E9FF4C00E8F8A4 /* kBossHeliosTail.png */,
+				B9F2841513E9FF4F00E8F8A4 /* kBossHeliosWingLeft.png */,
+				B9F2841613E9FF5500E8F8A4 /* kBossHeliosWingRight.png */,
 				1105591C13E8C4AD004614BE /* kBossAstraeusCannon30Left.png */,
 				1105591D13E8C4AD004614BE /* kBossAstraeusCannon30Right.png */,
 				1105591E13E8C4AD004614BE /* kBossAstraeusCannon90Left.png */,
@@ -1234,6 +1246,10 @@
 				1105592F13E8C4AF004614BE /* kBossAstraeusFrontTurretLeft.png in Resources */,
 				1105593013E8C4AF004614BE /* kBossAstraeusFrontTurretRight.png in Resources */,
 				1105593113E8C4AF004614BE /* kBossAstraeusMainBody.png in Resources */,
+				B9F2841713E9FF5700E8F8A4 /* kBossHeliosMainBody.png in Resources */,
+				B9F2841813E9FF5700E8F8A4 /* kBossHeliosTail.png in Resources */,
+				B9F2841913E9FF5700E8F8A4 /* kBossHeliosWingLeft.png in Resources */,
+				B9F2841A13E9FF5700E8F8A4 /* kBossHeliosWingRight.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

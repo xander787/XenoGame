@@ -282,9 +282,7 @@
                 [tempCollisionPolygon setPos:CGPointMake(currentLocation.x + modularObjects[i].location.x, currentLocation.y + modularObjects[i].location.y)];
                 [modularObjects[i].collisionPolygonArray addObject:tempCollisionPolygon];
                 [tempCollisionPolygon release];
-            }
-            NSLog(@"Module num %d collision coords aray:\n%@", i, modularObjects[i].collisionPolygonArray);
-            
+            }            
         }
         
         //We have to put this in a seperate for loop because it doesn't conform to the number of modules
