@@ -288,7 +288,7 @@
         particleRadius = aRadius;
         rateOfFire = aRate;
         
-        projectileSpeed = 10;
+        projectileSpeed = (1.0/rateOfFire) * 3;
         
         
         //Because we have a radius, we can manually make our collision points
@@ -311,7 +311,7 @@
                 emitter = [[ParticleEmitter alloc] initParticleEmitterWithImageNamed:@"texture.png"
                                                                             position:turretPosition
                                                               sourcePositionVariance:Vector2fZero
-                                                                               speed:0.6
+                                                                               speed:0.8
                                                                        speedVariance:0.0
                                                                     particleLifeSpan:0.3
                                                             particleLifespanVariance:0.1
@@ -334,7 +334,7 @@
                 emitter = [[ParticleEmitter alloc] initParticleEmitterWithImageNamed:@"texture.png"
                                                                             position:turretPosition
                                                               sourcePositionVariance:Vector2fZero
-                                                                               speed:0.6
+                                                                               speed:0.8
                                                                        speedVariance:0.1
                                                                     particleLifeSpan:0.2
                                                             particleLifespanVariance:0.1
@@ -526,8 +526,8 @@
             emitter.angle = projectileAngle;
         }
         Vector2f tempPos = emitter.sourcePosition;
-        tempPos.x += (projectileSpeed * 15) * aDelta * particleVector.x;
-        tempPos.y += (projectileSpeed * 15) * aDelta * particleVector.y;
+        tempPos.x += (projectileSpeed * 15 * 5) * aDelta * particleVector.x;
+        tempPos.y += (projectileSpeed * 15 * 5) * aDelta * particleVector.y;
         emitter.sourcePosition = tempPos;
         
         [[polygonArray objectAtIndex:0] setPos:CGPointMake(emitter.sourcePosition.x, emitter.sourcePosition.y)];

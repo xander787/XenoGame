@@ -34,6 +34,8 @@
     BOOL                rightSideTransitionComplete;
     
     BOOL                allReplacementsDead;
+    BOOL                leftReplacementsDead;
+    BOOL                rightReplaceMentsDead;
     GLfloat             holdingTimer;
     
     ParticleEmitter     *leftSideDeathEmitter;
@@ -43,6 +45,11 @@
     
     AbstractProjectile  *leftCannonProjectile;
     AbstractProjectile  *rightCannonProjectile;
+    
+    AbstractProjectile  *leftCannonLeftProjectile;
+    AbstractProjectile  *leftCannonRightProjectile;
+    AbstractProjectile  *rightCannonLeftProjectile;
+    AbstractProjectile  *rightCannonRightProjectile;
 }
 @property(readonly) BOOL leftSideTransitionComplete;
 @property(readonly) BOOL rightSideTransitionComplete;
