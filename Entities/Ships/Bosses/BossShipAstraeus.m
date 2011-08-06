@@ -213,7 +213,7 @@
         cannonFrontLeft->rotation = angleToPlayer;
     }
     
-    if(cannonFrontLeft->isDead) {
+    if(cannonFrontLeft->isDead && !leftReplacementsDead) {
         [leftSideDeathEmitter update:delta];
         if(leftSideDeathEmitter.particleCount == 0){
             //When the emitter is dead
@@ -242,7 +242,7 @@
         }
     }
     
-    if(cannonFrontRight->isDead) {
+    if(cannonFrontRight->isDead && !rightReplaceMentsDead) {
         [rightSideDeathEmitter update:delta];
         if(rightSideDeathEmitter.particleCount == 0){
             
@@ -305,6 +305,8 @@
             cannonFrontRight->moduleHealth = cannonFrontRight->moduleMaxHealth;
             cannonFrontRight->shouldTakeDamage = YES;
             rightCannonProjectile = [[AbstractProjectile alloc] initWithParticleID:kEnemyParticle fromTurretPosition:Vector2fZero radius:5 rateOfFire:1 andAngle:270];
+            rightCannonLeftProjectile = [[AbstractProjectile alloc] initWithParticleID:kEnemyParticle fromTurretPosition:Vector2fZero radius:5 rateOfFire:1 andAngle:240];
+            rightCannonRightProjectile = [[AbstractProjectile alloc] initWithParticleID:kEnemyParticle fromTurretPosition:Vector2fZero radius:5 rateOfFire:1 andAngle:300];
         }
         else {
             // All cannons are dead
@@ -367,6 +369,8 @@
             cannonFrontLeft->moduleHealth = cannonFrontLeft->moduleMaxHealth;
             cannonFrontLeft->shouldTakeDamage = YES;
             leftCannonProjectile = [[AbstractProjectile alloc] initWithParticleID:kEnemyParticle fromTurretPosition:Vector2fZero radius:5 rateOfFire:1 andAngle:270];
+            leftCannonLeftProjectile = [[AbstractProjectile alloc] initWithParticleID:kEnemyParticle fromTurretPosition:Vector2fZero radius:5 rateOfFire:1 andAngle:240];
+            leftCannonRightProjectile = [[AbstractProjectile alloc] initWithParticleID:kEnemyParticle fromTurretPosition:Vector2fZero radius:5 rateOfFire:1 andAngle:300];
         }
         else {
             // All cannons are dead
@@ -403,10 +407,18 @@
     if(cannonReplacementOneLeft->isDead && cannonReplacementTwoLeft->isDead && cannonReplacementThreeLeft->isDead && cannonFrontLeft->isDead){
         [leftCannonProjectile release];
         leftCannonProjectile = nil;
+        leftReplacementsDead = YES;
     }
     if(cannonReplacementOneRight->isDead && cannonReplacementTwoRight->isDead && cannonReplacementThreeRight->isDead && cannonFrontRight->isDead){
         [rightCannonProjectile release];
         rightCannonProjectile = nil;
+        rightReplaceMentsDead = YES;
+    }
+    if(cannonReplacementOneLeft->isDead && cannonReplacementTwoLeft->isDead && cannonReplacementThreeLeft->isDead){
+        leftReplacementsDead = YES;
+    }
+    if(cannonReplacementOneRight->isDead && cannonReplacementTwoRight->isDead && cannonReplacementThreeRight->isDead){
+        rightReplaceMentsDead = YES;
     }
     
     if(allReplacementsDead){
@@ -435,10 +447,8 @@
     if(ship->isDead){
         ship->isDead = NO;
         updateMainBodyDeathEmitter = YES;
-        NSLog(@"Toggled shipIsdead, %d %d", ship->isDead, updateMainBodyDeathEmitter);
     }
     if(updateMainBodyDeathEmitter){
-        NSLog(@"updating death emitter");
         mainbodyDeathEmitter.sourcePosition = Vector2fMake(ship->location.x + currentLocation.x, ship->location.y + currentLocation.y);
         [mainbodyDeathEmitter update:delta];
         if(mainbodyDeathEmitter.particleCount == 0){
@@ -452,18 +462,46 @@
             [leftCannonProjectile update:delta];
             leftCannonProjectile.projectileAngle = 270 - cannonFrontLeft->rotation;
             leftCannonProjectile.turretPosition = Vector2fMake(currentLocation.x + cannonFrontLeft->weapons[0].weaponCoord.x + cannonFrontLeft->location.x, currentLocation.y + cannonFrontLeft->weapons[0].weaponCoord.y + cannonFrontLeft->location.y);
+            if(leftReplacementsDead){
+                [leftCannonLeftProjectile update:delta];
+                [leftCannonRightProjectile update:delta];
+                leftCannonLeftProjectile.projectileAngle = 270 - cannonFrontLeft->rotation - 30;
+                leftCannonRightProjectile.projectileAngle = 270 - cannonFrontLeft->rotation + 30;
+                leftCannonLeftProjectile.turretPosition = Vector2fMake(currentLocation.x + cannonFrontLeft->weapons[0].weaponCoord.x + cannonFrontLeft->location.x, currentLocation.y + cannonFrontLeft->weapons[0].weaponCoord.y + cannonFrontLeft->location.y);
+                leftCannonRightProjectile.turretPosition = Vector2fMake(currentLocation.x + cannonFrontLeft->weapons[0].weaponCoord.x + cannonFrontLeft->location.x, currentLocation.y + cannonFrontLeft->weapons[0].weaponCoord.y + cannonFrontLeft->location.y);
+            }
         }
         if(rightCannonProjectile){
             [rightCannonProjectile update:delta];
             rightCannonProjectile.projectileAngle = 270 - cannonFrontRight->rotation;
             rightCannonProjectile.turretPosition = Vector2fMake(currentLocation.x + cannonFrontRight->weapons[0].weaponCoord.x + cannonFrontRight->location.x, currentLocation.y + cannonFrontRight->weapons[0].weaponCoord.y + cannonFrontRight->location.y);
+            if(rightReplaceMentsDead){
+                [rightCannonLeftProjectile update:delta];
+                [rightCannonRightProjectile update:delta];
+                rightCannonLeftProjectile.projectileAngle = 270 - cannonFrontRight->rotation - 30;
+                rightCannonRightProjectile.projectileAngle = 270 - cannonFrontRight->rotation + 30;
+                rightCannonLeftProjectile.turretPosition = Vector2fMake(currentLocation.x + cannonFrontRight->weapons[0].weaponCoord.x + cannonFrontRight->location.x, currentLocation.y + cannonFrontRight->weapons[0].weaponCoord.y + cannonFrontRight->location.y);
+                rightCannonRightProjectile.turretPosition = Vector2fMake(currentLocation.x + cannonFrontRight->weapons[0].weaponCoord.x + cannonFrontRight->location.x, currentLocation.y + cannonFrontRight->weapons[0].weaponCoord.y + cannonFrontRight->location.y);
+            }
         }
     }
 }
 
 - (void)render {
-    [leftCannonProjectile render];
-    [rightCannonProjectile render];
+    if(!cannonFrontLeft->isDead){
+        [leftCannonProjectile render];
+        if(leftReplacementsDead){
+            [leftCannonLeftProjectile render];
+            [leftCannonRightProjectile render];
+        }
+    }
+    if(!cannonFrontRight->isDead){
+        [rightCannonProjectile render];
+        if(rightReplaceMentsDead){
+            [rightCannonLeftProjectile render];
+            [rightCannonRightProjectile render];
+        }
+    }
     
     for(int i = 0; i < numberOfModules; i++) {
         if (!modularObjects[i].isDead) {
@@ -489,6 +527,7 @@
     if(updateMainBodyDeathEmitter){
         [mainbodyDeathEmitter renderParticles];
     }
+    
     
     if(DEBUG) {
         glPushMatrix();
