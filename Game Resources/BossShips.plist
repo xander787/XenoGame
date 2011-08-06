@@ -144,6 +144,8 @@
 			<array>
 				<integer>1</integer>
 				<integer>2</integer>
+				<string>3</string>
+				<string>4</string>
 				<string>5</string>
 			</array>
 			<array>

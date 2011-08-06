@@ -22,17 +22,54 @@
 #import "BossShip.h"
 #import "ParticleEmitter.h"
 
+//The +- limits for how far away an enemy ship can
+//stray from their respective holding points
+#define HOLDING_LIMIT_X 5
+#define HOLDING_LIMIT_Y 5
+
+typedef enum _AtlasState {
+    kAtlasState_StageOne = 0,
+    kAtlasState_StageTwo,
+    kAtlasState_StageThree,
+    kAtlasState_StageFour
+} AtlasState;
 
 @interface BossShipAtlas : BossShip {    
     ModularObject   *cannonLeft;
     ModularObject   *cannonRight;
-    ModularObject   *turretLeft;
-    ModularObject   *turretRight;
     ModularObject   *mainBody;
+    ModularObject   *frontCenterTurret;
+    ModularObject   *frontLeftTurret;
+    ModularObject   *frontRightTurret;
     
     ParticleEmitter *leftCannonEmitterJoint;
     ParticleEmitter *rightCannonEmitterJoint;
     ParticleEmitter *backEngineEnergyEmitter;
+    
+    ParticleEmitter *mainBodyDeathEmitter;
+    ParticleEmitter *leftCannonDeathEmitter;
+    ParticleEmitter *rightCannonDeathEmitter;
+    ParticleEmitter *frontCenterTurretDeathEmitter;
+    ParticleEmitter *frontLeftTurretDeathEmitter;
+    ParticleEmitter *frontRightTurretDeathEmitter;
+    ParticleEmitter *leftCannonDeathSecondaryEmitter;
+    ParticleEmitter *rightCannonDeathSecondaryEmitter;
+    ParticleEmitter *frontCenterTurretDeathSecondaryEmitter;
+    ParticleEmitter *frontLeftTurretDeathSecondaryEmitter;
+    ParticleEmitter *frontRightTurretDeathSecondaryEmitter;
+
+    
+    BOOL            cannonRightFlewOff;
+    BOOL            cannonLeftFlewOff;
+    BOOL            frontCenterTurretFlewOff;
+    BOOL            frontLeftTurretFlewOff;
+    BOOL            frontRightTurretFlewOff;
+    
+    BOOL            currentStagePaused;
+    float           stagePauseTimer;
+    
+    AtlasState      state;
+    float           holdingTimer;
 }
 
 - (id)initWithLocation:(CGPoint)aPoint andPlayerShipRef:(PlayerShip *)playerRef;

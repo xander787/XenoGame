@@ -111,6 +111,7 @@ typedef struct _ModularObject {
     int             drawingOrder;
     Vector2f        location;
     Vector2f        defaultLocation;
+    Vector2f        desiredLocation;
     Image           *moduleImage;
     
     NSMutableArray  *collisionPolygonArray;
