@@ -51,6 +51,7 @@
 #import "AbstractShip.h"
 #import "Polygon.h"
 #import "BezierCurve.h"
+#import "BulletProjectile.h"
 
 typedef enum _EnemyShipID {
     kEnemyShip_OneShotLevelOne = 0,

@@ -1091,38 +1091,51 @@ WrapText( const char *text
                 
                 //Enemy bullet -> player ship collision
                 for(AbstractProjectile *enemyProjectile in enemyShip.projectilesArray){
-                    Polygon *enemyBulletPoly;
-                    for(int i = 0; i < [enemyProjectile.polygonArray count]; i++){
-                        enemyBulletPoly = [enemyProjectile.polygonArray objectAtIndex:i];
-                        PolygonCollisionResult result2 = [Collisions polygonCollision:enemyBulletPoly :playerShip.collisionPolygon :Vector2fZero];
+                    NSArray *enemyPolyArray;
+                    for(int emitterPolyCount = 0; emitterPolyCount < [enemyProjectile.emitters count]; emitterPolyCount++){
+                        enemyPolyArray = [[enemyProjectile polygons] objectAtIndex:emitterPolyCount];
                         
-                        if(result2.intersect){
-                            if(!playerShip.shipIsDead && !shieldEnabled){
-                                [playerShip hitShipWithDamage:30];
-                                enemyProjectile.emitter.particles[i].position = Vector2fMake(500, 0);
+                        Polygon *enemyBulletPoly;
+                        for(int i = 0; i < [enemyPolyArray count]; i++){
+                            enemyBulletPoly = [enemyPolyArray objectAtIndex:i];
+                            
+                            PolygonCollisionResult result2 = [Collisions polygonCollision:enemyBulletPoly :playerShip.collisionPolygon :Vector2fZero];
+                            
+                            if(result2.intersect){
+                                if(!playerShip.shipIsDead && !shieldEnabled){
+                                    [playerShip hitShipWithDamage:30];
+                                    //Move it away
+                                    [[[enemyProjectile emitters] objectAtIndex:emitterPolyCount] particles][i].position = Vector2fMake(500, 0);
+                                }
                             }
                         }
                     }
                 }
                 
-                //Player Bullets->Enemy ship collision
-                for(AbstractProjectile *playerShipProjectile in playerShip.projectilesArray){
-                    Polygon *playerBulletPoly;
-                    for(int i = 0; i < [playerShipProjectile.polygonArray count]; i++){
-                        playerBulletPoly = [playerShipProjectile.polygonArray objectAtIndex:i];
-                        PolygonCollisionResult result = [Collisions polygonCollision:playerBulletPoly :enemyShip.collisionPolygon :Vector2fZero];
+                
+                //Player bullets->EnemyShip collision
+                for(AbstractProjectile *playerProjectile in playerShip.projectilesArray){
+                    NSArray *playerPolyArray;
+                    for(int emitterPolyCount = 0; emitterPolyCount < [playerProjectile.emitters count]; emitterPolyCount++){
+                        playerPolyArray = [[playerProjectile polygons] objectAtIndex:emitterPolyCount];
                         
-                        if(result.intersect){
-                            //Send damage to enemy ship
-                            if(!enemyShip.shipIsDead){
-                                [enemyShip hitShipWithDamage:50 + (50 * (int)damageMultiplierOn)];
-                                playerShipProjectile.emitter.particles[i].position = Vector2fMake(500, 50);
+                        Polygon *playerBulletPoly;
+                        for(int i = 0; i < [playerPolyArray count]; i++){
+                            playerBulletPoly = [playerPolyArray objectAtIndex:i];
+                            
+                            PolygonCollisionResult result2 = [Collisions polygonCollision:playerBulletPoly :enemyShip.collisionPolygon :Vector2fZero];
+                            
+                            if(result2.intersect){
+                                if(!enemyShip.shipIsDead){
+                                    [enemyShip hitShipWithDamage:20 + (20 * (int)damageMultiplierOn)];
+                                    //Move it away
+                                    [[[playerProjectile emitters] objectAtIndex:emitterPolyCount] particles][i].position = Vector2fMake(500, 50);
+                                }
                             }
                         }
                     }
                 }
             }
-            [enemyShip release];
         }
         
         if (currentWaveType == kWaveType_Boss) {
@@ -1139,21 +1152,27 @@ WrapText( const char *text
                             [playerShip killShip];
                         }
                         
-                        //Player Bullets->Boss ship module collision
-                        for(AbstractProjectile *playerShipProjectile in playerShip.projectilesArray){
-                            Polygon *playerBulletPoly;
-                            for(int j = 0; j < [playerShipProjectile.polygonArray count]; j++){
-                                playerBulletPoly = [playerShipProjectile.polygonArray objectAtIndex:j];
-                                PolygonCollisionResult result = [Collisions polygonCollision:playerBulletPoly
-                                                                                            :[bossShip.modularObjects[i].collisionPolygonArray objectAtIndex:k]
-                                                                                            :Vector2fZero];
+                        //Player bullet -> module collision
+                        for(AbstractProjectile *playerProjectile in playerShip.projectilesArray){
+                            NSArray *playerPolyArray;
+                            for(int emitterPolyCount = 0; emitterPolyCount < [playerProjectile.emitters count]; emitterPolyCount++){
+                                playerPolyArray = [[playerProjectile polygons] objectAtIndex:emitterPolyCount];
                                 
-                                if(result.intersect){
-                                    if(bossShipIsDisplayed){
-                                        if(bossShip.modularObjects[i].shouldTakeDamage == YES){
-                                            if (bossShip.modularObjects[i].destructionOrder == bossShip.currentDestructionOrder && bossShip.modularObjects[i].isDead == NO) {
-                                                [bossShip hitModule:i withDamage:10];
-                                                playerShipProjectile.emitter.particles[j].position = Vector2fMake(500, 50);
+                                Polygon *playerBulletPoly;
+                                for(int j = 0; j < [playerPolyArray count]; j++){
+                                    playerBulletPoly = [playerPolyArray objectAtIndex:j];
+                                    
+                                    PolygonCollisionResult result = [Collisions polygonCollision:playerBulletPoly 
+                                                                                                 :[bossShip.modularObjects[i].collisionPolygonArray objectAtIndex:k] 
+                                                                                                 :Vector2fZero];
+                                    
+                                    if(result.intersect){
+                                        if(bossShipIsDisplayed){
+                                            if(bossShip.modularObjects[i].shouldTakeDamage == YES){
+                                                if (bossShip.modularObjects[i].destructionOrder == bossShip.currentDestructionOrder && bossShip.modularObjects[i].isDead == NO) {
+                                                    [bossShip hitModule:i withDamage:10];
+                                                    [[[playerProjectile emitters] objectAtIndex:emitterPolyCount] particles][j].position = Vector2fMake(500, 50);
+                                                }
                                             }
                                         }
                                     }

@@ -160,6 +160,10 @@
 		B9935E5213AC64F3005BBA67 /* kEnemyWaveShotLevelTwo.png in Resources */ = {isa = PBXBuildFile; fileRef = B9935E4813AC64F3005BBA67 /* kEnemyWaveShotLevelTwo.png */; };
 		B9A7053D13C83EBD004A486C /* DialogueBoxBorder.png in Resources */ = {isa = PBXBuildFile; fileRef = B9A7053B13C83EBC004A486C /* DialogueBoxBorder.png */; };
 		B9A7053E13C83EBD004A486C /* fastforward.png in Resources */ = {isa = PBXBuildFile; fileRef = B9A7053C13C83EBC004A486C /* fastforward.png */; };
+		B9A8075613ED06FE00D9AFD3 /* BulletProjectile.m in Sources */ = {isa = PBXBuildFile; fileRef = B9A8074F13ED06FE00D9AFD3 /* BulletProjectile.m */; };
+		B9A8075713ED06FE00D9AFD3 /* MissileProjectile.m in Sources */ = {isa = PBXBuildFile; fileRef = B9A8075113ED06FE00D9AFD3 /* MissileProjectile.m */; };
+		B9A8075813ED06FE00D9AFD3 /* ParticleProjectile.m in Sources */ = {isa = PBXBuildFile; fileRef = B9A8075313ED06FE00D9AFD3 /* ParticleProjectile.m */; };
+		B9A8075913ED06FE00D9AFD3 /* WaveProjectile.m in Sources */ = {isa = PBXBuildFile; fileRef = B9A8075513ED06FE00D9AFD3 /* WaveProjectile.m */; };
 		B9AFC0A013E239B900E4570A /* NoButton.png in Resources */ = {isa = PBXBuildFile; fileRef = B9AFC09D13E239B900E4570A /* NoButton.png */; };
 		B9AFC0A113E239B900E4570A /* YesButton.png in Resources */ = {isa = PBXBuildFile; fileRef = B9AFC09E13E239B900E4570A /* YesButton.png */; };
 		B9AFC0A313E23BAC00E4570A /* ClearAllSavedDataButton.png in Resources */ = {isa = PBXBuildFile; fileRef = B9AFC0A213E23BAC00E4570A /* ClearAllSavedDataButton.png */; };
@@ -415,6 +419,14 @@
 		B9935E4813AC64F3005BBA67 /* kEnemyWaveShotLevelTwo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = kEnemyWaveShotLevelTwo.png; path = "Game Resources/Images/Normal/Ships/Enemy Ships/kEnemyWaveShotLevelTwo.png"; sourceTree = SOURCE_ROOT; };
 		B9A7053B13C83EBC004A486C /* DialogueBoxBorder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = DialogueBoxBorder.png; sourceTree = "<group>"; };
 		B9A7053C13C83EBC004A486C /* fastforward.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = fastforward.png; sourceTree = "<group>"; };
+		B9A8074E13ED06FE00D9AFD3 /* BulletProjectile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BulletProjectile.h; path = Entities/Projectiles/BulletProjectile.h; sourceTree = "<group>"; };
+		B9A8074F13ED06FE00D9AFD3 /* BulletProjectile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BulletProjectile.m; path = Entities/Projectiles/BulletProjectile.m; sourceTree = "<group>"; };
+		B9A8075013ED06FE00D9AFD3 /* MissileProjectile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MissileProjectile.h; path = Entities/Projectiles/MissileProjectile.h; sourceTree = "<group>"; };
+		B9A8075113ED06FE00D9AFD3 /* MissileProjectile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MissileProjectile.m; path = Entities/Projectiles/MissileProjectile.m; sourceTree = "<group>"; };
+		B9A8075213ED06FE00D9AFD3 /* ParticleProjectile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ParticleProjectile.h; path = Entities/Projectiles/ParticleProjectile.h; sourceTree = "<group>"; };
+		B9A8075313ED06FE00D9AFD3 /* ParticleProjectile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ParticleProjectile.m; path = Entities/Projectiles/ParticleProjectile.m; sourceTree = "<group>"; };
+		B9A8075413ED06FE00D9AFD3 /* WaveProjectile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WaveProjectile.h; path = Entities/Projectiles/WaveProjectile.h; sourceTree = "<group>"; };
+		B9A8075513ED06FE00D9AFD3 /* WaveProjectile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WaveProjectile.m; path = Entities/Projectiles/WaveProjectile.m; sourceTree = "<group>"; };
 		B9AFC09D13E239B900E4570A /* NoButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NoButton.png; sourceTree = "<group>"; };
 		B9AFC09E13E239B900E4570A /* YesButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = YesButton.png; sourceTree = "<group>"; };
 		B9AFC0A213E23BAC00E4570A /* ClearAllSavedDataButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ClearAllSavedDataButton.png; sourceTree = "<group>"; };
@@ -1069,6 +1081,14 @@
 			children = (
 				B97A805412C964AD005FBB61 /* AbstractProjectile.h */,
 				B97A805512C964AD005FBB61 /* AbstractProjectile.m */,
+				B9A8074E13ED06FE00D9AFD3 /* BulletProjectile.h */,
+				B9A8074F13ED06FE00D9AFD3 /* BulletProjectile.m */,
+				B9A8075013ED06FE00D9AFD3 /* MissileProjectile.h */,
+				B9A8075113ED06FE00D9AFD3 /* MissileProjectile.m */,
+				B9A8075213ED06FE00D9AFD3 /* ParticleProjectile.h */,
+				B9A8075313ED06FE00D9AFD3 /* ParticleProjectile.m */,
+				B9A8075413ED06FE00D9AFD3 /* WaveProjectile.h */,
+				B9A8075513ED06FE00D9AFD3 /* WaveProjectile.m */,
 			);
 			name = Projectiles;
 			sourceTree = "<group>";
@@ -1335,6 +1355,10 @@
 				B9503D8E13DF917200456E84 /* PauseMenuScene.m in Sources */,
 				119949E513DFB36900D501E8 /* StoreScene.m in Sources */,
 				11994A2013E1234B00D501E8 /* AboutScene.m in Sources */,
+				B9A8075613ED06FE00D9AFD3 /* BulletProjectile.m in Sources */,
+				B9A8075713ED06FE00D9AFD3 /* MissileProjectile.m in Sources */,
+				B9A8075813ED06FE00D9AFD3 /* ParticleProjectile.m in Sources */,
+				B9A8075913ED06FE00D9AFD3 /* WaveProjectile.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

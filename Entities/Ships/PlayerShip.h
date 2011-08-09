@@ -48,6 +48,9 @@
 #import "Animation.h"
 #import "Polygon.h"
 #import "AbstractProjectile.h"
+#import "BulletProjectile.h"
+#import "MissileProjectile.h"
+#import "WaveProjectile.h"
 
 typedef enum _PlayerShipID {
 	kPlayerShip_Dev = 0,

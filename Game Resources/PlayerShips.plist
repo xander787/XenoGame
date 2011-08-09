@@ -31,8 +31,7 @@
 		</array>
 		<key>kTurretPoints</key>
 		<array>
-			<string>-16,9</string>
-			<string>15,9</string>
+			<string>0,9</string>
 		</array>
 	</dict>
 </dict>

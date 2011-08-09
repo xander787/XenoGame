@@ -15,6 +15,7 @@
 
 #import <Foundation/Foundation.h>
 #import "BossShip.h"
+#import "ParticleProjectile.h"
 
 
 @interface BossShipAstraeus : BossShip {
@@ -36,6 +37,8 @@
     BOOL                allReplacementsDead;
     BOOL                leftReplacementsDead;
     BOOL                rightReplaceMentsDead;
+    BOOL                allOfLeftSideDead;
+    BOOL                allOfRightSideDead;
     GLfloat             holdingTimer;
     
     ParticleEmitter     *leftSideDeathEmitter;
@@ -43,13 +46,9 @@
     ParticleEmitter     *mainbodyDeathEmitter;
     BOOL                updateMainBodyDeathEmitter;
     
-    AbstractProjectile  *leftCannonProjectile;
-    AbstractProjectile  *rightCannonProjectile;
-    
-    AbstractProjectile  *leftCannonLeftProjectile;
-    AbstractProjectile  *leftCannonRightProjectile;
-    AbstractProjectile  *rightCannonLeftProjectile;
-    AbstractProjectile  *rightCannonRightProjectile;
+    ParticleProjectile  *leftCannonProjectile;
+    ParticleProjectile  *rightCannonProjectile;
+
 }
 @property(readonly) BOOL leftSideTransitionComplete;
 @property(readonly) BOOL rightSideTransitionComplete;

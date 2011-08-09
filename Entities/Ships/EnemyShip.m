@@ -305,8 +305,7 @@
         
         projectilesArray = [[NSMutableArray alloc] init];
         for(int i = 0; i < numTurrets; i++) {
-            //AbstractProjectile *projectile = [[AbstractProjectile alloc] initWithParticleID:kPlayerParticle fromTurretPosition:Vector2fMake(currentLocation.x + turretPoints[i].x, currentLocation.y + turretPoints[i].y) radius:10 rateOfFire:4 andAngle:90];
-            AbstractProjectile *projectile = [[AbstractProjectile alloc] initWithProjectileID:kEnemyProjectile_Bullet fromTurretPosition:Vector2fMake(currentLocation.x + turretPoints[i].x, currentLocation.y + turretPoints[i].y) andAngle:-90 emissionRate:4];
+            BulletProjectile *projectile = [[BulletProjectile alloc] initWithProjectileID:kEnemyProjectile_BulletLevelTwo_Double location:Vector2fMake(currentLocation.x + turretPoints[i].x, currentLocation.y + turretPoints[i].y) andAngle:270];
             [projectile stopProjectile];
             [projectilesArray insertObject:projectile atIndex:i];
             [projectile release];
@@ -392,9 +391,10 @@
         [enemyAnimation setColorFilter:Color4fMake(1.0f, 1.0f, 1.0f, 1.0f)];
     }
     
-    for(int i = 0; i < [projectilesArray count]; i++) {
+    //Update all of our projectiles
+    for(int i = 0; i < [projectilesArray count]; i++){
+        [[projectilesArray objectAtIndex:i] setLocation:Vector2fMake(currentLocation.x + turretPoints[i].x, currentLocation.y + turretPoints[i].y)];
         [[projectilesArray objectAtIndex:i] update:delta];
-        [[projectilesArray objectAtIndex:i] setTurretPosition:Vector2fMake(currentLocation.x + turretPoints[i].x, currentLocation.y + turretPoints[i].y)];
     }
 }
 

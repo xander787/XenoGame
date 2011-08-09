@@ -23,72 +23,110 @@
 #import "Polygon.h"
 
 typedef enum _ProjectileID {
-    kEnemyProjectile_Bullet = 0,
-    kEnemyProjectile_Missile,
-    kEnemyProjectile_Wave,
-    kPlayerProjectile_Bullet,
-    kPlayerProjectile_Missile,
-    kPlayerProjectile_Wave
+    kPlayerProjectile_BulletLevelOne_Single = 0,
+    kPlayerProjectile_BulletLevelTwo_Double,
+    kPlayerProjectile_BulletLevelThree_Double,
+    kPlayerProjectile_BulletLevelFour_Triple,
+    kPlayerProjectile_BulletLevelFive_Triple,
+    kPlayerProjectile_BulletLevelSix_Quadruple,
+    kPlayerProjectile_BulletLevelSeven_Quadruple,
+    kPlayerProjectile_BulletLevelEight_Quintuple,
+    kPlayerProjectile_BulletLevelNine_Quintuple,
+    kPlayerProjectile_BulletLevelTen_Septuple,
+    
+    kPlayerProjectile_WaveLevelOne_SingleSmall,
+    kPlayerProjectile_WaveLevelTwo_DoubleSmall,
+    kPlayerProjectile_WaveLevelThree_DoubleSmall,
+    kPlayerProjectile_WaveLevelFour_SingleBig,
+    kPlayerProjectile_WaveLevelFive_SingleBig,
+    kPlayerProjectile_WaveLevelSix_DoubleMedium,
+    kPlayerProjectile_WaveLevelSeven_DoubleMedium,
+    kPlayerProjectile_WaveLevelEight_DoubleBig,
+    kPlayerProjectile_WaveLevelNine_DoubleBig,
+    kPlayerProjectile_WaveLevelTen_TripleBig,
+    
+    kPlayerProjectile_MissileLevelOne_Single,
+    kPlayerProjectile_MissileLevelTwo_Double,
+    kPlayerProjectile_MissileLevelThree_Double,
+    kPlayerProjectile_MissileLevelFour_Triple,
+    kPlayerProjectile_MissileLevelFive_Triple,
+    kPlayerProjectile_MissileLevelSix_Quadruple,
+    kPlayerProjectile_MissileLevelSeven_Quadruple,
+    kPlayerProjectile_MissileLevelEight_Quintuple,
+    kPlayerProjectile_MissileLevelNine_Quintuple,
+    kPlayerProjectile_MissileLevelTen_Sextuple,
+    
+    kEnemyProjectile_BulletLevelOne_Single,
+    kEnemyProjectile_BulletLevelTwo_Double,
+    kEnemyProjectile_BulletLevelThree_Double,
+    kEnemyProjectile_BulletLevelFour_Triple,
+    kEnemyProjectile_BulletLevelFive_Triple,
+    kEnemyProjectile_BulletLevelSix_Quadruple,
+    kEnemyProjectile_BulletLevelSeven_Quadruple,
+    kEnemyProjectile_BulletLevelEight_Quintuple,
+    kEnemyProjectile_BulletLevelNine_Quintuple,
+    kEnemyProjectile_BulletLevelTen_Septuple,
+    
+    kEnemyProjectile_WaveLevelOne_SingleSmall,
+    kEnemyProjectile_WaveLevelTwo_DoubleSmall,
+    kEnemyProjectile_WaveLevelThree_DoubleSmall,
+    kEnemyProjectile_WaveLevelFour_SingleBig,
+    kEnemyProjectile_WaveLevelFive_SingeBig,
+    kEnemyProjectile_WaveLevelSix_DoubleMedium,
+    kEnemyProjectile_WaveLevelSeven_DoubleMedium,
+    kEnemyProjectile_WaveLevelEight_DoubleBig,
+    kEnemyProjectile_WaveLevelNine_DoubleBig,
+    kEnemyProjectile_WaveLevelTen_TripleBig,
+    
+    kEnemyProjectile_MissileLevelOne_Single,
+    kEnemyProjectile_MissileLevelTwo_Double,
+    kEnemyProjectile_MissileLevelThree_Double,
+    kEnemyProjectile_MissileLevelFour_Triple,
+    kEnemyProjectile_MissileLevelFive_Triple,
+    kEnemyProjectile_MissileLevelSix_Quadruple,
+    kEnemyProjectile_MissileLevelSeven_Quadruple,
+    kEnemyProjectile_MissileLevelEight_Quintuple,
+    kEnemyProjectile_MissileLevelNine_Quintuple,
+    kEnemyProjectile_MissileLevelTen_Sextuple,
+    
+    kPlayerParticle_Single,
+    kPlayerParticle_Double,
+    kPlayerParticle_Triple,
+    
+    kEnemyParticle_Single,
+    kEnemyParticle_Double,
+    kEnemyParticle_Triple,
 } ProjectileID;
 
-typedef enum _ParticleID {
-    kEnemyParticle = 0,
-    kPlayerParticle
-} ParticleID;
-
-@interface AbstractProjectile : PhysicalObject {    
-    GLfloat         projectileAngle;
-    GLfloat         projectileSpeed;
+@interface AbstractProjectile : PhysicalObject {
     ProjectileID    projectileID;
-    ParticleID      particleID;
-    NSString        *idType;
+    GLfloat         angle;
+    Vector2f        location;
     
-    Vector2f        turretPosition;
-    Vector2f        currentLocation;
-    Vector2f        desiredLocation;
+    NSMutableArray  *polygons;
+    NSMutableArray  *emitters;
     
     BOOL            isActive;
-    
-    NSString        *nameOfImage;
-    
-    NSMutableArray  *polygonArray;
-
-    //Particle Emitter specific variables
-    ParticleEmitter *emitter;
-    
-@private
-    Vector2f        *collisionPoints;
-    int             collisionPointCount;
-    int             rateOfFire;
-    int             particleRadius;
-    
-    
-    //Image specific variables
-    Image           *image;
-    
-    GLfloat         elapsedTime;
     BOOL            isAlive;
     BOOL            isStopped;
     
-    float           particleAngle;
-    CGPoint         particleVector;
+    GLfloat         elapsedTime;
+    
+    GLfloat         speed;
+    GLfloat         rate;
+    
+    int             collisionPointCount;
+    Vector2f        *collisionPoints;
+
 }
+@property(readonly) ProjectileID projectileID;
+@property(readwrite) GLfloat angle;
+@property(readwrite) Vector2f location;
+@property(nonatomic, readonly) NSMutableArray *polygons;
+@property(nonatomic, retain) NSMutableArray *emitters;
 
-@property (nonatomic)   Vector2f        turretPosition;
-@property (readonly)    Vector2f        currentLocation;
-@property (nonatomic)   Vector2f        desiredLocation;
-@property (nonatomic)   BOOL            isActive;
-@property (nonatomic)   BOOL            isStopped;
-@property (nonatomic)   GLfloat         projectileAngle;
-@property (nonatomic)   GLfloat         projectileSpeed;
-@property (nonatomic)   ProjectileID    projectileID;
-@property (nonatomic, retain) ParticleEmitter *emitter;
-@property (nonatomic, retain) NSMutableArray *polygonArray;
-
-
-- (id)initWithProjectileID:(ProjectileID)aProjectileID fromTurretPosition:(Vector2f)aPosition andAngle:(int)aAngle emissionRate:(int)aRate;
-- (id)initWithParticleID:(ParticleID)aParticleID fromTurretPosition:(Vector2f)aPosition radius:(int)aRadius rateOfFire:(int)aRate andAngle:(int)aAngle;
-- (void)update:(CGFloat)aDelta;
+- (id)initWithProjectileID:(ProjectileID)aProjID location:(Vector2f)aLocation andAngle:(GLfloat)aAngle;
+- (void)update:(GLfloat)aDelta;
 - (void)render;
 - (void)pauseProjectile;
 - (void)playProjectile;
