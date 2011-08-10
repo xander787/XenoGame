@@ -71,7 +71,7 @@ typedef enum _ProjectileID {
     kEnemyProjectile_WaveLevelTwo_DoubleSmall,
     kEnemyProjectile_WaveLevelThree_DoubleSmall,
     kEnemyProjectile_WaveLevelFour_SingleBig,
-    kEnemyProjectile_WaveLevelFive_SingeBig,
+    kEnemyProjectile_WaveLevelFive_SingleBig,
     kEnemyProjectile_WaveLevelSix_DoubleMedium,
     kEnemyProjectile_WaveLevelSeven_DoubleMedium,
     kEnemyProjectile_WaveLevelEight_DoubleBig,

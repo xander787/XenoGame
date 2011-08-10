@@ -99,10 +99,10 @@
         collisionPointCount = 4;
         collisionPoints = malloc(sizeof(Vector2f) * collisionPointCount);
         bzero(collisionPoints, sizeof(Vector2f) * collisionPointCount);
-        collisionPoints[0] = Vector2fMake(0, 6);
-        collisionPoints[1] = Vector2fMake(6, 0);
-        collisionPoints[2] = Vector2fMake(0, -6);
-        collisionPoints[3] = Vector2fMake(-6, 0);
+        collisionPoints[0] = Vector2fMake(4, 6);
+        collisionPoints[1] = Vector2fMake(4, -6);
+        collisionPoints[2] = Vector2fMake(-4, -6);
+        collisionPoints[3] = Vector2fMake(-4, 6);
         
         
         
@@ -664,7 +664,7 @@
 }
 
 - (ParticleEmitter *)newMissileEmitter {
-    ParticleEmitter *baseEmitter = [[ParticleEmitter alloc] initParticleEmitterWithImageNamed:@"texture.png"
+    ParticleEmitter *baseEmitter = [[ParticleEmitter alloc] initParticleEmitterWithImageNamed:@"texture-missile.png"
                                                                                      position:Vector2fMake(location.x, location.y) 
                                                                        sourcePositionVariance:Vector2fZero 
                                                                                         speed:speed
@@ -674,16 +674,16 @@
                                                                                         angle:angle
                                                                                 angleVariance:0.0
                                                                                       gravity:Vector2fZero
-                                                                                   startColor:Color4fMake(0.8, 0.8, 1.0, 1.0)
+                                                                                   startColor:Color4fMake(1.0, 1.0, 1.0, 1.0)
                                                                            startColorVariance:Color4fMake(0.0, 0.0, 0.0, 0.0)
-                                                                                  finishColor:Color4fMake(0.8, 0.8, 1.0, 1.0)
+                                                                                  finishColor:Color4fMake(1.0, 1.0, 1.0, 1.0)
                                                                           finishColorVariance:Color4fMake(0.0, 0.0, 0.0, 0.0)
                                                                                  maxParticles:rate * 10.0
                                                                                  particleSize:25.0
                                                                            finishParticleSize:25.0
                                                                          particleSizeVariance:0.0
                                                                                      duration:-1.0
-                                                                                blendAdditive:YES];
+                                                                                blendAdditive:NO];
     
     if(projectileID >= kEnemyProjectile_MissileLevelOne_Single && projectileID <= kEnemyProjectile_MissileLevelTen_Sextuple){
         [baseEmitter setStartColor:Color4fMake(1.0, 0.0, 0.0, 1.0)];
@@ -720,12 +720,11 @@
 - (void)render {
     for(ParticleEmitter *emitter in emitters){
         [emitter renderParticles];
-        [emitter renderParticles];
     }
     
     
     
-    if(DEBUG) {
+    if(YES) {
         for(NSArray *polyArray in polygons){
             for(Polygon *polygon in polyArray){
                 glPushMatrix();

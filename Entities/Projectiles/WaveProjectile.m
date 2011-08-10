@@ -80,8 +80,8 @@
                 projectileDictionary = [[NSMutableDictionary alloc] initWithDictionary:[dictionaryPlist objectForKey:@"kEnemyProjectile_WaveLevelFour_SingleBig"]];
                 break;
                 
-            case kEnemyProjectile_WaveLevelFive_SingeBig:
-                projectileDictionary = [[NSMutableDictionary alloc] initWithDictionary:[dictionaryPlist objectForKey:@"kEnemyProjectile_WaveLevelFive_SingeBig"]];
+            case kEnemyProjectile_WaveLevelFive_SingleBig:
+                projectileDictionary = [[NSMutableDictionary alloc] initWithDictionary:[dictionaryPlist objectForKey:@"kEnemyProjectile_WaveLevelFive_SingleBig"]];
                 break;
                 
             case kEnemyProjectile_WaveLevelSix_DoubleMedium:
@@ -126,7 +126,7 @@
         switch (projectileID) {
             case kEnemyProjectile_WaveLevelOne_SingleSmall:
             case kPlayerProjectile_WaveLevelOne_SingleSmall:{
-                ParticleEmitter *tempEmitter = [self newWaveEmitterWithAngle:7.5];
+                ParticleEmitter *tempEmitter = [self newWaveEmitterWithAngle:5];
                 [emitters addObject:tempEmitter];
                 [tempEmitter release];
                 
@@ -140,10 +140,10 @@
                 
             case kEnemyProjectile_WaveLevelTwo_DoubleSmall:
             case kPlayerProjectile_WaveLevelTwo_DoubleSmall:{
-                ParticleEmitter *tempEmitter = [self newWaveEmitterWithAngle:7.5];
+                ParticleEmitter *tempEmitter = [self newWaveEmitterWithAngle:5];
                 [emitters addObject:tempEmitter];
                 [tempEmitter release];
-                tempEmitter = [self newWaveEmitterWithAngle:7.5];
+                tempEmitter = [self newWaveEmitterWithAngle:5];
                 [emitters addObject:tempEmitter];
                 [tempEmitter release];
                 
@@ -160,10 +160,10 @@
                 
             case kEnemyProjectile_WaveLevelThree_DoubleSmall:
             case kPlayerProjectile_WaveLevelThree_DoubleSmall:{
-                ParticleEmitter *tempEmitter = [self newWaveEmitterWithAngle:7.5];
+                ParticleEmitter *tempEmitter = [self newWaveEmitterWithAngle:5];
                 [emitters addObject:tempEmitter];
                 [tempEmitter release];
-                tempEmitter = [self newWaveEmitterWithAngle:7.5];
+                tempEmitter = [self newWaveEmitterWithAngle:5];
                 [emitters addObject:tempEmitter];
                 [tempEmitter release];
                 
@@ -180,7 +180,7 @@
                 
             case kEnemyProjectile_WaveLevelFour_SingleBig:
             case kPlayerProjectile_WaveLevelFour_SingleBig:{
-                ParticleEmitter *tempEmitter = [self newWaveEmitterWithAngle:30];
+                ParticleEmitter *tempEmitter = [self newWaveEmitterWithAngle:15];
                 [emitters addObject:tempEmitter];
                 [tempEmitter release];
                 
@@ -191,9 +191,9 @@
                 break;
             }
                 
-            case kEnemyProjectile_WaveLevelFive_SingeBig:
+            case kEnemyProjectile_WaveLevelFive_SingleBig:
             case kPlayerProjectile_WaveLevelFive_SingleBig:{
-                ParticleEmitter *tempEmitter = [self newWaveEmitterWithAngle:30];
+                ParticleEmitter *tempEmitter = [self newWaveEmitterWithAngle:15];
                 [emitters addObject:tempEmitter];
                 [tempEmitter release];
                 
@@ -206,10 +206,10 @@
                 
             case kEnemyProjectile_WaveLevelSix_DoubleMedium:
             case kPlayerProjectile_WaveLevelSix_DoubleMedium:{
-                ParticleEmitter *tempEmitter = [self newWaveEmitterWithAngle:15];
+                ParticleEmitter *tempEmitter = [self newWaveEmitterWithAngle:10];
                 [emitters addObject:tempEmitter];
                 [tempEmitter release];
-                tempEmitter = [self newWaveEmitterWithAngle:15];
+                tempEmitter = [self newWaveEmitterWithAngle:10];
                 [emitters addObject:tempEmitter];
                 [tempEmitter release];
                 
@@ -226,6 +226,26 @@
                 
             case kEnemyProjectile_WaveLevelSeven_DoubleMedium:
             case kPlayerProjectile_WaveLevelSeven_DoubleMedium:{
+                ParticleEmitter *tempEmitter = [self newWaveEmitterWithAngle:10];
+                [emitters addObject:tempEmitter];
+                [tempEmitter release];
+                tempEmitter = [self newWaveEmitterWithAngle:10];
+                [emitters addObject:tempEmitter];
+                [tempEmitter release];
+                
+                
+                NSArray *tempArray = [self newArrayOfPolygonsWithCount:[[emitters objectAtIndex:0] maxParticles]];
+                [polygons addObject:tempArray];
+                [tempArray release];
+                tempArray = [self newArrayOfPolygonsWithCount:[[emitters objectAtIndex:1] maxParticles]];
+                [polygons addObject:tempArray];
+                [tempArray release];
+                
+                break;
+            }
+                
+            case kEnemyProjectile_WaveLevelEight_DoubleBig:
+            case kPlayerProjectile_WaveLevelEight_DoubleBig:{
                 ParticleEmitter *tempEmitter = [self newWaveEmitterWithAngle:15];
                 [emitters addObject:tempEmitter];
                 [tempEmitter release];
@@ -244,32 +264,12 @@
                 break;
             }
                 
-            case kEnemyProjectile_WaveLevelEight_DoubleBig:
-            case kPlayerProjectile_WaveLevelEight_DoubleBig:{
-                ParticleEmitter *tempEmitter = [self newWaveEmitterWithAngle:30];
-                [emitters addObject:tempEmitter];
-                [tempEmitter release];
-                tempEmitter = [self newWaveEmitterWithAngle:30];
-                [emitters addObject:tempEmitter];
-                [tempEmitter release];
-                
-                
-                NSArray *tempArray = [self newArrayOfPolygonsWithCount:[[emitters objectAtIndex:0] maxParticles]];
-                [polygons addObject:tempArray];
-                [tempArray release];
-                tempArray = [self newArrayOfPolygonsWithCount:[[emitters objectAtIndex:1] maxParticles]];
-                [polygons addObject:tempArray];
-                [tempArray release];
-                
-                break;
-            }
-                
             case kEnemyProjectile_WaveLevelNine_DoubleBig:
             case kPlayerProjectile_WaveLevelNine_DoubleBig:{
-                ParticleEmitter *tempEmitter = [self newWaveEmitterWithAngle:30];
+                ParticleEmitter *tempEmitter = [self newWaveEmitterWithAngle:15];
                 [emitters addObject:tempEmitter];
                 [tempEmitter release];
-                tempEmitter = [self newWaveEmitterWithAngle:30];
+                tempEmitter = [self newWaveEmitterWithAngle:15];
                 [emitters addObject:tempEmitter];
                 [tempEmitter release];
                 
@@ -286,13 +286,13 @@
                 
             case kEnemyProjectile_WaveLevelTen_TripleBig:
             case kPlayerProjectile_WaveLevelTen_TripleBig:{
-                ParticleEmitter *tempEmitter = [self newWaveEmitterWithAngle:30];
+                ParticleEmitter *tempEmitter = [self newWaveEmitterWithAngle:15];
                 [emitters addObject:tempEmitter];
                 [tempEmitter release];
-                tempEmitter = [self newWaveEmitterWithAngle:30];
+                tempEmitter = [self newWaveEmitterWithAngle:15];
                 [emitters addObject:tempEmitter];
                 [tempEmitter release];
-                tempEmitter = [self newWaveEmitterWithAngle:30];
+                tempEmitter = [self newWaveEmitterWithAngle:15];
                 [emitters addObject:tempEmitter];
                 [tempEmitter release];
                 
@@ -383,7 +383,7 @@
                                                                            startColorVariance:Color4fMake(0.0, 0.0, 0.0, 0.0)
                                                                                   finishColor:Color4fMake(1.0, 1.0, 1.0, 1.0)
                                                                           finishColorVariance:Color4fMake(0.0, 0.0, 0.0, 0.0)
-                                                                                 maxParticles:50.0
+                                                                                 maxParticles:aAngle
                                                                                  particleSize:15.0
                                                                            finishParticleSize:15.0
                                                                          particleSizeVariance:0.0
@@ -428,10 +428,11 @@
 - (void)render {
     for(ParticleEmitter *emitter in emitters){
         [emitter renderParticles];
+        [emitter renderParticles];
     }
     
     
-    if(DEBUG) {
+    if(NO) {
         for(NSArray *polyArray in polygons){
             for(Polygon *polygon in polyArray){
                 glPushMatrix();

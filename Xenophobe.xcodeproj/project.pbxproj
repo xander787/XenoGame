@@ -143,6 +143,7 @@
 		B969708B13E1335B002EC552 /* Slider.png in Resources */ = {isa = PBXBuildFile; fileRef = B969708913E1335B002EC552 /* Slider.png */; };
 		B969708C13E1335B002EC552 /* SliderBar.png in Resources */ = {isa = PBXBuildFile; fileRef = B969708A13E1335B002EC552 /* SliderBar.png */; };
 		B97A805612C964AD005FBB61 /* AbstractProjectile.m in Sources */ = {isa = PBXBuildFile; fileRef = B97A805512C964AD005FBB61 /* AbstractProjectile.m */; };
+		B98A705E13F324F300773281 /* texture-missile.png in Resources */ = {isa = PBXBuildFile; fileRef = B98A705D13F324F300773281 /* texture-missile.png */; };
 		B9935E4913AC64F3005BBA67 /* kEnemyKamikazeeLevelThree.png in Resources */ = {isa = PBXBuildFile; fileRef = B9935E3F13AC64F3005BBA67 /* kEnemyKamikazeeLevelThree.png */; };
 		B9935E4A13AC64F3005BBA67 /* kEnemyMissileBombLevelThree.png in Resources */ = {isa = PBXBuildFile; fileRef = B9935E4013AC64F3005BBA67 /* kEnemyMissileBombLevelThree.png */; };
 		B9935E4B13AC64F3005BBA67 /* kEnemyOneShotLevelOne.png in Resources */ = {isa = PBXBuildFile; fileRef = B9935E4113AC64F3005BBA67 /* kEnemyOneShotLevelOne.png */; };
@@ -397,6 +398,7 @@
 		B969708A13E1335B002EC552 /* SliderBar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SliderBar.png; sourceTree = "<group>"; };
 		B97A805412C964AD005FBB61 /* AbstractProjectile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AbstractProjectile.h; path = Entities/Projectiles/AbstractProjectile.h; sourceTree = "<group>"; };
 		B97A805512C964AD005FBB61 /* AbstractProjectile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AbstractProjectile.m; path = Entities/Projectiles/AbstractProjectile.m; sourceTree = "<group>"; };
+		B98A705D13F324F300773281 /* texture-missile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "texture-missile.png"; sourceTree = "<group>"; };
 		B9935E3F13AC64F3005BBA67 /* kEnemyKamikazeeLevelThree.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = kEnemyKamikazeeLevelThree.png; path = "Game Resources/Images/Normal/Ships/Enemy Ships/kEnemyKamikazeeLevelThree.png"; sourceTree = SOURCE_ROOT; };
 		B9935E4013AC64F3005BBA67 /* kEnemyMissileBombLevelThree.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = kEnemyMissileBombLevelThree.png; path = "Game Resources/Images/Normal/Ships/Enemy Ships/kEnemyMissileBombLevelThree.png"; sourceTree = SOURCE_ROOT; };
 		B9935E4113AC64F3005BBA67 /* kEnemyOneShotLevelOne.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = kEnemyOneShotLevelOne.png; path = "Game Resources/Images/Normal/Ships/Enemy Ships/kEnemyOneShotLevelOne.png"; sourceTree = SOURCE_ROOT; };
@@ -939,6 +941,7 @@
 		11F3274212A0D8D5003CF17B /* Application Resources */ = {
 			isa = PBXGroup;
 			children = (
+				B98A705D13F324F300773281 /* texture-missile.png */,
 				B9AFC0A213E23BAC00E4570A /* ClearAllSavedDataButton.png */,
 				B9AFC09D13E239B900E4570A /* NoButton.png */,
 				B9AFC09E13E239B900E4570A /* YesButton.png */,
@@ -1266,6 +1269,7 @@
 				B9B09F6413EA285200DE220B /* kBossAtlasMainBody.png in Resources */,
 				B9B09F6C13EB621C00DE220B /* kBossAstraeusCannonFrontLeft.png in Resources */,
 				B9B09F6D13EB621C00DE220B /* kBossAstraeusCannonFrontRight.png in Resources */,
+				B98A705E13F324F300773281 /* texture-missile.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
