@@ -166,6 +166,8 @@
         bossAttack = [[bossDictionary valueForKey:@"kBossAttack"] intValue];
         bossStamina = [[bossDictionary valueForKey:@"kBossStamina"] intValue];
         bossSpeed = [[bossDictionary valueForKey:@"kBossSpeed"] intValue];
+        shipHealth = 10;
+        shipMaxHealth = 10;
         
         if([bossDictionary valueForKey:@"kBossType"] == @"kBossTypeBoss") {
             bossType = kBossType_Full;
@@ -314,7 +316,7 @@
 }
 
 - (void)hitModule:(int)module withDamage:(int)damage {
-    modularObjects[module].moduleHealth -= damage;
+//    modularObjects[module].moduleHealth -= damage;  // Going to have this overridden in each boss class so that they can do whatever they need with the damage
     
     modularObjects[module].hitFilter = YES;
     [modularObjects[module].moduleImage setColourFilterRed:1.0f green:0.0f blue:0.0f alpha:0.5f];

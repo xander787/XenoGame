@@ -14,14 +14,32 @@
 #import <Foundation/Foundation.h>
 #import "BossShip.h"
 
+typedef enum _HeliosState {
+    kHeliosState_StageOne = 0,
+    kHeliosState_StageTwo,
+    kHeliosState_StageThree,
+    kHeliosState_StageFour
+} HeliosState;
 
 @interface BossShipHelios : BossShip {
     ModularObject       *mainBody;
     ModularObject       *tail;
+    ModularObject       *rightWing;
     ModularObject       *leftWing;
-    ModularObject       *rightwing;
     
-    BOOL                moveLeft;
+    HeliosState         state;
+    
+    ParticleEmitter     *mainBodyDeathEmitter;
+    ParticleEmitter     *wingShipDeathEmitter;
+    ParticleEmitter     *rightWingDeathSecondaryEmitter;
+    ParticleEmitter     *leftWingDeathSecondaryEmitter;
+    
+    BOOL                stageAnimating;
+    float               holdingTimer;
+    BOOL                currentStagePaused;
+    
+    BOOL                wingRightFlewOff;
+    BOOL                wingLeftFlewOff;
 }
 
 - (id)initWithLocation:(CGPoint)aPoint andPlayerShipRef:(PlayerShip *)playerRef;

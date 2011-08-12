@@ -209,7 +209,7 @@
         // Add projectiles to our local projectile set for the weapon points on the ship
         projectilesArray = [[NSMutableArray alloc] init];
         for(int i = 0; i < numTurrets; i++) {
-            AbstractProjectile *projectile = [[BulletProjectile alloc] initWithProjectileID:kPlayerProjectile_BulletLevelTen_Septuple
+            AbstractProjectile *projectile = [[BulletProjectile alloc] initWithProjectileID:kPlayerProjectile_BulletLevelOne_Single
                                                                                    location:Vector2fMake(currentLocation.x + turretPoints[i].x, currentLocation.y + turretPoints[i].y) 
                                                                                    andAngle:90];
             [projectilesArray insertObject:projectile atIndex:i];

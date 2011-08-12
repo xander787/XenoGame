@@ -26,6 +26,10 @@
     
 }
 
+- (void)hitModule:(int)module withDamage:(int)damage {
+    modularObjects[module].moduleHealth -= damage;
+}
+
 - (void)dealloc {
     [super dealloc];
     [outerShieldEmitter release];

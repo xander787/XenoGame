@@ -113,6 +113,8 @@ typedef enum _OutroAnimation {
     BOOL                    bossShipIsDisplayed;
     float                   bossShipIntroAnimationTime;
     BOOL                    bossShipReadyToAnimate;
+    Image                   *bossHealthBar;
+    Image                   *bossHealthBarBackground;
     
     // Controlling the player ship
     BOOL                    touchOriginatedFromPlayerShip;

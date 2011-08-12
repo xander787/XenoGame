@@ -476,6 +476,12 @@
     cannonLeft->rotation = angleToPlayer;
 }
 
+- (void)hitModule:(int)module withDamage:(int)damage {
+    modularObjects[module].moduleHealth -= damage;
+    
+    [super hitModule:module withDamage:damage];
+}
+
 - (void)render {
     for(int i = 0; i < numberOfModules; i++) {
         if(modularObjects[i].isDead == NO || state == kAtlasState_StageOne){

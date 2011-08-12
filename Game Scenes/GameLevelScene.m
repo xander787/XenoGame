@@ -309,6 +309,9 @@ WrapText( const char *text
             levelType = kLevelType_Cutscene;
         }
         
+        bossHealthBar = [[Image alloc] initWithImage:@"BossHealthBar.png" scale:Scale2fOne];
+        bossHealthBarBackground = [[Image alloc] initWithImage:@"HealthBarBackground.png" scale:Scale2fOne];
+        
         NSArray *bossDefaultLocationArray = [[NSArray alloc] initWithArray:[[levelDictionary objectForKey:@"kBossDefaultPoint"] componentsSeparatedByString:@","]];
         bossShipDefaultLocation = CGPointMake([[bossDefaultLocationArray objectAtIndex:0] floatValue], [[bossDefaultLocationArray objectAtIndex:1] floatValue]);
         [bossDefaultLocationArray release];
@@ -868,6 +871,8 @@ WrapText( const char *text
         }
         
         if (currentWaveType == kWaveType_Boss) {
+            
+            [bossHealthBar setScale:Scale2fMake(bossShip.shipHealth / bossShip.shipMaxHealth, 1.0f)];
 
             // Animating the boss onto the screen
             if (!bossShipIsDisplayed && bossShipReadyToAnimate && bossShip) {
@@ -1398,6 +1403,8 @@ WrapText( const char *text
     }
     
     if (currentWaveType == kWaveType_Boss) {
+        [bossHealthBarBackground renderAtPoint:CGPointMake(254, 26.0) centerOfImage:NO];
+        [bossHealthBar renderAtPoint:CGPointMake(255, 27.0) centerOfImage:NO];
         [bossShip render];
     }
         

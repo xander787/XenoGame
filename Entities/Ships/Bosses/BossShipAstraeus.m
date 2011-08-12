@@ -474,6 +474,10 @@
     }
 }
 
+- (void)hitModule:(int)module withDamage:(int)damage {
+    modularObjects[module].moduleHealth -= damage;
+}
+
 - (void)render {
     if(!cannonFrontLeft->isDead){
         [leftCannonProjectile render];
