@@ -144,6 +144,8 @@
 		B969708C13E1335B002EC552 /* SliderBar.png in Resources */ = {isa = PBXBuildFile; fileRef = B969708A13E1335B002EC552 /* SliderBar.png */; };
 		B97A805612C964AD005FBB61 /* AbstractProjectile.m in Sources */ = {isa = PBXBuildFile; fileRef = B97A805512C964AD005FBB61 /* AbstractProjectile.m */; };
 		B98A705E13F324F300773281 /* texture-missile.png in Resources */ = {isa = PBXBuildFile; fileRef = B98A705D13F324F300773281 /* texture-missile.png */; };
+		B98A706113F4D3A000773281 /* kBossOceanusHarpoon.png in Resources */ = {isa = PBXBuildFile; fileRef = B98A705F13F4D3A000773281 /* kBossOceanusHarpoon.png */; };
+		B98A706213F4D3A000773281 /* kBossOceanusMainBody.png in Resources */ = {isa = PBXBuildFile; fileRef = B98A706013F4D3A000773281 /* kBossOceanusMainBody.png */; };
 		B9935E4913AC64F3005BBA67 /* kEnemyKamikazeeLevelThree.png in Resources */ = {isa = PBXBuildFile; fileRef = B9935E3F13AC64F3005BBA67 /* kEnemyKamikazeeLevelThree.png */; };
 		B9935E4A13AC64F3005BBA67 /* kEnemyMissileBombLevelThree.png in Resources */ = {isa = PBXBuildFile; fileRef = B9935E4013AC64F3005BBA67 /* kEnemyMissileBombLevelThree.png */; };
 		B9935E4B13AC64F3005BBA67 /* kEnemyOneShotLevelOne.png in Resources */ = {isa = PBXBuildFile; fileRef = B9935E4113AC64F3005BBA67 /* kEnemyOneShotLevelOne.png */; };
@@ -399,6 +401,8 @@
 		B97A805412C964AD005FBB61 /* AbstractProjectile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AbstractProjectile.h; path = Entities/Projectiles/AbstractProjectile.h; sourceTree = "<group>"; };
 		B97A805512C964AD005FBB61 /* AbstractProjectile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AbstractProjectile.m; path = Entities/Projectiles/AbstractProjectile.m; sourceTree = "<group>"; };
 		B98A705D13F324F300773281 /* texture-missile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "texture-missile.png"; sourceTree = "<group>"; };
+		B98A705F13F4D3A000773281 /* kBossOceanusHarpoon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = kBossOceanusHarpoon.png; path = "Game Resources/Images/Normal/Ships/Boss Ships/kBossOceanusHarpoon.png"; sourceTree = SOURCE_ROOT; };
+		B98A706013F4D3A000773281 /* kBossOceanusMainBody.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = kBossOceanusMainBody.png; path = "Game Resources/Images/Normal/Ships/Boss Ships/kBossOceanusMainBody.png"; sourceTree = SOURCE_ROOT; };
 		B9935E3F13AC64F3005BBA67 /* kEnemyKamikazeeLevelThree.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = kEnemyKamikazeeLevelThree.png; path = "Game Resources/Images/Normal/Ships/Enemy Ships/kEnemyKamikazeeLevelThree.png"; sourceTree = SOURCE_ROOT; };
 		B9935E4013AC64F3005BBA67 /* kEnemyMissileBombLevelThree.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = kEnemyMissileBombLevelThree.png; path = "Game Resources/Images/Normal/Ships/Enemy Ships/kEnemyMissileBombLevelThree.png"; sourceTree = SOURCE_ROOT; };
 		B9935E4113AC64F3005BBA67 /* kEnemyOneShotLevelOne.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = kEnemyOneShotLevelOne.png; path = "Game Resources/Images/Normal/Ships/Enemy Ships/kEnemyOneShotLevelOne.png"; sourceTree = SOURCE_ROOT; };
@@ -915,6 +919,8 @@
 		11E7DCE4129F00C00047E2FD /* Bosses */ = {
 			isa = PBXGroup;
 			children = (
+				B98A705F13F4D3A000773281 /* kBossOceanusHarpoon.png */,
+				B98A706013F4D3A000773281 /* kBossOceanusMainBody.png */,
 				B9B09F6A13EB621A00DE220B /* kBossAstraeusCannonFrontLeft.png */,
 				B9B09F6B13EB621B00DE220B /* kBossAstraeusCannonFrontRight.png */,
 				B9B09F5913EA285200DE220B /* kBossAtlasCannonLeft.png */,
@@ -1270,6 +1276,8 @@
 				B9B09F6C13EB621C00DE220B /* kBossAstraeusCannonFrontLeft.png in Resources */,
 				B9B09F6D13EB621C00DE220B /* kBossAstraeusCannonFrontRight.png in Resources */,
 				B98A705E13F324F300773281 /* texture-missile.png in Resources */,
+				B98A706113F4D3A000773281 /* kBossOceanusHarpoon.png in Resources */,
+				B98A706213F4D3A000773281 /* kBossOceanusMainBody.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

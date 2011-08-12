@@ -49,6 +49,7 @@
 #import "BezierCurve.h"
 #import "BossShipAstraeus.h"
 #import "BossShipHelios.h"
+#import "BossShipOceanus.h"
 #import "Drop.h"
 
 @protocol GameLevelDelegate <NSObject>

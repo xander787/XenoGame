@@ -14,9 +14,28 @@
 #import <Foundation/Foundation.h>
 #import "BossShip.h"
 
+typedef enum _OceanusState{
+    kOceanusState_Stage1 = 0,
+    kOceanusState_Spinning,
+    kOceanusState_Stage2,
+    kOceanusState_Death
+} OceanusState;
 
 @interface BossShipOceanus : BossShip {
+    ModularObject   *mainbody;
+    ModularObject   *harpoon;
     
+    OceanusState    state;
+    
+    ParticleEmitter *mainBodyEmitter;
+    
+    GLfloat         holdingTimer;
+    GLfloat         spinningTimer;
 }
+
+- (id)initWithLocation:(CGPoint)aPoint andPlayerShipRef:(PlayerShip *)playerRef;
+- (void)update:(GLfloat)delta;
+- (void)render;
+- (void)floatPositionWithDelta:(GLfloat)delta andTime:(GLfloat)aTime;
 
 @end
