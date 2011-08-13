@@ -10,6 +10,8 @@
 //	James Linnell - Software Engineer, Creative Design, Art Producer
 //	Tyler Newcomb - Creative Design, Art Producer
 //
+//  Last Updated - 8/12/11 - 3:30PM - James
+//  - Added polygons to the rotation on the spinnign stage
 
 #import "BossShipOceanus.h"
 #import "BossShip.h"
@@ -103,22 +105,63 @@
         spinningTimer += delta;
         
         [self floatPositionWithDelta:delta andTime:1.4];
-        
+        GLfloat oldRotation = mainbody->rotation;
         mainbody->rotation += 360 * delta;
-//        mainbody->rotation += ((0 - mainbody->rotation) / 10) * pow(1.58493192, 10) * delta;
+        harpoon->rotation = mainbody->rotation;
         
-        Vector2f tempPoint = mainbody->location;
-        double tempAngle = DEGREES_TO_RADIANS(mainbody->rotation);
+        Vector2f tempPoint = harpoon->location;
+        double tempAngle = DEGREES_TO_RADIANS(oldRotation - harpoon->rotation);
         harpoon->location = Vector2fMake((tempPoint.x * cos(tempAngle)) - (tempPoint.y * sin(tempAngle)), (tempPoint.x * sin(tempAngle)) + (tempPoint.y * cos(tempAngle)));
         
-        if(spinningTimer >= 5){
+        //Rotate main body polygon
+        for(int k = 0; k < [mainbody->collisionPolygonArray count]; k++){
+            for(int i = 0; i < [[mainbody->collisionPolygonArray objectAtIndex:k] pointCount]; i++){
+                Vector2f tempPoint = [[mainbody->collisionPolygonArray objectAtIndex:k] originalPoints][i];
+                double tempAngle = DEGREES_TO_RADIANS(oldRotation - mainbody->rotation);
+                [[mainbody->collisionPolygonArray objectAtIndex:k] originalPoints][i] = Vector2fMake((tempPoint.x * cos(tempAngle)) - (tempPoint.y * sin(tempAngle)), (tempPoint.x * sin(tempAngle)) + (tempPoint.y * cos(tempAngle)));
+            }
+            [[mainbody->collisionPolygonArray objectAtIndex:k] buildEdges];
+        }
+        
+        //Rotate harpoon polygon
+        for(int k = 0; k < [harpoon->collisionPolygonArray count]; k++){
+            for(int i = 0; i < [[harpoon->collisionPolygonArray objectAtIndex:k] pointCount]; i++){
+                Vector2f tempPoint = [[harpoon->collisionPolygonArray objectAtIndex:k] originalPoints][i];
+                double tempAngle = DEGREES_TO_RADIANS(oldRotation - harpoon->rotation);
+                [[harpoon->collisionPolygonArray objectAtIndex:k] originalPoints][i] = Vector2fMake((tempPoint.x * cos(tempAngle)) - (tempPoint.y * sin(tempAngle)), (tempPoint.x * sin(tempAngle)) + (tempPoint.y * cos(tempAngle)));
+            }
+            [[harpoon->collisionPolygonArray objectAtIndex:k] buildEdges];
+        }
+        
+        
+        if(spinningTimer >= 6){
             state = kOceanusState_Stage2;
             
             mainbody->rotation = 0;
             
-            Vector2f tempPoint = mainbody->location;
-            double tempAngle = DEGREES_TO_RADIANS(mainbody->rotation);
+            Vector2f tempPoint = harpoon->location;
+            double tempAngle = DEGREES_TO_RADIANS(oldRotation - harpoon->rotation);
             harpoon->location = Vector2fMake((tempPoint.x * cos(tempAngle)) - (tempPoint.y * sin(tempAngle)), (tempPoint.x * sin(tempAngle)) + (tempPoint.y * cos(tempAngle)));
+            
+            //Rotate main body polygon
+            for(int k = 0; k < [mainbody->collisionPolygonArray count]; k++){
+                for(int i = 0; i < [[mainbody->collisionPolygonArray objectAtIndex:k] pointCount]; i++){
+                    Vector2f tempPoint = [[mainbody->collisionPolygonArray objectAtIndex:k] originalPoints][i];
+                    double tempAngle = DEGREES_TO_RADIANS(oldRotation - mainbody->rotation);
+                    [[mainbody->collisionPolygonArray objectAtIndex:k] originalPoints][i] = Vector2fMake((tempPoint.x * cos(tempAngle)) - (tempPoint.y * sin(tempAngle)), (tempPoint.x * sin(tempAngle)) + (tempPoint.y * cos(tempAngle)));
+                }
+                [[mainbody->collisionPolygonArray objectAtIndex:k] buildEdges];
+            }
+            
+            //Rotate harpoon polygon
+            for(int k = 0; k < [harpoon->collisionPolygonArray count]; k++){
+                for(int i = 0; i < [[harpoon->collisionPolygonArray objectAtIndex:k] pointCount]; i++){
+                    Vector2f tempPoint = [[harpoon->collisionPolygonArray objectAtIndex:k] originalPoints][i];
+                    double tempAngle = DEGREES_TO_RADIANS(oldRotation - harpoon->rotation);
+                    [[harpoon->collisionPolygonArray objectAtIndex:k] originalPoints][i] = Vector2fMake((tempPoint.x * cos(tempAngle)) - (tempPoint.y * sin(tempAngle)), (tempPoint.x * sin(tempAngle)) + (tempPoint.y * cos(tempAngle)));
+                }
+                [[harpoon->collisionPolygonArray objectAtIndex:k] buildEdges];
+            }
         }
         else if(mainbody->isDead){
             mainbody->isDead = NO;
@@ -126,7 +169,7 @@
         }
     }
     else if(state == kOceanusState_Stage2){
-        [self floatPositionWithDelta:delta andTime:1.0];
+        [self floatPositionWithDelta:delta andTime:0.6];
         
         //Projectile updating
         
