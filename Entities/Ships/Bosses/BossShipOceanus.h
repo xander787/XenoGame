@@ -24,6 +24,10 @@ typedef enum _OceanusState{
 @interface BossShipOceanus : BossShip {
     ModularObject   *mainbody;
     ModularObject   *harpoon;
+    ModularObject   *leftTurret;
+    ModularObject   *rightTurret;
+    ModularObject   *leftBulge;
+    ModularObject   *rightBulge;
     
     OceanusState    state;
     
@@ -37,5 +41,6 @@ typedef enum _OceanusState{
 - (void)update:(GLfloat)delta;
 - (void)render;
 - (void)floatPositionWithDelta:(GLfloat)delta andTime:(GLfloat)aTime;
+- (void)rotateModule:(int)mod aroundPositionWithOldrotation:(GLfloat)oldRot;
 
 @end

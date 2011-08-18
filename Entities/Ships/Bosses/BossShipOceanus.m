@@ -25,6 +25,10 @@
         
         mainbody = &self.modularObjects[0];
         harpoon = &self.modularObjects[1];
+        leftTurret = &self.modularObjects[2];
+        rightTurret = &self.modularObjects[3];
+        leftBulge = &self.modularObjects[4];
+        rightBulge = &self.modularObjects[5];
         
         mainbody->moduleMaxHealth = 100;
         mainbody->moduleHealth = mainbody->moduleMaxHealth;
@@ -108,60 +112,37 @@
         GLfloat oldRotation = mainbody->rotation;
         mainbody->rotation += 360 * delta;
         harpoon->rotation = mainbody->rotation;
+        leftTurret->rotation = mainbody->rotation;
+        rightTurret->rotation = mainbody->rotation;
+        leftBulge->rotation = mainbody->rotation;
+        rightBulge->rotation = mainbody->rotation;
         
-        Vector2f tempPoint = harpoon->location;
-        double tempAngle = DEGREES_TO_RADIANS(oldRotation - harpoon->rotation);
-        harpoon->location = Vector2fMake((tempPoint.x * cos(tempAngle)) - (tempPoint.y * sin(tempAngle)), (tempPoint.x * sin(tempAngle)) + (tempPoint.y * cos(tempAngle)));
-        
-        //Rotate main body polygon
-        for(int k = 0; k < [mainbody->collisionPolygonArray count]; k++){
-            for(int i = 0; i < [[mainbody->collisionPolygonArray objectAtIndex:k] pointCount]; i++){
-                Vector2f tempPoint = [[mainbody->collisionPolygonArray objectAtIndex:k] originalPoints][i];
-                double tempAngle = DEGREES_TO_RADIANS(oldRotation - mainbody->rotation);
-                [[mainbody->collisionPolygonArray objectAtIndex:k] originalPoints][i] = Vector2fMake((tempPoint.x * cos(tempAngle)) - (tempPoint.y * sin(tempAngle)), (tempPoint.x * sin(tempAngle)) + (tempPoint.y * cos(tempAngle)));
-            }
-            [[mainbody->collisionPolygonArray objectAtIndex:k] buildEdges];
-        }
-        
-        //Rotate harpoon polygon
-        for(int k = 0; k < [harpoon->collisionPolygonArray count]; k++){
-            for(int i = 0; i < [[harpoon->collisionPolygonArray objectAtIndex:k] pointCount]; i++){
-                Vector2f tempPoint = [[harpoon->collisionPolygonArray objectAtIndex:k] originalPoints][i];
-                double tempAngle = DEGREES_TO_RADIANS(oldRotation - harpoon->rotation);
-                [[harpoon->collisionPolygonArray objectAtIndex:k] originalPoints][i] = Vector2fMake((tempPoint.x * cos(tempAngle)) - (tempPoint.y * sin(tempAngle)), (tempPoint.x * sin(tempAngle)) + (tempPoint.y * cos(tempAngle)));
-            }
-            [[harpoon->collisionPolygonArray objectAtIndex:k] buildEdges];
-        }
+        //Rotate the polygons and module locations aroudn the point
+        [self rotateModule:0 aroundPositionWithOldrotation:oldRotation];
+        [self rotateModule:1 aroundPositionWithOldrotation:oldRotation];
+        [self rotateModule:2 aroundPositionWithOldrotation:oldRotation];
+        [self rotateModule:3 aroundPositionWithOldrotation:oldRotation];
+        [self rotateModule:4 aroundPositionWithOldrotation:oldRotation];
+        [self rotateModule:5 aroundPositionWithOldrotation:oldRotation];
         
         
         if(spinningTimer >= 6){
             state = kOceanusState_Stage2;
             
             mainbody->rotation = 0;
+            harpoon->rotation = 0;
+            leftTurret->rotation = 0;
+            rightTurret->rotation = 0;
+            leftBulge->rotation = 0;
+            rightBulge->rotation = 0;
             
-            Vector2f tempPoint = harpoon->location;
-            double tempAngle = DEGREES_TO_RADIANS(oldRotation - harpoon->rotation);
-            harpoon->location = Vector2fMake((tempPoint.x * cos(tempAngle)) - (tempPoint.y * sin(tempAngle)), (tempPoint.x * sin(tempAngle)) + (tempPoint.y * cos(tempAngle)));
-            
-            //Rotate main body polygon
-            for(int k = 0; k < [mainbody->collisionPolygonArray count]; k++){
-                for(int i = 0; i < [[mainbody->collisionPolygonArray objectAtIndex:k] pointCount]; i++){
-                    Vector2f tempPoint = [[mainbody->collisionPolygonArray objectAtIndex:k] originalPoints][i];
-                    double tempAngle = DEGREES_TO_RADIANS(oldRotation - mainbody->rotation);
-                    [[mainbody->collisionPolygonArray objectAtIndex:k] originalPoints][i] = Vector2fMake((tempPoint.x * cos(tempAngle)) - (tempPoint.y * sin(tempAngle)), (tempPoint.x * sin(tempAngle)) + (tempPoint.y * cos(tempAngle)));
-                }
-                [[mainbody->collisionPolygonArray objectAtIndex:k] buildEdges];
-            }
-            
-            //Rotate harpoon polygon
-            for(int k = 0; k < [harpoon->collisionPolygonArray count]; k++){
-                for(int i = 0; i < [[harpoon->collisionPolygonArray objectAtIndex:k] pointCount]; i++){
-                    Vector2f tempPoint = [[harpoon->collisionPolygonArray objectAtIndex:k] originalPoints][i];
-                    double tempAngle = DEGREES_TO_RADIANS(oldRotation - harpoon->rotation);
-                    [[harpoon->collisionPolygonArray objectAtIndex:k] originalPoints][i] = Vector2fMake((tempPoint.x * cos(tempAngle)) - (tempPoint.y * sin(tempAngle)), (tempPoint.x * sin(tempAngle)) + (tempPoint.y * cos(tempAngle)));
-                }
-                [[harpoon->collisionPolygonArray objectAtIndex:k] buildEdges];
-            }
+            //Rotate the polygons and module locations aroudn the point
+            [self rotateModule:0 aroundPositionWithOldrotation:oldRotation];
+            [self rotateModule:1 aroundPositionWithOldrotation:oldRotation];
+            [self rotateModule:2 aroundPositionWithOldrotation:oldRotation];
+            [self rotateModule:3 aroundPositionWithOldrotation:oldRotation];
+            [self rotateModule:4 aroundPositionWithOldrotation:oldRotation];
+            [self rotateModule:5 aroundPositionWithOldrotation:oldRotation];
         }
         else if(mainbody->isDead){
             mainbody->isDead = NO;
@@ -186,6 +167,11 @@
         }
         if(mainBodyEmitter.particleCount == 0){
             mainbody->isDead = YES;
+            harpoon->isDead = YES;
+            leftTurret->isDead = YES;
+            rightTurret->isDead = YES;
+            leftBulge->isDead = YES;
+            rightBulge->isDead = YES;
         }
     }
 }
@@ -210,6 +196,37 @@
         
         desiredLocation.x = MIN(desiredLocation.x, 270);
         desiredLocation.y = MIN(desiredLocation.y, 430);
+    }
+}
+
+- (void)rotateModule:(int)mod aroundPositionWithOldrotation:(GLfloat)oldRot {
+    Vector2f tempPoint = modularObjects[mod].location;
+    double tempAngle = DEGREES_TO_RADIANS(oldRot - modularObjects[mod].rotation);
+    modularObjects[mod].location = Vector2fMake((tempPoint.x * cos(tempAngle)) - (tempPoint.y * sin(tempAngle)), (tempPoint.x * sin(tempAngle)) + (tempPoint.y * cos(tempAngle)));
+    
+    for(int k = 0; k < [modularObjects[mod].collisionPolygonArray count]; k++){
+        for(int i = 0; i < [[modularObjects[mod].collisionPolygonArray objectAtIndex:k] pointCount]; i++){
+            Vector2f tempPoint = [[modularObjects[mod].collisionPolygonArray objectAtIndex:k] originalPoints][i];
+            double tempAngle = DEGREES_TO_RADIANS(oldRot - modularObjects[mod].rotation);
+            [[modularObjects[mod].collisionPolygonArray objectAtIndex:k] originalPoints][i] = Vector2fMake((tempPoint.x * cos(tempAngle)) - (tempPoint.y * sin(tempAngle)), (tempPoint.x * sin(tempAngle)) + (tempPoint.y * cos(tempAngle)));
+        }
+        [[modularObjects[mod].collisionPolygonArray objectAtIndex:k] buildEdges];
+    }
+}
+
+- (void)hitModule:(int)module withDamage:(int)damage {
+    
+    if(state != kOceanusState_Death && state != kOceanusState_Spinning){
+        if(state != kOceanusState_Stage2){
+            //just send attacks to the main ship's body
+            mainbody->moduleHealth -= damage;
+            [super hitModule:0 withDamage:damage];
+        }
+        else{
+            //If its the second stage other modules may now be destroyed
+            modularObjects[module].moduleHealth -= damage;
+            [super hitModule:module withDamage:damage];
+        }
     }
 }
 
