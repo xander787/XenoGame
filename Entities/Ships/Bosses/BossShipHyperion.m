@@ -60,10 +60,17 @@
         
         if (state == -1) {
             state = kHyperionState_StageOne;
+            mainBodyRightProjectile = [[BulletProjectile alloc] initWithProjectileID:kEnemyProjectile_BulletLevelTwo_Double location:Vector2fMake(currentLocation.x + mainBody->weapons[1].weaponCoord.x, currentLocation.y + mainBody->weapons[1].weaponCoord.y) andAngle:-90.0f];
+            
+            mainBodyLeftProjectile = [[BulletProjectile alloc] initWithProjectileID:kEnemyProjectile_BulletLevelTwo_Double location:Vector2fMake(currentLocation.x + mainBody->weapons[2].weaponCoord.x, currentLocation.y + mainBody->weapons[2].weaponCoord.y) andAngle:-90.0f];
         }
         
         if (state == kHyperionState_StageOne) {
             bossRotationTimer += delta;
+            
+            [mainBodyLeftProjectile update:delta];
+            [mainBodyRightProjectile update:delta];
+            [mainBodyCenterProjectile update:delta];
             
             if (!bossRotated) {
                 holdingTimer += delta;
@@ -187,7 +194,11 @@
             [modularObjects[i].moduleImage renderAtPoint:CGPointMake(currentLocation.x + modularObjects[i].location.x, currentLocation.y + modularObjects[i].location.y) centerOfImage:YES];
         }
     }
-        
+    
+    [mainBodyLeftProjectile render];
+    [mainBodyRightProjectile render];
+    [mainBodyCenterProjectile render];
+    
     if(DEBUG) {
         glPushMatrix();
         
