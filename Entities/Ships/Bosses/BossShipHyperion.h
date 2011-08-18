@@ -13,10 +13,37 @@
 
 #import <Foundation/Foundation.h>
 #import "BossShip.h"
+#import "AbstractProjectile.h"
 
+typedef enum _HyperionState {
+    kHyperionState_StageOne = 0,
+    kHyperionState_StageTwo,
+    kHyperionState_StageThree,
+} HyperionState;
 
 @interface BossShipHyperion : BossShip {
+    ModularObject       *mainBody;
+    ModularObject       *wingRight;
+    ModularObject       *wingLeft;
     
+    HyperionState       state;
+    
+    AbstractProjectile  *mainBodyLeftProjectile;
+    AbstractProjectile  *mainBodyRightProjectile;
+    AbstractProjectile  *mainBodyCenterProjectile;
+    AbstractProjectile  *mainBodyTailProjectile;
+    AbstractProjectile  *wingRightPointProjectile;
+    AbstractProjectile  *wingRightTurretProjectile;
+    AbstractProjectile  *wingLeftPointProjectile;
+    AbstractProjectile  *wingLeftTurretProjectile;
+    
+    float               holdingTimer;
+    float               bossRotationTimer;
+    float               bossReRotationTimer;
+    BOOL                bossRotated;
 }
+
+- (id)initWithLocation:(CGPoint)aPoint andPlayershipRef:(PlayerShip *)playerRef;
+- (void)update:(GLfloat)delta;
 
 @end

@@ -50,6 +50,7 @@
 #import "BossShipAstraeus.h"
 #import "BossShipHelios.h"
 #import "BossShipOceanus.h"
+#import "BossShipHyperion.h"
 #import "Drop.h"
 
 @protocol GameLevelDelegate <NSObject>

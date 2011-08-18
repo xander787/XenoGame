@@ -304,6 +304,9 @@ WrapText( const char *text
             else if([[levelDictionary objectForKey:@"kBossShip"] isEqualToString:@"kBossOceanus"]){
                 bossShipID = kBoss_Oceanus;
             }
+            else if([[levelDictionary objectForKey:@"kBossShip"] isEqualToString:@"kBossHyperion"]) {
+                bossShipID = kBoss_Hyperion;
+            }
         }
         else if([[levelDictionary objectForKey:@"kLevelType"] isEqualToString:@"kCutsceneLevel"]) {
             levelType = kLevelType_Cutscene;
@@ -611,6 +614,9 @@ WrapText( const char *text
     }
     else if(bossShipID == kBoss_Oceanus) {
         bossShip = [[BossShipOceanus alloc] initWithLocation:CGPointMake(160.0f, 600.0f) andPlayerShipRef:playerShip];
+    }
+    else if(bossShipID == kBoss_Hyperion) {
+        bossShip = [[BossShipHyperion alloc] initWithLocation:CGPointMake(160.0f, 600.0f) andPlayershipRef:playerShip];
     }
     
     bossShipReadyToAnimate = YES;
