@@ -33,7 +33,7 @@
 	<key>kEnemyProjectile_BulletLevelOne_Single</key>
 	<dict>
 		<key>kRate</key>
-		<integer>3</integer>
+		<integer>1</integer>
 		<key>kSpeed</key>
 		<integer>1</integer>
 	</dict>
@@ -61,7 +61,7 @@
 	<key>kEnemyProjectile_BulletLevelThree_Double</key>
 	<dict>
 		<key>kRate</key>
-		<integer>3</integer>
+		<integer>1</integer>
 		<key>kSpeed</key>
 		<real>1.3</real>
 	</dict>
@@ -208,7 +208,7 @@
 	<key>kEnemyProjectile_WaveLevelTwo_DoubleSmall</key>
 	<dict>
 		<key>kRate</key>
-		<integer>1</integer>
+		<integer>3</integer>
 		<key>kSpeed</key>
 		<real>1.3</real>
 	</dict>

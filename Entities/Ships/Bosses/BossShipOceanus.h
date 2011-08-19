@@ -13,6 +13,8 @@
 
 #import <Foundation/Foundation.h>
 #import "BossShip.h"
+#import "BulletProjectile.h"
+#import "WaveProjectile.h"
 
 typedef enum _OceanusState{
     kOceanusState_Stage1 = 0,
@@ -35,6 +37,15 @@ typedef enum _OceanusState{
     
     GLfloat         holdingTimer;
     GLfloat         spinningTimer;
+    GLfloat         harpoonTimer;
+    BOOL            harpoonIsAttacking;
+    BOOL            harpoonIsReturning;
+    
+    BulletProjectile    *leftTurretProj;
+    BulletProjectile    *rightTurretProj;
+    WaveProjectile      *leftWaveProj;
+    WaveProjectile      *rightWaveProj;
+    
 }
 
 - (id)initWithLocation:(CGPoint)aPoint andPlayerShipRef:(PlayerShip *)playerRef;
