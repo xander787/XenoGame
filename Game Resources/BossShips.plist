@@ -429,5 +429,73 @@
 			<string>-1,23;15,25</string>
 		</array>
 	</dict>
+	<key>kBossThemis</key>
+	<dict>
+		<key>kBossAttack</key>
+		<integer>10</integer>
+		<key>kBossID</key>
+		<string>kBossHyperion</string>
+		<key>kBossSpeed</key>
+		<integer>10</integer>
+		<key>kBossStamina</key>
+		<integer>10</integer>
+		<key>kBossType</key>
+		<string>kBossTypeBoss</string>
+		<key>kCollisionBoundingPoints</key>
+		<array>
+			<array>
+				<string>0,-77; 12,-40;-13,-40</string>
+				<string>46,-50; 23,-33; 28,-27</string>
+				<string>-43,-50;-24,-33;-28,-27</string>
+				<string>13,-39;22,-33;19,-30 11,-36</string>
+				<string>-14,-39;-22,-33;-21,-30;-9,-36</string>
+				<string>26,-22;33,-2;43,-9;29,-24</string>
+				<string>-26,-22;-33,-2;-43,-9;-29,-24</string>
+				<string>33,-1;38,13;34,19;28,10</string>
+				<string>-33,-1;-38,13;-34,19;-28,10</string>
+				<string>47,29;67,36;55,18;41,16</string>
+				<string>-47,29;-67,36;-55,18;-41,16</string>
+				<string>27,10;9,23;8,19;25,6</string>
+				<string>-27,10;-9,23;-8,19;-25,6</string>
+				<string>8,23;8,55;0,76;-8,55;-9,23</string>
+				<string>24,66;20,47;14,40;11,57;16,64</string>
+				<string>-24,66;-20,47;-14,40;-11,57;-16,64</string>
+			</array>
+			<array>
+				<string>-1,-22;10,9;3,20;-6,20;-11,9</string>
+			</array>
+			<array>
+				<string>-1,-22;10,9;3,20;-6,20;-11,9</string>
+			</array>
+		</array>
+		<key>kModularDestructionOrder</key>
+		<array>
+			<array>
+				<string>1</string>
+				<string>2</string>
+			</array>
+			<array>
+				<string>0</string>
+			</array>
+		</array>
+		<key>kShipModuleImages</key>
+		<array>
+			<string>kBossThemisMainBody.png</string>
+			<string>kBossThemisRightChainEnd.png</string>
+			<string>kBossThemisLeftChainEnd.png</string>
+		</array>
+		<key>kShipModulePoints</key>
+		<array>
+			<string>0,0</string>
+			<string>58,-26</string>
+			<string>-58,-26</string>
+		</array>
+		<key>kShipTurretPoints</key>
+		<array>
+			<string>0,80;12,67;-11,67;0,-39</string>
+			<string>1,23;-15,25</string>
+			<string>-1,23;15,25</string>
+		</array>
+	</dict>
 </dict>
 </plist>
