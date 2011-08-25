@@ -26,6 +26,13 @@ typedef enum _ThemisState {
     
     ThemisState         state;
     float               holdingTimer;
+    
+    float               chainShootTimer;
+    float               chainDeploymentTimer;
+    BOOL                shouldShootChain;
+    BOOL                chainEndDeployed;
+    BOOL                chainToShootIsRight;
+    BOOL                chainToShootIsLeft;
 }
 
 - (id)initWithLocation:(CGPoint)aPoint andPlayershipRef:(PlayerShip *)playerRef;

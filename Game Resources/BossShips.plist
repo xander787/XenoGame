@@ -434,7 +434,7 @@
 		<key>kBossAttack</key>
 		<integer>10</integer>
 		<key>kBossID</key>
-		<string>kBossHyperion</string>
+		<string>kBossThemis</string>
 		<key>kBossSpeed</key>
 		<integer>10</integer>
 		<key>kBossStamina</key>
@@ -471,11 +471,11 @@
 		<key>kModularDestructionOrder</key>
 		<array>
 			<array>
-				<string>1</string>
-				<string>2</string>
+				<string>0</string>
 			</array>
 			<array>
-				<string>0</string>
+				<string>1</string>
+				<string>2</string>
 			</array>
 		</array>
 		<key>kShipModuleImages</key>
@@ -487,14 +487,14 @@
 		<key>kShipModulePoints</key>
 		<array>
 			<string>0,0</string>
-			<string>58,-26</string>
-			<string>-58,-26</string>
+			<string>37,-69</string>
+			<string>-37,-69</string>
 		</array>
 		<key>kShipTurretPoints</key>
 		<array>
-			<string>0,80;12,67;-11,67;0,-39</string>
-			<string>1,23;-15,25</string>
-			<string>-1,23;15,25</string>
+			<string>46,49;-43,49;0,74</string>
+			<string>0,0</string>
+			<string>0,0</string>
 		</array>
 	</dict>
 </dict>

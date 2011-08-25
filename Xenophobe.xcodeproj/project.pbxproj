@@ -53,6 +53,13 @@
 		1170EC72126FCB7E00721CF4 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1170EC71126FCB7E00721CF4 /* CoreMotion.framework */; };
 		1170EC74126FCB7E00721CF4 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1170EC73126FCB7E00721CF4 /* OpenAL.framework */; };
 		1170ED45127012DD00721CF4 /* XenophobeGameController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1170ED44127012DD00721CF4 /* XenophobeGameController.m */; };
+		118436D71403706C00BA6779 /* kBossEosFloaterOne.png in Resources */ = {isa = PBXBuildFile; fileRef = 118436D01403706C00BA6779 /* kBossEosFloaterOne.png */; };
+		118436D81403706C00BA6779 /* kBossEosFloaterTwo.png in Resources */ = {isa = PBXBuildFile; fileRef = 118436D11403706C00BA6779 /* kBossEosFloaterTwo.png */; };
+		118436D91403706C00BA6779 /* kBossEosMainBody.png in Resources */ = {isa = PBXBuildFile; fileRef = 118436D21403706C00BA6779 /* kBossEosMainBody.png */; };
+		118436DA1403706C00BA6779 /* kBossEosTurretBack.png in Resources */ = {isa = PBXBuildFile; fileRef = 118436D31403706C00BA6779 /* kBossEosTurretBack.png */; };
+		118436DB1403706C00BA6779 /* kBossEosTurretFront.png in Resources */ = {isa = PBXBuildFile; fileRef = 118436D41403706C00BA6779 /* kBossEosTurretFront.png */; };
+		118436DC1403706C00BA6779 /* kBossEosTurretLeft.png in Resources */ = {isa = PBXBuildFile; fileRef = 118436D51403706C00BA6779 /* kBossEosTurretLeft.png */; };
+		118436DD1403706C00BA6779 /* kBossEosTurretRight.png in Resources */ = {isa = PBXBuildFile; fileRef = 118436D61403706C00BA6779 /* kBossEosTurretRight.png */; };
 		118C4B6A12CDA5D50095B3D4 /* Collisions.m in Sources */ = {isa = PBXBuildFile; fileRef = 118C4B6712CDA5D50095B3D4 /* Collisions.m */; };
 		118C4B6B12CDA5D50095B3D4 /* Polygon.m in Sources */ = {isa = PBXBuildFile; fileRef = 118C4B6912CDA5D50095B3D4 /* Polygon.m */; };
 		119949E513DFB36900D501E8 /* StoreScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 119949E413DFB36900D501E8 /* StoreScene.m */; };
@@ -273,6 +280,13 @@
 		1170EC73126FCB7E00721CF4 /* OpenAL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenAL.framework; path = System/Library/Frameworks/OpenAL.framework; sourceTree = SDKROOT; };
 		1170ED43127012DD00721CF4 /* XenophobeGameController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XenophobeGameController.h; sourceTree = "<group>"; };
 		1170ED44127012DD00721CF4 /* XenophobeGameController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XenophobeGameController.m; sourceTree = "<group>"; };
+		118436D01403706C00BA6779 /* kBossEosFloaterOne.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = kBossEosFloaterOne.png; sourceTree = "<group>"; };
+		118436D11403706C00BA6779 /* kBossEosFloaterTwo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = kBossEosFloaterTwo.png; sourceTree = "<group>"; };
+		118436D21403706C00BA6779 /* kBossEosMainBody.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = kBossEosMainBody.png; sourceTree = "<group>"; };
+		118436D31403706C00BA6779 /* kBossEosTurretBack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = kBossEosTurretBack.png; sourceTree = "<group>"; };
+		118436D41403706C00BA6779 /* kBossEosTurretFront.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = kBossEosTurretFront.png; sourceTree = "<group>"; };
+		118436D51403706C00BA6779 /* kBossEosTurretLeft.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = kBossEosTurretLeft.png; sourceTree = "<group>"; };
+		118436D61403706C00BA6779 /* kBossEosTurretRight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = kBossEosTurretRight.png; sourceTree = "<group>"; };
 		118C4B6612CDA5D50095B3D4 /* Collisions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Collisions.h; sourceTree = "<group>"; };
 		118C4B6712CDA5D50095B3D4 /* Collisions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Collisions.m; sourceTree = "<group>"; };
 		118C4B6812CDA5D50095B3D4 /* Polygon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Polygon.h; sourceTree = "<group>"; };
@@ -1099,6 +1113,13 @@
 		B9BFDF1213FC797D004D360D /* Boss Ships */ = {
 			isa = PBXGroup;
 			children = (
+				118436D01403706C00BA6779 /* kBossEosFloaterOne.png */,
+				118436D11403706C00BA6779 /* kBossEosFloaterTwo.png */,
+				118436D21403706C00BA6779 /* kBossEosMainBody.png */,
+				118436D31403706C00BA6779 /* kBossEosTurretBack.png */,
+				118436D41403706C00BA6779 /* kBossEosTurretFront.png */,
+				118436D51403706C00BA6779 /* kBossEosTurretLeft.png */,
+				118436D61403706C00BA6779 /* kBossEosTurretRight.png */,
 				11A79EBB1401E7DA00C29C2A /* kBossAstraeusCannon30Left.png */,
 				11A79EBC1401E7DA00C29C2A /* kBossAstraeusCannon30Right.png */,
 				11A79EBD1401E7DA00C29C2A /* kBossAstraeusCannon90Left.png */,
@@ -1343,6 +1364,13 @@
 				11A79EFC1401E7DA00C29C2A /* kBossThemisLeftChainEnd.png in Resources */,
 				11A79EFD1401E7DA00C29C2A /* kBossThemisMainBody.png in Resources */,
 				11A79EFE1401E7DA00C29C2A /* kBossThemisRightChainEnd.png in Resources */,
+				118436D71403706C00BA6779 /* kBossEosFloaterOne.png in Resources */,
+				118436D81403706C00BA6779 /* kBossEosFloaterTwo.png in Resources */,
+				118436D91403706C00BA6779 /* kBossEosMainBody.png in Resources */,
+				118436DA1403706C00BA6779 /* kBossEosTurretBack.png in Resources */,
+				118436DB1403706C00BA6779 /* kBossEosTurretFront.png in Resources */,
+				118436DC1403706C00BA6779 /* kBossEosTurretLeft.png in Resources */,
+				118436DD1403706C00BA6779 /* kBossEosTurretRight.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
