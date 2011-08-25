@@ -320,19 +320,22 @@
     
     if(elapsedTime >= rate){
         for(ParticleEmitter *emitter in emitters){
-            [emitter stopParticleEmitter];
-            for(int k = 0; k < [emitter maxParticles]; k++){
-                emitter.particles[k].timeToLive = emitter.particleLifespan;
-                emitter.particles[k].position = emitter.sourcePosition;
-                
-                float newAngle = (GLfloat)DEGREES_TO_RADIANS(emitter.angle + emitter.angleVariance * RANDOM_MINUS_1_TO_1());
-                Vector2f vector = Vector2fMake(cosf(newAngle), sinf(newAngle));
-                float vectorSpeed = emitter.speed + emitter.speedVariance * RANDOM_MINUS_1_TO_1();
-                emitter.particles[k].direction = Vector2fMultiply(vector, vectorSpeed);
+            
+            if(!isStopped){
+                [emitter stopParticleEmitter];
+                for(int k = 0; k < [emitter maxParticles]; k++){
+                    emitter.particles[k].timeToLive = emitter.particleLifespan;
+                    emitter.particles[k].position = emitter.sourcePosition;
+                    
+                    float newAngle = (GLfloat)DEGREES_TO_RADIANS(emitter.angle + emitter.angleVariance * RANDOM_MINUS_1_TO_1());
+                    Vector2f vector = Vector2fMake(cosf(newAngle), sinf(newAngle));
+                    float vectorSpeed = emitter.speed + emitter.speedVariance * RANDOM_MINUS_1_TO_1();
+                    emitter.particles[k].direction = Vector2fMultiply(vector, vectorSpeed);
+                }
+                emitter.active = YES;
+                emitter.sourcePosition = location;
+                emitter.angle = angle;
             }
-            emitter.active = YES;
-            emitter.sourcePosition = location;
-            emitter.angle = angle;
         }
         elapsedTime = 0;
         secondWaveTimer = 0;

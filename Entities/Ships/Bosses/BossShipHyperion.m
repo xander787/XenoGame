@@ -23,6 +23,77 @@
         wingRight = &self.modularObjects[1];
         wingLeft = &self.modularObjects[2];
         
+        mainBody->moduleMaxHealth = 1000;
+        mainBody->moduleHealth = mainBody->moduleMaxHealth;
+        
+        wingRight->moduleMaxHealth = 100;
+        wingRight->moduleHealth = wingRight->moduleMaxHealth;
+        
+        wingLeft->moduleMaxHealth = 100;
+        wingLeft->moduleHealth = wingLeft->moduleMaxHealth;
+
+        mainBodyDeathEmitter = [[ParticleEmitter alloc] initParticleEmitterWithImageNamed:@"texture.png"
+                                                                                 position:Vector2fMake(currentLocation.x, currentLocation.y)
+                                                                   sourcePositionVariance:Vector2fZero
+                                                                                    speed:0.8
+                                                                            speedVariance:0.2
+                                                                         particleLifeSpan:1.0
+                                                                 particleLifespanVariance:0.2
+                                                                                    angle:0
+                                                                            angleVariance:360
+                                                                                  gravity:Vector2fZero
+                                                                               startColor:Color4fMake(0.8, 0.1, 0.1, 1.0)
+                                                                       startColorVariance:Color4fMake(0.1, 0.1, 0.1, 0.0)
+                                                                              finishColor:Color4fMake(0.1, 0.1, 0.1, 1.0)
+                                                                      finishColorVariance:Color4fMake(0.1, 0.1, 0.1, 0.0)
+                                                                             maxParticles:1500
+                                                                             particleSize:20.0
+                                                                       finishParticleSize:20.0
+                                                                     particleSizeVariance:0.0
+                                                                                 duration:0.6
+                                                                            blendAdditive:YES];
+        
+        wingLeftDeathEmitter = [[ParticleEmitter alloc] initParticleEmitterWithImageNamed:@"texture.png"
+                                                                                 position:Vector2fMake(currentLocation.x, currentLocation.y)
+                                                                   sourcePositionVariance:Vector2fZero
+                                                                                    speed:0.8
+                                                                            speedVariance:0.2
+                                                                         particleLifeSpan:0.4
+                                                                 particleLifespanVariance:0.2
+                                                                                    angle:0
+                                                                            angleVariance:360
+                                                                                  gravity:Vector2fZero
+                                                                               startColor:Color4fMake(1.0, 0.2, 0.2, 1.0)
+                                                                       startColorVariance:Color4fMake(0.1, 0.1, 0.1, 0.0)
+                                                                              finishColor:Color4fMake(0.2, 0.2, 0.2, 1.0)
+                                                                      finishColorVariance:Color4fMake(0.1, 0.1, 0.1, 0.0)
+                                                                             maxParticles:1000
+                                                                             particleSize:10.0
+                                                                       finishParticleSize:10.0
+                                                                     particleSizeVariance:0.0
+                                                                                 duration:0.1
+                                                                            blendAdditive:YES];
+        wingRightDeathEmitter = [[ParticleEmitter alloc] initParticleEmitterWithImageNamed:@"texture.png"
+                                                                                  position:Vector2fMake(currentLocation.x, currentLocation.y)
+                                                                    sourcePositionVariance:Vector2fZero
+                                                                                     speed:0.8
+                                                                             speedVariance:0.2
+                                                                          particleLifeSpan:0.4
+                                                                  particleLifespanVariance:0.2
+                                                                                     angle:0
+                                                                             angleVariance:360
+                                                                                   gravity:Vector2fZero
+                                                                                startColor:Color4fMake(1.0, 0.2, 0.2, 1.0)
+                                                                        startColorVariance:Color4fMake(0.1, 0.1, 0.1, 0.0)
+                                                                               finishColor:Color4fMake(0.2, 0.2, 0.2, 1.0)
+                                                                       finishColorVariance:Color4fMake(0.1, 0.1, 0.1, 0.0)
+                                                                              maxParticles:1000
+                                                                              particleSize:10.0
+                                                                        finishParticleSize:10.0
+                                                                      particleSizeVariance:0.0
+                                                                                  duration:0.1
+                                                                             blendAdditive:YES];
+        
         state = -1;
     }
     return self;
@@ -39,7 +110,7 @@
         currentLocation.x += ((desiredLocation.x - currentLocation.x) / bossSpeed) * (pow(1.584893192, bossSpeed/2)) * delta;
         currentLocation.y += ((desiredLocation.y - currentLocation.y) / bossSpeed) * (pow(1.584893192, bossSpeed/2)) * delta;
     }
-    else if(state == kHyperionState_StageTwo) { 
+    else if(state == kHyperionState_StageTwo || state == kHyperionState_StageThree) { 
         currentLocation.x += ((desiredLocation.x - currentLocation.x) / bossSpeed) * (pow(1.584893192, bossSpeed/1.25)) * delta;
         currentLocation.y += ((desiredLocation.y - currentLocation.y) / bossSpeed) * (pow(1.584893192, bossSpeed/1.25)) * delta;
     }
@@ -58,22 +129,51 @@
     
     if (shipIsDeployed) {
         
+        [mainBodyDeathEmitter setSourcePosition:Vector2fMake(currentLocation.x, currentLocation.y)];
+        [wingLeftDeathEmitter setSourcePosition:Vector2fMake(currentLocation.x + wingLeft->location.x, currentLocation.y + wingLeft->location.y)];
+        [wingRightDeathEmitter setSourcePosition:Vector2fMake(currentLocation.x + wingRight->location.x, currentLocation.y + wingRight->location.y)];
+
+        
+        [mainBodyLeftProjectile setLocation:Vector2fMake(currentLocation.x + mainBody->weapons[1].weaponCoord.x, currentLocation.y + mainBody->weapons[1].weaponCoord.y)];
+        [mainBodyRightProjectile setLocation:Vector2fMake(currentLocation.x + mainBody->weapons[2].weaponCoord.x, currentLocation.y + mainBody->weapons[2].weaponCoord.y)];
+        [mainBodyCenterProjectile setLocation:Vector2fMake(currentLocation.x + mainBody->weapons[0].weaponCoord.x, currentLocation.y + mainBody->weapons[0].weaponCoord.y)];
+        [mainBodyTailProjectile setLocation:Vector2fMake(currentLocation.x + mainBody->weapons[3].weaponCoord.x, currentLocation.y + mainBody->weapons[3].weaponCoord.y)];
+        [mainBodyLeftProjectile update:delta];
+        [mainBodyRightProjectile update:delta];
+        [mainBodyCenterProjectile update:delta];
+        [mainBodyTailProjectile update:delta];
+        
+        [wingLeftTurretProjectile setLocation:Vector2fMake(currentLocation.x + wingLeft->location.x + wingLeft->weapons[0].weaponCoord.x, currentLocation.y + wingLeft->location.y + wingLeft->weapons[0].weaponCoord.y)];
+        [wingRightTurretProjectile setLocation:Vector2fMake(currentLocation.x + wingRight->location.x + wingRight->weapons[0].weaponCoord.x, currentLocation.y + wingRight->location.y + wingRight->weapons[0].weaponCoord.y)];
+        [wingLeftTurretProjectile update:delta];
+        [wingRightTurretProjectile update:delta];
+        
+        
         if (state == -1) {
             state = kHyperionState_StageOne;
             mainBodyRightProjectile = [[BulletProjectile alloc] initWithProjectileID:kEnemyProjectile_BulletLevelTwo_Double location:Vector2fMake(currentLocation.x + mainBody->weapons[1].weaponCoord.x, currentLocation.y + mainBody->weapons[1].weaponCoord.y) andAngle:-90.0f];
             
             mainBodyLeftProjectile = [[BulletProjectile alloc] initWithProjectileID:kEnemyProjectile_BulletLevelTwo_Double location:Vector2fMake(currentLocation.x + mainBody->weapons[2].weaponCoord.x, currentLocation.y + mainBody->weapons[2].weaponCoord.y) andAngle:-90.0f];
+            
+            mainBodyCenterProjectile = [[WaveProjectile alloc] initWithProjectileID:kEnemyProjectile_WaveLevelOne_SingleSmall location:Vector2fMake(currentLocation.x + mainBody->weapons[0].weaponCoord.x, currentLocation.y + mainBody->weapons[0].weaponCoord.y) andAngle:-90.0f];
+            
+            mainBodyTailProjectile = [[WaveProjectile alloc] initWithProjectileID:kEnemyProjectile_WaveLevelNine_DoubleBig location:Vector2fMake(currentLocation.x + mainBody->weapons[3].weaponCoord.x, currentLocation.y + mainBody->weapons[3].weaponCoord.y) andAngle:-90.0f];
+            [mainBodyTailProjectile stopProjectile];
+            
+            wingLeftTurretProjectile = [[BulletProjectile alloc] initWithProjectileID:kEnemyProjectile_BulletLevelThree_Double location:Vector2fMake(currentLocation.x + wingLeft->location.x + wingLeft->weapons[0].weaponCoord.x, currentLocation.y + wingLeft->location.y + wingLeft->weapons[0].weaponCoord.y) andAngle:-90.0f];
+            
+            wingRightTurretProjectile = [[BulletProjectile alloc] initWithProjectileID:kEnemyProjectile_BulletLevelThree_Double location:Vector2fMake(currentLocation.x + wingRight->location.x + wingRight->weapons[0].weaponCoord.x, currentLocation.y + wingRight->location.y + wingRight->weapons[0].weaponCoord.y) andAngle:-90.0f];
+            
+            NSLog(@"Stage One");
         }
         
         if (state == kHyperionState_StageOne) {
             bossRotationTimer += delta;
             
-            [mainBodyLeftProjectile update:delta];
-            [mainBodyRightProjectile update:delta];
-            [mainBodyCenterProjectile update:delta];
             
             if (!bossRotated) {
                 holdingTimer += delta;
+                
                 
                 if(holdingTimer >= 1.4){
                     holdingTimer = 0.0;
@@ -99,6 +199,14 @@
                 bossReRotationTimer += delta;
                 bossRotated = YES;
                 
+                [mainBodyLeftProjectile stopProjectile];
+                [mainBodyRightProjectile stopProjectile];
+                [mainBodyCenterProjectile stopProjectile];
+                [mainBodyTailProjectile playProjectile];
+                
+                [wingLeftTurretProjectile stopProjectile];
+                [wingRightTurretProjectile stopProjectile];
+                
                 for(int i = 0; i < numberOfModules; i++){
                     if ((int)modularObjects[i].rotation != 180) {
                         modularObjects[i].rotation += 0.5;
@@ -116,7 +224,7 @@
                     }
                 }
             }
-            else if(bossReRotationTimer > 15.0f) {                
+            else if(bossReRotationTimer >= 15.0f) {                
                 for(int i = 0; i < numberOfModules; i++){
                     if (modularObjects[i].rotation != 0.0f) {
                         modularObjects[i].rotation -= 0.5;
@@ -143,12 +251,31 @@
                     bossRotationTimer = 0.0f;
                     bossReRotationTimer = 0.0f;
                     bossRotated = NO;
+                    
+                    [mainBodyLeftProjectile playProjectile];
+                    [mainBodyRightProjectile playProjectile];
+                    [mainBodyCenterProjectile playProjectile];
+                    [mainBodyTailProjectile stopProjectile];
+                    
+                    [wingLeftTurretProjectile playProjectile];
+                    [wingRightTurretProjectile playProjectile];
                 }
             }
             
-            if ((self.shipHealth / self.shipMaxHealth) <= 0.50f) {
+            if ((mainBody->moduleHealth / mainBody->moduleMaxHealth) <= 0.50f && bossRotated == NO) {
                 holdingTimer = 0.0f;
                 state = kHyperionState_StageTwo;
+                NSLog(@"Stage Two");
+                
+                
+                [mainBodyLeftProjectile release];
+                mainBodyLeftProjectile = [[BulletProjectile alloc] initWithProjectileID:kEnemyProjectile_BulletLevelFour_Triple location:Vector2fMake(currentLocation.x + mainBody->weapons[1].weaponCoord.x, currentLocation.y + mainBody->weapons[1].weaponCoord.y) andAngle:-90.0f];
+                
+                [mainBodyRightProjectile release];
+                mainBodyRightProjectile = [[BulletProjectile alloc] initWithProjectileID:kEnemyProjectile_BulletLevelFour_Triple location:Vector2fMake(currentLocation.x + mainBody->weapons[2].weaponCoord.x, currentLocation.y + mainBody->weapons[2].weaponCoord.y) andAngle:-90.0f];
+                
+                [wingLeftTurretProjectile stopProjectile];
+                [wingRightTurretProjectile stopProjectile];
             }
         }
         
@@ -173,31 +300,131 @@
                 desiredLocation.x = MIN(desiredLocation.x, 270);
                 desiredLocation.y = MIN(desiredLocation.y, 430);
             }
+            
+            wingFlyOffTimer += delta;
+            if(wingFlyOffTimer > 10.0){
+                wingLeft->location.y -= 200 * delta;
+                wingRight->location.y -= 200 * delta;
+                
+                if(wingLeft->location.y < -500 && wingRight->location.y < -500){
+                    wingLeft->location.y = 600;
+                    wingRight->location.y = 600;
+                }
+                if(wingFlyOffTimer > (10.0 + 3.0) && abs(wingLeft->location.y - wingLeft->defaultLocation.y) < 5){
+                    wingLeft->location.y = wingLeft->defaultLocation.y;
+                    wingRight->location.y = wingRight->defaultLocation.y;
+                    
+                    wingFlyOffTimer = 0;
+                }
+            }
+            
+            if(wingLeft->moduleHealth <= 0 && wingRight->moduleHealth <= 0){
+                state = kHyperionState_StageThree;
+                
+                [wingLeftTurretProjectile stopProjectile];
+                [wingRightTurretProjectile stopProjectile];
+                
+                [mainBodyCenterProjectile release];
+                mainBodyCenterProjectile = [[WaveProjectile alloc] initWithProjectileID:kEnemyProjectile_WaveLevelSix_DoubleMedium location:Vector2fMake(currentLocation.x + mainBody->weapons[0].weaponCoord.x, currentLocation.y + mainBody->weapons[0].weaponCoord.y) andAngle:-90.0f];
+                
+                NSLog(@"Stage Three");
+            }
+        }
+        
+        if (state == kHyperionState_StageThree) {
+            holdingTimer += delta;
+            
+            if(holdingTimer >= 1.4){
+                holdingTimer = 0.0;
+                
+                if(currentLocation.x <= 160){
+                    desiredLocation.x = (MAX(0.4, RANDOM_0_TO_1()) * 160) + 160;
+                }
+                else if(currentLocation.x >= 160){
+                    desiredLocation.x = (MIN(0.6, RANDOM_0_TO_1()) * 160);
+                }
+                
+                desiredLocation.y = currentLocation.y + (RANDOM_MINUS_1_TO_1() * 150);
+                
+                desiredLocation.x = MAX(50, desiredLocation.x);
+                desiredLocation.y = MAX(320, desiredLocation.y);
+                
+                desiredLocation.x = MIN(desiredLocation.x, 270);
+                desiredLocation.y = MIN(desiredLocation.y, 430);
+            }
+            
+            
+        }
+        
+        
+        if(wingLeft->isDead){
+            [wingLeftDeathEmitter update:delta];
+        }
+        if(wingRight->isDead){
+            [wingRightDeathEmitter update:delta];
+        }
+        
+        if(mainBody->isDead){
+            mainBody->isDead = NO;
+            updateMainBodyDeathEmitterBeforeDeath = YES;
+        }
+        if(updateMainBodyDeathEmitterBeforeDeath){
+            [mainBodyDeathEmitter update:delta];
+            if(mainBodyDeathEmitter.particleCount == 0){
+                updateMainBodyDeathEmitterBeforeDeath = NO;
+                mainBody->isDead = YES;
+            }
         }
     }
 }
 
 - (void)hitModule:(int)module withDamage:(int)damage {
-    modularObjects[module].moduleHealth -= damage;
-    
-//    if (modularObjects[module].moduleHealth <= 0) {
-//        self.shipHealth = 5;
-//    }
-    
-    [super hitModule:module withDamage:damage];
+
+    if(state == kHyperionState_StageOne){
+        mainBody->moduleHealth -= damage;
+        [super hitModule:module withDamage:damage];
+    }
+    else if(state == kHyperionState_StageTwo){
+        if(module == 1){
+            wingRight->moduleHealth -= damage;
+            [super hitModule:module withDamage:damage];
+        }
+        else if(module == 2){
+            wingLeft->moduleHealth -= damage;
+            [super hitModule:module withDamage:damage];
+        }
+    }
+    else if(state == kHyperionState_StageThree){
+        mainBody->moduleHealth -= damage;
+        [super hitModule:module withDamage:damage];
+    }
 }
 
 - (void)render {
     for(int i = 0; i < numberOfModules; i++) {
         if (modularObjects[i].isDead == NO) {
-            [modularObjects[i].moduleImage setRotation:modularObjects[i].rotation];
-            [modularObjects[i].moduleImage renderAtPoint:CGPointMake(currentLocation.x + modularObjects[i].location.x, currentLocation.y + modularObjects[i].location.y) centerOfImage:YES];
+            if(i != 0){
+                [modularObjects[i].moduleImage setRotation:modularObjects[i].rotation];
+                [modularObjects[i].moduleImage renderAtPoint:CGPointMake(currentLocation.x + modularObjects[i].location.x, currentLocation.y + modularObjects[i].location.y) centerOfImage:YES];
+            }
+            else if(!updateMainBodyDeathEmitterBeforeDeath){
+                [mainBody->moduleImage setRotation:mainBody->rotation];
+                [mainBody->moduleImage renderAtPoint:CGPointMake(currentLocation.x + mainBody->location.x, currentLocation.y + mainBody->location.y) centerOfImage:YES];
+            }
         }
     }
     
     [mainBodyLeftProjectile render];
     [mainBodyRightProjectile render];
     [mainBodyCenterProjectile render];
+    [mainBodyTailProjectile render];
+    
+    [wingLeftTurretProjectile render];
+    [wingRightTurretProjectile render];
+    
+    [wingLeftDeathEmitter renderParticles];
+    [wingRightDeathEmitter renderParticles];
+    [mainBodyDeathEmitter renderParticles];
     
     if(DEBUG) {
         glPushMatrix();

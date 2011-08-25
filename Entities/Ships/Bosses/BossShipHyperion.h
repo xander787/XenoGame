@@ -37,10 +37,18 @@ typedef enum _HyperionState {
     AbstractProjectile  *wingLeftPointProjectile;
     AbstractProjectile  *wingLeftTurretProjectile;
     
+    ParticleEmitter     *mainBodyDeathEmitter;
+    ParticleEmitter     *wingLeftDeathEmitter;
+    ParticleEmitter     *wingRightDeathEmitter;
+    
     float               holdingTimer;
     float               bossRotationTimer;
     float               bossReRotationTimer;
     BOOL                bossRotated;
+    
+    float               wingFlyOffTimer;
+    
+    BOOL                updateMainBodyDeathEmitterBeforeDeath;
 }
 
 - (id)initWithLocation:(CGPoint)aPoint andPlayershipRef:(PlayerShip *)playerRef;

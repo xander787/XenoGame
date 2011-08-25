@@ -146,8 +146,8 @@
                 [tempEmitter release];
 
                 
-                [[emitters objectAtIndex:0] setSourcePosition:Vector2fAdd([[emitters objectAtIndex:0] sourcePosition], Vector2fMake(-20, 0))];
-                [[emitters objectAtIndex:1] setSourcePosition:Vector2fAdd([[emitters objectAtIndex:1] sourcePosition], Vector2fMake(20, 0))];
+                [[emitters objectAtIndex:0] setSourcePosition:Vector2fAdd([[emitters objectAtIndex:0] sourcePosition], Vector2fMake(-10, 0))];
+                [[emitters objectAtIndex:1] setSourcePosition:Vector2fAdd([[emitters objectAtIndex:1] sourcePosition], Vector2fMake(10, 0))];
                 
                 NSArray *tempArray = [self newArrayOfPolygonsWithCount:[[emitters objectAtIndex:0] maxParticles]];
                 [polygons addObject:tempArray];
@@ -175,8 +175,8 @@
                 [emitters addObject:tempEmitter];
                 [tempEmitter release];
                 
-                [[emitters objectAtIndex:0] setSourcePosition:Vector2fAdd([[emitters objectAtIndex:0] sourcePosition], Vector2fMake(-20, 0))];
-                [[emitters objectAtIndex:1] setSourcePosition:Vector2fAdd([[emitters objectAtIndex:1] sourcePosition], Vector2fMake(20, 0))];
+                [[emitters objectAtIndex:0] setSourcePosition:Vector2fAdd([[emitters objectAtIndex:0] sourcePosition], Vector2fMake(-10, 0))];
+                [[emitters objectAtIndex:1] setSourcePosition:Vector2fAdd([[emitters objectAtIndex:1] sourcePosition], Vector2fMake(10, 0))];
                 
                 NSArray *tempArray = [self newArrayOfPolygonsWithCount:[[emitters objectAtIndex:0] maxParticles]];
                 [polygons addObject:tempArray];
@@ -208,9 +208,9 @@
                 [tempEmitter release];
                 
                 
-                [[emitters objectAtIndex:0] setSourcePosition:Vector2fAdd([[emitters objectAtIndex:0] sourcePosition], Vector2fMake(-20, 0))];
+                [[emitters objectAtIndex:0] setSourcePosition:Vector2fAdd([[emitters objectAtIndex:0] sourcePosition], Vector2fMake(-10, 0))];
                 [[emitters objectAtIndex:1] setSourcePosition:Vector2fAdd([[emitters objectAtIndex:1] sourcePosition], Vector2fMake(0, 0))];
-                [[emitters objectAtIndex:2] setSourcePosition:Vector2fAdd([[emitters objectAtIndex:2] sourcePosition], Vector2fMake(20, 0))];
+                [[emitters objectAtIndex:2] setSourcePosition:Vector2fAdd([[emitters objectAtIndex:2] sourcePosition], Vector2fMake(10, 0))];
 
                 [[emitters objectAtIndex:0] setAngle:[[emitters objectAtIndex:0] angle] + 15];
                 [[emitters objectAtIndex:2] setAngle:[[emitters objectAtIndex:2] angle] - 15];
@@ -249,9 +249,9 @@
                 [tempEmitter release];
                 
                 
-                [[emitters objectAtIndex:0] setSourcePosition:Vector2fAdd([[emitters objectAtIndex:0] sourcePosition], Vector2fMake(-20, 0))];
+                [[emitters objectAtIndex:0] setSourcePosition:Vector2fAdd([[emitters objectAtIndex:0] sourcePosition], Vector2fMake(-10, 0))];
                 [[emitters objectAtIndex:1] setSourcePosition:Vector2fAdd([[emitters objectAtIndex:1] sourcePosition], Vector2fMake(0, 0))];
-                [[emitters objectAtIndex:2] setSourcePosition:Vector2fAdd([[emitters objectAtIndex:2] sourcePosition], Vector2fMake(20, 0))];
+                [[emitters objectAtIndex:2] setSourcePosition:Vector2fAdd([[emitters objectAtIndex:2] sourcePosition], Vector2fMake(10, 0))];
                 
                 [[emitters objectAtIndex:0] setAngle:[[emitters objectAtIndex:0] angle] + 15];
                 [[emitters objectAtIndex:2] setAngle:[[emitters objectAtIndex:2] angle] - 15];
@@ -293,10 +293,10 @@
                 [tempEmitter release];
                 
                 
-                [[emitters objectAtIndex:0] setSourcePosition:Vector2fAdd([[emitters objectAtIndex:0] sourcePosition], Vector2fMake(-20, 0))];
-                [[emitters objectAtIndex:1] setSourcePosition:Vector2fAdd([[emitters objectAtIndex:1] sourcePosition], Vector2fMake(-20, 0))];
-                [[emitters objectAtIndex:2] setSourcePosition:Vector2fAdd([[emitters objectAtIndex:2] sourcePosition], Vector2fMake(20, 0))];
-                [[emitters objectAtIndex:3] setSourcePosition:Vector2fAdd([[emitters objectAtIndex:3] sourcePosition], Vector2fMake(20, 0))];
+                [[emitters objectAtIndex:0] setSourcePosition:Vector2fAdd([[emitters objectAtIndex:0] sourcePosition], Vector2fMake(-10, 0))];
+                [[emitters objectAtIndex:1] setSourcePosition:Vector2fAdd([[emitters objectAtIndex:1] sourcePosition], Vector2fMake(-10, 0))];
+                [[emitters objectAtIndex:2] setSourcePosition:Vector2fAdd([[emitters objectAtIndex:2] sourcePosition], Vector2fMake(10, 0))];
+                [[emitters objectAtIndex:3] setSourcePosition:Vector2fAdd([[emitters objectAtIndex:3] sourcePosition], Vector2fMake(10, 0))];
                 
                 [[emitters objectAtIndex:0] setAngle:([[emitters objectAtIndex:0] angle] + 15)];
                 [[emitters objectAtIndex:3] setAngle:([[emitters objectAtIndex:3] angle] - 15)];
@@ -341,10 +341,10 @@
                 [tempEmitter release];
 
                 
-                [[emitters objectAtIndex:0] setSourcePosition:Vector2fAdd([[emitters objectAtIndex:0] sourcePosition], Vector2fMake(-20, 0))];
-                [[emitters objectAtIndex:1] setSourcePosition:Vector2fAdd([[emitters objectAtIndex:1] sourcePosition], Vector2fMake(-20, 0))];
-                [[emitters objectAtIndex:2] setSourcePosition:Vector2fAdd([[emitters objectAtIndex:2] sourcePosition], Vector2fMake(20, 0))];
-                [[emitters objectAtIndex:3] setSourcePosition:Vector2fAdd([[emitters objectAtIndex:3] sourcePosition], Vector2fMake(20, 0))];
+                [[emitters objectAtIndex:0] setSourcePosition:Vector2fAdd([[emitters objectAtIndex:0] sourcePosition], Vector2fMake(-10, 0))];
+                [[emitters objectAtIndex:1] setSourcePosition:Vector2fAdd([[emitters objectAtIndex:1] sourcePosition], Vector2fMake(-10, 0))];
+                [[emitters objectAtIndex:2] setSourcePosition:Vector2fAdd([[emitters objectAtIndex:2] sourcePosition], Vector2fMake(10, 0))];
+                [[emitters objectAtIndex:3] setSourcePosition:Vector2fAdd([[emitters objectAtIndex:3] sourcePosition], Vector2fMake(10, 0))];
                 
                 [[emitters objectAtIndex:0] setAngle:([[emitters objectAtIndex:0] angle] + 15)];
                 [[emitters objectAtIndex:3] setAngle:([[emitters objectAtIndex:3] angle] - 15)];
@@ -392,10 +392,10 @@
                 [tempEmitter release];
                 
                 
-                [[emitters objectAtIndex:0] setSourcePosition:Vector2fAdd([[emitters objectAtIndex:0] sourcePosition], Vector2fMake(-20, 0))];
-                [[emitters objectAtIndex:1] setSourcePosition:Vector2fAdd([[emitters objectAtIndex:1] sourcePosition], Vector2fMake(-20, 0))];
-                [[emitters objectAtIndex:3] setSourcePosition:Vector2fAdd([[emitters objectAtIndex:3] sourcePosition], Vector2fMake(20, 0))];
-                [[emitters objectAtIndex:4] setSourcePosition:Vector2fAdd([[emitters objectAtIndex:4] sourcePosition], Vector2fMake(20, 0))];
+                [[emitters objectAtIndex:0] setSourcePosition:Vector2fAdd([[emitters objectAtIndex:0] sourcePosition], Vector2fMake(-10, 0))];
+                [[emitters objectAtIndex:1] setSourcePosition:Vector2fAdd([[emitters objectAtIndex:1] sourcePosition], Vector2fMake(-10, 0))];
+                [[emitters objectAtIndex:3] setSourcePosition:Vector2fAdd([[emitters objectAtIndex:3] sourcePosition], Vector2fMake(10, 0))];
+                [[emitters objectAtIndex:4] setSourcePosition:Vector2fAdd([[emitters objectAtIndex:4] sourcePosition], Vector2fMake(10, 0))];
                 
                 [[emitters objectAtIndex:0] setAngle:([[emitters objectAtIndex:0] angle] + 15)];
                 [[emitters objectAtIndex:4] setAngle:([[emitters objectAtIndex:4] angle] - 15)];
@@ -446,10 +446,10 @@
                 [tempEmitter release];
 
                 
-                [[emitters objectAtIndex:0] setSourcePosition:Vector2fAdd([[emitters objectAtIndex:0] sourcePosition], Vector2fMake(-20, 0))];
-                [[emitters objectAtIndex:1] setSourcePosition:Vector2fAdd([[emitters objectAtIndex:1] sourcePosition], Vector2fMake(-20, 0))];
-                [[emitters objectAtIndex:3] setSourcePosition:Vector2fAdd([[emitters objectAtIndex:3] sourcePosition], Vector2fMake(20, 0))];
-                [[emitters objectAtIndex:4] setSourcePosition:Vector2fAdd([[emitters objectAtIndex:4] sourcePosition], Vector2fMake(20, 0))];
+                [[emitters objectAtIndex:0] setSourcePosition:Vector2fAdd([[emitters objectAtIndex:0] sourcePosition], Vector2fMake(-10, 0))];
+                [[emitters objectAtIndex:1] setSourcePosition:Vector2fAdd([[emitters objectAtIndex:1] sourcePosition], Vector2fMake(-10, 0))];
+                [[emitters objectAtIndex:3] setSourcePosition:Vector2fAdd([[emitters objectAtIndex:3] sourcePosition], Vector2fMake(10, 0))];
+                [[emitters objectAtIndex:4] setSourcePosition:Vector2fAdd([[emitters objectAtIndex:4] sourcePosition], Vector2fMake(10, 0))];
                 
                 [[emitters objectAtIndex:0] setAngle:([[emitters objectAtIndex:0] angle] + 15)];
                 [[emitters objectAtIndex:4] setAngle:([[emitters objectAtIndex:4] angle] - 15)];
@@ -506,12 +506,12 @@
                 [tempEmitter release];
 
                 
-                [[emitters objectAtIndex:0] setSourcePosition:Vector2fAdd([[emitters objectAtIndex:0] sourcePosition], Vector2fMake(-20, 0))];
-                [[emitters objectAtIndex:1] setSourcePosition:Vector2fAdd([[emitters objectAtIndex:1] sourcePosition], Vector2fMake(-20, 0))];
-                [[emitters objectAtIndex:2] setSourcePosition:Vector2fAdd([[emitters objectAtIndex:2] sourcePosition], Vector2fMake(-20, 0))];
-                [[emitters objectAtIndex:4] setSourcePosition:Vector2fAdd([[emitters objectAtIndex:4] sourcePosition], Vector2fMake(20, 0))];
-                [[emitters objectAtIndex:5] setSourcePosition:Vector2fAdd([[emitters objectAtIndex:5] sourcePosition], Vector2fMake(20, 0))];
-                [[emitters objectAtIndex:6] setSourcePosition:Vector2fAdd([[emitters objectAtIndex:6] sourcePosition], Vector2fMake(20, 0))];
+                [[emitters objectAtIndex:0] setSourcePosition:Vector2fAdd([[emitters objectAtIndex:0] sourcePosition], Vector2fMake(-10, 0))];
+                [[emitters objectAtIndex:1] setSourcePosition:Vector2fAdd([[emitters objectAtIndex:1] sourcePosition], Vector2fMake(-10, 0))];
+                [[emitters objectAtIndex:2] setSourcePosition:Vector2fAdd([[emitters objectAtIndex:2] sourcePosition], Vector2fMake(-10, 0))];
+                [[emitters objectAtIndex:4] setSourcePosition:Vector2fAdd([[emitters objectAtIndex:4] sourcePosition], Vector2fMake(10, 0))];
+                [[emitters objectAtIndex:5] setSourcePosition:Vector2fAdd([[emitters objectAtIndex:5] sourcePosition], Vector2fMake(10, 0))];
+                [[emitters objectAtIndex:6] setSourcePosition:Vector2fAdd([[emitters objectAtIndex:6] sourcePosition], Vector2fMake(10, 0))];
                 
                 [[emitters objectAtIndex:0] setAngle:([[emitters objectAtIndex:0] angle] + 15)];
                 [[emitters objectAtIndex:6] setAngle:([[emitters objectAtIndex:6] angle] - 15)];
@@ -571,81 +571,81 @@
             
         case kEnemyProjectile_BulletLevelTwo_Double:
         case kPlayerProjectile_BulletLevelTwo_Double: {
-            [[emitters objectAtIndex:0] setSourcePosition:Vector2fMake(location.x - 20, location.y)];
-            [[emitters objectAtIndex:1] setSourcePosition:Vector2fMake(location.x + 20, location.y)];
+            [[emitters objectAtIndex:0] setSourcePosition:Vector2fMake(location.x - 10, location.y)];
+            [[emitters objectAtIndex:1] setSourcePosition:Vector2fMake(location.x + 10, location.y)];
             break;
         }
             
         case kEnemyProjectile_BulletLevelThree_Double:
         case kPlayerProjectile_BulletLevelThree_Double: {
-            [[emitters objectAtIndex:0] setSourcePosition:Vector2fMake(location.x - 20, location.y)];
-            [[emitters objectAtIndex:1] setSourcePosition:Vector2fMake(location.x + 20, location.y)];
+            [[emitters objectAtIndex:0] setSourcePosition:Vector2fMake(location.x - 10, location.y)];
+            [[emitters objectAtIndex:1] setSourcePosition:Vector2fMake(location.x + 10, location.y)];
             break;
         }
             
         case kEnemyProjectile_BulletLevelFour_Triple:
         case kPlayerProjectile_BulletLevelFour_Triple: {
-            [[emitters objectAtIndex:0] setSourcePosition:Vector2fMake(location.x - 20, location.y)];
+            [[emitters objectAtIndex:0] setSourcePosition:Vector2fMake(location.x - 10, location.y)];
             [[emitters objectAtIndex:1] setSourcePosition:Vector2fMake(location.x, location.y)];
-            [[emitters objectAtIndex:2] setSourcePosition:Vector2fMake(location.x + 20, location.y)];
+            [[emitters objectAtIndex:2] setSourcePosition:Vector2fMake(location.x + 10, location.y)];
             break;
         }
             
         case kEnemyProjectile_BulletLevelFive_Triple:
         case kPlayerProjectile_BulletLevelFive_Triple: {
-            [[emitters objectAtIndex:0] setSourcePosition:Vector2fMake(location.x - 20, location.y)];
+            [[emitters objectAtIndex:0] setSourcePosition:Vector2fMake(location.x - 10, location.y)];
             [[emitters objectAtIndex:1] setSourcePosition:Vector2fMake(location.x, location.y)];
-            [[emitters objectAtIndex:2] setSourcePosition:Vector2fMake(location.x + 20, location.y)];
+            [[emitters objectAtIndex:2] setSourcePosition:Vector2fMake(location.x + 10, location.y)];
             break;
         }
             
         case kEnemyProjectile_BulletLevelSix_Quadruple:
         case kPlayerProjectile_BulletLevelSix_Quadruple: {
-            [[emitters objectAtIndex:0] setSourcePosition:Vector2fMake(location.x - 20, location.y)];
-            [[emitters objectAtIndex:1] setSourcePosition:Vector2fMake(location.x - 20, location.y)];
-            [[emitters objectAtIndex:2] setSourcePosition:Vector2fMake(location.x + 20, location.y)];
-            [[emitters objectAtIndex:3] setSourcePosition:Vector2fMake(location.x + 20, location.y)];
+            [[emitters objectAtIndex:0] setSourcePosition:Vector2fMake(location.x - 10, location.y)];
+            [[emitters objectAtIndex:1] setSourcePosition:Vector2fMake(location.x - 10, location.y)];
+            [[emitters objectAtIndex:2] setSourcePosition:Vector2fMake(location.x + 10, location.y)];
+            [[emitters objectAtIndex:3] setSourcePosition:Vector2fMake(location.x + 10, location.y)];
             break;
         }
             
         case kEnemyProjectile_BulletLevelSeven_Quadruple:
         case kPlayerProjectile_BulletLevelSeven_Quadruple: {
-            [[emitters objectAtIndex:0] setSourcePosition:Vector2fMake(location.x - 20, location.y)];
-            [[emitters objectAtIndex:1] setSourcePosition:Vector2fMake(location.x - 20, location.y)];
-            [[emitters objectAtIndex:2] setSourcePosition:Vector2fMake(location.x + 20, location.y)];
-            [[emitters objectAtIndex:3] setSourcePosition:Vector2fMake(location.x + 20, location.y)];
+            [[emitters objectAtIndex:0] setSourcePosition:Vector2fMake(location.x - 10, location.y)];
+            [[emitters objectAtIndex:1] setSourcePosition:Vector2fMake(location.x - 10, location.y)];
+            [[emitters objectAtIndex:2] setSourcePosition:Vector2fMake(location.x + 10, location.y)];
+            [[emitters objectAtIndex:3] setSourcePosition:Vector2fMake(location.x + 10, location.y)];
             break;
         }
             
         case kEnemyProjectile_BulletLevelEight_Quintuple:
         case kPlayerProjectile_BulletLevelEight_Quintuple: {
-            [[emitters objectAtIndex:0] setSourcePosition:Vector2fMake(location.x - 20, location.y)];
-            [[emitters objectAtIndex:1] setSourcePosition:Vector2fMake(location.x - 20, location.y)];
+            [[emitters objectAtIndex:0] setSourcePosition:Vector2fMake(location.x - 10, location.y)];
+            [[emitters objectAtIndex:1] setSourcePosition:Vector2fMake(location.x - 10, location.y)];
             [[emitters objectAtIndex:2] setSourcePosition:Vector2fMake(location.x, location.y)];
-            [[emitters objectAtIndex:3] setSourcePosition:Vector2fMake(location.x + 20, location.y)];
-            [[emitters objectAtIndex:4] setSourcePosition:Vector2fMake(location.x + 20, location.y)];
+            [[emitters objectAtIndex:3] setSourcePosition:Vector2fMake(location.x + 10, location.y)];
+            [[emitters objectAtIndex:4] setSourcePosition:Vector2fMake(location.x + 10, location.y)];
             break;
         }
             
         case kEnemyProjectile_BulletLevelNine_Quintuple:
         case kPlayerProjectile_BulletLevelNine_Quintuple: {
-            [[emitters objectAtIndex:0] setSourcePosition:Vector2fMake(location.x - 20, location.y)];
-            [[emitters objectAtIndex:1] setSourcePosition:Vector2fMake(location.x - 20, location.y)];
+            [[emitters objectAtIndex:0] setSourcePosition:Vector2fMake(location.x - 10, location.y)];
+            [[emitters objectAtIndex:1] setSourcePosition:Vector2fMake(location.x - 10, location.y)];
             [[emitters objectAtIndex:2] setSourcePosition:Vector2fMake(location.x, location.y)];
-            [[emitters objectAtIndex:3] setSourcePosition:Vector2fMake(location.x + 20, location.y)];
-            [[emitters objectAtIndex:4] setSourcePosition:Vector2fMake(location.x + 20, location.y)];
+            [[emitters objectAtIndex:3] setSourcePosition:Vector2fMake(location.x + 10, location.y)];
+            [[emitters objectAtIndex:4] setSourcePosition:Vector2fMake(location.x + 10, location.y)];
             break;
         }
             
         case kEnemyProjectile_BulletLevelTen_Septuple:
         case kPlayerProjectile_BulletLevelTen_Septuple: {
-            [[emitters objectAtIndex:0] setSourcePosition:Vector2fMake(location.x - 20, location.y)];
-            [[emitters objectAtIndex:1] setSourcePosition:Vector2fMake(location.x - 20, location.y)];
-            [[emitters objectAtIndex:2] setSourcePosition:Vector2fMake(location.x - 20, location.y)];
+            [[emitters objectAtIndex:0] setSourcePosition:Vector2fMake(location.x - 10, location.y)];
+            [[emitters objectAtIndex:1] setSourcePosition:Vector2fMake(location.x - 10, location.y)];
+            [[emitters objectAtIndex:2] setSourcePosition:Vector2fMake(location.x - 10, location.y)];
             [[emitters objectAtIndex:3] setSourcePosition:Vector2fMake(location.x, location.y)];
-            [[emitters objectAtIndex:4] setSourcePosition:Vector2fMake(location.x + 20, location.y)];
-            [[emitters objectAtIndex:5] setSourcePosition:Vector2fMake(location.x + 20, location.y)];
-            [[emitters objectAtIndex:6] setSourcePosition:Vector2fMake(location.x + 20, location.y)];
+            [[emitters objectAtIndex:4] setSourcePosition:Vector2fMake(location.x + 10, location.y)];
+            [[emitters objectAtIndex:5] setSourcePosition:Vector2fMake(location.x + 10, location.y)];
+            [[emitters objectAtIndex:6] setSourcePosition:Vector2fMake(location.x + 10, location.y)];
             
             break;
         }

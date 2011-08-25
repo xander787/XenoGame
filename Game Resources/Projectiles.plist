@@ -12,14 +12,14 @@
 	<key>kEnemyProjectile_BulletLevelFive_Triple</key>
 	<dict>
 		<key>kRate</key>
-		<integer>3</integer>
+		<integer>1</integer>
 		<key>kSpeed</key>
 		<real>1.3</real>
 	</dict>
 	<key>kEnemyProjectile_BulletLevelFour_Triple</key>
 	<dict>
 		<key>kRate</key>
-		<integer>3</integer>
+		<integer>1</integer>
 		<key>kSpeed</key>
 		<real>1.3</real>
 	</dict>
