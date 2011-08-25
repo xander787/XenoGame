@@ -113,6 +113,26 @@
         if(mainbody->moduleHealth <= mainbody->moduleMaxHealth / 2){
             state = kOceanusState_Spinning;
             mainbody->rotation = 1800;
+            
+            [leftTurretProj stopProjectile];
+            [rightTurretProj stopProjectile];
+            [leftWaveProj stopProjectile];
+            [rightWaveProj stopProjectile];
+            [leftTurretProj release];
+            [rightTurretProj release];
+            [leftWaveProj release];
+            [rightWaveProj release];
+            leftTurretProj = [[BulletProjectile alloc] initWithProjectileID:kEnemyProjectile_BulletLevelThree_Double
+                                                                   location:Vector2fMake(mainbody->weapons[0].weaponCoord.x + mainbody->location.x + currentLocation.x, mainbody->weapons[0].weaponCoord.y + mainbody->location.y + currentLocation.y) 
+                                                                   andAngle:270];
+            
+            rightTurretProj = [[BulletProjectile alloc] initWithProjectileID:kEnemyProjectile_BulletLevelThree_Double
+                                                                    location:Vector2fMake(mainbody->weapons[1].weaponCoord.x + mainbody->location.x + currentLocation.x, mainbody->weapons[1].weaponCoord.y + mainbody->location.y + currentLocation.y) 
+                                                                    andAngle:270];
+            
+            leftWaveProj = [[WaveProjectile alloc] initWithProjectileID:kEnemyProjectile_WaveLevelTwo_DoubleSmall location:Vector2fMake(leftBulge->weapons[0].weaponCoord.x + leftBulge->location.x + currentLocation.x, leftBulge->weapons[0].weaponCoord.y + leftBulge->location.y + currentLocation.y) andAngle:270];
+            
+            rightWaveProj = [[WaveProjectile alloc] initWithProjectileID:kEnemyProjectile_WaveLevelTwo_DoubleSmall location:Vector2fMake(rightBulge->weapons[0].weaponCoord.x + rightBulge->location.x + currentLocation.x, rightBulge->weapons[0].weaponCoord.y + rightBulge->location.y + currentLocation.y) andAngle:270];
         }
     }
     else if(state == kOceanusState_Spinning){
@@ -155,25 +175,6 @@
             [self rotateModule:5 aroundPositionWithOldrotation:oldRotation];
             
             
-            [leftTurretProj stopProjectile];
-            [rightTurretProj stopProjectile];
-            [leftWaveProj stopProjectile];
-            [rightWaveProj stopProjectile];
-            [leftTurretProj release];
-            [rightTurretProj release];
-            [leftWaveProj release];
-            [rightWaveProj release];
-            leftTurretProj = [[BulletProjectile alloc] initWithProjectileID:kEnemyProjectile_BulletLevelThree_Double
-                                                                   location:Vector2fMake(mainbody->weapons[0].weaponCoord.x + mainbody->location.x + currentLocation.x, mainbody->weapons[0].weaponCoord.y + mainbody->location.y + currentLocation.y) 
-                                                                   andAngle:270];
-            
-            rightTurretProj = [[BulletProjectile alloc] initWithProjectileID:kEnemyProjectile_BulletLevelThree_Double
-                                                                    location:Vector2fMake(mainbody->weapons[1].weaponCoord.x + mainbody->location.x + currentLocation.x, mainbody->weapons[1].weaponCoord.y + mainbody->location.y + currentLocation.y) 
-                                                                    andAngle:270];
-            
-            leftWaveProj = [[WaveProjectile alloc] initWithProjectileID:kEnemyProjectile_WaveLevelTwo_DoubleSmall location:Vector2fMake(leftBulge->weapons[0].weaponCoord.x + leftBulge->location.x + currentLocation.x, leftBulge->weapons[0].weaponCoord.y + leftBulge->location.y + currentLocation.y) andAngle:270];
-            
-            rightWaveProj = [[WaveProjectile alloc] initWithProjectileID:kEnemyProjectile_WaveLevelTwo_DoubleSmall location:Vector2fMake(rightBulge->weapons[0].weaponCoord.x + rightBulge->location.x + currentLocation.x, rightBulge->weapons[0].weaponCoord.y + rightBulge->location.y + currentLocation.y) andAngle:270];
         }
         else if(mainbody->isDead){
             mainbody->isDead = NO;
@@ -194,22 +195,20 @@
         if(!harpoonIsAttacking && !harpoonIsReturning){
             harpoonTimer += delta;
         }
-        if(harpoonTimer >= 1){
-            harpoonTimer = 0;
-            NSLog(@"harponn attack");
+        if(harpoonTimer >= 3){
             harpoonIsAttacking = YES;
         }
         if(harpoonIsAttacking){
-            harpoon->location.y -= 50 * delta;
-            if(harpoon->location.y < 400){
+            harpoon->location.y -= 400 * delta;
+            if(harpoon->location.y < -500){
                 harpoonIsReturning = YES;
-                harpoon->location.y = 200;
+                harpoon->location.y = 350;
                 harpoonIsAttacking = NO;
             }
         }
         if(harpoonIsReturning){
-            harpoon->location.y -= 50 * delta;
-            if((harpoon->location.y - harpoon->defaultLocation.y) > 10 || (harpoon->location.y - harpoon->defaultLocation.y) < 10){
+            harpoon->location.y -= 400 * delta;
+            if(abs(harpoon->location.y - harpoon->defaultLocation.y) < 10){
                 harpoon->location = harpoon->defaultLocation;
                 harpoonIsReturning = NO;
             }
@@ -244,12 +243,17 @@
     
     if(self.shipIsDeployed){
         //Update projectiles
+        [leftTurretProj setAngle:270 - mainbody->rotation];
+        [rightTurretProj setAngle:270 - mainbody->rotation];
         [leftTurretProj setLocation:Vector2fMake(mainbody->weapons[0].weaponCoord.x + mainbody->location.x + currentLocation.x, mainbody->weapons[0].weaponCoord.y + mainbody->location.y + currentLocation.y)];
         [rightTurretProj setLocation:Vector2fMake(mainbody->weapons[1].weaponCoord.x + mainbody->location.x + currentLocation.x, mainbody->weapons[1].weaponCoord.y + mainbody->location.y + currentLocation.y)];
             
         [leftTurretProj update:delta];
         [rightTurretProj update:delta];
             
+        
+        [leftWaveProj setAngle:270 - mainbody->rotation];
+        [rightWaveProj setAngle:270 - mainbody->rotation];
         [leftWaveProj setLocation:Vector2fMake(leftBulge->weapons[0].weaponCoord.x + leftBulge->location.x + currentLocation.x, leftBulge->weapons[0].weaponCoord.y + leftBulge->location.y + currentLocation.y)];
         [rightWaveProj setLocation:Vector2fMake(rightBulge->weapons[0].weaponCoord.x + rightBulge->location.x + currentLocation.x, rightBulge->weapons[0].weaponCoord.y + rightBulge->location.y + currentLocation.y)];
         [leftWaveProj update:delta];
@@ -292,6 +296,13 @@
             [[modularObjects[mod].collisionPolygonArray objectAtIndex:k] originalPoints][i] = Vector2fMake((tempPoint.x * cos(tempAngle)) - (tempPoint.y * sin(tempAngle)), (tempPoint.x * sin(tempAngle)) + (tempPoint.y * cos(tempAngle)));
         }
         [[modularObjects[mod].collisionPolygonArray objectAtIndex:k] buildEdges];
+    }
+    
+    for(int i = 0; i < modularObjects[mod].numberOfWeapons; i++){
+        Vector2f tempPoint2 = modularObjects[mod].weapons[i].weaponCoord;
+        double tempAngle2 = DEGREES_TO_RADIANS(oldRot - modularObjects[mod].rotation);
+        modularObjects[mod].weapons[i].weaponCoord = Vector2fMake((tempPoint2.x * cos(tempAngle2)) - (tempPoint2.y * sin(tempAngle2)),
+                                                                  (tempPoint2.x * sin(tempAngle2)) + (tempPoint2.y * cos(tempAngle2)));
     }
 }
 

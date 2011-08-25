@@ -661,6 +661,8 @@
         }
     }
     for (int emitterPolyCount = 0; emitterPolyCount < [emitters count]; emitterPolyCount++){
+        [[emitters objectAtIndex:emitterPolyCount] setAngle:angle];
+        
         [[emitters objectAtIndex:emitterPolyCount] update:aDelta];
         
         for(int k = 0; k < [[emitters objectAtIndex:emitterPolyCount] particleIndex]; k++){

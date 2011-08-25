@@ -110,8 +110,6 @@
         
         speed = [[projectileDictionary objectForKey:@"kSpeed"] floatValue];
         rate = [[projectileDictionary objectForKey:@"kRate"] floatValue];
-        location = aLocation;
-        angle = aAngle;
         
         //Loop through the collision points, put them in a C array
         collisionPointCount = 4;
@@ -326,9 +324,15 @@
             for(int k = 0; k < [emitter maxParticles]; k++){
                 emitter.particles[k].timeToLive = emitter.particleLifespan;
                 emitter.particles[k].position = emitter.sourcePosition;
+                
+                float newAngle = (GLfloat)DEGREES_TO_RADIANS(emitter.angle + emitter.angleVariance * RANDOM_MINUS_1_TO_1());
+                Vector2f vector = Vector2fMake(cosf(newAngle), sinf(newAngle));
+                float vectorSpeed = emitter.speed + emitter.speedVariance * RANDOM_MINUS_1_TO_1();
+                emitter.particles[k].direction = Vector2fMultiply(vector, vectorSpeed);
             }
             emitter.active = YES;
             emitter.sourcePosition = location;
+            emitter.angle = angle;
         }
         elapsedTime = 0;
         secondWaveTimer = 0;
@@ -343,12 +347,14 @@
     
     for(int i = 0; i < [emitters count]; i++){
         if(i == 0){
+            [[emitters objectAtIndex:i] setAngle:angle];
             [[emitters objectAtIndex:i] setSourcePosition:location];
             [[emitters objectAtIndex:i] update:aDelta];
         }
         else if(i == 1){
             secondWaveTimer += aDelta;
             if(secondWaveTimer >= 0.2){
+                [[emitters objectAtIndex:i] setAngle:angle];
                 [[emitters objectAtIndex:i] setSourcePosition:location];
                 [[emitters objectAtIndex:i] update:aDelta];
             }
@@ -356,6 +362,7 @@
         else if(i == 2){
             thirdWaveTimer += aDelta;
             if(thirdWaveTimer >= 0.4){
+                [[emitters objectAtIndex:i] setAngle:angle];
                 [[emitters objectAtIndex:i] setSourcePosition:location];
                 [[emitters objectAtIndex:i] update:aDelta];
             }
@@ -432,7 +439,7 @@
     }
     
     
-    if(NO) {
+    if(DEBUG) {
         for(NSArray *polyArray in polygons){
             for(Polygon *polygon in polyArray){
                 glPushMatrix();
