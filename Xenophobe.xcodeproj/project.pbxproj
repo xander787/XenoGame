@@ -176,6 +176,7 @@
 		B969707E13E104FA002EC552 /* store.png in Resources */ = {isa = PBXBuildFile; fileRef = B969707D13E104F3002EC552 /* store.png */; };
 		B969708B13E1335B002EC552 /* Slider.png in Resources */ = {isa = PBXBuildFile; fileRef = B969708913E1335B002EC552 /* Slider.png */; };
 		B969708C13E1335B002EC552 /* SliderBar.png in Resources */ = {isa = PBXBuildFile; fileRef = B969708A13E1335B002EC552 /* SliderBar.png */; };
+		B96F00AE140737F000619833 /* HeatSeekingMissile.m in Sources */ = {isa = PBXBuildFile; fileRef = B96F00AD140737F000619833 /* HeatSeekingMissile.m */; };
 		B97A805612C964AD005FBB61 /* AbstractProjectile.m in Sources */ = {isa = PBXBuildFile; fileRef = B97A805512C964AD005FBB61 /* AbstractProjectile.m */; };
 		B98A705E13F324F300773281 /* texture-missile.png in Resources */ = {isa = PBXBuildFile; fileRef = B98A705D13F324F300773281 /* texture-missile.png */; };
 		B98A706413F6059D00773281 /* BossHealthBar.png in Resources */ = {isa = PBXBuildFile; fileRef = B98A706313F6059C00773281 /* BossHealthBar.png */; };
@@ -453,6 +454,8 @@
 		B969707D13E104F3002EC552 /* store.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = store.png; sourceTree = "<group>"; };
 		B969708913E1335B002EC552 /* Slider.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Slider.png; sourceTree = "<group>"; };
 		B969708A13E1335B002EC552 /* SliderBar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SliderBar.png; sourceTree = "<group>"; };
+		B96F00AC140737F000619833 /* HeatSeekingMissile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HeatSeekingMissile.h; path = Entities/Projectiles/HeatSeekingMissile.h; sourceTree = "<group>"; };
+		B96F00AD140737F000619833 /* HeatSeekingMissile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HeatSeekingMissile.m; path = Entities/Projectiles/HeatSeekingMissile.m; sourceTree = "<group>"; };
 		B97A805412C964AD005FBB61 /* AbstractProjectile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AbstractProjectile.h; path = Entities/Projectiles/AbstractProjectile.h; sourceTree = "<group>"; };
 		B97A805512C964AD005FBB61 /* AbstractProjectile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AbstractProjectile.m; path = Entities/Projectiles/AbstractProjectile.m; sourceTree = "<group>"; };
 		B98A705D13F324F300773281 /* texture-missile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "texture-missile.png"; sourceTree = "<group>"; };
@@ -1106,6 +1109,8 @@
 				B9A8075313ED06FE00D9AFD3 /* ParticleProjectile.m */,
 				B9A8075413ED06FE00D9AFD3 /* WaveProjectile.h */,
 				B9A8075513ED06FE00D9AFD3 /* WaveProjectile.m */,
+				B96F00AC140737F000619833 /* HeatSeekingMissile.h */,
+				B96F00AD140737F000619833 /* HeatSeekingMissile.m */,
 			);
 			name = Projectiles;
 			sourceTree = "<group>";
@@ -1444,6 +1449,7 @@
 				B9A8075713ED06FE00D9AFD3 /* MissileProjectile.m in Sources */,
 				B9A8075813ED06FE00D9AFD3 /* ParticleProjectile.m in Sources */,
 				B9A8075913ED06FE00D9AFD3 /* WaveProjectile.m in Sources */,
+				B96F00AE140737F000619833 /* HeatSeekingMissile.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

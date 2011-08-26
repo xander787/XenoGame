@@ -736,6 +736,7 @@ WrapText( const char *text
                     case kDropType_Health:
                     {
                         playerShip.shipHealth += 10;
+                        playerShip.shipHealth = MAX(playerShip.shipHealth, playerShip.shipMaxHealth);
                         [delegate playerHealthChangedBy:10];
                         break;
                     }

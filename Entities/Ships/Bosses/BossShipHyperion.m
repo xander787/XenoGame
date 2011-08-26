@@ -148,6 +148,16 @@
         [wingLeftTurretProjectile update:delta];
         [wingRightTurretProjectile update:delta];
         
+        [wingLeftHeatSeekingProjectile setLocation:Vector2fMake(currentLocation.x + wingLeft->location.x + wingLeft->weapons[0].weaponCoord.x, currentLocation.y + wingLeft->location.y + wingLeft->weapons[0].weaponCoord.y)];
+        [wingRightHeatSeekingProjectile setLocation:Vector2fMake(currentLocation.x + wingRight->location.x + wingRight->weapons[0].weaponCoord.x, currentLocation.y + wingRight->location.y + wingRight->weapons[0].weaponCoord.y)];
+        [wingLeftHeatSeekingProjectile update:delta];
+        [wingRightHeatSeekingProjectile update:delta];
+        
+        [mainBodyLeftHeatSeekingProjectile setLocation:Vector2fMake(currentLocation.x + mainBody->weapons[2].weaponCoord.x, currentLocation.y + mainBody->weapons[2].weaponCoord.y)];
+        [mainBodyRightHeatSeekingProjectile setLocation:Vector2fMake(currentLocation.x + mainBody->weapons[1].weaponCoord.x, currentLocation.y + mainBody->weapons[1].weaponCoord.y)];
+        [mainBodyLeftHeatSeekingProjectile update:delta];
+        [mainBodyRightHeatSeekingProjectile update:delta];
+        
         
         if (state == -1) {
             state = kHyperionState_StageOne;
@@ -163,6 +173,18 @@
             wingLeftTurretProjectile = [[BulletProjectile alloc] initWithProjectileID:kEnemyProjectile_BulletLevelThree_Double location:Vector2fMake(currentLocation.x + wingLeft->location.x + wingLeft->weapons[0].weaponCoord.x, currentLocation.y + wingLeft->location.y + wingLeft->weapons[0].weaponCoord.y) andAngle:-90.0f];
             
             wingRightTurretProjectile = [[BulletProjectile alloc] initWithProjectileID:kEnemyProjectile_BulletLevelThree_Double location:Vector2fMake(currentLocation.x + wingRight->location.x + wingRight->weapons[0].weaponCoord.x, currentLocation.y + wingRight->location.y + wingRight->weapons[0].weaponCoord.y) andAngle:-90.0f];
+            
+            wingLeftHeatSeekingProjectile = [[HeatSeekingMissile alloc] initWithProjectileID:kEnemyProjectile_HeatSeekingMissile location:Vector2fMake(currentLocation.x + wingLeft->location.x + wingLeft->weapons[0].weaponCoord.x, currentLocation.y + wingLeft->location.y + wingLeft->weapons[0].weaponCoord.y) angle:-120.0f speed:1 rate:3 andPlayerShipRef:playerShipRef];
+            [wingLeftHeatSeekingProjectile stopProjectile];
+            
+            wingRightHeatSeekingProjectile = [[HeatSeekingMissile alloc] initWithProjectileID:kEnemyProjectile_HeatSeekingMissile location:Vector2fMake(currentLocation.x + wingRight->location.x + wingRight->weapons[0].weaponCoord.x, currentLocation.y + wingRight->location.y + wingRight->weapons[0].weaponCoord.y) angle:-60.0f speed:1 rate:3 andPlayerShipRef:playerShipRef];
+            [wingRightHeatSeekingProjectile stopProjectile];
+            
+            mainBodyLeftHeatSeekingProjectile = [[HeatSeekingMissile alloc] initWithProjectileID:kEnemyProjectile_HeatSeekingMissile location:Vector2fMake(currentLocation.x + mainBody->weapons[2].weaponCoord.x, currentLocation.y + mainBody->weapons[2].weaponCoord.y) angle:-120.0f speed:1 rate:3 andPlayerShipRef:playerShipRef];
+            [mainBodyLeftHeatSeekingProjectile stopProjectile];
+            
+            mainBodyRightHeatSeekingProjectile = [[HeatSeekingMissile alloc] initWithProjectileID:kEnemyProjectile_HeatSeekingMissile location:Vector2fMake(currentLocation.x + mainBody->weapons[1].weaponCoord.x, currentLocation.y + mainBody->weapons[1].weaponCoord.y) angle:-60.0f speed:1 rate:3 andPlayerShipRef:playerShipRef];
+            [mainBodyRightHeatSeekingProjectile stopProjectile];
             
             NSLog(@"Stage One");
         }
@@ -195,7 +217,7 @@
                 }
             }
                         
-            if (bossRotationTimer > 15.0f && bossReRotationTimer < 15.0f) {
+            if (bossRotationTimer > 14.0f && bossReRotationTimer < 5.0f) {
                 bossReRotationTimer += delta;
                 bossRotated = YES;
                 
@@ -224,7 +246,7 @@
                     }
                 }
             }
-            else if(bossReRotationTimer >= 15.0f) {                
+            else if(bossReRotationTimer >= 5.0f) {                
                 for(int i = 0; i < numberOfModules; i++){
                     if (modularObjects[i].rotation != 0.0f) {
                         modularObjects[i].rotation -= 0.5;
@@ -276,6 +298,9 @@
                 
                 [wingLeftTurretProjectile stopProjectile];
                 [wingRightTurretProjectile stopProjectile];
+                
+                [wingLeftHeatSeekingProjectile playProjectile];
+                [wingRightHeatSeekingProjectile playProjectile];
             }
         }
         
@@ -327,6 +352,18 @@
                 [mainBodyCenterProjectile release];
                 mainBodyCenterProjectile = [[WaveProjectile alloc] initWithProjectileID:kEnemyProjectile_WaveLevelSix_DoubleMedium location:Vector2fMake(currentLocation.x + mainBody->weapons[0].weaponCoord.x, currentLocation.y + mainBody->weapons[0].weaponCoord.y) andAngle:-90.0f];
                 
+                [wingLeftHeatSeekingProjectile stopProjectile];
+                [wingRightHeatSeekingProjectile stopProjectile];
+                
+                [mainBodyLeftHeatSeekingProjectile playProjectile];
+                [mainBodyRightHeatSeekingProjectile playProjectile];
+                
+                [mainBodyCenterProjectile release];
+                mainBodyCenterProjectile = [[WaveProjectile alloc] initWithProjectileID:kEnemyProjectile_WaveLevelTwo_DoubleSmall location:Vector2fMake(currentLocation.x + mainBody->weapons[0].weaponCoord.x, currentLocation.y + mainBody->weapons[0].weaponCoord.y) andAngle:-90.0f];
+                
+                [mainBodyLeftProjectile stopProjectile];
+                [mainBodyRightProjectile stopProjectile];
+                
                 NSLog(@"Stage Three");
             }
         }
@@ -359,9 +396,11 @@
         
         if(wingLeft->isDead){
             [wingLeftDeathEmitter update:delta];
+            [wingLeftHeatSeekingProjectile stopProjectile];
         }
         if(wingRight->isDead){
             [wingRightDeathEmitter update:delta];
+            [wingRightHeatSeekingProjectile stopProjectile];
         }
         
         if(mainBody->isDead){
@@ -422,9 +461,15 @@
     [wingLeftTurretProjectile render];
     [wingRightTurretProjectile render];
     
+    [wingLeftHeatSeekingProjectile render];
+    [wingRightHeatSeekingProjectile render];
+    
     [wingLeftDeathEmitter renderParticles];
     [wingRightDeathEmitter renderParticles];
     [mainBodyDeathEmitter renderParticles];
+    
+    [mainBodyLeftHeatSeekingProjectile render];
+    [mainBodyRightHeatSeekingProjectile render];
     
     if(DEBUG) {
         glPushMatrix();

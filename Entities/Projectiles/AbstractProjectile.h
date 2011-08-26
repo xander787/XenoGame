@@ -89,6 +89,8 @@ typedef enum _ProjectileID {
     kEnemyProjectile_MissileLevelNine_Quintuple,
     kEnemyProjectile_MissileLevelTen_Sextuple,
     
+    kEnemyProjectile_HeatSeekingMissile,
+    
     kPlayerParticle_Single,
     kPlayerParticle_Double,
     kPlayerParticle_Triple,

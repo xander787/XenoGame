@@ -14,6 +14,7 @@
 #import <Foundation/Foundation.h>
 #import "BossShip.h"
 #import "AbstractProjectile.h"
+#import "HeatSeekingMissile.h"
 
 typedef enum _HyperionState {
     kHyperionState_StageOne = 0,
@@ -36,6 +37,10 @@ typedef enum _HyperionState {
     AbstractProjectile  *wingRightTurretProjectile;
     AbstractProjectile  *wingLeftPointProjectile;
     AbstractProjectile  *wingLeftTurretProjectile;
+    AbstractProjectile  *wingLeftHeatSeekingProjectile;
+    AbstractProjectile  *wingRightHeatSeekingProjectile;
+    AbstractProjectile  *mainBodyLeftHeatSeekingProjectile;
+    AbstractProjectile  *mainBodyRightHeatSeekingProjectile;
     
     ParticleEmitter     *mainBodyDeathEmitter;
     ParticleEmitter     *wingLeftDeathEmitter;
