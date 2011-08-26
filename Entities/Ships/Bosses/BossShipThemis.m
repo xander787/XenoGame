@@ -100,7 +100,7 @@
                 chainShootTimer -= delta;
             }
             
-            NSLog(@"%f", chainShootTimer);
+            //NSLog(@"%f", chainShootTimer);
             
             if(holdingTimer >= 1.4){
                 holdingTimer = 0.0;
@@ -122,12 +122,13 @@
             }
             
             if (shouldShootChain && !chainEndDeployed) {
-                if (chainToShootIsLeft) {
-                    chainEndLeft->desiredLocation = Vector2fMake(chainEndLeft->location.x, (playerShipRef.currentLocation.y - 10) - self.currentLocation.y);
+                if (chainToShootIsLeft) {// abs((100 - ((231/2) - 100)) / 7) * 7
+
+                    chainEndLeft->desiredLocation = Vector2fMake(chainEndLeft->location.x, chainEndLeft->location.y - (((chainEndLeft->location.y + self.currentLocation.y) - (floor(100/7)*7)) + 16));
                     chainEndDeployed = YES;
                 }
                 else if (chainToShootIsRight) {
-                    chainEndRight->desiredLocation = Vector2fMake(chainEndRight->location.x, (playerShipRef.currentLocation.y - 10) - self.currentLocation.y);
+                    chainEndRight->desiredLocation = Vector2fMake(chainEndRight->location.x, chainEndRight->location.y - (((chainEndRight->location.y + self.currentLocation.y) - (floor(100/7)*7)) + 16));
                     chainEndDeployed = YES;
                 }
             }
@@ -165,13 +166,31 @@
 }
 
 - (void)render {
+    // Render chains for right side
+    int numChainLinks = (abs((self.currentLocation.y + kRightChainClamp_Y)-(chainEndRight->location.y + self.currentLocation.y)) / 7) - 1;
+    for (int i = 0; i < numChainLinks; i++) {
+        Image *chainLink = [[Image alloc] initWithImage:@"kBossThemisChainLink.png" scale:Scale2fOne];
+        [chainLink renderAtPoint:CGPointMake((chainEndRight->location.x + self.currentLocation.x + 2), ((self.currentLocation.y + kRightChainClamp_Y) - (i * 7)) - kChainSegmentConnectingHeight) centerOfImage:YES]; 
+        
+        [chainLink release];
+    }
+    
+    // Render chains for Left side
+    numChainLinks = (abs((self.currentLocation.y + kRightChainClamp_Y)-(chainEndLeft->location.y + self.currentLocation.y)) / 7) - 1;
+    for (int i = 0; i < numChainLinks; i++) {
+        Image *chainLink = [[Image alloc] initWithImage:@"kBossThemisChainLink.png" scale:Scale2fOne];
+        [chainLink renderAtPoint:CGPointMake((chainEndLeft->location.x + self.currentLocation.x - 2), ((self.currentLocation.y + kRightChainClamp_Y) - (i * 7)) - kChainSegmentConnectingHeight) centerOfImage:YES]; 
+        
+        [chainLink release];
+    }
+
     for(int i = 0; i < numberOfModules; i++) {
         if (modularObjects[i].isDead == NO) {
             [modularObjects[i].moduleImage setRotation:modularObjects[i].rotation];
             [modularObjects[i].moduleImage renderAtPoint:CGPointMake(currentLocation.x + modularObjects[i].location.x, currentLocation.y + modularObjects[i].location.y) centerOfImage:YES];
         }
     }
-    
+        
     if(DEBUG) {
         glPushMatrix();
         
