@@ -130,6 +130,10 @@
         currentLocation.x += ((desiredLocation.x - currentLocation.x) / bossSpeed) * (pow(1.584893192, bossSpeed/2.5)) * delta;
         currentLocation.y += ((desiredLocation.y - currentLocation.y) / bossSpeed) * (pow(1.584893192, bossSpeed/2.5)) * delta;
     }
+    else if(state == kHeliosState_StageTwo) {
+        currentLocation.x += ((desiredLocation.x - currentLocation.x) / bossSpeed) * (pow(1.584893192, bossSpeed*2)) * delta;
+        currentLocation.y += ((desiredLocation.y - currentLocation.y) / bossSpeed) * (pow(1.584893192, bossSpeed*2)) * delta;
+    }
     
     //Set the centers of the polygons so they get rendered properly
     for(int i = 0; i < numberOfModules; i++){
@@ -196,6 +200,23 @@
                 currentStagePaused = YES;
             }
         }
+        
+        if (state == kHeliosState_StageTwo) {
+            holdingTimer += delta;
+            
+            if(holdingTimer >= 1.4){
+                holdingTimer = 0.0;
+                
+                if(rightWing->location.x <= 0){
+                    rightWing->desiredLocation.x = RANDOM_0_TO_1() * 160;
+                }
+                else if(rightWing->location.x >= 0){
+                    rightWing->desiredLocation.x = -(RANDOM_0_TO_1() * 160);
+                }
+                
+                leftWing->desiredLocation = Vector2fMake(rightWing->desiredLocation.x - 55.0f, -150.0f);
+            }   
+        }
     }
     else if(currentStagePaused) {
         if (state == kHeliosState_StageOne) {
@@ -209,6 +230,11 @@
             
             leftWing->isDead = NO;
             rightWing->isDead = NO;
+            
+            if (abs(leftWing->desiredLocation.x - leftWing->location.x) < 3 && abs(leftWing->desiredLocation.y - leftWing->location.y) < 3 && abs(rightWing->desiredLocation.x - rightWing->location.x) < 3 && abs(rightWing->desiredLocation.y - rightWing->location.y) < 3) {
+                currentStagePaused = NO;
+                state = kHeliosState_StageTwo;
+            }
         }
     }
     

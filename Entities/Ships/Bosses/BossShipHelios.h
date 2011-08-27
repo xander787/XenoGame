@@ -40,6 +40,8 @@ typedef enum _HeliosState {
     
     BOOL                wingRightFlewOff;
     BOOL                wingLeftFlewOff;
+    Vector2f            wingShipHybridLocation;
+    Vector2f            desiredWingShipLocation;
 }
 
 - (id)initWithLocation:(CGPoint)aPoint andPlayerShipRef:(PlayerShip *)playerRef;
