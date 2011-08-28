@@ -33,6 +33,10 @@ typedef enum _ThemisState {
     BOOL                chainEndDeployed;
     BOOL                chainToShootIsRight;
     BOOL                chainToShootIsLeft;
+    
+    AbstractProjectile  *mainBodyCenterBullet;
+    AbstractProjectile  *mainBodyLeftBullet;
+    AbstractProjectile  *mainBodyRightBullet;
 }
 
 - (id)initWithLocation:(CGPoint)aPoint andPlayershipRef:(PlayerShip *)playerRef;

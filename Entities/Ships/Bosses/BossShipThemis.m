@@ -38,6 +38,11 @@
         for(int i = 0; i < numberOfModules; i++) {
             modularObjects[i].desiredLocation = modularObjects[i].location;
         }
+        
+        
+        mainBodyCenterBullet = [[BulletProjectile alloc] initWithProjectileID:kEnemyProjectile_BulletLevelOne_Single location:Vector2fMake(currentLocation.x + mainBody->weapons[2].weaponCoord.x, currentLocation.y + mainBody->weapons[2].weaponCoord.y) andAngle:-90.0f];
+        mainBodyLeftBullet = [[BulletProjectile alloc] initWithProjectileID:kEnemyProjectile_BulletLevelOne_Single location:Vector2fMake(currentLocation.x + mainBody->weapons[0].weaponCoord.x, currentLocation.y + mainBody->weapons[0].weaponCoord.y) andAngle:-90.0f];
+        mainBodyRightBullet = [[BulletProjectile alloc] initWithProjectileID:kEnemyProjectile_BulletLevelOne_Single location:Vector2fMake(currentLocation.x + mainBody->weapons[1].weaponCoord.x, currentLocation.y + mainBody->weapons[1].weaponCoord.y) andAngle:-90.0f];
     }
     return self;
 }
@@ -71,6 +76,13 @@
     }
     
     if (shipIsDeployed) {
+        
+        [mainBodyCenterBullet setLocation:Vector2fMake(currentLocation.x + mainBody->weapons[2].weaponCoord.x, currentLocation.y + mainBody->weapons[2].weaponCoord.y)];
+        [mainBodyLeftBullet setLocation:Vector2fMake(currentLocation.x + mainBody->weapons[0].weaponCoord.x, currentLocation.y + mainBody->weapons[0].weaponCoord.y)];
+        [mainBodyRightBullet setLocation:Vector2fMake(currentLocation.x + mainBody->weapons[1].weaponCoord.x, currentLocation.y + mainBody->weapons[1].weaponCoord.y)];
+        [mainBodyCenterBullet update:delta];
+        [mainBodyLeftBullet update:delta];
+        [mainBodyRightBullet update:delta];
         
         if (state == -1) {
             state = kThemisState_StageOne;
@@ -166,6 +178,11 @@
 }
 
 - (void)render {
+    //Render projectiles first, so they're under the ship
+    [mainBodyCenterBullet render];
+    [mainBodyLeftBullet render];
+    [mainBodyRightBullet render];
+    
     // Render chains for right side
     int numChainLinks = (abs((self.currentLocation.y + kRightChainClamp_Y)-(chainEndRight->location.y + self.currentLocation.y)) / 7) - 1;
     for (int i = 0; i < numChainLinks; i++) {

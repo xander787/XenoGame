@@ -490,7 +490,7 @@
 		</array>
 		<key>kShipTurretPoints</key>
 		<array>
-			<string>46,49;-43,49;0,74</string>
+			<string>46,-49;-43,-49;0,-74</string>
 			<string>0,0</string>
 			<string>0,0</string>
 		</array>
