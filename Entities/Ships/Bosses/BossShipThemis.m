@@ -43,6 +43,67 @@
         mainBodyCenterBullet = [[BulletProjectile alloc] initWithProjectileID:kEnemyProjectile_BulletLevelOne_Single location:Vector2fMake(currentLocation.x + mainBody->weapons[2].weaponCoord.x, currentLocation.y + mainBody->weapons[2].weaponCoord.y) andAngle:-90.0f];
         mainBodyLeftBullet = [[BulletProjectile alloc] initWithProjectileID:kEnemyProjectile_BulletLevelOne_Single location:Vector2fMake(currentLocation.x + mainBody->weapons[0].weaponCoord.x, currentLocation.y + mainBody->weapons[0].weaponCoord.y) andAngle:-90.0f];
         mainBodyRightBullet = [[BulletProjectile alloc] initWithProjectileID:kEnemyProjectile_BulletLevelOne_Single location:Vector2fMake(currentLocation.x + mainBody->weapons[1].weaponCoord.x, currentLocation.y + mainBody->weapons[1].weaponCoord.y) andAngle:-90.0f];
+        
+        mainBodyEmitter = [[ParticleEmitter alloc] initParticleEmitterWithImageNamed:@"texture.png"
+                                                                            position:Vector2fZero
+                                                              sourcePositionVariance:Vector2fZero
+                                                                               speed:0.5
+                                                                       speedVariance:0.2
+                                                                    particleLifeSpan:0.5
+                                                            particleLifespanVariance:0.1
+                                                                               angle:0.0
+                                                                       angleVariance:360.0
+                                                                             gravity:Vector2fZero
+                                                                          startColor:Color4fMake(1.0, 0.3, 0.3, 1.0)
+                                                                  startColorVariance:Color4fMake(0.3, 0.3, 0.3, 0.0)
+                                                                         finishColor:Color4fMake(0.7, 0.3, 0.3, 1.0)
+                                                                 finishColorVariance:Color4fMake(0.3, 0.3, 0.3, 0.0)
+                                                                        maxParticles:1000
+                                                                        particleSize:10.0
+                                                                  finishParticleSize:10.0
+                                                                particleSizeVariance:0.0
+                                                                            duration:0.8
+                                                                       blendAdditive:YES];
+        leftChainEmitter = [[ParticleEmitter alloc] initParticleEmitterWithImageNamed:@"texture.png"
+                                                                             position:Vector2fZero
+                                                               sourcePositionVariance:Vector2fZero
+                                                                                speed:0.7
+                                                                        speedVariance:0.2
+                                                                     particleLifeSpan:0.2
+                                                             particleLifespanVariance:0.1
+                                                                                angle:0.0
+                                                                        angleVariance:360.0
+                                                                              gravity:Vector2fZero
+                                                                           startColor:Color4fMake(1.0, 0.3, 0.3, 1.0)
+                                                                   startColorVariance:Color4fMake(0.3, 0.3, 0.3, 0.0)
+                                                                          finishColor:Color4fMake(0.7, 0.3, 0.3, 1.0)
+                                                                  finishColorVariance:Color4fMake(0.3, 0.3, 0.3, 0.0)
+                                                                         maxParticles:1000
+                                                                         particleSize:7.0
+                                                                   finishParticleSize:7.0
+                                                                 particleSizeVariance:0.0
+                                                                             duration:0.1
+                                                                        blendAdditive:YES];
+        rightChainEmitter = [[ParticleEmitter alloc] initParticleEmitterWithImageNamed:@"texture.png"
+                                                                              position:Vector2fZero
+                                                                sourcePositionVariance:Vector2fZero
+                                                                                 speed:0.7
+                                                                         speedVariance:0.2
+                                                                      particleLifeSpan:0.2
+                                                              particleLifespanVariance:0.1
+                                                                                 angle:0.0
+                                                                         angleVariance:360.0
+                                                                               gravity:Vector2fZero
+                                                                            startColor:Color4fMake(1.0, 0.3, 0.3, 1.0)
+                                                                    startColorVariance:Color4fMake(0.3, 0.3, 0.3, 0.0)
+                                                                           finishColor:Color4fMake(0.7, 0.3, 0.3, 1.0)
+                                                                   finishColorVariance:Color4fMake(0.3, 0.3, 0.3, 0.0)
+                                                                          maxParticles:1000
+                                                                          particleSize:7.0
+                                                                    finishParticleSize:7.0
+                                                                  particleSizeVariance:0.0
+                                                                              duration:0.1
+                                                                         blendAdditive:YES];
     }
     return self;
 }
@@ -55,12 +116,12 @@
         currentLocation.y += ((desiredLocation.y - currentLocation.y) / bossSpeed) * (pow(1.584893192, bossSpeed)) * delta;
     }
     else if(state == kThemisState_StageOne) {
+        currentLocation.x += ((desiredLocation.x - currentLocation.x) / bossSpeed) * (pow(1.584893192, bossSpeed/2)) * delta;
+        currentLocation.y += ((desiredLocation.y - currentLocation.y) / bossSpeed) * (pow(1.584893192, bossSpeed/2)) * delta;
+    }
+    else if(state == kThemisState_StageTwo && !mainBody->isDead) {
         currentLocation.x += ((desiredLocation.x - currentLocation.x) / bossSpeed) * (pow(1.584893192, bossSpeed/1.25)) * delta;
         currentLocation.y += ((desiredLocation.y - currentLocation.y) / bossSpeed) * (pow(1.584893192, bossSpeed/1.25)) * delta;
-    }
-    else if(state == kThemisState_StageTwo) {
-        currentLocation.x += ((desiredLocation.x - currentLocation.x) / bossSpeed) * (pow(1.584893192, bossSpeed)) * delta;
-        currentLocation.y += ((desiredLocation.y - currentLocation.y) / bossSpeed) * (pow(1.584893192, bossSpeed)) * delta;
     }
     
     //Set the centers of the polygons so they get rendered properly
@@ -83,6 +144,26 @@
         [mainBodyCenterBullet update:delta];
         [mainBodyLeftBullet update:delta];
         [mainBodyRightBullet update:delta];
+        
+        if(mainBody->isDead){
+            updateMainBodyDeathEmitter = YES;
+            mainBody->isDead = NO;
+        }
+        if(updateMainBodyDeathEmitter){
+            [mainBodyEmitter setSourcePosition:Vector2fMake(currentLocation.x + mainBody->location.x, currentLocation.y + mainBody->location.y)];
+            [mainBodyEmitter update:delta];
+            if(mainBodyEmitter.particleCount == 0){
+                mainBody->isDead = YES;
+            }
+        }
+        if(chainEndLeft->isDead){
+            [leftChainEmitter setSourcePosition:Vector2fMake(currentLocation.x + chainEndLeft->location.x, currentLocation.y + chainEndLeft->location.y)];
+            [leftChainEmitter update:delta];
+        }
+        if(chainEndRight->isDead){
+            [rightChainEmitter setSourcePosition:Vector2fMake(currentLocation.x + chainEndRight->location.x, currentLocation.y + chainEndRight->location.y)];
+            [rightChainEmitter update:delta];
+        }
         
         if (state == -1) {
             state = kThemisState_StageOne;
@@ -134,12 +215,12 @@
             }
             
             if (shouldShootChain && !chainEndDeployed) {
-                if (chainToShootIsLeft) {// abs((100 - ((231/2) - 100)) / 7) * 7
+                if (chainToShootIsLeft && !chainEndLeft->isDead) {// abs((100 - ((231/2) - 100)) / 7) * 7
 
                     chainEndLeft->desiredLocation = Vector2fMake(chainEndLeft->location.x, chainEndLeft->location.y - (((chainEndLeft->location.y + self.currentLocation.y) - (floor(100/7)*7)) + 16));
                     chainEndDeployed = YES;
                 }
-                else if (chainToShootIsRight) {
+                else if (chainToShootIsRight && !chainEndRight->isDead) {
                     chainEndRight->desiredLocation = Vector2fMake(chainEndRight->location.x, chainEndRight->location.y - (((chainEndRight->location.y + self.currentLocation.y) - (floor(100/7)*7)) + 16));
                     chainEndDeployed = YES;
                 }
@@ -151,15 +232,50 @@
                     chainDeploymentTimer = 0.0f;
                     shouldShootChain = NO;
                     chainEndDeployed = NO;
-                    if (chainToShootIsLeft) {
+                    if (chainToShootIsLeft && !chainEndLeft->isDead) {
                         chainEndLeft->desiredLocation = Vector2fMake(chainEndLeft->location.x, chainEndLeft->defaultLocation.y);
                         chainEndDeployed = NO;
                     }
-                    else if (chainToShootIsRight) {
+                    else if (chainToShootIsRight && !chainEndRight->isDead) {
                         chainEndRight->desiredLocation = Vector2fMake(chainEndRight->location.x, chainEndRight->defaultLocation.y);
                         chainEndDeployed = NO;
                     }
                 }
+            }
+            
+            if(chainEndLeft->isDead && chainEndRight->isDead){
+                
+                [mainBodyCenterBullet release];
+                [mainBodyLeftBullet release];
+                [mainBodyRightBullet release];
+                mainBodyCenterBullet = [[BulletProjectile alloc] initWithProjectileID:kEnemyProjectile_BulletLevelThree_Double location:Vector2fMake(currentLocation.x + mainBody->weapons[2].weaponCoord.x, currentLocation.y + mainBody->weapons[2].weaponCoord.y) andAngle:-90.0f];
+                mainBodyLeftBullet = [[BulletProjectile alloc] initWithProjectileID:kEnemyProjectile_BulletLevelThree_Double location:Vector2fMake(currentLocation.x + mainBody->weapons[0].weaponCoord.x, currentLocation.y + mainBody->weapons[0].weaponCoord.y) andAngle:-90.0f];
+                mainBodyRightBullet = [[BulletProjectile alloc] initWithProjectileID:kEnemyProjectile_BulletLevelThree_Double location:Vector2fMake(currentLocation.x + mainBody->weapons[1].weaponCoord.x, currentLocation.y + mainBody->weapons[1].weaponCoord.y) andAngle:-90.0f];
+                
+                
+                state = kThemisState_StageTwo;
+            }
+        }
+        else if(state == kThemisState_StageTwo){
+            holdingTimer += delta;
+            
+            if(holdingTimer >= 1.4){
+                holdingTimer = 0.0;
+                
+                if(currentLocation.x <= 160){
+                    desiredLocation.x = (MAX(0.4, RANDOM_0_TO_1()) * 160) + 160;
+                }
+                else if(currentLocation.x >= 160){
+                    desiredLocation.x = (MIN(0.6, RANDOM_0_TO_1()) * 160);
+                }
+                
+                desiredLocation.y = currentLocation.y + (RANDOM_MINUS_1_TO_1() * 150);
+                
+                desiredLocation.x = MAX(50, desiredLocation.x);
+                desiredLocation.y = MAX(320, desiredLocation.y);
+                
+                desiredLocation.x = MIN(desiredLocation.x, 270);
+                desiredLocation.y = MIN(desiredLocation.y, 430);
             }
         }
     }
@@ -172,9 +288,22 @@
 }
 
 - (void)hitModule:(int)module withDamage:(int)damage {
-    //modularObjects[module].moduleHealth -= damage;
-    
-    //[super hitModule:module withDamage:damage];
+    if(!chainEndDeployed && !shouldShootChain){
+        modularObjects[module].moduleHealth -= damage;
+        [super hitModule:module withDamage:damage];
+    }
+    else if(chainToShootIsLeft){
+        if(module != 2){
+            modularObjects[module].moduleHealth -= damage;
+            [super hitModule:module withDamage:damage];
+        }
+    }
+    else if(chainToShootIsRight){
+        if(module != 1){
+            modularObjects[module].moduleHealth -= damage;
+            [super hitModule:module withDamage:damage];
+        }
+    }
 }
 
 - (void)render {
@@ -202,11 +331,23 @@
     }
 
     for(int i = 0; i < numberOfModules; i++) {
-        if (modularObjects[i].isDead == NO) {
-            [modularObjects[i].moduleImage setRotation:modularObjects[i].rotation];
-            [modularObjects[i].moduleImage renderAtPoint:CGPointMake(currentLocation.x + modularObjects[i].location.x, currentLocation.y + modularObjects[i].location.y) centerOfImage:YES];
+        if (!modularObjects[i].isDead) {
+            if(i != 0){
+                [modularObjects[i].moduleImage setRotation:modularObjects[i].rotation];
+                [modularObjects[i].moduleImage renderAtPoint:CGPointMake(currentLocation.x + modularObjects[i].location.x, currentLocation.y + modularObjects[i].location.y) centerOfImage:YES];
+            }
+            else {
+                //Special rendering for the main body
+                if(!updateMainBodyDeathEmitter){
+                    [mainBody->moduleImage renderAtPoint:CGPointMake(currentLocation.x + mainBody->location.x, currentLocation.y + mainBody->location.y) centerOfImage:YES];
+                }
+            }
         }
     }
+    
+    [mainBodyEmitter renderParticles];
+    [leftChainEmitter renderParticles];
+    [rightChainEmitter renderParticles];
         
     if(DEBUG) {
         glPushMatrix();

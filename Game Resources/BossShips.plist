@@ -557,11 +557,11 @@
 		<key>kModularDestructionOrder</key>
 		<array>
 			<array>
-				<string>0</string>
-			</array>
-			<array>
 				<string>1</string>
 				<string>2</string>
+			</array>
+			<array>
+				<string>0</string>
 			</array>
 		</array>
 		<key>kShipModuleImages</key>

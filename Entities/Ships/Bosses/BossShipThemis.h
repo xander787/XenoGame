@@ -37,6 +37,12 @@ typedef enum _ThemisState {
     AbstractProjectile  *mainBodyCenterBullet;
     AbstractProjectile  *mainBodyLeftBullet;
     AbstractProjectile  *mainBodyRightBullet;
+    
+    ParticleEmitter     *leftChainEmitter;
+    ParticleEmitter     *rightChainEmitter;
+    ParticleEmitter     *mainBodyEmitter;
+    
+    BOOL                updateMainBodyDeathEmitter;
 }
 
 - (id)initWithLocation:(CGPoint)aPoint andPlayershipRef:(PlayerShip *)playerRef;
