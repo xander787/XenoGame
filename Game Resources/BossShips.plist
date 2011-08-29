@@ -198,25 +198,113 @@
 		<string>kBossTypeBoss</string>
 		<key>kCollisionBoundingPoints</key>
 		<array>
-			<string>0,0;0,130;130,130;130,0</string>
+			<array>
+				<string>0,36;22,33;36,21;38,-4;31,-26;0,-41;-31,-27;-38,-4;-36,21;-23,33</string>
+			</array>
+			<array>
+				<string>5,-22;-4,-22;-14,25;16,25</string>
+			</array>
+			<array>
+				<string>-6,-31;-14,-31;-1,32;15,17;4,-18</string>
+			</array>
+			<array>
+				<string>-2,-11;-16,-9;-11,1;12,13;16,3</string>
+			</array>
+			<array>
+				<string>0,-19;-20,1;-21,18;15,13;23,5;23,-4;15,-12</string>
+			</array>
+			<array>
+				<string>6,-12;-5,-2;-12,11;-6,14;12,-3</string>
+			</array>
+			<array>
+				<string>7,-9;-3,-10;-7,8;-1,10</string>
+			</array>
+			<array>
+				<string>6,-31;14,-31;1,32;-15,17;-4,-18</string>
+			</array>
+			<array>
+				<string>2,-11;16,-9;11,1;-12,13;-16,3</string>
+			</array>
+			<array>
+				<string>0,-19;20,1;21,18;-15,13;-23,5;-23,-4;-15,-12</string>
+			</array>
+			<array>
+				<string>-6,-12;5,-2;12,11;6,14;-12,-3</string>
+			</array>
+			<array>
+				<string>-7,-9;3,-10;7,8;1,10</string>
+			</array>
+			<array>
+				<string>8,21;-9,21;-6,-23;5,-23</string>
+			</array>
 		</array>
 		<key>kModularDestructionOrder</key>
 		<array>
 			<array>
-				<integer>0</integer>
+				<integer>1</integer>
+				<string>2</string>
+				<string>3</string>
+				<string>4</string>
+				<string>5</string>
+				<string>6</string>
+				<string>7</string>
+				<string>8</string>
+				<string>9</string>
+				<string>10</string>
+				<string>11</string>
+				<string>12</string>
+			</array>
+			<array>
+				<string>0</string>
 			</array>
 		</array>
 		<key>kShipModuleImages</key>
 		<array>
-			<string>kBossKronos.png</string>
+			<string>kBossKronosMainBody.png</string>
+			<string>kBossKronosMainBodyHead.png</string>
+			<string>kBossKronosMainBodyBottomLeftTurret.png</string>
+			<string>kBossKronosMainBodyMiddleLeftTurret.png</string>
+			<string>kBossKronosMainBodyMiddleLeftWing.png</string>
+			<string>kBossKronosMainBodyTopLeftCannon.png</string>
+			<string>kBossKronosMainBodyTopLeftTurret.png</string>
+			<string>kBossKronosMainBodyBottomRightTurret.png</string>
+			<string>kBossKronosMainBodyMiddleRightTurret.png</string>
+			<string>kBossKronosMainBodyMiddleRightWing.png</string>
+			<string>kBossKronosMainBodyTopRightCannon.png</string>
+			<string>kBossKronosMainBodyTopRightTurret.png</string>
+			<string>kBossKronosMainBodyTail.png</string>
 		</array>
 		<key>kShipModulePoints</key>
 		<array>
 			<string>0,0</string>
+			<string>0,-65</string>
+			<string>-32,-57</string>
+			<string>-50,-27</string>
+			<string>-62,-4</string>
+			<string>-35,36</string>
+			<string>-18,43</string>
+			<string>32,-57</string>
+			<string>50,-27</string>
+			<string>63,-4</string>
+			<string>36,36</string>
+			<string>19,43</string>
+			<string>0,58</string>
 		</array>
 		<key>kShipTurretPoints</key>
 		<array>
-			<string>65,65</string>
+			<string>0,0</string>
+			<string>-4,-20;5,-20</string>
+			<string>-14,-31</string>
+			<string>-9,-11</string>
+			<string>0,-28</string>
+			<string>-9,11</string>
+			<string>-1,9</string>
+			<string>14,-31</string>
+			<string>9,-11</string>
+			<string>0,-28</string>
+			<string>-9,11</string>
+			<string>1,9</string>
+			<string>0,8</string>
 		</array>
 	</dict>
 	<key>kBossHelios</key>

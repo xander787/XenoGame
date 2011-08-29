@@ -130,7 +130,7 @@
     }
     
     //Re-initialize our emitter
-    if(elapsedTime >= rate){
+    if(elapsedTime >= rate && !isStopped){
         elapsedTime = 0;
         
         for (int emitterPolyCount = 0; emitterPolyCount < [emitters count]; emitterPolyCount++){

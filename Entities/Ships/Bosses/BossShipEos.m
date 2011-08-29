@@ -18,8 +18,12 @@
 @implementation BossShipEos
 
 - (id)initWithLocation:(CGPoint)aPoint andPlayershipRef:(PlayerShip *)playerRef {
-    
-    return nil;
+    self = [super initWithBossID:kBoss_Eos initialLocation:aPoint andPlayerShipRef:playerRef];
+    if(self){
+        
+        
+    }
+    return self;
 }
 
 - (void)update:(GLfloat)delta {
@@ -28,6 +32,10 @@
 
 - (void)hitModule:(int)module withDamage:(int)damage {
     modularObjects[module].moduleHealth -= damage;
+}
+
+- (void)render {
+    
 }
 
 - (void)dealloc {

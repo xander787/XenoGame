@@ -177,6 +177,19 @@
 		B969708B13E1335B002EC552 /* Slider.png in Resources */ = {isa = PBXBuildFile; fileRef = B969708913E1335B002EC552 /* Slider.png */; };
 		B969708C13E1335B002EC552 /* SliderBar.png in Resources */ = {isa = PBXBuildFile; fileRef = B969708A13E1335B002EC552 /* SliderBar.png */; };
 		B96F00AE140737F000619833 /* HeatSeekingMissile.m in Sources */ = {isa = PBXBuildFile; fileRef = B96F00AD140737F000619833 /* HeatSeekingMissile.m */; };
+		B96F00BC1409EFC300619833 /* kBossKronosMainBody.png in Resources */ = {isa = PBXBuildFile; fileRef = B96F00AF1409EFBD00619833 /* kBossKronosMainBody.png */; };
+		B96F00BD1409EFC300619833 /* kBossKronosMainBodyBottomLeftTurret.png in Resources */ = {isa = PBXBuildFile; fileRef = B96F00B01409EFBE00619833 /* kBossKronosMainBodyBottomLeftTurret.png */; };
+		B96F00BE1409EFC300619833 /* kBossKronosMainBodyBottomRightTurret.png in Resources */ = {isa = PBXBuildFile; fileRef = B96F00B11409EFBF00619833 /* kBossKronosMainBodyBottomRightTurret.png */; };
+		B96F00BF1409EFC300619833 /* kBossKronosMainBodyHead.png in Resources */ = {isa = PBXBuildFile; fileRef = B96F00B21409EFBF00619833 /* kBossKronosMainBodyHead.png */; };
+		B96F00C01409EFC300619833 /* kBossKronosMainBodyMiddleLeftTurret.png in Resources */ = {isa = PBXBuildFile; fileRef = B96F00B31409EFC000619833 /* kBossKronosMainBodyMiddleLeftTurret.png */; };
+		B96F00C11409EFC300619833 /* kBossKronosMainBodyMiddleLeftWing.png in Resources */ = {isa = PBXBuildFile; fileRef = B96F00B41409EFC000619833 /* kBossKronosMainBodyMiddleLeftWing.png */; };
+		B96F00C21409EFC300619833 /* kBossKronosMainBodyMiddleRightTurret.png in Resources */ = {isa = PBXBuildFile; fileRef = B96F00B51409EFC000619833 /* kBossKronosMainBodyMiddleRightTurret.png */; };
+		B96F00C31409EFC300619833 /* kBossKronosMainBodyMiddleRightWing.png in Resources */ = {isa = PBXBuildFile; fileRef = B96F00B61409EFC000619833 /* kBossKronosMainBodyMiddleRightWing.png */; };
+		B96F00C41409EFC300619833 /* kBossKronosMainBodyTail.png in Resources */ = {isa = PBXBuildFile; fileRef = B96F00B71409EFC100619833 /* kBossKronosMainBodyTail.png */; };
+		B96F00C51409EFC300619833 /* kBossKronosMainBodyTopLeftCannon.png in Resources */ = {isa = PBXBuildFile; fileRef = B96F00B81409EFC200619833 /* kBossKronosMainBodyTopLeftCannon.png */; };
+		B96F00C61409EFC300619833 /* kBossKronosMainBodyTopLeftTurret.png in Resources */ = {isa = PBXBuildFile; fileRef = B96F00B91409EFC200619833 /* kBossKronosMainBodyTopLeftTurret.png */; };
+		B96F00C71409EFC300619833 /* kBossKronosMainBodyTopRightCannon.png in Resources */ = {isa = PBXBuildFile; fileRef = B96F00BA1409EFC200619833 /* kBossKronosMainBodyTopRightCannon.png */; };
+		B96F00C81409EFC300619833 /* kBossKronosMainBodyTopRightTurret.png in Resources */ = {isa = PBXBuildFile; fileRef = B96F00BB1409EFC200619833 /* kBossKronosMainBodyTopRightTurret.png */; };
 		B97A805612C964AD005FBB61 /* AbstractProjectile.m in Sources */ = {isa = PBXBuildFile; fileRef = B97A805512C964AD005FBB61 /* AbstractProjectile.m */; };
 		B98A705E13F324F300773281 /* texture-missile.png in Resources */ = {isa = PBXBuildFile; fileRef = B98A705D13F324F300773281 /* texture-missile.png */; };
 		B98A706413F6059D00773281 /* BossHealthBar.png in Resources */ = {isa = PBXBuildFile; fileRef = B98A706313F6059C00773281 /* BossHealthBar.png */; };
@@ -456,6 +469,19 @@
 		B969708A13E1335B002EC552 /* SliderBar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SliderBar.png; sourceTree = "<group>"; };
 		B96F00AC140737F000619833 /* HeatSeekingMissile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HeatSeekingMissile.h; path = Entities/Projectiles/HeatSeekingMissile.h; sourceTree = "<group>"; };
 		B96F00AD140737F000619833 /* HeatSeekingMissile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HeatSeekingMissile.m; path = Entities/Projectiles/HeatSeekingMissile.m; sourceTree = "<group>"; };
+		B96F00AF1409EFBD00619833 /* kBossKronosMainBody.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = kBossKronosMainBody.png; sourceTree = "<group>"; };
+		B96F00B01409EFBE00619833 /* kBossKronosMainBodyBottomLeftTurret.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = kBossKronosMainBodyBottomLeftTurret.png; sourceTree = "<group>"; };
+		B96F00B11409EFBF00619833 /* kBossKronosMainBodyBottomRightTurret.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = kBossKronosMainBodyBottomRightTurret.png; sourceTree = "<group>"; };
+		B96F00B21409EFBF00619833 /* kBossKronosMainBodyHead.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = kBossKronosMainBodyHead.png; sourceTree = "<group>"; };
+		B96F00B31409EFC000619833 /* kBossKronosMainBodyMiddleLeftTurret.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = kBossKronosMainBodyMiddleLeftTurret.png; sourceTree = "<group>"; };
+		B96F00B41409EFC000619833 /* kBossKronosMainBodyMiddleLeftWing.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = kBossKronosMainBodyMiddleLeftWing.png; sourceTree = "<group>"; };
+		B96F00B51409EFC000619833 /* kBossKronosMainBodyMiddleRightTurret.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = kBossKronosMainBodyMiddleRightTurret.png; sourceTree = "<group>"; };
+		B96F00B61409EFC000619833 /* kBossKronosMainBodyMiddleRightWing.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = kBossKronosMainBodyMiddleRightWing.png; sourceTree = "<group>"; };
+		B96F00B71409EFC100619833 /* kBossKronosMainBodyTail.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = kBossKronosMainBodyTail.png; sourceTree = "<group>"; };
+		B96F00B81409EFC200619833 /* kBossKronosMainBodyTopLeftCannon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = kBossKronosMainBodyTopLeftCannon.png; sourceTree = "<group>"; };
+		B96F00B91409EFC200619833 /* kBossKronosMainBodyTopLeftTurret.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = kBossKronosMainBodyTopLeftTurret.png; sourceTree = "<group>"; };
+		B96F00BA1409EFC200619833 /* kBossKronosMainBodyTopRightCannon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = kBossKronosMainBodyTopRightCannon.png; sourceTree = "<group>"; };
+		B96F00BB1409EFC200619833 /* kBossKronosMainBodyTopRightTurret.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = kBossKronosMainBodyTopRightTurret.png; sourceTree = "<group>"; };
 		B97A805412C964AD005FBB61 /* AbstractProjectile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AbstractProjectile.h; path = Entities/Projectiles/AbstractProjectile.h; sourceTree = "<group>"; };
 		B97A805512C964AD005FBB61 /* AbstractProjectile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AbstractProjectile.m; path = Entities/Projectiles/AbstractProjectile.m; sourceTree = "<group>"; };
 		B98A705D13F324F300773281 /* texture-missile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "texture-missile.png"; sourceTree = "<group>"; };
@@ -1118,6 +1144,19 @@
 		B9BFDF1213FC797D004D360D /* Boss Ships */ = {
 			isa = PBXGroup;
 			children = (
+				B96F00AF1409EFBD00619833 /* kBossKronosMainBody.png */,
+				B96F00B01409EFBE00619833 /* kBossKronosMainBodyBottomLeftTurret.png */,
+				B96F00B11409EFBF00619833 /* kBossKronosMainBodyBottomRightTurret.png */,
+				B96F00B21409EFBF00619833 /* kBossKronosMainBodyHead.png */,
+				B96F00B31409EFC000619833 /* kBossKronosMainBodyMiddleLeftTurret.png */,
+				B96F00B41409EFC000619833 /* kBossKronosMainBodyMiddleLeftWing.png */,
+				B96F00B51409EFC000619833 /* kBossKronosMainBodyMiddleRightTurret.png */,
+				B96F00B61409EFC000619833 /* kBossKronosMainBodyMiddleRightWing.png */,
+				B96F00B71409EFC100619833 /* kBossKronosMainBodyTail.png */,
+				B96F00B81409EFC200619833 /* kBossKronosMainBodyTopLeftCannon.png */,
+				B96F00B91409EFC200619833 /* kBossKronosMainBodyTopLeftTurret.png */,
+				B96F00BA1409EFC200619833 /* kBossKronosMainBodyTopRightCannon.png */,
+				B96F00BB1409EFC200619833 /* kBossKronosMainBodyTopRightTurret.png */,
 				118436D01403706C00BA6779 /* kBossEosFloaterOne.png */,
 				118436D11403706C00BA6779 /* kBossEosFloaterTwo.png */,
 				118436D21403706C00BA6779 /* kBossEosMainBody.png */,
@@ -1376,6 +1415,19 @@
 				118436DB1403706C00BA6779 /* kBossEosTurretFront.png in Resources */,
 				118436DC1403706C00BA6779 /* kBossEosTurretLeft.png in Resources */,
 				118436DD1403706C00BA6779 /* kBossEosTurretRight.png in Resources */,
+				B96F00BC1409EFC300619833 /* kBossKronosMainBody.png in Resources */,
+				B96F00BD1409EFC300619833 /* kBossKronosMainBodyBottomLeftTurret.png in Resources */,
+				B96F00BE1409EFC300619833 /* kBossKronosMainBodyBottomRightTurret.png in Resources */,
+				B96F00BF1409EFC300619833 /* kBossKronosMainBodyHead.png in Resources */,
+				B96F00C01409EFC300619833 /* kBossKronosMainBodyMiddleLeftTurret.png in Resources */,
+				B96F00C11409EFC300619833 /* kBossKronosMainBodyMiddleLeftWing.png in Resources */,
+				B96F00C21409EFC300619833 /* kBossKronosMainBodyMiddleRightTurret.png in Resources */,
+				B96F00C31409EFC300619833 /* kBossKronosMainBodyMiddleRightWing.png in Resources */,
+				B96F00C41409EFC300619833 /* kBossKronosMainBodyTail.png in Resources */,
+				B96F00C51409EFC300619833 /* kBossKronosMainBodyTopLeftCannon.png in Resources */,
+				B96F00C61409EFC300619833 /* kBossKronosMainBodyTopLeftTurret.png in Resources */,
+				B96F00C71409EFC300619833 /* kBossKronosMainBodyTopRightCannon.png in Resources */,
+				B96F00C81409EFC300619833 /* kBossKronosMainBodyTopRightTurret.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

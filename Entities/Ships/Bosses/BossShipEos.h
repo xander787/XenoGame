@@ -22,6 +22,14 @@
     ModularObject   *floaterThree;
     
     ParticleEmitter *outerShieldEmitter;
+    
+    AbstractProjectile  *topProjectile;
+    AbstractProjectile  *bottomProjectile;
+    AbstractProjectile  *leftProjectile;
+    AbstractProjectile  *rightProjectile;
+    AbstractProjectile  *floaterCenterProjectile;
+    AbstractProjectile  *floaterLeftProjectile;
+    AbstractProjectile  *floaterRightProjectile;
 }
 
 - (id)initWithLocation:(CGPoint)aPoint andPlayershipRef:(PlayerShip *)playerRef;
