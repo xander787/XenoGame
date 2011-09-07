@@ -182,6 +182,7 @@
         NSArray *moduleTurretPointsArray = [[NSArray alloc] initWithArray:[bossDictionary objectForKey:@"kShipTurretPoints"]];
         NSArray *moduleCollisionPointsArray = [[NSArray alloc] initWithArray:[bossDictionary objectForKey:@"kCollisionBoundingPoints"]];
         NSArray *moduleDestructionOrder = [[NSArray alloc] initWithArray:[bossDictionary objectForKey:@"kModularDestructionOrder"]];
+        NSArray *moduleHealthsArray = [[NSArray alloc] initWithArray:[bossDictionary objectForKey:@"kShipModuleHealths"]];
         
         [bossDictionary release];
         
@@ -205,7 +206,9 @@
             //Step one: get the image for the module, simple so it's first
             modularObjects[i].moduleImage = [[Image alloc] initWithImage:[moduleImagesArray objectAtIndex:i] scale:Scale2fOne];
             
-            modularObjects[i].moduleMaxHealth = 40;
+            
+            modularObjects[i].moduleMaxHealth = [[moduleHealthsArray objectAtIndex:i] floatValue];
+            NSLog(@"health: %f", modularObjects[i].moduleMaxHealth);
             modularObjects[i].moduleHealth = modularObjects[i].moduleMaxHealth;
             
             modularObjects[i].rotation = 0;
@@ -284,7 +287,7 @@
                 [tempCollisionPolygon setPos:CGPointMake(currentLocation.x + modularObjects[i].location.x, currentLocation.y + modularObjects[i].location.y)];
                 [modularObjects[i].collisionPolygonArray addObject:tempCollisionPolygon];
                 [tempCollisionPolygon release];
-            }            
+            }
         }
         
         //We have to put this in a seperate for loop because it doesn't conform to the number of modules

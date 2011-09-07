@@ -23,14 +23,14 @@
         wingRight = &self.modularObjects[1];
         wingLeft = &self.modularObjects[2];
         
-        mainBody->moduleMaxHealth = 1000;
-        mainBody->moduleHealth = mainBody->moduleMaxHealth;
+//        mainBody->moduleMaxHealth = 1000;
+//        mainBody->moduleHealth = mainBody->moduleMaxHealth;
         
-        wingRight->moduleMaxHealth = 100;
-        wingRight->moduleHealth = wingRight->moduleMaxHealth;
+//        wingRight->moduleMaxHealth = 100;
+//        wingRight->moduleHealth = wingRight->moduleMaxHealth;
         
-        wingLeft->moduleMaxHealth = 100;
-        wingLeft->moduleHealth = wingLeft->moduleMaxHealth;
+//        wingLeft->moduleMaxHealth = 100;
+//        wingLeft->moduleHealth = wingLeft->moduleMaxHealth;
 
         mainBodyDeathEmitter = [[ParticleEmitter alloc] initParticleEmitterWithImageNamed:@"texture.png"
                                                                                  position:Vector2fMake(currentLocation.x, currentLocation.y)

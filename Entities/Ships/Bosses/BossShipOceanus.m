@@ -30,8 +30,8 @@
         leftBulge = &self.modularObjects[4];
         rightBulge = &self.modularObjects[5];
         
-        mainbody->moduleMaxHealth = 100;
-        mainbody->moduleHealth = mainbody->moduleMaxHealth;
+//        mainbody->moduleMaxHealth = 100;
+//        mainbody->moduleHealth = mainbody->moduleMaxHealth;
         
         mainBodyEmitter = [[ParticleEmitter alloc] initParticleEmitterWithImageNamed:@"texture.png"
                                                                             position:Vector2fMake(currentLocation.x, currentLocation.y)
