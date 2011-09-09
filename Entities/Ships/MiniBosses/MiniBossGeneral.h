@@ -8,10 +8,18 @@
 
 #import <Foundation/Foundation.h>
 #import "BossShip.h"
+#import "BezierCurve.h"
 
 
 @interface MiniBossGeneral : BossShip {
-
+    
 }
+
+- (id)initWithBossID:(BossShipID)aBossID initialLocation:(CGPoint)aPoint andPlayerShipRef:(PlayerShip *)aPlayerShip;
+- (void)setDesiredLocation:(CGPoint)aPoint;
+- (void)hitModule:(int)module withDamage:(int)damage;
+- (void)stopAllProjectiles;
+- (void)pauseAllProjectiles;
+- (void)playAllProjectiles;
 
 @end

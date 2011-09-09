@@ -11,4 +11,40 @@
 
 @implementation MiniBossGeneral
 
+- (id)initWithBossID:(BossShipID)aBossID initialLocation:(CGPoint)aPoint andPlayerShipRef:(PlayerShip *)aPlayerShip {
+    self = [super initWithBossID:aBossID initialLocation:aPoint andPlayerShipRef:aPlayerShip];
+    if(self){
+        
+    }
+    return self;
+}
+
+- (void)update:(GLfloat)delta {
+    [super update:delta];
+}
+
+- (void)setDesiredLocation:(CGPoint)aPoint {
+    [super setDesiredLocation:aPoint];
+}
+
+- (void)hitModule:(int)module withDamage:(int)damage {
+    [super hitModule:module withDamage:damage];
+}
+
+- (void)playAllProjectiles {
+    [super playAllProjectiles];
+}
+
+- (void)pauseAllProjectiles {
+    [super pauseAllProjectiles];
+}
+
+- (void)stopAllProjectiles {
+    [super stopAllProjectiles];
+}
+
+- (void)render {
+    [super render];
+}
+
 @end

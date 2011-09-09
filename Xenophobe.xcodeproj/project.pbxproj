@@ -176,6 +176,7 @@
 		B969707E13E104FA002EC552 /* store.png in Resources */ = {isa = PBXBuildFile; fileRef = B969707D13E104F3002EC552 /* store.png */; };
 		B969708B13E1335B002EC552 /* Slider.png in Resources */ = {isa = PBXBuildFile; fileRef = B969708913E1335B002EC552 /* Slider.png */; };
 		B969708C13E1335B002EC552 /* SliderBar.png in Resources */ = {isa = PBXBuildFile; fileRef = B969708A13E1335B002EC552 /* SliderBar.png */; };
+		B96BC9261419E2A900E9346D /* MiniBoss_OneOne.m in Sources */ = {isa = PBXBuildFile; fileRef = B96BC9251419E2A900E9346D /* MiniBoss_OneOne.m */; };
 		B96F00AE140737F000619833 /* HeatSeekingMissile.m in Sources */ = {isa = PBXBuildFile; fileRef = B96F00AD140737F000619833 /* HeatSeekingMissile.m */; };
 		B96F00BC1409EFC300619833 /* kBossKronosMainBody.png in Resources */ = {isa = PBXBuildFile; fileRef = B96F00AF1409EFBD00619833 /* kBossKronosMainBody.png */; };
 		B96F00BD1409EFC300619833 /* kBossKronosMainBodyBottomLeftTurret.png in Resources */ = {isa = PBXBuildFile; fileRef = B96F00B01409EFBE00619833 /* kBossKronosMainBodyBottomLeftTurret.png */; };
@@ -467,6 +468,8 @@
 		B969707D13E104F3002EC552 /* store.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = store.png; sourceTree = "<group>"; };
 		B969708913E1335B002EC552 /* Slider.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Slider.png; sourceTree = "<group>"; };
 		B969708A13E1335B002EC552 /* SliderBar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SliderBar.png; sourceTree = "<group>"; };
+		B96BC9241419E2A400E9346D /* MiniBoss_OneOne.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MiniBoss_OneOne.h; path = Entities/Ships/MiniBosses/MiniBoss_OneOne.h; sourceTree = "<group>"; };
+		B96BC9251419E2A900E9346D /* MiniBoss_OneOne.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MiniBoss_OneOne.m; path = Entities/Ships/MiniBosses/MiniBoss_OneOne.m; sourceTree = "<group>"; };
 		B96F00AC140737F000619833 /* HeatSeekingMissile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HeatSeekingMissile.h; path = Entities/Projectiles/HeatSeekingMissile.h; sourceTree = "<group>"; };
 		B96F00AD140737F000619833 /* HeatSeekingMissile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HeatSeekingMissile.m; path = Entities/Projectiles/HeatSeekingMissile.m; sourceTree = "<group>"; };
 		B96F00AF1409EFBD00619833 /* kBossKronosMainBody.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = kBossKronosMainBody.png; sourceTree = "<group>"; };
@@ -609,6 +612,8 @@
 			children = (
 				1130822512D907B1009C9502 /* MiniBossGeneral.h */,
 				1130822612D907B1009C9502 /* MiniBossGeneral.m */,
+				B96BC9241419E2A400E9346D /* MiniBoss_OneOne.h */,
+				B96BC9251419E2A900E9346D /* MiniBoss_OneOne.m */,
 			);
 			name = MiniBosses;
 			sourceTree = "<group>";
@@ -1502,6 +1507,7 @@
 				B9A8075813ED06FE00D9AFD3 /* ParticleProjectile.m in Sources */,
 				B9A8075913ED06FE00D9AFD3 /* WaveProjectile.m in Sources */,
 				B96F00AE140737F000619833 /* HeatSeekingMissile.m in Sources */,
+				B96BC9261419E2A900E9346D /* MiniBoss_OneOne.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
