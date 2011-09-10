@@ -1,21 +1,21 @@
 //
-//  MiniBoss_OneOne.m
+//  MiniBoss_TwoTwo.m
 //  Xenophobe
 //
-//  Created by James Linnell on 9/8/11.
+//  Created by James Linnell on 9/9/11.
 //  Copyright 2011 PDHS. All rights reserved.
 //
 
-#import "MiniBoss_OneOne.h"
+#import "MiniBoss_TwoTwo.h"
 
-@implementation MiniBoss_OneOne
+@implementation MiniBoss_TwoTwo
 
 - (id)initWithLocation:(CGPoint)aPoint andPlayerShipRef:(PlayerShip *)playerRef
 {
-    self = [super initWithBossID:kMiniBoss_OneOne initialLocation:aPoint andPlayerShipRef:playerRef];
+    self = [super initWithBossID:kMiniBoss_TwoTwo initialLocation:aPoint andPlayerShipRef:playerRef];
     if (self) {
         // Initialization code here.
-        state = kOneOne_Entry;
+        state = kTwoTwo_Entry;
         
         deathAnimation = [[ParticleEmitter alloc] initParticleEmitterWithImageNamed:@"texture.png"
                                                                            position:Vector2fMake(currentLocation.x, currentLocation.y)
@@ -38,10 +38,6 @@
                                                                            duration:0.2
                                                                       blendAdditive:YES];
         
-        leftBullet = [[BulletProjectile alloc] initWithProjectileID:kEnemyProjectile_BulletLevelOne_Single location:Vector2fZero andAngle:-90.0f];
-        rightBullet = [[BulletProjectile alloc] initWithProjectileID:kEnemyProjectile_BulletLevelOne_Single location:Vector2fZero andAngle:-90.0f];
-        leftMissile = [[MissileProjectile alloc] initWithProjectileID:kEnemyProjectile_MissileLevelOne_Single location:Vector2fZero andAngle:-100.0f];
-        rightMissile = [[MissileProjectile alloc] initWithProjectileID:kEnemyProjectile_MissileLevelOne_Single location:Vector2fZero andAngle:-80.0f];
         
     }
     return self;
@@ -67,22 +63,14 @@
         }
     }
     
-    [leftBullet setLocation:Vector2fMake(currentLocation.x + modularObjects[0].location.x + modularObjects[0].weapons[0].weaponCoord.x, currentLocation.y + modularObjects[0].location.y + modularObjects[0].weapons[0].weaponCoord.y)];
-    [rightBullet setLocation:Vector2fMake(currentLocation.x + modularObjects[0].location.x + modularObjects[0].weapons[1].weaponCoord.x, currentLocation.y + modularObjects[0].location.y + modularObjects[0].weapons[1].weaponCoord.y)];
-    [leftMissile setLocation:Vector2fMake(currentLocation.x + modularObjects[0].location.x + modularObjects[0].weapons[2].weaponCoord.x, currentLocation.y + modularObjects[0].location.y + modularObjects[0].weapons[2].weaponCoord.y)];
-    [rightMissile setLocation:Vector2fMake(currentLocation.x + modularObjects[0].location.x + modularObjects[0].weapons[3].weaponCoord.x, currentLocation.y + modularObjects[0].location.y + modularObjects[0].weapons[3].weaponCoord.y)];
+
     
-    [leftBullet update:delta];
-    [rightBullet update:delta];
-    [leftMissile update:delta];
-    [rightMissile update:delta];
-    
-    if(state == kOneOne_Entry){
+    if(state == kTwoTwo_Entry){
         if(shipIsDeployed){
-            state = kOneOne_Holding;
+            state = kTwoTwo_Holding;
         }
     }
-    else if(state == kOneOne_Holding){
+    else if(state == kTwoTwo_Holding){
         holdingTimer += delta;
         attackTimer += delta;
         
@@ -106,12 +94,12 @@
         }
         
         if(attackTimer >= 6){
-            state = kOneOne_Attacking;
+            state = kTwoTwo_Attacking;
             attackTimer = 0;
             holdingTimer = 0;
         }
     }
-    else if(state == kOneOne_Attacking){
+    else if(state == kTwoTwo_Attacking){
         if(!attackingPath){
             oldPointBeforeAttack = Vector2fMake(currentLocation.x, currentLocation.y);
             
@@ -136,13 +124,13 @@
         currentLocation.y = [attackingPath getPointAt:attackPathtimer/4].y;
         
         if(abs(oldPointBeforeAttack.x - currentLocation.x) <= 5 && abs(oldPointBeforeAttack.y - currentLocation.y) <= 5 && attackPathtimer > 1){
-            state = kOneOne_Holding;
+            state = kTwoTwo_Holding;
             attackPathtimer = 0;
             [attackingPath release];
             attackingPath = nil;
         }
     }
-    else if(state == kOneOne_Death){
+    else if(state == kTwoTwo_Death){
         [deathAnimation update:delta];
         modularObjects[0].isDead = NO;
         if(deathAnimation.particleCount == 0){
@@ -152,12 +140,9 @@
 }
 
 - (void)render {
-    [leftBullet render];
-    [rightBullet render];
-    [leftMissile render];
-    [rightMissile render];
+
     
-    if(state == kOneOne_Death){
+    if(state == kTwoTwo_Death){
         [deathAnimation renderParticles];
     }
     
@@ -168,7 +153,7 @@
                 [modularObjects[i].moduleImage renderAtPoint:CGPointMake(currentLocation.x + modularObjects[i].location.x, currentLocation.y + modularObjects[i].location.y) centerOfImage:YES];
             }
         }
-        else if(state != kOneOne_Death){
+        else if(state != kTwoTwo_Death){
             [modularObjects[0].moduleImage setRotation:modularObjects[i].rotation];
             [modularObjects[0].moduleImage renderAtPoint:CGPointMake(currentLocation.x + modularObjects[i].location.x, currentLocation.y + modularObjects[i].location.y) centerOfImage:YES];
         }
@@ -210,5 +195,6 @@
         glPopMatrix();
     }
 }
+
 
 @end

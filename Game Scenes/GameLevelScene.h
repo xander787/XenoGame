@@ -53,6 +53,9 @@
 #import "BossShipHyperion.h"
 #import "BossShipThemis.h"
 #import "BossShipKronos.h"
+#import "MiniBoss_OneOne.h"
+#import "MiniBoss_TwoTwo.h"
+#import "MiniBoss_ThreeOne.h"
 #import "Drop.h"
 
 @protocol GameLevelDelegate <NSObject>

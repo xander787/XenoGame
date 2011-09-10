@@ -1,25 +1,25 @@
 //
-//  MiniBoss_OneOne.h
+//  MiniBoss_ThreeOne.h
 //  Xenophobe
 //
-//  Created by James Linnell on 9/8/11.
+//  Created by James Linnell on 9/9/11.
 //  Copyright 2011 PDHS. All rights reserved.
 //
 
 #import "MiniBossGeneral.h"
 
-typedef enum _OneOneState{
-    kOneOne_Entry = 0,
-    kOneOne_Holding,
-    kOneOne_Attacking,
-    kOneOne_Death
-} OneOneState;
+typedef enum _ThreeOneState{
+    kThreeOne_Entry = 0,
+    kThreeOne_Holding,
+    kThreeOne_Attacking,
+    kThreeOne_Death
+} ThreeOneState;
 
-@interface MiniBoss_OneOne : MiniBossGeneral {
-    OneOneState         state;
+@interface MiniBoss_ThreeOne : MiniBossGeneral {
+    ThreeOneState       state;
     
     Vector2f            oldPointBeforeAttack;
-        
+    
     BezierCurve         *attackingPath;
     
     GLfloat             holdingTimer;
@@ -27,11 +27,6 @@ typedef enum _OneOneState{
     GLfloat             attackPathtimer;
     
     ParticleEmitter     *deathAnimation;
-    
-    BulletProjectile    *leftBullet;
-    BulletProjectile    *rightBullet;
-    MissileProjectile   *leftMissile;
-    MissileProjectile   *rightMissile;
 }
 
 - (id)initWithLocation:(CGPoint)aPoint andPlayerShipRef:(PlayerShip *)playerRef;
