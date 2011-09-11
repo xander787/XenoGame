@@ -63,7 +63,7 @@
         }
     }
     
-
+    [deathAnimation setSourcePosition:Vector2fMake(currentLocation.x, currentLocation.y)];
     
     if(state == kTwoTwo_Entry){
         if(shipIsDeployed){
@@ -98,6 +98,9 @@
             attackTimer = 0;
             holdingTimer = 0;
         }
+        if(modularObjects[0].isDead){
+            state = kTwoTwo_Death;
+        }
     }
     else if(state == kTwoTwo_Attacking){
         if(!attackingPath){
@@ -129,14 +132,22 @@
             [attackingPath release];
             attackingPath = nil;
         }
+        if(modularObjects[0].isDead){
+            state = kTwoTwo_Death;
+        }
     }
-    else if(state == kTwoTwo_Death){
+    if(state == kTwoTwo_Death){
         [deathAnimation update:delta];
         modularObjects[0].isDead = NO;
         if(deathAnimation.particleCount == 0){
             modularObjects[0].isDead = YES;
         }
     }
+}
+
+- (void)hitModule:(int)module withDamage:(int)damage {
+    modularObjects[module].moduleHealth -= damage;
+    [super hitModule:module withDamage:damage];
 }
 
 - (void)render {

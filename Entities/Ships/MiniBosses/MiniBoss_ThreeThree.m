@@ -1,20 +1,20 @@
 //
-//  MiniBoss_FiveOne.m
+//  MiniBoss_ThreeThree.m
 //  Xenophobe
 //
-//  Created by James Linnell on 9/9/11.
+//  Created by James Linnell on 9/10/11.
 //  Copyright 2011 PDHS. All rights reserved.
 //
 
-#import "MiniBoss_FiveOne.h"
+#import "MiniBoss_ThreeThree.h"
 
-@implementation MiniBoss_FiveOne
+@implementation MiniBoss_ThreeThree
 
 - (id)initWithLocation:(CGPoint)aPoint andPlayerShipRef:(PlayerShip *)playerRef {
-    self = [super initWithBossID:kMiniBoss_FiveOne initialLocation:aPoint andPlayerShipRef:playerRef];
+    self = [super initWithBossID:kMiniBoss_ThreeThree initialLocation:aPoint andPlayerShipRef:playerRef];
     if (self) {
         // Initialization code here.
-        state = kFiveOne_Entry;
+        state = kThreeThree_Entry;
         
         deathAnimation = [[ParticleEmitter alloc] initParticleEmitterWithImageNamed:@"texture.png"
                                                                            position:Vector2fMake(currentLocation.x, currentLocation.y)
@@ -64,12 +64,12 @@
     
     [deathAnimation setSourcePosition:Vector2fMake(currentLocation.x, currentLocation.y)];
     
-    if(state == kFiveOne_Entry){
+    if(state == kThreeThree_Entry){
         if(shipIsDeployed){
-            state = kFiveOne_Holding;
+            state = kThreeThree_Holding;
         }
     }
-    else if(state == kFiveOne_Holding){
+    else if(state == kThreeThree_Holding){
         holdingTimer += delta;
         attackTimer += delta;
         
@@ -93,15 +93,15 @@
         }
         
         if(attackTimer >= 6){
-            state = kFiveOne_Attacking;
+            state = kThreeThree_Attacking;
             attackTimer = 0;
             holdingTimer = 0;
         }
         if(modularObjects[0].isDead){
-            state = kFiveOne_Death;
+            state = kThreeThree_Death;
         }
     }
-    else if(state == kFiveOne_Attacking){
+    else if(state == kThreeThree_Attacking){
         if(!attackingPath){
             oldPointBeforeAttack = Vector2fMake(currentLocation.x, currentLocation.y);
             
@@ -126,16 +126,16 @@
         currentLocation.y = [attackingPath getPointAt:attackPathtimer/4].y;
         
         if(abs(oldPointBeforeAttack.x - currentLocation.x) <= 5 && abs(oldPointBeforeAttack.y - currentLocation.y) <= 5 && attackPathtimer > 1){
-            state = kFiveOne_Holding;
+            state = kThreeThree_Holding;
             attackPathtimer = 0;
             [attackingPath release];
             attackingPath = nil;
         }
         if(modularObjects[0].isDead){
-            state = kFiveOne_Death;
+            state = kThreeThree_Death;
         }
     }
-    if(state == kFiveOne_Death){
+    if(state == kThreeThree_Death){
         [deathAnimation update:delta];
         modularObjects[0].isDead = NO;
         if(deathAnimation.particleCount == 0){
@@ -152,7 +152,7 @@
 - (void)render {
     
     
-    if(state == kFiveOne_Death){
+    if(state == kThreeThree_Death){
         [deathAnimation renderParticles];
     }
     
@@ -163,7 +163,7 @@
                 [modularObjects[i].moduleImage renderAtPoint:CGPointMake(currentLocation.x + modularObjects[i].location.x, currentLocation.y + modularObjects[i].location.y) centerOfImage:YES];
             }
         }
-        else if(state != kFiveOne_Death){
+        else if(state != kThreeThree_Death){
             [modularObjects[0].moduleImage setRotation:modularObjects[i].rotation];
             [modularObjects[0].moduleImage renderAtPoint:CGPointMake(currentLocation.x + modularObjects[i].location.x, currentLocation.y + modularObjects[i].location.y) centerOfImage:YES];
         }

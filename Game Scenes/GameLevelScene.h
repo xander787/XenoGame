@@ -56,6 +56,7 @@
 #import "MiniBoss_OneOne.h"
 #import "MiniBoss_TwoTwo.h"
 #import "MiniBoss_ThreeOne.h"
+#import "MiniBoss_ThreeThree.h"
 #import "Drop.h"
 
 @protocol GameLevelDelegate <NSObject>

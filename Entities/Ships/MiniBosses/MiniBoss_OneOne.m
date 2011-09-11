@@ -77,6 +77,9 @@
     [leftMissile update:delta];
     [rightMissile update:delta];
     
+    [deathAnimation setSourcePosition:Vector2fMake(currentLocation.x, currentLocation.y)];
+
+    
     if(state == kOneOne_Entry){
         if(shipIsDeployed){
             state = kOneOne_Holding;
@@ -110,6 +113,9 @@
             attackTimer = 0;
             holdingTimer = 0;
         }
+        if(modularObjects[0].isDead){
+            state = kOneOne_Death;
+        }
     }
     else if(state == kOneOne_Attacking){
         if(!attackingPath){
@@ -141,14 +147,22 @@
             [attackingPath release];
             attackingPath = nil;
         }
+        if(modularObjects[0].isDead){
+            state = kOneOne_Death;
+        }
     }
-    else if(state == kOneOne_Death){
+    if(state == kOneOne_Death){
         [deathAnimation update:delta];
         modularObjects[0].isDead = NO;
         if(deathAnimation.particleCount == 0){
             modularObjects[0].isDead = YES;
         }
     }
+}
+
+- (void)hitModule:(int)module withDamage:(int)damage {
+    modularObjects[module].moduleHealth -= damage;
+    [super hitModule:module withDamage:damage];
 }
 
 - (void)render {
