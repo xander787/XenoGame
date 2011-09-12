@@ -994,5 +994,58 @@
 			<string>400</string>
 		</array>
 	</dict>
+	<key>kMiniBossSixTwo</key>
+	<dict>
+		<key>kBossAttack</key>
+		<integer>10</integer>
+		<key>kBossID</key>
+		<string>kMiniBossSixTwo</string>
+		<key>kBossSpeed</key>
+		<integer>10</integer>
+		<key>kBossStamina</key>
+		<integer>10</integer>
+		<key>kBossType</key>
+		<string>kBossTypeMiniBoss</string>
+		<key>kCollisionBoundingPoints</key>
+		<array>
+			<array>
+				<string>0,-63;18,-19;15,56;9,65;-8,65;-15,56;-18,-19</string>
+				<string>44,-42;63,-2;46,28;41,31;32,27</string>
+				<string>20,-18;35,-11;31,26;16,6</string>
+				<string>-44,-42;-63,-2;-46,28;-41,31;-32,27</string>
+				<string>-20,-18;-35,-11;-31,26;-16,6</string>
+			</array>
+			<array>
+				<string>0,-14;13,0;19,14;-20,14;-14,0;-1,-14</string>
+			</array>
+		</array>
+		<key>kModularDestructionOrder</key>
+		<array>
+			<array>
+				<string>0</string>
+				<string>1</string>
+			</array>
+		</array>
+		<key>kShipModuleImages</key>
+		<array>
+			<string>kMiniBossSixTwoMainBody.png</string>
+			<string>kMiniBossSixTwoShield.png</string>
+		</array>
+		<key>kShipModulePoints</key>
+		<array>
+			<string>0,0</string>
+			<string>0,-90</string>
+		</array>
+		<key>kShipTurretPoints</key>
+		<array>
+			<string>-12,42;13,42;-23,22;23,22;-61,7;61,7</string>
+			<string>0,8</string>
+		</array>
+		<key>kShipModuleHealths</key>
+		<array>
+			<string>400</string>
+			<string>100</string>
+		</array>
+	</dict>
 </dict>
 </plist>
