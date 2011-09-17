@@ -169,6 +169,14 @@ typedef struct _PointSprite {
 	GLfloat size;
 } PointSprite;
 
+typedef enum _KamikazeState{
+    kKamikaze_Idle = 0,
+    kKamikaze_LeftAttack,
+    kKamikaze_LeftReturn,
+    kKamikaze_RightAttack,
+    kKamikaze_RightReturn
+} KamikazeState;
+
 #pragma mark -
 #pragma mark Inline Functions
 

@@ -706,30 +706,46 @@
 		<key>kCollisionBoundingPoints</key>
 		<array>
 			<array>
-				<string></string>
+				<string>16,-65;48,-28;63,8;41,38;1,62;-38,38;-60,8;-45,-28;-12,-65</string>
+			</array>
+			<array>
+				<string>3,-26;11,-14;11,13;3,24;-4,24;-11,12;-10,-13;-4,-25</string>
+			</array>
+			<array>
+				<string>3,-26;11,-14;11,13;3,24;-4,24;-11,12;-10,-13;-4,-25</string>
 			</array>
 		</array>
 		<key>kModularDestructionOrder</key>
 		<array>
 			<array>
 				<string>0</string>
+				<string>1</string>
+				<string>2</string>
 			</array>
 		</array>
 		<key>kShipModuleImages</key>
 		<array>
 			<string>kMiniBossOneTwoMainBody.png</string>
+			<string>kMiniBossOneTwoFloater1.png</string>
+			<string>kMiniBossOneTwoFloater2.png</string>
 		</array>
 		<key>kShipModulePoints</key>
 		<array>
 			<string>0,0</string>
+			<string>-64,-64</string>
+			<string>64,-64</string>
 		</array>
 		<key>kShipTurretPoints</key>
 		<array>
-			<string></string>
+			<string>2,-53;-24,-54;27,-54</string>
+			<string>0,21;0,-21</string>
+			<string>0,21;0,-21</string>
 		</array>
 		<key>kShipModuleHealths</key>
 		<array>
 			<string>500</string>
+			<string>100</string>
+			<string>100</string>
 		</array>
 	</dict>
 	<key>kMiniBossOneThree</key>
@@ -747,30 +763,46 @@
 		<key>kCollisionBoundingPoints</key>
 		<array>
 			<array>
-				<string></string>
+				<string>0,-63;64,-6;11,64;-11,64;-64,-7</string>
+			</array>
+			<array>
+				<string>0,-7;6,-7;-1,8;-7,-7</string>
+			</array>
+			<array>
+				<string>0,-7;6,-7;-1,8;-7,-7</string>
 			</array>
 		</array>
 		<key>kModularDestructionOrder</key>
 		<array>
 			<array>
 				<string>0</string>
+				<string>1</string>
+				<string>2</string>
 			</array>
 		</array>
 		<key>kShipModuleImages</key>
 		<array>
 			<string>kMiniBossOneThreeMainBody.png</string>
+			<string>kMiniBossOneThreeFloat1.png</string>
+			<string>kMiniBossOneThreeFloat2.png</string>
 		</array>
 		<key>kShipModulePoints</key>
 		<array>
 			<string>0,0</string>
+			<string>-55,-50</string>
+			<string>55,-50</string>
 		</array>
 		<key>kShipTurretPoints</key>
 		<array>
-			<string></string>
+			<string>-6,-48;6,-48;-16,-38;16,-38</string>
+			<string>-1,-5</string>
+			<string>-1,-5</string>
 		</array>
 		<key>kShipModuleHealths</key>
 		<array>
 			<string>500</string>
+			<string>100</string>
+			<string>100</string>
 		</array>
 	</dict>
 	<key>kMiniBossTwoTwo</key>
