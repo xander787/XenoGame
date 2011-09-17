@@ -1,20 +1,20 @@
 //
-//  kMiniBoss_OneThree.m
+//  MiniBoss_SevenThree.m
 //  Xenophobe
 //
 //  Created by James Linnell on 9/16/11.
 //  Copyright 2011 PDHS. All rights reserved.
 //
 
-#import "MiniBoss_OneThree.h"
+#import "MiniBoss_SevenThree.h"
 
-@implementation MiniBoss_OneThree
+@implementation MiniBoss_SevenThree
 
 - (id)initWithLocation:(CGPoint)aPoint andPlayerShipRef:(PlayerShip *)playerRef {
-    self = [super initWithBossID:kMiniBoss_OneThree initialLocation:aPoint andPlayerShipRef:playerRef];
+    self = [super initWithBossID:kMiniBoss_SevenThree initialLocation:aPoint andPlayerShipRef:playerRef];
     if (self) {
         // Initialization code here.
-        state = kOneThree_Entry;
+        state = kSevenThree_Entry;
         
         deathAnimation = [[ParticleEmitter alloc] initParticleEmitterWithImageNamed:@"texture.png"
                                                                            position:Vector2fMake(currentLocation.x, currentLocation.y)
@@ -76,6 +76,27 @@
                                                                 particleSizeVariance:0.0
                                                                             duration:0.1
                                                                        blendAdditive:YES];
+        floaterThreeDeath = [[ParticleEmitter alloc] initParticleEmitterWithImageNamed:@"texture.png"
+                                                                              position:Vector2fMake(currentLocation.x, currentLocation.y)
+                                                                sourcePositionVariance:Vector2fZero
+                                                                                 speed:0.8
+                                                                         speedVariance:0.2
+                                                                      particleLifeSpan:0.8
+                                                              particleLifespanVariance:0.2
+                                                                                 angle:0
+                                                                         angleVariance:360
+                                                                               gravity:Vector2fZero
+                                                                            startColor:Color4fMake(1.0, 0.2, 0.2, 1.0)
+                                                                    startColorVariance:Color4fMake(0.1, 0.1, 0.1, 0.0)
+                                                                           finishColor:Color4fMake(0.2, 0.2, 0.2, 1.0)
+                                                                   finishColorVariance:Color4fMake(0.1, 0.1, 0.1, 0.0)
+                                                                          maxParticles:1000
+                                                                          particleSize:12.0
+                                                                    finishParticleSize:12.0
+                                                                  particleSizeVariance:0.0
+                                                                              duration:0.1
+                                                                         blendAdditive:YES];
+
         
         
     }
@@ -105,13 +126,14 @@
     [deathAnimation setSourcePosition:Vector2fMake(currentLocation.x, currentLocation.y)];
     [floaterOneDeath setSourcePosition:Vector2fMake(currentLocation.x + modularObjects[1].location.x, currentLocation.y + modularObjects[1].location.y)];
     [floaterTwoDeath setSourcePosition:Vector2fMake(currentLocation.x + modularObjects[2].location.x, currentLocation.y + modularObjects[2].location.y)];
+    [floaterThreeDeath setSourcePosition:Vector2fMake(currentLocation.x + modularObjects[3].location.x, currentLocation.y + modularObjects[3].location.y)];
     
-    if(state == kOneThree_Entry){
+    if(state == kSevenThree_Entry){
         if(shipIsDeployed){
-            state = kOneThree_Holding;
+            state = kSevenThree_Holding;
         }
     }
-    else if(state == kOneThree_Holding){
+    else if(state == kSevenThree_Holding){
         holdingTimer += delta;
         attackTimer += delta;
         
@@ -135,15 +157,15 @@
         }
         
         if(attackTimer >= 6 && kamikazeState == kKamikaze_Idle){
-            state = kOneThree_Attacking;
+            state = kSevenThree_Attacking;
             attackTimer = 0;
             holdingTimer = 0;
         }
         if(modularObjects[0].isDead){
-            state = kOneThree_Death;
+            state = kSevenThree_Death;
         }
     }
-    else if(state == kOneThree_Attacking){
+    else if(state == kSevenThree_Attacking){
         if(!attackingPath){
             oldPointBeforeAttack = Vector2fMake(currentLocation.x, currentLocation.y);
             
@@ -168,15 +190,15 @@
         currentLocation.y = [attackingPath getPointAt:attackPathtimer/4].y;
         
         if(abs(oldPointBeforeAttack.x - currentLocation.x) <= 5 && abs(oldPointBeforeAttack.y - currentLocation.y) <= 5 && attackPathtimer > 1){
-            state = kOneThree_Holding;
+            state = kSevenThree_Holding;
             attackPathtimer = 0;
             [attackingPath release];
             attackingPath = nil;
         }if(modularObjects[0].isDead){
-            state = kOneThree_Death;
+            state = kSevenThree_Death;
         }
     }
-    if(state == kOneThree_Death){
+    if(state == kSevenThree_Death){
         [deathAnimation update:delta];
         modularObjects[0].isDead = NO;
         if(deathAnimation.particleCount == 0){
@@ -185,25 +207,43 @@
     }
     
     if(kamikazeState == kKamikaze_Idle){
-        if(state == kOneThree_Holding){
+        if(state == kSevenThree_Holding){
             kamikazeTimer += delta;
         }
         
-        if(kamikazeTimer > 4 && state == kOneThree_Holding){
-            if(RANDOM_MINUS_1_TO_1() > 0){
+        if(kamikazeTimer > 4 && state == kSevenThree_Holding){
+            float randomNum = RANDOM_MINUS_1_TO_1();
+            if(randomNum > 0.5){
                 if(modularObjects[1].isDead == NO){
                     kamikazeState = kKamikaze_LeftAttack;
                 }
                 else if(modularObjects[2].isDead == NO){
                     kamikazeState = kKamikaze_RightAttack;
                 }
+                else if(modularObjects[3].isDead == NO){
+                    kamikazeState = kKamikaze_TopLeftAttack;
+                }
             }
-            else {
+            else if(randomNum <= 0.5 && randomNum > 0){
                 if(modularObjects[2].isDead == NO){
+                    kamikazeState = kKamikaze_LeftAttack;
+                }
+                else if(modularObjects[3].isDead == NO){
                     kamikazeState = kKamikaze_RightAttack;
                 }
                 else if(modularObjects[1].isDead == NO){
+                    kamikazeState = kKamikaze_TopLeftAttack;
+                }
+            }
+            else if(randomNum <= 0 && randomNum > -0.5){
+                if(modularObjects[3].isDead == NO){
                     kamikazeState = kKamikaze_LeftAttack;
+                }
+                else if(modularObjects[1].isDead == NO){
+                    kamikazeState = kKamikaze_RightAttack;
+                }
+                else if(modularObjects[2].isDead == NO){
+                    kamikazeState = kKamikaze_TopLeftAttack;
                 }
             }
             kamikazeTimer = 0;
@@ -240,6 +280,23 @@
         
         if(modularObjects[2].location.y < modularObjects[2].defaultLocation.y){
             modularObjects[2].location.y = modularObjects[2].defaultLocation.y;
+            kamikazeState = kKamikaze_Idle;
+        }
+    }
+    else if(kamikazeState == kKamikaze_TopLeftAttack){
+        modularObjects[3].location.y -= 200 * delta;
+        
+        if(modularObjects[3].location.y < -480){
+            kamikazeState = kKamikaze_TopLeftReturn;
+            
+            modularObjects[3].location.y = modularObjects[3].defaultLocation.y + 250;
+        }
+    }
+    else if(kamikazeState == kKamikaze_TopLeftReturn){
+        modularObjects[3].location.y -= 150 * delta;
+        
+        if(modularObjects[3].location.y < modularObjects[3].defaultLocation.y){
+            modularObjects[3].location.y = modularObjects[3].defaultLocation.y;
             kamikazeState = kKamikaze_Idle;
         }
     }
@@ -288,11 +345,12 @@
 - (void)render {
     
     
-    if(state == kOneThree_Death){
+    if(state == kSevenThree_Death){
         [deathAnimation renderParticles];
     }
     [floaterOneDeath renderParticles];
     [floaterTwoDeath renderParticles];
+    [floaterThreeDeath renderParticles];
     
     for(int i = 0; i < numberOfModules; i++) {
         if(i != 0){
@@ -301,7 +359,7 @@
                 [modularObjects[i].moduleImage renderAtPoint:CGPointMake(currentLocation.x + modularObjects[i].location.x, currentLocation.y + modularObjects[i].location.y) centerOfImage:YES];
             }
         }
-        else if(state != kOneThree_Death){
+        else if(state != kSevenThree_Death){
             [modularObjects[0].moduleImage setRotation:modularObjects[i].rotation];
             [modularObjects[0].moduleImage renderAtPoint:CGPointMake(currentLocation.x + modularObjects[i].location.x, currentLocation.y + modularObjects[i].location.y) centerOfImage:YES];
         }

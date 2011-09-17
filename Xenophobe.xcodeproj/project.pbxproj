@@ -234,6 +234,10 @@
 		B9AFC0A313E23BAC00E4570A /* ClearAllSavedDataButton.png in Resources */ = {isa = PBXBuildFile; fileRef = B9AFC0A213E23BAC00E4570A /* ClearAllSavedDataButton.png */; };
 		B9B03E6E142455A100DE7C0E /* kMiniBossFourTwoMainBody.png in Resources */ = {isa = PBXBuildFile; fileRef = B9B03E6D142455A100DE7C0E /* kMiniBossFourTwoMainBody.png */; };
 		B9B03E74142455D300DE7C0E /* MiniBoss_FourTwo.m in Sources */ = {isa = PBXBuildFile; fileRef = B9B03E73142455D300DE7C0E /* MiniBoss_FourTwo.m */; };
+		B9B03E77142468B100DE7C0E /* MiniBoss_SixOne.m in Sources */ = {isa = PBXBuildFile; fileRef = B9B03E76142468B100DE7C0E /* MiniBoss_SixOne.m */; };
+		B9B03E7A142468CA00DE7C0E /* MiniBoss_SevenThree.m in Sources */ = {isa = PBXBuildFile; fileRef = B9B03E79142468C900DE7C0E /* MiniBoss_SevenThree.m */; };
+		B9B03E801424696100DE7C0E /* MiniBoss_FiveTwo.m in Sources */ = {isa = PBXBuildFile; fileRef = B9B03E7F1424696000DE7C0E /* MiniBoss_FiveTwo.m */; };
+		B9B03E8614246E0600DE7C0E /* MiniBoss_SevenOne.m in Sources */ = {isa = PBXBuildFile; fileRef = B9B03E8514246E0600DE7C0E /* MiniBoss_SevenOne.m */; };
 		B9C3AB7C13C2A7B4003202BA /* mainmenu.png in Resources */ = {isa = PBXBuildFile; fileRef = B9C3AB7B13C2A7B4003202BA /* mainmenu.png */; };
 		B9C3AB7E13C2AA50003202BA /* return.png in Resources */ = {isa = PBXBuildFile; fileRef = B9C3AB7D13C2AA50003202BA /* return.png */; };
 		B9C3AB8013C2BF8E003202BA /* pause.png in Resources */ = {isa = PBXBuildFile; fileRef = B9C3AB7F13C2BF8E003202BA /* pause.png */; };
@@ -564,6 +568,14 @@
 		B9B03E6D142455A100DE7C0E /* kMiniBossFourTwoMainBody.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = kMiniBossFourTwoMainBody.png; path = "Game Resources/Images/Normal/Ships/MiniBoss Ships/kMiniBossFourTwoMainBody.png"; sourceTree = SOURCE_ROOT; };
 		B9B03E72142455D300DE7C0E /* MiniBoss_FourTwo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MiniBoss_FourTwo.h; path = Entities/Ships/MiniBosses/MiniBoss_FourTwo.h; sourceTree = "<group>"; };
 		B9B03E73142455D300DE7C0E /* MiniBoss_FourTwo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MiniBoss_FourTwo.m; path = Entities/Ships/MiniBosses/MiniBoss_FourTwo.m; sourceTree = "<group>"; };
+		B9B03E75142468B100DE7C0E /* MiniBoss_SixOne.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MiniBoss_SixOne.h; path = Entities/Ships/MiniBosses/MiniBoss_SixOne.h; sourceTree = "<group>"; };
+		B9B03E76142468B100DE7C0E /* MiniBoss_SixOne.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MiniBoss_SixOne.m; path = Entities/Ships/MiniBosses/MiniBoss_SixOne.m; sourceTree = "<group>"; };
+		B9B03E78142468C900DE7C0E /* MiniBoss_SevenThree.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MiniBoss_SevenThree.h; path = Entities/Ships/MiniBosses/MiniBoss_SevenThree.h; sourceTree = "<group>"; };
+		B9B03E79142468C900DE7C0E /* MiniBoss_SevenThree.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MiniBoss_SevenThree.m; path = Entities/Ships/MiniBosses/MiniBoss_SevenThree.m; sourceTree = "<group>"; };
+		B9B03E7E1424696000DE7C0E /* MiniBoss_FiveTwo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MiniBoss_FiveTwo.h; path = Entities/Ships/MiniBosses/MiniBoss_FiveTwo.h; sourceTree = "<group>"; };
+		B9B03E7F1424696000DE7C0E /* MiniBoss_FiveTwo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MiniBoss_FiveTwo.m; path = Entities/Ships/MiniBosses/MiniBoss_FiveTwo.m; sourceTree = "<group>"; };
+		B9B03E8414246E0500DE7C0E /* MiniBoss_SevenOne.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MiniBoss_SevenOne.h; path = Entities/Ships/MiniBosses/MiniBoss_SevenOne.h; sourceTree = "<group>"; };
+		B9B03E8514246E0600DE7C0E /* MiniBoss_SevenOne.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MiniBoss_SevenOne.m; path = Entities/Ships/MiniBosses/MiniBoss_SevenOne.m; sourceTree = "<group>"; };
 		B9C3AB7B13C2A7B4003202BA /* mainmenu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mainmenu.png; sourceTree = "<group>"; };
 		B9C3AB7D13C2AA50003202BA /* return.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = return.png; sourceTree = "<group>"; };
 		B9C3AB7F13C2BF8E003202BA /* pause.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pause.png; sourceTree = "<group>"; };
@@ -694,6 +706,14 @@
 				B967096E142451BF0058B254 /* MiniBoss_TwoThree.m */,
 				B9B03E72142455D300DE7C0E /* MiniBoss_FourTwo.h */,
 				B9B03E73142455D300DE7C0E /* MiniBoss_FourTwo.m */,
+				B9B03E75142468B100DE7C0E /* MiniBoss_SixOne.h */,
+				B9B03E76142468B100DE7C0E /* MiniBoss_SixOne.m */,
+				B9B03E78142468C900DE7C0E /* MiniBoss_SevenThree.h */,
+				B9B03E79142468C900DE7C0E /* MiniBoss_SevenThree.m */,
+				B9B03E7E1424696000DE7C0E /* MiniBoss_FiveTwo.h */,
+				B9B03E7F1424696000DE7C0E /* MiniBoss_FiveTwo.m */,
+				B9B03E8414246E0500DE7C0E /* MiniBoss_SevenOne.h */,
+				B9B03E8514246E0600DE7C0E /* MiniBoss_SevenOne.m */,
 			);
 			name = MiniBosses;
 			sourceTree = "<group>";
@@ -1628,6 +1648,10 @@
 				B967096A142446F30058B254 /* MiniBoss_OneThree.m in Sources */,
 				B967096F142451BF0058B254 /* MiniBoss_TwoThree.m in Sources */,
 				B9B03E74142455D300DE7C0E /* MiniBoss_FourTwo.m in Sources */,
+				B9B03E77142468B100DE7C0E /* MiniBoss_SixOne.m in Sources */,
+				B9B03E7A142468CA00DE7C0E /* MiniBoss_SevenThree.m in Sources */,
+				B9B03E801424696100DE7C0E /* MiniBoss_FiveTwo.m in Sources */,
+				B9B03E8614246E0600DE7C0E /* MiniBoss_SevenOne.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

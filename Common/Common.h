@@ -174,7 +174,11 @@ typedef enum _KamikazeState{
     kKamikaze_LeftAttack,
     kKamikaze_LeftReturn,
     kKamikaze_RightAttack,
-    kKamikaze_RightReturn
+    kKamikaze_RightReturn,
+    kKamikaze_TopLeftAttack,
+    kKamikaze_TopLeftReturn,
+    kKamikaze_TopRightAttack,
+    kKamikaze_TopRightReturn
 } KamikazeState;
 
 #pragma mark -

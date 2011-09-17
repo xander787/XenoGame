@@ -1,20 +1,20 @@
 //
-//  kMiniBoss_OneThree.m
+//  MiniBoss_SixOne.m
 //  Xenophobe
 //
 //  Created by James Linnell on 9/16/11.
 //  Copyright 2011 PDHS. All rights reserved.
 //
 
-#import "MiniBoss_OneThree.h"
+#import "MiniBoss_SixOne.h"
 
-@implementation MiniBoss_OneThree
+@implementation MiniBoss_SixOne
 
 - (id)initWithLocation:(CGPoint)aPoint andPlayerShipRef:(PlayerShip *)playerRef {
-    self = [super initWithBossID:kMiniBoss_OneThree initialLocation:aPoint andPlayerShipRef:playerRef];
+    self = [super initWithBossID:kMiniBoss_SixOne initialLocation:aPoint andPlayerShipRef:playerRef];
     if (self) {
         // Initialization code here.
-        state = kOneThree_Entry;
+        state = kSixOne_Entry;
         
         deathAnimation = [[ParticleEmitter alloc] initParticleEmitterWithImageNamed:@"texture.png"
                                                                            position:Vector2fMake(currentLocation.x, currentLocation.y)
@@ -106,12 +106,12 @@
     [floaterOneDeath setSourcePosition:Vector2fMake(currentLocation.x + modularObjects[1].location.x, currentLocation.y + modularObjects[1].location.y)];
     [floaterTwoDeath setSourcePosition:Vector2fMake(currentLocation.x + modularObjects[2].location.x, currentLocation.y + modularObjects[2].location.y)];
     
-    if(state == kOneThree_Entry){
+    if(state == kSixOne_Entry){
         if(shipIsDeployed){
-            state = kOneThree_Holding;
+            state = kSixOne_Holding;
         }
     }
-    else if(state == kOneThree_Holding){
+    else if(state == kSixOne_Holding){
         holdingTimer += delta;
         attackTimer += delta;
         
@@ -135,15 +135,15 @@
         }
         
         if(attackTimer >= 6 && kamikazeState == kKamikaze_Idle){
-            state = kOneThree_Attacking;
+            state = kSixOne_Attacking;
             attackTimer = 0;
             holdingTimer = 0;
         }
         if(modularObjects[0].isDead){
-            state = kOneThree_Death;
+            state = kSixOne_Death;
         }
     }
-    else if(state == kOneThree_Attacking){
+    else if(state == kSixOne_Attacking){
         if(!attackingPath){
             oldPointBeforeAttack = Vector2fMake(currentLocation.x, currentLocation.y);
             
@@ -168,15 +168,15 @@
         currentLocation.y = [attackingPath getPointAt:attackPathtimer/4].y;
         
         if(abs(oldPointBeforeAttack.x - currentLocation.x) <= 5 && abs(oldPointBeforeAttack.y - currentLocation.y) <= 5 && attackPathtimer > 1){
-            state = kOneThree_Holding;
+            state = kSixOne_Holding;
             attackPathtimer = 0;
             [attackingPath release];
             attackingPath = nil;
         }if(modularObjects[0].isDead){
-            state = kOneThree_Death;
+            state = kSixOne_Death;
         }
     }
-    if(state == kOneThree_Death){
+    if(state == kSixOne_Death){
         [deathAnimation update:delta];
         modularObjects[0].isDead = NO;
         if(deathAnimation.particleCount == 0){
@@ -185,11 +185,11 @@
     }
     
     if(kamikazeState == kKamikaze_Idle){
-        if(state == kOneThree_Holding){
+        if(state == kSixOne_Holding){
             kamikazeTimer += delta;
         }
         
-        if(kamikazeTimer > 4 && state == kOneThree_Holding){
+        if(kamikazeTimer > 4 && state == kSixOne_Holding){
             if(RANDOM_MINUS_1_TO_1() > 0){
                 if(modularObjects[1].isDead == NO){
                     kamikazeState = kKamikaze_LeftAttack;
@@ -288,7 +288,7 @@
 - (void)render {
     
     
-    if(state == kOneThree_Death){
+    if(state == kSixOne_Death){
         [deathAnimation renderParticles];
     }
     [floaterOneDeath renderParticles];
@@ -301,7 +301,7 @@
                 [modularObjects[i].moduleImage renderAtPoint:CGPointMake(currentLocation.x + modularObjects[i].location.x, currentLocation.y + modularObjects[i].location.y) centerOfImage:YES];
             }
         }
-        else if(state != kOneThree_Death){
+        else if(state != kSixOne_Death){
             [modularObjects[0].moduleImage setRotation:modularObjects[i].rotation];
             [modularObjects[0].moduleImage renderAtPoint:CGPointMake(currentLocation.x + modularObjects[i].location.x, currentLocation.y + modularObjects[i].location.y) centerOfImage:YES];
         }
