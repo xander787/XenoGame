@@ -190,6 +190,8 @@
 		B9670966142428480058B254 /* kMiniBossOneThreeMainBody.png in Resources */ = {isa = PBXBuildFile; fileRef = B9670962142428480058B254 /* kMiniBossOneThreeMainBody.png */; };
 		B9670967142428480058B254 /* kMiniBossOneTwoFloater2.png in Resources */ = {isa = PBXBuildFile; fileRef = B9670963142428480058B254 /* kMiniBossOneTwoFloater2.png */; };
 		B967096A142446F30058B254 /* MiniBoss_OneThree.m in Sources */ = {isa = PBXBuildFile; fileRef = B9670969142446F20058B254 /* MiniBoss_OneThree.m */; };
+		B967096C142451A60058B254 /* kMiniBossTwoThreeMainBody.png in Resources */ = {isa = PBXBuildFile; fileRef = B967096B142451A50058B254 /* kMiniBossTwoThreeMainBody.png */; };
+		B967096F142451BF0058B254 /* MiniBoss_TwoThree.m in Sources */ = {isa = PBXBuildFile; fileRef = B967096E142451BF0058B254 /* MiniBoss_TwoThree.m */; };
 		B969707E13E104FA002EC552 /* store.png in Resources */ = {isa = PBXBuildFile; fileRef = B969707D13E104F3002EC552 /* store.png */; };
 		B969708B13E1335B002EC552 /* Slider.png in Resources */ = {isa = PBXBuildFile; fileRef = B969708913E1335B002EC552 /* Slider.png */; };
 		B969708C13E1335B002EC552 /* SliderBar.png in Resources */ = {isa = PBXBuildFile; fileRef = B969708A13E1335B002EC552 /* SliderBar.png */; };
@@ -505,8 +507,11 @@
 		B9670961142428480058B254 /* kMiniBossOneThreeFloat2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = kMiniBossOneThreeFloat2.png; path = "Game Resources/Images/Normal/Ships/MiniBoss Ships/kMiniBossOneThreeFloat2.png"; sourceTree = SOURCE_ROOT; };
 		B9670962142428480058B254 /* kMiniBossOneThreeMainBody.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = kMiniBossOneThreeMainBody.png; path = "Game Resources/Images/Normal/Ships/MiniBoss Ships/kMiniBossOneThreeMainBody.png"; sourceTree = SOURCE_ROOT; };
 		B9670963142428480058B254 /* kMiniBossOneTwoFloater2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = kMiniBossOneTwoFloater2.png; path = "Game Resources/Images/Normal/Ships/MiniBoss Ships/kMiniBossOneTwoFloater2.png"; sourceTree = SOURCE_ROOT; };
-		B9670968142446F20058B254 /* MiniBoss_OneThree.h */ = {isa = PBXFileReference; fileEncoding = 4; name = MiniBoss_OneThree.h; path = Entities/Ships/MiniBosses/MiniBoss_OneThree.h; sourceTree = "<group>"; };
+		B9670968142446F20058B254 /* MiniBoss_OneThree.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MiniBoss_OneThree.h; path = Entities/Ships/MiniBosses/MiniBoss_OneThree.h; sourceTree = "<group>"; };
 		B9670969142446F20058B254 /* MiniBoss_OneThree.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MiniBoss_OneThree.m; path = Entities/Ships/MiniBosses/MiniBoss_OneThree.m; sourceTree = "<group>"; };
+		B967096B142451A50058B254 /* kMiniBossTwoThreeMainBody.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = kMiniBossTwoThreeMainBody.png; path = "Game Resources/Images/Normal/Ships/MiniBoss Ships/kMiniBossTwoThreeMainBody.png"; sourceTree = SOURCE_ROOT; };
+		B967096D142451BE0058B254 /* MiniBoss_TwoThree.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MiniBoss_TwoThree.h; path = Entities/Ships/MiniBosses/MiniBoss_TwoThree.h; sourceTree = "<group>"; };
+		B967096E142451BF0058B254 /* MiniBoss_TwoThree.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MiniBoss_TwoThree.m; path = Entities/Ships/MiniBosses/MiniBoss_TwoThree.m; sourceTree = "<group>"; };
 		B969707D13E104F3002EC552 /* store.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = store.png; sourceTree = "<group>"; };
 		B969708913E1335B002EC552 /* Slider.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Slider.png; sourceTree = "<group>"; };
 		B969708A13E1335B002EC552 /* SliderBar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SliderBar.png; sourceTree = "<group>"; };
@@ -680,6 +685,8 @@
 				B967094A14241D230058B254 /* MiniBoss_OneTwo.m */,
 				B9670968142446F20058B254 /* MiniBoss_OneThree.h */,
 				B9670969142446F20058B254 /* MiniBoss_OneThree.m */,
+				B967096D142451BE0058B254 /* MiniBoss_TwoThree.h */,
+				B967096E142451BF0058B254 /* MiniBoss_TwoThree.m */,
 			);
 			name = MiniBosses;
 			sourceTree = "<group>";
@@ -1054,6 +1061,7 @@
 		11E7DCE3129F00B10047E2FD /* MiniBosses */ = {
 			isa = PBXGroup;
 			children = (
+				B967096B142451A50058B254 /* kMiniBossTwoThreeMainBody.png */,
 				B9670960142428480058B254 /* kMiniBossOneThreeFloat1.png */,
 				B9670961142428480058B254 /* kMiniBossOneThreeFloat2.png */,
 				B9670962142428480058B254 /* kMiniBossOneThreeMainBody.png */,
@@ -1525,6 +1533,7 @@
 				B9670965142428480058B254 /* kMiniBossOneThreeFloat2.png in Resources */,
 				B9670966142428480058B254 /* kMiniBossOneThreeMainBody.png in Resources */,
 				B9670967142428480058B254 /* kMiniBossOneTwoFloater2.png in Resources */,
+				B967096C142451A60058B254 /* kMiniBossTwoThreeMainBody.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1608,6 +1617,7 @@
 				B9670948141DBA780058B254 /* MiniBoss_SixTwo.m in Sources */,
 				B967094B14241D230058B254 /* MiniBoss_OneTwo.m in Sources */,
 				B967096A142446F30058B254 /* MiniBoss_OneThree.m in Sources */,
+				B967096F142451BF0058B254 /* MiniBoss_TwoThree.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

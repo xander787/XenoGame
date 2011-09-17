@@ -300,6 +300,9 @@ WrapText( const char *text
             else if([[levelDictionary objectForKey:@"kBossShip"] isEqualToString:@"kMiniBossTwoTwo"]){
                 bossShipID = kMiniBoss_TwoTwo;
             }
+            else if([[levelDictionary objectForKey:@"kBossShip"] isEqualToString:@"kMiniBossTwoThree"]){
+                bossShipID = kMiniBoss_TwoThree;
+            }
             else if([[levelDictionary objectForKey:@"kBossShip"] isEqualToString:@"kMiniBossThreeOne"]){
                 bossShipID = kMiniBoss_ThreeOne;
             }
@@ -662,6 +665,9 @@ WrapText( const char *text
     }
     else if(bossShipID == kMiniBoss_TwoTwo) {
         bossShip = [[MiniBoss_TwoTwo alloc] initWithLocation:CGPointMake(160.0f, 600.0f) andPlayerShipRef:playerShip];
+    }
+    else if(bossShipID == kMiniBoss_TwoThree) {
+        bossShip = [[MiniBoss_TwoThree alloc] initWithLocation:CGPointMake(160.0f, 600.0f) andPlayerShipRef:playerShip];
     }
     else if(bossShipID == kMiniBoss_ThreeOne) {
         bossShip = [[MiniBoss_ThreeOne alloc] initWithLocation:CGPointMake(160.0f, 600.0f) andPlayerShipRef:playerShip];

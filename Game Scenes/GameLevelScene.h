@@ -57,6 +57,7 @@
 #import "MiniBoss_OneTwo.h"
 #import "MiniBoss_OneThree.h"
 #import "MiniBoss_TwoTwo.h"
+#import "MiniBoss_TwoThree.h"
 #import "MiniBoss_ThreeOne.h"
 #import "MiniBoss_ThreeThree.h"
 #import "MiniBoss_ThreeTwo.h"
