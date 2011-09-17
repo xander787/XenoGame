@@ -232,6 +232,8 @@
 		B9AFC0A013E239B900E4570A /* NoButton.png in Resources */ = {isa = PBXBuildFile; fileRef = B9AFC09D13E239B900E4570A /* NoButton.png */; };
 		B9AFC0A113E239B900E4570A /* YesButton.png in Resources */ = {isa = PBXBuildFile; fileRef = B9AFC09E13E239B900E4570A /* YesButton.png */; };
 		B9AFC0A313E23BAC00E4570A /* ClearAllSavedDataButton.png in Resources */ = {isa = PBXBuildFile; fileRef = B9AFC0A213E23BAC00E4570A /* ClearAllSavedDataButton.png */; };
+		B9B03E6E142455A100DE7C0E /* kMiniBossFourTwoMainBody.png in Resources */ = {isa = PBXBuildFile; fileRef = B9B03E6D142455A100DE7C0E /* kMiniBossFourTwoMainBody.png */; };
+		B9B03E74142455D300DE7C0E /* MiniBoss_FourTwo.m in Sources */ = {isa = PBXBuildFile; fileRef = B9B03E73142455D300DE7C0E /* MiniBoss_FourTwo.m */; };
 		B9C3AB7C13C2A7B4003202BA /* mainmenu.png in Resources */ = {isa = PBXBuildFile; fileRef = B9C3AB7B13C2A7B4003202BA /* mainmenu.png */; };
 		B9C3AB7E13C2AA50003202BA /* return.png in Resources */ = {isa = PBXBuildFile; fileRef = B9C3AB7D13C2AA50003202BA /* return.png */; };
 		B9C3AB8013C2BF8E003202BA /* pause.png in Resources */ = {isa = PBXBuildFile; fileRef = B9C3AB7F13C2BF8E003202BA /* pause.png */; };
@@ -559,6 +561,9 @@
 		B9AFC09D13E239B900E4570A /* NoButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NoButton.png; sourceTree = "<group>"; };
 		B9AFC09E13E239B900E4570A /* YesButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = YesButton.png; sourceTree = "<group>"; };
 		B9AFC0A213E23BAC00E4570A /* ClearAllSavedDataButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ClearAllSavedDataButton.png; sourceTree = "<group>"; };
+		B9B03E6D142455A100DE7C0E /* kMiniBossFourTwoMainBody.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = kMiniBossFourTwoMainBody.png; path = "Game Resources/Images/Normal/Ships/MiniBoss Ships/kMiniBossFourTwoMainBody.png"; sourceTree = SOURCE_ROOT; };
+		B9B03E72142455D300DE7C0E /* MiniBoss_FourTwo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MiniBoss_FourTwo.h; path = Entities/Ships/MiniBosses/MiniBoss_FourTwo.h; sourceTree = "<group>"; };
+		B9B03E73142455D300DE7C0E /* MiniBoss_FourTwo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MiniBoss_FourTwo.m; path = Entities/Ships/MiniBosses/MiniBoss_FourTwo.m; sourceTree = "<group>"; };
 		B9C3AB7B13C2A7B4003202BA /* mainmenu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mainmenu.png; sourceTree = "<group>"; };
 		B9C3AB7D13C2AA50003202BA /* return.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = return.png; sourceTree = "<group>"; };
 		B9C3AB7F13C2BF8E003202BA /* pause.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pause.png; sourceTree = "<group>"; };
@@ -687,6 +692,8 @@
 				B9670969142446F20058B254 /* MiniBoss_OneThree.m */,
 				B967096D142451BE0058B254 /* MiniBoss_TwoThree.h */,
 				B967096E142451BF0058B254 /* MiniBoss_TwoThree.m */,
+				B9B03E72142455D300DE7C0E /* MiniBoss_FourTwo.h */,
+				B9B03E73142455D300DE7C0E /* MiniBoss_FourTwo.m */,
 			);
 			name = MiniBosses;
 			sourceTree = "<group>";
@@ -1061,6 +1068,7 @@
 		11E7DCE3129F00B10047E2FD /* MiniBosses */ = {
 			isa = PBXGroup;
 			children = (
+				B9B03E6D142455A100DE7C0E /* kMiniBossFourTwoMainBody.png */,
 				B967096B142451A50058B254 /* kMiniBossTwoThreeMainBody.png */,
 				B9670960142428480058B254 /* kMiniBossOneThreeFloat1.png */,
 				B9670961142428480058B254 /* kMiniBossOneThreeFloat2.png */,
@@ -1534,6 +1542,7 @@
 				B9670966142428480058B254 /* kMiniBossOneThreeMainBody.png in Resources */,
 				B9670967142428480058B254 /* kMiniBossOneTwoFloater2.png in Resources */,
 				B967096C142451A60058B254 /* kMiniBossTwoThreeMainBody.png in Resources */,
+				B9B03E6E142455A100DE7C0E /* kMiniBossFourTwoMainBody.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1618,6 +1627,7 @@
 				B967094B14241D230058B254 /* MiniBoss_OneTwo.m in Sources */,
 				B967096A142446F30058B254 /* MiniBoss_OneThree.m in Sources */,
 				B967096F142451BF0058B254 /* MiniBoss_TwoThree.m in Sources */,
+				B9B03E74142455D300DE7C0E /* MiniBoss_FourTwo.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

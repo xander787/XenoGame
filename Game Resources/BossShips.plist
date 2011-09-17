@@ -1122,5 +1122,47 @@
 			<string>100</string>
 		</array>
 	</dict>
+	<key>kMiniBossFourTwo</key>
+	<dict>
+		<key>kBossAttack</key>
+		<integer>10</integer>
+		<key>kBossID</key>
+		<string>kMiniBossFourTwo</string>
+		<key>kBossSpeed</key>
+		<integer>10</integer>
+		<key>kBossStamina</key>
+		<integer>10</integer>
+		<key>kBossType</key>
+		<string>kBossTypeMiniBoss</string>
+		<key>kCollisionBoundingPoints</key>
+		<array>
+			<array>
+				<string>0,-64;17,-54;32,-36;16,-21;-16,-21;-32,-36;-16,-54</string>
+				<string>47,-33;51,-23;50,5;39,42;0,66;-39,41;-50,5;-51,-23;-46,-35</string>
+			</array>
+		</array>
+		<key>kModularDestructionOrder</key>
+		<array>
+			<array>
+				<string>0</string>
+			</array>
+		</array>
+		<key>kShipModuleImages</key>
+		<array>
+			<string>kMiniBossFourTwoMainBody.png</string>
+		</array>
+		<key>kShipModulePoints</key>
+		<array>
+			<string>0,0</string>
+		</array>
+		<key>kShipTurretPoints</key>
+		<array>
+			<string>0,-62;15,-53;30,-39;-15,-53;-29,-39;41,-29;-40,-29</string>
+		</array>
+		<key>kShipModuleHealths</key>
+		<array>
+			<string>400</string>
+		</array>
+	</dict>
 </dict>
 </plist>
