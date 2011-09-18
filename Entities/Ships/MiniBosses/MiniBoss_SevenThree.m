@@ -226,24 +226,24 @@
             }
             else if(randomNum <= 0.5 && randomNum > 0){
                 if(modularObjects[2].isDead == NO){
-                    kamikazeState = kKamikaze_LeftAttack;
-                }
-                else if(modularObjects[3].isDead == NO){
                     kamikazeState = kKamikaze_RightAttack;
                 }
-                else if(modularObjects[1].isDead == NO){
+                else if(modularObjects[3].isDead == NO){
                     kamikazeState = kKamikaze_TopLeftAttack;
+                }
+                else if(modularObjects[1].isDead == NO){
+                    kamikazeState = kKamikaze_LeftAttack;
                 }
             }
             else if(randomNum <= 0 && randomNum > -0.5){
                 if(modularObjects[3].isDead == NO){
-                    kamikazeState = kKamikaze_LeftAttack;
+                    kamikazeState = kKamikaze_TopLeftAttack;
                 }
                 else if(modularObjects[1].isDead == NO){
-                    kamikazeState = kKamikaze_RightAttack;
+                    kamikazeState = kKamikaze_LeftAttack;
                 }
                 else if(modularObjects[2].isDead == NO){
-                    kamikazeState = kKamikaze_TopLeftAttack;
+                    kamikazeState = kKamikaze_RightAttack;
                 }
             }
             kamikazeTimer = 0;
@@ -309,6 +309,10 @@
         modularObjects[2].isDead = NO;
         floaterTwoDeathAnimating = YES;
     }
+    if(modularObjects[3].isDead && !floaterThreeDeathAnimating){
+        modularObjects[3].isDead = NO;
+        floaterThreeDeathAnimating = YES;
+    }
     if(floaterOneDeathAnimating){
         [floaterOneDeath update:delta];
         if(floaterOneDeath.particleCount == 0){
@@ -321,6 +325,13 @@
         if(floaterTwoDeath.particleCount == 0){
             floaterTwoDeathAnimating = NO;
             modularObjects[2].isDead = YES;
+        }
+    }
+    if(floaterThreeDeathAnimating){
+        [floaterThreeDeath update:delta];
+        if(floaterThreeDeath.particleCount == 0){
+            floaterThreeDeathAnimating = NO;
+            modularObjects[3].isDead = YES;
         }
     }
 }

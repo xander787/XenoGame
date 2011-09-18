@@ -369,6 +369,14 @@
         modularObjects[2].isDead = NO;
         floaterTwoDeathAnimating = YES;
     }
+    if(modularObjects[3].isDead && !floaterThreeDeathAnimating){
+        modularObjects[3].isDead = NO;
+        floaterThreeDeathAnimating = YES;
+    }
+    if(modularObjects[4].isDead && !floaterFourDeathAnimating){
+        modularObjects[4].isDead = NO;
+        floaterFourDeathAnimating = YES;
+    }
     if(floaterOneDeathAnimating){
         [floaterOneDeath update:delta];
         if(floaterOneDeath.particleCount == 0){
@@ -381,6 +389,20 @@
         if(floaterTwoDeath.particleCount == 0){
             floaterTwoDeathAnimating = NO;
             modularObjects[2].isDead = YES;
+        }
+    }
+    if(floaterThreeDeathAnimating){
+        [floaterThreeDeath update:delta];
+        if(floaterThreeDeath.particleCount == 0){
+            floaterThreeDeathAnimating = NO;
+            modularObjects[3].isDead = YES;
+        }
+    }
+    if(floaterFourDeathAnimating){
+        [floaterFourDeath update:delta];
+        if(floaterFourDeath.particleCount == 0){
+            floaterFourDeathAnimating = NO;
+            modularObjects[4].isDead = YES;
         }
     }
 }
