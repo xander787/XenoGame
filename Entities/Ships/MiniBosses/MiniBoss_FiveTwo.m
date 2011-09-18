@@ -249,44 +249,44 @@
             }
             else if(randomNum <= 0.5 && randomNum > 0){
                 if(modularObjects[2].isDead == NO){
-                    kamikazeState = kKamikaze_LeftAttack;
-                }
-                else if(modularObjects[3].isDead == NO){
                     kamikazeState = kKamikaze_RightAttack;
                 }
-                else if(modularObjects[4].isDead == NO){
+                else if(modularObjects[3].isDead == NO){
                     kamikazeState = kKamikaze_TopLeftAttack;
                 }
-                else if(modularObjects[1].isDead == NO){
+                else if(modularObjects[4].isDead == NO){
                     kamikazeState = kKamikaze_TopRightAttack;
+                }
+                else if(modularObjects[1].isDead == NO){
+                    kamikazeState = kKamikaze_LeftAttack;
                 }
             }
             else if(randomNum <= 0 && randomNum > -0.5){
                 if(modularObjects[3].isDead == NO){
-                    kamikazeState = kKamikaze_LeftAttack;
-                }
-                else if(modularObjects[4].isDead == NO){
-                    kamikazeState = kKamikaze_RightAttack;
-                }
-                else if(modularObjects[1].isDead == NO){
                     kamikazeState = kKamikaze_TopLeftAttack;
                 }
-                else if(modularObjects[2].isDead == NO){
+                else if(modularObjects[4].isDead == NO){
                     kamikazeState = kKamikaze_TopRightAttack;
+                }
+                else if(modularObjects[1].isDead == NO){
+                    kamikazeState = kKamikaze_LeftAttack;
+                }
+                else if(modularObjects[2].isDead == NO){
+                    kamikazeState = kKamikaze_RightAttack;
                 }
             }
             else if(randomNum <= -0.5){
                 if(modularObjects[4].isDead == NO){
-                    kamikazeState = kKamikaze_LeftAttack;
+                    kamikazeState = kKamikaze_TopRightAttack;
                 }
                 else if(modularObjects[1].isDead == NO){
-                    kamikazeState = kKamikaze_RightAttack;
+                    kamikazeState = kKamikaze_LeftAttack;
                 }
                 else if(modularObjects[2].isDead == NO){
-                    kamikazeState = kKamikaze_TopLeftAttack;
+                    kamikazeState = kKamikaze_RightAttack;
                 }
                 else if(modularObjects[3].isDead == NO){
-                    kamikazeState = kKamikaze_TopRightAttack;
+                    kamikazeState = kKamikaze_TopLeftAttack;
                 }
             }
             kamikazeTimer = 0;
@@ -388,8 +388,8 @@
 - (void)hitModule:(int)module withDamage:(int)damage {
     [super hitModule:module withDamage:damage];
     if(module == 0){
-        if(modularObjects[1].isDead == NO && modularObjects[2].isDead == NO){
-            if(modularObjects[0].moduleHealth > modularObjects[0].moduleMaxHealth){
+        if(modularObjects[1].isDead == NO && modularObjects[2].isDead == NO && modularObjects[3].isDead == NO && modularObjects[4].isDead == NO && kamikazeState == kKamikaze_Idle){
+            if(modularObjects[0].moduleHealth > modularObjects[0].moduleMaxHealth/2){
                 modularObjects[module].moduleHealth -= damage;
             }
         }

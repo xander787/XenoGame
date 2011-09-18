@@ -5,7 +5,7 @@
 	<key>kBossDefaultPoint</key>
 	<string>160,360</string>
 	<key>kBossShip</key>
-	<string>kMiniBossFourTwo</string>
+	<string>kMiniBossSixOne</string>
 	<key>kLevelDifficulty</key>
 	<integer>0</integer>
 	<key>kLevelType</key>

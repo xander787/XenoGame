@@ -271,8 +271,8 @@
 - (void)hitModule:(int)module withDamage:(int)damage {
     [super hitModule:module withDamage:damage];
     if(module == 0){
-        if(modularObjects[1].isDead == NO && modularObjects[2].isDead == NO){
-            if(modularObjects[0].moduleHealth > modularObjects[0].moduleMaxHealth){
+        if(modularObjects[1].isDead == NO && modularObjects[2].isDead == NO && kamikazeState == kKamikaze_Idle){
+            if(modularObjects[0].moduleHealth > modularObjects[0].moduleMaxHealth/2){
                 modularObjects[module].moduleHealth -= damage;
             }
         }
