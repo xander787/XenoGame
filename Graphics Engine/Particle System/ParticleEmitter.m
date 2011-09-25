@@ -272,7 +272,9 @@
 			// Calculate the new direction based on gravity
 			currentParticle->direction = Vector2fAdd(currentParticle->direction, gravity);
 			//currentParticle->direction = Vector2fMultiply(currentParticle->direction, delta);
-			currentParticle->position = Vector2fAdd(currentParticle->position, currentParticle->direction);
+//			currentParticle->position = Vector2fAdd(currentParticle->position, currentParticle->direction);
+            currentParticle->position.x += currentParticle->direction.x * delta * 200;
+            currentParticle->position.y += currentParticle->direction.y * delta * 200;
 			
 			// Reduce the life span of the particle
 			currentParticle->timeToLive -= delta;
