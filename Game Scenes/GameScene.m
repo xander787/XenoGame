@@ -124,7 +124,7 @@
     // In-game graphics
     font = [[AngelCodeFont alloc] initWithFontImageNamed:@"xenophobefont.png" controlFile:@"xenophobefont" scale:(1.0/3.0) filter:GL_LINEAR];
     
-    backgroundParticleEmitter = [[ParticleEmitter alloc] initParticleEmitterWithImageNamed:@"texture.png"
+    /*backgroundParticleEmitter = [[ParticleEmitter alloc] initParticleEmitterWithImageNamed:@"texture.png"
 																				  position:Vector2fMake(160.0, 259.76)
 																	sourcePositionVariance:Vector2fMake(373.5, 240.0)
 																					 speed:0.1
@@ -143,7 +143,7 @@
 																		finishParticleSize:3.0
 																	  particleSizeVariance:1.3
 																				  duration:-1
-																			 blendAdditive:NO];
+																			 blendAdditive:NO];*/
     
     healthBar = [[Image alloc] initWithImage:@"HealthBar.png" scale:Scale2fOne];
     healthBarBackground = [[Image alloc] initWithImage:@"HealthBarBackground.png" scale:Scale2fOne];
@@ -191,7 +191,7 @@
     }
     
     // In-game graphics updating
-    [backgroundParticleEmitter update:aDelta];
+    //[backgroundParticleEmitter update:aDelta];
     [healthBar setScale:Scale2fMake((GLfloat)gameLevel.playerShip.shipHealth / gameLevel.playerShip.shipMaxHealth, 1.0f)];
     
     if (levelInProgress && !soundInitialized) {
@@ -424,7 +424,7 @@
 
 - (void)render {
     // In-game graphics rendered first
-    [backgroundParticleEmitter renderParticles];
+    //[backgroundParticleEmitter renderParticles];
     if(!gameLevel.currentWaveType == kWaveType_Dialogue && !showStatsScene){
         [healthBarBackground renderAtPoint:CGPointMake(254, 14.0) centerOfImage:NO];
         [healthBar renderAtPoint:CGPointMake(255, 15.0) centerOfImage:NO];

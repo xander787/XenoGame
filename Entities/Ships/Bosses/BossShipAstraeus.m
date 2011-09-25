@@ -476,6 +476,8 @@
 
 - (void)hitModule:(int)module withDamage:(int)damage {
     modularObjects[module].moduleHealth -= damage;
+    
+    [super hitModule:module withDamage:damage];
 }
 
 - (void)render {
