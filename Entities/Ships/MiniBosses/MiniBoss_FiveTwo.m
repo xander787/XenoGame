@@ -117,6 +117,9 @@
                                                                             duration:0.1
                                                                        blendAdditive:YES];
         
+        waveCenter = [[WaveProjectile alloc] initWithProjectileID:kEnemyProjectile_WaveLevelOne_SingleSmall location:Vector2fZero andAngle:-90.0f];
+        waveLeft = [[WaveProjectile alloc] initWithProjectileID:kEnemyProjectile_WaveLevelThree_DoubleSmall location:Vector2fZero andAngle:-105.0f];
+        waveRight = [[WaveProjectile alloc] initWithProjectileID:kEnemyProjectile_WaveLevelThree_DoubleSmall location:Vector2fZero andAngle:-75.0f];
         
     }
     return self;
@@ -147,6 +150,16 @@
     [floaterTwoDeath setSourcePosition:Vector2fMake(currentLocation.x + modularObjects[2].location.x, currentLocation.y + modularObjects[2].location.y)];
     [floaterThreeDeath setSourcePosition:Vector2fMake(currentLocation.x + modularObjects[3].location.x, currentLocation.y + modularObjects[3].location.y)];
     [floaterFourDeath setSourcePosition:Vector2fMake(currentLocation.x + modularObjects[4].location.x, currentLocation.y + modularObjects[4].location.y)];
+    
+    if(shipIsDeployed){
+        [waveCenter setLocation:Vector2fMake(currentLocation.x + modularObjects[0].weapons[0].weaponCoord.x, currentLocation.y + modularObjects[0].weapons[0].weaponCoord.y)];
+        [waveLeft setLocation:Vector2fMake(currentLocation.x + modularObjects[0].weapons[1].weaponCoord.x, currentLocation.y + modularObjects[0].weapons[1].weaponCoord.y)];
+        [waveRight setLocation:Vector2fMake(currentLocation.x + modularObjects[0].weapons[2].weaponCoord.x, currentLocation.y + modularObjects[0].weapons[2].weaponCoord.y)];
+        
+        [waveCenter update:delta];
+        [waveLeft update:delta];
+        [waveRight update:delta];
+    }
     
     if(state == kFiveTwo_Entry){
         if(shipIsDeployed){
@@ -219,6 +232,10 @@
         }
     }
     if(state == kFiveTwo_Death){
+        [waveCenter stopProjectile];
+        [waveLeft stopProjectile];
+        [waveRight stopProjectile];
+        
         [deathAnimation update:delta];
         modularObjects[0].isDead = NO;
         if(deathAnimation.particleCount == 0){
@@ -425,7 +442,9 @@
 }
 
 - (void)render {
-    
+    [waveCenter render];
+    [waveLeft render];
+    [waveRight render];
     
     if(state == kFiveTwo_Death){
         [deathAnimation renderParticles];

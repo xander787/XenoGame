@@ -96,9 +96,13 @@
                                                                   particleSizeVariance:0.0
                                                                               duration:0.1
                                                                          blendAdditive:YES];
+        
+        tripleBulletLeft = [[BulletProjectile alloc] initWithProjectileID:kEnemyProjectile_BulletLevelFour_Triple location:Vector2fZero andAngle:-100.0f];
+        tripleBulletRight = [[BulletProjectile alloc] initWithProjectileID:kEnemyProjectile_BulletLevelFour_Triple location:Vector2fZero andAngle:-80.0f];
+        heatSeekerCenter = [[HeatSeekingMissile alloc] initWithProjectileID:kEnemyProjectile_HeatSeekingMissile location:Vector2fZero  angle:-90.0f speed:1 rate:5 andPlayerShipRef:playerShipRef];
+        heatSeekerLeft = [[HeatSeekingMissile alloc] initWithProjectileID:kEnemyProjectile_HeatSeekingMissile location:Vector2fZero  angle:180.0f speed:1 rate:5 andPlayerShipRef:playerShipRef];
+        heatSeekerRight = [[HeatSeekingMissile alloc] initWithProjectileID:kEnemyProjectile_HeatSeekingMissile location:Vector2fZero  angle:0.0f speed:1 rate:5 andPlayerShipRef:playerShipRef];
 
-        
-        
     }
     return self;
 }
@@ -127,6 +131,25 @@
     [floaterOneDeath setSourcePosition:Vector2fMake(currentLocation.x + modularObjects[1].location.x, currentLocation.y + modularObjects[1].location.y)];
     [floaterTwoDeath setSourcePosition:Vector2fMake(currentLocation.x + modularObjects[2].location.x, currentLocation.y + modularObjects[2].location.y)];
     [floaterThreeDeath setSourcePosition:Vector2fMake(currentLocation.x + modularObjects[3].location.x, currentLocation.y + modularObjects[3].location.y)];
+    
+    if(shipIsDeployed){
+        [tripleBulletLeft setLocation:Vector2fMake(currentLocation.x + modularObjects[0].weapons[1].weaponCoord.x, currentLocation.y + modularObjects[0].weapons[1].weaponCoord.y)];
+        [tripleBulletRight setLocation:Vector2fMake(currentLocation.x + modularObjects[0].weapons[2].weaponCoord.x, currentLocation.y + modularObjects[0].weapons[2].weaponCoord.y)];
+        [heatSeekerCenter setLocation:Vector2fMake(currentLocation.x + modularObjects[0].weapons[0].weaponCoord.x, currentLocation.y + modularObjects[0].weapons[0].weaponCoord.y)];
+        [heatSeekerLeft setLocation:Vector2fMake(currentLocation.x + modularObjects[0].weapons[3].weaponCoord.x, currentLocation.y + modularObjects[0].weapons[3].weaponCoord.y)];
+        [heatSeekerRight setLocation:Vector2fMake(currentLocation.x + modularObjects[0].weapons[4].weaponCoord.x, currentLocation.y + modularObjects[0].weapons[4].weaponCoord.y)];
+        
+        [tripleBulletLeft update:delta];
+        [tripleBulletRight update:delta];
+        [heatSeekerCenter update:delta];
+        [heatSeekerLeft update:delta];
+        [heatSeekerRight update:delta];
+    }
+    
+    //Rotate the floaters
+    modularObjects[1].rotation += 180 * delta;
+    modularObjects[2].rotation += 180 * delta;
+    modularObjects[3].rotation += 180 * delta;
     
     if(state == kSevenThree_Entry){
         if(shipIsDeployed){
@@ -172,15 +195,15 @@
             //Randomize direction
             if(RANDOM_0_TO_1() > 0.5){
                 attackingPath = [[BezierCurve alloc] initCurveFrom:Vector2fMake(currentLocation.x, currentLocation.y) 
-                                                     controlPoint1:Vector2fMake((160 - 350), 100)
-                                                     controlPoint2:Vector2fMake((160 + 350), 100)
+                                                     controlPoint1:Vector2fMake((160 - 350), 120)
+                                                     controlPoint2:Vector2fMake((160 + 350), 120)
                                                           endPoint:Vector2fMake(currentLocation.x, currentLocation.y)
                                                           segments:50];
             }
             else {
                 attackingPath = [[BezierCurve alloc] initCurveFrom:Vector2fMake(currentLocation.x, currentLocation.y) 
-                                                     controlPoint1:Vector2fMake((160 + 350), 100)
-                                                     controlPoint2:Vector2fMake((160 - 350), 100)
+                                                     controlPoint1:Vector2fMake((160 + 350), 120)
+                                                     controlPoint2:Vector2fMake((160 - 350), 120)
                                                           endPoint:Vector2fMake(currentLocation.x, currentLocation.y)
                                                           segments:50];
             }
@@ -199,6 +222,12 @@
         }
     }
     if(state == kSevenThree_Death){
+        [tripleBulletLeft stopProjectile];
+        [tripleBulletRight stopProjectile];
+        [heatSeekerCenter stopProjectile];
+        [heatSeekerLeft stopProjectile];
+        [heatSeekerRight stopProjectile];
+        
         [deathAnimation update:delta];
         modularObjects[0].isDead = NO;
         if(deathAnimation.particleCount == 0){
@@ -354,7 +383,11 @@
 }
 
 - (void)render {
-    
+    [tripleBulletLeft render];
+    [tripleBulletRight render];
+    [heatSeekerCenter render];
+    [heatSeekerLeft render];
+    [heatSeekerRight render];
     
     if(state == kSevenThree_Death){
         [deathAnimation renderParticles];

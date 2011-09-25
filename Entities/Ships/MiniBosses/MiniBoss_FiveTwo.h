@@ -38,6 +38,11 @@ typedef enum _FiveTwoState{
     BOOL                floaterTwoDeathAnimating;
     BOOL                floaterThreeDeathAnimating;
     BOOL                floaterFourDeathAnimating;
+    
+    WaveProjectile      *waveCenter;
+    WaveProjectile      *waveLeft;
+    WaveProjectile      *waveRight;
+    
 }
 
 - (id)initWithLocation:(CGPoint)aPoint andPlayerShipRef:(PlayerShip *)playerRef;

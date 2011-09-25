@@ -38,6 +38,13 @@
                                                                       blendAdditive:YES];
         
         
+        bulletCenter = [[BulletProjectile alloc] initWithProjectileID:kEnemyProjectile_BulletLevelOne_Single location:Vector2fZero andAngle:-90.0f];
+        heatSeekerLeft = [[HeatSeekingMissile alloc] initWithProjectileID:kEnemyProjectile_HeatSeekingMissile location:Vector2fZero angle:-110.0f speed:1 rate:6 andPlayerShipRef:playerShipRef];
+        heatSeekerRight = [[HeatSeekingMissile alloc] initWithProjectileID:kEnemyProjectile_HeatSeekingMissile location:Vector2fZero angle:-70.0f speed:1 rate:6 andPlayerShipRef:playerShipRef];
+        bulletLeft = [[BulletProjectile alloc] initWithProjectileID:kEnemyProjectile_BulletLevelTwo_Double location:Vector2fZero andAngle:-90.0f];
+        bulletRight = [[BulletProjectile alloc] initWithProjectileID:kEnemyProjectile_BulletLevelTwo_Double location:Vector2fZero andAngle:-90.0f];
+        heatSeekerFarLeft = [[HeatSeekingMissile alloc] initWithProjectileID:kEnemyProjectile_HeatSeekingMissile location:Vector2fZero angle:-70.0f speed:1 rate:6 andPlayerShipRef:playerShipRef];
+        heatSeekerFarRight = [[HeatSeekingMissile alloc] initWithProjectileID:kEnemyProjectile_HeatSeekingMissile location:Vector2fZero angle:-110.0f speed:1 rate:6 andPlayerShipRef:playerShipRef];
     }
     return self;
 }
@@ -63,6 +70,24 @@
     }
     
     [deathAnimation setSourcePosition:Vector2fMake(currentLocation.x, currentLocation.y)];
+    
+    if(shipIsDeployed){
+        [bulletCenter setLocation:Vector2fMake(currentLocation.x + modularObjects[0].weapons[0].weaponCoord.x, currentLocation.y + modularObjects[0].weapons[0].weaponCoord.y)];
+        [heatSeekerLeft setLocation:Vector2fMake(currentLocation.x + modularObjects[0].weapons[1].weaponCoord.x, currentLocation.y + modularObjects[0].weapons[1].weaponCoord.y)];
+        [heatSeekerRight setLocation:Vector2fMake(currentLocation.x + modularObjects[0].weapons[2].weaponCoord.x, currentLocation.y + modularObjects[0].weapons[2].weaponCoord.y)];
+        [bulletLeft setLocation:Vector2fMake(currentLocation.x + modularObjects[0].weapons[4].weaponCoord.x, currentLocation.y + modularObjects[0].weapons[4].weaponCoord.y)];
+        [bulletRight setLocation:Vector2fMake(currentLocation.x + modularObjects[0].weapons[5].weaponCoord.x, currentLocation.y + modularObjects[0].weapons[5].weaponCoord.y)];
+        [heatSeekerFarLeft setLocation:Vector2fMake(currentLocation.x + modularObjects[0].weapons[3].weaponCoord.x, currentLocation.y + modularObjects[0].weapons[3].weaponCoord.y)];
+        [heatSeekerFarRight setLocation:Vector2fMake(currentLocation.x + modularObjects[0].weapons[6].weaponCoord.x, currentLocation.y + modularObjects[0].weapons[6].weaponCoord.y)];
+        
+        [bulletCenter update:delta];
+        [heatSeekerLeft update:delta];
+        [heatSeekerRight update:delta];
+        [bulletLeft update:delta];
+        [bulletRight update:delta];
+        [heatSeekerFarLeft update:delta];
+        [heatSeekerFarRight update:delta];
+    }
     
     if(state == kSevenOne_Entry){
         if(shipIsDeployed){
@@ -135,6 +160,14 @@
         }
     }
     if(state == kSevenOne_Death){
+        [bulletCenter stopProjectile];
+        [heatSeekerLeft stopProjectile];
+        [heatSeekerRight stopProjectile];
+        [bulletLeft stopProjectile];
+        [bulletRight stopProjectile];
+        [heatSeekerFarLeft stopProjectile];
+        [heatSeekerFarRight stopProjectile];
+        
         [deathAnimation update:delta];
         modularObjects[0].isDead = NO;
         if(deathAnimation.particleCount == 0){
@@ -149,7 +182,13 @@
 }
 
 - (void)render {
-    
+    [bulletCenter render];
+    [heatSeekerLeft render];
+    [heatSeekerRight render];
+    [bulletLeft render];
+    [bulletRight render];
+    [heatSeekerFarLeft render];
+    [heatSeekerFarRight render];
     
     if(state == kSevenOne_Death){
         [deathAnimation renderParticles];

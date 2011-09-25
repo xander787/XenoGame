@@ -7,6 +7,7 @@
 //
 
 #import "MiniBossGeneral.h"
+#import "HeatSeekingMissile.h"
 
 typedef enum _SixOneState{
     kSixOne_Entry = 0,
@@ -34,6 +35,13 @@ typedef enum _SixOneState{
     
     BOOL                floaterOneDeathAnimating;
     BOOL                floaterTwoDeathAnimating;
+    
+    BulletProjectile    *tripleBulletLeft;
+    BulletProjectile    *tripleBulletRight;
+    HeatSeekingMissile  *heatSeekerBottomLeft;
+    HeatSeekingMissile  *heatSeekerBottomRight;
+    HeatSeekingMissile  *heatSeekerTopLeft;
+    HeatSeekingMissile  *heatSeekerTopRight;
 }
 
 - (id)initWithLocation:(CGPoint)aPoint andPlayerShipRef:(PlayerShip *)playerRef;
