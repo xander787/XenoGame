@@ -7,6 +7,7 @@
 //
 
 #import "MiniBossGeneral.h"
+#import "HeatSeekingMissile.h"
 
 typedef enum _FourTwoState{
     kFourTwo_Entry = 0,
@@ -29,6 +30,14 @@ typedef enum _FourTwoState{
     ParticleEmitter     *deathAnimation;
     
     ParticleEmitter     *particle;
+    
+    BulletProjectile    *doubleBulletLeft;
+    BulletProjectile    *doubleBulletRight;
+    HeatSeekingMissile  *heatSeekerCenter;
+    HeatSeekingMissile  *heatSeekerLeft;
+    HeatSeekingMissile  *heatSeekerRight;
+    HeatSeekingMissile  *heatSeekerFarLeft;
+    HeatSeekingMissile  *heatSeekerFarRight;
 }
 
 - (id)initWithLocation:(CGPoint)aPoint andPlayerShipRef:(PlayerShip *)playerRef;

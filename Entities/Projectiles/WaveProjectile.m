@@ -107,6 +107,7 @@
             default:
                 break;
         }
+        [dictionaryPlist release];
         
         speed = [[projectileDictionary objectForKey:@"kSpeed"] floatValue];
         rate = [[projectileDictionary objectForKey:@"kRate"] floatValue];
@@ -310,6 +311,7 @@
             default:
                 break;
         }
+        [projectileDictionary release];
     }
     
     return self;
@@ -476,6 +478,13 @@
             }
         }
     }
+}
+
+- (void)dealloc {
+    [super dealloc];
+    [emitters release];
+    [polygons release];
+    free(collisionPoints);
 }
 
 @end

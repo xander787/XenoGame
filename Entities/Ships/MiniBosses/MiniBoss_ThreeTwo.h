@@ -27,6 +27,13 @@ typedef enum _ThreeTwoState{
     GLfloat             attackPathtimer;
     
     ParticleEmitter     *deathAnimation;
+    
+    BulletProjectile    *singleTopBullet;
+    BulletProjectile    *singleLeftBullet;
+    BulletProjectile    *singleRightBullet;
+    BulletProjectile    *doubleTopBullet;
+    BulletProjectile    *doubleLeftBullet;
+    BulletProjectile    *doubleRightBullet;
 }
 
 - (id)initWithLocation:(CGPoint)aPoint andPlayerShipRef:(PlayerShip *)playerRef;

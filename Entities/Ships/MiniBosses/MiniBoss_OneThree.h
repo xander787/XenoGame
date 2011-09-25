@@ -34,6 +34,11 @@ typedef enum _OneThreeState{
     
     BOOL                floaterOneDeathAnimating;
     BOOL                floaterTwoDeathAnimating;
+    
+    BulletProjectile    *doubleLeftBullet;
+    BulletProjectile    *doubleRightBullet;
+    MissileProjectile   *missileLeft;
+    MissileProjectile   *missileRight;
 }
 
 - (id)initWithLocation:(CGPoint)aPoint andPlayerShipRef:(PlayerShip *)playerRef;

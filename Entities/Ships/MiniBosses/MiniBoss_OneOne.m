@@ -152,6 +152,11 @@
         }
     }
     if(state == kOneOne_Death){
+        [leftBullet stopProjectile];
+        [rightBullet stopProjectile];
+        [leftMissile stopProjectile];
+        [rightMissile stopProjectile];
+        
         [deathAnimation update:delta];
         modularObjects[0].isDead = NO;
         if(deathAnimation.particleCount == 0){

@@ -34,8 +34,15 @@ typedef enum _OneTwoState{
     
     BOOL                floaterOneDeathAnimating;
     BOOL                floaterTwoDeathAnimating;
+    
+    BulletProjectile    *bodyCenterBullet;
+    BulletProjectile    *bodyLeftBullet;
+    BulletProjectile    *bodyRightBullet;
+    BulletProjectile    *floaterLeftBullet;
+    BulletProjectile    *floaterRightBullet;
 }
 
 - (id)initWithLocation:(CGPoint)aPoint andPlayerShipRef:(PlayerShip *)playerRef;
+- (void)rotateModule:(int)mod aroundPositionWithOldrotation:(GLfloat)oldRot;
 
 @end

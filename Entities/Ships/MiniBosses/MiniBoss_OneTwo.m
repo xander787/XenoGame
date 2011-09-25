@@ -77,7 +77,11 @@
                                                                            duration:0.1
                                                                       blendAdditive:YES];
         
-        
+        bodyCenterBullet = [[BulletProjectile alloc] initWithProjectileID:kEnemyProjectile_BulletLevelThree_Double location:Vector2fZero andAngle:-90.0f];
+        bodyLeftBullet = [[BulletProjectile alloc] initWithProjectileID:kEnemyProjectile_BulletLevelTwo_Double location:Vector2fZero andAngle:-100.0f];
+        bodyRightBullet = [[BulletProjectile alloc] initWithProjectileID:kEnemyProjectile_BulletLevelTwo_Double location:Vector2fZero andAngle:-80.0f];
+        floaterLeftBullet = [[BulletProjectile alloc] initWithProjectileID:kEnemyProjectile_BulletLevelOne_Single location:Vector2fZero andAngle:-90.0f];
+        floaterRightBullet = [[BulletProjectile alloc] initWithProjectileID:kEnemyProjectile_BulletLevelOne_Single location:Vector2fZero andAngle:-90.0f];
     }
     return self;
 }
@@ -105,6 +109,26 @@
     [deathAnimation setSourcePosition:Vector2fMake(currentLocation.x, currentLocation.y)];
     [floaterOneDeath setSourcePosition:Vector2fMake(currentLocation.x + modularObjects[1].location.x, currentLocation.y + modularObjects[1].location.y)];
     [floaterTwoDeath setSourcePosition:Vector2fMake(currentLocation.x + modularObjects[2].location.x, currentLocation.y + modularObjects[2].location.y)];
+    
+    if(shipIsDeployed){
+        [bodyCenterBullet setLocation:Vector2fMake(currentLocation.x + modularObjects[0].weapons[0].weaponCoord.x, currentLocation.y + modularObjects[0].weapons[0].weaponCoord.y)];
+        [bodyLeftBullet setLocation:Vector2fMake(currentLocation.x + modularObjects[0].weapons[1].weaponCoord.x, currentLocation.y + modularObjects[0].weapons[1].weaponCoord.y)];
+        [bodyRightBullet setLocation:Vector2fMake(currentLocation.x + modularObjects[0].weapons[2].weaponCoord.x, currentLocation.y + modularObjects[0].weapons[2].weaponCoord.y)];
+        [floaterLeftBullet setLocation:Vector2fMake(currentLocation.x + modularObjects[1].location.x + modularObjects[1].weapons[0].weaponCoord.x, currentLocation.y + modularObjects[1].location.y + modularObjects[1].weapons[0].weaponCoord.y)];
+        [floaterRightBullet setLocation:Vector2fMake(currentLocation.x + modularObjects[2].location.x + modularObjects[2].weapons[0].weaponCoord.x, currentLocation.y + modularObjects[2].location.y + modularObjects[2].weapons[0].weaponCoord.y)];
+        
+        [bodyCenterBullet update:delta];
+        if(modularObjects[1].isDead && modularObjects[2].isDead){
+            [bodyLeftBullet update:delta];
+            [bodyRightBullet update:delta];
+        }
+        if(!modularObjects[1].isDead){
+            [floaterLeftBullet update:delta];
+        }
+        if(!modularObjects[2].isDead){
+            [floaterRightBullet update:delta];
+        }
+    }
     
     if(state == kOneTwo_Entry){
         if(shipIsDeployed){
@@ -177,6 +201,12 @@
         }
     }
     if(state == kOneTwo_Death){
+        [bodyCenterBullet stopProjectile];
+        [bodyLeftBullet stopProjectile];
+        [bodyRightBullet stopProjectile];
+        [floaterLeftBullet stopProjectile];
+        [floaterRightBullet stopProjectile];
+        
         [deathAnimation update:delta];
         modularObjects[0].isDead = NO;
         if(deathAnimation.particleCount == 0){
@@ -258,6 +288,28 @@
     }
 }
 
+- (void)rotateModule:(int)mod aroundPositionWithOldrotation:(GLfloat)oldRot {
+    Vector2f tempPoint = modularObjects[mod].location;
+    double tempAngle = DEGREES_TO_RADIANS(oldRot - modularObjects[mod].rotation);
+    modularObjects[mod].location = Vector2fMake((tempPoint.x * cos(tempAngle)) - (tempPoint.y * sin(tempAngle)), (tempPoint.x * sin(tempAngle)) + (tempPoint.y * cos(tempAngle)));
+    
+    for(int k = 0; k < [modularObjects[mod].collisionPolygonArray count]; k++){
+        for(int i = 0; i < [[modularObjects[mod].collisionPolygonArray objectAtIndex:k] pointCount]; i++){
+            Vector2f tempPoint = [[modularObjects[mod].collisionPolygonArray objectAtIndex:k] originalPoints][i];
+            double tempAngle = DEGREES_TO_RADIANS(oldRot - modularObjects[mod].rotation);
+            [[modularObjects[mod].collisionPolygonArray objectAtIndex:k] originalPoints][i] = Vector2fMake((tempPoint.x * cos(tempAngle)) - (tempPoint.y * sin(tempAngle)), (tempPoint.x * sin(tempAngle)) + (tempPoint.y * cos(tempAngle)));
+        }
+        [[modularObjects[mod].collisionPolygonArray objectAtIndex:k] buildEdges];
+    }
+    
+    for(int i = 0; i < modularObjects[mod].numberOfWeapons; i++){
+        Vector2f tempPoint2 = modularObjects[mod].weapons[i].weaponCoord;
+        double tempAngle2 = DEGREES_TO_RADIANS(oldRot - modularObjects[mod].rotation);
+        modularObjects[mod].weapons[i].weaponCoord = Vector2fMake((tempPoint2.x * cos(tempAngle2)) - (tempPoint2.y * sin(tempAngle2)),
+                                                                  (tempPoint2.x * sin(tempAngle2)) + (tempPoint2.y * cos(tempAngle2)));
+    }
+}
+
 - (void)hitModule:(int)module withDamage:(int)damage {
     [super hitModule:module withDamage:damage];
     if(module == 0){
@@ -276,7 +328,11 @@
 }
 
 - (void)render {
-    
+    [bodyCenterBullet render];
+    [bodyLeftBullet render];
+    [bodyRightBullet render];
+    [floaterLeftBullet render];
+    [floaterRightBullet render];
     
     if(state == kOneTwo_Death){
         [deathAnimation renderParticles];

@@ -7,6 +7,8 @@
 //
 
 #import "MiniBossGeneral.h"
+#import "ParticleProjectile.h"
+#import "HeatSeekingMissile.h"
 
 typedef enum _ThreeThreeState{
     kThreeThree_Entry = 0,
@@ -27,6 +29,12 @@ typedef enum _ThreeThreeState{
     GLfloat             attackPathtimer;
     
     ParticleEmitter     *deathAnimation;
+    
+    ParticleProjectile  *particleProjectile;
+    BulletProjectile    *doubleBulletLeft;
+    BulletProjectile    *doubleBulletRight;
+    HeatSeekingMissile  *heatSeekerLeft;
+    HeatSeekingMissile  *heatSeekerRight;
 }
 
 - (id)initWithLocation:(CGPoint)aPoint andPlayerShipRef:(PlayerShip *)playerRef;
