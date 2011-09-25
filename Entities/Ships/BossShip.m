@@ -308,6 +308,7 @@
         [moduleTurretPointsArray release];
         [moduleCollisionPointsArray release];
         [moduleDestructionOrder release];
+        [moduleHealthsArray release];
         
     }
     
