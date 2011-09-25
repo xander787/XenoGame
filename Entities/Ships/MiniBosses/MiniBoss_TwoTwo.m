@@ -179,6 +179,9 @@
 - (void)hitModule:(int)module withDamage:(int)damage {
     modularObjects[module].moduleHealth -= damage;
     [super hitModule:module withDamage:damage];
+    
+    shipHealth = modularObjects[0].moduleHealth;
+    shipMaxHealth = modularObjects[0].moduleMaxHealth;
 }
 
 - (void)render {

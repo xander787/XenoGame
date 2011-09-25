@@ -193,6 +193,9 @@
         modularObjects[0].isDead = NO;
         modularObjects[0].moduleHealth += damage;
     }
+    
+    shipHealth = modularObjects[0].moduleHealth + modularObjects[0].moduleMaxHealth;
+    shipMaxHealth = modularObjects[0].moduleMaxHealth + modularObjects[1].moduleMaxHealth;
 }
 
 - (void)render {

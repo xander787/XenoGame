@@ -976,7 +976,7 @@ WrapText( const char *text
         
         if (currentWaveType == kWaveType_Boss) {
             
-            [bossHealthBar setScale:Scale2fMake(bossShip.shipHealth / bossShip.shipMaxHealth, 1.0f)];
+            [bossHealthBar setScale:Scale2fMake((float)bossShip.shipHealth / (float)bossShip.shipMaxHealth, 1.0f)];
 
             // Animating the boss onto the screen
             if (!bossShipIsDisplayed && bossShipReadyToAnimate && bossShip) {

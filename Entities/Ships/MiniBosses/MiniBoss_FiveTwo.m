@@ -439,6 +439,9 @@
     else {
         modularObjects[module].moduleHealth -= damage;
     }
+    
+    shipHealth = modularObjects[0].moduleHealth + modularObjects[1].moduleHealth + modularObjects[2].moduleHealth + modularObjects[3].moduleHealth + modularObjects[4].moduleHealth;
+    shipMaxHealth = modularObjects[0].moduleMaxHealth + modularObjects[1].moduleMaxHealth + modularObjects[2].moduleMaxHealth + modularObjects[3].moduleMaxHealth + modularObjects[4].moduleMaxHealth;
 }
 
 - (void)render {
