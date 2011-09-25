@@ -10,8 +10,42 @@
 #import "AbstractScene.h"
 #import "AngelCodeFont.h"
 
+typedef enum _SceneState {
+    kSceneState_general_menu = 0,
+    kSceneState_ship_upgrades,
+    kSceneState_ship_upgrades_chooser,
+    kSceneState_weapons_upgrades
+} SceneState;
+
 @interface StoreScene : AbstractScene {
     AngelCodeFont       *font;
+    SceneState          currentSceneState;
+    Image               *backButton;
+    
+    Image               *generalMenuShipsButton;
+    Image               *generalMenuWeaponsButton;
+    Image               *creditsIcon;
+    
+    Image               *shipsMenuBaseButton;
+    Image               *shipsMenuAttackButton;
+    Image               *shipsMenuSpeedButton;
+    Image               *shipsMenuDefenseButton;
+    
+    Image               *weaponsMenuBulletsButton;
+    Image               *weaponsMenuWavesButton;
+    Image               *weaponsMenuMissilesButton;
+    Image               *weaponsMenuHeatseekingButton;
+    Image               *weaponsMenuBulletsNextButton;
+    Image               *weaponsMenuBulletsPreviousButton;
+    Image               *weaponsMenuWavesNextButton;
+    Image               *weaponsMenuWavesPreviousButton;
+    Image               *weaponsMenuMissilesNextButton;
+    Image               *weaponsMenuMissilesPreviousButton;
+    Image               *weaponsMenuHeatseekingNextButton;
+    Image               *weaponsMenuHeatseekingPreviousButton;
+
+    
+    ParticleEmitter     *backgroundParticleEmitter;
 }
 
 @end
