@@ -82,6 +82,11 @@
         bodyRightBullet = [[BulletProjectile alloc] initWithProjectileID:kEnemyProjectile_BulletLevelTwo_Double location:Vector2fZero andAngle:-80.0f];
         floaterLeftBullet = [[BulletProjectile alloc] initWithProjectileID:kEnemyProjectile_BulletLevelOne_Single location:Vector2fZero andAngle:-90.0f];
         floaterRightBullet = [[BulletProjectile alloc] initWithProjectileID:kEnemyProjectile_BulletLevelOne_Single location:Vector2fZero andAngle:-90.0f];
+        
+        for(int i = 1; i < self.numberOfModules; i++){
+            modularObjects[i].desiredLocation.x = modularObjects[i].defaultLocation.x;
+            modularObjects[i].desiredLocation.y = modularObjects[i].defaultLocation.y;
+        }
     }
     return self;
 }
@@ -96,6 +101,11 @@
     else {
         currentLocation.x += ((desiredLocation.x - currentLocation.x) / bossSpeed) * (pow(1.584893192, bossSpeed/3)) * delta;
         currentLocation.y += ((desiredLocation.y - currentLocation.y) / bossSpeed) * (pow(1.584893192, bossSpeed/3)) * delta;
+        
+        for(int i = 1; i < self.numberOfModules; i++){
+            modularObjects[i].location.x += ((modularObjects[i].desiredLocation.x - modularObjects[i].location.x) / bossSpeed) * (pow(1.584893192, bossSpeed/3)) * delta;
+            modularObjects[i].location.y += ((modularObjects[i].desiredLocation.y - modularObjects[i].location.y) / bossSpeed) * (pow(1.584893192, bossSpeed/3)) * delta;
+        }
     }
     
     for(int i = 0; i < numberOfModules; i++){
@@ -156,6 +166,19 @@
             
             desiredLocation.x = MIN(desiredLocation.x, 270);
             desiredLocation.y = MIN(desiredLocation.y, 430);
+            
+            
+            //Floater floating
+            for(int i = 1; i < self.numberOfModules; i++){
+                if(modularObjects[i].location.x <= modularObjects[i].defaultLocation.x){
+                    modularObjects[i].desiredLocation.x = (RANDOM_0_TO_1() * 10) + modularObjects[i].defaultLocation.x;
+                }
+                else if(modularObjects[i].location.x >= modularObjects[i].defaultLocation.x){
+                    modularObjects[i].desiredLocation.x = (RANDOM_0_TO_1() * -10) + modularObjects[i].defaultLocation.x;
+                }
+                modularObjects[i].desiredLocation.y = (RANDOM_MINUS_1_TO_1() * 10) + modularObjects[i].defaultLocation.y;
+            }
+
         }
         
         if(attackTimer >= 6 && kamikazeState == kKamikaze_Idle){
@@ -267,10 +290,20 @@
     if(modularObjects[1].isDead && !floaterOneDeathAnimating){
         modularObjects[1].isDead = NO;
         floaterOneDeathAnimating = YES;
+        
+        if(floaterLeftBullet){
+            [floaterLeftBullet release];
+            floaterLeftBullet = nil;
+        }
     }
     if(modularObjects[2].isDead && !floaterTwoDeathAnimating){
         modularObjects[2].isDead = NO;
         floaterTwoDeathAnimating = YES;
+        
+        if(floaterRightBullet){
+            [floaterRightBullet release];
+            floaterRightBullet = nil;
+        }
     }
     if(floaterOneDeathAnimating){
         [floaterOneDeath update:delta];
