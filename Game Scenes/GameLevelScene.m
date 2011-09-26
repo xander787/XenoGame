@@ -103,6 +103,10 @@
 //
 //  Last Updated - 7/30/11 @5PM - James
 //  - Bug fixes, optimization, slightly trimmed down update:
+//
+//  Last Updated - 9/25/11 @6:30PM - James
+//  - Fixed placement and touch responsive area of the skip button, 
+//  now measures 40x40 resting at bottom right corner.
 
 
 #import "GameLevelScene.h"
@@ -1446,7 +1450,7 @@ WrapText( const char *text
     else {
         touchOriginatedFromPlayerShip = NO;
     }
-    if(CGRectContainsPoint(CGRectMake(305, 1, 25, 22), location) && currentWaveType == kWaveType_Dialogue){
+    if(CGRectContainsPoint(CGRectMake(280, 0, 40, 40), location) && currentWaveType == kWaveType_Dialogue){
         [self skipToNewPageOfText];
     }
 }
@@ -1516,7 +1520,7 @@ WrapText( const char *text
     if(currentWaveType == kWaveType_Dialogue) {
         [dialogueBorder renderAtPoint:CGPointMake(0.0f, 0.0f) centerOfImage:NO];
         [speakerImage renderAtPoint:CGPointMake(4, 82) centerOfImage:NO];
-        [dialogueFastForwardButton renderAtPoint:CGPointMake(310.0f, 10.0f) centerOfImage:YES];
+        [dialogueFastForwardButton renderAtPoint:CGPointMake(303.0f, 15.0f) centerOfImage:YES];
         [font drawStringAt:CGPointMake(80.0f, 135.0f) text:dialogueLineOneBuffer];
         [font drawStringAt:CGPointMake(80.0f, 115.0f) text:dialogueLineTwoBuffer];
         [font drawStringAt:CGPointMake(80.0f, 95.0f) text:dialogueLineThreeBuffer];
