@@ -90,6 +90,9 @@
 #define kSetting_SaveGameHealth @"xeno_game_health"
 #define kSetting_SaveGameNukeHold @"xeno_game_nuke_hold"
 #define kSetting_SaveGameShip @"xeno_game_ship"
+#define kSetting_SaveGameWeapon @"xeno_game_weapon"
+#define kSetting_SaveGameCredits @"xeno_game_credits"
+#define kSetting_SaveGameUnlockedWeapons @"xeno_game_unlocked_weapons"
 
 #define kSettingValue_ControlType_Touch @"TOUCH"
 #define kSettingValue_ControlType_Accelerometer @"ACCEL"

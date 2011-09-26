@@ -13,7 +13,10 @@
 typedef enum _SceneState {
     kSceneState_general_menu = 0,
     kSceneState_ship_upgrades,
-    kSceneState_ship_upgrades_chooser,
+    kSceneState_ship_upgrades_base_chooser,
+    kSceneState_ship_upgrades_attack_chooser,
+    kSceneState_ship_upgrades_speed_chooser,
+    kSceneState_ship_upgrades_defense_chooser,
     kSceneState_weapons_upgrades
 } SceneState;
 

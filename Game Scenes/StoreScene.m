@@ -43,7 +43,7 @@
     backgroundParticleEmitter = [[ParticleEmitter alloc] initParticleEmitterWithImageNamed:@"texture.png"
 																				  position:Vector2fMake(160.0, 259.76)
 																	sourcePositionVariance:Vector2fMake(373.5, 240.0)
-																					 speed:0.1
+																					 speed:0.05
 																			 speedVariance:0.01
 																		  particleLifeSpan:5.0
 																  particleLifespanVariance:2.0
@@ -54,13 +54,12 @@
 																		startColorVariance:Color4fMake(0.0, 0.0, 0.0, 0.0)
 																			   finishColor:Color4fMake(0.5, 0.5, 0.5, 0.34)
 																	   finishColorVariance:Color4fMake(0.0, 0.0, 0.0, 0.0)
-																			  maxParticles:2000
-																			  particleSize:3.0
-																		finishParticleSize:3.0
+																			  maxParticles:1000
+																			  particleSize:6.0
+																		finishParticleSize:6.0
 																	  particleSizeVariance:1.3
 																				  duration:-1
 																			 blendAdditive:NO];
-
     
     creditsIcon = [[Image alloc] initWithImage:@"Credit.png" scale:Scale2fOne];
     backButton = [[Image alloc] initWithImage:@"backbutton.png" scale:Scale2fOne];
@@ -132,10 +131,28 @@
             
             break;
             
+        case kSceneState_ship_upgrades_base_chooser:
+            
+            break;
+            
+        case kSceneState_ship_upgrades_attack_chooser:
+            
+            break;
+            
+        case kSceneState_ship_upgrades_speed_chooser:
+            
+            break;
+            
+        case kSceneState_ship_upgrades_defense_chooser:
+            
+            break;
+            
         default:
             
             break;
     }
+    
+    [backgroundParticleEmitter renderParticles];
 }
 
 - (void)updateWithTouchLocationBegan:(NSSet *)touches withEvent:(UIEvent *)event view:(UIView *)aView {
@@ -156,7 +173,8 @@
             }
             
             if(CGRectContainsPoint(CGRectMake(15, 440, backButton.imageWidth, backButton.imageHeight), location)){
-                
+                sceneState = kSceneState_TransitionOut;
+                nextSceneKey = [_sharedDirector getLastSceneUsed];
             }
             
             break;
@@ -188,6 +206,22 @@
             }
             break;    
             
+        case kSceneState_ship_upgrades_base_chooser:
+            
+            break;
+            
+        case kSceneState_ship_upgrades_attack_chooser:
+            
+            break;
+            
+        case kSceneState_ship_upgrades_speed_chooser:
+            
+            break;
+            
+        case kSceneState_ship_upgrades_defense_chooser:
+            
+            break;
+
         default:
             
             break;
@@ -231,7 +265,19 @@
             [shipsMenuDefenseButton renderAtPoint:CGPointMake(160.0f, 120.0f) centerOfImage:YES];
             break;
             
-        case kSceneState_ship_upgrades_chooser:
+        case kSceneState_ship_upgrades_base_chooser:
+            
+            break;
+            
+        case kSceneState_ship_upgrades_attack_chooser:
+            
+            break;
+            
+        case kSceneState_ship_upgrades_speed_chooser:
+            
+            break;
+            
+        case kSceneState_ship_upgrades_defense_chooser:
             
             break;
             
@@ -267,6 +313,7 @@
             
             break;
     }
+    [backgroundParticleEmitter renderParticles];
     [creditsIcon renderAtPoint:CGPointMake(0, 0) centerOfImage:NO];
     [font setScale:0.4];
     [font drawStringAt:CGPointMake(42, 38) text:@"100"];

@@ -124,7 +124,7 @@
     backgroundParticleEmitter = [[ParticleEmitter alloc] initParticleEmitterWithImageNamed:@"texture.png"
 																				  position:Vector2fMake(160.0, 259.76)
 																	sourcePositionVariance:Vector2fMake(373.5, 240.0)
-																					 speed:0.1
+																					 speed:0.05
 																			 speedVariance:0.01
 																		  particleLifeSpan:5.0
 																  particleLifespanVariance:2.0
@@ -135,13 +135,12 @@
 																		startColorVariance:Color4fMake(0.0, 0.0, 0.0, 0.0)
 																			   finishColor:Color4fMake(0.5, 0.5, 0.5, 0.34)
 																	   finishColorVariance:Color4fMake(0.0, 0.0, 0.0, 0.0)
-																			  maxParticles:2000
-																			  particleSize:3.0
-																		finishParticleSize:3.0
+																			  maxParticles:1000
+																			  particleSize:6.0
+																		finishParticleSize:6.0
 																	  particleSizeVariance:1.3
 																				  duration:-1
-																			 blendAdditive:NO];
-    
+																			 blendAdditive:NO];    
     NSLog(@"TOUCHACCEL SETING: %@", [settingsDB valueForKey:kSetting_ControlType]);
 }
 

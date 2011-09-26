@@ -8,6 +8,14 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          symbolName = "[NSException raise]">
+         <Locations>
+            <Location
+               shouldBeEnabled = "Yes"
+               ignoreCount = "0"
+               continueAfterRunningActions = "No"
+               symbolName = "-[NSException raise]">
+            </Location>
+         </Locations>
       </SymbolicBreakpoint>
    </SymbolicBreakpoints>
 </Bucket>
