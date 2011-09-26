@@ -152,7 +152,7 @@
             break;
     }
     
-    [backgroundParticleEmitter renderParticles];
+    [backgroundParticleEmitter update:aDelta];
 }
 
 - (void)updateWithTouchLocationBegan:(NSSet *)touches withEvent:(UIEvent *)event view:(UIView *)aView {
