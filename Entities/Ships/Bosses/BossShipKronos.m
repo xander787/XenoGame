@@ -56,6 +56,11 @@
         tailProjectile = [[BulletProjectile alloc] initWithProjectileID:kEnemyProjectile_BulletLevelOne_Single location:Vector2fMake(currentLocation.x + tail->location.x + tail->weapons[0].weaponCoord.x, currentLocation.y + tail->location.y + tail->weapons[0].weaponCoord.y) andAngle:90.0f];
         
         
+        projectilesArray = [[NSMutableArray alloc] initWithObjects:headProjectileLeft, headProjectileRight, 
+                            bottomLeftTurretProjectile, middleLeftTurretProjectile, middleLeftWingProjectile, topLeftCannonProjectile, topLeftTurretProjectile, 
+                            bottomRightTurretProjectile, middleRightTurretProjectile, middleRightWingProjectile, topRightCannonProjectile, topRightTurretProjectile, 
+                            tailProjectile, nil];
+        
         
         //Death emitters
         headDeathEmitter = [self newDeathAnimationEmitter];

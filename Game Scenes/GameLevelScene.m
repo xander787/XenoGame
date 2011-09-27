@@ -107,6 +107,13 @@
 //  Last Updated - 9/25/11 @6:30PM - James
 //  - Fixed placement and touch responsive area of the skip button, 
 //  now measures 40x40 resting at bottom right corner.
+//
+//  Last Updated - 9/26/11 @11:15PM - James
+//  - Fixed bug where lag would make enemy ships skip over their holding
+//  position, go on forever
+//
+//  Last Updated - 9/26/11 @11:30PM - James
+//  - Made boss projectiles also hurt player.
 
 
 #import "GameLevelScene.h"
@@ -891,7 +898,8 @@ WrapText( const char *text
                     if(enemyShip.currentPathType == kPathType_Initial){
                         [enemyShip setCurrentLocation:CGPointMake([enemyShip.currentPath getPointAt:enemyShip.pathTime/2].x, [enemyShip.currentPath getPointAt:enemyShip.pathTime/2].y)];
                     
-                        if(abs(enemyShip.currentLocation.x - enemyShip.currentPath.endPoint.x) < 5 && abs(enemyShip.currentLocation.y - enemyShip.currentPath.endPoint.y) < 5){
+//                        if(abs(enemyShip.currentLocation.x - enemyShip.currentPath.endPoint.x) < 5 && abs(enemyShip.currentLocation.y - enemyShip.currentPath.endPoint.y) < 5){
+                        if(enemyShip.currentLocation.y <= enemyShip.currentPath.endPoint.y){
                             Vector2f oldEndPoint = enemyShip.currentPath.endPoint;
                             //Make a new path for ToHolding
                             [enemyShip makeNewPathFrom:Vector2fMake(oldEndPoint.x, oldEndPoint.y) controlPoint1:Vector2fMake(100, 100) controlPoint2:Vector2fMake(300, 300) toEndPoint:Vector2fMake(enemyShip.holdingPositionPoint.x, enemyShip.holdingPositionPoint.y) withPathType:kPathType_ToHolding];
@@ -900,7 +908,8 @@ WrapText( const char *text
                     else if(enemyShip.currentPathType == kPathType_ToHolding){
                         [enemyShip setCurrentLocation:CGPointMake([enemyShip.currentPath getPointAt:enemyShip.pathTime/2].x, [enemyShip.currentPath getPointAt:enemyShip.pathTime/2].y)];
                     
-                        if(abs(enemyShip.currentLocation.x - enemyShip.currentPath.endPoint.x) < 5 && abs(enemyShip.currentLocation.y - enemyShip.currentPath.endPoint.y) < 5){
+//                        if(abs(enemyShip.currentLocation.x - enemyShip.currentPath.endPoint.x) < 5 && abs(enemyShip.currentLocation.y - enemyShip.currentPath.endPoint.y) < 5){
+                        if(enemyShip.currentLocation.y >= enemyShip.currentPath.endPoint.y){
                             Vector2f oldEndPoint = enemyShip.currentPath.endPoint;
                             [enemyShip resetPathWithNewPathType:kPathType_Holding];
                             enemyShip.desiredPosition = CGPointMake(oldEndPoint.x, oldEndPoint.y);
@@ -962,12 +971,26 @@ WrapText( const char *text
                             [enemyShip setCurrentLocation:CGPointMake([enemyShip.currentPath getPointAt:enemyShip.pathTime/6].x, [enemyShip.currentPath getPointAt:enemyShip.pathTime/6].y)];
                         }
                     
-                        if(enemyShip.pathTime > 1){
-                            if(abs(enemyShip.currentLocation.x - enemyShip.currentPath.endPoint.x) < 5 && abs(enemyShip.currentLocation.y - enemyShip.currentPath.endPoint.y) < 5){
-                                //If it reached the end
-                                [enemyShip resetPathWithNewPathType:kPathType_Holding];
-                                [enemyShip stopAllProjectiles];
-                                [attackingEnemies removeObject:enemyShip];
+                        if(enemyShip.pathTime > 2){
+//                            if(abs(enemyShip.currentLocation.x - enemyShip.currentPath.endPoint.x) < 5 && abs(enemyShip.currentLocation.y - enemyShip.currentPath.endPoint.y) < 5){
+                            if([enemyShip isKamikazeShip]){
+                                //Calculate position based on x for kamikaze(comes in from side,
+                                //and calculate postion on y for regualr attacks, for they come up
+                                
+                                if(enemyShip.currentLocation.x >= enemyShip.currentPath.endPoint.x){
+                                    //If it reached the end
+                                    [enemyShip resetPathWithNewPathType:kPathType_Holding];
+                                    [enemyShip stopAllProjectiles];
+                                    [attackingEnemies removeObject:enemyShip];
+                                }
+                            }
+                            else {
+                                if(enemyShip.currentLocation.y >= enemyShip.currentPath.endPoint.y){
+                                    //If it reached the end
+                                    [enemyShip resetPathWithNewPathType:kPathType_Holding];
+                                    [enemyShip stopAllProjectiles];
+                                    [attackingEnemies removeObject:enemyShip];
+                                }
                             }
                         }
                     }
@@ -1297,6 +1320,36 @@ WrapText( const char *text
                                     }
                                 }
                             }
+                        }
+                        
+                        
+                        //Boss bullet -> playership
+                        if(bossShip.projectilesArray){
+                        for(AbstractProjectile *bossProjectile in bossShip.projectilesArray){
+                            NSArray *bossPolyArray;
+                            for(int emitterPolyCount = 0; emitterPolyCount < [bossProjectile.emitters count]; emitterPolyCount++){
+                                bossPolyArray = [[bossProjectile polygons] objectAtIndex:emitterPolyCount];
+                                
+                                Polygon *bossBulletPoly;
+                                for(int i = 0; i < [bossPolyArray count]; i++){
+                                    bossBulletPoly = [bossPolyArray objectAtIndex:i];
+                                    
+                                    PolygonCollisionResult result2 = [Collisions polygonCollision:bossBulletPoly :playerShip.collisionPolygon :Vector2fZero];
+                                    
+                                    if(result2.intersect){
+                                        if(!playerShip.shipIsDead){
+                                            [playerShip hitShipWithDamage:1];
+                                            [[[bossProjectile emitters] objectAtIndex:emitterPolyCount] particles][i].position = Vector2fMake(-1000, -500);
+                                        }
+                                        /*if(!enemyShip.shipIsDead){
+                                            [enemyShip hitShipWithDamage:20 + (20 * (int)damageMultiplierOn)];
+                                            //Move it away
+                                            [[[bossProjectile emitters] objectAtIndex:emitterPolyCount] particles][i].position = Vector2fMake(500, 50);
+                                        }*/
+                                    }
+                                }
+                            }
+                        }
                         }
                     }
                 }   
