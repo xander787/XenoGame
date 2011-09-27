@@ -245,7 +245,8 @@
 }
 
 - (void)render {
-    
+    [backgroundParticleEmitter renderParticles];
+
     switch (currentSceneState) {
         case kSceneState_general_menu:
             [font drawStringAt:CGPointMake(110.0f, 460.0) text:@"Store"];
@@ -313,7 +314,6 @@
             
             break;
     }
-    [backgroundParticleEmitter renderParticles];
     [creditsIcon renderAtPoint:CGPointMake(0, 0) centerOfImage:NO];
     [font setScale:0.4];
     [font drawStringAt:CGPointMake(42, 38) text:@"100"];

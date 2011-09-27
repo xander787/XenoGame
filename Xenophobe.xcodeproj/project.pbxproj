@@ -22,7 +22,6 @@
 		111D631B13DE3177005045D4 /* menu_theme.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 111D631A13DE3177005045D4 /* menu_theme.mp3 */; };
 		111D631E13DE5A9C005045D4 /* Volume_high.png in Resources */ = {isa = PBXBuildFile; fileRef = 111D631C13DE5A9C005045D4 /* Volume_high.png */; };
 		111D631F13DE5A9C005045D4 /* Volume_low.png in Resources */ = {isa = PBXBuildFile; fileRef = 111D631D13DE5A9C005045D4 /* Volume_low.png */; };
-		111D632113DF58A4005045D4 /* game_theme.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 111D632013DF58A4005045D4 /* game_theme.mp3 */; };
 		1129A19F13CA73F100BE73FA /* Level_Intro.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1129A19E13CA73F100BE73FA /* Level_Intro.plist */; };
 		1129A1A113CA933500BE73FA /* Level_One.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1129A1A013CA933400BE73FA /* Level_One.plist */; };
 		1129A1A413CACED900BE73FA /* BossShipThemis.m in Sources */ = {isa = PBXBuildFile; fileRef = 1129A1A313CACED900BE73FA /* BossShipThemis.m */; };
@@ -53,6 +52,8 @@
 		1170EC72126FCB7E00721CF4 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1170EC71126FCB7E00721CF4 /* CoreMotion.framework */; };
 		1170EC74126FCB7E00721CF4 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1170EC73126FCB7E00721CF4 /* OpenAL.framework */; };
 		1170ED45127012DD00721CF4 /* XenophobeGameController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1170ED44127012DD00721CF4 /* XenophobeGameController.m */; };
+		11834CDE143155D0001986ED /* game_theme.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 11834CDD143155D0001986ED /* game_theme.mp3 */; };
+		11834CE0143155EB001986ED /* boss_theme.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 11834CDF143155EB001986ED /* boss_theme.mp3 */; };
 		1183E039142D718B0053E777 /* Attack-Ships-Store-Button.png in Resources */ = {isa = PBXBuildFile; fileRef = 1183E02E142D718B0053E777 /* Attack-Ships-Store-Button.png */; };
 		1183E03A142D718B0053E777 /* Base-Ships-Store-Button.png in Resources */ = {isa = PBXBuildFile; fileRef = 1183E02F142D718B0053E777 /* Base-Ships-Store-Button.png */; };
 		1183E03B142D718B0053E777 /* Bullets-Store-Button.png in Resources */ = {isa = PBXBuildFile; fileRef = 1183E030142D718B0053E777 /* Bullets-Store-Button.png */; };
@@ -332,7 +333,6 @@
 		111D631A13DE3177005045D4 /* menu_theme.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = menu_theme.mp3; sourceTree = "<group>"; };
 		111D631C13DE5A9C005045D4 /* Volume_high.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Volume_high.png; sourceTree = "<group>"; };
 		111D631D13DE5A9C005045D4 /* Volume_low.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Volume_low.png; sourceTree = "<group>"; };
-		111D632013DF58A4005045D4 /* game_theme.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = game_theme.mp3; sourceTree = "<group>"; };
 		1129A19E13CA73F100BE73FA /* Level_Intro.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Level_Intro.plist; path = "Game Resources/Game Levels/Level_Intro.plist"; sourceTree = SOURCE_ROOT; };
 		1129A1A013CA933400BE73FA /* Level_One.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Level_One.plist; path = "Game Resources/Game Levels/Level_One.plist"; sourceTree = SOURCE_ROOT; };
 		1129A1A213CACED900BE73FA /* BossShipThemis.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BossShipThemis.h; path = Entities/Ships/Bosses/BossShipThemis.h; sourceTree = "<group>"; };
@@ -377,6 +377,8 @@
 		1170EC73126FCB7E00721CF4 /* OpenAL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenAL.framework; path = System/Library/Frameworks/OpenAL.framework; sourceTree = SDKROOT; };
 		1170ED43127012DD00721CF4 /* XenophobeGameController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XenophobeGameController.h; sourceTree = "<group>"; };
 		1170ED44127012DD00721CF4 /* XenophobeGameController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XenophobeGameController.m; sourceTree = "<group>"; };
+		11834CDD143155D0001986ED /* game_theme.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = game_theme.mp3; sourceTree = "<group>"; };
+		11834CDF143155EB001986ED /* boss_theme.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = boss_theme.mp3; sourceTree = "<group>"; };
 		1183E02E142D718B0053E777 /* Attack-Ships-Store-Button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Attack-Ships-Store-Button.png"; sourceTree = "<group>"; };
 		1183E02F142D718B0053E777 /* Base-Ships-Store-Button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Base-Ships-Store-Button.png"; sourceTree = "<group>"; };
 		1183E030142D718B0053E777 /* Bullets-Store-Button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Bullets-Store-Button.png"; sourceTree = "<group>"; };
@@ -754,7 +756,8 @@
 			isa = PBXGroup;
 			children = (
 				111D631A13DE3177005045D4 /* menu_theme.mp3 */,
-				111D632013DF58A4005045D4 /* game_theme.mp3 */,
+				11834CDD143155D0001986ED /* game_theme.mp3 */,
+				11834CDF143155EB001986ED /* boss_theme.mp3 */,
 			);
 			name = Sounds;
 			path = "Game Resources/Sounds";
@@ -1640,7 +1643,6 @@
 				111D631B13DE3177005045D4 /* menu_theme.mp3 in Resources */,
 				111D631E13DE5A9C005045D4 /* Volume_high.png in Resources */,
 				111D631F13DE5A9C005045D4 /* Volume_low.png in Resources */,
-				111D632113DF58A4005045D4 /* game_theme.mp3 in Resources */,
 				B969707E13E104FA002EC552 /* store.png in Resources */,
 				B969708B13E1335B002EC552 /* Slider.png in Resources */,
 				B969708C13E1335B002EC552 /* SliderBar.png in Resources */,
@@ -1775,6 +1777,8 @@
 				11E9833F142EE6C9003655E1 /* Speed-Ships-Store-Button-Green.png in Resources */,
 				11E98340142EE6C9003655E1 /* Waves-Store-Button-Green.png in Resources */,
 				11E98341142EE6C9003655E1 /* Weapons-Store-Button-Green.png in Resources */,
+				11834CDE143155D0001986ED /* game_theme.mp3 in Resources */,
+				11834CE0143155EB001986ED /* boss_theme.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
