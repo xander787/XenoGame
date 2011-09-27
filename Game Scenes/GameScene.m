@@ -361,6 +361,9 @@
 - (void)loadLevelForPlay:(Level)level {
     //  We use [levelFileIndex objectAtIndex:level] because currentLevel is an enum value so
     //  it would (theoretically) correspond to the level it represents place in the levelFileIndex
+    [soundManager setMusicVolume:0.0f];
+    [soundManager playMusicWithKey:@"game_theme" timesToRepeat:10000];
+    [soundManager fadeMusicVolumeFrom:0.0f toVolume:[settingsDB floatForKey:kSetting_MusicVolume] duration:2.0f stop:NO];
     gameLevel = [[GameLevelScene alloc] initWithLevelFile:[levelFileIndex objectAtIndex:level] withDelegate:self];
     levelInProgress = YES;
 }
