@@ -174,7 +174,7 @@
                             nextSceneKey = @"settings";
                             break;
 						case kControlType_HighScores:
-							nextSceneKey = @"highscores";
+							nextSceneKey = @"store";
 							break;
 						case kControlType_About:
 							nextSceneKey = @"about";

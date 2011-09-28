@@ -296,6 +296,8 @@ WrapText( const char *text
         levelDictionary = [[NSMutableDictionary alloc] initWithContentsOfFile:path];
         [path release];
         
+        soundManager = [SoundManager sharedSoundManager];
+        
         // Load and save the level type for this level
         if([[levelDictionary objectForKey:@"kLevelType"] isEqualToString:@"kMiniBossLevel"]) {
             levelType = kLevelType_MiniBoss;
@@ -728,6 +730,8 @@ WrapText( const char *text
     }
     
     bossShipReadyToAnimate = YES;
+    
+    [soundManager fadeMusicVolumeFrom:[settingsDB floatForKey:kSetting_MusicVolume] toVolume:0.0f duration:2.0f stop:NO];
 }
 
 - (void)update:(GLfloat)aDelta {    
@@ -1025,6 +1029,9 @@ WrapText( const char *text
                     bossShipIsDisplayed = YES;
                     bossShip.shipIsDeployed = YES;
                     [playerShip playAllProjectiles];
+                    
+                    [soundManager playMusicWithKey:@"boss_theme" timesToRepeat:10000];
+                    [soundManager fadeMusicVolumeFrom:0.0f toVolume:[settingsDB floatForKey:kSetting_MusicVolume] duration:2.0f stop:NO];
                 }
             }
             

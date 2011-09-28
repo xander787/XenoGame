@@ -120,6 +120,7 @@ typedef enum _OutroAnimation {
     AngelCodeFont           *font;
     NSUserDefaults          *settingsDB;
     CGRect                  screenBounds;
+    SoundManager            *soundManager;
     ParticleEmitter         *transitionParticleEmitter;
     
     NSString                *currentLevelFile;

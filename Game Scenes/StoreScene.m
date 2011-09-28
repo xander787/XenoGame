@@ -83,7 +83,12 @@
     weaponsMenuMissilesPreviousButton = [[Image alloc] initWithImage:@"previousbutton.png" scale:Scale2fOne];
     weaponsMenuHeatseekingNextButton = [[Image alloc] initWithImage:@"nextbutton.png" scale:Scale2fOne];
     weaponsMenuHeatseekingPreviousButton = [[Image alloc] initWithImage:@"previousbutton.png" scale:Scale2fOne];
-
+    
+    shipsUpgradeMenuNextButton = [[Image alloc] initWithImage:@"nextbutton.png" scale:Scale2fOne];
+    shipsUpgradeMenuPreviousButton = [[Image alloc] initWithImage:@"previousbutton.png" scale:Scale2fOne];
+    
+    equipButton = [[Image alloc] initWithImage:@"Equip.png" scale:Scale2fOne];
+    buyButton = [[Image alloc] initWithImage:@"Buy.png" scale:Scale2fOne];
 }
 
 #pragma mark -
@@ -181,16 +186,16 @@
             
         case kSceneState_ship_upgrades:
             if (CGRectContainsPoint(CGRectMake(80.0f, 342.0f, 180, 34), location)) {
-                NSLog(@"Base");
+                currentSceneState = kSceneState_ship_upgrades_base_chooser;
             }
             else if (CGRectContainsPoint(CGRectMake(80.0f, 262.0f, 180, 34), location)) {
-                NSLog(@"Attack");
+                currentSceneState = kSceneState_ship_upgrades_attack_chooser;
             }
             else if (CGRectContainsPoint(CGRectMake(80.0f, 182.0f, 180, 34), location)) {
-                NSLog(@"Speed");
+                currentSceneState = kSceneState_ship_upgrades_speed_chooser;
             }
             else if (CGRectContainsPoint(CGRectMake(80.0f, 102.0f, 180, 34), location)) {
-                NSLog(@"Defense");
+                currentSceneState = kSceneState_ship_upgrades_defense_chooser;
             }
             
             if(CGRectContainsPoint(CGRectMake(15, 440, backButton.imageWidth, backButton.imageHeight), location)){
@@ -208,18 +213,34 @@
             
         case kSceneState_ship_upgrades_base_chooser:
             
+            if(CGRectContainsPoint(CGRectMake(15, 440, backButton.imageWidth, backButton.imageHeight), location)){
+                currentSceneState = kSceneState_ship_upgrades;
+            }
+            
             break;
             
         case kSceneState_ship_upgrades_attack_chooser:
             
+            if(CGRectContainsPoint(CGRectMake(15, 440, backButton.imageWidth, backButton.imageHeight), location)){
+                currentSceneState = kSceneState_ship_upgrades;
+            }
+
             break;
             
         case kSceneState_ship_upgrades_speed_chooser:
             
+            if(CGRectContainsPoint(CGRectMake(15, 440, backButton.imageWidth, backButton.imageHeight), location)){
+                currentSceneState = kSceneState_ship_upgrades;
+            }
+
             break;
             
         case kSceneState_ship_upgrades_defense_chooser:
             
+            if(CGRectContainsPoint(CGRectMake(15, 440, backButton.imageWidth, backButton.imageHeight), location)){
+                currentSceneState = kSceneState_ship_upgrades;
+            }
+
             break;
 
         default:
@@ -267,19 +288,87 @@
             break;
             
         case kSceneState_ship_upgrades_base_chooser:
+            [font drawStringAt:CGPointMake(115.0f, 460.0f) text:@"Base"];
+            [font setScale:0.5];
+            [shipsUpgradeMenuPreviousButton renderAtPoint:CGPointMake(95.0f, 287.0f) centerOfImage:YES];
+            [font drawStringAt:CGPointMake(110.0f, 300.0f) text:@"XPX-XXX"];
+            [shipsUpgradeMenuNextButton renderAtPoint:CGPointMake(235.0f, 287.0f) centerOfImage:YES];
+            
+            [font drawStringAt:CGPointMake(120.0f, 230.0f) text:@"Stats"];
+            
+            [font setScale:0.4];
+            [font drawStringAt:CGPointMake(20.0f, 180.0f) text:@"ATK:"];
+            [font drawStringAt:CGPointMake(20.0f, 150.0f) text:@"SPD:"];
+            [font drawStringAt:CGPointMake(20.0f, 120.0f) text:@"DEF:"];
+            
+            [font setScale:0.7];
+            
+            [equipButton renderAtPoint:CGPointMake(280.0f, 70.0f) centerOfImage:YES];
+            [buyButton renderAtPoint:CGPointMake(280.0f, 30.0f) centerOfImage:YES];
             
             break;
             
         case kSceneState_ship_upgrades_attack_chooser:
+            [font drawStringAt:CGPointMake(115.0f, 460.0f) text:@"Attack"];
+            [font setScale:0.5];
+            [shipsUpgradeMenuPreviousButton renderAtPoint:CGPointMake(95.0f, 287.0f) centerOfImage:YES];
+            [font drawStringAt:CGPointMake(110.0f, 300.0f) text:@"XPX-XXX"];
+            [shipsUpgradeMenuNextButton renderAtPoint:CGPointMake(235.0f, 287.0f) centerOfImage:YES];
             
+            [font drawStringAt:CGPointMake(120.0f, 230.0f) text:@"Stats"];
+            
+            [font setScale:0.4];
+            [font drawStringAt:CGPointMake(20.0f, 180.0f) text:@"ATK:"];
+            [font drawStringAt:CGPointMake(20.0f, 150.0f) text:@"SPD:"];
+            [font drawStringAt:CGPointMake(20.0f, 120.0f) text:@"DEF:"];
+            
+            [font setScale:0.7];
+            
+            [equipButton renderAtPoint:CGPointMake(280.0f, 70.0f) centerOfImage:YES];
+            [buyButton renderAtPoint:CGPointMake(280.0f, 30.0f) centerOfImage:YES];
+
             break;
             
         case kSceneState_ship_upgrades_speed_chooser:
+            [font drawStringAt:CGPointMake(115.0f, 460.0f) text:@"Speed"];
+            [font setScale:0.5];
+            [shipsUpgradeMenuPreviousButton renderAtPoint:CGPointMake(95.0f, 287.0f) centerOfImage:YES];
+            [font drawStringAt:CGPointMake(110.0f, 300.0f) text:@"XPX-XXX"];
+            [shipsUpgradeMenuNextButton renderAtPoint:CGPointMake(235.0f, 287.0f) centerOfImage:YES];
             
+            [font drawStringAt:CGPointMake(120.0f, 230.0f) text:@"Stats"];
+            
+            [font setScale:0.4];
+            [font drawStringAt:CGPointMake(20.0f, 180.0f) text:@"ATK:"];
+            [font drawStringAt:CGPointMake(20.0f, 150.0f) text:@"SPD:"];
+            [font drawStringAt:CGPointMake(20.0f, 120.0f) text:@"DEF:"];
+            
+            [font setScale:0.7];
+            
+            [equipButton renderAtPoint:CGPointMake(280.0f, 70.0f) centerOfImage:YES];
+            [buyButton renderAtPoint:CGPointMake(280.0f, 30.0f) centerOfImage:YES];
+
             break;
             
         case kSceneState_ship_upgrades_defense_chooser:
+            [font drawStringAt:CGPointMake(115.0f, 460.0f) text:@"Defense"];
+            [font setScale:0.5];
+            [shipsUpgradeMenuPreviousButton renderAtPoint:CGPointMake(95.0f, 287.0f) centerOfImage:YES];
+            [font drawStringAt:CGPointMake(110.0f, 300.0f) text:@"XPX-XXX"];
+            [shipsUpgradeMenuNextButton renderAtPoint:CGPointMake(235.0f, 287.0f) centerOfImage:YES];
             
+            [font drawStringAt:CGPointMake(120.0f, 230.0f) text:@"Stats"];
+            
+            [font setScale:0.4];
+            [font drawStringAt:CGPointMake(20.0f, 180.0f) text:@"ATK:"];
+            [font drawStringAt:CGPointMake(20.0f, 150.0f) text:@"SPD:"];
+            [font drawStringAt:CGPointMake(20.0f, 120.0f) text:@"DEF:"];
+            
+            [font setScale:0.7];
+            
+            [equipButton renderAtPoint:CGPointMake(280.0f, 70.0f) centerOfImage:YES];
+            [buyButton renderAtPoint:CGPointMake(280.0f, 30.0f) centerOfImage:YES];
+
             break;
             
         case kSceneState_weapons_upgrades:

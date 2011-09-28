@@ -46,6 +46,13 @@ typedef enum _SceneState {
     Image               *weaponsMenuMissilesPreviousButton;
     Image               *weaponsMenuHeatseekingNextButton;
     Image               *weaponsMenuHeatseekingPreviousButton;
+    
+    Image               *shipsUpgradeMenuNextButton;
+    Image               *shipsUpgradeMenuPreviousButton;
+    
+    
+    Image               *equipButton;
+    Image               *buyButton;
 
     
     ParticleEmitter     *backgroundParticleEmitter;
