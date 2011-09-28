@@ -277,6 +277,7 @@
             [font drawStringAt:CGPointMake(75.0f, 250.0f) text:@"Health: XXXc"];
             [font drawStringAt:CGPointMake(75.0f, 200.0f) text:@"Shield: XXXc"];
             [font setScale:0.7];
+            
             break;
             
         case kSceneState_ship_upgrades:
@@ -285,6 +286,7 @@
             [shipsMenuAttackButton renderAtPoint:CGPointMake(160.0f, 280.0f) centerOfImage:YES];
             [shipsMenuSpeedButton renderAtPoint:CGPointMake(160.0f, 200.0f) centerOfImage:YES];
             [shipsMenuDefenseButton renderAtPoint:CGPointMake(160.0f, 120.0f) centerOfImage:YES];
+            
             break;
             
         case kSceneState_ship_upgrades_base_chooser:
@@ -309,7 +311,7 @@
             break;
             
         case kSceneState_ship_upgrades_attack_chooser:
-            [font drawStringAt:CGPointMake(115.0f, 460.0f) text:@"Attack"];
+            [font drawStringAt:CGPointMake(105.0f, 460.0f) text:@"Attack"];
             [font setScale:0.5];
             [shipsUpgradeMenuPreviousButton renderAtPoint:CGPointMake(95.0f, 287.0f) centerOfImage:YES];
             [font drawStringAt:CGPointMake(110.0f, 300.0f) text:@"XPX-XXX"];
@@ -351,7 +353,7 @@
             break;
             
         case kSceneState_ship_upgrades_defense_chooser:
-            [font drawStringAt:CGPointMake(115.0f, 460.0f) text:@"Defense"];
+            [font drawStringAt:CGPointMake(95.0f, 460.0f) text:@"Defense"];
             [font setScale:0.5];
             [shipsUpgradeMenuPreviousButton renderAtPoint:CGPointMake(95.0f, 287.0f) centerOfImage:YES];
             [font drawStringAt:CGPointMake(110.0f, 300.0f) text:@"XPX-XXX"];
@@ -397,6 +399,7 @@
             [weaponsMenuHeatseekingNextButton renderAtPoint:CGPointMake(220.0f, 85.0f) centerOfImage:YES];
             
             [font setScale:0.7];
+            
             break;    
             
         default:

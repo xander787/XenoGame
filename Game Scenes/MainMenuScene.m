@@ -134,11 +134,27 @@
 																		blendAdditive:YES];
     
     if (![[settingsDB stringForKey:kSetting_FirstTimeRun] isEqualToString:@"NO"]) {
-        [settingsDB setValue:@"" forKey:kSetting_TwitterCredentials];
-        [settingsDB setBool:YES forKey:kSetting_TactileFeedback];
         [settingsDB setFloat:0.75 forKey:kSetting_SoundVolume];
         [settingsDB setFloat:0.50 forKey:kSetting_MusicVolume];
         [settingsDB setValue:kSettingValue_ControlType_Touch forKey:kSetting_ControlType];
+        [settingsDB setBool:YES forKey:kSetting_TactileFeedback];
+        [settingsDB setValue:@"" forKey:kSetting_TwitterCredentials];
+        
+        [settingsDB setValue:@"0:0" forKey:kSetting_SaveGameLevelProgress];
+        [settingsDB setValue:0 forKey:kSetting_SaveGameScore];
+        [settingsDB setValue:@"100.0" forKey:kSetting_SaveGameHealth];
+        [settingsDB setValue:NO forKey:kSetting_SaveGameNukeHold];
+        [settingsDB setValue:@"XP750" forKey:kSetting_SaveGameShip];
+        [settingsDB setValue:@"kBulletLevelOne" forKey:kSetting_SaveGameWeapon];
+        [settingsDB setValue:@"100" forKey:kSetting_SaveGameCredits];
+        NSArray *unlockedShips = [[NSArray alloc] initWithObjects:@"XP750", @"XP751", nil];
+        [settingsDB setValue:unlockedShips forKey:kSetting_SaveGameUnlockedShips];
+        [unlockedShips release];
+        
+        NSArray *unlockedWeapons = [[NSArray alloc] initWithObjects:@"kBulletLevelOne", @"kBulletLevelTwo", nil];
+        [settingsDB setValue:unlockedWeapons forKey:kSetting_SaveGameUnlockedWeapons];
+        [unlockedWeapons release];
+        
         [settingsDB setValue:@"NO" forKey:kSetting_FirstTimeRun];
         [settingsDB synchronize];
     }
@@ -148,6 +164,7 @@
     [soundManager setMusicVolume:[settingsDB floatForKey:kSetting_MusicVolume]];
     [soundManager loadMusicWithKey:@"menu_theme" musicFile:@"menu_theme.mp3"];
     [soundManager loadMusicWithKey:@"game_theme" musicFile:@"game_theme.mp3"];
+    [soundManager loadMusicWithKey:@"boss_theme" musicFile:@"boss_theme.mp3"];
     [soundManager playMusicWithKey:@"menu_theme" timesToRepeat:1000];
     //[soundManager setFxVolume:[settingsDB floatForKey:kSetting_SoundVolume]];
     //[soundManager setMusicVolume:[settingsDB floatForKey:kSetting_MusicVolume]];
