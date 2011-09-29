@@ -192,7 +192,7 @@
     ParticleEmitter *baseEmitter = [[ParticleEmitter alloc] initParticleEmitterWithImageNamed:@"texture.png"
                                                                                      position:location
                                                                        sourcePositionVariance:Vector2fZero
-                                                                                        speed:speed/1.5
+                                                                                        speed:speed/2.5
                                                                                 speedVariance:0.0
                                                                              particleLifeSpan:0.2
                                                                      particleLifespanVariance:0.1

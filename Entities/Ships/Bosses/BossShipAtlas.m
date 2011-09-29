@@ -84,7 +84,7 @@
                                                                                blendAdditive:YES];
         
         leftCannonEmitterJoint = [[ParticleEmitter alloc] initParticleEmitterWithImageNamed:@"texture.png"
-                                                                                   position:Vector2fMake(currentLocation.x + 105, 0)
+                                                                                   position:Vector2fMake(currentLocation.x - 105, 0)
                                                                      sourcePositionVariance:Vector2fMake(0,0)
                                                                                       speed:0.01f
                                                                               speedVariance:0.0f
@@ -262,7 +262,17 @@
         for(int i = 0; i < numberOfModules; i++) {
             modularObjects[i].desiredLocation = modularObjects[i].location;
         }
-   }
+        
+        
+        //Projectiles:
+        frontCenterTurretProjectile = [[HeatSeekingMissile alloc] initWithProjectileID:kEnemyProjectile_HeatSeekingMissile location:Vector2fZero angle:-90.0f speed:0.5 rate:5 andPlayerShipRef:playerShipRef];
+        frontLeftTurretProjectile = [[BulletProjectile alloc] initWithProjectileID:kEnemyProjectile_BulletLevelFour_Triple location:Vector2fZero andAngle:-105.0f];
+        frontRightTurretProjectile = [[BulletProjectile alloc] initWithProjectileID:kEnemyProjectile_BulletLevelFour_Triple location:Vector2fZero andAngle:-75.0f];
+        cannonLeftProjectile = [[ParticleProjectile alloc] initWithProjectileID:kEnemyParticle_Single location:Vector2fZero angle:0 radius:7 andFireRate:4];
+        cannonRightProjectile = [[ParticleProjectile alloc] initWithProjectileID:kEnemyParticle_Single location:Vector2fZero angle:0 radius:7 andFireRate:4];
+        shipFarLeftProjectile = [[WaveProjectile alloc] initWithProjectileID:kEnemyProjectile_WaveLevelOne_SingleSmall location:Vector2fZero andAngle:-100.0f];
+        shipFarRightProjectile = [[WaveProjectile alloc] initWithProjectileID:kEnemyProjectile_WaveLevelOne_SingleSmall location:Vector2fZero andAngle:-80.0f];
+    }
     return self;
 }
 
@@ -276,6 +286,18 @@
     else if(state == kAtlasState_StageOne) {
         currentLocation.x += ((desiredLocation.x - currentLocation.x) / bossSpeed) * (pow(1.584893192, bossSpeed/2.5)) * delta;
         currentLocation.y += ((desiredLocation.y - currentLocation.y) / bossSpeed) * (pow(1.584893192, bossSpeed/2.5)) * delta;
+    }
+    else if(state == kAtlasState_StageTwo) {
+        currentLocation.x += ((desiredLocation.x - currentLocation.x) / bossSpeed) * (pow(1.584893192, bossSpeed/3)) * delta;
+        currentLocation.y += ((desiredLocation.y - currentLocation.y) / bossSpeed) * (pow(1.584893192, bossSpeed/3)) * delta;
+    }
+    else if(state == kAtlasState_StageThree) {
+        currentLocation.x += ((desiredLocation.x - currentLocation.x) / bossSpeed) * (pow(1.584893192, bossSpeed/3)) * delta;
+        currentLocation.y += ((desiredLocation.y - currentLocation.y) / bossSpeed) * (pow(1.584893192, bossSpeed/3)) * delta;
+    }
+    else if(state == kAtlasState_StageFour) {
+        currentLocation.x += ((desiredLocation.x - currentLocation.x) / bossSpeed) * (pow(1.584893192, bossSpeed/3)) * delta;
+        currentLocation.y += ((desiredLocation.y - currentLocation.y) / bossSpeed) * (pow(1.584893192, bossSpeed/3)) * delta;
     }
     
     
@@ -306,9 +328,29 @@
     [frontLeftTurretDeathSecondaryEmitter setSourcePosition:Vector2fMake(frontLeftTurret->location.x + currentLocation.x, frontLeftTurret->location.y + currentLocation.y)];
     [frontRightTurretDeathSecondaryEmitter setSourcePosition:Vector2fMake(frontRightTurret->location.x + currentLocation.x, frontRightTurret->location.y + currentLocation.y)];
 
+    //Update projectile positions
+    if(shipIsDeployed){
+        [frontCenterTurretProjectile setLocation:Vector2fMake(currentLocation.x + frontCenterTurret->location.x + frontCenterTurret->weapons[0].weaponCoord.x, currentLocation.y + frontCenterTurret->location.y + frontCenterTurret->weapons[0].weaponCoord.y)];
+        [frontLeftTurretProjectile setLocation:Vector2fMake(currentLocation.x + frontLeftTurret->location.x + frontLeftTurret->weapons[0].weaponCoord.x, currentLocation.y + frontLeftTurret->location.y + frontLeftTurret->weapons[0].weaponCoord.y)];
+        [frontRightTurretProjectile setLocation:Vector2fMake(currentLocation.x + frontRightTurret->location.x + frontRightTurret->weapons[0].weaponCoord.x, currentLocation.y + frontRightTurret->location.y + frontRightTurret->weapons[0].weaponCoord.y)];
+        [cannonLeftProjectile setLocation:Vector2fMake(currentLocation.x + cannonLeft->location.x + cannonLeft->weapons[0].weaponCoord.x, currentLocation.y + cannonLeft->location.y + cannonLeft->weapons[0].weaponCoord.y)];
+        [cannonRightProjectile setLocation:Vector2fMake(currentLocation.x + cannonRight->location.x + cannonRight->weapons[0].weaponCoord.x, currentLocation.y + cannonRight->location.y + cannonRight->weapons[0].weaponCoord.y)];
+        [shipLeftProjectile setLocation:Vector2fMake(currentLocation.x + mainBody->location.x + mainBody->weapons[1].weaponCoord.x, currentLocation.y + mainBody->location.y + mainBody->weapons[1].weaponCoord.y)];
+        [shipFarLeftProjectile setLocation:Vector2fMake(currentLocation.x + mainBody->location.x + mainBody->weapons[0].weaponCoord.x, currentLocation.y + mainBody->location.y + mainBody->weapons[0].weaponCoord.y)];
+        [shipRightProjectile setLocation:Vector2fMake(currentLocation.x + mainBody->location.x + mainBody->weapons[4].weaponCoord.x, currentLocation.y + mainBody->location.y + mainBody->weapons[4].weaponCoord.y)];
+        [shipFarRightProjectile setLocation:Vector2fMake(currentLocation.x + mainBody->location.x + mainBody->weapons[3].weaponCoord.x, currentLocation.y + mainBody->location.y + mainBody->weapons[3].weaponCoord.y)];
+        [shipWingLeftProjectile setLocation:Vector2fMake(currentLocation.x + mainBody->location.x + mainBody->weapons[2].weaponCoord.x, currentLocation.y + mainBody->location.y + mainBody->weapons[2].weaponCoord.y)];
+        [shipWingRightProjectile setLocation:Vector2fMake(currentLocation.x + mainBody->location.x + mainBody->weapons[5].weaponCoord.x, currentLocation.y + mainBody->location.y + mainBody->weapons[5].weaponCoord.y)];
+    }
     
-    if (mainBody->isDead) {
+    if (mainBody->isDead && !updateMainBodyDeathEmitter) {
+        updateMainBodyDeathEmitter = YES;
+    }
+    if(updateMainBodyDeathEmitter){
         [mainBodyDeathEmitter update:delta];
+        if([mainBodyDeathEmitter particleCount] == 0){
+            mainBody->isDead = YES;
+        }
     }
     if (cannonRight->isDead) {
         [rightCannonDeathSecondaryEmitter update:delta];
@@ -326,6 +368,7 @@
         [frontLeftTurretDeathSecondaryEmitter update:delta];
     }
     
+    /*
     if (cannonRightFlewOff) {
         [rightCannonDeathEmitter update:delta];
     }
@@ -340,11 +383,11 @@
     }
     if (frontLeftTurretFlewOff) {
         [frontLeftTurretDeathEmitter update:delta];
-    }
+    }*/
     
         
-    [rightCannonEmitterJoint setSourcePosition:Vector2fMake(currentLocation.x + (-115), currentLocation.y - 30)];
-    [leftCannonEmitterJoint setSourcePosition:Vector2fMake(currentLocation.x + 115, currentLocation.y - 30)];
+    [rightCannonEmitterJoint setSourcePosition:Vector2fMake(currentLocation.x + 115, currentLocation.y - 30)];
+    [leftCannonEmitterJoint setSourcePosition:Vector2fMake(currentLocation.x + (-115), currentLocation.y - 30)];
     [backEngineEnergyEmitter setSourcePosition:Vector2fMake(currentLocation.x, currentLocation.y + 30)];
     
     if(cannonRight->isDead == NO){
@@ -385,10 +428,220 @@
                 //desiredLocation.y = MIN(desiredLocation.y, 430);
             }
             
+            //Projectile updating:
+            [cannonLeftProjectile setAngle:270 - cannonLeft->rotation];
+            [cannonLeftProjectile update:delta];
+            [cannonRightProjectile setAngle:270 - cannonRight->rotation];
+            [cannonRightProjectile update:delta];
+            [frontCenterTurretProjectile update:delta];
+            [frontLeftTurretProjectile update:delta];
+            [frontRightTurretProjectile update:delta];
+            [shipFarLeftProjectile update:delta];
+            [shipFarRightProjectile update:delta];
+            
+            if(cannonLeft->isDead){
+                [cannonLeftProjectile stopProjectile];
+            }
+            if(cannonRight->isDead){
+                [cannonRightProjectile stopProjectile];
+            }
+            if(frontCenterTurret->isDead){
+                [frontCenterTurretProjectile stopProjectile];
+            }
+            if(frontLeftTurret->isDead){
+                [frontLeftTurretProjectile stopProjectile];
+            }
+            if(frontRightTurret->isDead){
+                [frontRightTurretProjectile stopProjectile];
+            }
+            
             if (cannonRightFlewOff && cannonLeftFlewOff && frontCenterTurretFlewOff && frontRightTurretFlewOff && frontLeftTurretFlewOff) {
                 desiredLocation = CGPointMake(160.0f, currentLocation.y);
-                currentStagePaused = YES;
+//                currentStagePaused = YES;
+                state = kAtlasState_StageTwo;
+                
+                NSLog(@"Stge Two Begin");
+                
+                //Update projectiles
+                shipLeftProjectile = [[WaveProjectile alloc] initWithProjectileID:kEnemyProjectile_WaveLevelOne_SingleSmall location:Vector2fZero andAngle:-90.0f];
+                shipRightProjectile = [[WaveProjectile alloc] initWithProjectileID:kEnemyProjectile_WaveLevelOne_SingleSmall location:Vector2fZero andAngle:-90.0f];
+                shipWingLeftProjectile = [[HeatSeekingMissile alloc] initWithProjectileID:kEnemyProjectile_HeatSeekingMissile location:Vector2fZero angle:-110.0f speed:0.8 rate:6 andPlayerShipRef:playerShipRef];
+                shipWingRightProjectile = [[HeatSeekingMissile alloc] initWithProjectileID:kEnemyProjectile_HeatSeekingMissile location:Vector2fZero angle:-70.0f speed:0.8 rate:6 andPlayerShipRef:playerShipRef];
             }
+        }
+        else if(state == kAtlasState_StageTwo){
+            holdingTimer += delta;
+            
+            if(holdingTimer >= 1.4){
+                holdingTimer = 0.0;
+                
+                if(currentLocation.x <= 160){
+                    desiredLocation.x = (MAX(0.4, RANDOM_0_TO_1()) * 160) + 160;
+                }
+                else if(currentLocation.x >= 160){
+                    desiredLocation.x = (MIN(0.6, RANDOM_0_TO_1()) * 160);
+                }
+                
+                //desiredLocation.y = currentLocation.y + (RANDOM_MINUS_1_TO_1() * 150);
+                
+                desiredLocation.x = MAX(50, desiredLocation.x);
+                //desiredLocation.y = MAX(320, desiredLocation.y);
+                
+                desiredLocation.x = MIN(desiredLocation.x, 270);
+                //desiredLocation.y = MIN(desiredLocation.y, 430);
+            }
+            
+            //Projectile updating:
+            [shipLeftProjectile update:delta];
+            [shipFarLeftProjectile update:delta];
+            [shipRightProjectile update:delta];
+            [shipFarRightProjectile update:delta];
+            [shipWingLeftProjectile update:delta];
+            [shipWingRightProjectile update:delta];
+            
+            if(mainBody->moduleHealth <= mainBody->moduleMaxHealth/2){
+                state = kAtlasState_StageThree;
+                NSLog(@"Stage Three Begin");
+                currentDestructionOrder = 0;
+                
+                // Revive the weapons!
+                cannonRight->desiredLocation = cannonRight->defaultLocation;
+                cannonLeft->desiredLocation = cannonLeft->defaultLocation;
+                frontCenterTurret->desiredLocation = frontCenterTurret->defaultLocation;
+                frontLeftTurret->desiredLocation = frontLeftTurret->defaultLocation;
+                frontRightTurret->desiredLocation = frontRightTurret->defaultLocation;
+                
+                cannonRight->moduleHealth = cannonRight->moduleMaxHealth;
+                cannonLeft->moduleHealth = cannonLeft->moduleMaxHealth;
+                frontCenterTurret->moduleHealth = frontCenterTurret->moduleMaxHealth;
+                frontLeftTurret->moduleHealth = frontLeftTurret->moduleMaxHealth;
+                frontRightTurret->moduleHealth = frontRightTurret->moduleMaxHealth;
+                
+                cannonRight->isDead = NO;
+                cannonLeft->isDead = NO;
+                frontCenterTurret->isDead = NO;
+                frontLeftTurret->isDead = NO;
+                frontRightTurret->isDead = NO;
+                
+                cannonRightFlewOff = NO;
+                cannonLeftFlewOff = NO;
+                frontCenterTurretFlewOff = NO;
+                frontLeftTurretFlewOff = NO;
+                frontRightTurretFlewOff = NO;
+                
+                [leftCannonDeathEmitter stopParticleEmitter];
+                [leftCannonDeathEmitter setActive:YES];
+                [rightCannonDeathEmitter stopParticleEmitter];
+                [rightCannonDeathEmitter setActive: YES];
+                [frontCenterTurretDeathEmitter stopParticleEmitter];
+                [frontCenterTurretDeathEmitter setActive:YES];
+                [frontLeftTurretDeathEmitter stopParticleEmitter];
+                [frontLeftTurretDeathEmitter setActive:YES];
+                [frontRightTurretDeathEmitter stopParticleEmitter];
+                [frontRightTurretDeathEmitter setActive:YES];
+                
+                //Proj
+                [frontLeftTurretProjectile release];
+                frontLeftTurretProjectile = [[BulletProjectile alloc] initWithProjectileID:kEnemyProjectile_BulletLevelTwo_Double location:Vector2fZero andAngle:-100.0f];
+                [frontRightTurretProjectile release];
+                frontRightTurretProjectile = [[BulletProjectile alloc] initWithProjectileID:kEnemyProjectile_BulletLevelTwo_Double location:Vector2fZero andAngle:-80.0f];
+                [frontCenterTurretProjectile release];
+                frontCenterTurretProjectile = [[WaveProjectile alloc] initWithProjectileID:kEnemyProjectile_WaveLevelOne_SingleSmall location:Vector2fZero andAngle:-90.0f];
+                [shipWingLeftProjectile release];
+                shipWingLeftProjectile = [[BulletProjectile alloc] initWithProjectileID:kEnemyProjectile_BulletLevelTwo_Double location:Vector2fZero andAngle:-90.0f];
+                [shipWingRightProjectile release];
+                shipWingRightProjectile = [[BulletProjectile alloc] initWithProjectileID:kEnemyProjectile_BulletLevelTwo_Double location:Vector2fZero andAngle:-90.0f];
+            }
+        }
+        else if(state == kAtlasState_StageThree){
+            holdingTimer += delta;
+            
+            if(holdingTimer >= 1.4){
+                holdingTimer = 0.0;
+                
+                if(currentLocation.x <= 160){
+                    desiredLocation.x = (MAX(0.4, RANDOM_0_TO_1()) * 160) + 160;
+                }
+                else if(currentLocation.x >= 160){
+                    desiredLocation.x = (MIN(0.6, RANDOM_0_TO_1()) * 160);
+                }
+                
+                //desiredLocation.y = currentLocation.y + (RANDOM_MINUS_1_TO_1() * 150);
+                
+                desiredLocation.x = MAX(50, desiredLocation.x);
+                //desiredLocation.y = MAX(320, desiredLocation.y);
+                
+                desiredLocation.x = MIN(desiredLocation.x, 270);
+                //desiredLocation.y = MIN(desiredLocation.y, 430);
+            }
+            
+            //Proj
+            [frontCenterTurretProjectile update:delta];
+            [frontLeftTurretProjectile update:delta];
+            [frontRightTurretProjectile update:delta];
+            [cannonLeftProjectile update:delta];
+            [cannonRightProjectile update:delta];
+            [shipLeftProjectile update:delta];
+            [shipRightProjectile update:delta];
+            [shipWingLeftProjectile update:delta];
+            [shipWingRightProjectile update:delta];
+            
+            if(cannonLeft->isDead){
+                [cannonLeftProjectile stopProjectile];
+            }
+            if(cannonRight->isDead){
+                [cannonRightProjectile stopProjectile];
+            }
+            if(frontCenterTurret->isDead){
+                [frontCenterTurretProjectile stopProjectile];
+            }
+            if(frontLeftTurret->isDead){
+                [frontLeftTurretProjectile stopProjectile];
+            }
+            if(frontRightTurret->isDead){
+                [frontRightTurretProjectile stopProjectile];
+            }
+            
+            if (cannonRightFlewOff && cannonLeftFlewOff && frontCenterTurretFlewOff && frontRightTurretFlewOff && frontLeftTurretFlewOff) {
+                state = kAtlasState_StageFour;
+                NSLog(@"Stage Four begin");
+                
+                [shipLeftProjectile release];
+                shipLeftProjectile = [[WaveProjectile alloc] initWithProjectileID:kEnemyProjectile_WaveLevelTwo_DoubleSmall location:Vector2fZero andAngle:-90.0f];
+                [shipRightProjectile release];
+                shipRightProjectile = [[WaveProjectile alloc] initWithProjectileID:kEnemyProjectile_WaveLevelTwo_DoubleSmall location:Vector2fZero andAngle:-90.0f];
+                [shipWingLeftProjectile release];
+                shipWingLeftProjectile = [[BulletProjectile alloc] initWithProjectileID:kEnemyProjectile_BulletLevelFive_Triple location:Vector2fZero andAngle:-100.0f];
+                [shipWingRightProjectile release];
+                shipWingRightProjectile = [[BulletProjectile alloc] initWithProjectileID:kEnemyProjectile_BulletLevelFive_Triple location:Vector2fZero andAngle:-80.0f];
+            }
+        }
+        else if(state == kAtlasState_StageFour){
+            holdingTimer += delta;
+            
+            if(holdingTimer >= 1.4){
+                holdingTimer = 0.0;
+                
+                if(currentLocation.x <= 160){
+                    desiredLocation.x = (MAX(0.4, RANDOM_0_TO_1()) * 160) + 160;
+                }
+                else if(currentLocation.x >= 160){
+                    desiredLocation.x = (MIN(0.6, RANDOM_0_TO_1()) * 160);
+                }
+                
+                //desiredLocation.y = currentLocation.y + (RANDOM_MINUS_1_TO_1() * 150);
+                
+                desiredLocation.x = MAX(50, desiredLocation.x);
+                //desiredLocation.y = MAX(320, desiredLocation.y);
+                
+                desiredLocation.x = MIN(desiredLocation.x, 270);
+            }
+            
+            //Proj
+            [shipLeftProjectile update:delta];
+            [shipRightProjectile update:delta];
+            [shipWingLeftProjectile update:delta];
+            [shipWingRightProjectile update:delta];
         }
     }
     else if(currentStagePaused) {
@@ -403,10 +656,10 @@
             frontRightTurret->desiredLocation = frontRightTurret->defaultLocation;
             
             cannonRight->moduleHealth = cannonRight->moduleMaxHealth;
-            cannonLeft->moduleHealth = cannonLeft->moduleHealth;
-            frontCenterTurret->moduleHealth = frontCenterTurret->moduleHealth;
-            frontLeftTurret->moduleHealth = frontLeftTurret->moduleHealth;
-            frontRightTurret->moduleHealth = frontRightTurret->moduleHealth;
+            cannonLeft->moduleHealth = cannonLeft->moduleMaxHealth;
+            frontCenterTurret->moduleHealth = frontCenterTurret->moduleMaxHealth;
+            frontLeftTurret->moduleHealth = frontLeftTurret->moduleMaxHealth;
+            frontRightTurret->moduleHealth = frontRightTurret->moduleMaxHealth;
             
             cannonRight->isDead = NO;
             cannonLeft->isDead = NO;
@@ -483,8 +736,44 @@
 }
 
 - (void)render {
+    if(state == kAtlasState_StageOne){
+        [frontCenterTurretProjectile render];
+        [frontLeftTurretProjectile render];
+        [frontRightTurretProjectile render];
+        [cannonLeftProjectile render];
+        [cannonRightProjectile render];
+        [shipFarLeftProjectile render];
+        [shipFarRightProjectile render];
+    }
+    else if(state == kAtlasState_StageTwo){
+        [shipLeftProjectile render];
+        [shipFarLeftProjectile render];
+        [shipWingLeftProjectile render];
+        [shipRightProjectile render];
+        [shipFarRightProjectile render];
+        [shipWingRightProjectile render];
+    }
+    else if(state == kAtlasState_StageThree){
+        [frontCenterTurretProjectile render];
+        [frontLeftTurretProjectile render];
+        [frontRightTurretProjectile render];
+        [cannonLeftProjectile render];
+        [cannonRightProjectile render];
+        [shipLeftProjectile render];
+        [shipWingLeftProjectile render];
+        [shipRightProjectile render];
+        [shipWingRightProjectile render];
+    }
+    else if(state == kAtlasState_StageFour){
+        [shipLeftProjectile render];
+        [shipWingLeftProjectile render];
+        [shipRightProjectile render];
+        [shipWingRightProjectile render];
+    }
+    
+    
     for(int i = 0; i < numberOfModules; i++) {
-        if(modularObjects[i].isDead == NO || state == kAtlasState_StageOne){
+        if(modularObjects[i].isDead == NO || state == kAtlasState_StageOne || state == kAtlasState_StageThree){
             [modularObjects[i].moduleImage setRotation:modularObjects[i].rotation];
             [modularObjects[i].moduleImage renderAtPoint:CGPointMake(currentLocation.x + modularObjects[i].location.x, currentLocation.y + modularObjects[i].location.y) centerOfImage:YES];
         }
@@ -501,12 +790,14 @@
     }
     
     // Death emitters
-    if(mainBody->isDead) {
+    if(updateMainBodyDeathEmitter) {
         [mainBodyDeathEmitter renderParticles];
     }
     if(cannonRight->isDead){
         if (state == kAtlasState_StageThree) {
+            cannonRightFlewOff = YES;
             [rightCannonDeathEmitter renderParticles];
+            cannonRight->desiredLocation = Vector2fMake(300.0f,cannonRight->location.y);
         }
         else {
             cannonRightFlewOff = YES;
@@ -516,7 +807,9 @@
     }
     if(cannonLeft->isDead){
         if (state == kAtlasState_StageThree) {
+            cannonLeftFlewOff = YES;
             [leftCannonDeathEmitter renderParticles];
+            cannonLeft->desiredLocation = Vector2fMake(-300.0f,cannonLeft->location.y);
         }
         else {
             cannonLeftFlewOff = YES;
@@ -526,7 +819,9 @@
     }
     if (frontLeftTurret->isDead) {
         if (state == kAtlasState_StageThree) {
+            frontLeftTurretFlewOff = YES;
             [frontLeftTurretDeathEmitter renderParticles];
+            frontLeftTurret->desiredLocation = Vector2fMake(-400.0f, frontLeftTurret->location.y);
         }
         else {
             frontLeftTurretFlewOff = YES;
@@ -536,7 +831,9 @@
     }
     if (frontRightTurret->isDead) {
         if (state == kAtlasState_StageThree) {
+            frontRightTurretFlewOff = YES;
             [frontRightTurretDeathEmitter renderParticles];
+            frontRightTurret->desiredLocation = Vector2fMake(400.0f, frontRightTurret->location.y);
         }
         else {
             frontRightTurretFlewOff = YES;
@@ -546,7 +843,9 @@
     }
     if (frontCenterTurret->isDead) {
         if (state == kAtlasState_StageThree) {
+            frontCenterTurretFlewOff = YES;
             [frontCenterTurretDeathEmitter renderParticles];
+            frontCenterTurret->desiredLocation = Vector2fMake(frontCenterTurret->location.x, -400.0);
         }
         else {
             frontCenterTurretFlewOff = YES;

@@ -21,6 +21,8 @@
 #import <Foundation/Foundation.h>
 #import "BossShip.h"
 #import "ParticleEmitter.h"
+#import "ParticleProjectile.h"
+#import "HeatSeekingMissile.h"
 
 //The +- limits for how far away an enemy ship can
 //stray from their respective holding points
@@ -58,6 +60,7 @@ typedef enum _AtlasState {
     ParticleEmitter *frontLeftTurretDeathSecondaryEmitter;
     ParticleEmitter *frontRightTurretDeathSecondaryEmitter;
 
+    BOOL            updateMainBodyDeathEmitter;
     
     BOOL            cannonRightFlewOff;
     BOOL            cannonLeftFlewOff;
@@ -70,6 +73,19 @@ typedef enum _AtlasState {
     
     AtlasState      state;
     float           holdingTimer;
+    
+    
+    AbstractProjectile  *frontCenterTurretProjectile;
+    AbstractProjectile  *frontLeftTurretProjectile;
+    AbstractProjectile  *frontRightTurretProjectile;
+    ParticleProjectile  *cannonLeftProjectile;
+    ParticleProjectile  *cannonRightProjectile;
+    AbstractProjectile  *shipLeftProjectile;
+    AbstractProjectile  *shipFarLeftProjectile;
+    AbstractProjectile  *shipRightProjectile;
+    AbstractProjectile  *shipFarRightProjectile;
+    AbstractProjectile  *shipWingLeftProjectile;
+    AbstractProjectile  *shipWingRightProjectile;
 }
 
 - (id)initWithLocation:(CGPoint)aPoint andPlayerShipRef:(PlayerShip *)playerRef;

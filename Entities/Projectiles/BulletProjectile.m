@@ -566,6 +566,7 @@
         case kEnemyProjectile_BulletLevelOne_Single:
         case kPlayerProjectile_BulletLevelOne_Single: {
             [[emitters objectAtIndex:0] setSourcePosition:Vector2fMake(location.x, location.y)];
+            [[emitters objectAtIndex:0] setAngle:angle];
             break;
         }
             
@@ -573,6 +574,8 @@
         case kPlayerProjectile_BulletLevelTwo_Double: {
             [[emitters objectAtIndex:0] setSourcePosition:Vector2fMake(location.x - 10, location.y)];
             [[emitters objectAtIndex:1] setSourcePosition:Vector2fMake(location.x + 10, location.y)];
+            [[emitters objectAtIndex:0] setAngle:angle];
+            [[emitters objectAtIndex:1] setAngle:angle];
             break;
         }
             
@@ -580,6 +583,8 @@
         case kPlayerProjectile_BulletLevelThree_Double: {
             [[emitters objectAtIndex:0] setSourcePosition:Vector2fMake(location.x - 10, location.y)];
             [[emitters objectAtIndex:1] setSourcePosition:Vector2fMake(location.x + 10, location.y)];
+            [[emitters objectAtIndex:0] setAngle:angle];
+            [[emitters objectAtIndex:1] setAngle:angle];
             break;
         }
             
@@ -588,6 +593,9 @@
             [[emitters objectAtIndex:0] setSourcePosition:Vector2fMake(location.x - 10, location.y)];
             [[emitters objectAtIndex:1] setSourcePosition:Vector2fMake(location.x, location.y)];
             [[emitters objectAtIndex:2] setSourcePosition:Vector2fMake(location.x + 10, location.y)];
+            [[emitters objectAtIndex:0] setAngle:angle + 15];
+            [[emitters objectAtIndex:1] setAngle:angle];
+            [[emitters objectAtIndex:2] setAngle:angle - 15];
             break;
         }
             
@@ -596,6 +604,9 @@
             [[emitters objectAtIndex:0] setSourcePosition:Vector2fMake(location.x - 10, location.y)];
             [[emitters objectAtIndex:1] setSourcePosition:Vector2fMake(location.x, location.y)];
             [[emitters objectAtIndex:2] setSourcePosition:Vector2fMake(location.x + 10, location.y)];
+            [[emitters objectAtIndex:0] setAngle:angle + 15];
+            [[emitters objectAtIndex:1] setAngle:angle];
+            [[emitters objectAtIndex:2] setAngle:angle - 15];
             break;
         }
             
@@ -605,6 +616,10 @@
             [[emitters objectAtIndex:1] setSourcePosition:Vector2fMake(location.x - 10, location.y)];
             [[emitters objectAtIndex:2] setSourcePosition:Vector2fMake(location.x + 10, location.y)];
             [[emitters objectAtIndex:3] setSourcePosition:Vector2fMake(location.x + 10, location.y)];
+            [[emitters objectAtIndex:0] setAngle:angle + 15];
+            [[emitters objectAtIndex:1] setAngle:angle];
+            [[emitters objectAtIndex:2] setAngle:angle];
+            [[emitters objectAtIndex:3] setAngle:angle - 15];
             break;
         }
             
@@ -614,6 +629,10 @@
             [[emitters objectAtIndex:1] setSourcePosition:Vector2fMake(location.x - 10, location.y)];
             [[emitters objectAtIndex:2] setSourcePosition:Vector2fMake(location.x + 10, location.y)];
             [[emitters objectAtIndex:3] setSourcePosition:Vector2fMake(location.x + 10, location.y)];
+            [[emitters objectAtIndex:0] setAngle:angle + 15];
+            [[emitters objectAtIndex:1] setAngle:angle];
+            [[emitters objectAtIndex:2] setAngle:angle];
+            [[emitters objectAtIndex:3] setAngle:angle - 15];
             break;
         }
             
@@ -624,6 +643,11 @@
             [[emitters objectAtIndex:2] setSourcePosition:Vector2fMake(location.x, location.y)];
             [[emitters objectAtIndex:3] setSourcePosition:Vector2fMake(location.x + 10, location.y)];
             [[emitters objectAtIndex:4] setSourcePosition:Vector2fMake(location.x + 10, location.y)];
+            [[emitters objectAtIndex:0] setAngle:angle + 15];
+            [[emitters objectAtIndex:1] setAngle:angle];
+            [[emitters objectAtIndex:2] setAngle:angle];
+            [[emitters objectAtIndex:3] setAngle:angle];
+            [[emitters objectAtIndex:4] setAngle:angle - 15];
             break;
         }
             
@@ -634,6 +658,11 @@
             [[emitters objectAtIndex:2] setSourcePosition:Vector2fMake(location.x, location.y)];
             [[emitters objectAtIndex:3] setSourcePosition:Vector2fMake(location.x + 10, location.y)];
             [[emitters objectAtIndex:4] setSourcePosition:Vector2fMake(location.x + 10, location.y)];
+            [[emitters objectAtIndex:0] setAngle:angle + 15];
+            [[emitters objectAtIndex:1] setAngle:angle];
+            [[emitters objectAtIndex:2] setAngle:angle];
+            [[emitters objectAtIndex:3] setAngle:angle];
+            [[emitters objectAtIndex:4] setAngle:angle - 15];
             break;
         }
             
@@ -646,6 +675,13 @@
             [[emitters objectAtIndex:4] setSourcePosition:Vector2fMake(location.x + 10, location.y)];
             [[emitters objectAtIndex:5] setSourcePosition:Vector2fMake(location.x + 10, location.y)];
             [[emitters objectAtIndex:6] setSourcePosition:Vector2fMake(location.x + 10, location.y)];
+            [[emitters objectAtIndex:0] setAngle:angle + 15];
+            [[emitters objectAtIndex:1] setAngle:angle + 7.5];
+            [[emitters objectAtIndex:2] setAngle:angle];
+            [[emitters objectAtIndex:3] setAngle:angle];
+            [[emitters objectAtIndex:4] setAngle:angle];
+            [[emitters objectAtIndex:5] setAngle:angle - 7.5];
+            [[emitters objectAtIndex:6] setAngle:angle - 15];
             
             break;
         }
@@ -661,7 +697,7 @@
         }
     }
     for (int emitterPolyCount = 0; emitterPolyCount < [emitters count]; emitterPolyCount++){
-        [[emitters objectAtIndex:emitterPolyCount] setAngle:angle];
+//        [[emitters objectAtIndex:emitterPolyCount] setAngle:angle];
         
         [[emitters objectAtIndex:emitterPolyCount] update:aDelta];
         
