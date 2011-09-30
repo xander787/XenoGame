@@ -306,8 +306,20 @@
     //Set the centers of the polygons so they get rendered properly
     for(int i = 0; i < numberOfModules; i++){
         if(modularObjects[i].isDead == NO){
-            for(Polygon *modulePoly in modularObjects[i].collisionPolygonArray){
-                [modulePoly setPos:CGPointMake(modularObjects[i].location.x + currentLocation.x, modularObjects[i].location.y + currentLocation.y)];
+            if(i == 5 && state == kAtlasState_StageThree){
+                for(Polygon *modulePoly in modularObjects[i].collisionPolygonArray){
+                    [modulePoly setPos:CGPointMake(0, -1000)];
+                }
+                if(abs(modularObjects[i].location.y - modularObjects[i].defaultLocation.y) < 10){
+                    for(Polygon *modulePoly in modularObjects[i].collisionPolygonArray){
+                        [modulePoly setPos:CGPointMake(modularObjects[i].location.x + currentLocation.x, modularObjects[i].location.y + currentLocation.y)];
+                    }
+                }
+            }
+            else {
+                for(Polygon *modulePoly in modularObjects[i].collisionPolygonArray){
+                    [modulePoly setPos:CGPointMake(modularObjects[i].location.x + currentLocation.x, modularObjects[i].location.y + currentLocation.y)];
+                }
             }
         }
         else {
