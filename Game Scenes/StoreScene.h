@@ -10,58 +10,58 @@
 #import "AbstractScene.h"
 #import "AngelCodeFont.h"
 
-/*#define kXP750_Price
- #define kXP751_Price
- #define kXPA368_Price
- #define kXPA600_Price
- #define kXPA617_Price
- #define kXPA652_Price
- #define kXPA679_Price
- #define kXPD900_Price
- #define kXPD909_Price
- #define kXPD924_Price
- #define kXPD945_Price
- #define kXPD968_Price
- #define kXPS400_Price
- #define kXPS424_Price
- #define kXPS447_Price
- #define kXPS463_Price
- #define kXPS485_Price
+#define kXP750_Price 0
+#define kXP751_Price 100
+#define kXPA368_Price 300
+#define kXPA600_Price 1000
+#define kXPA617_Price 1800
+#define kXPA652_Price 2700
+#define kXPA679_Price 3750
+#define kXPD900_Price 300
+#define kXPD909_Price 1000
+#define kXPD924_Price 1800
+#define kXPD945_Price 2700
+#define kXPD968_Price 3750
+#define kXPS400_Price 200
+#define kXPS424_Price 1000
+#define kXPS447_Price 1800
+#define kXPS463_Price 2700
+#define kXPS485_Price 3750
  
- #define kBulletLevelOne_Price
- #define kBulletLevelTwo_Price
- #define kBulletLevelThree_Price
- #define kBulletLevelFour_Price
- #define kBulletLevelFive_Price
- #define kBulletLevelSix_Price
- #define kBulletLevelSeven_Price
- #define kBulletLevelEight_Price
- #define kBulletLevelNine_Price
- #define kBulletLevelTen_Price
+#define kBulletLevelOne_Price 0
+#define kBulletLevelTwo_Price 50
+#define kBulletLevelThree_Price 300
+#define kBulletLevelFour_Price 700
+#define kBulletLevelFive_Price 1000
+#define kBulletLevelSix_Price 1400
+#define kBulletLevelSeven_Price 1800
+#define kBulletLevelEight_Price 2300
+#define kBulletLevelNine_Price 2800
+#define kBulletLevelTen_Price 3450
  
- #define kWaveLevelOne_Price
- #define kWaveLevelTwo_Price
- #define kWaveLevelThree_Price
- #define kWaveLevelFour_Price
- #define kWaveLevelFive_Price
- #define kWaveLevelSix_Price
- #define kWaveLevelSeven_Price
- #define kWaveLevelEight_Price
- #define kWaveLevelNine_Price
- #define kWaveLevelTen_Price
+#define kWaveLevelOne_Price 100
+#define kWaveLevelTwo_Price 300
+#define kWaveLevelThree_Price 600
+#define kWaveLevelFour_Price 950
+#define kWaveLevelFive_Price 1100
+#define kWaveLevelSix_Price 1300
+#define kWaveLevelSeven_Price 1700
+#define kWaveLevelEight_Price 2100
+#define kWaveLevelNine_Price 2400
+#define kWaveLevelTen_Price 2700
  
- #define kMissilesLevelOne_Price
- #define kMissileLevelTwo_Price
- #define kMissileLevelThree_Price
- #define kMissileLevelFour_Price
- #define kMissileLevelFive_Price
- #define kMissileLevelSix_Price
- #define kMissileLevelSeven_Price
- #define kMissileLevelEight_Price
- #define kMissileLevelNine_Price
- #define kMissileLevelTen_Price
- 
- #define kHeatseekerLevelOne_Price*/
+#define kMissilesLevelOne_Price 250
+#define kMissileLevelTwo_Price 500
+#define kMissileLevelThree_Price 750
+#define kMissileLevelFour_Price 1000
+#define kMissileLevelFive_Price 1200
+#define kMissileLevelSix_Price 1500
+#define kMissileLevelSeven_Price 1900
+#define kMissileLevelEight_Price 2500
+#define kMissileLevelNine_Price 3000
+#define kMissileLevelTen_Price 3600
+
+#define kHeatseekerLevelOne_Price 2000
 
 typedef enum _SceneState {
     kSceneState_general_menu = 0,
