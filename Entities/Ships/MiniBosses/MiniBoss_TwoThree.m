@@ -43,6 +43,8 @@
         bottomRightHeatSeeker = [[HeatSeekingMissile alloc] initWithProjectileID:kEnemyProjectile_HeatSeekingMissile location:Vector2fZero angle:30.0f speed:1 rate:6 andPlayerShipRef:playerShipRef];
         topLeftHeatSeeker = [[HeatSeekingMissile alloc] initWithProjectileID:kEnemyProjectile_HeatSeekingMissile location:Vector2fZero angle:120.0f speed:1 rate:6 andPlayerShipRef:playerShipRef];
         topRightHeatSeeker = [[HeatSeekingMissile alloc] initWithProjectileID:kEnemyProjectile_HeatSeekingMissile location:Vector2fZero angle:160.0f speed:1 rate:6 andPlayerShipRef:playerShipRef];
+        
+        projectilesArray = [[NSMutableArray alloc] initWithObjects:bodyCenterDoubleBullet, bottomLeftHeatSeeker, bottomRightHeatSeeker, topLeftHeatSeeker, topRightHeatSeeker, nil];
     }
     return self;
 }

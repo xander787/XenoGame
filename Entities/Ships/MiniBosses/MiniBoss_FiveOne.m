@@ -93,6 +93,10 @@
         outerWaveRight = [[WaveProjectile alloc] initWithProjectileID:kEnemyProjectile_WaveLevelThree_DoubleSmall location:Vector2fZero andAngle:0.0f];
         outerTripleBottomLeft = [[BulletProjectile alloc] initWithProjectileID:kEnemyProjectile_BulletLevelFour_Triple location:Vector2fZero andAngle:225.0f];
         outerTripleTopRight = [[BulletProjectile alloc] initWithProjectileID:kEnemyProjectile_BulletLevelFour_Triple location:Vector2fZero andAngle:45.0f];
+        
+        projectilesArray = [[NSMutableArray alloc] initWithObjects:centerTripleBullet, centerWaveLeft, centerWaveRight, centerHeatSeekerLeft, centerHeatSeekerRight,
+                            middleWaveBottom, middleWaveTop, middleTripleLeft, middleTripleRight,
+                            outerWaveLeft, outerWaveRight, outerTripleBottomLeft, outerTripleTopRight, nil];
     }
     return self;
 }

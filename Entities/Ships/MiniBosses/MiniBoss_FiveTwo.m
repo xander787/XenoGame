@@ -121,6 +121,7 @@
         waveLeft = [[WaveProjectile alloc] initWithProjectileID:kEnemyProjectile_WaveLevelThree_DoubleSmall location:Vector2fZero andAngle:-105.0f];
         waveRight = [[WaveProjectile alloc] initWithProjectileID:kEnemyProjectile_WaveLevelThree_DoubleSmall location:Vector2fZero andAngle:-75.0f];
         
+        projectilesArray = [[NSMutableArray alloc] initWithObjects:waveCenter, waveLeft, waveRight, nil];
         
         for(int i = 1; i < self.numberOfModules; i++){
             modularObjects[i].desiredLocation.x = modularObjects[i].defaultLocation.x;

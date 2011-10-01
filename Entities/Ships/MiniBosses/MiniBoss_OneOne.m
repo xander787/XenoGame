@@ -43,6 +43,7 @@
         leftMissile = [[MissileProjectile alloc] initWithProjectileID:kEnemyProjectile_MissileLevelOne_Single location:Vector2fZero andAngle:-100.0f];
         rightMissile = [[MissileProjectile alloc] initWithProjectileID:kEnemyProjectile_MissileLevelOne_Single location:Vector2fZero andAngle:-80.0f];
         
+        projectilesArray = [[NSMutableArray alloc] initWithObjects:leftBullet, rightBullet, leftMissile, rightMissile, nil];
     }
     return self;
 }

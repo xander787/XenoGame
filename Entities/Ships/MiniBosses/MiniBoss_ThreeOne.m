@@ -43,7 +43,7 @@
         particleCannonLeft = [[ParticleProjectile alloc] initWithProjectileID:kEnemyParticle_Single location:Vector2fZero angle:-90.0f radius:6 andFireRate:4];
         particleCannonRight = [[ParticleProjectile alloc] initWithProjectileID:kEnemyParticle_Single location:Vector2fZero angle:-90.0f radius:6 andFireRate:4];
         
-        
+        projectilesArray = [[NSMutableArray alloc] initWithObjects:waveProjectile, heatSeekerLeft, heatSeekerRight, particleCannonLeft, particleCannonRight, nil];
     }
     return self;
 }

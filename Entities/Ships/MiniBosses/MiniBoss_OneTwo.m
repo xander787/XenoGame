@@ -83,6 +83,8 @@
         floaterLeftBullet = [[BulletProjectile alloc] initWithProjectileID:kEnemyProjectile_BulletLevelOne_Single location:Vector2fZero andAngle:-90.0f];
         floaterRightBullet = [[BulletProjectile alloc] initWithProjectileID:kEnemyProjectile_BulletLevelOne_Single location:Vector2fZero andAngle:-90.0f];
         
+        projectilesArray = [[NSMutableArray alloc] initWithObjects:bodyCenterBullet, bodyLeftBullet, bodyRightBullet, floaterLeftBullet, floaterRightBullet, nil];
+        
         for(int i = 1; i < self.numberOfModules; i++){
             modularObjects[i].desiredLocation.x = modularObjects[i].defaultLocation.x;
             modularObjects[i].desiredLocation.y = modularObjects[i].defaultLocation.y;
