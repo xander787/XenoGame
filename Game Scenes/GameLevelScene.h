@@ -66,6 +66,7 @@
 #import "MiniBoss_FourTwo.h"
 #import "MiniBoss_SixOne.h"
 #import "MiniBoss_SevenThree.h"
+#import "MiniBoss_FiveOne.h"
 #import "MiniBoss_FiveTwo.h"
 #import "MiniBoss_SevenOne.h"
 #import "Drop.h"
