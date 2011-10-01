@@ -65,6 +65,8 @@
         leftWaveProj = [[WaveProjectile alloc] initWithProjectileID:kEnemyProjectile_WaveLevelOne_SingleSmall location:Vector2fMake(leftBulge->weapons[0].weaponCoord.x + leftBulge->location.x + currentLocation.x, leftBulge->weapons[0].weaponCoord.y + leftBulge->location.y + currentLocation.y) andAngle:270];
         
         rightWaveProj = [[WaveProjectile alloc] initWithProjectileID:kEnemyProjectile_WaveLevelOne_SingleSmall location:Vector2fMake(rightBulge->weapons[0].weaponCoord.x + rightBulge->location.x + currentLocation.x, rightBulge->weapons[0].weaponCoord.y + rightBulge->location.y + currentLocation.y) andAngle:270];
+        
+        projectilesArray = [[NSMutableArray alloc] initWithObjects:leftTurretProj, rightTurretProj, leftWaveProj, rightWaveProj, nil];
     }
     return self;
 }

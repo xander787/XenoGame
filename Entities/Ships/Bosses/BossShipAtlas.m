@@ -126,134 +126,134 @@
                                                                                blendAdditive:YES];
         
         mainBodyDeathEmitter = [[ParticleEmitter alloc] initParticleEmitterWithImageNamed:@"texture.png"
-                                                                                                  position:Vector2fMake(currentLocation.x, currentLocation.y)
-                                                                                    sourcePositionVariance:Vector2fZero
-                                                                                                     speed:0.8
-                                                                                             speedVariance:0.2
-                                                                                          particleLifeSpan:1.0
-                                                                                  particleLifespanVariance:0.2
-                                                                                                     angle:0
-                                                                                             angleVariance:360
-                                                                                                   gravity:Vector2fZero
-                                                                                                startColor:Color4fMake(0.8, 0.1, 0.1, 1.0)
-                                                                                        startColorVariance:Color4fMake(0.1, 0.1, 0.1, 0.0)
-                                                                                               finishColor:Color4fMake(0.1, 0.1, 0.1, 1.0)
-                                                                                       finishColorVariance:Color4fMake(0.1, 0.1, 0.1, 0.0)
-                                                                                              maxParticles:1500
-                                                                                              particleSize:20.0
-                                                                                        finishParticleSize:20.0
-                                                                                      particleSizeVariance:0.0
-                                                                                                  duration:0.8
-                                                                                             blendAdditive:YES];
+                                                                                 position:Vector2fMake(currentLocation.x, currentLocation.y)
+                                                                   sourcePositionVariance:Vector2fZero
+                                                                                    speed:0.8
+                                                                            speedVariance:0.2
+                                                                         particleLifeSpan:1.0
+                                                                 particleLifespanVariance:0.2
+                                                                                    angle:0
+                                                                            angleVariance:360
+                                                                                  gravity:Vector2fZero
+                                                                               startColor:Color4fMake(0.8, 0.1, 0.1, 1.0)
+                                                                       startColorVariance:Color4fMake(0.1, 0.1, 0.1, 0.0)
+                                                                              finishColor:Color4fMake(0.1, 0.1, 0.1, 1.0)
+                                                                      finishColorVariance:Color4fMake(0.1, 0.1, 0.1, 0.0)
+                                                                             maxParticles:1500
+                                                                             particleSize:20.0
+                                                                       finishParticleSize:20.0
+                                                                     particleSizeVariance:0.0
+                                                                                 duration:0.8
+                                                                            blendAdditive:YES];
         
         leftCannonDeathEmitter = [[ParticleEmitter alloc] initParticleEmitterWithImageNamed:@"texture.png"
-                                                                                                    position:Vector2fMake(currentLocation.x, currentLocation.y)
-                                                                                      sourcePositionVariance:Vector2fZero
-                                                                                                       speed:0.8
-                                                                                               speedVariance:0.2
-                                                                                            particleLifeSpan:0.4
-                                                                                    particleLifespanVariance:0.2
-                                                                                                       angle:0
-                                                                                               angleVariance:360
-                                                                                                     gravity:Vector2fZero
-                                                                                                  startColor:Color4fMake(1.0, 0.2, 0.2, 1.0)
-                                                                                          startColorVariance:Color4fMake(0.1, 0.1, 0.1, 0.0)
-                                                                                                 finishColor:Color4fMake(0.2, 0.2, 0.2, 1.0)
-                                                                                         finishColorVariance:Color4fMake(0.1, 0.1, 0.1, 0.0)
-                                                                                                maxParticles:1000
-                                                                                                particleSize:12.0
-                                                                                          finishParticleSize:12.0
-                                                                                        particleSizeVariance:0.0
-                                                                                                    duration:0.1
-                                                                                               blendAdditive:YES];
+                                                                                   position:Vector2fMake(currentLocation.x, currentLocation.y)
+                                                                     sourcePositionVariance:Vector2fZero
+                                                                                      speed:0.8
+                                                                              speedVariance:0.2
+                                                                           particleLifeSpan:0.4
+                                                                   particleLifespanVariance:0.2
+                                                                                      angle:0
+                                                                              angleVariance:360
+                                                                                    gravity:Vector2fZero
+                                                                                 startColor:Color4fMake(1.0, 0.2, 0.2, 1.0)
+                                                                         startColorVariance:Color4fMake(0.1, 0.1, 0.1, 0.0)
+                                                                                finishColor:Color4fMake(0.2, 0.2, 0.2, 1.0)
+                                                                        finishColorVariance:Color4fMake(0.1, 0.1, 0.1, 0.0)
+                                                                               maxParticles:1000
+                                                                               particleSize:12.0
+                                                                         finishParticleSize:12.0
+                                                                       particleSizeVariance:0.0
+                                                                                   duration:0.1
+                                                                              blendAdditive:YES];
         leftCannonDeathSecondaryEmitter = leftCannonDeathEmitter;
         
         rightCannonDeathEmitter = [[ParticleEmitter alloc] initParticleEmitterWithImageNamed:@"texture.png"
-                                                                                                     position:Vector2fMake(currentLocation.x, currentLocation.y)
-                                                                                       sourcePositionVariance:Vector2fZero
-                                                                                                        speed:0.8
-                                                                                                speedVariance:0.2
-                                                                                             particleLifeSpan:0.4
-                                                                                     particleLifespanVariance:0.2
-                                                                                                        angle:0
-                                                                                                angleVariance:360
-                                                                                                      gravity:Vector2fZero
-                                                                                                   startColor:Color4fMake(1.0, 0.2, 0.2, 1.0)
-                                                                                           startColorVariance:Color4fMake(0.1, 0.1, 0.1, 0.0)
-                                                                                                  finishColor:Color4fMake(0.2, 0.2, 0.2, 1.0)
-                                                                                          finishColorVariance:Color4fMake(0.1, 0.1, 0.1, 0.0)
-                                                                                                 maxParticles:1000
-                                                                                                 particleSize:12.0
-                                                                                           finishParticleSize:12.0
-                                                                                         particleSizeVariance:0.0
-                                                                                                     duration:0.1
-                                                                                                blendAdditive:YES];
+                                                                                    position:Vector2fMake(currentLocation.x, currentLocation.y)
+                                                                      sourcePositionVariance:Vector2fZero
+                                                                                       speed:0.8
+                                                                               speedVariance:0.2
+                                                                            particleLifeSpan:0.4
+                                                                    particleLifespanVariance:0.2
+                                                                                       angle:0
+                                                                               angleVariance:360
+                                                                                     gravity:Vector2fZero
+                                                                                  startColor:Color4fMake(1.0, 0.2, 0.2, 1.0)
+                                                                          startColorVariance:Color4fMake(0.1, 0.1, 0.1, 0.0)
+                                                                                 finishColor:Color4fMake(0.2, 0.2, 0.2, 1.0)
+                                                                         finishColorVariance:Color4fMake(0.1, 0.1, 0.1, 0.0)
+                                                                                maxParticles:1000
+                                                                                particleSize:12.0
+                                                                          finishParticleSize:12.0
+                                                                        particleSizeVariance:0.0
+                                                                                    duration:0.1
+                                                                               blendAdditive:YES];
         rightCannonDeathSecondaryEmitter = rightCannonDeathEmitter;
         
         frontCenterTurretDeathEmitter = [[ParticleEmitter alloc] initParticleEmitterWithImageNamed:@"texture.png"
-                                                                                                           position:Vector2fMake(currentLocation.x, currentLocation.y)
-                                                                                             sourcePositionVariance:Vector2fZero
-                                                                                                              speed:0.8
-                                                                                                      speedVariance:0.2
-                                                                                                   particleLifeSpan:0.1
-                                                                                           particleLifespanVariance:0.1
-                                                                                                              angle:0
-                                                                                                      angleVariance:360
-                                                                                                            gravity:Vector2fZero
-                                                                                                         startColor:Color4fMake(1.0, 0.2, 0.2, 1.0)
-                                                                                                 startColorVariance:Color4fMake(0.1, 0.1, 0.1, 0.0)
-                                                                                                        finishColor:Color4fMake(0.2, 0.2, 0.2, 1.0)
-                                                                                                finishColorVariance:Color4fMake(0.1, 0.1, 0.1, 0.0)
-                                                                                                       maxParticles:1000
-                                                                                                       particleSize:12.0
-                                                                                                 finishParticleSize:12.0
-                                                                                               particleSizeVariance:0.0
-                                                                                                           duration:0.1
-                                                                                                      blendAdditive:YES];
+                                                                                          position:Vector2fMake(currentLocation.x, currentLocation.y)
+                                                                            sourcePositionVariance:Vector2fZero
+                                                                                             speed:0.8
+                                                                                     speedVariance:0.2
+                                                                                  particleLifeSpan:0.1
+                                                                          particleLifespanVariance:0.1
+                                                                                             angle:0
+                                                                                     angleVariance:360
+                                                                                           gravity:Vector2fZero
+                                                                                        startColor:Color4fMake(1.0, 0.2, 0.2, 1.0)
+                                                                                startColorVariance:Color4fMake(0.1, 0.1, 0.1, 0.0)
+                                                                                       finishColor:Color4fMake(0.2, 0.2, 0.2, 1.0)
+                                                                               finishColorVariance:Color4fMake(0.1, 0.1, 0.1, 0.0)
+                                                                                      maxParticles:1000
+                                                                                      particleSize:12.0
+                                                                                finishParticleSize:12.0
+                                                                              particleSizeVariance:0.0
+                                                                                          duration:0.1
+                                                                                     blendAdditive:YES];
         frontCenterTurretDeathSecondaryEmitter = frontCenterTurretDeathEmitter;
         
         frontLeftTurretDeathEmitter = [[ParticleEmitter alloc] initParticleEmitterWithImageNamed:@"texture.png"
-                                                                                                         position:Vector2fMake(currentLocation.x, currentLocation.y)
-                                                                                           sourcePositionVariance:Vector2fZero
-                                                                                                            speed:0.8
-                                                                                                    speedVariance:0.2
-                                                                                                 particleLifeSpan:0.1
-                                                                                         particleLifespanVariance:0.1
-                                                                                                            angle:0
-                                                                                                    angleVariance:360
-                                                                                                          gravity:Vector2fZero
-                                                                                                       startColor:Color4fMake(1.0, 0.2, 0.2, 1.0)
-                                                                                               startColorVariance:Color4fMake(0.1, 0.1, 0.1, 0.0)
-                                                                                                      finishColor:Color4fMake(0.2, 0.2, 0.2, 1.0)
-                                                                                              finishColorVariance:Color4fMake(0.1, 0.1, 0.1, 0.0)
-                                                                                                     maxParticles:1000
-                                                                                                     particleSize:12.0
-                                                                                               finishParticleSize:12.0
-                                                                                             particleSizeVariance:0.0
-                                                                                                         duration:0.1
-                                                                                                    blendAdditive:YES];
+                                                                                        position:Vector2fMake(currentLocation.x, currentLocation.y)
+                                                                          sourcePositionVariance:Vector2fZero
+                                                                                           speed:0.8
+                                                                                   speedVariance:0.2
+                                                                                particleLifeSpan:0.1
+                                                                        particleLifespanVariance:0.1
+                                                                                           angle:0
+                                                                                   angleVariance:360
+                                                                                         gravity:Vector2fZero
+                                                                                      startColor:Color4fMake(1.0, 0.2, 0.2, 1.0)
+                                                                              startColorVariance:Color4fMake(0.1, 0.1, 0.1, 0.0)
+                                                                                     finishColor:Color4fMake(0.2, 0.2, 0.2, 1.0)
+                                                                             finishColorVariance:Color4fMake(0.1, 0.1, 0.1, 0.0)
+                                                                                    maxParticles:1000
+                                                                                    particleSize:12.0
+                                                                              finishParticleSize:12.0
+                                                                            particleSizeVariance:0.0
+                                                                                        duration:0.1
+                                                                                   blendAdditive:YES];
         frontLeftTurretDeathSecondaryEmitter = frontLeftTurretDeathEmitter;
         
         frontRightTurretDeathEmitter = [[ParticleEmitter alloc] initParticleEmitterWithImageNamed:@"texture.png"
-                                                                                                          position:Vector2fMake(currentLocation.x, currentLocation.y)
-                                                                                            sourcePositionVariance:Vector2fZero
-                                                                                                             speed:0.8
-                                                                                                     speedVariance:0.2
-                                                                                                  particleLifeSpan:0.1
-                                                                                          particleLifespanVariance:0.1
-                                                                                                             angle:0
-                                                                                                     angleVariance:360
-                                                                                                           gravity:Vector2fZero
-                                                                                                        startColor:Color4fMake(1.0, 0.2, 0.2, 1.0)
-                                                                                                startColorVariance:Color4fMake(0.1, 0.1, 0.1, 0.0)
-                                                                                                       finishColor:Color4fMake(0.2, 0.2, 0.2, 1.0)
-                                                                                               finishColorVariance:Color4fMake(0.1, 0.1, 0.1, 0.0)
-                                                                                                      maxParticles:1000
-                                                                                                      particleSize:12.0
-                                                                                                finishParticleSize:12.0
-                                                                                              particleSizeVariance:0.0
-                                                                                                          duration:0.1
-                                                                                                     blendAdditive:YES];
+                                                                                         position:Vector2fMake(currentLocation.x, currentLocation.y)
+                                                                           sourcePositionVariance:Vector2fZero
+                                                                                            speed:0.8
+                                                                                    speedVariance:0.2
+                                                                                 particleLifeSpan:0.1
+                                                                         particleLifespanVariance:0.1
+                                                                                            angle:0
+                                                                                    angleVariance:360
+                                                                                          gravity:Vector2fZero
+                                                                                       startColor:Color4fMake(1.0, 0.2, 0.2, 1.0)
+                                                                               startColorVariance:Color4fMake(0.1, 0.1, 0.1, 0.0)
+                                                                                      finishColor:Color4fMake(0.2, 0.2, 0.2, 1.0)
+                                                                              finishColorVariance:Color4fMake(0.1, 0.1, 0.1, 0.0)
+                                                                                     maxParticles:1000
+                                                                                     particleSize:12.0
+                                                                               finishParticleSize:12.0
+                                                                             particleSizeVariance:0.0
+                                                                                         duration:0.1
+                                                                                    blendAdditive:YES];
         frontRightTurretDeathSecondaryEmitter = frontRightTurretDeathEmitter;
         
         stagePauseTimer = 0.0f;
@@ -272,6 +272,8 @@
         cannonRightProjectile = [[ParticleProjectile alloc] initWithProjectileID:kEnemyParticle_Single location:Vector2fZero angle:0 radius:7 andFireRate:4];
         shipFarLeftProjectile = [[WaveProjectile alloc] initWithProjectileID:kEnemyProjectile_WaveLevelOne_SingleSmall location:Vector2fZero andAngle:-100.0f];
         shipFarRightProjectile = [[WaveProjectile alloc] initWithProjectileID:kEnemyProjectile_WaveLevelOne_SingleSmall location:Vector2fZero andAngle:-80.0f];
+        
+        projectilesArray = [[NSMutableArray alloc] initWithObjects:frontCenterTurretProjectile, frontLeftTurretProjectile, frontRightTurretProjectile, cannonLeftProjectile, cannonRightProjectile, shipFarLeftProjectile, shipFarRightProjectile, nil];
     }
     return self;
 }
@@ -339,7 +341,7 @@
     [frontCenterTurretDeathSecondaryEmitter setSourcePosition:Vector2fMake(frontCenterTurret->location.x + currentLocation.x, frontCenterTurret->location.y + currentLocation.y)];
     [frontLeftTurretDeathSecondaryEmitter setSourcePosition:Vector2fMake(frontLeftTurret->location.x + currentLocation.x, frontLeftTurret->location.y + currentLocation.y)];
     [frontRightTurretDeathSecondaryEmitter setSourcePosition:Vector2fMake(frontRightTurret->location.x + currentLocation.x, frontRightTurret->location.y + currentLocation.y)];
-
+    
     //Update projectile positions
     if(shipIsDeployed){
         [frontCenterTurretProjectile setLocation:Vector2fMake(currentLocation.x + frontCenterTurret->location.x + frontCenterTurret->weapons[0].weaponCoord.x, currentLocation.y + frontCenterTurret->location.y + frontCenterTurret->weapons[0].weaponCoord.y)];
@@ -381,23 +383,23 @@
     }
     
     /*
-    if (cannonRightFlewOff) {
-        [rightCannonDeathEmitter update:delta];
-    }
-    if (cannonLeftFlewOff) {
-        [leftCannonDeathEmitter update:delta];
-    }
-    if (frontRightTurretFlewOff) {
-        [frontRightTurretDeathEmitter update:delta];
-    }
-    if (frontCenterTurretFlewOff) {
-        [frontCenterTurretDeathEmitter update:delta];
-    }
-    if (frontLeftTurretFlewOff) {
-        [frontLeftTurretDeathEmitter update:delta];
-    }*/
+     if (cannonRightFlewOff) {
+     [rightCannonDeathEmitter update:delta];
+     }
+     if (cannonLeftFlewOff) {
+     [leftCannonDeathEmitter update:delta];
+     }
+     if (frontRightTurretFlewOff) {
+     [frontRightTurretDeathEmitter update:delta];
+     }
+     if (frontCenterTurretFlewOff) {
+     [frontCenterTurretDeathEmitter update:delta];
+     }
+     if (frontLeftTurretFlewOff) {
+     [frontLeftTurretDeathEmitter update:delta];
+     }*/
     
-        
+    
     [rightCannonEmitterJoint setSourcePosition:Vector2fMake(currentLocation.x + 115, currentLocation.y - 30)];
     [leftCannonEmitterJoint setSourcePosition:Vector2fMake(currentLocation.x + (-115), currentLocation.y - 30)];
     [backEngineEnergyEmitter setSourcePosition:Vector2fMake(currentLocation.x, currentLocation.y + 30)];
@@ -469,7 +471,7 @@
             
             if (cannonRightFlewOff && cannonLeftFlewOff && frontCenterTurretFlewOff && frontRightTurretFlewOff && frontLeftTurretFlewOff) {
                 desiredLocation = CGPointMake(160.0f, currentLocation.y);
-//                currentStagePaused = YES;
+                //                currentStagePaused = YES;
                 state = kAtlasState_StageTwo;
                 
                 NSLog(@"Stge Two Begin");
@@ -685,7 +687,7 @@
     for(int i = 0; i < numberOfModules; i++) {
         modularObjects[i].location.x += ((modularObjects[i].desiredLocation.x - modularObjects[i].location.x) / bossSpeed) * (pow(1.584893192, bossSpeed/2)) * delta;
         modularObjects[i].location.y += ((modularObjects[i].desiredLocation.y - modularObjects[i].location.y) / bossSpeed) * (pow(1.584893192, bossSpeed/2)) * delta;
-
+        
     }
 }
 
@@ -702,7 +704,7 @@
     
     if(angleToPlayer > 20 && angleToPlayer < 180) angleToPlayer = 20;
     if(angleToPlayer < 340 && angleToPlayer > 180) angleToPlayer = 340;
-        
+    
     
     // Right Cannon aiming
     playerXPosition = (currentLocation.x + cannonRight->location.x) - playerShipRef.currentLocation.x;
@@ -727,7 +729,7 @@
         }
         [[cannonLeft->collisionPolygonArray objectAtIndex:k] buildEdges];
     }
-
+    
     for(int k = 0; k < [cannonLeft->collisionPolygonArray count]; k++){
         for(int i = 0; i < [[cannonRight->collisionPolygonArray objectAtIndex:k] pointCount]; i++){
             Vector2f tempPoint = [[cannonRight->collisionPolygonArray objectAtIndex:k] originalPoints][i];
@@ -865,7 +867,7 @@
             frontCenterTurret->desiredLocation = Vector2fMake(frontCenterTurret->location.x, -400.0);
         }
     }
-            
+    
     if(DEBUG) {
         glPushMatrix();
         
@@ -875,21 +877,21 @@
             if(modularObjects[i].isDead == NO){
                 for(int k = 0; k < [modularObjects[i].collisionPolygonArray count]; k++){
                     for(int j = 0; j < ([[modularObjects[i].collisionPolygonArray objectAtIndex:k] pointCount] - 1); j++) {
-                            GLfloat line[] = {
-                                [[modularObjects[i].collisionPolygonArray objectAtIndex:k] points][j].x, [[modularObjects[i].collisionPolygonArray objectAtIndex:k] points][j].y,
-                                [[modularObjects[i].collisionPolygonArray objectAtIndex:k] points][j+1].x, [[modularObjects[i].collisionPolygonArray objectAtIndex:k] points][j+1].y,
-                            };
-                            
-                            glVertexPointer(2, GL_FLOAT, 0, line);
-                            glEnableClientState(GL_VERTEX_ARRAY);
-                            glDrawArrays(GL_LINES, 0, 2);
+                        GLfloat line[] = {
+                            [[modularObjects[i].collisionPolygonArray objectAtIndex:k] points][j].x, [[modularObjects[i].collisionPolygonArray objectAtIndex:k] points][j].y,
+                            [[modularObjects[i].collisionPolygonArray objectAtIndex:k] points][j+1].x, [[modularObjects[i].collisionPolygonArray objectAtIndex:k] points][j+1].y,
+                        };
+                        
+                        glVertexPointer(2, GL_FLOAT, 0, line);
+                        glEnableClientState(GL_VERTEX_ARRAY);
+                        glDrawArrays(GL_LINES, 0, 2);
                     }
-                
+                    
                     GLfloat lineEnd[] = {
                         [[modularObjects[i].collisionPolygonArray objectAtIndex:k] points][([[modularObjects[i].collisionPolygonArray objectAtIndex:k] pointCount] - 1)].x, [[modularObjects[i].collisionPolygonArray objectAtIndex:k] points][([[modularObjects[i].collisionPolygonArray objectAtIndex:k] pointCount] - 1)].y,
                         [[modularObjects[i].collisionPolygonArray objectAtIndex:k] points][0].x, [[modularObjects[i].collisionPolygonArray objectAtIndex:k] points][0].y,
                     };
-            
+                    
                     glVertexPointer(2, GL_FLOAT, 0, lineEnd);
                     glEnableClientState(GL_VERTEX_ARRAY);
                     glDrawArrays(GL_LINES, 0, 2);
