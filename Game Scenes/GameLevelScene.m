@@ -1252,7 +1252,8 @@ WrapText( const char *text
                             
                             if(result2.intersect){
                                 if(!playerShip.shipIsDead && !shieldEnabled){
-                                    [playerShip hitShipWithDamage:30];
+//                                    [playerShip hitShipWithDamage:30];
+                                    [playerShip hitShipWithDamage:[self damageForWeaponType:[enemyProjectile projectileID]]];
                                     //Move it away
                                     [[[enemyProjectile emitters] objectAtIndex:emitterPolyCount] particles][i].position = Vector2fMake(500, 0);
                                 }
@@ -1276,7 +1277,8 @@ WrapText( const char *text
                             
                             if(result2.intersect){
                                 if(!enemyShip.shipIsDead){
-                                    [enemyShip hitShipWithDamage:20 + (20 * (int)damageMultiplierOn)];
+//                                    [enemyShip hitShipWithDamage:20 + (20 * (int)damageMultiplierOn)];
+                                    [enemyShip hitShipWithDamage:[self damageForWeaponType:[playerProjectile projectileID]] + ([self damageForWeaponType:[playerProjectile projectileID]] * (int)damageMultiplierOn)];
                                     //Move it away
                                     [[[playerProjectile emitters] objectAtIndex:emitterPolyCount] particles][i].position = Vector2fMake(500, 50);
                                 }
@@ -1319,7 +1321,8 @@ WrapText( const char *text
                                         if(bossShipIsDisplayed){
                                             if(bossShip.modularObjects[i].shouldTakeDamage == YES){
                                                 if (bossShip.modularObjects[i].destructionOrder == bossShip.currentDestructionOrder && bossShip.modularObjects[i].isDead == NO) {
-                                                    [bossShip hitModule:i withDamage:10];
+//                                                    [bossShip hitModule:i withDamage:10];
+                                                    [bossShip hitModule:i withDamage:[self damageForWeaponType:[playerProjectile projectileID]]];
                                                     [[[playerProjectile emitters] objectAtIndex:emitterPolyCount] particles][j].position = Vector2fMake(500, 50);
                                                 }
                                             }
@@ -1345,7 +1348,8 @@ WrapText( const char *text
                                     
                                     if(result2.intersect){
                                         if(!playerShip.shipIsDead){
-                                            [playerShip hitShipWithDamage:1];
+//                                            [playerShip hitShipWithDamage:1];
+                                            [playerShip hitShipWithDamage:[self damageForWeaponType:[bossProjectile projectileID]]];
                                             [[[bossProjectile emitters] objectAtIndex:emitterPolyCount] particles][i].position = Vector2fMake(-1000, -500);
                                         }
                                         /*if(!enemyShip.shipIsDead){
@@ -1483,6 +1487,30 @@ WrapText( const char *text
     for(EnemyShip *enemyShip in enemiesSet){
         [enemyShip killShip];
     }
+}
+
+- (int)damageForWeaponType:(ProjectileID)projectileType {
+    if(projectileType >= kPlayerProjectile_BulletLevelOne_Single && projectileType <= kPlayerProjectile_BulletLevelTen_Septuple) return 5;
+    
+    else if(projectileType >= kPlayerProjectile_WaveLevelOne_SingleSmall && projectileType <= kPlayerProjectile_WaveLevelTen_TripleBig) return 2;
+    
+    else if(projectileType >= kPlayerProjectile_MissileLevelOne_Single && projectileType <= kPlayerProjectile_MissileLevelTen_Sextuple) return 15;
+    
+    else if(projectileType >= kEnemyProjectile_BulletLevelOne_Single && projectileType <= kEnemyProjectile_BulletLevelTen_Septuple) return 3;
+    
+    else if(projectileType >= kEnemyProjectile_WaveLevelOne_SingleSmall && projectileType <= kEnemyProjectile_WaveLevelTen_TripleBig) return 1;
+    
+    else if(projectileType >= kEnemyProjectile_MissileLevelOne_Single && projectileType <= kEnemyProjectile_MissileLevelTen_Sextuple) return 10;
+    
+    else if(projectileType >= kPlayerParticle_Single && projectileType <= kPlayerParticle_Triple) return 25;
+    
+    else if(projectileType >= kEnemyParticle_Single && projectileType <= kEnemyParticle_Triple) return 25;
+    
+    else if(projectileType == kPlayerProjectile_HeatSeekingMissile) return 20;
+    
+    else if(projectileType == kEnemyProjectile_HeatSeekingMissile) return 15;
+    
+    else return 0;
 }
 
 - (void)updateWithTouchLocationBegan:(NSSet *)touches withEvent:(UIEvent *)event view:(UIView *)aView {
