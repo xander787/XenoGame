@@ -91,6 +91,10 @@
     buyButton = [[Image alloc] initWithImage:@"Buy.png" scale:Scale2fOne];
 }
 
+- (void)sceneIsBecomingActive {
+    
+}
+
 #pragma mark -
 #pragma mark Update Scene
 

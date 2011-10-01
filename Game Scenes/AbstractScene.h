@@ -78,6 +78,9 @@
 // scene to perform a transition action before the current scene within the Director is changed.
 - (void)transitionToSceneWithKey:(NSString*)aKey;
 
+// Let the scene know they are being transitioned to
+- (void)sceneIsBecomingActive;
+
 // Selector which renders the scene
 - (void)render;
 @end

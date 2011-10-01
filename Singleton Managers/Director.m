@@ -59,6 +59,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(Director);
     currentSceneKey = aSceneKey;
 	[currentScene setSceneAlpha:0.0f];
 	[currentScene setSceneState:kSceneState_TransitionIn];
+    [currentScene sceneIsBecomingActive];
     
     return YES;
 }
