@@ -846,9 +846,13 @@ WrapText( const char *text
                         
                     case kDropType_Health:
                     {
+                        NSLog(@"More Health");
+                        int oldHealth = playerShip.shipHealth;
                         playerShip.shipHealth += 10;
-                        playerShip.shipHealth = MAX(playerShip.shipHealth, playerShip.shipMaxHealth);
-                        [delegate playerHealthChangedBy:10];
+                        if(playerShip.shipHealth > playerShip.shipMaxHealth){
+                            playerShip.shipHealth = playerShip.shipMaxHealth;
+                        }
+                        [delegate playerHealthChangedBy:playerShip.shipHealth - oldHealth];
                         break;
                     }
                         
