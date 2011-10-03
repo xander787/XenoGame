@@ -125,6 +125,7 @@ typedef enum _Level {
     
     NSMutableArray  *enabledPowerUpsArray;
     BOOL            nukePowerUpReady;
+    BOOL            nukePowerUpEnabled;
 }
 
 - (void)initGameScene;

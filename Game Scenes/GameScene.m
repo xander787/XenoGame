@@ -160,6 +160,7 @@
     slowmoImage = [[Image alloc] initWithImage:@"Slowmo.png" scale:Scale2fOne];
     proximityDamageImage = [[Image alloc] initWithImage:@"ProximityDamage.png" scale:Scale2fOne];
     nukeImage = [[Image alloc] initWithImage:@"Nuke.png" scale:Scale2fOne];
+    nukePowerUpEnabled = YES;
     
     enabledPowerUpsArray = [[NSMutableArray alloc] init];
 }
@@ -200,6 +201,14 @@
     // Level
     if(levelInProgress && !gameIsPaused) {
         if(gameLevel) [gameLevel update:aDelta];
+        if(gameLevel.currentWaveType == kWaveType_Boss){
+            nukePowerUpEnabled = NO;
+            [nukeImage setColourFilterRed:0.5 green:0.5 blue:0.5 alpha:1.0];
+        }
+        else {
+            nukePowerUpEnabled = YES;
+            [nukeImage setColourFilterRed:1.0 green:1.0 blue:1.0 alpha:1.0];
+        }
     }
     else if(showStatsScene){
         [statsScene updateWithDelta:aDelta];
@@ -245,7 +254,7 @@
     
     if(levelInProgress) {
         if(gameLevel) [gameLevel updateWithTouchLocationBegan:touches withEvent:event view:aView];
-        if(nukePowerUpReady){
+        if(nukePowerUpReady && nukePowerUpEnabled){
             if(location.x < 40 && location.y < 55){
                 [gameLevel nukeButtonPushed];
                 nukePowerUpReady = NO;
