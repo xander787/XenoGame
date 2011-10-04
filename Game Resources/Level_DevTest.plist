@@ -5,11 +5,11 @@
 	<key>kBossDefaultPoint</key>
 	<string>160,360</string>
 	<key>kBossShip</key>
-	<string>kBossAtlas</string>
+	<string>kMiniBossFiveOne</string>
 	<key>kLevelDifficulty</key>
 	<integer>0</integer>
 	<key>kLevelType</key>
-	<string>kBossLevel</string>
+	<string>kMiniBossLevel</string>
 	<key>kOutroTransition</key>
 	<string>kShipFlyoff</string>
 	<key>kWaves</key>

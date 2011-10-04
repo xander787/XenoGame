@@ -7,6 +7,7 @@
 //
 
 #import "MiniBossGeneral.h"
+#import "HeatSeekingMissile.h"
 
 typedef enum _FiveOneState{
     kFiveOne_Entry = 0,
@@ -27,8 +28,27 @@ typedef enum _FiveOneState{
     GLfloat             attackPathtimer;
     
     ParticleEmitter     *deathAnimation;
+    ParticleEmitter     *middleDeathAnimation;
+    ParticleEmitter     *outerDeathAnimation;
+    
+    BulletProjectile    *centerTripleBullet;
+    WaveProjectile      *centerWaveLeft;
+    WaveProjectile      *centerWaveRight;
+    HeatSeekingMissile  *centerHeatSeekerLeft;
+    HeatSeekingMissile  *centerHeatSeekerRight;
+    
+    WaveProjectile      *middleWaveBottom;
+    WaveProjectile      *middleWaveTop;
+    BulletProjectile    *middleTripleLeft;
+    BulletProjectile    *middleTripleRight;
+    
+    WaveProjectile      *outerWaveLeft;
+    WaveProjectile      *outerWaveRight;
+    BulletProjectile    *outerTripleBottomLeft;
+    BulletProjectile    *outerTripleTopRight;
 }
 
 - (id)initWithLocation:(CGPoint)aPoint andPlayerShipRef:(PlayerShip *)playerRef;
+- (void)rotateModule:(int)mod aroundPositionWithOldrotation:(GLfloat)oldRot;
 
 @end

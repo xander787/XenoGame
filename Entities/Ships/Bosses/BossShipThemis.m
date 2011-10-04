@@ -44,6 +44,8 @@
         mainBodyLeftBullet = [[BulletProjectile alloc] initWithProjectileID:kEnemyProjectile_BulletLevelOne_Single location:Vector2fMake(currentLocation.x + mainBody->weapons[0].weaponCoord.x, currentLocation.y + mainBody->weapons[0].weaponCoord.y) andAngle:-90.0f];
         mainBodyRightBullet = [[BulletProjectile alloc] initWithProjectileID:kEnemyProjectile_BulletLevelOne_Single location:Vector2fMake(currentLocation.x + mainBody->weapons[1].weaponCoord.x, currentLocation.y + mainBody->weapons[1].weaponCoord.y) andAngle:-90.0f];
         
+        projectilesArray = [[NSMutableArray alloc] initWithObjects:mainBodyCenterBullet, mainBodyLeftBullet, mainBodyRightBullet, nil];
+        
         mainBodyEmitter = [[ParticleEmitter alloc] initParticleEmitterWithImageNamed:@"texture.png"
                                                                             position:Vector2fZero
                                                               sourcePositionVariance:Vector2fZero

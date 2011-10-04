@@ -45,6 +45,7 @@
 #import "EnemyShip.h"
 #import "PlayerShip.h"
 #import "AbstractScene.h"
+#import "AbstractProjectile.h"
 #import "Collisions.h"
 #import "BezierCurve.h"
 #import "BossShipAstraeus.h"
@@ -65,6 +66,7 @@
 #import "MiniBoss_FourTwo.h"
 #import "MiniBoss_SixOne.h"
 #import "MiniBoss_SevenThree.h"
+#import "MiniBoss_FiveOne.h"
 #import "MiniBoss_FiveTwo.h"
 #import "MiniBoss_SevenOne.h"
 #import "Drop.h"
@@ -230,6 +232,7 @@ typedef enum _OutroAnimation {
 - (Vector2f)VectorRandomInRectWithVectors:(Vector2f)v1 v2:(Vector2f)v2;
 - (void)skipToNewPageOfText;
 - (void)nukeButtonPushed;
+- (int)damageForWeaponType:(ProjectileID)projectileType;
 
 
 @end

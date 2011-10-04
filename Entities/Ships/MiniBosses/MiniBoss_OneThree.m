@@ -83,6 +83,8 @@
         missileLeft = [[MissileProjectile alloc] initWithProjectileID:kEnemyProjectile_MissileLevelOne_Single location:Vector2fZero andAngle:-90.0f];
         missileRight = [[MissileProjectile alloc] initWithProjectileID:kEnemyProjectile_MissileLevelOne_Single location:Vector2fZero andAngle:-90.0f];
         
+        projectilesArray = [[NSMutableArray alloc] initWithObjects:doubleLeftBullet, doubleRightBullet, missileLeft, missileRight, nil];
+        
         for(int i = 1; i < self.numberOfModules; i++){
             modularObjects[i].desiredLocation.x = modularObjects[i].defaultLocation.x;
             modularObjects[i].desiredLocation.y = modularObjects[i].defaultLocation.y;

@@ -45,6 +45,7 @@
         doubleLeftBullet = [[BulletProjectile alloc] initWithProjectileID:kEnemyProjectile_BulletLevelTwo_Double location:Vector2fZero andAngle:210.0f];
         doubleRightBullet = [[BulletProjectile alloc] initWithProjectileID:kEnemyProjectile_BulletLevelTwo_Double location:Vector2fZero andAngle:-30.0f];
         
+        projectilesArray = [[NSMutableArray alloc] initWithObjects:singleTopBullet, singleLeftBullet, singleRightBullet, doubleTopBullet, doubleLeftBullet, doubleRightBullet, nil];
     }
     return self;
 }

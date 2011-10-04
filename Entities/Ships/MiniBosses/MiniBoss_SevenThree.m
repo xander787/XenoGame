@@ -103,6 +103,7 @@
         heatSeekerLeft = [[HeatSeekingMissile alloc] initWithProjectileID:kEnemyProjectile_HeatSeekingMissile location:Vector2fZero  angle:180.0f speed:1 rate:5 andPlayerShipRef:playerShipRef];
         heatSeekerRight = [[HeatSeekingMissile alloc] initWithProjectileID:kEnemyProjectile_HeatSeekingMissile location:Vector2fZero  angle:0.0f speed:1 rate:5 andPlayerShipRef:playerShipRef];
         
+        projectilesArray = [[NSMutableArray alloc] initWithObjects:tripleBulletLeft, tripleBulletRight, heatSeekerCenter, heatSeekerLeft, heatSeekerRight, nil];
         
         for(int i = 1; i < self.numberOfModules; i++){
             modularObjects[i].desiredLocation.x = modularObjects[i].defaultLocation.x;

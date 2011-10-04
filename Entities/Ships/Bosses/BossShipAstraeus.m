@@ -112,6 +112,8 @@
                                                                              blendAdditive:YES];
         leftCannonProjectile = [[ParticleProjectile alloc] initWithProjectileID:kEnemyParticle_Single location:Vector2fZero angle:270 radius:15 andFireRate:4];
         rightCannonProjectile = [[ParticleProjectile alloc] initWithProjectileID:kEnemyParticle_Single location:Vector2fZero angle:270 radius:15 andFireRate:4];
+        
+        projectilesArray = [[NSMutableArray alloc] initWithObjects:leftCannonProjectile, rightCannonProjectile, nil];
     }
     
     return self;
