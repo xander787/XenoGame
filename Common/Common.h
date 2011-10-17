@@ -140,7 +140,7 @@
 #define kWaveLevelNine_Price 2400
 #define kWaveLevelTen_Price 2700
 
-#define kMissilesLevelOne_Price 250
+#define kMissileLevelOne_Price 250
 #define kMissileLevelTwo_Price 500
 #define kMissileLevelThree_Price 750
 #define kMissileLevelFour_Price 1000
