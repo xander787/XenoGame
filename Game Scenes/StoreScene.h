@@ -56,6 +56,8 @@ typedef enum _SceneState {
     Image               *buyButton;
     Image               *equipButtonDisabled;
     Image               *buyButtonDisabled;
+    Image               *equippedButton;
+    Image               *boughtButton;
     
     
     // Weapons scene data
@@ -84,6 +86,6 @@ typedef enum _SceneState {
     NSMutableString     *currentSelectedWeaponType;
 }
 
-- (int)priceOfCurrentelectedWeapon;
+- (int)priceOfCurrentSelectedWeapon;
 
 @end

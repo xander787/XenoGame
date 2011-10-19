@@ -94,6 +94,8 @@
     buyButton = [[Image alloc] initWithImage:@"Buy.png" scale:Scale2fOne];
     equipButtonDisabled = [[Image alloc] initWithImage:@"Equip-Disabled.png" scale:Scale2fOne];
     buyButtonDisabled = [[Image alloc] initWithImage:@"Buy-Disabled.png" scale:Scale2fOne];
+    equippedButton = [[Image alloc] initWithImage:@"Equipped.png" scale:Scale2fOne];
+    boughtButton = [[Image alloc] initWithImage:@"Bought.png" scale:Scale2fOne];
     
     currentBulletLevelSelection = 0;
     currentWaveLevelSelection = 0;
@@ -371,6 +373,8 @@
         [currentEquippedWeapon setString:kWeaponTypeHeatseeking];
         currentEquippedWeaponLevel = 10;
     }
+    
+    NSLog(@"Current Equipped: %@ lvl %d", currentEquippedWeapon, currentEquippedWeaponLevel);
 }
 
 #pragma mark -
@@ -606,7 +610,7 @@
 	location.y = 480-location.y;
 }
 
-- (int)priceOfCurrentelectedWeapon {
+- (int)priceOfCurrentSelectedWeapon {
     if([currentSelectedWeaponType isEqualToString:kWeaponTypeBullet]){
         if(currentBulletLevelSelection == 1){
             return kBulletLevelOne_Price;
@@ -639,7 +643,7 @@
             return kBulletLevelTen_Price;
         }
     }
-    if([currentSelectedWeaponType isEqualToString:kWeaponTypeWave]){
+    else if([currentSelectedWeaponType isEqualToString:kWeaponTypeWave]){
         if(currentWaveLevelSelection == 1){
             return kWaveLevelOne_Price;
         }
@@ -672,7 +676,7 @@
         }
     }
     
-    if([currentSelectedWeaponType isEqualToString:kWeaponTypeMissile]){
+    else if([currentSelectedWeaponType isEqualToString:kWeaponTypeMissile]){
         if(currentMissileLevelSelection == 1){
             return kMissileLevelOne_Price;
         }
@@ -705,10 +709,13 @@
         }
     }
     
-    if([currentSelectedWeaponType isEqualToString:kWeaponTypeHeatseeking]){
+    else if([currentSelectedWeaponType isEqualToString:kWeaponTypeHeatseeking]){
         if(currentHeatseekingLevelSelection == 1){
             return kHeatseekerLevelOne_Price;
         }
+    }
+    else {
+        return -1;
     }
 }
 
@@ -909,42 +916,131 @@
             
             if([currentSelectedWeaponType isEqualToString:kWeaponTypeBullet]){
                 if((currentBulletLevelSelection - highestAchievedBulletLevel) == 1){
-                    if([[settings objectForKey:kSetting_SaveGameCredits] intValue] >= [self priceOfCurrentelectedWeapon]){
+                    if([[settings objectForKey:kSetting_SaveGameCredits] intValue] >= [self priceOfCurrentSelectedWeapon]){
                         //To buy
+                        [buyButton renderAtPoint:CGPointMake(270.0f, 377.0f) centerOfImage:YES];
                     }
                     else {
                         //Unable to buy
+                        [buyButtonDisabled renderAtPoint:CGPointMake(270.0f, 377.0f) centerOfImage:YES];
                     }
                 }
                 if(currentBulletLevelSelection <= highestAchievedBulletLevel){
                     //Bought
+                    [boughtButton renderAtPoint:CGPointMake(270.0f, 377.0f) centerOfImage:YES];
                 }
                 
                 
                 if([currentEquippedWeapon isEqualToString:kWeaponTypeBullet]){
                     if(currentEquippedWeaponLevel == currentBulletLevelSelection){
                         //Equipped
+                        [equippedButton renderAtPoint:CGPointMake(270.0f, 343.0f) centerOfImage:YES];
                     }
-                    if(currentEquippedWeaponLevel == highestAchievedBulletLevel){
-                        if(currentBulletLevelSelection < currentEquippedWeaponLevel){
-                            //To equip
-                        }
+                    if(currentBulletLevelSelection != currentEquippedWeaponLevel && currentBulletLevelSelection <= highestAchievedBulletLevel){
+                        //To equip
+                        [equipButton renderAtPoint:CGPointMake(270.0f, 343.0f) centerOfImage:YES];
                     }
                     else {
-                        if(currentBulletLevelSelection > currentEquippedWeaponLevel && currentBulletLevelSelection <= highestAchievedBulletLevel){
-                       git     //Unable to equip
-                        }
+                        //Unable to equip
+                        [equipButtonDisabled renderAtPoint:CGPointMake(270.0f, 343.0f) centerOfImage:YES];
                     }
                 }
             }
             else if([currentSelectedWeaponType isEqualToString:kWeaponTypeWave]){
+                if((currentWaveLevelSelection - highestAchievedWaveLevel) == 1){
+                    if([[settings objectForKey:kSetting_SaveGameCredits] intValue] >= [self priceOfCurrentSelectedWeapon]){
+                        //To buy
+                        [buyButton renderAtPoint:CGPointMake(270.0f, 297.0f) centerOfImage:YES];
+                    }
+                    else {
+                        //Unable to buy
+                        [buyButtonDisabled renderAtPoint:CGPointMake(270.0f, 297.0f) centerOfImage:YES];
+                    }
+                }
+                if(currentWaveLevelSelection <= highestAchievedWaveLevel){
+                    //Bought
+                    [boughtButton renderAtPoint:CGPointMake(270.0f, 297.0f) centerOfImage:YES];
+                }
                 
+                
+                if([currentEquippedWeapon isEqualToString:kWeaponTypeWave]){
+                    if(currentEquippedWeaponLevel == currentWaveLevelSelection){
+                        //Equipped
+                        [equippedButton renderAtPoint:CGPointMake(270.0f, 263.0f) centerOfImage:YES];
+                    }
+                    if(currentWaveLevelSelection != currentEquippedWeaponLevel && currentWaveLevelSelection <= highestAchievedWaveLevel){
+                        //To equip
+                        [equipButton renderAtPoint:CGPointMake(270.0f, 263.0f) centerOfImage:YES];
+                    }
+                    else {
+                        //Unable to equip
+                        [equipButtonDisabled renderAtPoint:CGPointMake(270.0f, 263.0f) centerOfImage:YES];
+                    }
+                }
             }
             else if([currentSelectedWeaponType isEqualToString:kWeaponTypeMissile]){
+                if((currentMissileLevelSelection - highestAchievedMissileLevel) == 1){
+                    if([[settings objectForKey:kSetting_SaveGameCredits] intValue] >= [self priceOfCurrentSelectedWeapon]){
+                        //To buy
+                        [buyButton renderAtPoint:CGPointMake(270.0f, 217.0f) centerOfImage:YES];
+                    }
+                    else {
+                        //Unable to buy
+                        [buyButtonDisabled renderAtPoint:CGPointMake(270.0f, 217.0f) centerOfImage:YES];
+                    }
+                }
+                if(currentMissileLevelSelection <= highestAchievedMissileLevel){
+                    //Bought
+                    [boughtButton renderAtPoint:CGPointMake(270.0f, 217.0f) centerOfImage:YES];
+                }
                 
+                
+                if([currentEquippedWeapon isEqualToString:kWeaponTypeMissile]){
+                    if(currentEquippedWeaponLevel == currentMissileLevelSelection){
+                        //Equipped
+                        [equippedButton renderAtPoint:CGPointMake(270.0f, 183.0f) centerOfImage:YES];
+                    }
+                    if(currentMissileLevelSelection != currentEquippedWeaponLevel && currentMissileLevelSelection <= highestAchievedMissileLevel){
+                        //To equip
+                        [equipButton renderAtPoint:CGPointMake(270.0f, 183.0f) centerOfImage:YES];
+                    }
+                    else {
+                        //Unable to equip
+                        [equipButtonDisabled renderAtPoint:CGPointMake(270.0f, 183.0f) centerOfImage:YES];
+                    }
+                }
             }
             else if([currentSelectedWeaponType isEqualToString:kWeaponTypeHeatseeking]){
+                if((currentHeatseekingLevelSelection - highestAchievedHeatseekingLevel) == 1){
+                    if([[settings objectForKey:kSetting_SaveGameCredits] intValue] >= [self priceOfCurrentSelectedWeapon]){
+                        //To buy
+                        [buyButton renderAtPoint:CGPointMake(270.0f, 137.0f) centerOfImage:YES];
+                    }
+                    else {
+                        //Unable to buy
+                        [buyButtonDisabled renderAtPoint:CGPointMake(270.0f, 137.0f) centerOfImage:YES];
+                    }
+                }
+                if(currentHeatseekingLevelSelection <= highestAchievedHeatseekingLevel){
+                    //Bought
+                    [boughtButton renderAtPoint:CGPointMake(270.0f, 137.0f) centerOfImage:YES];
+                }
                 
+                
+                if([currentEquippedWeapon isEqualToString:kWeaponTypeHeatseeking]){
+                    if(currentEquippedWeaponLevel == currentHeatseekingLevelSelection){
+                        //Equipped
+                        [equippedButton renderAtPoint:CGPointMake(270.0f, 103.0f) centerOfImage:YES];
+                    }
+                    if(currentHeatseekingLevelSelection != currentEquippedWeaponLevel && currentHeatseekingLevelSelection <= highestAchievedHeatseekingLevel){
+                        //To equip
+                        [equipButton renderAtPoint:CGPointMake(270.0f, 103.0f) centerOfImage:YES];
+                    }
+                    else {
+                        //Unable to equip
+                        [equipButtonDisabled renderAtPoint:CGPointMake(270.0f, 103.0f) centerOfImage:YES];
+                    }
+                }
             }
             break;    
             

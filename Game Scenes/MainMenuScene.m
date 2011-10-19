@@ -156,6 +156,7 @@
         [settingsDB setValue:unlockedWeapons forKey:kSetting_SaveGameUnlockedWeapons];
         [unlockedWeapons release];
         
+        [settingsDB setValue:kSetting_SaveGameEquippedWeapon forKey:kWeaponTypeBullet];        
         [settingsDB setValue:@"NO" forKey:kSetting_FirstTimeRun];
         [settingsDB synchronize];
     }
