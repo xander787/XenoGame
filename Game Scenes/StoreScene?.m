@@ -94,8 +94,6 @@
     buyButton = [[Image alloc] initWithImage:@"Buy.png" scale:Scale2fOne];
     equipButtonDisabled = [[Image alloc] initWithImage:@"Equip-Disabled.png" scale:Scale2fOne];
     buyButtonDisabled = [[Image alloc] initWithImage:@"Buy-Disabled.png" scale:Scale2fOne];
-    equippedButton = [[Image alloc] initWithImage:@"Equipped.png" scale:Scale2fOne];
-    boughtButton = [[Image alloc] initWithImage:@"Bought.png" scale:Scale2fOne];
     
     currentBulletLevelSelection = 0;
     currentWaveLevelSelection = 0;
@@ -373,8 +371,6 @@
         [currentEquippedWeapon setString:kWeaponTypeHeatseeking];
         currentEquippedWeaponLevel = 10;
     }
-    
-    NSLog(@"Current Equipped: %@ lvl %d", currentEquippedWeapon, currentEquippedWeaponLevel);
 }
 
 #pragma mark -
@@ -511,30 +507,6 @@
             currentBulletLevelSelection = MAX(1,currentBulletLevelSelection);
             currentBulletLevelSelection = MIN(currentBulletLevelSelection, 10);
             
-            if(CGRectContainsPoint(CGRectMake(270.0f - (buyButton.imageWidth/2), 377.0f - (buyButton.imageHeight/2), buyButton.imageWidth, buyButton.imageHeight), location)){
-                //Try to buy
-                if([currentSelectedWeaponType isEqualToString:kWeaponTypeBullet]){
-                    if((currentBulletLevelSelection - highestAchievedBulletLevel) == 1){
-                        if([[settings objectForKey:kSetting_SaveGameCredits] intValue] >= [self priceOfCurrentSelectedWeapon]){
-                            //To buy
-                            if([self priceOfWeapon:kWeaponTypeBullet level:currentBulletLevelSelection] <= [[settings objectForKey:kSetting_SaveGameCredits] intValue]){
-                                NSLog(@"Preparing to buy...");
-                                [self buyCurrentWeapon:kWeaponTypeBullet level:currentBulletLevelSelection];
-                                NSLog(@"Bought! :D");
-                            }
-                        }
-                    }
-                }
-            }
-            if(CGRectContainsPoint(CGRectMake(270.0f - (equipButton.imageWidth/2), 343.0f - (equipButton.imageHeight/2), equipButton.imageWidth, equipButton.imageHeight), location)){
-                if([currentEquippedWeapon isEqualToString:kWeaponTypeBullet]){
-                    if(currentBulletLevelSelection != currentEquippedWeaponLevel && currentBulletLevelSelection <= highestAchievedBulletLevel){
-                        //To equip
-                        [self equipWeapon:currentSelectedWeaponType level:currentBulletLevelSelection];
-                    }
-                }
-            }
-            
             if (wavesWeaponsUnlocked) {
                 if (CGRectContainsPoint(CGRectMake(160.0f-(weaponsMenuWavesButton.imageWidth/2), 280.0f-(weaponsMenuWavesButton.imageHeight/2), weaponsMenuWavesButton.imageWidth, weaponsMenuWavesButton.imageHeight), location)) {
                     [currentSelectedWeaponType setString:kWeaponTypeWave];
@@ -549,28 +521,6 @@
                 }
                 currentWaveLevelSelection = MAX(1,currentWaveLevelSelection);
                 currentWaveLevelSelection = MIN(currentWaveLevelSelection, 10);
-                
-                if(CGRectContainsPoint(CGRectMake(270.0f - (buyButton.imageWidth/2), 297.0f - (buyButton.imageHeight/2), buyButton.imageWidth, buyButton.imageHeight), location)){
-                    //Try to buy
-                    if([currentSelectedWeaponType isEqualToString:kWeaponTypeWave]){
-                        if((currentWaveLevelSelection - highestAchievedWaveLevel) == 1){
-                            if([[settings objectForKey:kSetting_SaveGameCredits] intValue] >= [self priceOfCurrentSelectedWeapon]){
-                                //To buy
-                                if([self priceOfWeapon:kWeaponTypeWave level:currentWaveLevelSelection] <= [[settings objectForKey:kSetting_SaveGameCredits] intValue]){
-                                    [self buyCurrentWeapon:kWeaponTypeWave level:currentWaveLevelSelection];
-                                }
-                            }
-                        }
-                    }
-                }
-                if(CGRectContainsPoint(CGRectMake(270.0f - (equipButton.imageWidth/2), 263.0f - (equipButton.imageHeight/2), equipButton.imageWidth, equipButton.imageHeight), location)){
-                    if([currentEquippedWeapon isEqualToString:kWeaponTypeWave]){
-                        if(currentWaveLevelSelection != currentEquippedWeaponLevel && currentWaveLevelSelection <= highestAchievedWaveLevel){
-                            //To equip
-                            [self equipWeapon:currentSelectedWeaponType level:currentWaveLevelSelection];
-                        }
-                    }
-                }
             }
             
             if (missilesWeaponsUnlocked) {
@@ -587,28 +537,6 @@
                 }
                 currentMissileLevelSelection = MAX(1,currentMissileLevelSelection);
                 currentMissileLevelSelection = MIN(currentMissileLevelSelection, 10);
-                
-                if(CGRectContainsPoint(CGRectMake(270.0f - (buyButton.imageWidth/2), 217.0f - (buyButton.imageHeight/2), buyButton.imageWidth, buyButton.imageHeight), location)){
-                    //Try to buy
-                    if([currentSelectedWeaponType isEqualToString:kWeaponTypeMissile]){
-                        if((currentMissileLevelSelection - highestAchievedMissileLevel) == 1){
-                            if([[settings objectForKey:kSetting_SaveGameCredits] intValue] >= [self priceOfCurrentSelectedWeapon]){
-                                //To buy
-                                if([self priceOfWeapon:kWeaponTypeMissile level:currentMissileLevelSelection] <= [[settings objectForKey:kSetting_SaveGameCredits] intValue]){
-                                    [self buyCurrentWeapon:kWeaponTypeMissile level:currentMissileLevelSelection];
-                                }
-                            }
-                        }
-                    }
-                }
-                if(CGRectContainsPoint(CGRectMake(270.0f - (equipButton.imageWidth/2), 183.0f - (equipButton.imageHeight/2), equipButton.imageWidth, equipButton.imageHeight), location)){
-                    if([currentEquippedWeapon isEqualToString:kWeaponTypeMissile]){
-                        if(currentMissileLevelSelection != currentEquippedWeaponLevel && currentMissileLevelSelection <= highestAchievedMissileLevel){
-                            //To equip
-                            [self equipWeapon:currentSelectedWeaponType level:currentMissileLevelSelection];
-                        }
-                    }
-                }
             }
             
             if (heatseekingWeaponsUnlocked) {
@@ -625,28 +553,6 @@
                 }
                 currentHeatseekingLevelSelection = MAX(1,currentHeatseekingLevelSelection);
                 currentHeatseekingLevelSelection = MIN(currentHeatseekingLevelSelection, 10);
-                
-                if(CGRectContainsPoint(CGRectMake(270.0f - (buyButton.imageWidth/2), 137.0f - (buyButton.imageHeight/2), buyButton.imageWidth, buyButton.imageHeight), location)){
-                    //Try to buy
-                    if([currentSelectedWeaponType isEqualToString:kWeaponTypeHeatseeking]){
-                        if((currentHeatseekingLevelSelection - highestAchievedHeatseekingLevel) == 1){
-                            if([[settings objectForKey:kSetting_SaveGameCredits] intValue] >= [self priceOfCurrentSelectedWeapon]){
-                                //To buy
-                                if([self priceOfWeapon:kWeaponTypeHeatseeking level:currentHeatseekingLevelSelection] <= [[settings objectForKey:kSetting_SaveGameCredits] intValue]){
-                                    [self buyCurrentWeapon:kWeaponTypeHeatseeking level:currentHeatseekingLevelSelection];
-                                }
-                            }
-                        }
-                    }
-                }
-                if(CGRectContainsPoint(CGRectMake(270.0f - (equipButton.imageWidth/2), 103.0f - (equipButton.imageHeight/2), equipButton.imageWidth, equipButton.imageHeight), location)){
-                    if([currentEquippedWeapon isEqualToString:kWeaponTypeHeatseeking]){
-                        if(currentHeatseekingLevelSelection != currentEquippedWeaponLevel && currentHeatseekingLevelSelection <= highestAchievedHeatseekingLevel){
-                            //To equip
-                            [self equipWeapon:currentSelectedWeaponType level:currentHeatseekingLevelSelection];
-                        }
-                    }
-                }
             }
             
             break;    
@@ -700,421 +606,110 @@
 	location.y = 480-location.y;
 }
 
-- (int)priceOfCurrentSelectedWeapon {
+- (int)priceOfCurrentelectedWeapon {
     if([currentSelectedWeaponType isEqualToString:kWeaponTypeBullet]){
-        return [self priceOfWeapon:currentSelectedWeaponType level:currentBulletLevelSelection];
-    }
-    else if([currentSelectedWeaponType isEqualToString:kWeaponTypeWave]){
-        return [self priceOfWeapon:currentSelectedWeaponType level:currentWaveLevelSelection];
-    }
-    
-    else if([currentSelectedWeaponType isEqualToString:kWeaponTypeMissile]){
-        return [self priceOfWeapon:currentSelectedWeaponType level:currentMissileLevelSelection];
-    }
-    
-    else if([currentSelectedWeaponType isEqualToString:kWeaponTypeHeatseeking]){
-        return [self priceOfWeapon:currentSelectedWeaponType level:currentHeatseekingLevelSelection];
-    }
-    
-    return -1;
-}
-
-- (int)priceOfWeapon:(NSString *)weaponTypeName level:(int)level {
-    if([weaponTypeName isEqualToString:kWeaponTypeBullet]){
-        if(level == 1){
+        if(currentBulletLevelSelection == 1){
             return kBulletLevelOne_Price;
         }
-        if(level == 2){
+        if(currentBulletLevelSelection == 2){
             return kBulletLevelTwo_Price;
         }
-        if(level == 3){
+        if(currentBulletLevelSelection == 3){
             return kBulletLevelThree_Price;
         }
-        if(level == 4){
+        if(currentBulletLevelSelection == 4){
             return kBulletLevelFour_Price;
         }
-        if(level == 5){
+        if(currentBulletLevelSelection == 5){
             return kBulletLevelFive_Price;
         }
-        if(level == 6){
+        if(currentBulletLevelSelection == 6){
             return kBulletLevelSix_Price;
         }
-        if(level == 7){
+        if(currentBulletLevelSelection == 7){
             return kBulletLevelSeven_Price;
         }
-        if(level == 8){
+        if(currentBulletLevelSelection == 8){
             return kBulletLevelEight_Price;
         }
-        if(level == 9){
+        if(currentBulletLevelSelection == 9){
             return kBulletLevelNine_Price;
         }
-        if(level == 10){
+        if(currentBulletLevelSelection == 10){
             return kBulletLevelTen_Price;
         }
     }
-    else if([weaponTypeName isEqualToString:kWeaponTypeWave]){
-        if(level == 1){
+    if([currentSelectedWeaponType isEqualToString:kWeaponTypeWave]){
+        if(currentWaveLevelSelection == 1){
             return kWaveLevelOne_Price;
         }
-        if(level == 2){
+        if(currentWaveLevelSelection == 2){
             return kWaveLevelTwo_Price;
         }
-        if(level == 3){
+        if(currentWaveLevelSelection == 3){
             return kWaveLevelThree_Price;
         }
-        if(level == 4){
+        if(currentWaveLevelSelection == 4){
             return kWaveLevelFour_Price;
         }
-        if(level == 5){
+        if(currentWaveLevelSelection == 5){
             return kWaveLevelFive_Price;
         }
-        if(level == 6){
+        if(currentWaveLevelSelection == 6){
             return kWaveLevelSix_Price;
         }
-        if(level == 7){
+        if(currentWaveLevelSelection == 7){
             return kWaveLevelSeven_Price;
         }
-        if(level == 8){
+        if(currentWaveLevelSelection == 8){
             return kWaveLevelEight_Price;
         }
-        if(level == 9){
+        if(currentWaveLevelSelection == 9){
             return kWaveLevelNine_Price;
         }
-        if(level == 10){
+        if(currentWaveLevelSelection == 10){
             return kWaveLevelTen_Price;
         }
     }
     
-    else if([weaponTypeName isEqualToString:kWeaponTypeMissile]){
-        if(level == 1){
+    if([currentSelectedWeaponType isEqualToString:kWeaponTypeMissile]){
+        if(currentMissileLevelSelection == 1){
             return kMissileLevelOne_Price;
         }
-        if(level == 2){
+        if(currentMissileLevelSelection == 2){
             return kMissileLevelTwo_Price;
         }
-        if(level == 3){
+        if(currentMissileLevelSelection == 3){
             return kMissileLevelThree_Price;
         }
-        if(level == 4){
+        if(currentMissileLevelSelection == 4){
             return kMissileLevelFour_Price;
         }
-        if(level == 5){
+        if(currentMissileLevelSelection == 5){
             return kMissileLevelFive_Price;
         }
-        if(level == 6){
+        if(currentMissileLevelSelection == 6){
             return kMissileLevelSix_Price;
         }
-        if(level == 7){
+        if(currentMissileLevelSelection == 7){
             return kMissileLevelSeven_Price;
         }
-        if(level == 8){
+        if(currentMissileLevelSelection == 8){
             return kMissileLevelEight_Price;
         }
-        if(level == 9){
+        if(currentMissileLevelSelection == 9){
             return kMissileLevelNine_Price;
         }
-        if(level == 10){
+        if(currentMissileLevelSelection == 10){
             return kMissileLevelTen_Price;
         }
     }
     
-    else if([weaponTypeName isEqualToString:kWeaponTypeHeatseeking]){
-        if(level == 1){
+    if([currentSelectedWeaponType isEqualToString:kWeaponTypeHeatseeking]){
+        if(currentHeatseekingLevelSelection == 1){
             return kHeatseekerLevelOne_Price;
         }
     }
-    
-    return -1;
-}
-
-- (void)buyCurrentWeapon:(NSString *)weaponTypeName level:(int)level {
-    NSMutableArray *unlockedWeaponsTempArray = [[NSMutableArray alloc] initWithArray:[settings objectForKey:kSetting_SaveGameUnlockedWeapons]];
-    int playerCredits = [[settings objectForKey:kSetting_SaveGameCredits] intValue];
-    
-    if (weaponTypeName == kWeaponTypeBullet) {
-        highestAchievedBulletLevel = level;
-        switch (level) {
-            case 2:
-                [unlockedWeaponsTempArray addObject:kWeaponBulletLevelTwo];
-                playerCredits -= [self priceOfWeapon:kWeaponTypeBullet level:2];
-                break;
-            case 3:
-                [unlockedWeaponsTempArray addObject:kWeaponBulletLevelThree];
-                playerCredits -= [self priceOfWeapon:kWeaponTypeBullet level:3];
-                break;
-            case 4:
-                [unlockedWeaponsTempArray addObject:kWeaponBulletLevelFour];
-                playerCredits -= [self priceOfWeapon:kWeaponTypeBullet level:4];
-                break;
-            case 5:
-                [unlockedWeaponsTempArray addObject:kWeaponBulletLevelFive];
-                playerCredits -= [self priceOfWeapon:kWeaponTypeBullet level:5];
-                break;
-            case 6:
-                [unlockedWeaponsTempArray addObject:kWeaponBulletLevelSix];
-                playerCredits -= [self priceOfWeapon:kWeaponTypeBullet level:6];
-                break;
-            case 7:
-                [unlockedWeaponsTempArray addObject:kWeaponBulletLevelSeven];
-                playerCredits -= [self priceOfWeapon:kWeaponTypeBullet level:7];
-                break;
-            case 8:
-                [unlockedWeaponsTempArray addObject:kWeaponBulletLevelEight];
-                playerCredits -= [self priceOfWeapon:kWeaponTypeBullet level:8];
-                break;
-            case 9:
-                [unlockedWeaponsTempArray addObject:kWeaponBulletLevelNine];
-                playerCredits -= [self priceOfWeapon:kWeaponTypeBullet level:9];
-                break;
-            case 10:
-                [unlockedWeaponsTempArray addObject:kWeaponBulletLevelTen];
-                playerCredits -= [self priceOfWeapon:kWeaponTypeBullet level:10];
-                break;
-            default:
-                break;
-        }
-    }
-    if (weaponTypeName == kWeaponTypeWave) {
-        highestAchievedWaveLevel = level;
-        switch (level) {
-            case 1:
-                [unlockedWeaponsTempArray addObject:kWeaponWaveLevelOne];
-                playerCredits -= [self priceOfWeapon:kWeaponTypeWave level:1];
-                break;
-            case 2:
-                [unlockedWeaponsTempArray addObject:kWeaponWaveLevelTwo];
-                playerCredits -= [self priceOfWeapon:kWeaponTypeWave level:2];
-                break;
-            case 3:
-                [unlockedWeaponsTempArray addObject:kWeaponWaveLevelThree];
-                playerCredits -= [self priceOfWeapon:kWeaponTypeWave level:3];
-                break;
-            case 4:
-                [unlockedWeaponsTempArray addObject:kWeaponWaveLevelFour];
-                playerCredits -= [self priceOfWeapon:kWeaponTypeWave level:4];
-                break;
-            case 5:
-                [unlockedWeaponsTempArray addObject:kWeaponWaveLevelFive];
-                playerCredits -= [self priceOfWeapon:kWeaponTypeWave level:5];
-                break;
-            case 6:
-                [unlockedWeaponsTempArray addObject:kWeaponWaveLevelSix];
-                playerCredits -= [self priceOfWeapon:kWeaponTypeWave level:6];
-                break;
-            case 7:
-                [unlockedWeaponsTempArray addObject:kWeaponWaveLevelSeven];
-                playerCredits -= [self priceOfWeapon:kWeaponTypeWave level:7];
-                break;
-            case 8:
-                [unlockedWeaponsTempArray addObject:kWeaponWaveLevelEight];
-                playerCredits -= [self priceOfWeapon:kWeaponTypeWave level:8];
-                break;
-            case 9:
-                [unlockedWeaponsTempArray addObject:kWeaponWaveLevelNine];
-                playerCredits -= [self priceOfWeapon:kWeaponTypeWave level:9];
-                break;
-            case 10:
-                [unlockedWeaponsTempArray addObject:kWeaponWaveLevelTen];
-                playerCredits -= [self priceOfWeapon:kWeaponTypeWave level:10];
-                break;
-            default:
-                break;
-        }
-    }
-    if (weaponTypeName == kWeaponTypeMissile) {
-        highestAchievedMissileLevel = level;
-        switch (level) {
-            case 1:
-                [unlockedWeaponsTempArray addObject:kWeaponMissileLevelOne];
-                playerCredits -= [self priceOfWeapon:kWeaponTypeMissile level:1];
-                break;
-            case 2:
-                [unlockedWeaponsTempArray addObject:kWeaponMissileLevelTwo];
-                playerCredits -= [self priceOfWeapon:kWeaponTypeMissile level:2];
-                break;
-            case 3:
-                [unlockedWeaponsTempArray addObject:kWeaponMissileLevelThree];
-                playerCredits -= [self priceOfWeapon:kWeaponTypeMissile level:3];
-                break;
-            case 4:
-                [unlockedWeaponsTempArray addObject:kWeaponMissileLevelFour];
-                playerCredits -= [self priceOfWeapon:kWeaponTypeMissile level:4];
-                break;
-            case 5:
-                [unlockedWeaponsTempArray addObject:kWeaponMissileLevelFive];
-                playerCredits -= [self priceOfWeapon:kWeaponTypeMissile level:5];
-                break;
-            case 6:
-                [unlockedWeaponsTempArray addObject:kWeaponMissileLevelSix];
-                playerCredits -= [self priceOfWeapon:kWeaponTypeMissile level:6];
-                break;
-            case 7:
-                [unlockedWeaponsTempArray addObject:kWeaponMissileLevelSeven];
-                playerCredits -= [self priceOfWeapon:kWeaponTypeMissile level:7];
-                break;
-            case 8:
-                [unlockedWeaponsTempArray addObject:kWeaponMissileLevelEight];
-                playerCredits -= [self priceOfWeapon:kWeaponTypeMissile level:8];
-                break;
-            case 9:
-                [unlockedWeaponsTempArray addObject:kWeaponMissileLevelNine];
-                playerCredits -= [self priceOfWeapon:kWeaponTypeMissile level:9];
-                break;
-            case 10:
-                [unlockedWeaponsTempArray addObject:kWeaponMissileLevelTen];
-                playerCredits -= [self priceOfWeapon:kWeaponTypeMissile level:10];
-                break;
-            default:
-                break;
-        }
-    }
-    if (weaponTypeName == kWeaponTypeHeatseeking) {
-        highestAchievedHeatseekingLevel = level;
-        switch (level) {
-            case 1:
-                [unlockedWeaponsTempArray addObject:kWeaponHeatseekingLevelOne];
-                playerCredits -= [self priceOfWeapon:kWeaponTypeMissile level:1];
-                break;
-            default:
-                break;
-        }
-    }
-    
-    [settings setObject:unlockedWeaponsTempArray forKey:kSetting_SaveGameUnlockedWeapons];
-    [settings setObject:[NSString stringWithFormat:@"%i", playerCredits] forKey:kSetting_SaveGameCredits];
-    [settings synchronize];
-    
-    [unlockedWeaponsTempArray release];
-}
-
-- (void)equipWeapon:(NSString *)weaponTypeName level:(int)level {
-    NSMutableString *equippedWeaponTemp = [[NSMutableString alloc] init];
-    if([weaponTypeName isEqualToString:kWeaponTypeBullet]){
-        [currentEquippedWeapon setString:kWeaponTypeBullet];
-        currentEquippedWeaponLevel = level;
-        switch (level) {
-            case 1:
-                [equippedWeaponTemp setString:kWeaponBulletLevelOne];
-                break;
-            case 2:
-                [equippedWeaponTemp setString:kWeaponBulletLevelTwo];
-                break;
-            case 3:
-                [equippedWeaponTemp setString:kWeaponBulletLevelThree];
-                break;
-            case 4:
-                [equippedWeaponTemp setString:kWeaponBulletLevelFour];
-                break;
-            case 5:
-                [equippedWeaponTemp setString:kWeaponBulletLevelFive];
-                break;
-            case 6:
-                [equippedWeaponTemp setString:kWeaponBulletLevelSix];
-                break;
-            case 7:
-                [equippedWeaponTemp setString:kWeaponBulletLevelSeven];
-                break;
-            case 8:
-                [equippedWeaponTemp setString:kWeaponBulletLevelEight];
-                break;
-            case 9:
-                [equippedWeaponTemp setString:kWeaponBulletLevelNine];
-                break;
-            case 10:
-                [equippedWeaponTemp setString:kWeaponBulletLevelTen];
-                break;
-            default:
-                break;
-        }
-    }
-    if([weaponTypeName isEqualToString:kWeaponTypeWave]){
-        [currentEquippedWeapon setString:kWeaponTypeWave];
-        currentEquippedWeaponLevel = level;
-        switch (level) {
-            case 1:
-                [equippedWeaponTemp setString:kWeaponWaveLevelOne];
-                break;
-            case 2:
-                [equippedWeaponTemp setString:kWeaponWaveLevelTwo];
-                break;
-            case 3:
-                [equippedWeaponTemp setString:kWeaponWaveLevelThree];
-                break;
-            case 4:
-                [equippedWeaponTemp setString:kWeaponWaveLevelFour];
-                break;
-            case 5:
-                [equippedWeaponTemp setString:kWeaponWaveLevelFive];
-                break;
-            case 6:
-                [equippedWeaponTemp setString:kWeaponWaveLevelSix];
-                break;
-            case 7:
-                [equippedWeaponTemp setString:kWeaponWaveLevelSeven];
-                break;
-            case 8:
-                [equippedWeaponTemp setString:kWeaponWaveLevelEight];
-                break;
-            case 9:
-                [equippedWeaponTemp setString:kWeaponWaveLevelNine];
-                break;
-            case 10:
-                [equippedWeaponTemp setString:kWeaponWaveLevelTen];
-                break;
-            default:
-                break;
-        }
-    }
-    if([weaponTypeName isEqualToString:kWeaponTypeMissile]){
-        [currentEquippedWeapon setString:kWeaponTypeMissile];
-        currentEquippedWeaponLevel = level;
-        switch (level) {
-            case 1:
-                [equippedWeaponTemp setString:kWeaponMissileLevelOne];
-                break;
-            case 2:
-                [equippedWeaponTemp setString:kWeaponMissileLevelTwo];
-                break;
-            case 3:
-                [equippedWeaponTemp setString:kWeaponMissileLevelThree];
-                break;
-            case 4:
-                [equippedWeaponTemp setString:kWeaponMissileLevelFour];
-                break;
-            case 5:
-                [equippedWeaponTemp setString:kWeaponMissileLevelFive];
-                break;
-            case 6:
-                [equippedWeaponTemp setString:kWeaponMissileLevelSix];
-                break;
-            case 7:
-                [equippedWeaponTemp setString:kWeaponMissileLevelSeven];
-                break;
-            case 8:
-                [equippedWeaponTemp setString:kWeaponMissileLevelEight];
-                break;
-            case 9:
-                [equippedWeaponTemp setString:kWeaponMissileLevelNine];
-                break;
-            case 10:
-                [equippedWeaponTemp setString:kWeaponMissileLevelTen];
-                break;
-            default:
-                break;
-        }
-    }
-    if([weaponTypeName isEqualToString:kWeaponTypeHeatseeking]){
-        [currentEquippedWeapon setString:kWeaponTypeHeatseeking];
-        currentEquippedWeaponLevel = level;
-        switch (level) {
-            case 1:
-                [equippedWeaponTemp setString:kWeaponHeatseekingLevelOne];
-                break;
-        }
-    }
-    
-    [settings setObject:equippedWeaponTemp forKey:kSetting_SaveGameEquippedWeapon];
-    
 }
 
 #pragma mark -
@@ -1314,131 +909,42 @@
             
             if([currentSelectedWeaponType isEqualToString:kWeaponTypeBullet]){
                 if((currentBulletLevelSelection - highestAchievedBulletLevel) == 1){
-                    if([[settings objectForKey:kSetting_SaveGameCredits] intValue] >= [self priceOfCurrentSelectedWeapon]){
+                    if([[settings objectForKey:kSetting_SaveGameCredits] intValue] >= [self priceOfCurrentelectedWeapon]){
                         //To buy
-                        [buyButton renderAtPoint:CGPointMake(270.0f, 377.0f) centerOfImage:YES];
                     }
                     else {
                         //Unable to buy
-                        [buyButtonDisabled renderAtPoint:CGPointMake(270.0f, 377.0f) centerOfImage:YES];
                     }
                 }
                 if(currentBulletLevelSelection <= highestAchievedBulletLevel){
                     //Bought
-                    [boughtButton renderAtPoint:CGPointMake(270.0f, 377.0f) centerOfImage:YES];
                 }
                 
                 
                 if([currentEquippedWeapon isEqualToString:kWeaponTypeBullet]){
                     if(currentEquippedWeaponLevel == currentBulletLevelSelection){
                         //Equipped
-                        [equippedButton renderAtPoint:CGPointMake(270.0f, 343.0f) centerOfImage:YES];
                     }
-                    if(currentBulletLevelSelection != currentEquippedWeaponLevel && currentBulletLevelSelection <= highestAchievedBulletLevel){
-                        //To equip
-                        [equipButton renderAtPoint:CGPointMake(270.0f, 343.0f) centerOfImage:YES];
+                    if(currentEquippedWeaponLevel == highestAchievedBulletLevel){
+                        if(currentBulletLevelSelection < currentEquippedWeaponLevel){
+                            //To equip
+                        }
                     }
                     else {
-                        //Unable to equip
-                        [equipButtonDisabled renderAtPoint:CGPointMake(270.0f, 343.0f) centerOfImage:YES];
+                        if(currentBulletLevelSelection > currentEquippedWeaponLevel && currentBulletLevelSelection <= highestAchievedBulletLevel){
+                            //Unable to equip
+                        }
                     }
                 }
             }
             else if([currentSelectedWeaponType isEqualToString:kWeaponTypeWave]){
-                if((currentWaveLevelSelection - highestAchievedWaveLevel) == 1){
-                    if([[settings objectForKey:kSetting_SaveGameCredits] intValue] >= [self priceOfCurrentSelectedWeapon]){
-                        //To buy
-                        [buyButton renderAtPoint:CGPointMake(270.0f, 297.0f) centerOfImage:YES];
-                    }
-                    else {
-                        //Unable to buy
-                        [buyButtonDisabled renderAtPoint:CGPointMake(270.0f, 297.0f) centerOfImage:YES];
-                    }
-                }
-                if(currentWaveLevelSelection <= highestAchievedWaveLevel){
-                    //Bought
-                    [boughtButton renderAtPoint:CGPointMake(270.0f, 297.0f) centerOfImage:YES];
-                }
                 
-                
-                if([currentEquippedWeapon isEqualToString:kWeaponTypeWave]){
-                    if(currentEquippedWeaponLevel == currentWaveLevelSelection){
-                        //Equipped
-                        [equippedButton renderAtPoint:CGPointMake(270.0f, 263.0f) centerOfImage:YES];
-                    }
-                    if(currentWaveLevelSelection != currentEquippedWeaponLevel && currentWaveLevelSelection <= highestAchievedWaveLevel){
-                        //To equip
-                        [equipButton renderAtPoint:CGPointMake(270.0f, 263.0f) centerOfImage:YES];
-                    }
-                    else {
-                        //Unable to equip
-                        [equipButtonDisabled renderAtPoint:CGPointMake(270.0f, 263.0f) centerOfImage:YES];
-                    }
-                }
             }
             else if([currentSelectedWeaponType isEqualToString:kWeaponTypeMissile]){
-                if((currentMissileLevelSelection - highestAchievedMissileLevel) == 1){
-                    if([[settings objectForKey:kSetting_SaveGameCredits] intValue] >= [self priceOfCurrentSelectedWeapon]){
-                        //To buy
-                        [buyButton renderAtPoint:CGPointMake(270.0f, 217.0f) centerOfImage:YES];
-                    }
-                    else {
-                        //Unable to buy
-                        [buyButtonDisabled renderAtPoint:CGPointMake(270.0f, 217.0f) centerOfImage:YES];
-                    }
-                }
-                if(currentMissileLevelSelection <= highestAchievedMissileLevel){
-                    //Bought
-                    [boughtButton renderAtPoint:CGPointMake(270.0f, 217.0f) centerOfImage:YES];
-                }
                 
-                
-                if([currentEquippedWeapon isEqualToString:kWeaponTypeMissile]){
-                    if(currentEquippedWeaponLevel == currentMissileLevelSelection){
-                        //Equipped
-                        [equippedButton renderAtPoint:CGPointMake(270.0f, 183.0f) centerOfImage:YES];
-                    }
-                    if(currentMissileLevelSelection != currentEquippedWeaponLevel && currentMissileLevelSelection <= highestAchievedMissileLevel){
-                        //To equip
-                        [equipButton renderAtPoint:CGPointMake(270.0f, 183.0f) centerOfImage:YES];
-                    }
-                    else {
-                        //Unable to equip
-                        [equipButtonDisabled renderAtPoint:CGPointMake(270.0f, 183.0f) centerOfImage:YES];
-                    }
-                }
             }
             else if([currentSelectedWeaponType isEqualToString:kWeaponTypeHeatseeking]){
-                if((currentHeatseekingLevelSelection - highestAchievedHeatseekingLevel) == 1){
-                    if([[settings objectForKey:kSetting_SaveGameCredits] intValue] >= [self priceOfCurrentSelectedWeapon]){
-                        //To buy
-                        [buyButton renderAtPoint:CGPointMake(270.0f, 137.0f) centerOfImage:YES];
-                    }
-                    else {
-                        //Unable to buy
-                        [buyButtonDisabled renderAtPoint:CGPointMake(270.0f, 137.0f) centerOfImage:YES];
-                    }
-                }
-                if(currentHeatseekingLevelSelection <= highestAchievedHeatseekingLevel){
-                    //Bought
-                    [boughtButton renderAtPoint:CGPointMake(270.0f, 137.0f) centerOfImage:YES];
-                }
                 
-                
-                if([currentEquippedWeapon isEqualToString:kWeaponTypeHeatseeking]){
-                    if(currentEquippedWeaponLevel == currentHeatseekingLevelSelection){
-                        //Equipped
-                        [equippedButton renderAtPoint:CGPointMake(270.0f, 103.0f) centerOfImage:YES];
-                    }
-                    if(currentHeatseekingLevelSelection != currentEquippedWeaponLevel && currentHeatseekingLevelSelection <= highestAchievedHeatseekingLevel){
-                        //To equip
-                        [equipButton renderAtPoint:CGPointMake(270.0f, 103.0f) centerOfImage:YES];
-                    }
-                    else {
-                        //Unable to equip
-                        [equipButtonDisabled renderAtPoint:CGPointMake(270.0f, 103.0f) centerOfImage:YES];
-                    }
-                }
             }
             break;    
             

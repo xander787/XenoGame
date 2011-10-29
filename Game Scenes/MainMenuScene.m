@@ -147,7 +147,7 @@
         [settingsDB setValue:@"XP750" forKey:kSetting_SaveGameShip];
         [settingsDB setValue:kWeaponBulletLevelOne forKey:kSetting_SaveGameWeapon];
         [settingsDB setValue:kWeaponBulletLevelOne forKey:kSetting_SaveGameEquippedWeapon];
-        [settingsDB setValue:@"100" forKey:kSetting_SaveGameCredits];
+        [settingsDB setValue:@"100000" forKey:kSetting_SaveGameCredits];
         NSArray *unlockedShips = [[NSArray alloc] initWithObjects:@"XP750", @"XP751", nil];
         [settingsDB setValue:unlockedShips forKey:kSetting_SaveGameUnlockedShips];
         [unlockedShips release];

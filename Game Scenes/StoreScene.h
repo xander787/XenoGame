@@ -87,5 +87,8 @@ typedef enum _SceneState {
 }
 
 - (int)priceOfCurrentSelectedWeapon;
+- (int)priceOfWeapon:(NSString *)weaponTypeName level:(int)level;
+- (void)buyCurrentWeapon:(NSString *)weaponTypeName level:(int)level;
+- (void)equipWeapon:(NSString *)weaponTypeName level:(int)level;
 
 @end
