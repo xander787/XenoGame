@@ -880,6 +880,15 @@ WrapText( const char *text
             //Affect the delta for slowmo
             if(slowmoActivated) aDelta *= 0.5;
             
+            if(proximityDamageActivated){
+                proximityDamageTimer += aDelta;
+                proximityShouldGiveDamage = NO;
+                if(proximityDamageTimer > 0.8){
+                    proximityShouldGiveDamage = YES;
+                    proximityDamageTimer = 0.0f;
+                }
+            }
+            
             NSMutableSet *discardedEnemies = [[NSMutableSet alloc] init];
             //Update the enemies' movement paths
             for(EnemyShip *enemyShip in enemiesSet){
@@ -908,6 +917,14 @@ WrapText( const char *text
                         [droppedPowerUpSet addObject:tempCredit];
                         [tempCredit release];
                         enemyShip.powerUpDropped = YES;
+                    }
+                }
+                
+                //Proximity Damage calculations
+                if(proximityDamageActivated && proximityShouldGiveDamage){
+                    if(sqrt(pow(enemyShip.currentLocation.x - playerShip.currentLocation.x, 2) + pow(enemyShip.currentLocation.y - playerShip.currentLocation.y, 2)) < 64){
+                        //If the enemy is less than 64 units away fro mthe player, give damage to enemy
+                        [enemyShip hitShipWithDamage:10];
                     }
                 }
                 
