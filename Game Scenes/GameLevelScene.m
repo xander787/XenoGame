@@ -114,6 +114,10 @@
 //
 //  Last Updated - 9/26/11 @11:30PM - James
 //  - Made boss projectiles also hurt player.
+//
+//  Last Updated - 11/1/11 @9:15PM - James
+//  - Tweaked drop pickup radius, made player ship able to
+//  move past the edge of the screen instead of hitting edge.
 
 
 #import "GameLevelScene.h"
@@ -777,8 +781,8 @@ WrapText( const char *text
                 drop.magnetActivated = powerUpMagnetActivated;
             }
             
-            if(abs(drop.location.x - playerShip.currentLocation.x) < 32 &&
-               abs(drop.location.y - playerShip.currentLocation.y) < 32){
+            if(abs(drop.location.x - playerShip.currentLocation.x) < 36 &&
+               abs(drop.location.y - playerShip.currentLocation.y) < 36){
                 numDropPickups++;
                 
                 //Drop picked up
@@ -1564,10 +1568,10 @@ WrapText( const char *text
         //Checks the edges of the ship against the edges of the screen.
         //Note: we check one edge at a time because if we simply use CGRectContainsRect,
         //the ship would not be able to move along an edge once exiting
-        if(location.x - ([playerShip shipWidth] / 2) < 0){
+        if(location.x - ([playerShip shipWidth] / 2) < 0 - [playerShip shipWidth]){
             location.x = [playerShip shipWidth] / 2;
         }
-        if(location.x + ([playerShip shipWidth] / 2) > screenBounds.size.width){
+        if(location.x + ([playerShip shipWidth] / 2) > screenBounds.size.width + [playerShip shipWidth]){
             location.x = screenBounds.size.width - ([playerShip shipWidth] / 2);
         }
         
