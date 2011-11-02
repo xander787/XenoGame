@@ -877,6 +877,9 @@ WrapText( const char *text
         [dropsToBeRemoved release];
         
         if (currentWaveType == kWaveType_Enemy) {
+            //Affect the delta for slowmo
+            if(slowmoActivated) aDelta *= 0.5;
+            
             NSMutableSet *discardedEnemies = [[NSMutableSet alloc] init];
             //Update the enemies' movement paths
             for(EnemyShip *enemyShip in enemiesSet){
