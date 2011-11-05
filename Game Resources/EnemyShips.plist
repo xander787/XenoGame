@@ -206,18 +206,6 @@
 	</dict>
 	<key>kShipOneShot_One</key>
 	<dict>
-		<key>kCollisionBoundingPoints</key>
-		<array>
-			<string>0,-27</string>
-			<string>-2,-27</string>
-			<string>-18,8</string>
-			<string>-16,22</string>
-			<string>-5,29</string>
-			<string>7,29</string>
-			<string>18,22</string>
-			<string>19,8</string>
-			<string>3,-27</string>
-		</array>
 		<key>kRotation</key>
 		<false/>
 		<key>kRotationSpeed</key>
@@ -237,9 +225,21 @@
 		<key>kSpriteSheetNumColumns</key>
 		<integer>1</integer>
 		<key>kSpriteSheetRowHeight</key>
-		<integer>59</integer>
+		<integer>40</integer>
 		<key>kSpriteSheetRowNumber</key>
 		<integer>0</integer>
+		<key>kCollisionBoundingPoints</key>
+		<array>
+			<string>0,-27</string>
+			<string>-2,-27</string>
+			<string>-18,8</string>
+			<string>-16,22</string>
+			<string>-5,29</string>
+			<string>7,29</string>
+			<string>18,22</string>
+			<string>19,8</string>
+			<string>3,-27</string>
+		</array>
 		<key>kTurretPoints</key>
 		<array>
 			<string>0,-10</string>
