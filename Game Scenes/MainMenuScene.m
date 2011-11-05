@@ -148,15 +148,16 @@
         [settingsDB setValue:kWeaponBulletLevelOne forKey:kSetting_SaveGameWeapon];
         [settingsDB setValue:kWeaponBulletLevelOne forKey:kSetting_SaveGameEquippedWeapon];
         [settingsDB setValue:@"100000" forKey:kSetting_SaveGameCredits];
-        NSArray *unlockedShips = [[NSArray alloc] initWithObjects:@"XP750", @"XP751", nil];
+        NSArray *unlockedShips = [[NSArray alloc] initWithObjects:kXP750, nil];
         [settingsDB setValue:unlockedShips forKey:kSetting_SaveGameUnlockedShips];
+        [settingsDB setValue:kXP750 forKey:kSetting_SaveGameEquippedShip];
         [unlockedShips release];
         
         NSArray *unlockedWeapons = [[NSArray alloc] initWithObjects:kWeaponBulletLevelOne, kWeaponBulletLevelTwo, nil];
         [settingsDB setValue:unlockedWeapons forKey:kSetting_SaveGameUnlockedWeapons];
         [unlockedWeapons release];
         
-        [settingsDB setValue:kSetting_SaveGameEquippedWeapon forKey:kWeaponTypeBullet];        
+//        [settingsDB setValue:kSetting_SaveGameEquippedWeapon forKey:kWeaponTypeBullet];        
         [settingsDB setValue:@"NO" forKey:kSetting_FirstTimeRun];
         [settingsDB synchronize];
     }

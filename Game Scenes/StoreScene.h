@@ -107,7 +107,9 @@ typedef enum _SceneState {
 - (int)priceOfShip:(NSString *)shipType;
 - (NSString *)shipTypeFromCategory:(NSString *)shipCat andLevel:(int)shipLevel;
 - (int)shipLevelFromType:(NSString *)shipType;
+- (NSString *)shipCategoryFromType:(NSString *)shipType;
 - (void)buyShip:(NSString *)shipType;
 - (void)equipShip:(NSString *)shipType;
+- (NSString *)displayStringForShip:(NSString *)shipType;
 
 @end
