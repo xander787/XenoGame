@@ -308,6 +308,7 @@
 - (void)render {
     [backgroundParticleEmitter renderParticles];
     
+    [font drawStringAt:CGPointMake(100.0f, 460.0) text:@"Settings"];
     [backButton renderAtPoint:CGPointMake(15, 440) centerOfImage:NO];
     [font drawStringAt:CGPointMake(15.0f, 420.0f) text:soundSettingString];
     [font drawStringAt:CGPointMake(15.0f, 350.0f) text:musicSettingString];

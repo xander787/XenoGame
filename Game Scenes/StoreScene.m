@@ -104,6 +104,8 @@
     
     currentEquippedWeapon = [[NSMutableString alloc] init];
     currentSelectedWeaponType = [[NSMutableString alloc] initWithString:kWeaponTypeBullet];
+    
+    currentEquippedShipType = [[NSMutableString alloc] init];
 }
 
 - (void)sceneIsBecomingActive {    
@@ -119,10 +121,20 @@
         heatseekingWeaponsUnlocked = YES;
     }
     
+    if([[settings objectForKey:kSetting_SaveGameUnlockedShips] containsObject:kXP751]){
+        attackShipsUnlocked = YES;
+        speedShipsUnlocked = YES;
+        defenseShipsUnlocked = YES;
+    }
+    
     currentBulletLevelSelection = 1;
     currentWaveLevelSelection = 1;
     currentMissileLevelSelection = 1;
     currentHeatseekingLevelSelection = 1;
+    
+    currentAttackShipLevelSelection = 1;
+    currentSpeedShipLevelSelection = 1;
+    currentDefenseShipLevelSelection = 1;
     
     
     if ([[settings objectForKey:kSetting_SaveGameUnlockedWeapons] containsObject:kWeaponBulletLevelOne]) {
@@ -372,6 +384,133 @@
         highestAchievedHeatseekingLevel = 1;
         [currentEquippedWeapon setString:kWeaponTypeHeatseeking];
         currentEquippedWeaponLevel = 10;
+    }
+    
+    
+    if([[settings objectForKey:kSetting_SaveGameUnlockedShips] containsObject:kXP750]){
+        highestAchievedBaseLevel = 1;
+        if([[settings objectForKey:kSetting_SaveGameEquippedShip] containsObject:kXP750]){
+            currentBaseShipLevelSelection = 1;
+            [currentEquippedShipType setString:kXP750];
+        }
+    }
+    if([[settings objectForKey:kSetting_SaveGameUnlockedShips] containsObject:kXP751]){
+        highestAchievedBaseLevel = 2;
+        if([[settings objectForKey:kSetting_SaveGameEquippedShip] containsObject:kXP751]){
+            currentBaseShipLevelSelection = 2;
+            [currentEquippedShipType setString:kXP751];
+        }
+    }
+    
+    //Attack
+    if([[settings objectForKey:kSetting_SaveGameUnlockedShips] containsObject:kXPA368]){
+        highestAchievedAttackLevel = 1;
+        if([[settings objectForKey:kSetting_SaveGameEquippedShip] containsObject:kXPA368]){
+            currentBaseShipLevelSelection = 1;
+            [currentEquippedShipType setString:kXPA368];
+        }
+    }
+    if([[settings objectForKey:kSetting_SaveGameUnlockedShips] containsObject:kXPA600]){
+        highestAchievedAttackLevel = 2;
+        if([[settings objectForKey:kSetting_SaveGameEquippedShip] containsObject:kXPA600]){
+            currentAttackShipLevelSelection = 2;
+            [currentEquippedShipType setString:kXPA600];
+        }
+    }
+    if([[settings objectForKey:kSetting_SaveGameUnlockedShips] containsObject:kXPA617]){
+        highestAchievedAttackLevel = 3;
+        if([[settings objectForKey:kSetting_SaveGameEquippedShip] containsObject:kXPA617]){
+            currentAttackShipLevelSelection = 3;
+            [currentEquippedShipType setString:kXPA617];
+        }
+    }
+    if([[settings objectForKey:kSetting_SaveGameUnlockedShips] containsObject:kXPA652]){
+        highestAchievedAttackLevel = 4;
+        if([[settings objectForKey:kSetting_SaveGameEquippedShip] containsObject:kXPA652]){
+            currentAttackShipLevelSelection = 4;
+            [currentEquippedShipType setString:kXPA652];
+        }
+    }
+    if([[settings objectForKey:kSetting_SaveGameUnlockedShips] containsObject:kXPA679]){
+        highestAchievedAttackLevel = 5;
+        if([[settings objectForKey:kSetting_SaveGameEquippedShip] containsObject:kXPA679]){
+            currentAttackShipLevelSelection = 5;
+            [currentEquippedShipType setString:kXPA679];
+        }
+    }
+    
+    //Speed
+    if([[settings objectForKey:kSetting_SaveGameUnlockedShips] containsObject:kXPS400]){
+        highestAchievedSpeedLevel = 1;
+        if([[settings objectForKey:kSetting_SaveGameEquippedShip] containsObject:kXPS400]){
+            currentSpeedShipLevelSelection = 1;
+            [currentEquippedShipType setString:kXPS400];
+        }
+    }
+    if([[settings objectForKey:kSetting_SaveGameUnlockedShips] containsObject:kXPS424]){
+        highestAchievedSpeedLevel = 2;
+        if([[settings objectForKey:kSetting_SaveGameEquippedShip] containsObject:kXPS424]){
+            currentSpeedShipLevelSelection = 2;
+            [currentEquippedShipType setString:kXPS424];
+        }
+    }
+    if([[settings objectForKey:kSetting_SaveGameUnlockedShips] containsObject:kXPS447]){
+        highestAchievedSpeedLevel = 3;
+        if([[settings objectForKey:kSetting_SaveGameEquippedShip] containsObject:kXPS447]){
+            currentSpeedShipLevelSelection = 3;
+            [currentEquippedShipType setString:kXPS447];
+        }
+    }
+    if([[settings objectForKey:kSetting_SaveGameUnlockedShips] containsObject:kXPS463]){
+        highestAchievedSpeedLevel = 4;
+        if([[settings objectForKey:kSetting_SaveGameEquippedShip] containsObject:kXPS463]){
+            currentSpeedShipLevelSelection = 4;
+            [currentEquippedShipType setString:kXPS463];
+        }
+    }
+    if([[settings objectForKey:kSetting_SaveGameUnlockedShips] containsObject:kXPS485]){
+        highestAchievedSpeedLevel = 5;
+        if([[settings objectForKey:kSetting_SaveGameEquippedShip] containsObject:kXPS485]){
+            currentSpeedShipLevelSelection = 5;
+            [currentEquippedShipType setString:kXPS485];
+        }
+    }
+    
+    //Defense
+    if([[settings objectForKey:kSetting_SaveGameUnlockedShips] containsObject:kXPD900]){
+        highestAchievedDefenseLevel = 1;
+        if([[settings objectForKey:kSetting_SaveGameEquippedShip] containsObject:kXPD900]){
+            currentDefenseShipLevelSelection = 1;
+            [currentEquippedShipType setString:kXPD900];
+        }
+    }
+    if([[settings objectForKey:kSetting_SaveGameUnlockedShips] containsObject:kXPD909]){
+        highestAchievedDefenseLevel = 2;
+        if([[settings objectForKey:kSetting_SaveGameEquippedShip] containsObject:kXPD909]){
+            currentDefenseShipLevelSelection = 2;
+            [currentEquippedShipType setString:kXPD909];
+        }
+    }
+    if([[settings objectForKey:kSetting_SaveGameUnlockedShips] containsObject:kXPD924]){
+        highestAchievedDefenseLevel = 3;
+        if([[settings objectForKey:kSetting_SaveGameEquippedShip] containsObject:kXPD924]){
+            currentDefenseShipLevelSelection = 3;
+            [currentEquippedShipType setString:kXPD924];
+        }
+    }
+    if([[settings objectForKey:kSetting_SaveGameUnlockedShips] containsObject:kXPD945]){
+        highestAchievedDefenseLevel = 4;
+        if([[settings objectForKey:kSetting_SaveGameEquippedShip] containsObject:kXPD945]){
+            currentDefenseShipLevelSelection = 4;
+            [currentEquippedShipType setString:kXPD945];
+        }
+    }
+    if([[settings objectForKey:kSetting_SaveGameUnlockedShips] containsObject:kXPD968]){
+        highestAchievedDefenseLevel = 5;
+        if([[settings objectForKey:kSetting_SaveGameEquippedShip] containsObject:kXPD968]){
+            currentDefenseShipLevelSelection = 5;
+            [currentEquippedShipType setString:kXPD968];
+        }
     }
     
     NSLog(@"Current Equipped: %@ lvl %d", currentEquippedWeapon, currentEquippedWeaponLevel);
@@ -657,6 +796,35 @@
                 currentSceneState = kSceneState_ship_upgrades;
             }
             
+            if (CGRectContainsPoint(CGRectMake(87.0f, 279.0f, 16, 16), location)) {
+                NSLog(@"Previous");
+                currentBaseShipLevelSelection--;
+            }
+            else if (CGRectContainsPoint(CGRectMake(227.0f, 279.0f, 16, 16), location)) {
+                NSLog(@"Next");
+                currentBaseShipLevelSelection++;
+            }
+            currentBaseShipLevelSelection = MAX(1, currentBaseShipLevelSelection);
+            currentBaseShipLevelSelection = MIN(currentBaseShipLevelSelection, 2);
+            
+            if(CGRectContainsPoint(CGRectMake(280.0f - (buyButton.imageWidth/2), 70.0f - (buyButton.imageHeight/2), buyButton.imageWidth, buyButton.imageHeight), location)){
+                //Try to buy
+                if((currentBaseShipLevelSelection - highestAchievedBaseLevel) == 1){
+                    if([[settings objectForKey:kSetting_SaveGameCredits] intValue] >= [self priceOfShip:[self shipTypeFromCategory:kShipTypeBase andLevel:currentBaseShipLevelSelection]]){
+                        //To buy
+                        NSLog(@"Preparing to buy...");
+                        [self buyShip:[self shipTypeFromCategory:kShipTypeBase andLevel:currentBaseShipLevelSelection]];
+                        NSLog(@"Bought! :D");
+                    }
+                }
+            }
+            if(CGRectContainsPoint(CGRectMake(280.0f - (equipButton.imageWidth/2), 30.0f - (equipButton.imageHeight/2), equipButton.imageWidth, equipButton.imageHeight), location)){
+                if(currentBaseShipLevelSelection != [self shipLevelFromType:currentEquippedShipType] && currentBaseShipLevelSelection <= highestAchievedBaseLevel){
+                    //To equip
+                    [self equipWeapon:currentSelectedWeaponType level:currentBulletLevelSelection];
+                }
+            }
+            
             break;
             
         case kSceneState_ship_upgrades_attack_chooser:
@@ -664,6 +832,16 @@
             if(CGRectContainsPoint(CGRectMake(15, 440, backButton.imageWidth, backButton.imageHeight), location)){
                 currentSceneState = kSceneState_ship_upgrades;
             }
+            if (CGRectContainsPoint(CGRectMake(87.0f, 279.0f, 16, 16), location)) {
+                NSLog(@"Previous");
+                currentAttackShipLevelSelection--;
+            }
+            else if (CGRectContainsPoint(CGRectMake(227.0f, 279.0f, 16, 16), location)) {
+                NSLog(@"Next");
+                currentAttackShipLevelSelection++;
+            }
+            currentAttackShipLevelSelection = MAX(1, currentAttackShipLevelSelection);
+            currentAttackShipLevelSelection = MIN(currentAttackShipLevelSelection, 5);
 
             break;
             
@@ -672,6 +850,16 @@
             if(CGRectContainsPoint(CGRectMake(15, 440, backButton.imageWidth, backButton.imageHeight), location)){
                 currentSceneState = kSceneState_ship_upgrades;
             }
+            if (CGRectContainsPoint(CGRectMake(87.0f, 279.0f, 16, 16), location)) {
+                NSLog(@"Previous");
+                currentSpeedShipLevelSelection--;
+            }
+            else if (CGRectContainsPoint(CGRectMake(227.0f, 279.0f, 16, 16), location)) {
+                NSLog(@"Next");
+                currentSpeedShipLevelSelection++;
+            }
+            currentSpeedShipLevelSelection = MAX(1, currentSpeedShipLevelSelection);
+            currentSpeedShipLevelSelection = MIN(currentSpeedShipLevelSelection, 5);
 
             break;
             
@@ -680,6 +868,16 @@
             if(CGRectContainsPoint(CGRectMake(15, 440, backButton.imageWidth, backButton.imageHeight), location)){
                 currentSceneState = kSceneState_ship_upgrades;
             }
+            if (CGRectContainsPoint(CGRectMake(87.0f, 279.0f, 16, 16), location)) {
+                NSLog(@"Previous");
+                currentDefenseShipLevelSelection--;
+            }
+            else if (CGRectContainsPoint(CGRectMake(227.0f, 279.0f, 16, 16), location)) {
+                NSLog(@"Next");
+                currentDefenseShipLevelSelection++;
+            }
+            currentDefenseShipLevelSelection = MAX(1, currentDefenseShipLevelSelection);
+            currentDefenseShipLevelSelection = MIN(currentDefenseShipLevelSelection, 5);
 
             break;
 
@@ -849,6 +1047,7 @@
             case 5:
                 [unlockedWeaponsTempArray addObject:kWeaponBulletLevelFive];
                 playerCredits -= [self priceOfWeapon:kWeaponTypeBullet level:5];
+                wavesWeaponsUnlocked = YES;
                 break;
             case 6:
                 [unlockedWeaponsTempArray addObject:kWeaponBulletLevelSix];
@@ -896,6 +1095,7 @@
             case 5:
                 [unlockedWeaponsTempArray addObject:kWeaponWaveLevelFive];
                 playerCredits -= [self priceOfWeapon:kWeaponTypeWave level:5];
+                missilesWeaponsUnlocked = YES;
                 break;
             case 6:
                 [unlockedWeaponsTempArray addObject:kWeaponWaveLevelSix];
@@ -943,6 +1143,7 @@
             case 5:
                 [unlockedWeaponsTempArray addObject:kWeaponMissileLevelFive];
                 playerCredits -= [self priceOfWeapon:kWeaponTypeMissile level:5];
+                heatseekingWeaponsUnlocked = YES;
                 break;
             case 6:
                 [unlockedWeaponsTempArray addObject:kWeaponMissileLevelSix];
@@ -1114,6 +1315,130 @@
     }
     
     [settings setObject:equippedWeaponTemp forKey:kSetting_SaveGameEquippedWeapon];
+    
+}
+
+- (int)priceOfShip:(NSString *)shipType {
+    if([shipType isEqualToString:kXP750]){
+        return kXP750_Price;
+    }
+    else if([shipType isEqualToString:kXP751]){
+        return kXP751_Price;
+    }
+    else if([shipType isEqualToString:kXPA368]){
+        return kXPA368_Price;
+    }
+    else if([shipType isEqualToString:kXPA600]){
+        return kXPA600_Price;
+    }
+    else if([shipType isEqualToString:kXPA617]){
+        return kXPA617_Price;
+    }
+    else if([shipType isEqualToString:kXPA652]){
+        return kXPA652_Price;
+    }
+    else if([shipType isEqualToString:kXPA679]){
+        return kXPA679_Price;
+    }
+    else if([shipType isEqualToString:kXPS400]){
+        return kXPS400_Price;
+    }
+    else if([shipType isEqualToString:kXPS424]){
+        return kXPS424_Price;
+    }
+    else if([shipType isEqualToString:kXPS447]){
+        return kXPS447_Price;
+    }
+    else if([shipType isEqualToString:kXPS463]){
+        return kXPS463_Price;
+    }
+    else if([shipType isEqualToString:kXPS485]){
+        return kXPS485_Price;
+    }
+    else if([shipType isEqualToString:kXPD900]){
+        return kXPD900_Price;
+    }
+    else if([shipType isEqualToString:kXPD909]){
+        return kXPD909_Price;
+    }
+    else if([shipType isEqualToString:kXPD924]){
+        return kXPD924_Price;
+    }
+    else if([shipType isEqualToString:kXPD945]){
+        return kXPD945_Price;
+    }
+    else if([shipType isEqualToString:kXPD968]){
+        return kXPD968_Price;
+    }
+    
+    return 100000;
+}
+
+- (NSString *)shipTypeFromCategory:(NSString *)shipCat andLevel:(int)shipLevel {
+    if([shipCat isEqualToString:kShipTypeBase] && shipLevel == 1){
+        return kXP750;
+    }
+    else if([shipCat isEqualToString:kShipTypeBase] && shipLevel == 2){
+        return kXP751;
+    }
+    else if([shipCat isEqualToString:kShipTypeAttack] && shipLevel == 1){
+        return kXPA368;
+    }
+    else if([shipCat isEqualToString:kShipTypeAttack] && shipLevel == 2){
+        return kXPA600;
+    }
+    else if([shipCat isEqualToString:kShipTypeAttack] && shipLevel == 3){
+        return kXPA617;
+    }
+    else if([shipCat isEqualToString:kShipTypeAttack] && shipLevel == 4){
+        return kXPA652;
+    }
+    else if([shipCat isEqualToString:kShipTypeAttack] && shipLevel == 5){
+        return kXPA679;
+    }
+    else if([shipCat isEqualToString:kShipTypeSpeed] && shipLevel == 1){
+        return kXPS400;
+    }
+    else if([shipCat isEqualToString:kShipTypeSpeed] && shipLevel == 2){
+        return kXPS424;
+    }
+    else if([shipCat isEqualToString:kShipTypeSpeed] && shipLevel == 3){
+        return kXPS447;
+    }
+    else if([shipCat isEqualToString:kShipTypeSpeed] && shipLevel == 4){
+        return kXPS463;
+    }
+    else if([shipCat isEqualToString:kShipTypeSpeed] && shipLevel == 5){
+        return kXPS485;
+    }
+    else if([shipCat isEqualToString:kShipTypeDefense] && shipLevel == 1){
+        return kXPD900;
+    }
+    else if([shipCat isEqualToString:kShipTypeDefense] && shipLevel == 2){
+        return kXPD909;
+    }
+    else if([shipCat isEqualToString:kShipTypeDefense] && shipLevel == 3){
+        return kXPD924;
+    }
+    else if([shipCat isEqualToString:kShipTypeDefense] && shipLevel == 4){
+        return kXPD945;
+    }
+    else if([shipCat isEqualToString:kShipTypeDefense] && shipLevel == 5){
+        return kXPD968;
+    }
+    
+    return @"nil";
+}
+
+- (int)shipLevelFromType:(NSString *)shipType {
+    
+}
+
+- (void)buyShip:(NSString *)shipType {
+    
+}
+
+- (void)equipShip:(NSString *)shipType {
     
 }
 

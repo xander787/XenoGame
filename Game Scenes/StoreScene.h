@@ -76,19 +76,38 @@ typedef enum _SceneState {
     unsigned int        currentMissileLevelSelection;
     unsigned int        currentHeatseekingLevelSelection;
     
+    NSMutableString     *currentEquippedWeapon;
+    unsigned int        currentEquippedWeaponLevel;
+    NSMutableString     *currentSelectedWeaponType;
+    
+    
+    //Ships data
+    
+    BOOL                speedShipsUnlocked;
+    BOOL                attackShipsUnlocked;
+    BOOL                defenseShipsUnlocked;
+    
     unsigned int        currentBaseShipLevelSelection;
     unsigned int        currentAttackShipLevelSelection;
     unsigned int        currentSpeedShipLevelSelection;
     unsigned int        currentDefenseShipLevelSelection;
     
-    NSMutableString     *currentEquippedWeapon;
-    unsigned int        currentEquippedWeaponLevel;
-    NSMutableString     *currentSelectedWeaponType;
+    unsigned int        highestAchievedBaseLevel;
+    unsigned int        highestAchievedAttackLevel;
+    unsigned int        highestAchievedSpeedLevel;
+    unsigned int        highestAchievedDefenseLevel;
+    
+    NSMutableString     *currentEquippedShipType;
 }
 
 - (int)priceOfCurrentSelectedWeapon;
 - (int)priceOfWeapon:(NSString *)weaponTypeName level:(int)level;
 - (void)buyCurrentWeapon:(NSString *)weaponTypeName level:(int)level;
 - (void)equipWeapon:(NSString *)weaponTypeName level:(int)level;
+- (int)priceOfShip:(NSString *)shipType;
+- (NSString *)shipTypeFromCategory:(NSString *)shipCat andLevel:(int)shipLevel;
+- (int)shipLevelFromType:(NSString *)shipType;
+- (void)buyShip:(NSString *)shipType;
+- (void)equipShip:(NSString *)shipType;
 
 @end

@@ -118,6 +118,29 @@
 #define kXPS463_Price 2700
 #define kXPS485_Price 3750
 
+#define kShipTypeBase @"kShipTypeBase"
+#define kShipTypeAttack @"kShipTypeAttack"
+#define kShipTypeSpeed @"kShipTypeSpeed"
+#define kShipTypeDefense @"kShipTypeDefense"
+#define kXP750 @"kShipXP750"
+#define kXP751 @"kShipXP751"
+#define kXPA368 @"kShipXPA368"
+#define kXPA600 @"kShipXPA600"
+#define kXPA617 @"kShipXPA617"
+#define kXPA652 @"kShipXPA652"
+#define kXPA679 @"kShipXPA679"
+#define kXPD900 @"kShipXPD900"
+#define kXPD909 @"kShipXPD909"
+#define kXPD924 @"kShipXPD924"
+#define kXPD945 @"kShipXPD945"
+#define kXPD968 @"kShipXPD968"
+#define kXPS400 @"kShipXPS400"
+#define kXPS424 @"kShipXPS424"
+#define kXPS447 @"kShipXPS447"
+#define kXPS463 @"kShipXPS463"
+#define kXPS485 @"kShipXPS485"
+
+
 #define kBulletLevelOne_Price 0
 #define kBulletLevelTwo_Price 50
 #define kBulletLevelThree_Price 300

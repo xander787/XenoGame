@@ -144,7 +144,7 @@
         [settingsDB setValue:0 forKey:kSetting_SaveGameScore];
         [settingsDB setValue:@"100.0" forKey:kSetting_SaveGameHealth];
         [settingsDB setValue:NO forKey:kSetting_SaveGameNukeHold];
-        [settingsDB setValue:@"XP750" forKey:kSetting_SaveGameShip];
+        [settingsDB setValue:kXP750 forKey:kSetting_SaveGameShip];
         [settingsDB setValue:kWeaponBulletLevelOne forKey:kSetting_SaveGameWeapon];
         [settingsDB setValue:kWeaponBulletLevelOne forKey:kSetting_SaveGameEquippedWeapon];
         [settingsDB setValue:@"100000" forKey:kSetting_SaveGameCredits];
