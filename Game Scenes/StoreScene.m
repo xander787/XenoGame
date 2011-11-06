@@ -23,7 +23,7 @@
 		_sharedResourceManager = [ResourceManager sharedResourceManager];
 		_sharedSoundManager = [SoundManager sharedSoundManager];
 		
-		_sceneFadeSpeed = 0.5f;
+		_sceneFadeSpeed = 1.5f;
         //		sceneAlpha = 0.0f;
         //		_origin = CGPointMake(0, 0);
         //		[_sharedDirector setGlobalAlpha:sceneAlpha];
@@ -106,6 +106,26 @@
     currentSelectedWeaponType = [[NSMutableString alloc] initWithString:kWeaponTypeBullet];
     
     currentEquippedShipType = [[NSMutableString alloc] init];
+    
+    //Preview files:
+    previewShipImages = [[NSMutableDictionary alloc] init];
+    [previewShipImages setObject:[[[Image alloc] initWithImage:@"XP-750.png" scale:Scale2fOne] autorelease] forKey:kXP750];
+    [previewShipImages setObject:[[[Image alloc] initWithImage:@"XP-751.png" scale:Scale2fOne] autorelease] forKey:kXP751];
+    [previewShipImages setObject:[[[Image alloc] initWithImage:@"XPA-368.png" scale:Scale2fOne] autorelease] forKey:kXPA368];
+    [previewShipImages setObject:[[[Image alloc] initWithImage:@"XPA-600.png" scale:Scale2fOne] autorelease] forKey:kXPA600];
+    [previewShipImages setObject:[[[Image alloc] initWithImage:@"XPA-617.png" scale:Scale2fOne] autorelease] forKey:kXPA617];
+    [previewShipImages setObject:[[[Image alloc] initWithImage:@"XPA-652.png" scale:Scale2fOne] autorelease] forKey:kXPA652];
+    [previewShipImages setObject:[[[Image alloc] initWithImage:@"XPA-679.png" scale:Scale2fOne] autorelease] forKey:kXPA679];
+    [previewShipImages setObject:[[[Image alloc] initWithImage:@"XPS-400.png" scale:Scale2fOne] autorelease] forKey:kXPS400];
+    [previewShipImages setObject:[[[Image alloc] initWithImage:@"XPS-424.png" scale:Scale2fOne] autorelease] forKey:kXPS424];
+    [previewShipImages setObject:[[[Image alloc] initWithImage:@"XPS-447.png" scale:Scale2fOne] autorelease] forKey:kXPS447];
+    [previewShipImages setObject:[[[Image alloc] initWithImage:@"XPS-463.png" scale:Scale2fOne] autorelease] forKey:kXPS463];
+    [previewShipImages setObject:[[[Image alloc] initWithImage:@"XPS-485.png" scale:Scale2fOne] autorelease] forKey:kXPS485];
+    [previewShipImages setObject:[[[Image alloc] initWithImage:@"XPD-900.png" scale:Scale2fOne] autorelease] forKey:kXPD900];
+    [previewShipImages setObject:[[[Image alloc] initWithImage:@"XPD-909.png" scale:Scale2fOne] autorelease] forKey:kXPD909];
+    [previewShipImages setObject:[[[Image alloc] initWithImage:@"XPD-924.png" scale:Scale2fOne] autorelease] forKey:kXPD924];
+    [previewShipImages setObject:[[[Image alloc] initWithImage:@"XPD-945.png" scale:Scale2fOne] autorelease] forKey:kXPD945];
+    [previewShipImages setObject:[[[Image alloc] initWithImage:@"XPD-968.png" scale:Scale2fOne] autorelease] forKey:kXPD968];
 }
 
 - (void)sceneIsBecomingActive {    
@@ -638,45 +658,47 @@
             }
             
             //Bullet
-            if (CGRectContainsPoint(CGRectMake(160.0f-(weaponsMenuBulletsButton.imageWidth/2), 360.0f-(weaponsMenuBulletsButton.imageHeight/2), weaponsMenuBulletsButton.imageWidth, weaponsMenuBulletsButton.imageHeight), location)) {
+            if (CGRectContainsPoint(CGRectMake(160.0f-(weaponsMenuBulletsButton.imageWidth/2), 360.0f-(weaponsMenuBulletsButton.imageHeight/2), weaponsMenuBulletsButton.imageWidth,weaponsMenuBulletsButton.imageHeight), location)) {
                 [currentSelectedWeaponType setString:kWeaponTypeBullet];
             }
-            if (CGRectContainsPoint(CGRectMake(100.0f, 320.0f, 16, 16), location)) {
-                NSLog(@"Previous");
-                currentBulletLevelSelection--;
-            }
-            else if (CGRectContainsPoint(CGRectMake(210.0f, 320.0f, 16, 16), location)) {
-                NSLog(@"Next");
-                currentBulletLevelSelection++;
-            }
-            currentBulletLevelSelection = MAX(1,currentBulletLevelSelection);
-            currentBulletLevelSelection = MIN(currentBulletLevelSelection, 10);
-            
-            if(CGRectContainsPoint(CGRectMake(270.0f - (buyButton.imageWidth/2), 377.0f - (buyButton.imageHeight/2), buyButton.imageWidth, buyButton.imageHeight), location)){
-                //Try to buy
-                if([currentSelectedWeaponType isEqualToString:kWeaponTypeBullet]){
-                    if((currentBulletLevelSelection - highestAchievedBulletLevel) == 1){
-                        if([[settings objectForKey:kSetting_SaveGameCredits] intValue] >= [self priceOfCurrentSelectedWeapon]){
-                            //To buy
-                            if([self priceOfWeapon:kWeaponTypeBullet level:currentBulletLevelSelection] <= [[settings objectForKey:kSetting_SaveGameCredits] intValue]){
-                                NSLog(@"Preparing to buy...");
-                                [self buyCurrentWeapon:kWeaponTypeBullet level:currentBulletLevelSelection];
-                                NSLog(@"Bought! :D");
+            if([currentSelectedWeaponType isEqualToString:kWeaponTypeBullet]){
+                if (CGRectContainsPoint(CGRectMake(100.0f, 320.0f, 16, 16), location)) {
+                    NSLog(@"Previous");
+                    currentBulletLevelSelection--;
+                }
+                else if (CGRectContainsPoint(CGRectMake(210.0f, 320.0f, 16, 16), location)) {
+                    NSLog(@"Next");
+                    currentBulletLevelSelection++;
+                }
+                currentBulletLevelSelection = MAX(1,currentBulletLevelSelection);
+                currentBulletLevelSelection = MIN(currentBulletLevelSelection, 10);
+                
+                if(CGRectContainsPoint(CGRectMake(270.0f - (buyButton.imageWidth/2), 377.0f - (buyButton.imageHeight/2), buyButton.imageWidth, buyButton.imageHeight), location)){
+                    //Try to buy
+                    if([currentSelectedWeaponType isEqualToString:kWeaponTypeBullet]){
+                        if((currentBulletLevelSelection - highestAchievedBulletLevel) == 1){
+                            if([[settings objectForKey:kSetting_SaveGameCredits] intValue] >= [self priceOfCurrentSelectedWeapon]){
+                                //To buy
+                                if([self priceOfWeapon:kWeaponTypeBullet level:currentBulletLevelSelection] <= [[settings objectForKey:kSetting_SaveGameCredits] intValue]){
+                                    NSLog(@"Preparing to buy...");
+                                    [self buyCurrentWeapon:kWeaponTypeBullet level:currentBulletLevelSelection];
+                                    NSLog(@"Bought! :D");
+                                }
                             }
                         }
                     }
                 }
-            }
-            if(CGRectContainsPoint(CGRectMake(270.0f - (equipButton.imageWidth/2), 343.0f - (equipButton.imageHeight/2), equipButton.imageWidth, equipButton.imageHeight), location)){
-                if(currentBulletLevelSelection <= highestAchievedBulletLevel){
-                    [self equipWeapon:currentSelectedWeaponType level:currentBulletLevelSelection];
+                if(CGRectContainsPoint(CGRectMake(270.0f - (equipButton.imageWidth/2), 343.0f - (equipButton.imageHeight/2), equipButton.imageWidth, equipButton.imageHeight), location)){
+                    if(currentBulletLevelSelection <= highestAchievedBulletLevel){
+                        [self equipWeapon:currentSelectedWeaponType level:currentBulletLevelSelection];
+                    }
                 }
             }
             
-            if (wavesWeaponsUnlocked) {
-                if (CGRectContainsPoint(CGRectMake(160.0f-(weaponsMenuWavesButton.imageWidth/2), 280.0f-(weaponsMenuWavesButton.imageHeight/2), weaponsMenuWavesButton.imageWidth, weaponsMenuWavesButton.imageHeight), location)) {
-                    [currentSelectedWeaponType setString:kWeaponTypeWave];
-                }
+            if (CGRectContainsPoint(CGRectMake(160.0f-(weaponsMenuWavesButton.imageWidth/2), 280.0f-(weaponsMenuWavesButton.imageHeight/2), weaponsMenuWavesButton.imageWidth, weaponsMenuWavesButton.imageHeight), location)) {
+                [currentSelectedWeaponType setString:kWeaponTypeWave];
+            }
+            if (wavesWeaponsUnlocked && [currentSelectedWeaponType isEqualToString:kWeaponTypeWave]) {
                 if (CGRectContainsPoint(CGRectMake(100.0f, 240.0f, 16, 16), location)) {
                     NSLog(@"Previous");
                     currentWaveLevelSelection--;
@@ -708,10 +730,10 @@
                 }
             }
             
-            if (missilesWeaponsUnlocked) {
-                if (CGRectContainsPoint(CGRectMake(160.0f-(weaponsMenuMissilesButton.imageWidth/2), 200.0f-(weaponsMenuMissilesButton.imageHeight/2), weaponsMenuMissilesButton.imageWidth, weaponsMenuMissilesButton.imageHeight), location)) {
-                    [currentSelectedWeaponType setString:kWeaponTypeMissile];
-                }
+            if (CGRectContainsPoint(CGRectMake(160.0f-(weaponsMenuMissilesButton.imageWidth/2), 200.0f-(weaponsMenuMissilesButton.imageHeight/2), weaponsMenuMissilesButton.imageWidth, weaponsMenuMissilesButton.imageHeight), location)) {
+                [currentSelectedWeaponType setString:kWeaponTypeMissile];
+            }
+            if (missilesWeaponsUnlocked && [currentSelectedWeaponType isEqualToString:kWeaponTypeMissile]) {
                 if (CGRectContainsPoint(CGRectMake(100.0f, 155.0f, 16, 16), location)) {
                     NSLog(@"Previous");
                     currentMissileLevelSelection--;
@@ -741,12 +763,12 @@
                         [self equipWeapon:currentSelectedWeaponType level:currentMissileLevelSelection];
                     }
                 }
+            }            
+             
+            if (CGRectContainsPoint(CGRectMake(160.0f-(weaponsMenuHeatseekingButton.imageWidth/2), 120.0f-(weaponsMenuHeatseekingButton.imageHeight/2), weaponsMenuHeatseekingButton.imageWidth, weaponsMenuHeatseekingButton.imageHeight), location)) {
+                [currentSelectedWeaponType setString:kWeaponTypeHeatseeking];
             }
-            
-            if (heatseekingWeaponsUnlocked) {
-                if (CGRectContainsPoint(CGRectMake(160.0f-(weaponsMenuHeatseekingButton.imageWidth/2), 120.0f-(weaponsMenuHeatseekingButton.imageHeight/2), weaponsMenuHeatseekingButton.imageWidth, weaponsMenuHeatseekingButton.imageHeight), location)) {
-                    [currentSelectedWeaponType setString:kWeaponTypeHeatseeking];
-                }
+            if (heatseekingWeaponsUnlocked && [currentSelectedWeaponType isEqualToString:kWeaponTypeHeatseeking]) {
                 if (CGRectContainsPoint(CGRectMake(100.0f, 75.0f, 16, 16), location)) {
                     NSLog(@"Previous");
                     currentHeatseekingLevelSelection--;
@@ -1636,7 +1658,13 @@
             [generalMenuWeaponsButton renderAtPoint:CGPointMake(160.0f, 300.0f) centerOfImage:YES];
             [font setScale:0.5];
             [font drawStringAt:CGPointMake(75.0f, 250.0f) text:@"Health: XXXc"];
-            [font drawStringAt:CGPointMake(75.0f, 200.0f) text:@"Shield: XXXc"];
+            [font drawStringAt:CGPointMake(75.0f, 210.0f) text:@"Shield: XXXc"];
+            [font drawStringAt:CGPointMake(75.0f, 170.0f) text:[NSString stringWithFormat:@"Ship: %@", [self displayStringForShip:currentEquippedShipType]]];
+            if([[currentEquippedWeapon substringFromIndex:11] isEqualToString:@"Heatseeking"]){
+                [font drawStringAt:CGPointMake(75.0f, 130.0f) text:@"Wpn: Heat"];
+            }
+            else [font drawStringAt:CGPointMake(75.0f, 130.0f) text:[NSString stringWithFormat:@"Wpn: %@", [currentEquippedWeapon substringFromIndex:11]]];
+            [font drawStringAt:CGPointMake(75.0f, 90.0f) text:[NSString stringWithFormat:@"Lvl: %d", currentEquippedWeaponLevel]];
             [font setScale:0.7];
             
             break;
@@ -1667,6 +1695,8 @@
             [font drawStringAt:CGPointMake(20.0f, 120.0f) text:@"DEF:"];
             
             [font setScale:0.7];
+            
+            [[previewShipImages objectForKey:[self shipTypeFromCategory:kShipTypeBase andLevel:currentBaseShipLevelSelection]] renderAtPoint:CGPointMake(160.0f, 370.0f) centerOfImage:YES];
             
 //            [equipButton renderAtPoint:CGPointMake(280.0f, 70.0f) centerOfImage:YES];
 //            [buyButton renderAtPoint:CGPointMake(280.0f, 30.0f) centerOfImage:YES];
@@ -1716,6 +1746,8 @@
             [font drawStringAt:CGPointMake(20.0f, 180.0f) text:@"ATK:"];
             [font drawStringAt:CGPointMake(20.0f, 150.0f) text:@"SPD:"];
             [font drawStringAt:CGPointMake(20.0f, 120.0f) text:@"DEF:"];
+
+            [[previewShipImages objectForKey:[self shipTypeFromCategory:kShipTypeAttack andLevel:currentAttackShipLevelSelection]] renderAtPoint:CGPointMake(160.0f, 370.0f) centerOfImage:YES];
             
             [font setScale:0.7];
             
@@ -1767,6 +1799,8 @@
             [font drawStringAt:CGPointMake(20.0f, 180.0f) text:@"ATK:"];
             [font drawStringAt:CGPointMake(20.0f, 150.0f) text:@"SPD:"];
             [font drawStringAt:CGPointMake(20.0f, 120.0f) text:@"DEF:"];
+            
+            [[previewShipImages objectForKey:[self shipTypeFromCategory:kShipTypeSpeed andLevel:currentSpeedShipLevelSelection]] renderAtPoint:CGPointMake(160.0f, 370.0f) centerOfImage:YES];
             
             [font setScale:0.7];
             
@@ -1820,6 +1854,8 @@
             [font drawStringAt:CGPointMake(20.0f, 150.0f) text:@"SPD:"];
             [font drawStringAt:CGPointMake(20.0f, 120.0f) text:@"DEF:"];
             
+            [[previewShipImages objectForKey:[self shipTypeFromCategory:kShipTypeDefense andLevel:currentDefenseShipLevelSelection]] renderAtPoint:CGPointMake(160.0f, 370.0f) centerOfImage:YES];
+            
             [font setScale:0.7];
             
 //            [equipButton renderAtPoint:CGPointMake(280.0f, 70.0f) centerOfImage:YES];
@@ -1869,11 +1905,11 @@
             else {
                 [weaponsMenuBulletsButton renderAtPoint:CGPointMake(160.0f, 360.0f) centerOfImage:YES];
             }
-            if(currentBulletLevelSelection > 1){
+            if(currentBulletLevelSelection > 1 && [currentSelectedWeaponType isEqualToString:kWeaponTypeBullet]){
                 [previousButton renderAtPoint:CGPointMake(105.0f, 325.0f) centerOfImage:YES];
             }
             [font drawStringAt:CGPointMake(120.0, 340.0f) text:[NSString stringWithFormat:@"Level: %d", currentBulletLevelSelection]];
-            if(currentBulletLevelSelection < 10){
+            if(currentBulletLevelSelection < 10 && [currentSelectedWeaponType isEqualToString:kWeaponTypeBullet]){
                 [nextButton renderAtPoint:CGPointMake(220.0f, 325.0f) centerOfImage:YES];
             }
             
@@ -1885,11 +1921,11 @@
                     [weaponsMenuWavesButton renderAtPoint:CGPointMake(160.0f, 280.0f) centerOfImage:YES];
                 }
                 
-                if(currentWaveLevelSelection > 1){
+                if(currentWaveLevelSelection > 1 && [currentSelectedWeaponType isEqualToString:kWeaponTypeWave]){
                     [previousButton renderAtPoint:CGPointMake(105.0f, 245.0f) centerOfImage:YES];
                 }
                 [font drawStringAt:CGPointMake(120.0, 260.0f) text:[NSString stringWithFormat:@"Level: %d", currentWaveLevelSelection]];
-                if(currentWaveLevelSelection < 10){
+                if(currentWaveLevelSelection < 10 && [currentSelectedWeaponType isEqualToString:kWeaponTypeWave]){
                     [nextButton renderAtPoint:CGPointMake(220.0f, 245.0f) centerOfImage:YES];
                 }
             } else {
@@ -1904,11 +1940,11 @@
                     [weaponsMenuMissilesButton renderAtPoint:CGPointMake(160.0f, 200.0f) centerOfImage:YES];
                 }
                 
-                if(currentMissileLevelSelection > 1){
+                if(currentMissileLevelSelection > 1 && [currentSelectedWeaponType isEqualToString:kWeaponTypeMissile]){
                     [previousButton renderAtPoint:CGPointMake(105.0f, 165.0f) centerOfImage:YES];
                 }
                 [font drawStringAt:CGPointMake(120.0, 180.0f) text:[NSString stringWithFormat:@"Level: %d", currentMissileLevelSelection]];
-                if(currentMissileLevelSelection < 10){
+                if(currentMissileLevelSelection < 10 && [currentSelectedWeaponType isEqualToString:kWeaponTypeMissile]){
                     [nextButton renderAtPoint:CGPointMake(220.0f, 165.0f) centerOfImage:YES];
                 }
             } else {
@@ -1924,11 +1960,11 @@
                     [weaponsMenuHeatseekingButton renderAtPoint:CGPointMake(160.0f, 120.0f) centerOfImage:YES];
                 }
                 
-                if(currentHeatseekingLevelSelection > 1){
+                if(currentHeatseekingLevelSelection > 1 && [currentSelectedWeaponType isEqualToString:kWeaponTypeHeatseeking]){
                     [previousButton renderAtPoint:CGPointMake(105.0f, 85.0f) centerOfImage:YES];
                 }
                 [font drawStringAt:CGPointMake(120.0, 100.0f) text:[NSString stringWithFormat:@"Level: %d", currentHeatseekingLevelSelection]];
-                if(currentHeatseekingLevelSelection < 10){
+                if(currentHeatseekingLevelSelection < 10 && [currentSelectedWeaponType isEqualToString:kWeaponTypeHeatseeking]){
                     [nextButton renderAtPoint:CGPointMake(220.0f, 85.0f) centerOfImage:YES];
                 }
             } else {

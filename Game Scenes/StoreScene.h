@@ -59,6 +59,8 @@ typedef enum _SceneState {
     Image               *equippedButton;
     Image               *boughtButton;
     
+    NSMutableDictionary *previewShipImages;
+    
     
     // Weapons scene data
     

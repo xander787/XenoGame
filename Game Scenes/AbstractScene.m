@@ -47,4 +47,8 @@
     [super dealloc];
 }
 
+- (void)sceneIsBecomingActive {
+    
+}
+
 @end
