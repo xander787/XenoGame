@@ -44,7 +44,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(ResourceManager);
     Texture2D *_cachedTexture;
     
     // If we can find a texture with the supplied key then return it.
-    if(_cachedTexture = [_cachedTextures objectForKey:aTextureName]) {
+    if((_cachedTexture = [_cachedTextures objectForKey:aTextureName])) {
         //if(DEBUG) NSLog(@"INFO - Resource Manager: A cached texture was found with the key '%@'.", aTextureName);
         return _cachedTexture;
     }

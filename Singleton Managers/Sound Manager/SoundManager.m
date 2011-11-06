@@ -317,7 +317,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(SoundManager);
 
 	NSString *path = [musicLibrary objectForKey:aTrackName];
 	if (!path) {
-		NSLog(@"WARNING - SoundManager: Track '%@' does not exist in the music library and cannot be added to the play list.");
+		NSLog(@"WARNING - SoundManager: Track '%@' does not exist in the music library and cannot be added to the play list.", aTrackName);
 		return;
 	}
 
@@ -520,7 +520,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(SoundManager);
 	
 	// If the backgroundMusicPlayer object is nil then there was an error
 	if(!musicPlayer) {
-		NSLog(@"ERROR - SoundManager: Could not play music for key '%d'", error);
+		NSLog(@"ERROR - SoundManager: Could not play music for key '%@'", error);
 		return;
 	}
 	
@@ -750,7 +750,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(SoundManager);
         // Set the audio session state to true and report any errors
 		[audioSession setActive:YES error:&audioSessionError];
 		if (audioSessionError) {
-            NSLog(@"ERROR - SoundManager: Unable to set the audio session state to YES with error %d.", result);
+            NSLog(@"ERROR - SoundManager: Unable to set the audio session state to YES with error %ld.", result);
             return;
         }
 		

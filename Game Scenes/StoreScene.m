@@ -831,7 +831,7 @@
                 }
             }
             if(CGRectContainsPoint(CGRectMake(280.0f - (equipButton.imageWidth/2), 70.0f - (equipButton.imageHeight/2), equipButton.imageWidth, equipButton.imageHeight), location)){
-                if(currentBaseShipLevelSelection != [self shipLevelFromType:currentEquippedShipType] && currentBaseShipLevelSelection <= highestAchievedBaseLevel){
+                if(currentBaseShipLevelSelection <= highestAchievedBaseLevel){
                     //To equip
                     [self equipShip:[self shipTypeFromCategory:kShipTypeBase andLevel:currentBaseShipLevelSelection]];
                 }
@@ -867,7 +867,7 @@
                 }
             }
             if(CGRectContainsPoint(CGRectMake(280.0f - (equipButton.imageWidth/2), 70.0f - (equipButton.imageHeight/2), equipButton.imageWidth, equipButton.imageHeight), location)){
-                if(currentAttackShipLevelSelection != [self shipLevelFromType:currentEquippedShipType] && currentAttackShipLevelSelection <= highestAchievedAttackLevel){
+                if(currentAttackShipLevelSelection <= highestAchievedAttackLevel){
                     //To equip
                     [self equipShip:[self shipTypeFromCategory:kShipTypeAttack andLevel:currentAttackShipLevelSelection]];
                 }
@@ -903,7 +903,7 @@
                 }
             }
             if(CGRectContainsPoint(CGRectMake(280.0f - (equipButton.imageWidth/2), 70.0f - (equipButton.imageHeight/2), equipButton.imageWidth, equipButton.imageHeight), location)){
-                if(currentSpeedShipLevelSelection != [self shipLevelFromType:currentEquippedShipType] && currentSpeedShipLevelSelection <= highestAchievedSpeedLevel){
+                if(currentSpeedShipLevelSelection <= highestAchievedSpeedLevel){
                     //To equip
                     [self equipShip:[self shipTypeFromCategory:kShipTypeSpeed andLevel:currentSpeedShipLevelSelection]];
                 }
@@ -939,7 +939,7 @@
                 }
             }
             if(CGRectContainsPoint(CGRectMake(280.0f - (equipButton.imageWidth/2), 70.0f - (equipButton.imageHeight/2), equipButton.imageWidth, equipButton.imageHeight), location)){
-                if(currentDefenseShipLevelSelection != [self shipLevelFromType:currentEquippedShipType] && currentDefenseShipLevelSelection <= highestAchievedDefenseLevel){
+                if(currentDefenseShipLevelSelection <= highestAchievedDefenseLevel){
                     //To equip
                     [self equipShip:[self shipTypeFromCategory:kShipTypeDefense andLevel:currentDefenseShipLevelSelection]];
                 }
@@ -1693,6 +1693,12 @@
             [font drawStringAt:CGPointMake(20.0f, 180.0f) text:@"ATK:"];
             [font drawStringAt:CGPointMake(20.0f, 150.0f) text:@"SPD:"];
             [font drawStringAt:CGPointMake(20.0f, 120.0f) text:@"DEF:"];
+            if(currentBaseShipLevelSelection > highestAchievedBaseLevel){
+                [font drawStringAt:CGPointMake(20.0f, 90.0f) text:[NSString stringWithFormat:@"Cost: %dc", [self priceOfShip:[self shipTypeFromCategory:kShipTypeBase andLevel:currentBaseShipLevelSelection]]]];
+            }
+            else {
+                [font drawStringAt:CGPointMake(20.0f, 90.0f) text:@"Cost: Bought"];
+            }
             
             [font setScale:0.7];
             
@@ -1746,6 +1752,12 @@
             [font drawStringAt:CGPointMake(20.0f, 180.0f) text:@"ATK:"];
             [font drawStringAt:CGPointMake(20.0f, 150.0f) text:@"SPD:"];
             [font drawStringAt:CGPointMake(20.0f, 120.0f) text:@"DEF:"];
+            if(currentAttackShipLevelSelection > highestAchievedAttackLevel){
+                [font drawStringAt:CGPointMake(20.0f, 90.0f) text:[NSString stringWithFormat:@"Cost: %dc", [self priceOfShip:[self shipTypeFromCategory:kShipTypeAttack andLevel:currentAttackShipLevelSelection]]]];
+            }
+            else {
+                [font drawStringAt:CGPointMake(20.0f, 90.0f) text:@"Cost: Bought"];
+            }
 
             [[previewShipImages objectForKey:[self shipTypeFromCategory:kShipTypeAttack andLevel:currentAttackShipLevelSelection]] renderAtPoint:CGPointMake(160.0f, 370.0f) centerOfImage:YES];
             
@@ -1799,6 +1811,12 @@
             [font drawStringAt:CGPointMake(20.0f, 180.0f) text:@"ATK:"];
             [font drawStringAt:CGPointMake(20.0f, 150.0f) text:@"SPD:"];
             [font drawStringAt:CGPointMake(20.0f, 120.0f) text:@"DEF:"];
+            if(currentSpeedShipLevelSelection > highestAchievedSpeedLevel){
+                [font drawStringAt:CGPointMake(20.0f, 90.0f) text:[NSString stringWithFormat:@"Cost: %dc", [self priceOfShip:[self shipTypeFromCategory:kShipTypeSpeed andLevel:currentSpeedShipLevelSelection]]]];
+            }
+            else {
+                [font drawStringAt:CGPointMake(20.0f, 90.0f) text:@"Cost: Bought"];
+            }
             
             [[previewShipImages objectForKey:[self shipTypeFromCategory:kShipTypeSpeed andLevel:currentSpeedShipLevelSelection]] renderAtPoint:CGPointMake(160.0f, 370.0f) centerOfImage:YES];
             
@@ -1853,6 +1871,12 @@
             [font drawStringAt:CGPointMake(20.0f, 180.0f) text:@"ATK:"];
             [font drawStringAt:CGPointMake(20.0f, 150.0f) text:@"SPD:"];
             [font drawStringAt:CGPointMake(20.0f, 120.0f) text:@"DEF:"];
+            if(currentDefenseShipLevelSelection > highestAchievedDefenseLevel){
+                [font drawStringAt:CGPointMake(20.0f, 90.0f) text:[NSString stringWithFormat:@"Cost: %dc", [self priceOfShip:[self shipTypeFromCategory:kShipTypeDefense andLevel:currentDefenseShipLevelSelection]]]];
+            }
+            else {
+                [font drawStringAt:CGPointMake(20.0f, 90.0f) text:@"Cost: Bought"];
+            }
             
             [[previewShipImages objectForKey:[self shipTypeFromCategory:kShipTypeDefense andLevel:currentDefenseShipLevelSelection]] renderAtPoint:CGPointMake(160.0f, 370.0f) centerOfImage:YES];
             
