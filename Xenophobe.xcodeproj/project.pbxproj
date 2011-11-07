@@ -54,36 +54,9 @@
 		1170ED45127012DD00721CF4 /* XenophobeGameController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1170ED44127012DD00721CF4 /* XenophobeGameController.m */; };
 		11834CDE143155D0001986ED /* game_theme.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 11834CDD143155D0001986ED /* game_theme.mp3 */; };
 		11834CE0143155EB001986ED /* boss_theme.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 11834CDF143155EB001986ED /* boss_theme.mp3 */; };
-		1183E039142D718B0053E777 /* Attack-Ships-Store-Button.png in Resources */ = {isa = PBXBuildFile; fileRef = 1183E02E142D718B0053E777 /* Attack-Ships-Store-Button.png */; };
-		1183E03A142D718B0053E777 /* Base-Ships-Store-Button.png in Resources */ = {isa = PBXBuildFile; fileRef = 1183E02F142D718B0053E777 /* Base-Ships-Store-Button.png */; };
-		1183E03B142D718B0053E777 /* Bullets-Store-Button.png in Resources */ = {isa = PBXBuildFile; fileRef = 1183E030142D718B0053E777 /* Bullets-Store-Button.png */; };
-		1183E03C142D718B0053E777 /* Defense-Ships-Store-Button.png in Resources */ = {isa = PBXBuildFile; fileRef = 1183E031142D718B0053E777 /* Defense-Ships-Store-Button.png */; };
-		1183E03D142D718B0053E777 /* Heatseaking-Store-Button.png in Resources */ = {isa = PBXBuildFile; fileRef = 1183E032142D718B0053E777 /* Heatseaking-Store-Button.png */; };
-		1183E03E142D718B0053E777 /* Heatseeking-Store-Button.png in Resources */ = {isa = PBXBuildFile; fileRef = 1183E033142D718B0053E777 /* Heatseeking-Store-Button.png */; };
-		1183E03F142D718B0053E777 /* Missiles-Store-Button.png in Resources */ = {isa = PBXBuildFile; fileRef = 1183E034142D718B0053E777 /* Missiles-Store-Button.png */; };
-		1183E040142D718B0053E777 /* Ships-Store-Button.png in Resources */ = {isa = PBXBuildFile; fileRef = 1183E035142D718B0053E777 /* Ships-Store-Button.png */; };
-		1183E041142D718B0053E777 /* Speed-Ships-Store-Button.png in Resources */ = {isa = PBXBuildFile; fileRef = 1183E036142D718B0053E777 /* Speed-Ships-Store-Button.png */; };
-		1183E042142D718B0053E777 /* Waves-Store-Button.png in Resources */ = {isa = PBXBuildFile; fileRef = 1183E037142D718B0053E777 /* Waves-Store-Button.png */; };
-		1183E043142D718B0053E777 /* Weapons-Store-Button.png in Resources */ = {isa = PBXBuildFile; fileRef = 1183E038142D718B0053E777 /* Weapons-Store-Button.png */; };
-		1183E04A142D7AF70053E777 /* Bought.png in Resources */ = {isa = PBXBuildFile; fileRef = 1183E044142D7AF70053E777 /* Bought.png */; };
-		1183E04B142D7AF70053E777 /* Buy-Disabled.png in Resources */ = {isa = PBXBuildFile; fileRef = 1183E045142D7AF70053E777 /* Buy-Disabled.png */; };
-		1183E04C142D7AF70053E777 /* Buy.png in Resources */ = {isa = PBXBuildFile; fileRef = 1183E046142D7AF70053E777 /* Buy.png */; };
-		1183E04D142D7AF70053E777 /* Equip-Disabled.png in Resources */ = {isa = PBXBuildFile; fileRef = 1183E047142D7AF70053E777 /* Equip-Disabled.png */; };
-		1183E04E142D7AF70053E777 /* Equip.png in Resources */ = {isa = PBXBuildFile; fileRef = 1183E048142D7AF70053E777 /* Equip.png */; };
-		1183E04F142D7AF70053E777 /* Equipped.png in Resources */ = {isa = PBXBuildFile; fileRef = 1183E049142D7AF70053E777 /* Equipped.png */; };
 		1183E051142D89670053E777 /* CreditLarge.png in Resources */ = {isa = PBXBuildFile; fileRef = 1183E050142D89670053E777 /* CreditLarge.png */; };
 		1183E053142E8AD30053E777 /* nextbutton.png in Resources */ = {isa = PBXBuildFile; fileRef = 1183E052142E8AD30053E777 /* nextbutton.png */; };
 		1183E055142E8C090053E777 /* previousbutton.png in Resources */ = {isa = PBXBuildFile; fileRef = 1183E054142E8C090053E777 /* previousbutton.png */; };
-		1183E060142EBDED0053E777 /* Attack-Ships-Store-Button-Gray.png in Resources */ = {isa = PBXBuildFile; fileRef = 1183E056142EBDEC0053E777 /* Attack-Ships-Store-Button-Gray.png */; };
-		1183E061142EBDED0053E777 /* Base-Ships-Store-Button-Gray.png in Resources */ = {isa = PBXBuildFile; fileRef = 1183E057142EBDEC0053E777 /* Base-Ships-Store-Button-Gray.png */; };
-		1183E062142EBDED0053E777 /* Bullets-Store-Button-Gray.png in Resources */ = {isa = PBXBuildFile; fileRef = 1183E058142EBDEC0053E777 /* Bullets-Store-Button-Gray.png */; };
-		1183E063142EBDED0053E777 /* Defense-Ships-Store-Button-Gray.png in Resources */ = {isa = PBXBuildFile; fileRef = 1183E059142EBDEC0053E777 /* Defense-Ships-Store-Button-Gray.png */; };
-		1183E064142EBDED0053E777 /* Heatseeking-Store-Button-Gray.png in Resources */ = {isa = PBXBuildFile; fileRef = 1183E05A142EBDED0053E777 /* Heatseeking-Store-Button-Gray.png */; };
-		1183E065142EBDED0053E777 /* Missiles-Store-Button-Gray.png in Resources */ = {isa = PBXBuildFile; fileRef = 1183E05B142EBDED0053E777 /* Missiles-Store-Button-Gray.png */; };
-		1183E066142EBDED0053E777 /* Ships-Store-Button-Gray.png in Resources */ = {isa = PBXBuildFile; fileRef = 1183E05C142EBDED0053E777 /* Ships-Store-Button-Gray.png */; };
-		1183E067142EBDED0053E777 /* Speed-Ships-Store-Button-Gray.png in Resources */ = {isa = PBXBuildFile; fileRef = 1183E05D142EBDED0053E777 /* Speed-Ships-Store-Button-Gray.png */; };
-		1183E068142EBDED0053E777 /* Waves-Store-Button-Gray.png in Resources */ = {isa = PBXBuildFile; fileRef = 1183E05E142EBDED0053E777 /* Waves-Store-Button-Gray.png */; };
-		1183E069142EBDED0053E777 /* Weapons-Store-Button-Gray.png in Resources */ = {isa = PBXBuildFile; fileRef = 1183E05F142EBDED0053E777 /* Weapons-Store-Button-Gray.png */; };
 		118436D71403706C00BA6779 /* kBossEosFloaterOne.png in Resources */ = {isa = PBXBuildFile; fileRef = 118436D01403706C00BA6779 /* kBossEosFloaterOne.png */; };
 		118436D81403706C00BA6779 /* kBossEosFloaterTwo.png in Resources */ = {isa = PBXBuildFile; fileRef = 118436D11403706C00BA6779 /* kBossEosFloaterTwo.png */; };
 		118436D91403706C00BA6779 /* kBossEosMainBody.png in Resources */ = {isa = PBXBuildFile; fileRef = 118436D21403706C00BA6779 /* kBossEosMainBody.png */; };
@@ -176,16 +149,6 @@
 		11D325171273BF7900F01BB5 /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 11D325161273BF7900F01BB5 /* libsqlite3.0.dylib */; };
 		11D72CCD13557E7500C6C99A /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 11D72CCC13557E7500C6C99A /* libz.dylib */; };
 		11DE0F2A12CE6A9500A3F7CA /* devship.png in Resources */ = {isa = PBXBuildFile; fileRef = 11DE0F2912CE6A9500A3F7CA /* devship.png */; };
-		11E98338142EE6C9003655E1 /* Attack-Ships-Store-Button-Green.png in Resources */ = {isa = PBXBuildFile; fileRef = 11E9832E142EE6C9003655E1 /* Attack-Ships-Store-Button-Green.png */; };
-		11E98339142EE6C9003655E1 /* Base-Ships-Store-Button-Green.png in Resources */ = {isa = PBXBuildFile; fileRef = 11E9832F142EE6C9003655E1 /* Base-Ships-Store-Button-Green.png */; };
-		11E9833A142EE6C9003655E1 /* Bullets-Store-Button-Green.png in Resources */ = {isa = PBXBuildFile; fileRef = 11E98330142EE6C9003655E1 /* Bullets-Store-Button-Green.png */; };
-		11E9833B142EE6C9003655E1 /* Defense-Ships-Store-Button-Green.png in Resources */ = {isa = PBXBuildFile; fileRef = 11E98331142EE6C9003655E1 /* Defense-Ships-Store-Button-Green.png */; };
-		11E9833C142EE6C9003655E1 /* Heatseeking-Store-Button-Green.png in Resources */ = {isa = PBXBuildFile; fileRef = 11E98332142EE6C9003655E1 /* Heatseeking-Store-Button-Green.png */; };
-		11E9833D142EE6C9003655E1 /* Missiles-Store-Button-Green.png in Resources */ = {isa = PBXBuildFile; fileRef = 11E98333142EE6C9003655E1 /* Missiles-Store-Button-Green.png */; };
-		11E9833E142EE6C9003655E1 /* Ships-Store-Button-Green.png in Resources */ = {isa = PBXBuildFile; fileRef = 11E98334142EE6C9003655E1 /* Ships-Store-Button-Green.png */; };
-		11E9833F142EE6C9003655E1 /* Speed-Ships-Store-Button-Green.png in Resources */ = {isa = PBXBuildFile; fileRef = 11E98335142EE6C9003655E1 /* Speed-Ships-Store-Button-Green.png */; };
-		11E98340142EE6C9003655E1 /* Waves-Store-Button-Green.png in Resources */ = {isa = PBXBuildFile; fileRef = 11E98336142EE6C9003655E1 /* Waves-Store-Button-Green.png */; };
-		11E98341142EE6C9003655E1 /* Weapons-Store-Button-Green.png in Resources */ = {isa = PBXBuildFile; fileRef = 11E98337142EE6C9003655E1 /* Weapons-Store-Button-Green.png */; };
 		11F3275712A0D8D5003CF17B /* about.png in Resources */ = {isa = PBXBuildFile; fileRef = 11F3274312A0D8D5003CF17B /* about.png */; };
 		11F3275812A0D8D5003CF17B /* backbutton.png in Resources */ = {isa = PBXBuildFile; fileRef = 11F3274412A0D8D5003CF17B /* backbutton.png */; };
 		11F3275912A0D8D5003CF17B /* continue.png in Resources */ = {isa = PBXBuildFile; fileRef = 11F3274512A0D8D5003CF17B /* continue.png */; };
@@ -211,6 +174,34 @@
 		28FD14FE0DC6FC130079059D /* EAGLView.m in Sources */ = {isa = PBXBuildFile; fileRef = 28FD14FD0DC6FC130079059D /* EAGLView.m */; };
 		28FD15000DC6FC520079059D /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28FD14FF0DC6FC520079059D /* OpenGLES.framework */; };
 		28FD15080DC6FC5B0079059D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28FD15070DC6FC5B0079059D /* QuartzCore.framework */; };
+		B907754914677DB40081B245 /* Buy-Bought.png in Resources */ = {isa = PBXBuildFile; fileRef = B907752A14677DB40081B245 /* Buy-Bought.png */; };
+		B907754A14677DB40081B245 /* Buy-Disabled.png in Resources */ = {isa = PBXBuildFile; fileRef = B907752B14677DB40081B245 /* Buy-Disabled.png */; };
+		B907754B14677DB40081B245 /* Buy.png in Resources */ = {isa = PBXBuildFile; fileRef = B907752C14677DB40081B245 /* Buy.png */; };
+		B907754E14677DB40081B245 /* Bullet-Disabled.png in Resources */ = {isa = PBXBuildFile; fileRef = B907753014677DB40081B245 /* Bullet-Disabled.png */; };
+		B907755014677DB40081B245 /* Heatseeking-Disabled.png in Resources */ = {isa = PBXBuildFile; fileRef = B907753214677DB40081B245 /* Heatseeking-Disabled.png */; };
+		B907755114677DB40081B245 /* Missile-Disabled.png in Resources */ = {isa = PBXBuildFile; fileRef = B907753314677DB40081B245 /* Missile-Disabled.png */; };
+		B907755314677DB40081B245 /* Wave-Disabled.png in Resources */ = {isa = PBXBuildFile; fileRef = B907753514677DB40081B245 /* Wave-Disabled.png */; };
+		B907755414677DB40081B245 /* Equip-Disabled.png in Resources */ = {isa = PBXBuildFile; fileRef = B907753614677DB40081B245 /* Equip-Disabled.png */; };
+		B907755514677DB40081B245 /* Equip.png in Resources */ = {isa = PBXBuildFile; fileRef = B907753714677DB40081B245 /* Equip.png */; };
+		B907755614677DB40081B245 /* Bullet-Equipped.png in Resources */ = {isa = PBXBuildFile; fileRef = B907753914677DB40081B245 /* Bullet-Equipped.png */; };
+		B907755714677DB40081B245 /* Heatseeking-Equipped.png in Resources */ = {isa = PBXBuildFile; fileRef = B907753A14677DB40081B245 /* Heatseeking-Equipped.png */; };
+		B907755814677DB40081B245 /* Missile-Equipped.png in Resources */ = {isa = PBXBuildFile; fileRef = B907753B14677DB40081B245 /* Missile-Equipped.png */; };
+		B907755914677DB40081B245 /* Wave-Equipped.png in Resources */ = {isa = PBXBuildFile; fileRef = B907753C14677DB40081B245 /* Wave-Equipped.png */; };
+		B907755A14677DB40081B245 /* Equipped.png in Resources */ = {isa = PBXBuildFile; fileRef = B907753D14677DB40081B245 /* Equipped.png */; };
+		B907755B14677DB40081B245 /* Attack.png in Resources */ = {isa = PBXBuildFile; fileRef = B907753F14677DB40081B245 /* Attack.png */; };
+		B907755C14677DB40081B245 /* Base.png in Resources */ = {isa = PBXBuildFile; fileRef = B907754014677DB40081B245 /* Base.png */; };
+		B907755D14677DB40081B245 /* Bullet.png in Resources */ = {isa = PBXBuildFile; fileRef = B907754114677DB40081B245 /* Bullet.png */; };
+		B907755E14677DB40081B245 /* Defense.png in Resources */ = {isa = PBXBuildFile; fileRef = B907754214677DB40081B245 /* Defense.png */; };
+		B907755F14677DB40081B245 /* Heatseeking.png in Resources */ = {isa = PBXBuildFile; fileRef = B907754314677DB40081B245 /* Heatseeking.png */; };
+		B907756014677DB40081B245 /* Missile.png in Resources */ = {isa = PBXBuildFile; fileRef = B907754414677DB40081B245 /* Missile.png */; };
+		B907756114677DB40081B245 /* Ships.png in Resources */ = {isa = PBXBuildFile; fileRef = B907754514677DB40081B245 /* Ships.png */; };
+		B907756214677DB40081B245 /* Speed.png in Resources */ = {isa = PBXBuildFile; fileRef = B907754614677DB40081B245 /* Speed.png */; };
+		B907756314677DB40081B245 /* Wave.png in Resources */ = {isa = PBXBuildFile; fileRef = B907754714677DB40081B245 /* Wave.png */; };
+		B907756414677DB40081B245 /* Weapons.png in Resources */ = {isa = PBXBuildFile; fileRef = B907754814677DB40081B245 /* Weapons.png */; };
+		B90775691467801A0081B245 /* Attack-Disabled.png in Resources */ = {isa = PBXBuildFile; fileRef = B90775651467801A0081B245 /* Attack-Disabled.png */; };
+		B907756A1467801A0081B245 /* Base-Disabled.png in Resources */ = {isa = PBXBuildFile; fileRef = B90775661467801A0081B245 /* Base-Disabled.png */; };
+		B907756B1467801A0081B245 /* Defense-Disabled.png in Resources */ = {isa = PBXBuildFile; fileRef = B90775671467801A0081B245 /* Defense-Disabled.png */; };
+		B907756C1467801A0081B245 /* Speed-Disabled.png in Resources */ = {isa = PBXBuildFile; fileRef = B90775681467801A0081B245 /* Speed-Disabled.png */; };
 		B946CCCF1460C77600C82CF4 /* kEnemyOneShotLevelFive.png in Resources */ = {isa = PBXBuildFile; fileRef = B946CCCA1460C77600C82CF4 /* kEnemyOneShotLevelFive.png */; };
 		B946CCD01460C77600C82CF4 /* kEnemyOneShotLevelFour.png in Resources */ = {isa = PBXBuildFile; fileRef = B946CCCB1460C77600C82CF4 /* kEnemyOneShotLevelFour.png */; };
 		B946CCD11460C77600C82CF4 /* kEnemyOneShotLevelSix.png in Resources */ = {isa = PBXBuildFile; fileRef = B946CCCC1460C77600C82CF4 /* kEnemyOneShotLevelSix.png */; };
@@ -401,36 +392,9 @@
 		1170ED44127012DD00721CF4 /* XenophobeGameController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XenophobeGameController.m; sourceTree = "<group>"; };
 		11834CDD143155D0001986ED /* game_theme.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = game_theme.mp3; sourceTree = "<group>"; };
 		11834CDF143155EB001986ED /* boss_theme.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = boss_theme.mp3; sourceTree = "<group>"; };
-		1183E02E142D718B0053E777 /* Attack-Ships-Store-Button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Attack-Ships-Store-Button.png"; sourceTree = "<group>"; };
-		1183E02F142D718B0053E777 /* Base-Ships-Store-Button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Base-Ships-Store-Button.png"; sourceTree = "<group>"; };
-		1183E030142D718B0053E777 /* Bullets-Store-Button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Bullets-Store-Button.png"; sourceTree = "<group>"; };
-		1183E031142D718B0053E777 /* Defense-Ships-Store-Button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Defense-Ships-Store-Button.png"; sourceTree = "<group>"; };
-		1183E032142D718B0053E777 /* Heatseaking-Store-Button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Heatseaking-Store-Button.png"; sourceTree = "<group>"; };
-		1183E033142D718B0053E777 /* Heatseeking-Store-Button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Heatseeking-Store-Button.png"; sourceTree = "<group>"; };
-		1183E034142D718B0053E777 /* Missiles-Store-Button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Missiles-Store-Button.png"; sourceTree = "<group>"; };
-		1183E035142D718B0053E777 /* Ships-Store-Button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Ships-Store-Button.png"; sourceTree = "<group>"; };
-		1183E036142D718B0053E777 /* Speed-Ships-Store-Button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Speed-Ships-Store-Button.png"; sourceTree = "<group>"; };
-		1183E037142D718B0053E777 /* Waves-Store-Button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Waves-Store-Button.png"; sourceTree = "<group>"; };
-		1183E038142D718B0053E777 /* Weapons-Store-Button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Weapons-Store-Button.png"; sourceTree = "<group>"; };
-		1183E044142D7AF70053E777 /* Bought.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Bought.png; sourceTree = "<group>"; };
-		1183E045142D7AF70053E777 /* Buy-Disabled.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Buy-Disabled.png"; sourceTree = "<group>"; };
-		1183E046142D7AF70053E777 /* Buy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Buy.png; sourceTree = "<group>"; };
-		1183E047142D7AF70053E777 /* Equip-Disabled.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Equip-Disabled.png"; sourceTree = "<group>"; };
-		1183E048142D7AF70053E777 /* Equip.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Equip.png; sourceTree = "<group>"; };
-		1183E049142D7AF70053E777 /* Equipped.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Equipped.png; sourceTree = "<group>"; };
 		1183E050142D89670053E777 /* CreditLarge.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CreditLarge.png; sourceTree = "<group>"; };
 		1183E052142E8AD30053E777 /* nextbutton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nextbutton.png; sourceTree = "<group>"; };
 		1183E054142E8C090053E777 /* previousbutton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = previousbutton.png; sourceTree = "<group>"; };
-		1183E056142EBDEC0053E777 /* Attack-Ships-Store-Button-Gray.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Attack-Ships-Store-Button-Gray.png"; sourceTree = "<group>"; };
-		1183E057142EBDEC0053E777 /* Base-Ships-Store-Button-Gray.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Base-Ships-Store-Button-Gray.png"; sourceTree = "<group>"; };
-		1183E058142EBDEC0053E777 /* Bullets-Store-Button-Gray.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Bullets-Store-Button-Gray.png"; sourceTree = "<group>"; };
-		1183E059142EBDEC0053E777 /* Defense-Ships-Store-Button-Gray.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Defense-Ships-Store-Button-Gray.png"; sourceTree = "<group>"; };
-		1183E05A142EBDED0053E777 /* Heatseeking-Store-Button-Gray.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Heatseeking-Store-Button-Gray.png"; sourceTree = "<group>"; };
-		1183E05B142EBDED0053E777 /* Missiles-Store-Button-Gray.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Missiles-Store-Button-Gray.png"; sourceTree = "<group>"; };
-		1183E05C142EBDED0053E777 /* Ships-Store-Button-Gray.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Ships-Store-Button-Gray.png"; sourceTree = "<group>"; };
-		1183E05D142EBDED0053E777 /* Speed-Ships-Store-Button-Gray.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Speed-Ships-Store-Button-Gray.png"; sourceTree = "<group>"; };
-		1183E05E142EBDED0053E777 /* Waves-Store-Button-Gray.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Waves-Store-Button-Gray.png"; sourceTree = "<group>"; };
-		1183E05F142EBDED0053E777 /* Weapons-Store-Button-Gray.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Weapons-Store-Button-Gray.png"; sourceTree = "<group>"; };
 		118436D01403706C00BA6779 /* kBossEosFloaterOne.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = kBossEosFloaterOne.png; sourceTree = "<group>"; };
 		118436D11403706C00BA6779 /* kBossEosFloaterTwo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = kBossEosFloaterTwo.png; sourceTree = "<group>"; };
 		118436D21403706C00BA6779 /* kBossEosMainBody.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = kBossEosMainBody.png; sourceTree = "<group>"; };
@@ -568,16 +532,6 @@
 		11D325201273C14E00F01BB5 /* PreferencesManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PreferencesManager.h; path = "Singleton Managers/PreferencesManager.h"; sourceTree = "<group>"; };
 		11D72CCC13557E7500C6C99A /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		11DE0F2912CE6A9500A3F7CA /* devship.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = devship.png; path = "Game Resources/Images/Normal/Ships/Player Ships/devship.png"; sourceTree = SOURCE_ROOT; };
-		11E9832E142EE6C9003655E1 /* Attack-Ships-Store-Button-Green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Attack-Ships-Store-Button-Green.png"; sourceTree = "<group>"; };
-		11E9832F142EE6C9003655E1 /* Base-Ships-Store-Button-Green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Base-Ships-Store-Button-Green.png"; sourceTree = "<group>"; };
-		11E98330142EE6C9003655E1 /* Bullets-Store-Button-Green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Bullets-Store-Button-Green.png"; sourceTree = "<group>"; };
-		11E98331142EE6C9003655E1 /* Defense-Ships-Store-Button-Green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Defense-Ships-Store-Button-Green.png"; sourceTree = "<group>"; };
-		11E98332142EE6C9003655E1 /* Heatseeking-Store-Button-Green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Heatseeking-Store-Button-Green.png"; sourceTree = "<group>"; };
-		11E98333142EE6C9003655E1 /* Missiles-Store-Button-Green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Missiles-Store-Button-Green.png"; sourceTree = "<group>"; };
-		11E98334142EE6C9003655E1 /* Ships-Store-Button-Green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Ships-Store-Button-Green.png"; sourceTree = "<group>"; };
-		11E98335142EE6C9003655E1 /* Speed-Ships-Store-Button-Green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Speed-Ships-Store-Button-Green.png"; sourceTree = "<group>"; };
-		11E98336142EE6C9003655E1 /* Waves-Store-Button-Green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Waves-Store-Button-Green.png"; sourceTree = "<group>"; };
-		11E98337142EE6C9003655E1 /* Weapons-Store-Button-Green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Weapons-Store-Button-Green.png"; sourceTree = "<group>"; };
 		11F3274312A0D8D5003CF17B /* about.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = about.png; sourceTree = "<group>"; };
 		11F3274412A0D8D5003CF17B /* backbutton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = backbutton.png; sourceTree = "<group>"; };
 		11F3274512A0D8D5003CF17B /* continue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = continue.png; sourceTree = "<group>"; };
@@ -606,6 +560,34 @@
 		28FD14FD0DC6FC130079059D /* EAGLView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EAGLView.m; sourceTree = "<group>"; };
 		28FD14FF0DC6FC520079059D /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		28FD15070DC6FC5B0079059D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		B907752A14677DB40081B245 /* Buy-Bought.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Buy-Bought.png"; path = "Buttons/Buy-Bought.png"; sourceTree = "<group>"; };
+		B907752B14677DB40081B245 /* Buy-Disabled.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Buy-Disabled.png"; path = "Buttons/Buy-Disabled.png"; sourceTree = "<group>"; };
+		B907752C14677DB40081B245 /* Buy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Buy.png; path = Buttons/Buy.png; sourceTree = "<group>"; };
+		B907753014677DB40081B245 /* Bullet-Disabled.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Bullet-Disabled.png"; sourceTree = "<group>"; };
+		B907753214677DB40081B245 /* Heatseeking-Disabled.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Heatseeking-Disabled.png"; sourceTree = "<group>"; };
+		B907753314677DB40081B245 /* Missile-Disabled.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Missile-Disabled.png"; sourceTree = "<group>"; };
+		B907753514677DB40081B245 /* Wave-Disabled.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Wave-Disabled.png"; sourceTree = "<group>"; };
+		B907753614677DB40081B245 /* Equip-Disabled.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Equip-Disabled.png"; path = "Buttons/Equip-Disabled.png"; sourceTree = "<group>"; };
+		B907753714677DB40081B245 /* Equip.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Equip.png; path = Buttons/Equip.png; sourceTree = "<group>"; };
+		B907753914677DB40081B245 /* Bullet-Equipped.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Bullet-Equipped.png"; sourceTree = "<group>"; };
+		B907753A14677DB40081B245 /* Heatseeking-Equipped.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Heatseeking-Equipped.png"; sourceTree = "<group>"; };
+		B907753B14677DB40081B245 /* Missile-Equipped.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Missile-Equipped.png"; sourceTree = "<group>"; };
+		B907753C14677DB40081B245 /* Wave-Equipped.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Wave-Equipped.png"; sourceTree = "<group>"; };
+		B907753D14677DB40081B245 /* Equipped.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Equipped.png; path = Buttons/Equipped.png; sourceTree = "<group>"; };
+		B907753F14677DB40081B245 /* Attack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Attack.png; sourceTree = "<group>"; };
+		B907754014677DB40081B245 /* Base.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Base.png; sourceTree = "<group>"; };
+		B907754114677DB40081B245 /* Bullet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Bullet.png; sourceTree = "<group>"; };
+		B907754214677DB40081B245 /* Defense.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Defense.png; sourceTree = "<group>"; };
+		B907754314677DB40081B245 /* Heatseeking.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Heatseeking.png; sourceTree = "<group>"; };
+		B907754414677DB40081B245 /* Missile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Missile.png; sourceTree = "<group>"; };
+		B907754514677DB40081B245 /* Ships.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Ships.png; sourceTree = "<group>"; };
+		B907754614677DB40081B245 /* Speed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Speed.png; sourceTree = "<group>"; };
+		B907754714677DB40081B245 /* Wave.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Wave.png; sourceTree = "<group>"; };
+		B907754814677DB40081B245 /* Weapons.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Weapons.png; sourceTree = "<group>"; };
+		B90775651467801A0081B245 /* Attack-Disabled.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Attack-Disabled.png"; sourceTree = "<group>"; };
+		B90775661467801A0081B245 /* Base-Disabled.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Base-Disabled.png"; sourceTree = "<group>"; };
+		B90775671467801A0081B245 /* Defense-Disabled.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Defense-Disabled.png"; sourceTree = "<group>"; };
+		B90775681467801A0081B245 /* Speed-Disabled.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Speed-Disabled.png"; sourceTree = "<group>"; };
 		B946CCCA1460C77600C82CF4 /* kEnemyOneShotLevelFive.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = kEnemyOneShotLevelFive.png; path = "Game Resources/Images/Normal/Ships/Enemy Ships/kEnemyOneShotLevelFive.png"; sourceTree = SOURCE_ROOT; };
 		B946CCCB1460C77600C82CF4 /* kEnemyOneShotLevelFour.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = kEnemyOneShotLevelFour.png; path = "Game Resources/Images/Normal/Ships/Enemy Ships/kEnemyOneShotLevelFour.png"; sourceTree = SOURCE_ROOT; };
 		B946CCCC1460C77600C82CF4 /* kEnemyOneShotLevelSix.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = kEnemyOneShotLevelSix.png; path = "Game Resources/Images/Normal/Ships/Enemy Ships/kEnemyOneShotLevelSix.png"; sourceTree = SOURCE_ROOT; };
@@ -1290,46 +1272,10 @@
 		11F3274212A0D8D5003CF17B /* Application Resources */ = {
 			isa = PBXGroup;
 			children = (
+				B907752914677D220081B245 /* Buttons */,
 				1183E054142E8C090053E777 /* previousbutton.png */,
 				1183E052142E8AD30053E777 /* nextbutton.png */,
 				1183E050142D89670053E777 /* CreditLarge.png */,
-				1183E044142D7AF70053E777 /* Bought.png */,
-				1183E045142D7AF70053E777 /* Buy-Disabled.png */,
-				1183E046142D7AF70053E777 /* Buy.png */,
-				1183E047142D7AF70053E777 /* Equip-Disabled.png */,
-				1183E048142D7AF70053E777 /* Equip.png */,
-				1183E049142D7AF70053E777 /* Equipped.png */,
-				1183E02E142D718B0053E777 /* Attack-Ships-Store-Button.png */,
-				1183E02F142D718B0053E777 /* Base-Ships-Store-Button.png */,
-				1183E030142D718B0053E777 /* Bullets-Store-Button.png */,
-				1183E031142D718B0053E777 /* Defense-Ships-Store-Button.png */,
-				1183E032142D718B0053E777 /* Heatseaking-Store-Button.png */,
-				1183E033142D718B0053E777 /* Heatseeking-Store-Button.png */,
-				1183E034142D718B0053E777 /* Missiles-Store-Button.png */,
-				1183E035142D718B0053E777 /* Ships-Store-Button.png */,
-				1183E036142D718B0053E777 /* Speed-Ships-Store-Button.png */,
-				1183E037142D718B0053E777 /* Waves-Store-Button.png */,
-				1183E038142D718B0053E777 /* Weapons-Store-Button.png */,
-				1183E056142EBDEC0053E777 /* Attack-Ships-Store-Button-Gray.png */,
-				1183E057142EBDEC0053E777 /* Base-Ships-Store-Button-Gray.png */,
-				1183E058142EBDEC0053E777 /* Bullets-Store-Button-Gray.png */,
-				1183E059142EBDEC0053E777 /* Defense-Ships-Store-Button-Gray.png */,
-				1183E05A142EBDED0053E777 /* Heatseeking-Store-Button-Gray.png */,
-				1183E05B142EBDED0053E777 /* Missiles-Store-Button-Gray.png */,
-				1183E05C142EBDED0053E777 /* Ships-Store-Button-Gray.png */,
-				1183E05D142EBDED0053E777 /* Speed-Ships-Store-Button-Gray.png */,
-				1183E05E142EBDED0053E777 /* Waves-Store-Button-Gray.png */,
-				1183E05F142EBDED0053E777 /* Weapons-Store-Button-Gray.png */,
-				11E9832E142EE6C9003655E1 /* Attack-Ships-Store-Button-Green.png */,
-				11E9832F142EE6C9003655E1 /* Base-Ships-Store-Button-Green.png */,
-				11E98330142EE6C9003655E1 /* Bullets-Store-Button-Green.png */,
-				11E98331142EE6C9003655E1 /* Defense-Ships-Store-Button-Green.png */,
-				11E98332142EE6C9003655E1 /* Heatseeking-Store-Button-Green.png */,
-				11E98333142EE6C9003655E1 /* Missiles-Store-Button-Green.png */,
-				11E98334142EE6C9003655E1 /* Ships-Store-Button-Green.png */,
-				11E98335142EE6C9003655E1 /* Speed-Ships-Store-Button-Green.png */,
-				11E98336142EE6C9003655E1 /* Waves-Store-Button-Green.png */,
-				11E98337142EE6C9003655E1 /* Weapons-Store-Button-Green.png */,
 				B98A706313F6059C00773281 /* BossHealthBar.png */,
 				B98A705D13F324F300773281 /* texture-missile.png */,
 				B9AFC0A213E23BAC00E4570A /* ClearAllSavedDataButton.png */,
@@ -1452,6 +1398,68 @@
 				1170E3AB12865A18000BF968 /* CoreMotion.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B907752914677D220081B245 /* Buttons */ = {
+			isa = PBXGroup;
+			children = (
+				B907752A14677DB40081B245 /* Buy-Bought.png */,
+				B907752B14677DB40081B245 /* Buy-Disabled.png */,
+				B907752C14677DB40081B245 /* Buy.png */,
+				B907752D14677DB40081B245 /* Disabled */,
+				B907753614677DB40081B245 /* Equip-Disabled.png */,
+				B907753714677DB40081B245 /* Equip.png */,
+				B907753814677DB40081B245 /* Equipped */,
+				B907753D14677DB40081B245 /* Equipped.png */,
+				B907753E14677DB40081B245 /* Regular */,
+			);
+			name = Buttons;
+			sourceTree = "<group>";
+		};
+		B907752D14677DB40081B245 /* Disabled */ = {
+			isa = PBXGroup;
+			children = (
+				B90775651467801A0081B245 /* Attack-Disabled.png */,
+				B90775661467801A0081B245 /* Base-Disabled.png */,
+				B90775671467801A0081B245 /* Defense-Disabled.png */,
+				B90775681467801A0081B245 /* Speed-Disabled.png */,
+				B907753014677DB40081B245 /* Bullet-Disabled.png */,
+				B907753214677DB40081B245 /* Heatseeking-Disabled.png */,
+				B907753314677DB40081B245 /* Missile-Disabled.png */,
+				B907753514677DB40081B245 /* Wave-Disabled.png */,
+			);
+			name = Disabled;
+			path = Buttons/Disabled;
+			sourceTree = "<group>";
+		};
+		B907753814677DB40081B245 /* Equipped */ = {
+			isa = PBXGroup;
+			children = (
+				B907753914677DB40081B245 /* Bullet-Equipped.png */,
+				B907753A14677DB40081B245 /* Heatseeking-Equipped.png */,
+				B907753B14677DB40081B245 /* Missile-Equipped.png */,
+				B907753C14677DB40081B245 /* Wave-Equipped.png */,
+			);
+			name = Equipped;
+			path = Buttons/Equipped;
+			sourceTree = "<group>";
+		};
+		B907753E14677DB40081B245 /* Regular */ = {
+			isa = PBXGroup;
+			children = (
+				B907753F14677DB40081B245 /* Attack.png */,
+				B907754014677DB40081B245 /* Base.png */,
+				B907754114677DB40081B245 /* Bullet.png */,
+				B907754214677DB40081B245 /* Defense.png */,
+				B907754314677DB40081B245 /* Heatseeking.png */,
+				B907754414677DB40081B245 /* Missile.png */,
+				B907754514677DB40081B245 /* Ships.png */,
+				B907754614677DB40081B245 /* Speed.png */,
+				B907754714677DB40081B245 /* Wave.png */,
+				B907754814677DB40081B245 /* Weapons.png */,
+			);
+			name = Regular;
+			path = Buttons/Regular;
 			sourceTree = "<group>";
 		};
 		B97013C612BC3BF0000369D9 /* Projectiles */ = {
@@ -1811,46 +1819,9 @@
 				B9B03E9E1425AD5A00DE7C0E /* kMiniBossSevenThreeFloat2.png in Resources */,
 				B9B03E9F1425AD5A00DE7C0E /* kMiniBossSevenThreeFloat3.png in Resources */,
 				B9B03EA01425AD5A00DE7C0E /* kMiniBossSevenThreeMainBody.png in Resources */,
-				1183E039142D718B0053E777 /* Attack-Ships-Store-Button.png in Resources */,
-				1183E03A142D718B0053E777 /* Base-Ships-Store-Button.png in Resources */,
-				1183E03B142D718B0053E777 /* Bullets-Store-Button.png in Resources */,
-				1183E03C142D718B0053E777 /* Defense-Ships-Store-Button.png in Resources */,
-				1183E03D142D718B0053E777 /* Heatseaking-Store-Button.png in Resources */,
-				1183E03E142D718B0053E777 /* Heatseeking-Store-Button.png in Resources */,
-				1183E03F142D718B0053E777 /* Missiles-Store-Button.png in Resources */,
-				1183E040142D718B0053E777 /* Ships-Store-Button.png in Resources */,
-				1183E041142D718B0053E777 /* Speed-Ships-Store-Button.png in Resources */,
-				1183E042142D718B0053E777 /* Waves-Store-Button.png in Resources */,
-				1183E043142D718B0053E777 /* Weapons-Store-Button.png in Resources */,
-				1183E04A142D7AF70053E777 /* Bought.png in Resources */,
-				1183E04B142D7AF70053E777 /* Buy-Disabled.png in Resources */,
-				1183E04C142D7AF70053E777 /* Buy.png in Resources */,
-				1183E04D142D7AF70053E777 /* Equip-Disabled.png in Resources */,
-				1183E04E142D7AF70053E777 /* Equip.png in Resources */,
-				1183E04F142D7AF70053E777 /* Equipped.png in Resources */,
 				1183E051142D89670053E777 /* CreditLarge.png in Resources */,
 				1183E053142E8AD30053E777 /* nextbutton.png in Resources */,
 				1183E055142E8C090053E777 /* previousbutton.png in Resources */,
-				1183E060142EBDED0053E777 /* Attack-Ships-Store-Button-Gray.png in Resources */,
-				1183E061142EBDED0053E777 /* Base-Ships-Store-Button-Gray.png in Resources */,
-				1183E062142EBDED0053E777 /* Bullets-Store-Button-Gray.png in Resources */,
-				1183E063142EBDED0053E777 /* Defense-Ships-Store-Button-Gray.png in Resources */,
-				1183E064142EBDED0053E777 /* Heatseeking-Store-Button-Gray.png in Resources */,
-				1183E065142EBDED0053E777 /* Missiles-Store-Button-Gray.png in Resources */,
-				1183E066142EBDED0053E777 /* Ships-Store-Button-Gray.png in Resources */,
-				1183E067142EBDED0053E777 /* Speed-Ships-Store-Button-Gray.png in Resources */,
-				1183E068142EBDED0053E777 /* Waves-Store-Button-Gray.png in Resources */,
-				1183E069142EBDED0053E777 /* Weapons-Store-Button-Gray.png in Resources */,
-				11E98338142EE6C9003655E1 /* Attack-Ships-Store-Button-Green.png in Resources */,
-				11E98339142EE6C9003655E1 /* Base-Ships-Store-Button-Green.png in Resources */,
-				11E9833A142EE6C9003655E1 /* Bullets-Store-Button-Green.png in Resources */,
-				11E9833B142EE6C9003655E1 /* Defense-Ships-Store-Button-Green.png in Resources */,
-				11E9833C142EE6C9003655E1 /* Heatseeking-Store-Button-Green.png in Resources */,
-				11E9833D142EE6C9003655E1 /* Missiles-Store-Button-Green.png in Resources */,
-				11E9833E142EE6C9003655E1 /* Ships-Store-Button-Green.png in Resources */,
-				11E9833F142EE6C9003655E1 /* Speed-Ships-Store-Button-Green.png in Resources */,
-				11E98340142EE6C9003655E1 /* Waves-Store-Button-Green.png in Resources */,
-				11E98341142EE6C9003655E1 /* Weapons-Store-Button-Green.png in Resources */,
 				11834CDE143155D0001986ED /* game_theme.mp3 in Resources */,
 				11834CE0143155EB001986ED /* boss_theme.mp3 in Resources */,
 				B946CCCF1460C77600C82CF4 /* kEnemyOneShotLevelFive.png in Resources */,
@@ -1875,6 +1846,34 @@
 				B9BC136614665A3100C8EA05 /* XPS-447.png in Resources */,
 				B9BC136714665A3100C8EA05 /* XPS-463.png in Resources */,
 				B9BC136814665A3100C8EA05 /* XPS-485.png in Resources */,
+				B907754914677DB40081B245 /* Buy-Bought.png in Resources */,
+				B907754A14677DB40081B245 /* Buy-Disabled.png in Resources */,
+				B907754B14677DB40081B245 /* Buy.png in Resources */,
+				B907754E14677DB40081B245 /* Bullet-Disabled.png in Resources */,
+				B907755014677DB40081B245 /* Heatseeking-Disabled.png in Resources */,
+				B907755114677DB40081B245 /* Missile-Disabled.png in Resources */,
+				B907755314677DB40081B245 /* Wave-Disabled.png in Resources */,
+				B907755414677DB40081B245 /* Equip-Disabled.png in Resources */,
+				B907755514677DB40081B245 /* Equip.png in Resources */,
+				B907755614677DB40081B245 /* Bullet-Equipped.png in Resources */,
+				B907755714677DB40081B245 /* Heatseeking-Equipped.png in Resources */,
+				B907755814677DB40081B245 /* Missile-Equipped.png in Resources */,
+				B907755914677DB40081B245 /* Wave-Equipped.png in Resources */,
+				B907755A14677DB40081B245 /* Equipped.png in Resources */,
+				B907755B14677DB40081B245 /* Attack.png in Resources */,
+				B907755C14677DB40081B245 /* Base.png in Resources */,
+				B907755D14677DB40081B245 /* Bullet.png in Resources */,
+				B907755E14677DB40081B245 /* Defense.png in Resources */,
+				B907755F14677DB40081B245 /* Heatseeking.png in Resources */,
+				B907756014677DB40081B245 /* Missile.png in Resources */,
+				B907756114677DB40081B245 /* Ships.png in Resources */,
+				B907756214677DB40081B245 /* Speed.png in Resources */,
+				B907756314677DB40081B245 /* Wave.png in Resources */,
+				B907756414677DB40081B245 /* Weapons.png in Resources */,
+				B90775691467801A0081B245 /* Attack-Disabled.png in Resources */,
+				B907756A1467801A0081B245 /* Base-Disabled.png in Resources */,
+				B907756B1467801A0081B245 /* Defense-Disabled.png in Resources */,
+				B907756C1467801A0081B245 /* Speed-Disabled.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

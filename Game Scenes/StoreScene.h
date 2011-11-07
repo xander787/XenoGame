@@ -32,9 +32,13 @@ typedef enum _SceneState {
     Image               *creditsIcon;
     
     Image               *shipsMenuBaseButton;
+    Image               *shipsMenuBaseButtonDisabled;
     Image               *shipsMenuAttackButton;
+    Image               *shipsMenuAttackButtonDisabled;
     Image               *shipsMenuSpeedButton;
+    Image               *shipsMenuSpeedButtonDisabled;
     Image               *shipsMenuDefenseButton;
+    Image               *shipsMenuDefenseButtonDisabled;
     
     Image               *weaponsMenuBulletsButton;
     Image               *weaponsMenuWavesButton;

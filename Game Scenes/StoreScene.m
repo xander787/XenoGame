@@ -65,27 +65,31 @@
     
     creditsIcon = [[Image alloc] initWithImage:@"Credit.png" scale:Scale2fOne];
     backButton = [[Image alloc] initWithImage:@"backbutton.png" scale:Scale2fOne];
-    generalMenuShipsButton = [[Image alloc] initWithImage:@"Ships-Store-Button.png" scale:Scale2fOne];
-    generalMenuWeaponsButton = [[Image alloc] initWithImage:@"Weapons-Store-Button.png" scale:Scale2fOne];
+    generalMenuShipsButton = [[Image alloc] initWithImage:@"Ships.png" scale:Scale2fOne];
+    generalMenuWeaponsButton = [[Image alloc] initWithImage:@"Weapons.png" scale:Scale2fOne];
 
-    shipsMenuBaseButton = [[Image alloc] initWithImage:@"Base-Ships-Store-Button.png" scale:Scale2fOne];
-    shipsMenuAttackButton = [[Image alloc] initWithImage:@"Attack-Ships-Store-Button.png" scale:Scale2fOne];
-    shipsMenuSpeedButton = [[Image alloc] initWithImage:@"Speed-Ships-Store-Button.png" scale:Scale2fOne];
-    shipsMenuDefenseButton = [[Image alloc] initWithImage:@"Defense-Ships-Store-Button.png" scale:Scale2fOne];
+    shipsMenuBaseButton = [[Image alloc] initWithImage:@"Base.png" scale:Scale2fOne];
+    shipsMenuAttackButton = [[Image alloc] initWithImage:@"Attack.png" scale:Scale2fOne];
+    shipsMenuSpeedButton = [[Image alloc] initWithImage:@"Speed.png" scale:Scale2fOne];
+    shipsMenuDefenseButton = [[Image alloc] initWithImage:@"Defense.png" scale:Scale2fOne];
     
-    weaponsMenuBulletsButton = [[Image alloc] initWithImage:@"Bullets-Store-Button.png" scale:Scale2fOne];
-    weaponsMenuWavesButton = [[Image alloc] initWithImage:@"Waves-Store-Button.png" scale:Scale2fOne];
-    weaponsMenuMissilesButton = [[Image alloc] initWithImage:@"Missiles-Store-Button.png" scale:Scale2fOne];
-    weaponsMenuHeatseekingButton = [[Image alloc] initWithImage:@"Heatseeking-Store-Button.png" scale:Scale2fOne];
+    weaponsMenuBulletsButton = [[Image alloc] initWithImage:@"Bullet.png" scale:Scale2fOne];
+    weaponsMenuWavesButton = [[Image alloc] initWithImage:@"Wave.png" scale:Scale2fOne];
+    weaponsMenuMissilesButton = [[Image alloc] initWithImage:@"Missile.png" scale:Scale2fOne];
+    weaponsMenuHeatseekingButton = [[Image alloc] initWithImage:@"Heatseeking.png" scale:Scale2fOne];
     
-    weaponsMenuBulletsButtonEquipped = [[Image alloc] initWithImage:@"Bullets-Store-Button-Green.png" scale:Scale2fOne];
-    weaponsMenuWavesButtonEquipped = [[Image alloc] initWithImage:@"Waves-Store-Button-Green.png" scale:Scale2fOne];
-    weaponsMenuMissilesButtonEquipped = [[Image alloc] initWithImage:@"Missiles-Store-Button-Green.png" scale:Scale2fOne];
-    weaponsMenuHeatseekingButtonEquipped = [[Image alloc] initWithImage:@"Heatseeking-Store-Button-Green.png" scale:Scale2fOne];
+    weaponsMenuBulletsButtonEquipped = [[Image alloc] initWithImage:@"Bullet-Equipped.png" scale:Scale2fOne];
+    weaponsMenuWavesButtonEquipped = [[Image alloc] initWithImage:@"Wave-Equipped.png" scale:Scale2fOne];
+    weaponsMenuMissilesButtonEquipped = [[Image alloc] initWithImage:@"Missile-Equipped.png" scale:Scale2fOne];
+    weaponsMenuHeatseekingButtonEquipped = [[Image alloc] initWithImage:@"Heatseeking-Equipped.png" scale:Scale2fOne];
     
-    weaponsMenuWavesButtonDisabled = [[Image alloc] initWithImage:@"Waves-Store-Button-Gray.png" scale:Scale2fOne];
-    weaponsMenuMissilesButtonDisabled = [[Image alloc] initWithImage:@"Missiles-Store-Button-Gray.png" scale:Scale2fOne];
-    weaponsMenuHeatseekingButtonDisabled = [[Image alloc] initWithImage:@"Heatseeking-Store-Button-Gray.png" scale:Scale2fOne];
+    weaponsMenuWavesButtonDisabled = [[Image alloc] initWithImage:@"Wave-Disabled.png" scale:Scale2fOne];
+    weaponsMenuMissilesButtonDisabled = [[Image alloc] initWithImage:@"Missile-Disabled.png" scale:Scale2fOne];
+    weaponsMenuHeatseekingButtonDisabled = [[Image alloc] initWithImage:@"Heatseeking-Disabled.png" scale:Scale2fOne];
+    shipsMenuBaseButtonDisabled = [[Image alloc] initWithImage:@"Base-Disabled.png" scale:Scale2fOne];
+    shipsMenuAttackButtonDisabled = [[Image alloc] initWithImage:@"Attack-Disabled.png" scale:Scale2fOne];
+    shipsMenuSpeedButtonDisabled = [[Image alloc] initWithImage:@"Speed-Disabled.png" scale:Scale2fOne];
+    shipsMenuDefenseButtonDisabled = [[Image alloc] initWithImage:@"Defense-Disabled.png" scale:Scale2fOne];
             
     nextButton = [[Image alloc] initWithImage:@"nextbutton.png" scale:Scale2fOne];
     previousButton = [[Image alloc] initWithImage:@"previousbutton.png" scale:Scale2fOne];
@@ -95,7 +99,7 @@
     equipButtonDisabled = [[Image alloc] initWithImage:@"Equip-Disabled.png" scale:Scale2fOne];
     buyButtonDisabled = [[Image alloc] initWithImage:@"Buy-Disabled.png" scale:Scale2fOne];
     equippedButton = [[Image alloc] initWithImage:@"Equipped.png" scale:Scale2fOne];
-    boughtButton = [[Image alloc] initWithImage:@"Bought.png" scale:Scale2fOne];
+    boughtButton = [[Image alloc] initWithImage:@"Buy-Bought.png" scale:Scale2fOne];
     
     currentBulletLevelSelection = 0;
     currentWaveLevelSelection = 0;
@@ -673,7 +677,7 @@
                 currentBulletLevelSelection = MAX(1,currentBulletLevelSelection);
                 currentBulletLevelSelection = MIN(currentBulletLevelSelection, 10);
                 
-                if(CGRectContainsPoint(CGRectMake(270.0f - (buyButton.imageWidth/2), 377.0f - (buyButton.imageHeight/2), buyButton.imageWidth, buyButton.imageHeight), location)){
+                if(CGRectContainsPoint(CGRectMake(286.0f - (buyButton.imageWidth/2), 377.0f - (buyButton.imageHeight/2), buyButton.imageWidth, buyButton.imageHeight), location)){
                     //Try to buy
                     if([currentSelectedWeaponType isEqualToString:kWeaponTypeBullet]){
                         if((currentBulletLevelSelection - highestAchievedBulletLevel) == 1){
@@ -688,7 +692,7 @@
                         }
                     }
                 }
-                if(CGRectContainsPoint(CGRectMake(270.0f - (equipButton.imageWidth/2), 343.0f - (equipButton.imageHeight/2), equipButton.imageWidth, equipButton.imageHeight), location)){
+                if(CGRectContainsPoint(CGRectMake(286.0f - (equipButton.imageWidth/2), 343.0f - (equipButton.imageHeight/2), equipButton.imageWidth, equipButton.imageHeight), location)){
                     if(currentBulletLevelSelection <= highestAchievedBulletLevel){
                         [self equipWeapon:currentSelectedWeaponType level:currentBulletLevelSelection];
                     }
@@ -710,7 +714,7 @@
                 currentWaveLevelSelection = MAX(1,currentWaveLevelSelection);
                 currentWaveLevelSelection = MIN(currentWaveLevelSelection, 10);
                 
-                if(CGRectContainsPoint(CGRectMake(270.0f - (buyButton.imageWidth/2), 297.0f - (buyButton.imageHeight/2), buyButton.imageWidth, buyButton.imageHeight), location)){
+                if(CGRectContainsPoint(CGRectMake(286.0f - (buyButton.imageWidth/2), 297.0f - (buyButton.imageHeight/2), buyButton.imageWidth, buyButton.imageHeight), location)){
                     //Try to buy
                     if([currentSelectedWeaponType isEqualToString:kWeaponTypeWave]){
                         if((currentWaveLevelSelection - highestAchievedWaveLevel) == 1){
@@ -723,7 +727,7 @@
                         }
                     }
                 }
-                if(CGRectContainsPoint(CGRectMake(270.0f - (equipButton.imageWidth/2), 263.0f - (equipButton.imageHeight/2), equipButton.imageWidth, equipButton.imageHeight), location)){
+                if(CGRectContainsPoint(CGRectMake(286.0f - (equipButton.imageWidth/2), 263.0f - (equipButton.imageHeight/2), equipButton.imageWidth, equipButton.imageHeight), location)){
                     if(currentWaveLevelSelection <= highestAchievedWaveLevel){
                         [self equipWeapon:currentSelectedWeaponType level:currentWaveLevelSelection];
                     }
@@ -745,7 +749,7 @@
                 currentMissileLevelSelection = MAX(1,currentMissileLevelSelection);
                 currentMissileLevelSelection = MIN(currentMissileLevelSelection, 10);
                 
-                if(CGRectContainsPoint(CGRectMake(270.0f - (buyButton.imageWidth/2), 217.0f - (buyButton.imageHeight/2), buyButton.imageWidth, buyButton.imageHeight), location)){
+                if(CGRectContainsPoint(CGRectMake(286.0f - (buyButton.imageWidth/2), 217.0f - (buyButton.imageHeight/2), buyButton.imageWidth, buyButton.imageHeight), location)){
                     //Try to buy
                     if([currentSelectedWeaponType isEqualToString:kWeaponTypeMissile]){
                         if((currentMissileLevelSelection - highestAchievedMissileLevel) == 1){
@@ -758,7 +762,7 @@
                         }
                     }
                 }
-                if(CGRectContainsPoint(CGRectMake(270.0f - (equipButton.imageWidth/2), 183.0f - (equipButton.imageHeight/2), equipButton.imageWidth, equipButton.imageHeight), location)){
+                if(CGRectContainsPoint(CGRectMake(286.0f - (equipButton.imageWidth/2), 183.0f - (equipButton.imageHeight/2), equipButton.imageWidth, equipButton.imageHeight), location)){
                     if(currentMissileLevelSelection <= highestAchievedMissileLevel){
                         [self equipWeapon:currentSelectedWeaponType level:currentMissileLevelSelection];
                     }
@@ -780,7 +784,7 @@
                 currentHeatseekingLevelSelection = MAX(1,currentHeatseekingLevelSelection);
                 currentHeatseekingLevelSelection = MIN(currentHeatseekingLevelSelection, 1);
                 
-                if(CGRectContainsPoint(CGRectMake(270.0f - (buyButton.imageWidth/2), 137.0f - (buyButton.imageHeight/2), buyButton.imageWidth, buyButton.imageHeight), location)){
+                if(CGRectContainsPoint(CGRectMake(286.0f - (buyButton.imageWidth/2), 137.0f - (buyButton.imageHeight/2), buyButton.imageWidth, buyButton.imageHeight), location)){
                     //Try to buy
                     if([currentSelectedWeaponType isEqualToString:kWeaponTypeHeatseeking]){
                         if((currentHeatseekingLevelSelection - highestAchievedHeatseekingLevel) == 1){
@@ -793,7 +797,7 @@
                         }
                     }
                 }
-                if(CGRectContainsPoint(CGRectMake(270.0f - (equipButton.imageWidth/2), 103.0f - (equipButton.imageHeight/2), equipButton.imageWidth, equipButton.imageHeight), location)){
+                if(CGRectContainsPoint(CGRectMake(286.0f - (equipButton.imageWidth/2), 103.0f - (equipButton.imageHeight/2), equipButton.imageWidth, equipButton.imageHeight), location)){
                     if(currentHeatseekingLevelSelection <= highestAchievedHeatseekingLevel){
                         [self equipWeapon:currentSelectedWeaponType level:currentHeatseekingLevelSelection];
                     }
@@ -1677,6 +1681,11 @@
                 [shipsMenuSpeedButton renderAtPoint:CGPointMake(160.0f, 200.0f) centerOfImage:YES];
                 [shipsMenuDefenseButton renderAtPoint:CGPointMake(160.0f, 120.0f) centerOfImage:YES];
             }
+            else {
+                [shipsMenuAttackButtonDisabled renderAtPoint:CGPointMake(160.0f, 280.0f) centerOfImage:YES];
+                [shipsMenuSpeedButtonDisabled renderAtPoint:CGPointMake(160.0f, 200.0f) centerOfImage:YES];
+                [shipsMenuDefenseButtonDisabled renderAtPoint:CGPointMake(160.0f, 120.0f) centerOfImage:YES];
+            }
             
             break;
             
@@ -2002,125 +2011,125 @@
                 if((currentBulletLevelSelection - highestAchievedBulletLevel) == 1){
                     if([[settings objectForKey:kSetting_SaveGameCredits] intValue] >= [self priceOfCurrentSelectedWeapon]){
                         //To buy
-                        [buyButton renderAtPoint:CGPointMake(270.0f, 377.0f) centerOfImage:YES];
+                        [buyButton renderAtPoint:CGPointMake(286.0f, 377.0f) centerOfImage:YES];
                     }
                     else {
                         //Unable to buy
-                        [buyButtonDisabled renderAtPoint:CGPointMake(270.0f, 377.0f) centerOfImage:YES];
+                        [buyButtonDisabled renderAtPoint:CGPointMake(286.0f, 377.0f) centerOfImage:YES];
                     }
                 }
                 if(currentBulletLevelSelection <= highestAchievedBulletLevel){
                     //Bought
-                    [boughtButton renderAtPoint:CGPointMake(270.0f, 377.0f) centerOfImage:YES];
+                    [boughtButton renderAtPoint:CGPointMake(286.0f, 377.0f) centerOfImage:YES];
                 }
                 
                 
                 if(currentBulletLevelSelection <= highestAchievedBulletLevel){
                     if(currentEquippedWeaponLevel == currentBulletLevelSelection && [currentEquippedWeapon isEqualToString:kWeaponTypeBullet]){
                         //Equipped
-                        [equippedButton renderAtPoint:CGPointMake(270.0f, 343.0f) centerOfImage:YES];
+                        [equippedButton renderAtPoint:CGPointMake(286.0f, 343.0f) centerOfImage:YES];
                     }
                     else {
                         //To Equip
-                        [equipButton renderAtPoint:CGPointMake(270.0f, 343.0f) centerOfImage:YES];
+                        [equipButton renderAtPoint:CGPointMake(286.0f, 343.0f) centerOfImage:YES];
                     }
                 }
                 else {
                     //Unable to equip
-                    [equipButtonDisabled renderAtPoint:CGPointMake(270.0f, 343.0f) centerOfImage:YES];
+                    [equipButtonDisabled renderAtPoint:CGPointMake(286.0f, 343.0f) centerOfImage:YES];
                 }
             }
             else if([currentSelectedWeaponType isEqualToString:kWeaponTypeWave]){
                 if((currentWaveLevelSelection - highestAchievedWaveLevel) == 1){
                     if([[settings objectForKey:kSetting_SaveGameCredits] intValue] >= [self priceOfCurrentSelectedWeapon]){
                         //To buy
-                        [buyButton renderAtPoint:CGPointMake(270.0f, 297.0f) centerOfImage:YES];
+                        [buyButton renderAtPoint:CGPointMake(286.0f, 297.0f) centerOfImage:YES];
                     }
                     else {
                         //Unable to buy
-                        [buyButtonDisabled renderAtPoint:CGPointMake(270.0f, 297.0f) centerOfImage:YES];
+                        [buyButtonDisabled renderAtPoint:CGPointMake(286.0f, 297.0f) centerOfImage:YES];
                     }
                 }
                 if(currentWaveLevelSelection <= highestAchievedWaveLevel){
                     //Bought
-                    [boughtButton renderAtPoint:CGPointMake(270.0f, 297.0f) centerOfImage:YES];
+                    [boughtButton renderAtPoint:CGPointMake(286.0f, 297.0f) centerOfImage:YES];
                 }
                 
                 if(currentWaveLevelSelection <= highestAchievedWaveLevel){
                     if(currentEquippedWeaponLevel == currentWaveLevelSelection && [currentEquippedWeapon isEqualToString:kWeaponTypeWave]){
                         //Equipped
-                        [equippedButton renderAtPoint:CGPointMake(270.0f, 263.0f) centerOfImage:YES];
+                        [equippedButton renderAtPoint:CGPointMake(286.0f, 263.0f) centerOfImage:YES];
                     }
                     else {
                         //To Equip
-                        [equipButton renderAtPoint:CGPointMake(270.0f, 263.0f) centerOfImage:YES];
+                        [equipButton renderAtPoint:CGPointMake(286.0f, 263.0f) centerOfImage:YES];
                     }
                 }
                 else {
                     //Unable to equip
-                    [equipButtonDisabled renderAtPoint:CGPointMake(270.0f, 263.0f) centerOfImage:YES];
+                    [equipButtonDisabled renderAtPoint:CGPointMake(286.0f, 263.0f) centerOfImage:YES];
                 }
             }
             else if([currentSelectedWeaponType isEqualToString:kWeaponTypeMissile]){
                 if((currentMissileLevelSelection - highestAchievedMissileLevel) == 1){
                     if([[settings objectForKey:kSetting_SaveGameCredits] intValue] >= [self priceOfCurrentSelectedWeapon]){
                         //To buy
-                        [buyButton renderAtPoint:CGPointMake(270.0f, 217.0f) centerOfImage:YES];
+                        [buyButton renderAtPoint:CGPointMake(286.0f, 217.0f) centerOfImage:YES];
                     }
                     else {
                         //Unable to buy
-                        [buyButtonDisabled renderAtPoint:CGPointMake(270.0f, 217.0f) centerOfImage:YES];
+                        [buyButtonDisabled renderAtPoint:CGPointMake(286.0f, 217.0f) centerOfImage:YES];
                     }
                 }
                 if(currentMissileLevelSelection <= highestAchievedMissileLevel){
                     //Bought
-                    [boughtButton renderAtPoint:CGPointMake(270.0f, 217.0f) centerOfImage:YES];
+                    [boughtButton renderAtPoint:CGPointMake(286.0f, 217.0f) centerOfImage:YES];
                 }
                 
                 if(currentMissileLevelSelection <= highestAchievedMissileLevel){
                     if(currentEquippedWeaponLevel == currentMissileLevelSelection && [currentEquippedWeapon isEqualToString:kWeaponTypeMissile]){
                         //Equipped
-                        [equippedButton renderAtPoint:CGPointMake(270.0f, 183.0f) centerOfImage:YES];
+                        [equippedButton renderAtPoint:CGPointMake(286.0f, 183.0f) centerOfImage:YES];
                     }
                     else {
                         //To Equip
-                        [equipButton renderAtPoint:CGPointMake(270.0f, 183.0f) centerOfImage:YES];
+                        [equipButton renderAtPoint:CGPointMake(286.0f, 183.0f) centerOfImage:YES];
                     }
                 }
                 else {
                     //Unable to equip
-                    [equipButtonDisabled renderAtPoint:CGPointMake(270.0f, 183.0f) centerOfImage:YES];
+                    [equipButtonDisabled renderAtPoint:CGPointMake(286.0f, 183.0f) centerOfImage:YES];
                 }
             }
             else if([currentSelectedWeaponType isEqualToString:kWeaponTypeHeatseeking]){
                 if((currentHeatseekingLevelSelection - highestAchievedHeatseekingLevel) == 1){
                     if([[settings objectForKey:kSetting_SaveGameCredits] intValue] >= [self priceOfCurrentSelectedWeapon]){
                         //To buy
-                        [buyButton renderAtPoint:CGPointMake(270.0f, 137.0f) centerOfImage:YES];
+                        [buyButton renderAtPoint:CGPointMake(286.0f, 137.0f) centerOfImage:YES];
                     }
                     else {
                         //Unable to buy
-                        [buyButtonDisabled renderAtPoint:CGPointMake(270.0f, 137.0f) centerOfImage:YES];
+                        [buyButtonDisabled renderAtPoint:CGPointMake(286.0f, 137.0f) centerOfImage:YES];
                     }
                 }
                 if(currentHeatseekingLevelSelection <= highestAchievedHeatseekingLevel){
                     //Bought
-                    [boughtButton renderAtPoint:CGPointMake(270.0f, 137.0f) centerOfImage:YES];
+                    [boughtButton renderAtPoint:CGPointMake(286.0f, 137.0f) centerOfImage:YES];
                 }
                 
                 if(currentHeatseekingLevelSelection <= highestAchievedHeatseekingLevel){
                     if(currentEquippedWeaponLevel == currentHeatseekingLevelSelection && [currentEquippedWeapon isEqualToString:kWeaponTypeHeatseeking]){
                         //Equipped
-                        [equippedButton renderAtPoint:CGPointMake(270.0f, 103.0f) centerOfImage:YES];
+                        [equippedButton renderAtPoint:CGPointMake(286.0f, 103.0f) centerOfImage:YES];
                     }
                     else {
                         //To Equip
-                        [equipButton renderAtPoint:CGPointMake(270.0f, 103.0f) centerOfImage:YES];
+                        [equipButton renderAtPoint:CGPointMake(286.0f, 103.0f) centerOfImage:YES];
                     }
                 }
                 else {
                     //Unable to equip
-                    [equipButtonDisabled renderAtPoint:CGPointMake(270.0f, 103.0f) centerOfImage:YES];
+                    [equipButtonDisabled renderAtPoint:CGPointMake(286.0f, 103.0f) centerOfImage:YES];
                 }
             }
             break;    
