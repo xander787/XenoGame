@@ -71,7 +71,7 @@
 		_sharedResourceManager = [ResourceManager sharedResourceManager];
 		_sharedSoundManager = [SoundManager sharedSoundManager];
 		
-		_sceneFadeSpeed = 0.5f;
+		_sceneFadeSpeed = 1.5f;
 //		sceneAlpha = 0.0f;
 //		_origin = CGPointMake(0, 0);
 //		[_sharedDirector setGlobalAlpha:sceneAlpha];
@@ -261,13 +261,32 @@
             NSLog(@"Yes");
             clearAllDataButtonPushed = NO;
             animateYesNoButtonsReverse = YES;
-            [settingsDB setValue:@"" forKey:kSetting_TwitterCredentials];
-            [settingsDB setBool:YES forKey:kSetting_TactileFeedback];
             [settingsDB setFloat:0.75 forKey:kSetting_SoundVolume];
             [settingsDB setFloat:0.50 forKey:kSetting_MusicVolume];
             [settingsDB setValue:kSettingValue_ControlType_Touch forKey:kSetting_ControlType];
-            [settingsDB setValue:@"" forKey:kSetting_SaveGameLevelProgress];
+            [settingsDB setBool:YES forKey:kSetting_TactileFeedback];
+            [settingsDB setValue:@"" forKey:kSetting_TwitterCredentials];
             
+            [settingsDB setValue:@"0:0" forKey:kSetting_SaveGameLevelProgress];
+            [settingsDB setValue:0 forKey:kSetting_SaveGameScore];
+            [settingsDB setValue:@"100.0" forKey:kSetting_SaveGameHealth];
+            [settingsDB setValue:NO forKey:kSetting_SaveGameNukeHold];
+            [settingsDB setValue:kXP750 forKey:kSetting_SaveGameShip];
+            [settingsDB setValue:kWeaponBulletLevelOne forKey:kSetting_SaveGameWeapon];
+            [settingsDB setValue:kWeaponBulletLevelOne forKey:kSetting_SaveGameEquippedWeapon];
+            [settingsDB setValue:@"100000" forKey:kSetting_SaveGameCredits];
+            NSArray *unlockedShips = [[NSArray alloc] initWithObjects:kXP750, nil];
+            [settingsDB setValue:unlockedShips forKey:kSetting_SaveGameUnlockedShips];
+            [settingsDB setValue:kXP750 forKey:kSetting_SaveGameEquippedShip];
+            [unlockedShips release];
+            
+            NSArray *unlockedWeapons = [[NSArray alloc] initWithObjects:kWeaponBulletLevelOne, kWeaponBulletLevelTwo, nil];
+            [settingsDB setValue:unlockedWeapons forKey:kSetting_SaveGameUnlockedWeapons];
+            [unlockedWeapons release];
+            
+            //        [settingsDB setValue:kSetting_SaveGameEquippedWeapon forKey:kWeaponTypeBullet];
+            [settingsDB setBool:YES forKey:kSetting_ResetStoreVarsFromDataClear];
+            [settingsDB setValue:@"NO" forKey:kSetting_FirstTimeRun];
             [settingsDB synchronize];
             
             soundVolume = [settingsDB floatForKey:kSetting_SoundVolume] * 100;

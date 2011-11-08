@@ -608,6 +608,47 @@
             break;
     }
     
+    if([settings boolForKey:kSetting_ResetStoreVarsFromDataClear] == YES){
+        currentBulletLevelSelection = 1;
+        currentWaveLevelSelection = 1;
+        currentMissileLevelSelection = 1;
+        currentHeatseekingLevelSelection = 1;
+        currentBaseShipLevelSelection = 1;
+        currentAttackShipLevelSelection = 1;
+        currentSpeedShipLevelSelection = 1;
+        currentDefenseShipLevelSelection = 1;
+        
+        highestAchievedBulletLevel = 1;
+        highestAchievedWaveLevel = 1;
+        highestAchievedMissileLevel = 1;
+        highestAchievedHeatseekingLevel = 1;
+        highestAchievedBaseLevel = 1;
+        highestAchievedAttackLevel = 1;
+        highestAchievedSpeedLevel = 1;
+        highestAchievedDefenseLevel = 1;
+        
+        [currentEquippedWeapon release];
+        currentEquippedWeaponLevel = 0;
+        [currentSelectedWeaponType release];
+        [currentEquippedShipType release];
+        
+        currentEquippedWeapon = [[NSMutableString alloc] init];
+        currentSelectedWeaponType = [[NSMutableString alloc] initWithString:kWeaponTypeBullet];
+        currentEquippedShipType = [[NSMutableString alloc] init];
+        
+        attackShipsUnlocked = NO;
+        speedShipsUnlocked = NO;
+        defenseShipsUnlocked = NO;
+        wavesWeaponsUnlocked = NO;
+        missilesWeaponsUnlocked = NO;
+        heatseekingWeaponsUnlocked = NO;
+        
+        [self sceneIsBecomingActive];
+        NSLog(@"reset");
+        [settings setBool:NO forKey:kSetting_ResetStoreVarsFromDataClear];
+        [settings synchronize];
+    }
+    
     [backgroundParticleEmitter update:aDelta];
 }
 
@@ -666,11 +707,11 @@
                 [currentSelectedWeaponType setString:kWeaponTypeBullet];
             }
             if([currentSelectedWeaponType isEqualToString:kWeaponTypeBullet]){
-                if (CGRectContainsPoint(CGRectMake(100.0f, 320.0f, 16, 16), location)) {
+                if (CGRectContainsPoint(CGRectMake(105.0f - (previousButton.imageWidth/2), 325.0f - (previousButton.imageHeight/2), 24, 24), location)) {
                     NSLog(@"Previous");
                     currentBulletLevelSelection--;
                 }
-                else if (CGRectContainsPoint(CGRectMake(210.0f, 320.0f, 16, 16), location)) {
+                else if (CGRectContainsPoint(CGRectMake(220.0f - (nextButton.imageWidth/2), 325.0f - (nextButton.imageHeight/2), 24, 24), location)) {
                     NSLog(@"Next");
                     currentBulletLevelSelection++;
                 }
@@ -699,15 +740,16 @@
                 }
             }
             
-            if (CGRectContainsPoint(CGRectMake(160.0f-(weaponsMenuWavesButton.imageWidth/2), 280.0f-(weaponsMenuWavesButton.imageHeight/2), weaponsMenuWavesButton.imageWidth, weaponsMenuWavesButton.imageHeight), location)) {
+            //Waves
+            if (CGRectContainsPoint(CGRectMake(160.0f-(weaponsMenuWavesButton.imageWidth/2), 280.0f-(weaponsMenuWavesButton.imageHeight/2), weaponsMenuWavesButton.imageWidth, weaponsMenuWavesButton.imageHeight), location) && wavesWeaponsUnlocked) {
                 [currentSelectedWeaponType setString:kWeaponTypeWave];
             }
             if (wavesWeaponsUnlocked && [currentSelectedWeaponType isEqualToString:kWeaponTypeWave]) {
-                if (CGRectContainsPoint(CGRectMake(100.0f, 240.0f, 16, 16), location)) {
+                if (CGRectContainsPoint(CGRectMake(105.0f - (previousButton.imageWidth/2), 245.0f - (previousButton.imageHeight/2), 24, 24), location)) {
                     NSLog(@"Previous");
                     currentWaveLevelSelection--;
                 }
-                else if (CGRectContainsPoint(CGRectMake(210.0f, 240.0f, 16, 16), location)) {
+                else if (CGRectContainsPoint(CGRectMake(220.0f - (nextButton.imageWidth/2), 245.0f - (nextButton.imageHeight/2), 24, 24), location)) {
                     NSLog(@"Next");
                     currentWaveLevelSelection++;
                 }
@@ -734,15 +776,16 @@
                 }
             }
             
-            if (CGRectContainsPoint(CGRectMake(160.0f-(weaponsMenuMissilesButton.imageWidth/2), 200.0f-(weaponsMenuMissilesButton.imageHeight/2), weaponsMenuMissilesButton.imageWidth, weaponsMenuMissilesButton.imageHeight), location)) {
+            //Missiles
+            if (CGRectContainsPoint(CGRectMake(160.0f-(weaponsMenuMissilesButton.imageWidth/2), 200.0f-(weaponsMenuMissilesButton.imageHeight/2), weaponsMenuMissilesButton.imageWidth, weaponsMenuMissilesButton.imageHeight), location) && missilesWeaponsUnlocked) {
                 [currentSelectedWeaponType setString:kWeaponTypeMissile];
             }
             if (missilesWeaponsUnlocked && [currentSelectedWeaponType isEqualToString:kWeaponTypeMissile]) {
-                if (CGRectContainsPoint(CGRectMake(100.0f, 155.0f, 16, 16), location)) {
+                if (CGRectContainsPoint(CGRectMake(105.0f - (previousButton.imageWidth/2), 165.0f - (previousButton.imageHeight/2), 24, 24), location)) {
                     NSLog(@"Previous");
                     currentMissileLevelSelection--;
                 }
-                else if (CGRectContainsPoint(CGRectMake(210.0f, 155.0f, 16, 16), location)) {
+                else if (CGRectContainsPoint(CGRectMake(220.0f - (nextButton.imageWidth/2), 165.0f - (nextButton.imageHeight/2), 24, 24), location)) {
                     NSLog(@"Next");
                     currentMissileLevelSelection++;
                 }
@@ -769,15 +812,16 @@
                 }
             }            
              
-            if (CGRectContainsPoint(CGRectMake(160.0f-(weaponsMenuHeatseekingButton.imageWidth/2), 120.0f-(weaponsMenuHeatseekingButton.imageHeight/2), weaponsMenuHeatseekingButton.imageWidth, weaponsMenuHeatseekingButton.imageHeight), location)) {
+            //Heatseeking
+            if (CGRectContainsPoint(CGRectMake(160.0f-(weaponsMenuHeatseekingButton.imageWidth/2), 120.0f-(weaponsMenuHeatseekingButton.imageHeight/2), weaponsMenuHeatseekingButton.imageWidth, weaponsMenuHeatseekingButton.imageHeight), location) && heatseekingWeaponsUnlocked) {
                 [currentSelectedWeaponType setString:kWeaponTypeHeatseeking];
             }
             if (heatseekingWeaponsUnlocked && [currentSelectedWeaponType isEqualToString:kWeaponTypeHeatseeking]) {
-                if (CGRectContainsPoint(CGRectMake(100.0f, 75.0f, 16, 16), location)) {
+                if (CGRectContainsPoint(CGRectMake(105.0f - (previousButton.imageWidth/2), 85.0f - (previousButton.imageHeight/2), 24, 24), location)) {
                     NSLog(@"Previous");
                     currentHeatseekingLevelSelection--;
                 }
-                else if (CGRectContainsPoint(CGRectMake(210.0f, 75.0f, 16, 16), location)) {
+                else if (CGRectContainsPoint(CGRectMake(220.0f - (nextButton.imageWidth/2), 85.0f - (nextButton.imageHeight/2), 24, 24), location)) {
                     NSLog(@"Next");
                     currentHeatseekingLevelSelection++;
                 }
@@ -812,11 +856,11 @@
                 currentSceneState = kSceneState_ship_upgrades;
             }
             
-            if (CGRectContainsPoint(CGRectMake(87.0f, 279.0f, 16, 16), location)) {
+            if (CGRectContainsPoint(CGRectMake(95.0f - (previousButton.imageWidth/2), 287.0f - (previousButton.imageHeight/2), 24, 24), location)) {
                 NSLog(@"Previous");
                 currentBaseShipLevelSelection--;
             }
-            else if (CGRectContainsPoint(CGRectMake(227.0f, 279.0f, 16, 16), location)) {
+            else if (CGRectContainsPoint(CGRectMake(235.0f - (nextButton.imageWidth/2), 287.0f - (nextButton.imageHeight/2), 24, 24), location)) {
                 NSLog(@"Next");
                 currentBaseShipLevelSelection++;
             }
@@ -848,11 +892,11 @@
             if(CGRectContainsPoint(CGRectMake(15, 440, backButton.imageWidth, backButton.imageHeight), location)){
                 currentSceneState = kSceneState_ship_upgrades;
             }
-            if (CGRectContainsPoint(CGRectMake(87.0f, 279.0f, 16, 16), location)) {
+            if (CGRectContainsPoint(CGRectMake(95.0f - (previousButton.imageWidth/2), 287.0f - (previousButton.imageHeight/2), 24, 24), location)) {
                 NSLog(@"Previous");
                 currentAttackShipLevelSelection--;
             }
-            else if (CGRectContainsPoint(CGRectMake(227.0f, 279.0f, 16, 16), location)) {
+            else if (CGRectContainsPoint(CGRectMake(235.0f - (nextButton.imageWidth/2), 287.0f - (nextButton.imageHeight/2), 24, 24), location)) {
                 NSLog(@"Next");
                 currentAttackShipLevelSelection++;
             }
@@ -884,11 +928,11 @@
             if(CGRectContainsPoint(CGRectMake(15, 440, backButton.imageWidth, backButton.imageHeight), location)){
                 currentSceneState = kSceneState_ship_upgrades;
             }
-            if (CGRectContainsPoint(CGRectMake(87.0f, 279.0f, 16, 16), location)) {
+            if (CGRectContainsPoint(CGRectMake(95.0f - (previousButton.imageWidth/2), 287.0f - (previousButton.imageHeight/2), 24, 24), location)) {
                 NSLog(@"Previous");
                 currentSpeedShipLevelSelection--;
             }
-            else if (CGRectContainsPoint(CGRectMake(227.0f, 279.0f, 16, 16), location)) {
+            else if (CGRectContainsPoint(CGRectMake(235.0f - (nextButton.imageWidth/2), 287.0f - (nextButton.imageHeight/2), 24, 24), location)) {
                 NSLog(@"Next");
                 currentSpeedShipLevelSelection++;
             }
@@ -920,11 +964,11 @@
             if(CGRectContainsPoint(CGRectMake(15, 440, backButton.imageWidth, backButton.imageHeight), location)){
                 currentSceneState = kSceneState_ship_upgrades;
             }
-            if (CGRectContainsPoint(CGRectMake(87.0f, 279.0f, 16, 16), location)) {
+            if (CGRectContainsPoint(CGRectMake(95.0f - (previousButton.imageWidth/2), 287.0f - (previousButton.imageHeight/2), 24, 24), location)) {
                 NSLog(@"Previous");
                 currentDefenseShipLevelSelection--;
             }
-            else if (CGRectContainsPoint(CGRectMake(227.0f, 279.0f, 16, 16), location)) {
+            else if (CGRectContainsPoint(CGRectMake(235.0f - (nextButton.imageWidth/2), 287.0f - (nextButton.imageHeight/2), 24, 24), location)) {
                 NSLog(@"Next");
                 currentDefenseShipLevelSelection++;
             }

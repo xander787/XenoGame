@@ -96,6 +96,7 @@
 #define kSetting_SaveGameUnlockedShips @"xeno_game_unlocked_ships"
 #define kSetting_SaveGameEquippedWeapon @"xeno_game_equipped_weapon"
 #define kSetting_SaveGameEquippedShip @"xeno_game_equipped_ship"
+#define kSetting_ResetStoreVarsFromDataClear @"xeno_reset_store_vars_from_data_clear"
 
 #define kSettingValue_ControlType_Touch @"TOUCH"
 #define kSettingValue_ControlType_Accelerometer @"ACCEL"
