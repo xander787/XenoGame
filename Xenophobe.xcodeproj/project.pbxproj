@@ -202,6 +202,9 @@
 		B907756A1467801A0081B245 /* Base-Disabled.png in Resources */ = {isa = PBXBuildFile; fileRef = B90775661467801A0081B245 /* Base-Disabled.png */; };
 		B907756B1467801A0081B245 /* Defense-Disabled.png in Resources */ = {isa = PBXBuildFile; fileRef = B90775671467801A0081B245 /* Defense-Disabled.png */; };
 		B907756C1467801A0081B245 /* Speed-Disabled.png in Resources */ = {isa = PBXBuildFile; fileRef = B90775681467801A0081B245 /* Speed-Disabled.png */; };
+		B920553B146A479000D58152 /* kMinibossFiveOneCenter.png in Resources */ = {isa = PBXBuildFile; fileRef = B9205538146A479000D58152 /* kMinibossFiveOneCenter.png */; };
+		B920553C146A479000D58152 /* kMinibossFiveOneMiddleRing.png in Resources */ = {isa = PBXBuildFile; fileRef = B9205539146A479000D58152 /* kMinibossFiveOneMiddleRing.png */; };
+		B920553D146A479000D58152 /* kMinibossFiveOneOuterRing.png in Resources */ = {isa = PBXBuildFile; fileRef = B920553A146A479000D58152 /* kMinibossFiveOneOuterRing.png */; };
 		B946CCCF1460C77600C82CF4 /* kEnemyOneShotLevelFive.png in Resources */ = {isa = PBXBuildFile; fileRef = B946CCCA1460C77600C82CF4 /* kEnemyOneShotLevelFive.png */; };
 		B946CCD01460C77600C82CF4 /* kEnemyOneShotLevelFour.png in Resources */ = {isa = PBXBuildFile; fileRef = B946CCCB1460C77600C82CF4 /* kEnemyOneShotLevelFour.png */; };
 		B946CCD11460C77600C82CF4 /* kEnemyOneShotLevelSix.png in Resources */ = {isa = PBXBuildFile; fileRef = B946CCCC1460C77600C82CF4 /* kEnemyOneShotLevelSix.png */; };
@@ -588,6 +591,9 @@
 		B90775661467801A0081B245 /* Base-Disabled.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Base-Disabled.png"; sourceTree = "<group>"; };
 		B90775671467801A0081B245 /* Defense-Disabled.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Defense-Disabled.png"; sourceTree = "<group>"; };
 		B90775681467801A0081B245 /* Speed-Disabled.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Speed-Disabled.png"; sourceTree = "<group>"; };
+		B9205538146A479000D58152 /* kMinibossFiveOneCenter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = kMinibossFiveOneCenter.png; path = "Game Resources/Images/Normal/Ships/MiniBoss Ships/kMinibossFiveOneCenter.png"; sourceTree = SOURCE_ROOT; };
+		B9205539146A479000D58152 /* kMinibossFiveOneMiddleRing.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = kMinibossFiveOneMiddleRing.png; path = "Game Resources/Images/Normal/Ships/MiniBoss Ships/kMinibossFiveOneMiddleRing.png"; sourceTree = SOURCE_ROOT; };
+		B920553A146A479000D58152 /* kMinibossFiveOneOuterRing.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = kMinibossFiveOneOuterRing.png; path = "Game Resources/Images/Normal/Ships/MiniBoss Ships/kMinibossFiveOneOuterRing.png"; sourceTree = SOURCE_ROOT; };
 		B946CCCA1460C77600C82CF4 /* kEnemyOneShotLevelFive.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = kEnemyOneShotLevelFive.png; path = "Game Resources/Images/Normal/Ships/Enemy Ships/kEnemyOneShotLevelFive.png"; sourceTree = SOURCE_ROOT; };
 		B946CCCB1460C77600C82CF4 /* kEnemyOneShotLevelFour.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = kEnemyOneShotLevelFour.png; path = "Game Resources/Images/Normal/Ships/Enemy Ships/kEnemyOneShotLevelFour.png"; sourceTree = SOURCE_ROOT; };
 		B946CCCC1460C77600C82CF4 /* kEnemyOneShotLevelSix.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = kEnemyOneShotLevelSix.png; path = "Game Resources/Images/Normal/Ships/Enemy Ships/kEnemyOneShotLevelSix.png"; sourceTree = SOURCE_ROOT; };
@@ -1229,6 +1235,9 @@
 		11E7DCE3129F00B10047E2FD /* MiniBosses */ = {
 			isa = PBXGroup;
 			children = (
+				B9205538146A479000D58152 /* kMinibossFiveOneCenter.png */,
+				B9205539146A479000D58152 /* kMinibossFiveOneMiddleRing.png */,
+				B920553A146A479000D58152 /* kMinibossFiveOneOuterRing.png */,
 				B9B03E991425AD5A00DE7C0E /* kMiniBossSevenThreeFloat1.png */,
 				B9B03E9A1425AD5A00DE7C0E /* kMiniBossSevenThreeFloat2.png */,
 				B9B03E9B1425AD5A00DE7C0E /* kMiniBossSevenThreeFloat3.png */,
@@ -1874,6 +1883,9 @@
 				B907756A1467801A0081B245 /* Base-Disabled.png in Resources */,
 				B907756B1467801A0081B245 /* Defense-Disabled.png in Resources */,
 				B907756C1467801A0081B245 /* Speed-Disabled.png in Resources */,
+				B920553B146A479000D58152 /* kMinibossFiveOneCenter.png in Resources */,
+				B920553C146A479000D58152 /* kMinibossFiveOneMiddleRing.png in Resources */,
+				B920553D146A479000D58152 /* kMinibossFiveOneOuterRing.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
