@@ -216,6 +216,7 @@
             statsScene.continueGame = NO;
             showStatsScene = NO;
             //Current Level ++
+            currentLevel++;
             [self loadLevelForPlay:currentLevel];
         }
     }

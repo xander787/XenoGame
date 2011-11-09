@@ -5,6 +5,7 @@
 	<key>kLevelsFileIndex</key>
 	<array>
 		<string>Level_DevTest</string>
+		<string>Level_DevTest2</string>
 	</array>
 </dict>
 </plist>

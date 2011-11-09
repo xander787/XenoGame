@@ -205,6 +205,7 @@
 		B920553B146A479000D58152 /* kMinibossFiveOneCenter.png in Resources */ = {isa = PBXBuildFile; fileRef = B9205538146A479000D58152 /* kMinibossFiveOneCenter.png */; };
 		B920553C146A479000D58152 /* kMinibossFiveOneMiddleRing.png in Resources */ = {isa = PBXBuildFile; fileRef = B9205539146A479000D58152 /* kMinibossFiveOneMiddleRing.png */; };
 		B920553D146A479000D58152 /* kMinibossFiveOneOuterRing.png in Resources */ = {isa = PBXBuildFile; fileRef = B920553A146A479000D58152 /* kMinibossFiveOneOuterRing.png */; };
+		B920553F146A513900D58152 /* Level_DevTest2.plist in Resources */ = {isa = PBXBuildFile; fileRef = B920553E146A513900D58152 /* Level_DevTest2.plist */; };
 		B946CCCF1460C77600C82CF4 /* kEnemyOneShotLevelFive.png in Resources */ = {isa = PBXBuildFile; fileRef = B946CCCA1460C77600C82CF4 /* kEnemyOneShotLevelFive.png */; };
 		B946CCD01460C77600C82CF4 /* kEnemyOneShotLevelFour.png in Resources */ = {isa = PBXBuildFile; fileRef = B946CCCB1460C77600C82CF4 /* kEnemyOneShotLevelFour.png */; };
 		B946CCD11460C77600C82CF4 /* kEnemyOneShotLevelSix.png in Resources */ = {isa = PBXBuildFile; fileRef = B946CCCC1460C77600C82CF4 /* kEnemyOneShotLevelSix.png */; };
@@ -594,6 +595,7 @@
 		B9205538146A479000D58152 /* kMinibossFiveOneCenter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = kMinibossFiveOneCenter.png; path = "Game Resources/Images/Normal/Ships/MiniBoss Ships/kMinibossFiveOneCenter.png"; sourceTree = SOURCE_ROOT; };
 		B9205539146A479000D58152 /* kMinibossFiveOneMiddleRing.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = kMinibossFiveOneMiddleRing.png; path = "Game Resources/Images/Normal/Ships/MiniBoss Ships/kMinibossFiveOneMiddleRing.png"; sourceTree = SOURCE_ROOT; };
 		B920553A146A479000D58152 /* kMinibossFiveOneOuterRing.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = kMinibossFiveOneOuterRing.png; path = "Game Resources/Images/Normal/Ships/MiniBoss Ships/kMinibossFiveOneOuterRing.png"; sourceTree = SOURCE_ROOT; };
+		B920553E146A513900D58152 /* Level_DevTest2.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Level_DevTest2.plist; path = "Game Resources/Level_DevTest2.plist"; sourceTree = SOURCE_ROOT; };
 		B946CCCA1460C77600C82CF4 /* kEnemyOneShotLevelFive.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = kEnemyOneShotLevelFive.png; path = "Game Resources/Images/Normal/Ships/Enemy Ships/kEnemyOneShotLevelFive.png"; sourceTree = SOURCE_ROOT; };
 		B946CCCB1460C77600C82CF4 /* kEnemyOneShotLevelFour.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = kEnemyOneShotLevelFour.png; path = "Game Resources/Images/Normal/Ships/Enemy Ships/kEnemyOneShotLevelFour.png"; sourceTree = SOURCE_ROOT; };
 		B946CCCC1460C77600C82CF4 /* kEnemyOneShotLevelSix.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = kEnemyOneShotLevelSix.png; path = "Game Resources/Images/Normal/Ships/Enemy Ships/kEnemyOneShotLevelSix.png"; sourceTree = SOURCE_ROOT; };
@@ -922,6 +924,7 @@
 				1129A1A013CA933400BE73FA /* Level_One.plist */,
 				1169BA8113ABF7F1005FA11F /* Level_Key.plist */,
 				B9EB2F3713AD2046003484B1 /* Level_DevTest.plist */,
+				B920553E146A513900D58152 /* Level_DevTest2.plist */,
 			);
 			name = "Game Levels";
 			sourceTree = "<group>";
@@ -1886,6 +1889,7 @@
 				B920553B146A479000D58152 /* kMinibossFiveOneCenter.png in Resources */,
 				B920553C146A479000D58152 /* kMinibossFiveOneMiddleRing.png in Resources */,
 				B920553D146A479000D58152 /* kMinibossFiveOneOuterRing.png in Resources */,
+				B920553F146A513900D58152 /* Level_DevTest2.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
