@@ -680,13 +680,13 @@
             if (CGRectContainsPoint(CGRectMake(80.0f, 342.0f, 180, 34), location)) {
                 currentSceneState = kSceneState_ship_upgrades_base_chooser;
             }
-            else if (CGRectContainsPoint(CGRectMake(80.0f, 262.0f, 180, 34), location)) {
+            else if (CGRectContainsPoint(CGRectMake(80.0f, 262.0f, 180, 34), location) && attackShipsUnlocked) {
                 currentSceneState = kSceneState_ship_upgrades_attack_chooser;
             }
-            else if (CGRectContainsPoint(CGRectMake(80.0f, 182.0f, 180, 34), location)) {
+            else if (CGRectContainsPoint(CGRectMake(80.0f, 182.0f, 180, 34), location) && speedShipsUnlocked) {
                 currentSceneState = kSceneState_ship_upgrades_speed_chooser;
             }
-            else if (CGRectContainsPoint(CGRectMake(80.0f, 102.0f, 180, 34), location)) {
+            else if (CGRectContainsPoint(CGRectMake(80.0f, 102.0f, 180, 34), location) && defenseShipsUnlocked) {
                 currentSceneState = kSceneState_ship_upgrades_defense_chooser;
             }
             
