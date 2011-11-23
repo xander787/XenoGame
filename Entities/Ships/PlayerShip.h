@@ -64,11 +64,9 @@ typedef enum _PlayerShipCategory {
 } PlayerShipCategory;
 
 typedef enum _PlayerShipWeaponType {
-	kPlayerWeapon_SingleShot = 0,
-	kPlayerWeapon_DoubleShot,
-	kPlayerWeapon_TripleShot,
+    kPlayerWeapon_Wave = 0,
 	kPlayerWeapon_Missile,
-	kPlayerWeapon_Wave
+    kPlayerWeapon_Heatseeker
 } PlayerShipWeaponType;
 
 typedef enum _PlayerShipTemporaryWeaponUpgrade {
@@ -91,15 +89,17 @@ typedef enum _PlayerShipTemporaryMiscUpgrade {
 
     CGPoint                             desiredPosition;
     
-
-	
-@private
 	PlayerShipID						shipID;
 	PlayerShipCategory					shipCategory;
 	PlayerShipWeaponType				shipWeaponType;
+	
+@private
 	Image								*mainImage;
 	
 }
+
+@property (readonly) PlayerShipCategory shipCategory;
+@property (readonly) PlayerShipWeaponType shipWeaponType;
 
 - (id)initWithShipID:(PlayerShipID)aShipID andInitialLocation:(CGPoint)aPoint;
 - (void)setDesiredLocation:(CGPoint)aPoint;

@@ -74,7 +74,7 @@
 
 @implementation PlayerShip
 
-@synthesize shipTemporaryWeaponUpgrade, shipTemporaryMiscUpgrade, desiredPosition;
+@synthesize shipTemporaryWeaponUpgrade, shipTemporaryMiscUpgrade, desiredPosition, shipCategory, shipWeaponType;
 
 - (id) init {
 	self = [super init];
@@ -133,15 +133,10 @@
 			shipCategory = kShipCategory_Speed;
 		}
 		
-		if ([shipDictionary valueForKey:@"kPlayerWeaponType"] == @"kWeapon_SingleShot") {
-			shipWeaponType = kPlayerWeapon_SingleShot;
-		}
-		else if ([shipDictionary valueForKey:@"kPlayerWeaponType"] == @"kWeapon_DoubleShot") {
-			shipWeaponType = kPlayerWeapon_DoubleShot;
-		}
-		else if ([shipDictionary valueForKey:@"kPlayerWeaponType"] == @"kWeapon_TripleShot") {
-			shipWeaponType = kPlayerWeapon_TripleShot;
-		}
+
+        if ([shipDictionary valueForKey:@"kPlayerWeaponType"] == @"kWeapon_Heatseeker") {
+            shipWeaponType = kPlayerWeapon_Heatseeker;
+        }
 		else if ([shipDictionary valueForKey:@"kPlayerWeaponType"] == @"kWeapon_Missile") {
 			shipWeaponType = kPlayerWeapon_Missile;
 		}
@@ -209,7 +204,7 @@
         // Add projectiles to our local projectile set for the weapon points on the ship
         projectilesArray = [[NSMutableArray alloc] init];
         for(int i = 0; i < numTurrets; i++) {
-            AbstractProjectile *projectile = [[BulletProjectile alloc] initWithProjectileID:kPlayerProjectile_BulletLevelTen_Septuple
+            AbstractProjectile *projectile = [[BulletProjectile alloc] initWithProjectileID:kPlayerProjectile_BulletLevelTwo_Double
                                                                                    location:Vector2fMake(currentLocation.x + turretPoints[i].x, currentLocation.y + turretPoints[i].y) 
                                                                                    andAngle:90];
             [projectilesArray insertObject:projectile atIndex:i];

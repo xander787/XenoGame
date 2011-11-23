@@ -55,6 +55,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(SoundManager);
 @synthesize usePlaylist;
 @synthesize loopLastPlaylistTrack;
 @synthesize musicVolume;
+@synthesize currentPlayingMusicName;
 
 #pragma mark -
 #pragma mark Dealloc and Init and Shutdown
@@ -147,6 +148,8 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(SoundManager);
 		stopMusicAfterFade = YES;
 		usePlaylist = NO;
 		loopLastPlaylistTrack = NO;
+        
+        currentPlayingMusicName = [[NSString alloc] init];
 	}
     return self;
 }
@@ -538,6 +541,8 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(SoundManager);
 	
 	// Set the isMusicPlaying flag
 	isMusicPlaying = YES;
+    
+    currentPlayingMusicName = aMusicKey;
 }
 
 - (void)playNextTrack {

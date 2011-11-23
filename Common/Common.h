@@ -101,6 +101,55 @@
 #define kSettingValue_ControlType_Touch @"TOUCH"
 #define kSettingValue_ControlType_Accelerometer @"ACCEL"
 
+
+
+//Universal Scores
+#define kScore_EnemyLevelOneKill 5
+#define kScore_EnemyLevelTwoKill 10
+#define kScore_EnemyLevelThreeKill 15
+#define kScore_EnemyLevelFourKill 20
+#define kScore_EnemyLevelFiveKill 25
+#define kScore_EnemyLevelSixKill 30
+
+#define kScore_NukeBonus 500
+#define kScore_DoubleDamageBonus 100
+#define kScore_SlowmoBonus 100
+#define kScore_ExtraHealthBonus 50
+#define kScore_ShieldBonus 150
+#define kScore_EnemyRepelBonus 100
+#define kScore_MagnetBonus 200
+#define kScore_ProximityDamageBonus 100
+
+#define kScore_ThemisBonus 10000
+#define kScore_EosBonus 20000
+#define kScore_AstraeusBonus 30000
+#define kScore_HeliosBonus 40000
+#define kScore_OceanusBonus 50000
+#define kScore_AtlasBonus 60000
+#define kScore_HyperionBonus 70000
+#define kScore_KronosBonus 80000
+#define kScore_AlphaWeaponBonus 100000
+#define kScore_MiniBossLevelOneBonus 2000
+#define kScore_MiniBossLevelTwoBonus 3000
+#define kScore_MiniBossLevelThreeBonus 4000
+#define kScore_MiniBossLevelFourBonus 5000
+#define kScore_MiniBossLevelFiveBonus 6000
+#define kScore_MiniBossLevelSixBonus 7000
+#define kScore_MiniBossLevelSevenBonus 8000
+
+#define kScore_WavesWeaponBonus 5
+#define kScore_MissilesWeaponBonus 10
+#define kScore_HeatseekersWeaponBonus 25
+
+#define kScore_AttackShipBonus 10
+#define kScore_DefenseShipBonus 10
+#define kScore_SpeedShipBonus 10
+
+#define kScore_TimeBonusConstant 15000
+#define kScore_TimeBonus(__TIME__) (kScore_TimeBonusConstant / (__TIME__))
+
+
+
 #define kXP750_Price 0
 #define kXP751_Price 100
 #define kXPA368_Price 300

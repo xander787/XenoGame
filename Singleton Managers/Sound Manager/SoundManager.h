@@ -60,6 +60,9 @@
 	//////////////////// Playlist tracking
 	int playlistIndex;					// Current index being played in the playlist
 	NSString *currentPlaylistName;		// Holds the name of the currently playing play list
+    
+    //////////////////// Playlist tracking
+    NSString *currentPlayingMusicName;
 
 }
 
@@ -70,6 +73,7 @@
 @property (nonatomic, assign) BOOL usePlaylist;
 @property (nonatomic, assign) BOOL loopLastPlaylistTrack;
 @property (nonatomic, assign) float musicVolume;
+@property (nonatomic, retain) NSString *currentPlayingMusicName;
 
 // Returns as instance of the SoundManager class.  If an instance has already been created
 // then this instance is returned, otherwise a new instance is created and returned.

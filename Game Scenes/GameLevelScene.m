@@ -456,9 +456,6 @@ WrapText( const char *text
     else if([enemyString isEqualToString:@"kShipTwoShot_Two"]){
         return kEnemyShip_TwoShotLevelTwo;
     }
-    else if([enemyString isEqualToString:@"kShipTwoShot_BossOne"]){
-        return kEnemyShip_TwoShotkBossAfricaAssistOne;
-    }
     else if([enemyString isEqualToString:@"kShipThreeShot_One"]){
         return kEnemyShip_ThreeShotLevelOne;
     }
@@ -477,17 +474,11 @@ WrapText( const char *text
     else if([enemyString isEqualToString:@"kShipMissileBombShot_Three"]) {
         return kEnemyShip_MissileBombShotLevelThree;
     }
-    else if([enemyString isEqualToString:@"kShipMissileBombShot_BossTwo"]){
-        return kEnemyShip_MissileBombShotkBossEuropeAssist;
-    }
     else if([enemyString isEqualToString:@"kShipKamikaze_One"]){
         return kEnemyShip_KamikazeLevelOne;
     }
     else if([enemyString isEqualToString:@"kShipKamikaze_Three"]){
         return kEnemyShip_KamikazeLevelThree;
-    }
-    else if([enemyString isEqualToString:@"kShipKamikaze_BossTwo"]){
-        return kEnemyShip_KamikazekBossNorthAmericaAssistTwo;
     }
     
     
@@ -743,7 +734,10 @@ WrapText( const char *text
     [soundManager fadeMusicVolumeFrom:[settingsDB floatForKey:kSetting_MusicVolume] toVolume:0.0f duration:2.0f stop:NO];
 }
 
-- (void)update:(GLfloat)aDelta {    
+- (void)update:(GLfloat)aDelta {   
+    if(gameIsOver) return;
+
+    
     levelTime+= aDelta;
     
     if(currentWaveType == kWaveType_Enemy || currentWaveType == kWaveType_Boss || currentWaveType == kWaveType_Finished){
@@ -752,6 +746,16 @@ WrapText( const char *text
     
     // We are currently in a "fighting" wave. Update accordingly.
     if (currentWaveType == kWaveType_Enemy || currentWaveType == kWaveType_Boss) {
+        //Game over stuff
+        if(playerShip.shipIsDead){
+            gameOverTimer += aDelta;
+            if(gameOverTimer >= 8.0){
+                gameOverTimer = 0;
+                gameIsOver = YES;
+                [delegate playerHasDied];
+            }
+        }
+        
         //Make sure that all of our ship objects get their update: called. Necessary.
         
         if(shieldEnabled || damageMultiplierOn || scoreMultiplierOn ||
@@ -798,6 +802,7 @@ WrapText( const char *text
                         shieldEnabled = YES;
                         powerUpTimer = 0;
                         [delegate powerUpPickedUp:kDropType_Shield];
+                        [delegate scoreChangedBy:kScore_ShieldBonus];
                         break;
                     }
                         
@@ -806,6 +811,7 @@ WrapText( const char *text
                         damageMultiplierOn = YES;
                         powerUpTimer = 0;
                         [delegate powerUpPickedUp:kDropType_DamageMultiplier];
+                        [delegate scoreChangedBy:kScore_DoubleDamageBonus];
                         break;
                     }
                         
@@ -822,6 +828,7 @@ WrapText( const char *text
                         enemyRepelOn = YES;
                         powerUpTimer = 0;
                         [delegate powerUpPickedUp:kDropType_EnemyRepel];
+                        [delegate scoreChangedBy:kScore_EnemyRepelBonus];
                         break;
                     }
                         
@@ -830,6 +837,7 @@ WrapText( const char *text
                         powerUpMagnetActivated = YES;
                         powerUpTimer = 0;
                         [delegate powerUpPickedUp:kDropType_DropsMagnet];
+                        [delegate scoreChangedBy:kScore_MagnetBonus];
                         break;
                     }
                         
@@ -838,6 +846,7 @@ WrapText( const char *text
                         slowmoActivated = YES;
                         powerUpTimer = 0;
                         [delegate powerUpPickedUp:kDropType_Slowmo];
+                        [delegate scoreChangedBy:kScore_SlowmoBonus];
                         break;
                     }
                         
@@ -845,6 +854,7 @@ WrapText( const char *text
                     {
                         proximityDamageActivated = YES;
                         [delegate powerUpPickedUp:kDropType_ProximityDamage];
+                        [delegate scoreChangedBy:kScore_ProximityDamageBonus];
                         break;
                     }
                         
@@ -857,6 +867,7 @@ WrapText( const char *text
                             playerShip.shipHealth = playerShip.shipMaxHealth;
                         }
                         [delegate playerHealthChangedBy:playerShip.shipHealth - oldHealth];
+                        [delegate scoreChangedBy:kScore_ExtraHealthBonus];
                         break;
                     }
                         
@@ -864,6 +875,7 @@ WrapText( const char *text
                     {
                         nukeReadyForUse = YES;
                         [delegate powerUpPickedUp:kDropType_Nuke];
+                        [delegate scoreChangedBy:kScore_NukeBonus];
                         break;
                     }
                         
@@ -923,7 +935,7 @@ WrapText( const char *text
                 //Proximity Damage calculations
                 if(proximityDamageActivated && proximityShouldGiveDamage){
                     if(sqrt(pow(enemyShip.currentLocation.x - playerShip.currentLocation.x, 2) + pow(enemyShip.currentLocation.y - playerShip.currentLocation.y, 2)) < 64){
-                        //If the enemy is less than 64 units away fro mthe player, give damage to enemy
+                        //If the enemy is less than 64 units away from the player, give damage to enemy
                         [enemyShip hitShipWithDamage:10];
                     }
                 }
@@ -1080,6 +1092,8 @@ WrapText( const char *text
             }
             
             if (!bossShipModulesAlive) {
+                [self addScoreForBossShipDeath:bossShip];
+                [delegate scoreChangedBy:kScore_TimeBonus(levelTime)];
                 enemiesKilled++;
                 currentWaveType = kWaveType_Finished;
             }
@@ -1518,6 +1532,7 @@ WrapText( const char *text
 
 - (void)nukeButtonPushed {
     for(EnemyShip *enemyShip in enemiesSet){
+        [self addScoreForEnemyShipDeath:enemyShip];
         [enemyShip killShip];
     }
 }
@@ -1544,6 +1559,187 @@ WrapText( const char *text
     else if(projectileType == kEnemyProjectile_HeatSeekingMissile) return 15;
     
     else return 0;
+}
+
+- (void)addScoreForEnemyShipDeath:(EnemyShip *)enemy {
+    EnemyShipID killedEnemyID = enemy.enemyID;
+    if (killedEnemyID == kEnemyShip_OneShotLevelOne || killedEnemyID == kEnemyShip_TwoShotLevelOne || killedEnemyID == kEnemyShip_ThreeShotLevelOne || killedEnemyID == kEnemyShip_WaveShotLevelOne || killedEnemyID == kEnemyShip_MissileBombShotLevelOne || killedEnemyID == kEnemyShip_KamikazeLevelOne) {
+        [delegate scoreChangedBy:kScore_EnemyLevelOneKill];
+        if (playerShip.shipCategory == kShipCategory_Attack || playerShip.shipCategory == kShipCategory_Speed || playerShip.shipCategory == kShipCategory_Stamina) {
+            
+            [delegate scoreChangedBy:kScore_AttackShipBonus];
+        }
+        if (playerShip.shipWeaponType == kPlayerWeapon_Wave) {
+            [delegate scoreChangedBy:kScore_WavesWeaponBonus];
+        }
+        else if (playerShip.shipWeaponType == kPlayerWeapon_Missile) {
+            [delegate scoreChangedBy:kScore_MissilesWeaponBonus];
+        }
+        else if (playerShip.shipWeaponType == kPlayerWeapon_Heatseeker) {
+            [delegate scoreChangedBy:kScore_HeatseekersWeaponBonus];
+        }
+    }
+    if (killedEnemyID == kEnemyShip_OneShotLevelTwo || killedEnemyID == kEnemyShip_TwoShotLevelTwo || killedEnemyID == kEnemyShip_ThreeShotLevelTwo || killedEnemyID == kEnemyShip_WaveShotLevelTwo || killedEnemyID == kEnemyShip_MissileBombShotLevelTwo || killedEnemyID == kEnemyShip_KamikazeLevelTwo) {
+        [delegate scoreChangedBy:kScore_EnemyLevelTwoKill];
+        if (playerShip.shipCategory == kShipCategory_Attack || playerShip.shipCategory == kShipCategory_Speed || playerShip.shipCategory == kShipCategory_Stamina) {
+            
+            [delegate scoreChangedBy:kScore_AttackShipBonus];
+        }
+        if (playerShip.shipWeaponType == kPlayerWeapon_Wave) {
+            [delegate scoreChangedBy:kScore_WavesWeaponBonus];
+        }
+        else if (playerShip.shipWeaponType == kPlayerWeapon_Missile) {
+            [delegate scoreChangedBy:kScore_MissilesWeaponBonus];
+        }
+        else if (playerShip.shipWeaponType == kPlayerWeapon_Heatseeker) {
+            [delegate scoreChangedBy:kScore_HeatseekersWeaponBonus];
+        }
+    }
+    if (killedEnemyID == kEnemyShip_OneShotLevelThree || killedEnemyID == kEnemyShip_TwoShotLevelThree || killedEnemyID == kEnemyShip_ThreeShotLevelThree || killedEnemyID == kEnemyShip_WaveShotLevelThree || killedEnemyID == kEnemyShip_MissileBombShotLevelThree || killedEnemyID == kEnemyShip_KamikazeLevelThree) {
+        [delegate scoreChangedBy:kScore_EnemyLevelThreeKill];
+        if (playerShip.shipCategory == kShipCategory_Attack || playerShip.shipCategory == kShipCategory_Speed || playerShip.shipCategory == kShipCategory_Stamina) {
+            
+            [delegate scoreChangedBy:kScore_AttackShipBonus];
+        }
+        if (playerShip.shipWeaponType == kPlayerWeapon_Wave) {
+            [delegate scoreChangedBy:kScore_WavesWeaponBonus];
+        }
+        else if (playerShip.shipWeaponType == kPlayerWeapon_Missile) {
+            [delegate scoreChangedBy:kScore_MissilesWeaponBonus];
+        }
+        else if (playerShip.shipWeaponType == kPlayerWeapon_Heatseeker) {
+            [delegate scoreChangedBy:kScore_HeatseekersWeaponBonus];
+        }
+    }
+    if (killedEnemyID == kEnemyShip_OneShotLevelFour|| killedEnemyID == kEnemyShip_TwoShotLevelFour || killedEnemyID == kEnemyShip_ThreeShotLevelFour || killedEnemyID == kEnemyShip_WaveShotLevelFour || killedEnemyID == kEnemyShip_MissileBombShotLevelFour || killedEnemyID == kEnemyShip_KamikazeLevelFour) {
+        [delegate scoreChangedBy:kScore_EnemyLevelFourKill];
+        if (playerShip.shipCategory == kShipCategory_Attack || playerShip.shipCategory == kShipCategory_Speed || playerShip.shipCategory == kShipCategory_Stamina) {
+            
+            [delegate scoreChangedBy:kScore_AttackShipBonus];
+        }
+        if (playerShip.shipWeaponType == kPlayerWeapon_Wave) {
+            [delegate scoreChangedBy:kScore_WavesWeaponBonus];
+        }
+        else if (playerShip.shipWeaponType == kPlayerWeapon_Missile) {
+            [delegate scoreChangedBy:kScore_MissilesWeaponBonus];
+        }
+        else if (playerShip.shipWeaponType == kPlayerWeapon_Heatseeker) {
+            [delegate scoreChangedBy:kScore_HeatseekersWeaponBonus];
+        }
+    }
+    if (killedEnemyID == kEnemyShip_OneShotLevelFive || killedEnemyID == kEnemyShip_TwoShotLevelFive || killedEnemyID == kEnemyShip_ThreeShotLevelFive || killedEnemyID == kEnemyShip_WaveShotLevelFive || killedEnemyID == kEnemyShip_MissileBombShotLevelFive) {
+        [delegate scoreChangedBy:kScore_EnemyLevelFiveKill];
+        if (playerShip.shipCategory == kShipCategory_Attack || playerShip.shipCategory == kShipCategory_Speed || playerShip.shipCategory == kShipCategory_Stamina) {
+            
+            [delegate scoreChangedBy:kScore_AttackShipBonus];
+        }
+        if (playerShip.shipWeaponType == kPlayerWeapon_Wave) {
+            [delegate scoreChangedBy:kScore_WavesWeaponBonus];
+        }
+        else if (playerShip.shipWeaponType == kPlayerWeapon_Missile) {
+            [delegate scoreChangedBy:kScore_MissilesWeaponBonus];
+        }
+        else if (playerShip.shipWeaponType == kPlayerWeapon_Heatseeker) {
+            [delegate scoreChangedBy:kScore_HeatseekersWeaponBonus];
+        }
+    }
+    if (killedEnemyID == kEnemyShip_OneShotLevelSix || killedEnemyID == kEnemyShip_TwoShotLevelSix) {
+        [delegate scoreChangedBy:kScore_EnemyLevelSixKill];
+        if (playerShip.shipCategory == kShipCategory_Attack || playerShip.shipCategory == kShipCategory_Speed || playerShip.shipCategory == kShipCategory_Stamina) {
+            
+            [delegate scoreChangedBy:kScore_AttackShipBonus];
+        }
+        if (playerShip.shipWeaponType == kPlayerWeapon_Wave) {
+            [delegate scoreChangedBy:kScore_WavesWeaponBonus];
+        }
+        else if (playerShip.shipWeaponType == kPlayerWeapon_Missile) {
+            [delegate scoreChangedBy:kScore_MissilesWeaponBonus];
+        }
+        else if (playerShip.shipWeaponType == kPlayerWeapon_Heatseeker) {
+            [delegate scoreChangedBy:kScore_HeatseekersWeaponBonus];
+        }
+    }
+}
+
+- (void)addScoreForBossShipDeath:(BossShip *)boss {
+    BossShipID killedBossID = boss.bossID;
+    
+    switch (killedBossID) {
+        case kBoss_Themis:
+            [delegate scoreChangedBy:kScore_ThemisBonus];
+            break;
+        case kBoss_Eos:
+            [delegate scoreChangedBy:kScore_EosBonus];
+            break;
+        case kBoss_Astraeus:
+            [delegate scoreChangedBy:kScore_AstraeusBonus];
+            break;
+        case kBoss_Helios:
+            [delegate scoreChangedBy:kScore_HeliosBonus];
+            break;
+        case kBoss_Oceanus:
+            [delegate scoreChangedBy:kScore_OceanusBonus];
+            break;
+        case kBoss_Atlas:
+            [delegate scoreChangedBy:kScore_AtlasBonus];
+            break;
+        case kBoss_Hyperion:
+            [delegate scoreChangedBy:kScore_HyperionBonus];
+            break;
+        case kBoss_Kronos:
+            [delegate scoreChangedBy:kScore_KronosBonus];
+            break;
+        case kBoss_AlphaWeapon:
+            [delegate scoreChangedBy:kScore_AlphaWeaponBonus];
+            break;
+            
+        case kMiniBoss_OneOne:
+            [delegate scoreChangedBy:kScore_MiniBossLevelOneBonus];
+            break;
+        case kMiniBoss_TwoOne:
+            [delegate scoreChangedBy:kScore_MiniBossLevelOneBonus];
+            break;
+        case kMiniBoss_ThreeOne:
+            [delegate scoreChangedBy:kScore_MiniBossLevelOneBonus];
+            break;
+        case kMiniBoss_FourOne:
+            [delegate scoreChangedBy:kScore_MiniBossLevelOneBonus];
+            break;
+        case kMiniBoss_FiveOne:
+            [delegate scoreChangedBy:kScore_MiniBossLevelOneBonus];
+            break;
+        case kMiniBoss_SixOne:
+            [delegate scoreChangedBy:kScore_MiniBossLevelOneBonus];
+            break;
+        case kMiniBoss_SevenOne:
+            [delegate scoreChangedBy:kScore_MiniBossLevelOneBonus];
+            break;
+            
+        default:
+            break;
+    }
+    
+    if(killedBossID >= kMiniBoss_OneOne && killedBossID <= kMiniBoss_OneThree){
+        [delegate scoreChangedBy:kScore_MiniBossLevelOneBonus];
+    }
+    else if(killedBossID >= kMiniBoss_TwoOne && killedBossID <= kMiniBoss_TwoThree){
+        [delegate scoreChangedBy:kScore_MiniBossLevelTwoBonus];
+    }
+    else if(killedBossID >= kMiniBoss_ThreeOne && killedBossID <= kMiniBoss_ThreeThree){
+        [delegate scoreChangedBy:kScore_MiniBossLevelThreeBonus];
+    }
+    else if(killedBossID >= kMiniBoss_FourOne && killedBossID <= kMiniBoss_FourTwo){
+        [delegate scoreChangedBy:kScore_MiniBossLevelFourBonus];
+    }
+    else if(killedBossID >= kMiniBoss_FiveOne && killedBossID <= kMiniBoss_FiveThree){
+        [delegate scoreChangedBy:kScore_MiniBossLevelFiveBonus];
+    }
+    else if(killedBossID >= kMiniBoss_SixOne && killedBossID <= kMiniBoss_SixThree){
+        [delegate scoreChangedBy:kScore_MiniBossLevelSixBonus];
+    }
+    else if(killedBossID >= kMiniBoss_SevenOne && killedBossID <= kMiniBoss_SevenThree){
+        [delegate scoreChangedBy:kScore_MiniBossLevelSevenBonus];
+    }
 }
 
 - (void)updateWithTouchLocationBegan:(NSSet *)touches withEvent:(UIEvent *)event view:(UIView *)aView {
@@ -1618,6 +1814,17 @@ WrapText( const char *text
 }
 
 - (void)render {
+    if(playerShip.shipIsDead){
+        if(gameOverTimer <= 3){
+            [font setScale:gameOverTimer/4];
+        }
+        else {
+            [font setScale:0.75];
+        }
+        
+        [font drawStringAt:CGPointMake(60.0f, 240.0f) text:@"Game Over"];
+    }
+    
     for(Drop *drop in droppedPowerUpSet){
         [drop render];
     }

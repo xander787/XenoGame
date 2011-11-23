@@ -26,6 +26,7 @@
 @synthesize currentScene;
 @synthesize globalAlpha;
 @synthesize framesPerSecond;
+@synthesize gameSceneStatsSceneVisible;
 
 // Make this class a singleton class
 SYNTHESIZE_SINGLETON_FOR_CLASS(Director);
@@ -38,6 +39,11 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(Director);
     currentSceneKey = nil;
     lastSceneKey = nil;
 	globalAlpha = 1.0f;
+    
+    soundManager = [SoundManager sharedSoundManager];
+    
+    gameSceneStatsSceneVisible = NO;
+    
 	return self;
 }
 
@@ -62,6 +68,25 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(Director);
     
     if ([currentScene respondsToSelector:@selector(sceneIsBecomingActive)]) {
         [currentScene sceneIsBecomingActive];
+    }
+    
+    if ([aSceneKey isEqualToString:@"menu"] || [aSceneKey isEqualToString:@"settings"] || [aSceneKey isEqualToString:@"about"] || [aSceneKey isEqualToString:@"highscores"]) {
+        if (![soundManager.currentPlayingMusicName isEqualToString:@"menu_theme"]) {
+            [soundManager playMusicWithKey:@"menu_theme" timesToRepeat:10000];
+        }
+    }
+    
+    if ([aSceneKey isEqualToString:@"game"]) {
+        if (![soundManager.currentPlayingMusicName isEqualToString:@"game_theme"]) {
+            if (gameSceneStatsSceneVisible) {
+                if (![soundManager.currentPlayingMusicName isEqualToString:@"menu_theme"]) {
+                    [soundManager playMusicWithKey:@"menu_theme" timesToRepeat:10000];
+                }
+            }
+            else {
+                [soundManager playMusicWithKey:@"game_theme" timesToRepeat:10000];
+            }
+        }
     }
     
     return YES;

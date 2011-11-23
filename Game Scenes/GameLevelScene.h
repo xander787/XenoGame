@@ -80,6 +80,7 @@
 - (void)creditAmountChangedBy:(int)creditChange;
 - (void)powerUpPickedUp:(DropType)pickedUp;
 - (void)clearAllPowerUpsPickedUp;
+- (void)playerHasDied;
 @end
 
 typedef enum _LevelType {
@@ -212,6 +213,10 @@ typedef enum _OutroAnimation {
     int                     scoreEarned;
     int                     numDropPickups;
     int                     enemiesKilled;
+    
+    //Gameover
+    GLfloat                 gameOverTimer;
+    BOOL                    gameIsOver;
 }
 
 @property (nonatomic, retain) id <GameLevelDelegate> delegate;
@@ -235,6 +240,9 @@ typedef enum _OutroAnimation {
 - (void)skipToNewPageOfText;
 - (void)nukeButtonPushed;
 - (int)damageForWeaponType:(ProjectileID)projectileType;
+
+- (void)addScoreForEnemyShipDeath:(EnemyShip *)enemy;
+- (void)addScoreForBossShipDeath:(BossShip *)boss;
 
 
 @end

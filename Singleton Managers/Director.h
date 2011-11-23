@@ -20,6 +20,7 @@
 #import <OpenGLES/ES1/gl.h>
 #import "SynthesizeSingleton.h"
 #import "Common.h"
+#import "SoundManager.h"
 
 @class AbstractScene;
 
@@ -41,6 +42,10 @@
 	GLfloat globalAlpha;
     // Frames Per Second
     float framesPerSecond;
+    
+    SoundManager    *soundManager;
+    
+    BOOL            gameSceneStatsSceneVisible;
 	
 }
 
@@ -49,6 +54,7 @@
 @property (nonatomic, retain) AbstractScene *currentScene;
 @property (nonatomic, assign) GLfloat globalAlpha;
 @property (nonatomic, assign) float framesPerSecond;
+@property (nonatomic, assign) BOOL gameSceneStatsSceneVisible;
 
 + (Director*)sharedDirector;
 - (void)addSceneWithKey:(NSString*)aSceneKey scene:(AbstractScene*)aScene;

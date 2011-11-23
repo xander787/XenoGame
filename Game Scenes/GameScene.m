@@ -209,14 +209,30 @@
             nukePowerUpEnabled = YES;
             [nukeImage setColourFilterRed:1.0 green:1.0 blue:1.0 alpha:1.0];
         }
+        
+        if(lastPlayPlayerDied){
+            NSMutableDictionary *statsDict = [[NSMutableDictionary alloc] init];
+            [statsDict setValue:[NSString stringWithFormat:@"%d", 0] forKey:@"DROPS"];
+            [statsDict setValue:[NSString stringWithFormat:@"%d", 0] forKey:@"ENEMIES"];
+            [statsDict setValue:[NSString stringWithFormat:@"%f", 0] forKey:@"TIME"];
+            [statsDict setValue:[NSString stringWithFormat:@"%d", 0] forKey:@"SCORE"];
+            [self levelEnded:statsDict];
+        }
     }
     else if(showStatsScene){
+        [_sharedDirector setGameSceneStatsSceneVisible:YES];
         [statsScene updateWithDelta:aDelta];
         if([statsScene continueGame] == YES){
             statsScene.continueGame = NO;
+            [_sharedDirector setGameSceneStatsSceneVisible:NO];
             showStatsScene = NO;
             //Current Level ++
-            currentLevel++;
+            if(lastPlayPlayerDied){
+                lastPlayPlayerDied = NO;
+            }
+            else {
+                currentLevel++;
+            }
             [self loadLevelForPlay:currentLevel];
         }
     }
@@ -397,6 +413,10 @@
     nukePowerUpReady = NO;
 }
 
+- (void)playerHasDied {
+    lastPlayPlayerDied = YES;
+}
+
 - (void)playerReachedSavePoint:(NSString *)savePoint {
     [settingsDB setValue:[NSString stringWithFormat:@"%d;%@", currentLevelIndex, savePoint] forKey:kSetting_SaveGameLevelProgress];
     [settingsDB setInteger:playerScore forKey:kSetting_SaveGameScore];
@@ -410,7 +430,7 @@
 }
 
 - (void)playerHealthChangedBy:(int)healthChange {
-    
+
 }
 
 - (void)creditAmountChangedBy:(int)creditChange {
@@ -429,6 +449,7 @@
 - (void)clearAllPowerUpsPickedUp {
     [enabledPowerUpsArray removeAllObjects];
 }
+
 
 - (void)transitionToSceneWithKey:(NSString *)aKey {
 	sceneState = kSceneState_TransitionOut;
