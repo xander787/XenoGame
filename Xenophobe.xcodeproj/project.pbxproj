@@ -33,6 +33,23 @@
 		1130822712D907B1009C9502 /* MiniBossGeneral.m in Sources */ = {isa = PBXBuildFile; fileRef = 1130822612D907B1009C9502 /* MiniBossGeneral.m */; };
 		1130822A12D907CD009C9502 /* BossShipAtlas.m in Sources */ = {isa = PBXBuildFile; fileRef = 1130822912D907CD009C9502 /* BossShipAtlas.m */; };
 		11336113129E54F300FE6A03 /* BossShips.plist in Resources */ = {isa = PBXBuildFile; fileRef = 11336112129E54F300FE6A03 /* BossShips.plist */; };
+		1144CD101485E84F00B50D67 /* XP-750.png in Resources */ = {isa = PBXBuildFile; fileRef = 1144CCFF1485E84F00B50D67 /* XP-750.png */; };
+		1144CD111485E84F00B50D67 /* XP-751.png in Resources */ = {isa = PBXBuildFile; fileRef = 1144CD001485E84F00B50D67 /* XP-751.png */; };
+		1144CD121485E84F00B50D67 /* XPA-368.png in Resources */ = {isa = PBXBuildFile; fileRef = 1144CD011485E84F00B50D67 /* XPA-368.png */; };
+		1144CD131485E84F00B50D67 /* XPA-600.png in Resources */ = {isa = PBXBuildFile; fileRef = 1144CD021485E84F00B50D67 /* XPA-600.png */; };
+		1144CD141485E84F00B50D67 /* XPA-617.png in Resources */ = {isa = PBXBuildFile; fileRef = 1144CD031485E84F00B50D67 /* XPA-617.png */; };
+		1144CD151485E84F00B50D67 /* XPA-652.png in Resources */ = {isa = PBXBuildFile; fileRef = 1144CD041485E84F00B50D67 /* XPA-652.png */; };
+		1144CD161485E84F00B50D67 /* XPA-679.png in Resources */ = {isa = PBXBuildFile; fileRef = 1144CD051485E84F00B50D67 /* XPA-679.png */; };
+		1144CD171485E84F00B50D67 /* XPD-900.png in Resources */ = {isa = PBXBuildFile; fileRef = 1144CD061485E84F00B50D67 /* XPD-900.png */; };
+		1144CD181485E84F00B50D67 /* XPD-909.png in Resources */ = {isa = PBXBuildFile; fileRef = 1144CD071485E84F00B50D67 /* XPD-909.png */; };
+		1144CD191485E84F00B50D67 /* XPD-924.png in Resources */ = {isa = PBXBuildFile; fileRef = 1144CD081485E84F00B50D67 /* XPD-924.png */; };
+		1144CD1A1485E84F00B50D67 /* XPD-945.png in Resources */ = {isa = PBXBuildFile; fileRef = 1144CD091485E84F00B50D67 /* XPD-945.png */; };
+		1144CD1B1485E84F00B50D67 /* XPD-968.png in Resources */ = {isa = PBXBuildFile; fileRef = 1144CD0A1485E84F00B50D67 /* XPD-968.png */; };
+		1144CD1C1485E84F00B50D67 /* XPS-400.png in Resources */ = {isa = PBXBuildFile; fileRef = 1144CD0B1485E84F00B50D67 /* XPS-400.png */; };
+		1144CD1D1485E84F00B50D67 /* XPS-424.png in Resources */ = {isa = PBXBuildFile; fileRef = 1144CD0C1485E84F00B50D67 /* XPS-424.png */; };
+		1144CD1E1485E84F00B50D67 /* XPS-447.png in Resources */ = {isa = PBXBuildFile; fileRef = 1144CD0D1485E84F00B50D67 /* XPS-447.png */; };
+		1144CD1F1485E84F00B50D67 /* XPS-463.png in Resources */ = {isa = PBXBuildFile; fileRef = 1144CD0E1485E84F00B50D67 /* XPS-463.png */; };
+		1144CD201485E84F00B50D67 /* XPS-485.png in Resources */ = {isa = PBXBuildFile; fileRef = 1144CD0F1485E84F00B50D67 /* XPS-485.png */; };
 		114A1A7412989C4B004769D4 /* PlayerShips.plist in Resources */ = {isa = PBXBuildFile; fileRef = 114A1A7312989C4B004769D4 /* PlayerShips.plist */; };
 		1164A6F612D29F7400B21071 /* kEnemyKamikazeeLevelOne.png in Resources */ = {isa = PBXBuildFile; fileRef = 1164A6F412D29F7400B21071 /* kEnemyKamikazeeLevelOne.png */; };
 		1164A6F712D29F7400B21071 /* kEnemyWaveShotLevelFourSpriteSheet.png in Resources */ = {isa = PBXBuildFile; fileRef = 1164A6F512D29F7400B21071 /* kEnemyWaveShotLevelFourSpriteSheet.png */; };
@@ -369,6 +386,23 @@
 		1130822812D907CD009C9502 /* BossShipAtlas.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BossShipAtlas.h; path = Entities/Ships/Bosses/BossShipAtlas.h; sourceTree = "<group>"; };
 		1130822912D907CD009C9502 /* BossShipAtlas.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BossShipAtlas.m; path = Entities/Ships/Bosses/BossShipAtlas.m; sourceTree = "<group>"; };
 		11336112129E54F300FE6A03 /* BossShips.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = BossShips.plist; path = "Game Resources/BossShips.plist"; sourceTree = SOURCE_ROOT; };
+		1144CCFF1485E84F00B50D67 /* XP-750.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "XP-750.png"; path = "Game Resources/Images/Normal/Ships/Player Ships/XP-750.png"; sourceTree = SOURCE_ROOT; };
+		1144CD001485E84F00B50D67 /* XP-751.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "XP-751.png"; path = "Game Resources/Images/Normal/Ships/Player Ships/XP-751.png"; sourceTree = SOURCE_ROOT; };
+		1144CD011485E84F00B50D67 /* XPA-368.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "XPA-368.png"; path = "Game Resources/Images/Normal/Ships/Player Ships/XPA-368.png"; sourceTree = SOURCE_ROOT; };
+		1144CD021485E84F00B50D67 /* XPA-600.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "XPA-600.png"; path = "Game Resources/Images/Normal/Ships/Player Ships/XPA-600.png"; sourceTree = SOURCE_ROOT; };
+		1144CD031485E84F00B50D67 /* XPA-617.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "XPA-617.png"; path = "Game Resources/Images/Normal/Ships/Player Ships/XPA-617.png"; sourceTree = SOURCE_ROOT; };
+		1144CD041485E84F00B50D67 /* XPA-652.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "XPA-652.png"; path = "Game Resources/Images/Normal/Ships/Player Ships/XPA-652.png"; sourceTree = SOURCE_ROOT; };
+		1144CD051485E84F00B50D67 /* XPA-679.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "XPA-679.png"; path = "Game Resources/Images/Normal/Ships/Player Ships/XPA-679.png"; sourceTree = SOURCE_ROOT; };
+		1144CD061485E84F00B50D67 /* XPD-900.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "XPD-900.png"; path = "Game Resources/Images/Normal/Ships/Player Ships/XPD-900.png"; sourceTree = SOURCE_ROOT; };
+		1144CD071485E84F00B50D67 /* XPD-909.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "XPD-909.png"; path = "Game Resources/Images/Normal/Ships/Player Ships/XPD-909.png"; sourceTree = SOURCE_ROOT; };
+		1144CD081485E84F00B50D67 /* XPD-924.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "XPD-924.png"; path = "Game Resources/Images/Normal/Ships/Player Ships/XPD-924.png"; sourceTree = SOURCE_ROOT; };
+		1144CD091485E84F00B50D67 /* XPD-945.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "XPD-945.png"; path = "Game Resources/Images/Normal/Ships/Player Ships/XPD-945.png"; sourceTree = SOURCE_ROOT; };
+		1144CD0A1485E84F00B50D67 /* XPD-968.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "XPD-968.png"; path = "Game Resources/Images/Normal/Ships/Player Ships/XPD-968.png"; sourceTree = SOURCE_ROOT; };
+		1144CD0B1485E84F00B50D67 /* XPS-400.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "XPS-400.png"; path = "Game Resources/Images/Normal/Ships/Player Ships/XPS-400.png"; sourceTree = SOURCE_ROOT; };
+		1144CD0C1485E84F00B50D67 /* XPS-424.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "XPS-424.png"; path = "Game Resources/Images/Normal/Ships/Player Ships/XPS-424.png"; sourceTree = SOURCE_ROOT; };
+		1144CD0D1485E84F00B50D67 /* XPS-447.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "XPS-447.png"; path = "Game Resources/Images/Normal/Ships/Player Ships/XPS-447.png"; sourceTree = SOURCE_ROOT; };
+		1144CD0E1485E84F00B50D67 /* XPS-463.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "XPS-463.png"; path = "Game Resources/Images/Normal/Ships/Player Ships/XPS-463.png"; sourceTree = SOURCE_ROOT; };
+		1144CD0F1485E84F00B50D67 /* XPS-485.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "XPS-485.png"; path = "Game Resources/Images/Normal/Ships/Player Ships/XPS-485.png"; sourceTree = SOURCE_ROOT; };
 		114A1A7312989C4B004769D4 /* PlayerShips.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = PlayerShips.plist; path = "Game Resources/PlayerShips.plist"; sourceTree = SOURCE_ROOT; };
 		1164A6F412D29F7400B21071 /* kEnemyKamikazeeLevelOne.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = kEnemyKamikazeeLevelOne.png; path = "Game Resources/Images/Normal/Ships/Enemy Ships/kEnemyKamikazeeLevelOne.png"; sourceTree = SOURCE_ROOT; };
 		1164A6F512D29F7400B21071 /* kEnemyWaveShotLevelFourSpriteSheet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = kEnemyWaveShotLevelFourSpriteSheet.png; path = "Game Resources/Images/Normal/Ships/Enemy Ships/kEnemyWaveShotLevelFourSpriteSheet.png"; sourceTree = SOURCE_ROOT; };
@@ -880,6 +914,23 @@
 			isa = PBXGroup;
 			children = (
 				B9BC1346146659FE00C8EA05 /* Previews */,
+				1144CCFF1485E84F00B50D67 /* XP-750.png */,
+				1144CD001485E84F00B50D67 /* XP-751.png */,
+				1144CD011485E84F00B50D67 /* XPA-368.png */,
+				1144CD021485E84F00B50D67 /* XPA-600.png */,
+				1144CD031485E84F00B50D67 /* XPA-617.png */,
+				1144CD041485E84F00B50D67 /* XPA-652.png */,
+				1144CD051485E84F00B50D67 /* XPA-679.png */,
+				1144CD061485E84F00B50D67 /* XPD-900.png */,
+				1144CD071485E84F00B50D67 /* XPD-909.png */,
+				1144CD081485E84F00B50D67 /* XPD-924.png */,
+				1144CD091485E84F00B50D67 /* XPD-945.png */,
+				1144CD0A1485E84F00B50D67 /* XPD-968.png */,
+				1144CD0B1485E84F00B50D67 /* XPS-400.png */,
+				1144CD0C1485E84F00B50D67 /* XPS-424.png */,
+				1144CD0D1485E84F00B50D67 /* XPS-447.png */,
+				1144CD0E1485E84F00B50D67 /* XPS-463.png */,
+				1144CD0F1485E84F00B50D67 /* XPS-485.png */,
 				11DE0F2912CE6A9500A3F7CA /* devship.png */,
 			);
 			name = "Player Ships";
@@ -1882,6 +1933,23 @@
 				B920553C146A479000D58152 /* kMinibossFiveOneMiddleRing.png in Resources */,
 				B920553D146A479000D58152 /* kMinibossFiveOneOuterRing.png in Resources */,
 				B920553F146A513900D58152 /* Level_DevTest2.plist in Resources */,
+				1144CD101485E84F00B50D67 /* XP-750.png in Resources */,
+				1144CD111485E84F00B50D67 /* XP-751.png in Resources */,
+				1144CD121485E84F00B50D67 /* XPA-368.png in Resources */,
+				1144CD131485E84F00B50D67 /* XPA-600.png in Resources */,
+				1144CD141485E84F00B50D67 /* XPA-617.png in Resources */,
+				1144CD151485E84F00B50D67 /* XPA-652.png in Resources */,
+				1144CD161485E84F00B50D67 /* XPA-679.png in Resources */,
+				1144CD171485E84F00B50D67 /* XPD-900.png in Resources */,
+				1144CD181485E84F00B50D67 /* XPD-909.png in Resources */,
+				1144CD191485E84F00B50D67 /* XPD-924.png in Resources */,
+				1144CD1A1485E84F00B50D67 /* XPD-945.png in Resources */,
+				1144CD1B1485E84F00B50D67 /* XPD-968.png in Resources */,
+				1144CD1C1485E84F00B50D67 /* XPS-400.png in Resources */,
+				1144CD1D1485E84F00B50D67 /* XPS-424.png in Resources */,
+				1144CD1E1485E84F00B50D67 /* XPS-447.png in Resources */,
+				1144CD1F1485E84F00B50D67 /* XPS-463.png in Resources */,
+				1144CD201485E84F00B50D67 /* XPS-485.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

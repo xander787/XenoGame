@@ -152,6 +152,8 @@
     
     statsScene = [[GameStatsScene alloc] init];
     
+    playerScore = [settingsDB integerForKey:kSetting_SaveGameScore];
+    
     shieldImage = [[Image alloc] initWithImage:@"Shield.png" scale:Scale2fOne];
     damageMultiplierImage = [[Image alloc] initWithImage:@"DamageMultiplier.png" scale:Scale2fOne];
     scoreMultiplierImage = [[Image alloc] initWithImage:@"ScoreMultiplier.png" scale:Scale2fOne];
@@ -411,6 +413,9 @@
     levelInProgress = NO;
     [statsScene setStatsDictionary:stats];
     nukePowerUpReady = NO;
+    
+    // Save current score to settings
+    [settingsDB setInteger:playerScore forKey:kSetting_SaveGameScore];
 }
 
 - (void)playerHasDied {

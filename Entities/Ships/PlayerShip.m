@@ -96,15 +96,83 @@
 		NSMutableDictionary *shipDictionary;
 		[bundle release];
 		[path release];
+        
 		
 		//Extract our specific ship's dictionary from the PLIST and then release it to reduce memory use
 		switch (shipID) {
-			case kPlayerShip_Default:
-				shipDictionary = [[NSMutableDictionary alloc] initWithDictionary:[playerShipsDictionary objectForKey:@"kPlayerShip_Default"]];
-				break;
+
 			case kPlayerShip_Dev:
 				shipDictionary = [[NSMutableDictionary alloc] initWithDictionary:[playerShipsDictionary objectForKey:@"kPlayerShip_Dev"]];
 				break;
+            
+            case kPlayerShip_XP750:
+                shipDictionary = [[NSMutableDictionary alloc] initWithDictionary:[playerShipsDictionary objectForKey:@"kPlayerShip_XP750"]];
+                break;
+                
+            case kPlayerShip_XP751:
+                shipDictionary = [[NSMutableDictionary alloc] initWithDictionary:[playerShipsDictionary objectForKey:@"kPlayerShip_XP751"]];
+                break;
+
+            case kPlayerShip_XPA368:
+                shipDictionary = [[NSMutableDictionary alloc] initWithDictionary:[playerShipsDictionary objectForKey:@"kPlayerShip_XPA368"]];
+                break;
+
+            case kPlayerShip_XPA600:
+                shipDictionary = [[NSMutableDictionary alloc] initWithDictionary:[playerShipsDictionary objectForKey:@"kPlayerShip_XPA600"]];
+                break;
+
+            case kPlayerShip_XPA617:
+                shipDictionary = [[NSMutableDictionary alloc] initWithDictionary:[playerShipsDictionary objectForKey:@"kPlayerShip_XPA617"]];
+                break;
+
+            case kPlayerShip_XPA652:
+                shipDictionary = [[NSMutableDictionary alloc] initWithDictionary:[playerShipsDictionary objectForKey:@"kPlayerShip_XPA652"]];
+                break;
+
+            case kPlayerShip_XPA679:
+                shipDictionary = [[NSMutableDictionary alloc] initWithDictionary:[playerShipsDictionary objectForKey:@"kPlayerShip_XPA679"]];
+                break;
+
+            case kPlayerShip_XPD900:
+                shipDictionary = [[NSMutableDictionary alloc] initWithDictionary:[playerShipsDictionary objectForKey:@"kPlayerShip_XPD900"]];
+                break;
+
+            case kPlayerShip_XPD909:
+                shipDictionary = [[NSMutableDictionary alloc] initWithDictionary:[playerShipsDictionary objectForKey:@"kPlayerShip_XPD909"]];
+                break;
+
+            case kPlayerShip_XPD924:
+                shipDictionary = [[NSMutableDictionary alloc] initWithDictionary:[playerShipsDictionary objectForKey:@"kPlayerShip_XPD924"]];
+                break;
+
+            case kPlayerShip_XPD945:
+                shipDictionary = [[NSMutableDictionary alloc] initWithDictionary:[playerShipsDictionary objectForKey:@"kPlayerShip_XPD945"]];
+                break;
+
+            case kPlayerShip_XPD968:
+                shipDictionary = [[NSMutableDictionary alloc] initWithDictionary:[playerShipsDictionary objectForKey:@"kPlayerShip_XPD968"]];
+                break;
+
+            case kPlayerShip_XPS400:
+                shipDictionary = [[NSMutableDictionary alloc] initWithDictionary:[playerShipsDictionary objectForKey:@"kPlayerShip_XPS400"]];
+                break;
+
+            case kPlayerShip_XPS424:
+                shipDictionary = [[NSMutableDictionary alloc] initWithDictionary:[playerShipsDictionary objectForKey:@"kPlayerShip_XPS424"]];
+                break;
+
+            case kPlayerShip_XPS447:
+                shipDictionary = [[NSMutableDictionary alloc] initWithDictionary:[playerShipsDictionary objectForKey:@"kPlayerShip_XPS447"]];
+                break;
+                
+            case kPlayerShip_XPS463:
+                shipDictionary = [[NSMutableDictionary alloc] initWithDictionary:[playerShipsDictionary objectForKey:@"kPlayerShip_XPS463"]];
+                break;
+
+            case kPlayerShip_XPS485:
+                shipDictionary = [[NSMutableDictionary alloc] initWithDictionary:[playerShipsDictionary objectForKey:@"kPlayerShip_XPS485"]];
+                break;
+                
 			default:
 				break;
 		}
@@ -122,7 +190,7 @@
         shipWidth = [mainImage imageWidth];
         shipHeight = [mainImage imageHeight];
         
-        
+        g
 		if ([shipDictionary valueForKey:@"kShipCategory"] == @"kShipCategory_Attack") {
 			shipCategory = kShipCategory_Attack;
 		}

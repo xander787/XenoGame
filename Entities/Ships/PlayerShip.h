@@ -52,9 +52,43 @@
 #import "MissileProjectile.h"
 #import "WaveProjectile.h"
 
+#define kXP750 @"kShipXP750"
+#define kXP751 @"kShipXP751"
+#define kXPA368 @"kShipXPA368"
+#define kXPA600 @"kShipXPA600"
+#define kXPA617 @"kShipXPA617"
+#define kXPA652 @"kShipXPA652"
+#define kXPA679 @"kShipXPA679"
+#define kXPD900 @"kShipXPD900"
+#define kXPD909 @"kShipXPD909"
+#define kXPD924 @"kShipXPD924"
+#define kXPD945 @"kShipXPD945"
+#define kXPD968 @"kShipXPD968"
+#define kXPS400 @"kShipXPS400"
+#define kXPS424 @"kShipXPS424"
+#define kXPS447 @"kShipXPS447"
+#define kXPS463 @"kShipXPS463"
+#define kXPS485 @"kShipXPS485"
+
 typedef enum _PlayerShipID {
 	kPlayerShip_Dev = 0,
-	kPlayerShip_Default
+	kPlayerShip_XP750,
+    kPlayerShip_XP751,
+    kPlayerShip_XPA368,
+    kPlayerShip_XPA600,
+    kPlayerShip_XPA617,
+    kPlayerShip_XPA652,
+    kPlayerShip_XPA679,
+    kPlayerShip_XPD900,
+    kPlayerShip_XPD909,
+    kPlayerShip_XPD924,
+    kPlayerShip_XPD945,
+    kPlayerShip_XPD968,
+    kPlayerShip_XPS400,
+    kPlayerShip_XPS424,
+    kPlayerShip_XPS447,
+    kPlayerShip_XPS463,
+    kPlayerShip_XPS485
 } PlayerShipID;
 
 typedef enum _PlayerShipCategory {
