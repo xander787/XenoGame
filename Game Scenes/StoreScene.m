@@ -113,23 +113,23 @@
     
     //Preview files:
     previewShipImages = [[NSMutableDictionary alloc] init];
-    [previewShipImages setObject:[[[Image alloc] initWithImage:@"XP-750.png" scale:Scale2fOne] autorelease] forKey:kXP750];
-    [previewShipImages setObject:[[[Image alloc] initWithImage:@"XP-751.png" scale:Scale2fOne] autorelease] forKey:kXP751];
-    [previewShipImages setObject:[[[Image alloc] initWithImage:@"XPA-368.png" scale:Scale2fOne] autorelease] forKey:kXPA368];
-    [previewShipImages setObject:[[[Image alloc] initWithImage:@"XPA-600.png" scale:Scale2fOne] autorelease] forKey:kXPA600];
-    [previewShipImages setObject:[[[Image alloc] initWithImage:@"XPA-617.png" scale:Scale2fOne] autorelease] forKey:kXPA617];
-    [previewShipImages setObject:[[[Image alloc] initWithImage:@"XPA-652.png" scale:Scale2fOne] autorelease] forKey:kXPA652];
-    [previewShipImages setObject:[[[Image alloc] initWithImage:@"XPA-679.png" scale:Scale2fOne] autorelease] forKey:kXPA679];
-    [previewShipImages setObject:[[[Image alloc] initWithImage:@"XPS-400.png" scale:Scale2fOne] autorelease] forKey:kXPS400];
-    [previewShipImages setObject:[[[Image alloc] initWithImage:@"XPS-424.png" scale:Scale2fOne] autorelease] forKey:kXPS424];
-    [previewShipImages setObject:[[[Image alloc] initWithImage:@"XPS-447.png" scale:Scale2fOne] autorelease] forKey:kXPS447];
-    [previewShipImages setObject:[[[Image alloc] initWithImage:@"XPS-463.png" scale:Scale2fOne] autorelease] forKey:kXPS463];
-    [previewShipImages setObject:[[[Image alloc] initWithImage:@"XPS-485.png" scale:Scale2fOne] autorelease] forKey:kXPS485];
-    [previewShipImages setObject:[[[Image alloc] initWithImage:@"XPD-900.png" scale:Scale2fOne] autorelease] forKey:kXPD900];
-    [previewShipImages setObject:[[[Image alloc] initWithImage:@"XPD-909.png" scale:Scale2fOne] autorelease] forKey:kXPD909];
-    [previewShipImages setObject:[[[Image alloc] initWithImage:@"XPD-924.png" scale:Scale2fOne] autorelease] forKey:kXPD924];
-    [previewShipImages setObject:[[[Image alloc] initWithImage:@"XPD-945.png" scale:Scale2fOne] autorelease] forKey:kXPD945];
-    [previewShipImages setObject:[[[Image alloc] initWithImage:@"XPD-968.png" scale:Scale2fOne] autorelease] forKey:kXPD968];
+    [previewShipImages setObject:[[[Image alloc] initWithImage:@"Preview-XP-750.png" scale:Scale2fOne] autorelease] forKey:kXP750];
+    [previewShipImages setObject:[[[Image alloc] initWithImage:@"Preview-XP-751.png" scale:Scale2fOne] autorelease] forKey:kXP751];
+    [previewShipImages setObject:[[[Image alloc] initWithImage:@"Preview-XPA-368.png" scale:Scale2fOne] autorelease] forKey:kXPA368];
+    [previewShipImages setObject:[[[Image alloc] initWithImage:@"Preview-XPA-600.png" scale:Scale2fOne] autorelease] forKey:kXPA600];
+    [previewShipImages setObject:[[[Image alloc] initWithImage:@"Preview-XPA-617.png" scale:Scale2fOne] autorelease] forKey:kXPA617];
+    [previewShipImages setObject:[[[Image alloc] initWithImage:@"Preview-XPA-652.png" scale:Scale2fOne] autorelease] forKey:kXPA652];
+    [previewShipImages setObject:[[[Image alloc] initWithImage:@"Preview-XPA-679.png" scale:Scale2fOne] autorelease] forKey:kXPA679];
+    [previewShipImages setObject:[[[Image alloc] initWithImage:@"Preview-XPS-400.png" scale:Scale2fOne] autorelease] forKey:kXPS400];
+    [previewShipImages setObject:[[[Image alloc] initWithImage:@"Preview-XPS-424.png" scale:Scale2fOne] autorelease] forKey:kXPS424];
+    [previewShipImages setObject:[[[Image alloc] initWithImage:@"Preview-XPS-447.png" scale:Scale2fOne] autorelease] forKey:kXPS447];
+    [previewShipImages setObject:[[[Image alloc] initWithImage:@"Preview-XPS-463.png" scale:Scale2fOne] autorelease] forKey:kXPS463];
+    [previewShipImages setObject:[[[Image alloc] initWithImage:@"Preview-XPS-485.png" scale:Scale2fOne] autorelease] forKey:kXPS485];
+    [previewShipImages setObject:[[[Image alloc] initWithImage:@"Preview-XPD-900.png" scale:Scale2fOne] autorelease] forKey:kXPD900];
+    [previewShipImages setObject:[[[Image alloc] initWithImage:@"Preview-XPD-909.png" scale:Scale2fOne] autorelease] forKey:kXPD909];
+    [previewShipImages setObject:[[[Image alloc] initWithImage:@"Preview-XPD-924.png" scale:Scale2fOne] autorelease] forKey:kXPD924];
+    [previewShipImages setObject:[[[Image alloc] initWithImage:@"Preview-XPD-945.png" scale:Scale2fOne] autorelease] forKey:kXPD945];
+    [previewShipImages setObject:[[[Image alloc] initWithImage:@"Preview-XPD-968.png" scale:Scale2fOne] autorelease] forKey:kXPD968];
 }
 
 - (void)sceneIsBecomingActive {    
@@ -1705,14 +1705,14 @@
             [generalMenuShipsButton renderAtPoint:CGPointMake(160.0f, 380.0f) centerOfImage:YES];
             [generalMenuWeaponsButton renderAtPoint:CGPointMake(160.0f, 300.0f) centerOfImage:YES];
             [font setScale:0.5];
-            [font drawStringAt:CGPointMake(75.0f, 250.0f) text:@"Health: XXXc"];
-            [font drawStringAt:CGPointMake(75.0f, 210.0f) text:@"Shield: XXXc"];
+            [font drawStringAt:CGPointMake(75.0f, 210.0f) text:[NSString stringWithFormat:@"Health: %dc", (int)(([[settings objectForKey:kSetting_SaveGameHealth] floatValue] / 300) * 100)]];
+//            [font drawStringAt:CGPointMake(75.0f, 210.0f) text:@"Shield: XXXc"]; //Deprecating for now
             [font drawStringAt:CGPointMake(75.0f, 170.0f) text:[NSString stringWithFormat:@"Ship: %@", [self displayStringForShip:currentEquippedShipType]]];
             if([[currentEquippedWeapon substringFromIndex:11] isEqualToString:@"Heatseeking"]){
                 [font drawStringAt:CGPointMake(75.0f, 130.0f) text:@"Wpn: Heat"];
             }
             else [font drawStringAt:CGPointMake(75.0f, 130.0f) text:[NSString stringWithFormat:@"Wpn: %@", [currentEquippedWeapon substringFromIndex:11]]];
-            [font drawStringAt:CGPointMake(75.0f, 90.0f) text:[NSString stringWithFormat:@"Lvl: %d", currentEquippedWeaponLevel]];
+            [font drawStringAt:CGPointMake(75.0f, 90.0f) text:[NSString stringWithFormat:@"Wpn-Lvl: %d", currentEquippedWeaponLevel]];
             [font setScale:0.7];
             
             break;

@@ -96,8 +96,7 @@
 		NSMutableDictionary *shipDictionary;
 		[bundle release];
 		[path release];
-        
-		
+        		
 		//Extract our specific ship's dictionary from the PLIST and then release it to reduce memory use
 		switch (shipID) {
 
@@ -106,76 +105,77 @@
 				break;
             
             case kPlayerShip_XP750:
-                shipDictionary = [[NSMutableDictionary alloc] initWithDictionary:[playerShipsDictionary objectForKey:@"kPlayerShip_XP750"]];
+                shipDictionary = [[NSMutableDictionary alloc] initWithDictionary:[playerShipsDictionary objectForKey:@"kPlayerShip_XP-750"]];
                 break;
                 
             case kPlayerShip_XP751:
-                shipDictionary = [[NSMutableDictionary alloc] initWithDictionary:[playerShipsDictionary objectForKey:@"kPlayerShip_XP751"]];
+                shipDictionary = [[NSMutableDictionary alloc] initWithDictionary:[playerShipsDictionary objectForKey:@"kPlayerShip_XP-751"]];
                 break;
 
             case kPlayerShip_XPA368:
-                shipDictionary = [[NSMutableDictionary alloc] initWithDictionary:[playerShipsDictionary objectForKey:@"kPlayerShip_XPA368"]];
+                shipDictionary = [[NSMutableDictionary alloc] initWithDictionary:[playerShipsDictionary objectForKey:@"kPlayerShip_XPA-368"]];
                 break;
 
             case kPlayerShip_XPA600:
-                shipDictionary = [[NSMutableDictionary alloc] initWithDictionary:[playerShipsDictionary objectForKey:@"kPlayerShip_XPA600"]];
+                shipDictionary = [[NSMutableDictionary alloc] initWithDictionary:[playerShipsDictionary objectForKey:@"kPlayerShip_XPA-600"]];
                 break;
 
             case kPlayerShip_XPA617:
-                shipDictionary = [[NSMutableDictionary alloc] initWithDictionary:[playerShipsDictionary objectForKey:@"kPlayerShip_XPA617"]];
+                shipDictionary = [[NSMutableDictionary alloc] initWithDictionary:[playerShipsDictionary objectForKey:@"kPlayerShip_XPA-617"]];
                 break;
 
             case kPlayerShip_XPA652:
-                shipDictionary = [[NSMutableDictionary alloc] initWithDictionary:[playerShipsDictionary objectForKey:@"kPlayerShip_XPA652"]];
+                shipDictionary = [[NSMutableDictionary alloc] initWithDictionary:[playerShipsDictionary objectForKey:@"kPlayerShip_XPA-652"]];
                 break;
 
             case kPlayerShip_XPA679:
-                shipDictionary = [[NSMutableDictionary alloc] initWithDictionary:[playerShipsDictionary objectForKey:@"kPlayerShip_XPA679"]];
+                shipDictionary = [[NSMutableDictionary alloc] initWithDictionary:[playerShipsDictionary objectForKey:@"kPlayerShip_XPA-679"]];
                 break;
 
             case kPlayerShip_XPD900:
-                shipDictionary = [[NSMutableDictionary alloc] initWithDictionary:[playerShipsDictionary objectForKey:@"kPlayerShip_XPD900"]];
+                shipDictionary = [[NSMutableDictionary alloc] initWithDictionary:[playerShipsDictionary objectForKey:@"kPlayerShip_XPD-900"]];
                 break;
 
             case kPlayerShip_XPD909:
-                shipDictionary = [[NSMutableDictionary alloc] initWithDictionary:[playerShipsDictionary objectForKey:@"kPlayerShip_XPD909"]];
+                shipDictionary = [[NSMutableDictionary alloc] initWithDictionary:[playerShipsDictionary objectForKey:@"kPlayerShip_XPD-909"]];
                 break;
 
             case kPlayerShip_XPD924:
-                shipDictionary = [[NSMutableDictionary alloc] initWithDictionary:[playerShipsDictionary objectForKey:@"kPlayerShip_XPD924"]];
+                shipDictionary = [[NSMutableDictionary alloc] initWithDictionary:[playerShipsDictionary objectForKey:@"kPlayerShip_XPD-924"]];
                 break;
 
             case kPlayerShip_XPD945:
-                shipDictionary = [[NSMutableDictionary alloc] initWithDictionary:[playerShipsDictionary objectForKey:@"kPlayerShip_XPD945"]];
+                shipDictionary = [[NSMutableDictionary alloc] initWithDictionary:[playerShipsDictionary objectForKey:@"kPlayerShip_XPD-945"]];
                 break;
 
             case kPlayerShip_XPD968:
-                shipDictionary = [[NSMutableDictionary alloc] initWithDictionary:[playerShipsDictionary objectForKey:@"kPlayerShip_XPD968"]];
+                shipDictionary = [[NSMutableDictionary alloc] initWithDictionary:[playerShipsDictionary objectForKey:@"kPlayerShip_XPD-968"]];
                 break;
 
             case kPlayerShip_XPS400:
-                shipDictionary = [[NSMutableDictionary alloc] initWithDictionary:[playerShipsDictionary objectForKey:@"kPlayerShip_XPS400"]];
+                shipDictionary = [[NSMutableDictionary alloc] initWithDictionary:[playerShipsDictionary objectForKey:@"kPlayerShip_XPS-400"]];
                 break;
 
             case kPlayerShip_XPS424:
-                shipDictionary = [[NSMutableDictionary alloc] initWithDictionary:[playerShipsDictionary objectForKey:@"kPlayerShip_XPS424"]];
+                shipDictionary = [[NSMutableDictionary alloc] initWithDictionary:[playerShipsDictionary objectForKey:@"kPlayerShip_XPS-424"]];
                 break;
 
             case kPlayerShip_XPS447:
-                shipDictionary = [[NSMutableDictionary alloc] initWithDictionary:[playerShipsDictionary objectForKey:@"kPlayerShip_XPS447"]];
+                shipDictionary = [[NSMutableDictionary alloc] initWithDictionary:[playerShipsDictionary objectForKey:@"kPlayerShip_XPS-447"]];
                 break;
                 
             case kPlayerShip_XPS463:
-                shipDictionary = [[NSMutableDictionary alloc] initWithDictionary:[playerShipsDictionary objectForKey:@"kPlayerShip_XPS463"]];
+                shipDictionary = [[NSMutableDictionary alloc] initWithDictionary:[playerShipsDictionary objectForKey:@"kPlayerShip_XPS-463"]];
                 break;
 
             case kPlayerShip_XPS485:
-                shipDictionary = [[NSMutableDictionary alloc] initWithDictionary:[playerShipsDictionary objectForKey:@"kPlayerShip_XPS485"]];
+                shipDictionary = [[NSMutableDictionary alloc] initWithDictionary:[playerShipsDictionary objectForKey:@"kPlayerShip_XPS-485"]];
                 break;
                 
 			default:
 				break;
 		}
+        
 		
 		[playerShipsDictionary release];
         
@@ -190,7 +190,7 @@
         shipWidth = [mainImage imageWidth];
         shipHeight = [mainImage imageHeight];
         
-        g
+        
 		if ([shipDictionary valueForKey:@"kShipCategory"] == @"kShipCategory_Attack") {
 			shipCategory = kShipCategory_Attack;
 		}
@@ -248,7 +248,7 @@
             [coords release];
         }        
         
-        
+        /********************
         //Fill a C array with Vector2f's of our ship's collision detection bounding points
         collisionPointsCount = [shipCollisionArray count];
         collisionDetectionBoundingPoints = malloc(sizeof(Vector2f) * [shipCollisionArray count]);
@@ -264,10 +264,35 @@
             }
             [coords release];
         }        
-        
-        
+         
         //Allocate our polygon, for use in collision detection.
         collisionPolygon = [[Polygon alloc] initWithPoints:collisionDetectionBoundingPoints andCount:collisionPointsCount andShipPos:currentLocation];        
+         
+        ********* OLD CODE **********/      
+        
+        
+        collisionPolygonArray = [[NSMutableArray alloc] init];
+        
+        for(NSArray *arrayOfPoints in shipCollisionArray){
+            int localCount = [arrayOfPoints count];
+            Vector2f *localPoints = malloc(sizeof(Vector2f) * [arrayOfPoints count]);
+            
+            for(int i = 0; i < localCount; i++){
+                NSArray *coords = [[NSArray alloc] initWithArray:[[arrayOfPoints objectAtIndex:i] componentsSeparatedByString:@","]];
+                @try {
+                    localPoints[i] = Vector2fMake([[coords objectAtIndex:0] intValue], [[coords objectAtIndex:1] intValue]);
+                }
+                @catch (NSException * e) {
+                    NSLog(@"Exception thrown: %@", e);
+                }
+            }
+            
+            Polygon *localPolygon = [[Polygon alloc] initWithPoints:localPoints andCount:localCount andShipPos:currentLocation];
+            
+            [collisionPolygonArray addObject:localPolygon];
+        }
+
+        
         
         // Add projectiles to our local projectile set for the weapon points on the ship
         projectilesArray = [[NSMutableArray alloc] init];
@@ -326,7 +351,9 @@
     
     //Update the points for our polygon
     if(!shipIsDead){
-        [collisionPolygon setPos:currentLocation];
+        for(Polygon *playerLocalPoly in self.collisionPolygonArray){
+            [playerLocalPoly setPos:currentLocation];
+        }
     }
     
     // Update all of our projectiles
@@ -362,8 +389,9 @@
     for(AbstractProjectile *tempProjectile in projectilesArray){
         [tempProjectile stopProjectile];
     }
-    
-    [collisionPolygon setPos:CGPointMake(-500, -500)];
+    for(Polygon *playerLocalPoly in self.collisionPolygonArray){
+        [playerLocalPoly setPos:CGPointMake(-500, -500)];
+    }
 }
 
 - (void)stopAllProjectiles {
@@ -405,30 +433,32 @@
         
         glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
         
-        //Loop through the all the lines except for the last
-        for(int i = 0; i < (collisionPointsCount - 1); i++) {
-            GLfloat line[] = {
-                collisionPolygon.points[i].x, collisionPolygon.points[i].y,
-                collisionPolygon.points[i+1].x, collisionPolygon.points[i+1].y,
+        for(Polygon *playerLocalPoly in self.collisionPolygonArray){
+            //Loop through the all the lines except for the last
+            for(int i = 0; i < (playerLocalPoly.pointCount - 1); i++) {
+                GLfloat line[] = {
+                    playerLocalPoly.points[i].x, playerLocalPoly.points[i].y,
+                    playerLocalPoly.points[i+1].x, playerLocalPoly.points[i+1].y,
+                };
+                
+                glVertexPointer(2, GL_FLOAT, 0, line);
+                glEnableClientState(GL_VERTEX_ARRAY);
+                glDrawArrays(GL_LINES, 0, 2);
+            }
+        
+        
+            //Renders last line, we do this because of how arrays work.
+            GLfloat lineEnd[] = {
+                playerLocalPoly.points[(playerLocalPoly.pointCount - 1)].x, playerLocalPoly.points[(playerLocalPoly.pointCount - 1)].y,
+                playerLocalPoly.points[0].x, playerLocalPoly.points[0].y,
             };
             
-            glVertexPointer(2, GL_FLOAT, 0, line);
+            glVertexPointer(2, GL_FLOAT, 0, lineEnd);
             glEnableClientState(GL_VERTEX_ARRAY);
             glDrawArrays(GL_LINES, 0, 2);
+            
+            glPopMatrix();
         }
-        
-        
-        //Renders last line, we do this because of how arrays work.
-        GLfloat lineEnd[] = {
-            collisionPolygon.points[(collisionPointsCount - 1)].x, collisionPolygon.points[(collisionPointsCount - 1)].y,
-            collisionPolygon.points[0].x, collisionPolygon.points[0].y,
-        };
-        
-        glVertexPointer(2, GL_FLOAT, 0, lineEnd);
-        glEnableClientState(GL_VERTEX_ARRAY);
-        glDrawArrays(GL_LINES, 0, 2);
-        
-        glPopMatrix();
     }
 }
 

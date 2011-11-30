@@ -22,7 +22,7 @@
 @implementation AbstractShip
 
 @synthesize shipIsDead, shipHealth, shipMaxHealth, shipAttack, shipStamina, shipSpeed, shipWidth, shipHeight;
-@synthesize collisionPolygon, projectilesArray, currentLocation, deathAnimationEmitter;
+@synthesize collisionPolygon, projectilesArray, currentLocation, deathAnimationEmitter, collisionPolygonArray;
 
 - (id)init {
 	self = [super init];

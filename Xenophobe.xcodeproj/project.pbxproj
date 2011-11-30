@@ -217,6 +217,23 @@
 		B907756A1467801A0081B245 /* Base-Disabled.png in Resources */ = {isa = PBXBuildFile; fileRef = B90775661467801A0081B245 /* Base-Disabled.png */; };
 		B907756B1467801A0081B245 /* Defense-Disabled.png in Resources */ = {isa = PBXBuildFile; fileRef = B90775671467801A0081B245 /* Defense-Disabled.png */; };
 		B907756C1467801A0081B245 /* Speed-Disabled.png in Resources */ = {isa = PBXBuildFile; fileRef = B90775681467801A0081B245 /* Speed-Disabled.png */; };
+		B91606781485FC9600B45BAC /* Preview-XP-750.png in Resources */ = {isa = PBXBuildFile; fileRef = B91606671485FC9600B45BAC /* Preview-XP-750.png */; };
+		B91606791485FC9600B45BAC /* Preview-XP-751.png in Resources */ = {isa = PBXBuildFile; fileRef = B91606681485FC9600B45BAC /* Preview-XP-751.png */; };
+		B916067A1485FC9600B45BAC /* Preview-XPA-368.png in Resources */ = {isa = PBXBuildFile; fileRef = B91606691485FC9600B45BAC /* Preview-XPA-368.png */; };
+		B916067B1485FC9600B45BAC /* Preview-XPA-600.png in Resources */ = {isa = PBXBuildFile; fileRef = B916066A1485FC9600B45BAC /* Preview-XPA-600.png */; };
+		B916067C1485FC9600B45BAC /* Preview-XPA-617.png in Resources */ = {isa = PBXBuildFile; fileRef = B916066B1485FC9600B45BAC /* Preview-XPA-617.png */; };
+		B916067D1485FC9600B45BAC /* Preview-XPA-652.png in Resources */ = {isa = PBXBuildFile; fileRef = B916066C1485FC9600B45BAC /* Preview-XPA-652.png */; };
+		B916067E1485FC9600B45BAC /* Preview-XPA-679.png in Resources */ = {isa = PBXBuildFile; fileRef = B916066D1485FC9600B45BAC /* Preview-XPA-679.png */; };
+		B916067F1485FC9600B45BAC /* Preview-XPD-900.png in Resources */ = {isa = PBXBuildFile; fileRef = B916066E1485FC9600B45BAC /* Preview-XPD-900.png */; };
+		B91606801485FC9600B45BAC /* Preview-XPD-909.png in Resources */ = {isa = PBXBuildFile; fileRef = B916066F1485FC9600B45BAC /* Preview-XPD-909.png */; };
+		B91606811485FC9600B45BAC /* Preview-XPD-924.png in Resources */ = {isa = PBXBuildFile; fileRef = B91606701485FC9600B45BAC /* Preview-XPD-924.png */; };
+		B91606821485FC9600B45BAC /* Preview-XPD-945.png in Resources */ = {isa = PBXBuildFile; fileRef = B91606711485FC9600B45BAC /* Preview-XPD-945.png */; };
+		B91606831485FC9600B45BAC /* Preview-XPD-968.png in Resources */ = {isa = PBXBuildFile; fileRef = B91606721485FC9600B45BAC /* Preview-XPD-968.png */; };
+		B91606841485FC9600B45BAC /* Preview-XPS-400.png in Resources */ = {isa = PBXBuildFile; fileRef = B91606731485FC9600B45BAC /* Preview-XPS-400.png */; };
+		B91606851485FC9600B45BAC /* Preview-XPS-424.png in Resources */ = {isa = PBXBuildFile; fileRef = B91606741485FC9600B45BAC /* Preview-XPS-424.png */; };
+		B91606861485FC9600B45BAC /* Preview-XPS-447.png in Resources */ = {isa = PBXBuildFile; fileRef = B91606751485FC9600B45BAC /* Preview-XPS-447.png */; };
+		B91606871485FC9600B45BAC /* Preview-XPS-463.png in Resources */ = {isa = PBXBuildFile; fileRef = B91606761485FC9600B45BAC /* Preview-XPS-463.png */; };
+		B91606881485FC9600B45BAC /* Preview-XPS-485.png in Resources */ = {isa = PBXBuildFile; fileRef = B91606771485FC9600B45BAC /* Preview-XPS-485.png */; };
 		B920553B146A479000D58152 /* kMinibossFiveOneCenter.png in Resources */ = {isa = PBXBuildFile; fileRef = B9205538146A479000D58152 /* kMinibossFiveOneCenter.png */; };
 		B920553C146A479000D58152 /* kMinibossFiveOneMiddleRing.png in Resources */ = {isa = PBXBuildFile; fileRef = B9205539146A479000D58152 /* kMinibossFiveOneMiddleRing.png */; };
 		B920553D146A479000D58152 /* kMinibossFiveOneOuterRing.png in Resources */ = {isa = PBXBuildFile; fileRef = B920553A146A479000D58152 /* kMinibossFiveOneOuterRing.png */; };
@@ -307,23 +324,6 @@
 		B9B03E9E1425AD5A00DE7C0E /* kMiniBossSevenThreeFloat2.png in Resources */ = {isa = PBXBuildFile; fileRef = B9B03E9A1425AD5A00DE7C0E /* kMiniBossSevenThreeFloat2.png */; };
 		B9B03E9F1425AD5A00DE7C0E /* kMiniBossSevenThreeFloat3.png in Resources */ = {isa = PBXBuildFile; fileRef = B9B03E9B1425AD5A00DE7C0E /* kMiniBossSevenThreeFloat3.png */; };
 		B9B03EA01425AD5A00DE7C0E /* kMiniBossSevenThreeMainBody.png in Resources */ = {isa = PBXBuildFile; fileRef = B9B03E9C1425AD5A00DE7C0E /* kMiniBossSevenThreeMainBody.png */; };
-		B9BC135814665A3100C8EA05 /* XP-750.png in Resources */ = {isa = PBXBuildFile; fileRef = B9BC134714665A3100C8EA05 /* XP-750.png */; };
-		B9BC135914665A3100C8EA05 /* XP-751.png in Resources */ = {isa = PBXBuildFile; fileRef = B9BC134814665A3100C8EA05 /* XP-751.png */; };
-		B9BC135A14665A3100C8EA05 /* XPA-368.png in Resources */ = {isa = PBXBuildFile; fileRef = B9BC134914665A3100C8EA05 /* XPA-368.png */; };
-		B9BC135B14665A3100C8EA05 /* XPA-600.png in Resources */ = {isa = PBXBuildFile; fileRef = B9BC134A14665A3100C8EA05 /* XPA-600.png */; };
-		B9BC135C14665A3100C8EA05 /* XPA-617.png in Resources */ = {isa = PBXBuildFile; fileRef = B9BC134B14665A3100C8EA05 /* XPA-617.png */; };
-		B9BC135D14665A3100C8EA05 /* XPA-652.png in Resources */ = {isa = PBXBuildFile; fileRef = B9BC134C14665A3100C8EA05 /* XPA-652.png */; };
-		B9BC135E14665A3100C8EA05 /* XPA-679.png in Resources */ = {isa = PBXBuildFile; fileRef = B9BC134D14665A3100C8EA05 /* XPA-679.png */; };
-		B9BC135F14665A3100C8EA05 /* XPD-900.png in Resources */ = {isa = PBXBuildFile; fileRef = B9BC134E14665A3100C8EA05 /* XPD-900.png */; };
-		B9BC136014665A3100C8EA05 /* XPD-909.png in Resources */ = {isa = PBXBuildFile; fileRef = B9BC134F14665A3100C8EA05 /* XPD-909.png */; };
-		B9BC136114665A3100C8EA05 /* XPD-924.png in Resources */ = {isa = PBXBuildFile; fileRef = B9BC135014665A3100C8EA05 /* XPD-924.png */; };
-		B9BC136214665A3100C8EA05 /* XPD-945.png in Resources */ = {isa = PBXBuildFile; fileRef = B9BC135114665A3100C8EA05 /* XPD-945.png */; };
-		B9BC136314665A3100C8EA05 /* XPD-968.png in Resources */ = {isa = PBXBuildFile; fileRef = B9BC135214665A3100C8EA05 /* XPD-968.png */; };
-		B9BC136414665A3100C8EA05 /* XPS-400.png in Resources */ = {isa = PBXBuildFile; fileRef = B9BC135314665A3100C8EA05 /* XPS-400.png */; };
-		B9BC136514665A3100C8EA05 /* XPS-424.png in Resources */ = {isa = PBXBuildFile; fileRef = B9BC135414665A3100C8EA05 /* XPS-424.png */; };
-		B9BC136614665A3100C8EA05 /* XPS-447.png in Resources */ = {isa = PBXBuildFile; fileRef = B9BC135514665A3100C8EA05 /* XPS-447.png */; };
-		B9BC136714665A3100C8EA05 /* XPS-463.png in Resources */ = {isa = PBXBuildFile; fileRef = B9BC135614665A3100C8EA05 /* XPS-463.png */; };
-		B9BC136814665A3100C8EA05 /* XPS-485.png in Resources */ = {isa = PBXBuildFile; fileRef = B9BC135714665A3100C8EA05 /* XPS-485.png */; };
 		B9C3AB7C13C2A7B4003202BA /* mainmenu.png in Resources */ = {isa = PBXBuildFile; fileRef = B9C3AB7B13C2A7B4003202BA /* mainmenu.png */; };
 		B9C3AB7E13C2AA50003202BA /* return.png in Resources */ = {isa = PBXBuildFile; fileRef = B9C3AB7D13C2AA50003202BA /* return.png */; };
 		B9C3AB8013C2BF8E003202BA /* pause.png in Resources */ = {isa = PBXBuildFile; fileRef = B9C3AB7F13C2BF8E003202BA /* pause.png */; };
@@ -622,6 +622,23 @@
 		B90775661467801A0081B245 /* Base-Disabled.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Base-Disabled.png"; sourceTree = "<group>"; };
 		B90775671467801A0081B245 /* Defense-Disabled.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Defense-Disabled.png"; sourceTree = "<group>"; };
 		B90775681467801A0081B245 /* Speed-Disabled.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Speed-Disabled.png"; sourceTree = "<group>"; };
+		B91606671485FC9600B45BAC /* Preview-XP-750.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Preview-XP-750.png"; path = "Game Resources/Images/Normal/Ships/Player Ships/PlayerShipPreviews/Preview-XP-750.png"; sourceTree = SOURCE_ROOT; };
+		B91606681485FC9600B45BAC /* Preview-XP-751.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Preview-XP-751.png"; path = "Game Resources/Images/Normal/Ships/Player Ships/PlayerShipPreviews/Preview-XP-751.png"; sourceTree = SOURCE_ROOT; };
+		B91606691485FC9600B45BAC /* Preview-XPA-368.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Preview-XPA-368.png"; path = "Game Resources/Images/Normal/Ships/Player Ships/PlayerShipPreviews/Preview-XPA-368.png"; sourceTree = SOURCE_ROOT; };
+		B916066A1485FC9600B45BAC /* Preview-XPA-600.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Preview-XPA-600.png"; path = "Game Resources/Images/Normal/Ships/Player Ships/PlayerShipPreviews/Preview-XPA-600.png"; sourceTree = SOURCE_ROOT; };
+		B916066B1485FC9600B45BAC /* Preview-XPA-617.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Preview-XPA-617.png"; path = "Game Resources/Images/Normal/Ships/Player Ships/PlayerShipPreviews/Preview-XPA-617.png"; sourceTree = SOURCE_ROOT; };
+		B916066C1485FC9600B45BAC /* Preview-XPA-652.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Preview-XPA-652.png"; path = "Game Resources/Images/Normal/Ships/Player Ships/PlayerShipPreviews/Preview-XPA-652.png"; sourceTree = SOURCE_ROOT; };
+		B916066D1485FC9600B45BAC /* Preview-XPA-679.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Preview-XPA-679.png"; path = "Game Resources/Images/Normal/Ships/Player Ships/PlayerShipPreviews/Preview-XPA-679.png"; sourceTree = SOURCE_ROOT; };
+		B916066E1485FC9600B45BAC /* Preview-XPD-900.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Preview-XPD-900.png"; path = "Game Resources/Images/Normal/Ships/Player Ships/PlayerShipPreviews/Preview-XPD-900.png"; sourceTree = SOURCE_ROOT; };
+		B916066F1485FC9600B45BAC /* Preview-XPD-909.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Preview-XPD-909.png"; path = "Game Resources/Images/Normal/Ships/Player Ships/PlayerShipPreviews/Preview-XPD-909.png"; sourceTree = SOURCE_ROOT; };
+		B91606701485FC9600B45BAC /* Preview-XPD-924.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Preview-XPD-924.png"; path = "Game Resources/Images/Normal/Ships/Player Ships/PlayerShipPreviews/Preview-XPD-924.png"; sourceTree = SOURCE_ROOT; };
+		B91606711485FC9600B45BAC /* Preview-XPD-945.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Preview-XPD-945.png"; path = "Game Resources/Images/Normal/Ships/Player Ships/PlayerShipPreviews/Preview-XPD-945.png"; sourceTree = SOURCE_ROOT; };
+		B91606721485FC9600B45BAC /* Preview-XPD-968.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Preview-XPD-968.png"; path = "Game Resources/Images/Normal/Ships/Player Ships/PlayerShipPreviews/Preview-XPD-968.png"; sourceTree = SOURCE_ROOT; };
+		B91606731485FC9600B45BAC /* Preview-XPS-400.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Preview-XPS-400.png"; path = "Game Resources/Images/Normal/Ships/Player Ships/PlayerShipPreviews/Preview-XPS-400.png"; sourceTree = SOURCE_ROOT; };
+		B91606741485FC9600B45BAC /* Preview-XPS-424.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Preview-XPS-424.png"; path = "Game Resources/Images/Normal/Ships/Player Ships/PlayerShipPreviews/Preview-XPS-424.png"; sourceTree = SOURCE_ROOT; };
+		B91606751485FC9600B45BAC /* Preview-XPS-447.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Preview-XPS-447.png"; path = "Game Resources/Images/Normal/Ships/Player Ships/PlayerShipPreviews/Preview-XPS-447.png"; sourceTree = SOURCE_ROOT; };
+		B91606761485FC9600B45BAC /* Preview-XPS-463.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Preview-XPS-463.png"; path = "Game Resources/Images/Normal/Ships/Player Ships/PlayerShipPreviews/Preview-XPS-463.png"; sourceTree = SOURCE_ROOT; };
+		B91606771485FC9600B45BAC /* Preview-XPS-485.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Preview-XPS-485.png"; path = "Game Resources/Images/Normal/Ships/Player Ships/PlayerShipPreviews/Preview-XPS-485.png"; sourceTree = SOURCE_ROOT; };
 		B9205538146A479000D58152 /* kMinibossFiveOneCenter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = kMinibossFiveOneCenter.png; path = "Game Resources/Images/Normal/Ships/MiniBoss Ships/kMinibossFiveOneCenter.png"; sourceTree = SOURCE_ROOT; };
 		B9205539146A479000D58152 /* kMinibossFiveOneMiddleRing.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = kMinibossFiveOneMiddleRing.png; path = "Game Resources/Images/Normal/Ships/MiniBoss Ships/kMinibossFiveOneMiddleRing.png"; sourceTree = SOURCE_ROOT; };
 		B920553A146A479000D58152 /* kMinibossFiveOneOuterRing.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = kMinibossFiveOneOuterRing.png; path = "Game Resources/Images/Normal/Ships/MiniBoss Ships/kMinibossFiveOneOuterRing.png"; sourceTree = SOURCE_ROOT; };
@@ -731,23 +748,6 @@
 		B9B03E9A1425AD5A00DE7C0E /* kMiniBossSevenThreeFloat2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = kMiniBossSevenThreeFloat2.png; path = "Game Resources/Images/Normal/Ships/MiniBoss Ships/kMiniBossSevenThreeFloat2.png"; sourceTree = SOURCE_ROOT; };
 		B9B03E9B1425AD5A00DE7C0E /* kMiniBossSevenThreeFloat3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = kMiniBossSevenThreeFloat3.png; path = "Game Resources/Images/Normal/Ships/MiniBoss Ships/kMiniBossSevenThreeFloat3.png"; sourceTree = SOURCE_ROOT; };
 		B9B03E9C1425AD5A00DE7C0E /* kMiniBossSevenThreeMainBody.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = kMiniBossSevenThreeMainBody.png; path = "Game Resources/Images/Normal/Ships/MiniBoss Ships/kMiniBossSevenThreeMainBody.png"; sourceTree = SOURCE_ROOT; };
-		B9BC134714665A3100C8EA05 /* XP-750.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "XP-750.png"; path = "Game Resources/Images/Normal/Ships/Player Ships/PlayerShipPreviews/XP-750.png"; sourceTree = SOURCE_ROOT; };
-		B9BC134814665A3100C8EA05 /* XP-751.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "XP-751.png"; path = "Game Resources/Images/Normal/Ships/Player Ships/PlayerShipPreviews/XP-751.png"; sourceTree = SOURCE_ROOT; };
-		B9BC134914665A3100C8EA05 /* XPA-368.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "XPA-368.png"; path = "Game Resources/Images/Normal/Ships/Player Ships/PlayerShipPreviews/XPA-368.png"; sourceTree = SOURCE_ROOT; };
-		B9BC134A14665A3100C8EA05 /* XPA-600.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "XPA-600.png"; path = "Game Resources/Images/Normal/Ships/Player Ships/PlayerShipPreviews/XPA-600.png"; sourceTree = SOURCE_ROOT; };
-		B9BC134B14665A3100C8EA05 /* XPA-617.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "XPA-617.png"; path = "Game Resources/Images/Normal/Ships/Player Ships/PlayerShipPreviews/XPA-617.png"; sourceTree = SOURCE_ROOT; };
-		B9BC134C14665A3100C8EA05 /* XPA-652.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "XPA-652.png"; path = "Game Resources/Images/Normal/Ships/Player Ships/PlayerShipPreviews/XPA-652.png"; sourceTree = SOURCE_ROOT; };
-		B9BC134D14665A3100C8EA05 /* XPA-679.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "XPA-679.png"; path = "Game Resources/Images/Normal/Ships/Player Ships/PlayerShipPreviews/XPA-679.png"; sourceTree = SOURCE_ROOT; };
-		B9BC134E14665A3100C8EA05 /* XPD-900.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "XPD-900.png"; path = "Game Resources/Images/Normal/Ships/Player Ships/PlayerShipPreviews/XPD-900.png"; sourceTree = SOURCE_ROOT; };
-		B9BC134F14665A3100C8EA05 /* XPD-909.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "XPD-909.png"; path = "Game Resources/Images/Normal/Ships/Player Ships/PlayerShipPreviews/XPD-909.png"; sourceTree = SOURCE_ROOT; };
-		B9BC135014665A3100C8EA05 /* XPD-924.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "XPD-924.png"; path = "Game Resources/Images/Normal/Ships/Player Ships/PlayerShipPreviews/XPD-924.png"; sourceTree = SOURCE_ROOT; };
-		B9BC135114665A3100C8EA05 /* XPD-945.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "XPD-945.png"; path = "Game Resources/Images/Normal/Ships/Player Ships/PlayerShipPreviews/XPD-945.png"; sourceTree = SOURCE_ROOT; };
-		B9BC135214665A3100C8EA05 /* XPD-968.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "XPD-968.png"; path = "Game Resources/Images/Normal/Ships/Player Ships/PlayerShipPreviews/XPD-968.png"; sourceTree = SOURCE_ROOT; };
-		B9BC135314665A3100C8EA05 /* XPS-400.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "XPS-400.png"; path = "Game Resources/Images/Normal/Ships/Player Ships/PlayerShipPreviews/XPS-400.png"; sourceTree = SOURCE_ROOT; };
-		B9BC135414665A3100C8EA05 /* XPS-424.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "XPS-424.png"; path = "Game Resources/Images/Normal/Ships/Player Ships/PlayerShipPreviews/XPS-424.png"; sourceTree = SOURCE_ROOT; };
-		B9BC135514665A3100C8EA05 /* XPS-447.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "XPS-447.png"; path = "Game Resources/Images/Normal/Ships/Player Ships/PlayerShipPreviews/XPS-447.png"; sourceTree = SOURCE_ROOT; };
-		B9BC135614665A3100C8EA05 /* XPS-463.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "XPS-463.png"; path = "Game Resources/Images/Normal/Ships/Player Ships/PlayerShipPreviews/XPS-463.png"; sourceTree = SOURCE_ROOT; };
-		B9BC135714665A3100C8EA05 /* XPS-485.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "XPS-485.png"; path = "Game Resources/Images/Normal/Ships/Player Ships/PlayerShipPreviews/XPS-485.png"; sourceTree = SOURCE_ROOT; };
 		B9C3AB7B13C2A7B4003202BA /* mainmenu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mainmenu.png; sourceTree = "<group>"; };
 		B9C3AB7D13C2AA50003202BA /* return.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = return.png; sourceTree = "<group>"; };
 		B9C3AB7F13C2BF8E003202BA /* pause.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pause.png; sourceTree = "<group>"; };
@@ -1541,23 +1541,23 @@
 		B9BC1346146659FE00C8EA05 /* Previews */ = {
 			isa = PBXGroup;
 			children = (
-				B9BC134714665A3100C8EA05 /* XP-750.png */,
-				B9BC134814665A3100C8EA05 /* XP-751.png */,
-				B9BC134914665A3100C8EA05 /* XPA-368.png */,
-				B9BC134A14665A3100C8EA05 /* XPA-600.png */,
-				B9BC134B14665A3100C8EA05 /* XPA-617.png */,
-				B9BC134C14665A3100C8EA05 /* XPA-652.png */,
-				B9BC134D14665A3100C8EA05 /* XPA-679.png */,
-				B9BC134E14665A3100C8EA05 /* XPD-900.png */,
-				B9BC134F14665A3100C8EA05 /* XPD-909.png */,
-				B9BC135014665A3100C8EA05 /* XPD-924.png */,
-				B9BC135114665A3100C8EA05 /* XPD-945.png */,
-				B9BC135214665A3100C8EA05 /* XPD-968.png */,
-				B9BC135314665A3100C8EA05 /* XPS-400.png */,
-				B9BC135414665A3100C8EA05 /* XPS-424.png */,
-				B9BC135514665A3100C8EA05 /* XPS-447.png */,
-				B9BC135614665A3100C8EA05 /* XPS-463.png */,
-				B9BC135714665A3100C8EA05 /* XPS-485.png */,
+				B91606671485FC9600B45BAC /* Preview-XP-750.png */,
+				B91606681485FC9600B45BAC /* Preview-XP-751.png */,
+				B91606691485FC9600B45BAC /* Preview-XPA-368.png */,
+				B916066A1485FC9600B45BAC /* Preview-XPA-600.png */,
+				B916066B1485FC9600B45BAC /* Preview-XPA-617.png */,
+				B916066C1485FC9600B45BAC /* Preview-XPA-652.png */,
+				B916066D1485FC9600B45BAC /* Preview-XPA-679.png */,
+				B916066E1485FC9600B45BAC /* Preview-XPD-900.png */,
+				B916066F1485FC9600B45BAC /* Preview-XPD-909.png */,
+				B91606701485FC9600B45BAC /* Preview-XPD-924.png */,
+				B91606711485FC9600B45BAC /* Preview-XPD-945.png */,
+				B91606721485FC9600B45BAC /* Preview-XPD-968.png */,
+				B91606731485FC9600B45BAC /* Preview-XPS-400.png */,
+				B91606741485FC9600B45BAC /* Preview-XPS-424.png */,
+				B91606751485FC9600B45BAC /* Preview-XPS-447.png */,
+				B91606761485FC9600B45BAC /* Preview-XPS-463.png */,
+				B91606771485FC9600B45BAC /* Preview-XPS-485.png */,
 			);
 			name = Previews;
 			sourceTree = "<group>";
@@ -1884,23 +1884,6 @@
 				B946CCD11460C77600C82CF4 /* kEnemyOneShotLevelSix.png in Resources */,
 				B946CCD21460C77600C82CF4 /* kEnemyOneShotLevelThree.png in Resources */,
 				B946CCD31460C77600C82CF4 /* kEnemyOneShotLevelTwo.png in Resources */,
-				B9BC135814665A3100C8EA05 /* XP-750.png in Resources */,
-				B9BC135914665A3100C8EA05 /* XP-751.png in Resources */,
-				B9BC135A14665A3100C8EA05 /* XPA-368.png in Resources */,
-				B9BC135B14665A3100C8EA05 /* XPA-600.png in Resources */,
-				B9BC135C14665A3100C8EA05 /* XPA-617.png in Resources */,
-				B9BC135D14665A3100C8EA05 /* XPA-652.png in Resources */,
-				B9BC135E14665A3100C8EA05 /* XPA-679.png in Resources */,
-				B9BC135F14665A3100C8EA05 /* XPD-900.png in Resources */,
-				B9BC136014665A3100C8EA05 /* XPD-909.png in Resources */,
-				B9BC136114665A3100C8EA05 /* XPD-924.png in Resources */,
-				B9BC136214665A3100C8EA05 /* XPD-945.png in Resources */,
-				B9BC136314665A3100C8EA05 /* XPD-968.png in Resources */,
-				B9BC136414665A3100C8EA05 /* XPS-400.png in Resources */,
-				B9BC136514665A3100C8EA05 /* XPS-424.png in Resources */,
-				B9BC136614665A3100C8EA05 /* XPS-447.png in Resources */,
-				B9BC136714665A3100C8EA05 /* XPS-463.png in Resources */,
-				B9BC136814665A3100C8EA05 /* XPS-485.png in Resources */,
 				B907754914677DB40081B245 /* Buy-Bought.png in Resources */,
 				B907754A14677DB40081B245 /* Buy-Disabled.png in Resources */,
 				B907754B14677DB40081B245 /* Buy.png in Resources */,
@@ -1950,6 +1933,23 @@
 				1144CD1E1485E84F00B50D67 /* XPS-447.png in Resources */,
 				1144CD1F1485E84F00B50D67 /* XPS-463.png in Resources */,
 				1144CD201485E84F00B50D67 /* XPS-485.png in Resources */,
+				B91606781485FC9600B45BAC /* Preview-XP-750.png in Resources */,
+				B91606791485FC9600B45BAC /* Preview-XP-751.png in Resources */,
+				B916067A1485FC9600B45BAC /* Preview-XPA-368.png in Resources */,
+				B916067B1485FC9600B45BAC /* Preview-XPA-600.png in Resources */,
+				B916067C1485FC9600B45BAC /* Preview-XPA-617.png in Resources */,
+				B916067D1485FC9600B45BAC /* Preview-XPA-652.png in Resources */,
+				B916067E1485FC9600B45BAC /* Preview-XPA-679.png in Resources */,
+				B916067F1485FC9600B45BAC /* Preview-XPD-900.png in Resources */,
+				B91606801485FC9600B45BAC /* Preview-XPD-909.png in Resources */,
+				B91606811485FC9600B45BAC /* Preview-XPD-924.png in Resources */,
+				B91606821485FC9600B45BAC /* Preview-XPD-945.png in Resources */,
+				B91606831485FC9600B45BAC /* Preview-XPD-968.png in Resources */,
+				B91606841485FC9600B45BAC /* Preview-XPS-400.png in Resources */,
+				B91606851485FC9600B45BAC /* Preview-XPS-424.png in Resources */,
+				B91606861485FC9600B45BAC /* Preview-XPS-447.png in Resources */,
+				B91606871485FC9600B45BAC /* Preview-XPS-463.png in Resources */,
+				B91606881485FC9600B45BAC /* Preview-XPS-485.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -53,6 +53,8 @@
     int                                 shipHeight;
     CGPoint                             currentLocation;
     
+    NSMutableArray                      *collisionPolygonArray;
+    int                                 collisionPolygonArrayCount;
     Polygon                             *collisionPolygon;
     Vector2f                            *collisionDetectionBoundingPoints;
     int                                 collisionPointsCount;
@@ -81,6 +83,7 @@
 @property (nonatomic, retain) NSMutableArray *projectilesArray;
 @property (readwrite) CGPoint currentLocation;
 @property (nonatomic, retain) ParticleEmitter *deathAnimationEmitter;
+@property (nonatomic, assign) NSMutableArray *collisionPolygonArray;
 
 - (void)update:(GLfloat)delta;
 - (void)render;
