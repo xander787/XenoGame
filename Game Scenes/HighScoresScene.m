@@ -173,7 +173,7 @@
     if (leaderboardRequest != nil)
     {
         leaderboardRequest.playerScope = GKLeaderboardPlayerScopeGlobal;
-        leaderboardRequest.timeScope = GKLeaderboardTimeScopeAllTime;
+        leaderboardRequest.timeScope = GKLeaderboardTimeScopeToday;
         leaderboardRequest.range = NSMakeRange(1,10);
         leaderboardRequest.timeScope = GKLeaderboardTimeScopeToday;
         [leaderboardRequest loadScoresWithCompletionHandler: ^(NSArray *scores, NSError *error) {
@@ -194,10 +194,57 @@
 
 - (void)weekButtonPressed {
     selectedButtonIndex = 1;
+    
+    GKLeaderboard *leaderboardRequest = [[GKLeaderboard alloc] init];
+    if (leaderboardRequest != nil)
+    {
+        leaderboardRequest.playerScope = GKLeaderboardPlayerScopeGlobal;
+        leaderboardRequest.timeScope = GKLeaderboardTimeScopeWeek;
+        leaderboardRequest.range = NSMakeRange(1,10);
+        leaderboardRequest.timeScope = GKLeaderboardTimeScopeToday;
+        [leaderboardRequest loadScoresWithCompletionHandler: ^(NSArray *scores, NSError *error) {
+            if (error != nil)
+            {
+                // handle the error.
+                NSLog(@"Error: %@", error);
+            }
+            else {
+                NSLog(@"Success %@", scores);
+            }
+            if (scores != nil)
+            {
+                // process the score information.
+                NSLog(@"Scores: %@", scores);
+            }
+        }];
+    }
+    [leaderboardRequest release];
 }
 
 - (void)allTimeButtonPressed {
     selectedButtonIndex = 2;
+    
+    GKLeaderboard *leaderboardRequest = [[GKLeaderboard alloc] init];
+    if (leaderboardRequest != nil)
+    {
+        leaderboardRequest.playerScope = GKLeaderboardPlayerScopeGlobal;
+        leaderboardRequest.timeScope = GKLeaderboardTimeScopeAllTime;
+        leaderboardRequest.range = NSMakeRange(1,10);
+        leaderboardRequest.timeScope = GKLeaderboardTimeScopeToday;
+        [leaderboardRequest loadScoresWithCompletionHandler: ^(NSArray *scores, NSError *error) {
+            if (error != nil)
+            {
+                // handle the error.
+                NSLog(@"Error: %@", error);
+            }
+            if (scores != nil)
+            {
+                // process the score information.
+                NSLog(@"Scores: %@", scores);
+            }
+        }];
+    }
+    [leaderboardRequest release];
 }
 
 #pragma mark -

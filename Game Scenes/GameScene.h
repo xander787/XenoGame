@@ -41,6 +41,7 @@
 //  - Game saving implemented
 
 #import <Foundation/Foundation.h>
+#import <GameKit/GameKit.h>
 #import "Common.h"
 #import "ParticleEmitter.h"
 #import "AbstractScene.h"
@@ -136,5 +137,7 @@ typedef enum _Level {
 - (void)loadLevelIndexFile;
 - (void)loadLevelForPlay:(Level)level;
 - (Level)convertToLevelEnum:(NSString *)received;
+
+- (void) reportScore: (int64_t) score forCategory: (NSString*) category;
 
 @end

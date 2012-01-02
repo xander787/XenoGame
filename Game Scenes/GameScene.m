@@ -415,7 +415,26 @@
     nukePowerUpReady = NO;
     
     // Save current score to settings
-    [settingsDB setInteger:playerScore forKey:kSetting_SaveGameScore];
+    [settingsDB setInteger:(int64_t)playerScore forKey:kSetting_SaveGameScore];
+    
+    [self reportScore:playerScore forCategory:@"xenophobeglobaleaderboard"];
+}
+
+- (void) reportScore: (int64_t) score forCategory: (NSString*) category
+{
+    GKScore *scoreReporter = [[[GKScore alloc] initWithCategory:category] autorelease];
+    scoreReporter.value = score;
+    
+    [scoreReporter reportScoreWithCompletionHandler:^(NSError *error) {
+        if (error != nil)
+        {
+            // handle the reporting error
+            NSLog(@"%@", error);
+        }
+        else {
+            NSLog(@"SUCCESSSSSSSSSSS!!!!: %d", (int)score);
+        }
+    }];
 }
 
 - (void)playerHasDied {

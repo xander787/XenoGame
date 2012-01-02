@@ -14,6 +14,7 @@
 //	- Initial Project Creation
 
 #import <Foundation/Foundation.h>
+#import <GameKit/GameKit.h>
 #import "AbstractScene.h"
 #import "MenuControl.h"
 #import "SoundManager.h"
@@ -31,5 +32,7 @@
     
     MenuControl         *newGameContinueControl;
 }
+
+- (void) authenticateLocalPlayer;
 
 @end

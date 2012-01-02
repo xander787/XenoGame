@@ -172,6 +172,19 @@
     [soundManager playMusicWithKey:@"menu_theme" timesToRepeat:1000];
     //[soundManager setFxVolume:[settingsDB floatForKey:kSetting_SoundVolume]];
     //[soundManager setMusicVolume:[settingsDB floatForKey:kSetting_MusicVolume]];
+    
+    [self authenticateLocalPlayer];
+}
+
+- (void) authenticateLocalPlayer
+{
+    GKLocalPlayer *localPlayer = [GKLocalPlayer localPlayer];
+    [localPlayer authenticateWithCompletionHandler:^(NSError *error) {
+        if (localPlayer.isAuthenticated)
+        {
+            // Perform additional tasks for the authenticated player.
+        }
+    }];
 }
 
 #pragma mark -
@@ -195,7 +208,7 @@
                             nextSceneKey = @"settings";
                             break;
 						case kControlType_HighScores:
-							nextSceneKey = @"store";
+							nextSceneKey = @"highscores";
 							break;
 						case kControlType_About:
 							nextSceneKey = @"about";
