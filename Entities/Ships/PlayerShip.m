@@ -74,7 +74,7 @@
 
 @implementation PlayerShip
 
-@synthesize shipTemporaryWeaponUpgrade, shipTemporaryMiscUpgrade, desiredPosition, shipCategory, shipWeaponType;
+@synthesize shipTemporaryWeaponUpgrade, shipTemporaryMiscUpgrade, desiredPosition, shipCategory, shipWeaponType, mainImage;
 
 - (id) init {
 	self = [super init];
@@ -410,6 +410,10 @@
     for(AbstractProjectile *playerProj in projectilesArray){
         [playerProj playProjectile];
     }
+}
+
+- (void)setShipScale:(Scale2f)newScale {
+    [mainImage setScale:newScale];
 }
 
 - (void)render {    

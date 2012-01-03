@@ -420,6 +420,26 @@ WrapText( const char *text
         }
         if([[levelDictionary objectForKey:@"kOutroTransition"] isEqualToString:@"kWormhole"]) {
             outroAnimationType = kOutroAnimation_Wormhole;
+            transitionParticleEmitter = [[ParticleEmitter alloc] initParticleEmitterWithImageNamed:@"texture.png"
+                                                                                          position:Vector2fMake(160.0f, 320.0f)
+                                                                            sourcePositionVariance:Vector2fZero
+                                                                                             speed:0.3f
+                                                                                     speedVariance:0.05f
+                                                                                  particleLifeSpan:0.9f
+                                                                          particleLifespanVariance:0.3f
+                                                                                             angle:0.0f
+                                                                                     angleVariance:360.0f
+                                                                                           gravity:Vector2fZero
+                                                                                        startColor:Color4fMake(0.0f, 0.0f, 0.0f, 0.0f)
+                                                                                startColorVariance:Color4fMake(0.0f, 0.0f, 0.0f, 0.0f)
+                                                                                       finishColor:Color4fMake(1.0f, 0.6f, 1.0f, 0.66f)
+                                                                               finishColorVariance:Color4fMake(0.0f, 0.0f, 1.0f, 0.0f)
+                                                                                      maxParticles:1500
+                                                                                      particleSize:16
+                                                                                finishParticleSize:16
+                                                                              particleSizeVariance:0
+                                                                                          duration:-1
+                                                                                     blendAdditive:YES];
         }
         
         outroTransitionAnimating = NO;
@@ -1141,6 +1161,25 @@ WrapText( const char *text
                 }
             }
         }
+        else if(outroAnimationType == kOutroAnimation_Wormhole){
+            [transitionParticleEmitter update:aDelta];
+            if(playerShip.currentLocation.y >= 320.0f){
+                outroDelay += aDelta;
+                if(outroDelay > 3){
+                    outroTransitionAnimating = NO;
+                
+                    NSMutableDictionary *statsDict = [[NSMutableDictionary alloc] init];
+                    [statsDict setValue:[NSString stringWithFormat:@"%d", numDropPickups] forKey:@"DROPS"];
+                    [statsDict setValue:[NSString stringWithFormat:@"%d", enemiesKilled] forKey:@"ENEMIES"];
+                    [statsDict setValue:[NSString stringWithFormat:@"%f", levelTime] forKey:@"TIME"];
+                    [statsDict setValue:[NSString stringWithFormat:@"%d", scoreEarned] forKey:@"SCORE"];
+                
+                    [delegate levelEnded:statsDict];
+                
+                    [statsDict release];
+                }
+            }
+        }
     }
      
     // We're out of enemies on the screen. Load next wave or boss level if none exists
@@ -1178,6 +1217,21 @@ WrapText( const char *text
         }
         else if (outroAnimationType == kOutroAnimation_Nuke) {
             [playerShip setDesiredLocation:CGPointMake(playerShip.currentLocation.x, -40)];
+        }
+        else if (outroAnimationType == kOutroAnimation_Wormhole) {
+            if(playerShip.currentLocation.y < 320.0f){
+                if (abs(playerShip.currentLocation.x - 160.0f) < 5) {
+                    [playerShip setDesiredLocation:CGPointMake(160.0f, playerShip.currentLocation.y + (outroAnimationTime * 40))];
+                }
+                else {
+                    if(playerShip.currentLocation.x < 160.0f) {
+                        [playerShip setDesiredLocation:CGPointMake(playerShip.currentLocation.x + (outroAnimationTime * 20), playerShip.currentLocation.y + (outroAnimationTime * 40))];
+                    }
+                    else {
+                        [playerShip setDesiredLocation:CGPointMake(playerShip.currentLocation.x - (outroAnimationTime * 20), playerShip.currentLocation.y + (outroAnimationTime * 40))];
+                    }
+                }
+            }
         }
     }
     
