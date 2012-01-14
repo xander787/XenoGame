@@ -130,6 +130,9 @@
     [previewShipImages setObject:[[[Image alloc] initWithImage:@"Preview-XPD-924.png" scale:Scale2fOne] autorelease] forKey:kXPD924];
     [previewShipImages setObject:[[[Image alloc] initWithImage:@"Preview-XPD-945.png" scale:Scale2fOne] autorelease] forKey:kXPD945];
     [previewShipImages setObject:[[[Image alloc] initWithImage:@"Preview-XPD-968.png" scale:Scale2fOne] autorelease] forKey:kXPD968];
+    
+    attributeBar = [[Image alloc] initWithImage:@"SliderBar.png" scale:Scale2fOne];
+    attributeBarBG = [[Image alloc] initWithImage:@"Slider.png" scale:Scale2fOne];
 }
 
 - (void)sceneIsBecomingActive {    
@@ -1617,6 +1620,62 @@
     return nil;
 }
 
+- (int)attribute:(AttributeType)attr fromShip:(NSString *)shipType {
+    if([shipType isEqualToString:kXP750]){
+        return (int)[[[NSString stringWithString:kXP750_Attributes] componentsSeparatedByString:@";"] objectAtIndex:((attr == kAttrType_Attack) ? 0 : ((attr == kAttrType_Defense) ? 1 : 2))];
+    }
+    else if([shipType isEqualToString:kXP751]){
+        return (int)[[kXP751_Attributes componentsSeparatedByString:@";"] objectAtIndex:0];
+    }
+    else if([shipType isEqualToString:kXPA368]){
+        return (int)[[kXPA368_Attributes componentsSeparatedByString:@";"] objectAtIndex:((attr == kAttrType_Attack) ? 0 : ((attr == kAttrType_Defense) ? 1 : 2))];
+    }
+    else if([shipType isEqualToString:kXPA600]){
+        return (int)[[kXPA600_Attributes componentsSeparatedByString:@";"] objectAtIndex:((attr == kAttrType_Attack) ? 0 : ((attr == kAttrType_Defense) ? 1 : 2))];
+    }
+    else if([shipType isEqualToString:kXPA617]){
+        return (int)[[kXPA617_Attributes componentsSeparatedByString:@";"] objectAtIndex:((attr == kAttrType_Attack) ? 0 : ((attr == kAttrType_Defense) ? 1 : 2))];
+    }
+    else if([shipType isEqualToString:kXPA652]){
+        return (int)[[kXPA652_Attributes componentsSeparatedByString:@";"] objectAtIndex:((attr == kAttrType_Attack) ? 0 : ((attr == kAttrType_Defense) ? 1 : 2))];
+    }
+    else if([shipType isEqualToString:kXPA679]){
+        return (int)[[kXPA679_Attributes componentsSeparatedByString:@";"] objectAtIndex:((attr == kAttrType_Attack) ? 0 : ((attr == kAttrType_Defense) ? 1 : 2))];
+    }
+    else if([shipType isEqualToString:kXPS400]){
+        return (int)[[kXPS400_Attributes componentsSeparatedByString:@";"] objectAtIndex:((attr == kAttrType_Attack) ? 0 : ((attr == kAttrType_Defense) ? 1 : 2))];
+    }
+    else if([shipType isEqualToString:kXPS424]){
+        return (int)[[kXPS424_Attributes componentsSeparatedByString:@";"] objectAtIndex:((attr == kAttrType_Attack) ? 0 : ((attr == kAttrType_Defense) ? 1 : 2))];
+    }
+    else if([shipType isEqualToString:kXPS447]){
+        return (int)[[kXPS447_Attributes componentsSeparatedByString:@";"] objectAtIndex:((attr == kAttrType_Attack) ? 0 : ((attr == kAttrType_Defense) ? 1 : 2))];
+    }
+    else if([shipType isEqualToString:kXPS463]){
+        return (int)[[kXPS463_Attributes componentsSeparatedByString:@";"] objectAtIndex:((attr == kAttrType_Attack) ? 0 : ((attr == kAttrType_Defense) ? 1 : 2))];
+    }
+    else if([shipType isEqualToString:kXPS485]){
+        return (int)[[kXPS485_Attributes componentsSeparatedByString:@";"] objectAtIndex:((attr == kAttrType_Attack) ? 0 : ((attr == kAttrType_Defense) ? 1 : 2))];
+    }
+    else if([shipType isEqualToString:kXPD900]){
+        return (int)[[kXPD900_Attributes componentsSeparatedByString:@";"] objectAtIndex:((attr == kAttrType_Attack) ? 0 : ((attr == kAttrType_Defense) ? 1 : 2))];
+    }
+    else if([shipType isEqualToString:kXPD909]){
+        return (int)[[kXPD909_Attributes componentsSeparatedByString:@";"] objectAtIndex:((attr == kAttrType_Attack) ? 0 : ((attr == kAttrType_Defense) ? 1 : 2))];
+    }
+    else if([shipType isEqualToString:kXPD924]){
+        return (int)[[kXPD924_Attributes componentsSeparatedByString:@";"] objectAtIndex:((attr == kAttrType_Attack) ? 0 : ((attr == kAttrType_Defense) ? 1 : 2))];
+    }
+    else if([shipType isEqualToString:kXPD945]){
+        return (int)[[kXPD945_Attributes componentsSeparatedByString:@";"] objectAtIndex:((attr == kAttrType_Attack) ? 0 : ((attr == kAttrType_Defense) ? 1 : 2))];
+    }
+    else if([shipType isEqualToString:kXPD968]){
+        return (int)[[kXPD968_Attributes componentsSeparatedByString:@";"] objectAtIndex:((attr == kAttrType_Attack) ? 0 : ((attr == kAttrType_Defense) ? 1 : 2))];
+    }
+    
+    return 11;
+}
+
 - (void)buyShip:(NSString *)shipType {
     NSMutableArray *settingsArray = [[NSMutableArray alloc] initWithArray:[settings objectForKey:kSetting_SaveGameUnlockedShips]];
     int tempCredits = [[settings objectForKey:kSetting_SaveGameCredits] intValue];
@@ -1746,6 +1805,18 @@
             [font drawStringAt:CGPointMake(20.0f, 180.0f) text:@"ATK:"];
             [font drawStringAt:CGPointMake(20.0f, 150.0f) text:@"SPD:"];
             [font drawStringAt:CGPointMake(20.0f, 120.0f) text:@"DEF:"];
+            [attributeBar setScale:Scale2fMake([self attribute:kAttrType_Attack fromShip:[self shipTypeFromCategory:kShipTypeBase andLevel:currentBaseShipLevelSelection]] / 10, 1.0f)];
+            NSLog(@"attr number: %d", [self attribute:kAttrType_Attack fromShip:[self shipTypeFromCategory:kShipTypeBase andLevel:currentBaseShipLevelSelection]]);
+            [attributeBar renderAtPoint:CGPointMake(60.0f, 180.0f) centerOfImage:NO];
+            [attributeBarBG renderAtPoint:CGPointMake(60.0f, 180.0f) centerOfImage:NO];
+            
+            [attributeBar setScale:Scale2fMake([self attribute:kAttrType_Speed fromShip:[self shipTypeFromCategory:kShipTypeBase andLevel:currentBaseShipLevelSelection]] / 10, 1.0f)];
+            [attributeBar renderAtPoint:CGPointMake(60.0f, 150.0f) centerOfImage:NO];
+            [attributeBarBG renderAtPoint:CGPointMake(60.0f, 150.0f) centerOfImage:NO];
+            
+            [attributeBar setScale:Scale2fMake([self attribute:kAttrType_Defense fromShip:[self shipTypeFromCategory:kShipTypeBase andLevel:currentBaseShipLevelSelection]] / 10, 1.0f)];
+            [attributeBar renderAtPoint:CGPointMake(60.0f, 120.0f) centerOfImage:NO];
+            [attributeBarBG renderAtPoint:CGPointMake(60.0f, 120.0f) centerOfImage:NO];
             if(currentBaseShipLevelSelection > highestAchievedBaseLevel){
                 [font drawStringAt:CGPointMake(20.0f, 90.0f) text:[NSString stringWithFormat:@"Cost: %dc", [self priceOfShip:[self shipTypeFromCategory:kShipTypeBase andLevel:currentBaseShipLevelSelection]]]];
             }

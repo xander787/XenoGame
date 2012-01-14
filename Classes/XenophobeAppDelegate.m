@@ -30,19 +30,21 @@
 	[window addSubview:glView];
 	[window makeKeyAndVisible];
     
+    _sharedDirector = [Director sharedDirector];
+    
     [glView performSelectorOnMainThread:@selector(mainGameLoop) withObject:nil waitUntilDone:NO];
-	
+	    
 	return YES;
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application
 {
-
+    NSLog(@"Resigning active!");
+    [[_sharedDirector._scenes objectForKey:@"game"] setGameIsPaused:YES]; 
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
-
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application

@@ -55,6 +55,7 @@
 @property (nonatomic, assign) GLfloat globalAlpha;
 @property (nonatomic, assign) float framesPerSecond;
 @property (nonatomic, assign) BOOL gameSceneStatsSceneVisible;
+@property (nonatomic, retain) NSMutableDictionary *_scenes;
 
 + (Director*)sharedDirector;
 - (void)addSceneWithKey:(NSString*)aSceneKey scene:(AbstractScene*)aScene;

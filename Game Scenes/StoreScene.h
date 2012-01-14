@@ -20,6 +20,12 @@ typedef enum _SceneState {
     kSceneState_weapons_upgrades
 } SceneState;
 
+typedef enum _AttributeType {
+    kAttrType_Attack = 0,
+    kAttrType_Defense,
+    kAttrType_Speed
+} AttributeType;
+
 @interface StoreScene : AbstractScene {
     AngelCodeFont       *font;
     SceneState          currentSceneState;
@@ -62,6 +68,9 @@ typedef enum _SceneState {
     Image               *buyButtonDisabled;
     Image               *equippedButton;
     Image               *boughtButton;
+    
+    Image               *attributeBar;
+    Image               *attributeBarBG;
     
     NSMutableDictionary *previewShipImages;
     
@@ -117,5 +126,6 @@ typedef enum _SceneState {
 - (void)buyShip:(NSString *)shipType;
 - (void)equipShip:(NSString *)shipType;
 - (NSString *)displayStringForShip:(NSString *)shipType;
+- (int)attribute:(AttributeType)attr fromShip:(NSString *)shipType;
 
 @end

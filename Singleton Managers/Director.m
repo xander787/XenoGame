@@ -27,6 +27,7 @@
 @synthesize globalAlpha;
 @synthesize framesPerSecond;
 @synthesize gameSceneStatsSceneVisible;
+@synthesize _scenes;
 
 // Make this class a singleton class
 SYNTHESIZE_SINGLETON_FOR_CLASS(Director);

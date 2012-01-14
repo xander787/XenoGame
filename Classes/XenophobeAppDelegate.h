@@ -16,11 +16,12 @@
 #import <UIKit/UIKit.h>
 #import "EAGLView.h"
 
-@class XenophobeViewController;
+@class XenophobeViewController, Director;
 
 @interface XenophobeAppDelegate : NSObject <UIApplicationDelegate> {
 	UIWindow *window;
     EAGLView *glView;
+    Director *_sharedDirector;
 }
 
 @end

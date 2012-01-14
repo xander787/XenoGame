@@ -73,6 +73,8 @@
 
 @implementation GameScene
 
+@synthesize gameIsPaused;
+
 - (id)init {
 	if ((self = [super init])) {
         // Get an instance of the singleton classes

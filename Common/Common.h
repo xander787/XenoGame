@@ -190,6 +190,24 @@
 #define kXPS463 @"kShipXPS463"
 #define kXPS485 @"kShipXPS485"
 
+#define kXP750_Attributes @"1;1;1"
+#define kXP751_Attributes @"2;2;2"
+#define kXPA368_Attributes @"7;3;4"
+#define kXPA600_Attributes @"4;2;3"
+#define kXPA617_Attributes @"5;2;3"
+#define kXPA652_Attributes @"8;4;5"
+#define kXPA679_Attributes @"10;5;7"
+#define kXPD900_Attributes @"3;4;2"
+#define kXPD909_Attributes @"3:5;2"
+#define kXPD924_Attributes @"4;7;3"
+#define kXPD945_Attributes @"5;8;4"
+#define kXPD968_Attributes @"7;10;5"
+#define kXPS400_Attributes @"3;2;4"
+#define kXPS424_Attributes @"3;2;5"
+#define kXPS447_Attributes @"4;3;7"
+#define kXPS463_Attributes @"5;4;8"
+#define kXPS485_Attributes @"7;5;10"
+
 
 #define kBulletLevelOne_Price 0
 #define kBulletLevelTwo_Price 50

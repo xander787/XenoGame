@@ -131,6 +131,8 @@ typedef enum _Level {
     BOOL            lastPlayPlayerDied;
 }
 
+@property (nonatomic, assign) BOOL gameIsPaused;
+
 
 - (void)initGameScene;
 - (void)initSound;
