@@ -228,7 +228,7 @@
         currentLocation.x = [attackingPath getPointAt:attackPathtimer/4].x;
         currentLocation.y = [attackingPath getPointAt:attackPathtimer/4].y;
         
-        if(abs(oldPointBeforeAttack.x - currentLocation.x) <= 5 && abs(oldPointBeforeAttack.y - currentLocation.y) <= 5 && attackPathtimer > 1){
+        if(currentLocation.y > oldPointBeforeAttack.y && attackPathtimer > 1){
             state = kFiveOne_Holding;
             attackPathtimer = 0;
             [attackingPath release];

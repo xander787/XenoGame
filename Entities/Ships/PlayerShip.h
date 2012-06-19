@@ -134,6 +134,7 @@ typedef enum _PlayerShipTemporaryMiscUpgrade {
 
 @property (readonly) PlayerShipCategory shipCategory;
 @property (readonly) PlayerShipWeaponType shipWeaponType;
+@property (readonly) Image *mainImage;
 
 - (id)initWithShipID:(PlayerShipID)aShipID andInitialLocation:(CGPoint)aPoint;
 - (void)setDesiredLocation:(CGPoint)aPoint;
@@ -143,6 +144,7 @@ typedef enum _PlayerShipTemporaryMiscUpgrade {
 - (void)stopAllProjectiles;
 - (void)pauseAllProjectiles;
 - (void)playAllProjectiles;
+- (void)setShipScale:(Scale2f)newScale;
 
 
 @property PlayerShipTemporaryWeaponUpgrade	shipTemporaryWeaponUpgrade;
