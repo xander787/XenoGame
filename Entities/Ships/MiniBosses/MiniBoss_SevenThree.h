@@ -22,7 +22,7 @@ typedef enum _SevenThreeState{
     GLfloat             kamikazeTimer;
     
     Vector2f            oldPointBeforeAttack;
-    g
+    
     BezierCurve         *attackingPath;
     
     GLfloat             holdingTimer;
