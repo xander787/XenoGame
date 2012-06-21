@@ -118,6 +118,10 @@
 //  Last Updated - 11/1/11 @9:15PM - James
 //  - Tweaked drop pickup radius, made player ship able to
 //  move past the edge of the screen instead of hitting edge.
+//
+//  Last Updated - 6/19/2012 @10:30PM - James
+//  - Moved the render position of the "Game Over"
+//  to be over all other objects
 
 
 #import "GameLevelScene.h"
@@ -349,6 +353,9 @@ WrapText( const char *text
             }
             else if([[levelDictionary objectForKey:@"kBossShip"] isEqualToString:@"kMiniBossFiveOne"]){
                 bossShipID = kMiniBoss_FiveOne;
+            }
+            else if([[levelDictionary objectForKey:@"kBossShip"] isEqualToString:@"kMiniBossFiveThree"]){
+                bossShipID = kMiniBoss_FiveThree;
             }
         }
         else if([[levelDictionary objectForKey:@"kLevelType"] isEqualToString:@"kBossLevel"]) {
@@ -748,6 +755,9 @@ WrapText( const char *text
     }
     else if(bossShipID == kMiniBoss_FiveOne) {
         bossShip = [[MiniBoss_FiveOne alloc] initWithLocation:CGPointMake(160.0f, 600.0f) andPlayerShipRef:playerShip];
+    }
+    else if(bossShipID == kMiniBoss_FiveThree) {
+        bossShip = [[MiniBoss_FiveThree alloc] initWithLocation:CGPointMake(160.0f, 600.0f) andPlayerShipRef:playerShip];
     }
     
     bossShipReadyToAnimate = YES;
@@ -1855,16 +1865,6 @@ WrapText( const char *text
 }
 
 - (void)render {
-    if(playerShip.shipIsDead){
-        if(gameOverTimer <= 3){
-            [font setScale:gameOverTimer/4];
-        }
-        else {
-            [font setScale:0.75];
-        }
-        
-        [font drawStringAt:CGPointMake(60.0f, 240.0f) text:@"Game Over"];
-    }
     
     for(Drop *drop in droppedPowerUpSet){
         [drop render];
@@ -1883,6 +1883,17 @@ WrapText( const char *text
         [bossHealthBarBackground renderAtPoint:CGPointMake(254, 26.0) centerOfImage:NO];
         [bossHealthBar renderAtPoint:CGPointMake(255, 27.0) centerOfImage:NO];
         [bossShip render];
+    }
+    
+    if(playerShip.shipIsDead){
+        if(gameOverTimer <= 3){
+            [font setScale:gameOverTimer/4];
+        }
+        else {
+            [font setScale:0.75];
+        }
+        
+        [font drawStringAt:CGPointMake(60.0f, 240.0f) text:@"Game Over"];
     }
         
     //Dialogue Related rendering

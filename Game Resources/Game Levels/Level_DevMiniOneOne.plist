@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>kBossDefaultPoint</key>
-	<string>160,200</string>
+	<string>160,360</string>
 	<key>kBossShip</key>
-	<string>kMiniBossFiveThree</string>
+	<string>kMiniBossFiveOne</string>
 	<key>kLevelDifficulty</key>
 	<integer>0</integer>
 	<key>kLevelType</key>
