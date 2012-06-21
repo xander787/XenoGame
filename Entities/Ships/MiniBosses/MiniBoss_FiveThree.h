@@ -11,6 +11,8 @@
 #import "BulletProjectile.h"
 #import "BossShip.h"
 
+#define SEGMENT_ROTATION 30
+
 //The state in which a MiniBoss will be in at any given moment, very similar to Enemies
 //because they are either sitting still or making a swooping attack every several seconds
 typedef enum _FiveThreeState{
@@ -61,7 +63,10 @@ typedef enum _RotatingState{
 }
 
 - (void)hitModule:(int)module withDamage:(int)damage;
-- (Vector2f)rotatePoint:(Vector2f)initialPoint aroundAngle:(GLfloat)angle;
-- (void)syncCollisionPolygonWithRotation:(GLfloat)oldRot :(GLfloat)oldRot2 :(GLfloat)oldRot3;
+- (Vector2f)rotatePoint:(Vector2f)initialPoint aroundPoint:(Vector2f)axisPoint withAngle:(GLfloat)angle;
+- (void)syncBodyOneCollisionPolygon:(GLfloat)oldRotation;
+- (void)syncBodyTwoCollisionPolygon:(GLfloat)oldRotation;
+- (void)syncBodyThreeCollisionPolygon:(GLfloat)oldRotation;
+- (void)syncBackCollisionPolygon:(GLfloat)oldRotation;
 
 @end

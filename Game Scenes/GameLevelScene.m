@@ -1417,7 +1417,7 @@ WrapText( const char *text
                                                                                               :Vector2fZero];
                         
                             if(playerShipResult.intersect){
-                                [playerShip killShip];
+                                //[playerShip killShip];
                             }
                         }
                         
