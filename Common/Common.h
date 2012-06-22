@@ -425,3 +425,17 @@ static inline Vector2f Vector2fNormalize(Vector2f v)
 	return Vector2fMultiply(v, 1.0f/Vector2fLength(v));
 }
 
+static inline Vector2f Vector2fRotatePointAroundPoint(Vector2f v1, Vector2f v2, float angle)
+{
+    v1.x -= v2.x;
+    v1.y -= v2.y;
+    
+    double radianAngle = DEGREES_TO_RADIANS(angle);
+    v1.x = (v1.x * cos(radianAngle)) - (v1.y * sin(radianAngle)); 
+    v1.y = (v1.x * sin(radianAngle)) + (v1.y * cos(radianAngle));
+    
+    v1.x += v2.x;
+    v1.y += v2.y;
+    
+    return v1;
+}
