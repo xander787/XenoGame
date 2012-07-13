@@ -111,27 +111,27 @@
                                                                      particleSizeVariance:2
                                                                                  duration:-1
                                                                             blendAdditive:YES];
-
+        
         orbBodyThreeVBack = [[ParticleEmitter alloc] initParticleEmitterWithImageNamed:@"texture.png"
-                                                                             position:Vector2fMake(currentLocation.x + 105, 0)
-                                                               sourcePositionVariance:Vector2fMake(0,0)
-                                                                                speed:0.01f
-                                                                        speedVariance:0.0f
-                                                                     particleLifeSpan:0.1f
-                                                             particleLifespanVariance:0.2f
-                                                                                angle:360.0f
-                                                                        angleVariance:0
-                                                                              gravity:Vector2fMake(0.0f, 0.0f)
-                                                                           startColor:Color4fMake(0.3f, 1.0f, 0.66f, 1.0f)
-                                                                   startColorVariance:Color4fMake(0.0f, 0.2f, 0.2f, 0.5f)
-                                                                          finishColor:Color4fMake(0.16f, 0.0f, 0.0f, 1.0f)
-                                                                  finishColorVariance:Color4fMake(0.0f, 0.0f, 0.0f, 1.0f)
-                                                                         maxParticles:25
-                                                                         particleSize:20
-                                                                   finishParticleSize:20
-                                                                 particleSizeVariance:2
-                                                                             duration:-1
-                                                                        blendAdditive:YES];
+                                                                              position:Vector2fMake(currentLocation.x + 105, 0)
+                                                                sourcePositionVariance:Vector2fMake(0,0)
+                                                                                 speed:0.01f
+                                                                         speedVariance:0.0f
+                                                                      particleLifeSpan:0.1f
+                                                              particleLifespanVariance:0.2f
+                                                                                 angle:360.0f
+                                                                         angleVariance:0
+                                                                               gravity:Vector2fMake(0.0f, 0.0f)
+                                                                            startColor:Color4fMake(0.3f, 1.0f, 0.66f, 1.0f)
+                                                                    startColorVariance:Color4fMake(0.0f, 0.2f, 0.2f, 0.5f)
+                                                                           finishColor:Color4fMake(0.16f, 0.0f, 0.0f, 1.0f)
+                                                                   finishColorVariance:Color4fMake(0.0f, 0.0f, 0.0f, 1.0f)
+                                                                          maxParticles:25
+                                                                          particleSize:20
+                                                                    finishParticleSize:20
+                                                                  particleSizeVariance:2
+                                                                              duration:-1
+                                                                         blendAdditive:YES];
     }
     return self;
 }
@@ -183,158 +183,102 @@
         
         //Rotations
         GLfloat rotatingSpeed = 45 * delta;
-        
-        /*GLfloat oldRot = bodyOne->rotation;
-        bodyOne->rotation += rotatingSpeed;
-        bodyOne->location = [self rotatePoint:bodyOne->location aroundPoint:Vector2fMake(orbFrontVBodyOne.sourcePosition.x - currentLocation.x, orbFrontVBodyOne.sourcePosition.y - currentLocation.y) withAngle:oldRot - bodyOne->rotation];
-        [self syncBodyOneCollisionPolygon:oldRot];*/
-        
-        
         if(rotatingState == kRotating_StepOneForward){
             
             //Rotate
-            GLfloat oldBodyOneRotation = bodyOne->rotation;
-            GLfloat oldBodyTwoRotation = bodyTwo->rotation;
-            GLfloat oldBodyThreeRotation = bodyThree->rotation;
-            GLfloat oldTailRotation = back->rotation;
-            if(bodyOne->rotation < SEGMENT_ROTATION){
+            GLfloat oldRotation = bodyOne->rotation;
+            GLfloat oldRotation2 = bodyTwo->rotation;
+            GLfloat oldRotation3 = front->rotation;
+            if(bodyOne->rotation < 20){
                 bodyOne->rotation += rotatingSpeed;
                 bodyTwo->rotation -= rotatingSpeed;
                 bodyThree->rotation += rotatingSpeed;
                 back->rotation -= rotatingSpeed;
+                front->rotation -= rotatingSpeed/2;
             }
             else {
-                bodyOne->rotation = SEGMENT_ROTATION;
-                bodyTwo->rotation = -SEGMENT_ROTATION;
-                bodyThree->rotation = SEGMENT_ROTATION;
-                back->rotation = -SEGMENT_ROTATION;
+                bodyOne->rotation = 20;
+                bodyTwo->rotation = -20;
+                bodyThree->rotation = 20;
+                back->rotation = -20;
+                front->rotation = -10;
                 
                 rotatingState = kRotating_StepOneReturn;
-                NSLog(@"State: %d", rotatingState);
             }
-            bodyOne->location = [self rotatePoint:bodyOne->location aroundPoint:Vector2fMake(orbFrontVBodyOne.sourcePosition.x - currentLocation.x, orbFrontVBodyOne.sourcePosition.y - currentLocation.y) withAngle:oldBodyOneRotation - bodyOne->rotation];
-            bodyTwo->location = [self rotatePoint:bodyTwo->location aroundPoint:Vector2fMake(orbBodyOneVBodyTwo.sourcePosition.x - currentLocation.x, orbBodyOneVBodyTwo.sourcePosition.y - currentLocation.y) withAngle:oldBodyTwoRotation - bodyTwo->rotation];
-            bodyThree->location = [self rotatePoint:bodyThree->location aroundPoint:Vector2fMake(orbBodyTwoVBodyThree.sourcePosition.x - currentLocation.x, orbBodyTwoVBodyThree.sourcePosition.y - currentLocation.y) withAngle:oldBodyThreeRotation - bodyThree->rotation];
-            back->location = [self rotatePoint:back->location aroundPoint:Vector2fMake(orbBodyThreeVBack.sourcePosition.x - currentLocation.x, orbBodyThreeVBack.sourcePosition.y - currentLocation.y) withAngle:oldTailRotation - back->rotation];
-            
-            [self syncBodyOneCollisionPolygon:oldBodyOneRotation];
-            [self syncBodyTwoCollisionPolygon:oldBodyTwoRotation];
-            [self syncBodyThreeCollisionPolygon:oldBodyThreeRotation];
-            [self syncBackCollisionPolygon:oldTailRotation];
+            [self syncCollisionPolygonWithRotation:oldRotation :oldRotation2 :oldRotation3];
             
         }
         else if(rotatingState == kRotating_StepOneReturn){
-
+            
             //Rotate
-            GLfloat oldBodyOneRotation = bodyOne->rotation;
-            GLfloat oldBodyTwoRotation = bodyTwo->rotation;
-            GLfloat oldBodyThreeRotation = bodyThree->rotation;
-            GLfloat oldTailRotation = back->rotation;
+            GLfloat oldRotation = bodyOne->rotation;
+            GLfloat oldRotation2 = bodyTwo->rotation;
+            GLfloat oldRotation3 = front->rotation;
             if(bodyOne->rotation > 0){
                 bodyOne->rotation -= rotatingSpeed;
                 bodyTwo->rotation += rotatingSpeed;
                 bodyThree->rotation -= rotatingSpeed;
                 back->rotation += rotatingSpeed;
+                front->rotation += rotatingSpeed/2;
             }
             else {
                 bodyOne->rotation = 0;
                 bodyTwo->rotation = 0;
                 bodyThree->rotation = 0;
                 back->rotation = 0;
-                
-                //When they go back to a rotation of 0 degrees, they'll be back in
-                //their normal positions, but because of roudning errors they move
-                //slightly inwards. This resets them back to their default positions
-                //to cancel that effect.
-                bodyOne->location = bodyOne->defaultLocation;
-                bodyTwo->location = bodyTwo->defaultLocation;
-                bodyThree->location = bodyThree->defaultLocation;
-                back->location = back->defaultLocation;
+                front->rotation = 0;
                 
                 rotatingState = kRotating_StepTwoForward;
-                NSLog(@"State: %d", rotatingState);
             }
-            bodyOne->location = [self rotatePoint:bodyOne->location aroundPoint:Vector2fMake(orbFrontVBodyOne.sourcePosition.x - currentLocation.x, orbFrontVBodyOne.sourcePosition.y - currentLocation.y) withAngle:oldBodyOneRotation - bodyOne->rotation];
-            bodyTwo->location = [self rotatePoint:bodyTwo->location aroundPoint:Vector2fMake(orbBodyOneVBodyTwo.sourcePosition.x - currentLocation.x, orbBodyOneVBodyTwo.sourcePosition.y - currentLocation.y) withAngle:oldBodyTwoRotation - bodyTwo->rotation];
-            bodyThree->location = [self rotatePoint:bodyThree->location aroundPoint:Vector2fMake(orbBodyTwoVBodyThree.sourcePosition.x - currentLocation.x, orbBodyTwoVBodyThree.sourcePosition.y - currentLocation.y) withAngle:oldBodyThreeRotation - bodyThree->rotation];
-            back->location = [self rotatePoint:back->location aroundPoint:Vector2fMake(orbBodyThreeVBack.sourcePosition.x - currentLocation.x, orbBodyThreeVBack.sourcePosition.y - currentLocation.y) withAngle:oldTailRotation - back->rotation];
-            
-            [self syncBodyOneCollisionPolygon:oldBodyOneRotation];
-            [self syncBodyTwoCollisionPolygon:oldBodyTwoRotation];
-            [self syncBodyThreeCollisionPolygon:oldBodyThreeRotation];
-            [self syncBackCollisionPolygon:oldTailRotation];
+            [self syncCollisionPolygonWithRotation:oldRotation :oldRotation2 :oldRotation3];
         }
         else if(rotatingState == kRotating_StepTwoForward){
             
             //Rotate
-            GLfloat oldBodyOneRotation = bodyOne->rotation;
-            GLfloat oldBodyTwoRotation = bodyTwo->rotation;
-            GLfloat oldBodyThreeRotation = bodyThree->rotation;
-            GLfloat oldTailRotation = back->rotation;
-            if(bodyOne->rotation > -SEGMENT_ROTATION){
+            GLfloat oldRotation = bodyOne->rotation;
+            GLfloat oldRotation2 = bodyTwo->rotation;
+            GLfloat oldRotation3 = front->rotation;
+            if(bodyOne->rotation > -20){
                 bodyOne->rotation -= rotatingSpeed;
                 bodyTwo->rotation += rotatingSpeed;
                 bodyThree->rotation -= rotatingSpeed;
                 back->rotation += rotatingSpeed;
+                front->rotation += rotatingSpeed/2;
             }
             else {
-                bodyOne->rotation = -SEGMENT_ROTATION;
-                bodyTwo->rotation = SEGMENT_ROTATION;
-                bodyThree->rotation = -SEGMENT_ROTATION;
-                back->rotation = SEGMENT_ROTATION;
+                bodyOne->rotation = -20;
+                bodyTwo->rotation = 20;
+                bodyThree->rotation = -20;
+                back->rotation = 20;
+                front->rotation = 10;
                 
                 rotatingState = kRotating_StepTwoReturn;
-                NSLog(@"State: %d", rotatingState);
             }
-            bodyOne->location = [self rotatePoint:bodyOne->location aroundPoint:Vector2fMake(orbFrontVBodyOne.sourcePosition.x - currentLocation.x, orbFrontVBodyOne.sourcePosition.y - currentLocation.y) withAngle:oldBodyOneRotation - bodyOne->rotation];
-            bodyTwo->location = [self rotatePoint:bodyTwo->location aroundPoint:Vector2fMake(orbBodyOneVBodyTwo.sourcePosition.x - currentLocation.x, orbBodyOneVBodyTwo.sourcePosition.y - currentLocation.y) withAngle:oldBodyTwoRotation - bodyTwo->rotation];
-            bodyThree->location = [self rotatePoint:bodyThree->location aroundPoint:Vector2fMake(orbBodyTwoVBodyThree.sourcePosition.x - currentLocation.x, orbBodyTwoVBodyThree.sourcePosition.y - currentLocation.y) withAngle:oldBodyThreeRotation - bodyThree->rotation];
-            back->location = [self rotatePoint:back->location aroundPoint:Vector2fMake(orbBodyThreeVBack.sourcePosition.x - currentLocation.x, orbBodyThreeVBack.sourcePosition.y - currentLocation.y) withAngle:oldTailRotation - back->rotation];
-            
-            [self syncBodyOneCollisionPolygon:oldBodyOneRotation];
-            [self syncBodyTwoCollisionPolygon:oldBodyTwoRotation];
-            [self syncBodyThreeCollisionPolygon:oldBodyThreeRotation];
-            [self syncBackCollisionPolygon:oldTailRotation];
+            [self syncCollisionPolygonWithRotation:oldRotation :oldRotation2 :oldRotation3];
         }
         else if(rotatingState == kRotating_StepTwoReturn){
+            
             //Rotate
-            GLfloat oldBodyOneRotation = bodyOne->rotation;
-            GLfloat oldBodyTwoRotation = bodyTwo->rotation;
-            GLfloat oldBodyThreeRotation = bodyThree->rotation;
-            GLfloat oldTailRotation = back->rotation;
+            GLfloat oldRotation = bodyOne->rotation;
+            GLfloat oldRotation2 = bodyTwo->rotation;
+            GLfloat oldRotation3 = front->rotation;
             if(bodyOne->rotation < 0){
                 bodyOne->rotation += rotatingSpeed;
                 bodyTwo->rotation -= rotatingSpeed;
                 bodyThree->rotation += rotatingSpeed;
                 back->rotation -= rotatingSpeed;
+                front->rotation -= rotatingSpeed/2;
             }
             else {
                 bodyOne->rotation = 0;
                 bodyTwo->rotation = 0;
                 bodyThree->rotation = 0;
                 back->rotation = 0;
-                
-                //When they go back to a rotation of 0 degrees, they'll be back in
-                //their normal positions, but because of roudning errors they move
-                //slightly inwards. This resets them back to their default positions
-                //to cancel that effect.
-                bodyOne->location = bodyOne->defaultLocation;
-                bodyTwo->location = bodyTwo->defaultLocation;
-                bodyThree->location = bodyThree->defaultLocation;
-                back->location = back->defaultLocation;
+                front->rotation = 0;
                 
                 rotatingState = kRotating_StepOneForward;
-                NSLog(@"State: %d", rotatingState);
             }
-            bodyOne->location = [self rotatePoint:bodyOne->location aroundPoint:Vector2fMake(orbFrontVBodyOne.sourcePosition.x - currentLocation.x, orbFrontVBodyOne.sourcePosition.y - currentLocation.y) withAngle:oldBodyOneRotation - bodyOne->rotation];
-            bodyTwo->location = [self rotatePoint:bodyTwo->location aroundPoint:Vector2fMake(orbBodyOneVBodyTwo.sourcePosition.x - currentLocation.x, orbBodyOneVBodyTwo.sourcePosition.y - currentLocation.y) withAngle:oldBodyTwoRotation - bodyTwo->rotation];
-            bodyThree->location = [self rotatePoint:bodyThree->location aroundPoint:Vector2fMake(orbBodyTwoVBodyThree.sourcePosition.x - currentLocation.x, orbBodyTwoVBodyThree.sourcePosition.y - currentLocation.y) withAngle:oldBodyThreeRotation - bodyThree->rotation];
-            back->location = [self rotatePoint:back->location aroundPoint:Vector2fMake(orbBodyThreeVBack.sourcePosition.x - currentLocation.x, orbBodyThreeVBack.sourcePosition.y - currentLocation.y) withAngle:oldTailRotation - back->rotation];
-            
-            [self syncBodyOneCollisionPolygon:oldBodyOneRotation];
-            [self syncBodyTwoCollisionPolygon:oldBodyTwoRotation];
-            [self syncBodyThreeCollisionPolygon:oldBodyThreeRotation];
-            [self syncBackCollisionPolygon:oldTailRotation];
+            [self syncCollisionPolygonWithRotation:oldRotation :oldRotation2 :oldRotation3];
         }
         
     }
@@ -354,26 +298,26 @@
         attackTimer += delta;
         
         /*
-        if(holdingTimer >= 1.2){
-            holdingTimer = 0.0;
-            
-            if(currentLocation.x <= 160){
-                desiredLocation.x = (MAX(0.4, RANDOM_0_TO_1()) * 160) + 160;
-            }
-            else if(currentLocation.x >= 160){
-                desiredLocation.x = (MIN(0.6, RANDOM_0_TO_1()) * 160);
-            }
-            
-            desiredLocation.y = currentLocation.y + (RANDOM_MINUS_1_TO_1() * 150);
-            
-            desiredLocation.x = MAX(50, desiredLocation.x);
-            desiredLocation.y = MAX(320, desiredLocation.y);
-            
-            desiredLocation.x = MIN(desiredLocation.x, 270);
-            desiredLocation.y = MIN(desiredLocation.y, 430);
-        }
-        */
+         if(holdingTimer >= 1.2){
+         holdingTimer = 0.0;
          
+         if(currentLocation.x <= 160){
+         desiredLocation.x = (MAX(0.4, RANDOM_0_TO_1()) * 160) + 160;
+         }
+         else if(currentLocation.x >= 160){
+         desiredLocation.x = (MIN(0.6, RANDOM_0_TO_1()) * 160);
+         }
+         
+         desiredLocation.y = currentLocation.y + (RANDOM_MINUS_1_TO_1() * 150);
+         
+         desiredLocation.x = MAX(50, desiredLocation.x);
+         desiredLocation.y = MAX(320, desiredLocation.y);
+         
+         desiredLocation.x = MIN(desiredLocation.x, 270);
+         desiredLocation.y = MIN(desiredLocation.y, 430);
+         }
+         */
+        
         if(attackTimer >= 6){
             state = kFiveThree_Attacking;
             attackTimer = 0;
@@ -440,59 +384,57 @@
     NSLog(@"%d / %d", shipHealth, shipMaxHealth);
 }
 
-- (Vector2f)rotatePoint:(Vector2f)initialPoint aroundPoint:(Vector2f)axisPoint withAngle:(GLfloat)angle {
+- (Vector2f)rotatePoint:(Vector2f)initialPoint aroundAngle:(GLfloat)angle {
+    Vector2f rotatedPoint;
     
-    initialPoint.x -= axisPoint.x;
-    initialPoint.y -= axisPoint.y;
+    rotatedPoint.x = (initialPoint.x * cos(angle)) - (initialPoint.y * sin(angle)); 
+    rotatedPoint.y = (initialPoint.x * sin(angle)) + (initialPoint.y * cos(angle));
     
-    double radianAngle = DEGREES_TO_RADIANS(angle);
-    initialPoint.x = (initialPoint.x * cos(radianAngle)) - (initialPoint.y * sin(radianAngle)); 
-    initialPoint.y = (initialPoint.x * sin(radianAngle)) + (initialPoint.y * cos(radianAngle));
-    
-    initialPoint.x += axisPoint.x;
-    initialPoint.y += axisPoint.y;
-    
-    return initialPoint;
+    return rotatedPoint;
 }
 
-- (void)syncBodyOneCollisionPolygon:(GLfloat)oldRotation {
+- (void)syncCollisionPolygonWithRotation:(GLfloat)oldRot :(GLfloat)oldRot2 :(GLfloat)oldRot3 {
+    
     //Rotate Body One
     for(int i = 0; i < [[bodyOne->collisionPolygonArray objectAtIndex:0] pointCount]; i++){
         Vector2f tempPoint = [[bodyOne->collisionPolygonArray objectAtIndex:0] originalPoints][i];
-        double tempAngle = DEGREES_TO_RADIANS(oldRotation - bodyOne->rotation);
+        double tempAngle = DEGREES_TO_RADIANS(oldRot - bodyOne->rotation);
         [[bodyOne->collisionPolygonArray objectAtIndex:0] originalPoints][i] = Vector2fMake((tempPoint.x * cos(tempAngle)) - (tempPoint.y * sin(tempAngle)), (tempPoint.x * sin(tempAngle)) + (tempPoint.y * cos(tempAngle)));
     }
     [[bodyOne->collisionPolygonArray objectAtIndex:0] buildEdges];
-}
-
-- (void)syncBodyTwoCollisionPolygon:(GLfloat)oldRotation {
+    
+    
     //Rotate Body Two
     for(int i = 0; i < [[bodyTwo->collisionPolygonArray objectAtIndex:0] pointCount]; i++){
         Vector2f tempPoint = [[bodyTwo->collisionPolygonArray objectAtIndex:0] originalPoints][i];
-        double tempAngle = DEGREES_TO_RADIANS(oldRotation - bodyTwo->rotation);
+        double tempAngle = DEGREES_TO_RADIANS(oldRot2 - bodyTwo->rotation);
         [[bodyTwo->collisionPolygonArray objectAtIndex:0] originalPoints][i] = Vector2fMake((tempPoint.x * cos(tempAngle)) - (tempPoint.y * sin(tempAngle)), (tempPoint.x * sin(tempAngle)) + (tempPoint.y * cos(tempAngle)));
     }
     [[bodyTwo->collisionPolygonArray objectAtIndex:0] buildEdges];
-}
-
-- (void)syncBodyThreeCollisionPolygon:(GLfloat)oldRotation {
+    
     //Rotate Body Three
     for(int i = 0; i < [[bodyThree->collisionPolygonArray objectAtIndex:0] pointCount]; i++){
         Vector2f tempPoint = [[bodyThree->collisionPolygonArray objectAtIndex:0] originalPoints][i];
-        double tempAngle = DEGREES_TO_RADIANS(oldRotation - bodyThree->rotation);
+        double tempAngle = DEGREES_TO_RADIANS(oldRot - bodyThree->rotation);
         [[bodyThree->collisionPolygonArray objectAtIndex:0] originalPoints][i] = Vector2fMake((tempPoint.x * cos(tempAngle)) - (tempPoint.y * sin(tempAngle)), (tempPoint.x * sin(tempAngle)) + (tempPoint.y * cos(tempAngle)));
     }
     [[bodyThree->collisionPolygonArray objectAtIndex:0] buildEdges];
-}
-
-- (void)syncBackCollisionPolygon:(GLfloat)oldRotation {
+    
     //Rotate Tail
     for(int i = 0; i < [[back->collisionPolygonArray objectAtIndex:0] pointCount]; i++){
         Vector2f tempPoint = [[back->collisionPolygonArray objectAtIndex:0] originalPoints][i];
-        double tempAngle = DEGREES_TO_RADIANS(oldRotation - back->rotation);
+        double tempAngle = DEGREES_TO_RADIANS(oldRot2 - back->rotation);
         [[back->collisionPolygonArray objectAtIndex:0] originalPoints][i] = Vector2fMake((tempPoint.x * cos(tempAngle)) - (tempPoint.y * sin(tempAngle)), (tempPoint.x * sin(tempAngle)) + (tempPoint.y * cos(tempAngle)));
     }
     [[back->collisionPolygonArray objectAtIndex:0] buildEdges];
+    
+    //Rotate Front
+    for(int i = 0; i < [[front->collisionPolygonArray objectAtIndex:0] pointCount]; i++){
+        Vector2f tempPoint = [[front->collisionPolygonArray objectAtIndex:0] originalPoints][i];
+        double tempAngle = DEGREES_TO_RADIANS(oldRot3 - front->rotation);
+        [[front->collisionPolygonArray objectAtIndex:0] originalPoints][i] = Vector2fMake((tempPoint.x * cos(tempAngle)) - (tempPoint.y * sin(tempAngle)), (tempPoint.x * sin(tempAngle)) + (tempPoint.y * cos(tempAngle)));
+    }
+    [[front->collisionPolygonArray objectAtIndex:0] buildEdges];
 }
 
 - (void)render {
